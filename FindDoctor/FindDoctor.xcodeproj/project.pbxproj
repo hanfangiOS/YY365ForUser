@@ -169,6 +169,7 @@
 		3EFB22361AB5B43F000872F3 /* SNTopTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB22351AB5B43F000872F3 /* SNTopTabViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3EFB223B1AB5B5A4000872F3 /* SNTopTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB22381AB5B5A4000872F3 /* SNTopTabBar.m */; };
 		3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */; };
+		7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */; };
 		BC0E84B31C7857E700082AA9 /* AddFamilyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */; };
 		BC0E84B51C78598E00082AA9 /* littleTrumpet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */; };
 		BC0E84B81C7AB95F00082AA9 /* radioButtonActivated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B61C7AB95F00082AA9 /* radioButtonActivated@2x.png */; };
@@ -835,6 +836,8 @@
 		3EFB22381AB5B5A4000872F3 /* SNTopTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTopTabBar.m; sourceTree = "<group>"; };
 		3EFB22391AB5B5A4000872F3 /* SNTopTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTopTabBarItem.h; sourceTree = "<group>"; };
 		3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTopTabBarItem.m; sourceTree = "<group>"; };
+		7F5610E31C859871004DCCDF /* DoctorSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultViewController.h; sourceTree = "<group>"; };
+		7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultViewController.m; sourceTree = "<group>"; };
 		BC0E84B11C7857E700082AA9 /* AddFamilyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFamilyMemberViewController.h; path = AddFamiliMember/AddFamilyMemberViewController.h; sourceTree = "<group>"; };
 		BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddFamilyMemberViewController.m; path = AddFamiliMember/AddFamilyMemberViewController.m; sourceTree = "<group>"; };
 		BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "littleTrumpet@2x.png"; sourceTree = "<group>"; };
@@ -2997,6 +3000,8 @@
 				E6D454981B93833F00F3C3D0 /* DoctorEvaluateController.m */,
 				E1A6B92C1BB302A5001A458D /* DoctorSearchController.h */,
 				E1A6B92D1BB302A5001A458D /* DoctorSearchController.m */,
+				7F5610E31C859871004DCCDF /* DoctorSearchResultViewController.h */,
+				7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */,
 			);
 			path = Doctor;
 			sourceTree = "<group>";
@@ -4282,6 +4287,7 @@
 				3EDEBAB01A961C4800E72809 /* NSData+SNExtension.m in Sources */,
 				E1EB1E3D1B70A43B0048B8EB /* LocationHelper.m in Sources */,
 				E120632E1BC6D463004920BA /* VIPController.m in Sources */,
+				7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */,
 				3EDEBACB1A961C4800E72809 /* UIView+Extension.m in Sources */,
 				3EDEBA731A961C4800E72809 /* AFHTTPClient.m in Sources */,
 				3EDEBA811A961C4800E72809 /* SDWebImageManager.m in Sources */,

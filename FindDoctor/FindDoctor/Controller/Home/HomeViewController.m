@@ -27,6 +27,8 @@
 
 #import "TipMessageData.h"
 
+#import "DoctorSearchResultViewController.h"
+
 #define HomeValue(x)   AdaptedValue(x)
 
 #define kHomeHeaderViewHeight   HomeValue(200.0)
@@ -258,7 +260,7 @@
     filter.keyword = keyword;
     
     DoctorListModel *listModel1 = [[DoctorListModel alloc] initWithFilter:filter];
-    DoctorListController *listVC = [[DoctorListController alloc] initWithPageName:@"DoctorListController" listModel:listModel1];
+    DoctorSearchResultViewController *listVC = [[DoctorSearchResultViewController alloc] initWithPageName:@"DoctorSearchResultViewController" listModel:listModel1];
     [self.slideNavigationController pushViewController:listVC animated:YES];
 }
 
