@@ -14,8 +14,12 @@
 #import "CUUserManager.h"
 
 #import "LoginViewController.h"
+
 #import "MyDiagnosisRecordsListModel.h"
 #import "MyDiagnosisRecordsViewController.h"
+
+#import "MyDoctorListModel.h"
+#import "MyDoctorListViewController.h"
 
 @interface UserViewController ()<UIAlertViewDelegate>{
     UserHeaderView *userHeaderView;
@@ -42,7 +46,6 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     if ([[CUUserManager sharedInstance] isLogin]) {
-        [userHeaderView resetUserInfo];
     }
     else{
         [self loginAction];
@@ -98,12 +101,11 @@
             [self.loginVC removeFromParentViewController];
             self.loginVC = nil;
             self.hasNavigationBar = YES;
-            
             self.title = @"我的空间";
 //            [self loadNavigationBar];
+            [userHeaderView resetUserInfo];
         }
         else {
-            [userHeaderView resetUserInfo];
             self.navigationItem.leftBarButtonItem = nil;
             self.navigationItem.rightBarButtonItem = nil;
         }
@@ -115,7 +117,9 @@
 }
 
 - (void)myDoctorAction{
-
+    MyDoctorListModel *listModel = [[MyDoctorListModel alloc]initWithSortType:1];
+    MyDoctorListViewController *myDoctorVC = [[MyDoctorListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+    [self.slideNavigationController  pushViewController:myDoctorVC animated:YES];
 }
 
 - (void)myCollectionAction{

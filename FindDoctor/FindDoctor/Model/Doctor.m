@@ -35,3 +35,7 @@
 @implementation SelectOrderTime
 
 @end
+
+@implementation MyDoctorFilter
+
+@end

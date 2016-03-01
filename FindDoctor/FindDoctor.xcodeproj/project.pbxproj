@@ -236,6 +236,8 @@
 		BC8E36E81C27F32E00304637 /* neikeICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8E36DF1C27F32E00304637 /* neikeICON@2x.png */; };
 		BC8E36E91C27F32E00304637 /* erkeICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8E36E01C27F32E00304637 /* erkeICON@2x.png */; };
 		BC9354AC1C1AB07100C60921 /* HomeSubViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9354AB1C1AB07100C60921 /* HomeSubViewController2.m */; };
+		BCAA4AAD1C8548440085A165 /* MyDoctorListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AAA1C8548440085A165 /* MyDoctorListModel.m */; };
+		BCAA4AAE1C8548440085A165 /* MyDoctorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AAC1C8548440085A165 /* MyDoctorListViewController.m */; };
 		BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0506B1C15982500F988B1 /* TipMessageData.m */; };
 		BCB0506E1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */; };
 		BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC054AF1C4397F200017202 /* DiseaseSubject.m */; };
@@ -924,6 +926,10 @@
 		BC8E36E01C27F32E00304637 /* erkeICON@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erkeICON@2x.png"; sourceTree = "<group>"; };
 		BC9354AA1C1AB07100C60921 /* HomeSubViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewController2.h; sourceTree = "<group>"; };
 		BC9354AB1C1AB07100C60921 /* HomeSubViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewController2.m; sourceTree = "<group>"; };
+		BCAA4AA91C8548440085A165 /* MyDoctorListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDoctorListModel.h; sourceTree = "<group>"; };
+		BCAA4AAA1C8548440085A165 /* MyDoctorListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDoctorListModel.m; sourceTree = "<group>"; };
+		BCAA4AAB1C8548440085A165 /* MyDoctorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDoctorListViewController.h; sourceTree = "<group>"; };
+		BCAA4AAC1C8548440085A165 /* MyDoctorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDoctorListViewController.m; sourceTree = "<group>"; };
 		BCB0506A1C15982500F988B1 /* TipMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipMessageData.h; sourceTree = "<group>"; };
 		BCB0506B1C15982500F988B1 /* TipMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipMessageData.m; sourceTree = "<group>"; };
 		BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipTableViewCellBackground@2x.png"; sourceTree = "<group>"; };
@@ -2488,6 +2494,7 @@
 		BC8E36D61C27EB4D00304637 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				BCAA4AA81C8548440085A165 /* MyDoctor */,
 				BC1859C21C8440060050251B /* MyDiagnosisRecords */,
 				BC313D221C3A147500C9469D /* View */,
 				BC313D1F1C3A143C00C9469D /* UserViewController.h */,
@@ -2512,6 +2519,18 @@
 				BC8E36E01C27F32E00304637 /* erkeICON@2x.png */,
 			);
 			name = ICONsubject;
+			sourceTree = "<group>";
+		};
+		BCAA4AA81C8548440085A165 /* MyDoctor */ = {
+			isa = PBXGroup;
+			children = (
+				BCAA4AA91C8548440085A165 /* MyDoctorListModel.h */,
+				BCAA4AAA1C8548440085A165 /* MyDoctorListModel.m */,
+				BCAA4AAB1C8548440085A165 /* MyDoctorListViewController.h */,
+				BCAA4AAC1C8548440085A165 /* MyDoctorListViewController.m */,
+			);
+			name = MyDoctor;
+			path = User/MyDoctor;
 			sourceTree = "<group>";
 		};
 		D405CC641C0061FD00A56264 /* CUPassword */ = {
@@ -4176,6 +4195,7 @@
 				E1C2F4F01BA9CB720070224F /* AddressListView.m in Sources */,
 				3ED4FC151AA8775300AAAD34 /* UIBarButtonItem+SNExtension.m in Sources */,
 				3EDEBAA11A961C4800E72809 /* SNFileAccessManagerInner.m in Sources */,
+				BCAA4AAD1C8548440085A165 /* MyDoctorListModel.m in Sources */,
 				3ED0A7751AA60D4E0040E529 /* UINavigationBar+Background.m in Sources */,
 				E10EDCA81B8B60930035B6E7 /* OrderCell.m in Sources */,
 				E10EDD0A1B8E1E550035B6E7 /* OrderResultView.m in Sources */,
@@ -4335,6 +4355,7 @@
 				3EDEBA7E1A961C4800E72809 /* SDImageCache.m in Sources */,
 				E10EDC6B1B8B598E0035B6E7 /* CUOrderManager.m in Sources */,
 				3ED0A75C1AA603C50040E529 /* SNSlideNavigationController+SNSlideStack.m in Sources */,
+				BCAA4AAE1C8548440085A165 /* MyDoctorListViewController.m in Sources */,
 				3EDEBA841A961C4800E72809 /* UIImageView+WebCache.m in Sources */,
 				3EFB22361AB5B43F000872F3 /* SNTopTabViewController.m in Sources */,
 				E10EDC751B8B5D570035B6E7 /* Disease.m in Sources */,

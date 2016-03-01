@@ -98,5 +98,15 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 @property (nonatomic, strong) NSString *keyword;
 @property (nonatomic, strong) NSString *priceRange;
 
+typedef NS_ENUM(NSInteger, MyDoctorSortType) {
+    MyDoctorSortType1  = 1,
+    MyDoctorSortType2  = 2,
+};
+@end
+
+@interface MyDoctorFilter : NSObject
+
+@property MyDoctorSortType sortType;
+
 @end
 

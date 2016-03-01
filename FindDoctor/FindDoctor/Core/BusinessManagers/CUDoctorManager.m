@@ -507,6 +507,78 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
 
 }
 
+- (void)getMyDoctorWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+    [param setObjectSafely:@"MyDoctor" forKey:@"require"];
+    [param setObjectSafely:@(13101) forKey:@"interfaceID"];
+    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+    
+    NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+                SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
+                
+                NSMutableArray *recvListDoctor = [result.responseObject valueForKeySafely:@"data"];
+                NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
+                
+                [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                    Doctor *doctor = [[Doctor alloc] init];
+                    
+                    doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
+                    doctor.background = [obj valueForKey:@"briefIntro"];
+                    doctor.avatar = [obj valueForKey:@"icon"];
+                    if ([doctor.avatar isEqualToString:@"0"]) {
+                        NSString *sex = [obj valueForKey:@"sex"];
+                        if ([sex isEqualToString:@"男"]) {
+                            doctor.avatar = [NSString stringWithFormat:@"http://uyi365.com/hanfang_nan.png"];
+                        }else{
+                            doctor.avatar = [NSString stringWithFormat:@"http://uyi365.com/hanfang_nv.png"];
+                        }
+                    }
+                    doctor.subject = [obj valueForKey:@"matchItemDisease"];
+                    doctor.name = [obj valueForKey:@"name"];
+                    doctor.skilledSubject = [obj valueForKey:@"skillTreat"];
+                    doctor.levelDesc = [obj valueForKey:@"title"];
+                    
+                    doctor.isAvailable = YES;  //医生可以约诊， 这个是可约诊列表
+                    if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
+                    
+                    doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
+                    doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
+                    doctor.availableTime = [obj valueForKey:@"releaseTime"];
+                    doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
+                    doctor.doctorState = -1;
+                    doctor.zhenLiaoAmount = [[obj valueForKey:@"numDiag"] integerValue];
+                    
+                    [listSubjectDoctor addObject:doctor];
+                }];
+                listModel.items = listSubjectDoctor;
+                result.parsedModelObject = listModel;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+            }
+        }
+        else {
+            NSLog(@"====哦哟，出错了====");
+            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+}
+
 - (NSMutableArray *)fakeSubObjectList
 {
     NSMutableArray *subobjectArray = [NSMutableArray new];

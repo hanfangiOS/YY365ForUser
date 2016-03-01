@@ -230,25 +230,27 @@
             [blockSelf.freshControl refreshLastUpdatedTime:[NSDate date]];
             [blockSelf.contentTableView reloadData];
             
-            if (blockSelf.listModel.filter.classNumber == 0) {
-                NSMutableArray *recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"symptomOption"];
-                NSMutableArray *listSubject = [[NSMutableArray alloc] init];
-                [listSubject addObject:@"全部"];
-                [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-                    NSString *string = [obj valueForKey:@"name"];
-                    [listSubject addObject:string];
-                }];
-                blockSelf.diseaseArray = listSubject;
-                
-                recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"dateOption"];
-                listSubject = [[NSMutableArray alloc] init];
-                [listSubject addObject:@"全部"];
-                [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-                    NSString *string = [obj valueForKey:@"date"];
-                    [listSubject addObject:string];
-                }];
-                blockSelf.timeArray = listSubject;
-                [blockSelf.dropdownMenu resetMenu];
+            if(!result.hasError){
+                if (blockSelf.listModel.filter.classNumber == 0) {
+                    NSMutableArray *recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"symptomOption"];
+                    NSMutableArray *listSubject = [[NSMutableArray alloc] init];
+                    [listSubject addObject:@"全部"];
+                    [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                        NSString *string = [obj valueForKey:@"name"];
+                        [listSubject addObject:string];
+                    }];
+                    blockSelf.diseaseArray = listSubject;
+                    
+                    recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"dateOption"];
+                    listSubject = [[NSMutableArray alloc] init];
+                    [listSubject addObject:@"全部"];
+                    [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                        NSString *string = [obj valueForKey:@"date"];
+                        [listSubject addObject:string];
+                    }];
+                    blockSelf.timeArray = listSubject;
+                    [blockSelf.dropdownMenu resetMenu];
+                }
             }
 
             

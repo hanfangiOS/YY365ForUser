@@ -157,7 +157,7 @@
     }
     else{
         jianJieLabel.text = [NSString stringWithFormat:@"简介: %@",self.data.background];
-        shanChangLabel.text = [NSString stringWithFormat:@"擅长: %@",self.data.desc];
+        shanChangLabel.text = [NSString stringWithFormat:@"擅长: %@",self.data.skilledSubject];
         label2.text = nil;
         label3.text = nil;
         label4.text = nil;

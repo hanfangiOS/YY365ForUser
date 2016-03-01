@@ -133,7 +133,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 clinic.goodRemark = [[data valueForKeySafely:@"goodRemark"] integerValue];
                 clinic.icon      = [data valueForKeySafely:@"icon"];
                 clinic.name      = [data valueForKeySafely:@"name"];
-                clinic.isConcern = [[data valueForKeySafely:@"isConcern"] integerValue]!=0 ? YES : NO ;
+                clinic.isConcern = [[data valueForKeySafely:@"isConcern"] integerValue]!=0 ? YES: NO;
                 clinic.numDiag   = [[data valueForKeySafely:@"numDiag"] integerValue];
                 clinic.numConcern   = [[data valueForKeySafely:@"numConcern"] integerValue];
                 clinic.skillTreat   = [data valueForKeySafely:@"skillTreat"];
@@ -194,41 +194,6 @@ SINGLETON_IMPLENTATION(CUClinicManager);
         if (!result.hasError) {
             //服务器内部正常
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                
-                NSMutableDictionary *data = [result.responseObject valueForKey:@"data"];
-                
-                
-                clinic.doctorsString   = [data valueForKeySafely:@"doctors"];
-                clinic.state     = [[data valueForKeySafely:@"state"] integerValue];
-                clinic.latitude  = [[data valueForKeySafely:@"latitude"] doubleValue];
-                clinic.longitude = [[data valueForKeySafely:@"longitude"] doubleValue];
-                clinic.numDiag   = [[data valueForKeySafely:@"numDiag"] integerValue];
-                
-                clinic.ID        = [[data valueForKeySafely:@"ID"] integerValue];
-                clinic.address   = [data valueForKeySafely:@"address"];
-                clinic.breifInfo = [data valueForKeySafely:@"briefIntro"];
-                clinic.detailIntro = [data valueForKeySafely:@"detailIntro"];
-                clinic.phone     = [data valueForKeySafely:@"phone"];
-                clinic.goodRemark = [[data valueForKeySafely:@"goodRemark"] integerValue];
-                clinic.icon      = [data valueForKeySafely:@"icon"];
-                clinic.name      = [data valueForKeySafely:@"name"];
-                clinic.isConcern = [[data valueForKeySafely:@"isConcern"] integerValue]!=0 ? YES : NO ;
-                clinic.numDiag   = [[data valueForKeySafely:@"numDiag"] integerValue];
-                clinic.numConcern   = [[data valueForKeySafely:@"numConcern"] integerValue];
-                clinic.skillTreat   = [data valueForKeySafely:@"skillTreat"];
-                
-                NSMutableArray *recvList = [data objectForKey:@"doctorList"];
-                NSMutableArray *subjectList = [NSMutableArray new];
-                [recvList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    Doctor *doctor = [[Doctor  alloc]init];
-                    doctor.doctorId = [[obj valueForKey:@"ID"] integerValue];
-                    doctor.avatar = [obj valueForKey:@"icon"];
-                    doctor.name = [obj valueForKey:@"name"];
-                    doctor.doctorState = [[obj valueForKey:@"state"] integerValue];
-                    doctor.levelDesc = [obj valueForKey:@"title"];
-                    [subjectList addObject:doctor];
-                }];
-                clinic.doctorsArray = subjectList;
             }
             else {
                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];

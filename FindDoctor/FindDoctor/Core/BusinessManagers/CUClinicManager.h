@@ -23,4 +23,7 @@ SINGLETON_DECLARE(CUClinicManager);
 //诊所主页
 - (void)getClinicMainWithClinic:(Clinic *)clinic resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
+//诊所关注
+- (void)clinicConcernWithClinic:(Clinic *)clinic resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
 @end

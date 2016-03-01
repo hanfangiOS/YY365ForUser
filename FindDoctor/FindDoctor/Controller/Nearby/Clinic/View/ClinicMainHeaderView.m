@@ -9,6 +9,7 @@
 #import "ClinicMainHeaderView.h"
 #import "UIImageView+WebCache.h"
 #import "BlueDotLabelInDoctorHeaderView.h"
+#import "CUClinicManager.h"
 
 @interface ClinicMainHeaderView(){
     UIImageView *imageView;
@@ -123,12 +124,8 @@
     phoneLabel.attributedText = atrStr;
     [phoneLabel sizeToFit];
     
-    if (self.data.isConcern) {
-        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"haveguanzhu"].CGImage;
-    }
-    else{
-        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"guanzhu"].CGImage;
-    }
+    [self resetguanzhuButton];
+    
     [zhenLiaoNumberLabel resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%d",_data.numDiag] unit:@"次"];
     [guanZhuNumberLabel resetTitle:@"关注" contents:[NSString stringWithFormat:@"%d",_data.numConcern] unit:@"次"];
     [haoPingNumberLabel resetTitle:@"好评率" contents:[NSString stringWithFormat:@"%d",_data.goodRemark] unit:@"%"];
@@ -153,6 +150,23 @@
 }
 
 - (void)guanZhuButtonAction{
+    __weak __block ClinicMainHeaderView *blockSelf = self;
+    [[CUClinicManager sharedInstance] clinicConcernWithClinic:blockSelf.data resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+                blockSelf.data.isConcern = !blockSelf.data.isConcern;
+                [blockSelf resetguanzhuButton];
+            }
+        }
+    } pageName:@"ClinicMainHeaderView"];
+}
 
+- (void)resetguanzhuButton{
+    if (self.data.isConcern) {
+        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"haveguanzhu"].CGImage;
+    }
+    else{
+        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"guanzhu"].CGImage;
+    }
 }
 @end
