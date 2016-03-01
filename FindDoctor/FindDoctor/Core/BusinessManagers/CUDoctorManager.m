@@ -134,7 +134,6 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         [listSubjectSymptomOption addObject:string];
                         filter.symptomOptionArray = listSubjectSymptomOption;
                     }];
-                    
                     listModel.items = listSubjectDoctor;
                     result.parsedModelObject = listModel;
                     
