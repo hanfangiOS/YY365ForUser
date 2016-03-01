@@ -50,4 +50,7 @@ SINGLETON_DECLARE(CUOrderManager);
 // 用户端——13103接口-用户空间-我的记录
 - (void)getMyDiagnosisRecordsWithUser:(MyDiagnosisRecordsFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
+// 用户端 - 用户空间 - 我的记录
+- (void)getMyAccountWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
 @end

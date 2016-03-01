@@ -17,6 +17,7 @@
 #import "NSDateFormatter+SNExtension.h"
 #import "TipMessageData.h"
 #import "TipHandler+HUD.h"
+#import "MyAccount.h"
 
 @implementation CUOrderManager
 
@@ -469,6 +470,86 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 #endif
   
 }
+
+- (void)getMyAccountWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
+{
+    NSMutableDictionary * param = [NSMutableDictionary dictionary];
+    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:[CUUserManager sharedInstance].user.token forKey:@"token"];
+    [param setObjectSafely:@"MyConsumeRecords" forKey:@"require"];
+    [param setObjectSafely:@(23004) forKey:@"interfaceID"];
+    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:@([CUUserManager sharedInstance].user.userId) forKey:@"accID"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+#if !LOCAL
+        if (!result.hasError){
+            NSInteger err_code = [[result.responseObject valueForKeySafely:@"errorCode"] integerValue];
+            if (err_code == 0) {
+                NSMutableDictionary  *dic = [result.responseObject valueForKeySafely:@"data"];
+                if([dic isKindOfClass:[NSDictionary class]]){
+                    NSMutableArray *dataArray1 = [NSMutableArray new];
+                    id obj = [dic objectForKey:@"moneyRecords"];
+                    if (obj){
+                        dataArray1 = [dic objectForKey:@"moneyRecords"];
+                    }
+                    MyAccount *myAccount = [[MyAccount alloc]init];
+                    myAccount.totalCost = [[[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"moneyTotal"] doubleValue]/100.f;
+                    myAccount.totalIncome = [[[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"couponTotal"] doubleValue]/100.f;
+                    myAccount.costDetailList = [NSMutableArray new];
+                    myAccount.incomeDetailList = [NSMutableArray new];
+                    for (int i = 0; i < dataArray1.count; i ++) {
+                        CostDetail *item = [[CostDetail alloc]init];
+                        item.timeStamp = [[[dataArray1 objectAtIndex:i] valueForKeySafely:@"time"] longLongValue];
+                        item.massage = [[dataArray1 objectAtIndex:i] valueForKeySafely:@"information"];
+                        item.fee = [[[dataArray1 objectAtIndex:i] valueForKeySafely:@"fee"] integerValue]/100.f;
+                        [myAccount.costDetailList addObject:item];
+                    }
+                    result.parsedModelObject = myAccount;
+                }
+            }
+            else if (err_code < 0){
+#if useErrCodeForLogout
+                [[CUUserManager sharedInstance] clear];
+                [[AppDelegate app] launchMainView];
+#endif
+            }
+            
+            
+            resultBlock(nil, result);
+        }
+#else
+        MyAccount *myAccount = [[MyAccount alloc]init];
+        myAccount.totalCost = 1255.3;
+        myAccount.totalIncome = 2325;
+        myAccount.costDetailList = [NSMutableArray new];
+        myAccount.incomeDetailList = [NSMutableArray new];
+        for (int i = 0; i < 20; i ++) {
+            CostDetail *item = [[CostDetail alloc]init];
+            item.timeStamp = 1450855230;
+            item.massage = @"下单约诊张仲景医生，支付定金";
+            item.fee = 200;
+            [myAccount.costDetailList addObject:item];
+        }
+        for (int i = 0; i < 20; i ++) {
+            IncomeDetail *item = [[IncomeDetail alloc]init];
+            item.timeStamp = 1450855230;
+            item.massage = @"用户余智伟在电子科技大学校医院支付定金";
+            item.fee = 200;
+            [myAccount.incomeDetailList addObject:item];
+        }
+        result.parsedModelObject = myAccount;
+        resultBlock(nil,result);
+#endif
+    } forKey:@"HomeTipList" forPageNameGroup:pageName];
+}
+
 
 
 @end
