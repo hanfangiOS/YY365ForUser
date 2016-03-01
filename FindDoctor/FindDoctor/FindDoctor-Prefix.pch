@@ -1,0 +1,33 @@
+//
+//  CollegeUnion.pch
+//  CollegeUnion
+//
+//  Created by li na on 15/2/18.
+//  Copyright (c) 2015年 li na. All rights reserved.
+//
+
+#ifndef CollegeUnion_CollegeUnion_pch
+#define CollegeUnion_CollegeUnion_pch
+#define kDeviceHeight [UIScreen mainScreen].bounds.size.height
+#define kDeviceWidth  [UIScreen mainScreen].bounds.size.width
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "SNBasicExtensionDefine.h"
+#import "SNNetWork.h"
+#import "SNUISystemConstant.h"
+#import "SNUIExtensionDefine.h"
+#import "CUUIContant.h"
+#import "UIConstants.h"
+#endif
+
+#endif
+
+#define LOCAL 0
+//#define NSLog(...) {}
+
+//测试
+//#define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);

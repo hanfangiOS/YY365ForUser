@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "94D5957C70A5B62F7186BCF1D356E3DFB35E6D50",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "74220c7d-9eb4-0340-b4c4-1ba2cc31a5c2++9397" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "94D5957C70A5B62F7186BCF1D356E3DFB35E6D50" : 0,
+    "74220c7d-9eb4-0340-b4c4-1ba2cc31a5c2++9397" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3CB7597B-33FD-4284-870D-9CEC13D54916",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "94D5957C70A5B62F7186BCF1D356E3DFB35E6D50" : "O2O",
+    "74220c7d-9eb4-0340-b4c4-1ba2cc31a5c2++9397" : "HuiYangChe_copy\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FindDoctor",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "APP\/IOS\/FindDoctor\/FindDoctor.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/203.195.140.87\/svn\/hyc",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "74220c7d-9eb4-0340-b4c4-1ba2cc31a5c2++9397"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/gitlab.com\/guo_qing_1001\/O2O.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "94D5957C70A5B62F7186BCF1D356E3DFB35E6D50"
+    }
+  ]
+}
