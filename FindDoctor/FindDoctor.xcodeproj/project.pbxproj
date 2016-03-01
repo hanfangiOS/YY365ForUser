@@ -242,6 +242,11 @@
 		BCAA4AB61C856D610085A165 /* MyClinicListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AB41C856D610085A165 /* MyClinicListViewController.m */; };
 		BCAA4ABB1C8578480085A165 /* MyClinicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AB81C8578480085A165 /* MyClinicCell.m */; };
 		BCAA4ABC1C8578480085A165 /* MyClinicCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4ABA1C8578480085A165 /* MyClinicCellContentView.m */; };
+		BCAA4AC71C85964D0085A165 /* MyAccountMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4ABF1C85964D0085A165 /* MyAccountMainViewController.m */; };
+		BCAA4AC81C85964D0085A165 /* ListMoneyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AC21C85964D0085A165 /* ListMoneyTableViewCell.m */; };
+		BCAA4AC91C85964D0085A165 /* ListMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AC41C85964D0085A165 /* ListMoneyView.m */; };
+		BCAA4ACA1C85964D0085A165 /* TotalMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AC61C85964D0085A165 /* TotalMoneyView.m */; };
+		BCAA4ACD1C8597F70085A165 /* MyAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4ACC1C8597F70085A165 /* MyAccount.m */; };
 		BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0506B1C15982500F988B1 /* TipMessageData.m */; };
 		BCB0506E1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */; };
 		BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC054AF1C4397F200017202 /* DiseaseSubject.m */; };
@@ -942,6 +947,16 @@
 		BCAA4AB81C8578480085A165 /* MyClinicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClinicCell.m; sourceTree = "<group>"; };
 		BCAA4AB91C8578480085A165 /* MyClinicCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClinicCellContentView.h; sourceTree = "<group>"; };
 		BCAA4ABA1C8578480085A165 /* MyClinicCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClinicCellContentView.m; sourceTree = "<group>"; };
+		BCAA4ABE1C85964D0085A165 /* MyAccountMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountMainViewController.h; sourceTree = "<group>"; };
+		BCAA4ABF1C85964D0085A165 /* MyAccountMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountMainViewController.m; sourceTree = "<group>"; };
+		BCAA4AC11C85964D0085A165 /* ListMoneyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListMoneyTableViewCell.h; sourceTree = "<group>"; };
+		BCAA4AC21C85964D0085A165 /* ListMoneyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMoneyTableViewCell.m; sourceTree = "<group>"; };
+		BCAA4AC31C85964D0085A165 /* ListMoneyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListMoneyView.h; sourceTree = "<group>"; };
+		BCAA4AC41C85964D0085A165 /* ListMoneyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMoneyView.m; sourceTree = "<group>"; };
+		BCAA4AC51C85964D0085A165 /* TotalMoneyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalMoneyView.h; sourceTree = "<group>"; };
+		BCAA4AC61C85964D0085A165 /* TotalMoneyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalMoneyView.m; sourceTree = "<group>"; };
+		BCAA4ACB1C8597F70085A165 /* MyAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccount.h; sourceTree = "<group>"; };
+		BCAA4ACC1C8597F70085A165 /* MyAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccount.m; sourceTree = "<group>"; };
 		BCB0506A1C15982500F988B1 /* TipMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipMessageData.h; sourceTree = "<group>"; };
 		BCB0506B1C15982500F988B1 /* TipMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipMessageData.m; sourceTree = "<group>"; };
 		BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipTableViewCellBackground@2x.png"; sourceTree = "<group>"; };
@@ -2506,6 +2521,7 @@
 		BC8E36D61C27EB4D00304637 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				BCAA4ABD1C85964D0085A165 /* MyAccount */,
 				BCAA4AB01C856D610085A165 /* MyClinic */,
 				BCAA4AA81C8548440085A165 /* MyDoctor */,
 				BC1859C21C8440060050251B /* MyDiagnosisRecords */,
@@ -2560,6 +2576,30 @@
 			);
 			name = MyClinic;
 			path = User/MyClinic;
+			sourceTree = "<group>";
+		};
+		BCAA4ABD1C85964D0085A165 /* MyAccount */ = {
+			isa = PBXGroup;
+			children = (
+				BCAA4ABE1C85964D0085A165 /* MyAccountMainViewController.h */,
+				BCAA4ABF1C85964D0085A165 /* MyAccountMainViewController.m */,
+				BCAA4AC01C85964D0085A165 /* View */,
+			);
+			name = MyAccount;
+			path = User/MyAccount;
+			sourceTree = "<group>";
+		};
+		BCAA4AC01C85964D0085A165 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCAA4AC11C85964D0085A165 /* ListMoneyTableViewCell.h */,
+				BCAA4AC21C85964D0085A165 /* ListMoneyTableViewCell.m */,
+				BCAA4AC31C85964D0085A165 /* ListMoneyView.h */,
+				BCAA4AC41C85964D0085A165 /* ListMoneyView.m */,
+				BCAA4AC51C85964D0085A165 /* TotalMoneyView.h */,
+				BCAA4AC61C85964D0085A165 /* TotalMoneyView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D405CC641C0061FD00A56264 /* CUPassword */ = {
@@ -3287,6 +3327,8 @@
 				E1C2F4E91BA875770070224F /* Address.m */,
 				BCC054AE1C4397F200017202 /* DiseaseSubject.h */,
 				BCC054AF1C4397F200017202 /* DiseaseSubject.m */,
+				BCAA4ACB1C8597F70085A165 /* MyAccount.h */,
+				BCAA4ACC1C8597F70085A165 /* MyAccount.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4108,6 +4150,7 @@
 				E1EB1E641B70A43B0048B8EB /* MapMerchantButtonView.m in Sources */,
 				3E6F0DA01AB67CAC00D6742A /* BATableViewIndex.m in Sources */,
 				E1EB1E5E1B70A43B0048B8EB /* SNFocusImageView.m in Sources */,
+				BCAA4AC81C85964D0085A165 /* ListMoneyTableViewCell.m in Sources */,
 				E6D454991B93833F00F3C3D0 /* DoctorEvaluateController.m in Sources */,
 				3EDD3C2C1AAC68220038338F /* SNLocationManager.m in Sources */,
 				E1EB1E281B70A43B0048B8EB /* Platform.m in Sources */,
@@ -4129,6 +4172,7 @@
 				D405D8111B7DF0130043FD76 /* DoctorTableViewCell.m in Sources */,
 				3EDEBAEE1AA0452900E72809 /* SNBaseListModel.m in Sources */,
 				E17B69291B8383880079DDB5 /* DoctorSectionView.m in Sources */,
+				BCAA4ACA1C85964D0085A165 /* TotalMoneyView.m in Sources */,
 				3ED0A7501AA603C50040E529 /* SNSlideController+SNObserver.m in Sources */,
 				E124D7A01B92E9D10007B85E /* CULoginViewController.m in Sources */,
 				E10EDCCA1B8B84D40035B6E7 /* ApiXml.mm in Sources */,
@@ -4153,6 +4197,7 @@
 				3ED0275E1AA9A4420051E41C /* SNLabel.m in Sources */,
 				E10EDC781B8B5EFF0035B6E7 /* CUOrderParser.m in Sources */,
 				E6ECE1571BA0A3C200A3F998 /* ConsultationListController.m in Sources */,
+				BCAA4ACD1C8597F70085A165 /* MyAccount.m in Sources */,
 				3EDEBABE1A961C4800E72809 /* UIDevice+Hardware.m in Sources */,
 				E1EB1ECD1B70A4D70048B8EB /* AlixPayOrder.m in Sources */,
 				D405CC6C1C02B5B100A56264 /* CUEmailViewController.m in Sources */,
@@ -4208,6 +4253,7 @@
 				BC313D211C3A143C00C9469D /* UserViewController.m in Sources */,
 				BCE465C31C06BAAF008DE355 /* DoctorAppointmentListView.m in Sources */,
 				3EDEBAA91A961C4800E72809 /* PLSqliteDatabaseOnThread.m in Sources */,
+				BCAA4AC91C85964D0085A165 /* ListMoneyView.m in Sources */,
 				BC80B20B1C40C76C00A7445A /* LoginTextFeildView.m in Sources */,
 				3ED0A7641AA604E50040E529 /* SNTabBar.m in Sources */,
 				E6D6B1951BC4F15A00B695F7 /* SubObjectHeaderView.m in Sources */,
@@ -4349,6 +4395,7 @@
 				3EDEBAF61AA0721A00E72809 /* SNPlatformManager.m in Sources */,
 				3ED0A75A1AA603C50040E529 /* SNSlideNavigationController+SNGeometry.m in Sources */,
 				3EDEBAB81A961C4800E72809 /* SNSingleton.m in Sources */,
+				BCAA4AC71C85964D0085A165 /* MyAccountMainViewController.m in Sources */,
 				BC1859BB1C841C860050251B /* SubjectOfClinicMainCollectionViewCell.m in Sources */,
 				3ED0A7681AA607FD0040E529 /* SNTabViewController.m in Sources */,
 				E1A6B8E61BAD4302001A458D /* UserCenterController.m in Sources */,

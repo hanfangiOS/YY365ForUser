@@ -24,6 +24,8 @@
 #import "MyClinicListViewController.h"
 #import "MyClinicListModel.h"
 
+#import "MyAccountMainViewController.h"
+
 @interface UserViewController ()<UIAlertViewDelegate>{
     UserHeaderView *userHeaderView;
 }
@@ -138,8 +140,8 @@
 }
 
 - (void)myAccountAction{
-
-    
+    MyAccountMainViewController   *myAccountVC = [[MyAccountMainViewController alloc]initWithPageName:@"MyAccountMainViewController"];
+    [self.slideNavigationController pushViewController:myAccountVC animated:YES];
 }
 
 - (void)loginAction
