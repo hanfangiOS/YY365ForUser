@@ -17,8 +17,10 @@
 
 SINGLETON_DECLARE(CUClinicManager);
 
+//地图上的附近诊所
 - (void)getClinicNearbyListWithFilter:(ClinicFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
+//诊所主页
 - (void)getClinicMainWithClinic:(Clinic *)clinic resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 @end
