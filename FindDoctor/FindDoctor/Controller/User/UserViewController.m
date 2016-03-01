@@ -21,6 +21,9 @@
 #import "MyDoctorListModel.h"
 #import "MyDoctorListViewController.h"
 
+#import "MyClinicListViewController.h"
+#import "MyClinicListModel.h"
+
 @interface UserViewController ()<UIAlertViewDelegate>{
     UserHeaderView *userHeaderView;
 }
@@ -66,7 +69,7 @@
     BigButtonsInUser *myDoctorButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(userHeaderView.frame) + 23, kScreenWidth/2 - 0.5, kScreenWidth/2 - 0.5)  image:[UIImage imageNamed:@"myDoctorBigButtonImage"] title:@"我的医生"];
     [myDoctorButton addTarget:self action:@selector(myDoctorAction) forControlEvents:UIControlEventTouchUpInside  ];
     
-    BigButtonsInUser *myCollectionButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(kScreenWidth/2+0.5, CGRectGetMaxY(userHeaderView.frame) + 23, kScreenWidth/2 - 0.5, kScreenWidth /2- 0.5)  image:[UIImage imageNamed:@"myCollectionBigButtonImage"] title:@"我的收藏"];
+    BigButtonsInUser *myCollectionButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(kScreenWidth/2+0.5, CGRectGetMaxY(userHeaderView.frame) + 23, kScreenWidth/2 - 0.5, kScreenWidth /2- 0.5)  image:[UIImage imageNamed:@"myCollectionBigButtonImage"] title:@"我的诊所"];
     [myCollectionButton addTarget:self action:@selector(myCollectionAction) forControlEvents:UIControlEventTouchUpInside  ];
     
     BigButtonsInUser *zhenLiaoButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(myDoctorButton.frame) + 1, kScreenWidth/2 - 0.5, kScreenWidth/2 - 0.5)  image:[UIImage imageNamed:@"myRecordBigButtonImage"] title:@"就诊记录"];
@@ -123,7 +126,9 @@
 }
 
 - (void)myCollectionAction{
-    
+    MyClinicListModel *listModel = [[MyClinicListModel alloc]initWithSortType:1];
+    MyClinicListViewController *myClinicVC = [[MyClinicListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+    [self.slideNavigationController  pushViewController:myClinicVC animated:YES];
 }
 
 - (void)zhenLiaoRecordAction{

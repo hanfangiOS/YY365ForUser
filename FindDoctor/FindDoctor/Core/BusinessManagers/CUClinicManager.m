@@ -214,6 +214,65 @@ SINGLETON_IMPLENTATION(CUClinicManager);
 #endif
 }
 
+- (void)getMyClinicWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+    [param setObjectSafely:@"MyFavorite" forKey:@"require"];
+    [param setObjectSafely:@(13102) forKey:@"interfaceID"];
+    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+    
+    NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+#if !LOCAL
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            //服务器内部正常
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+                SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
+                
+                NSMutableArray *recvListDoctor = [result.responseObject valueForKeySafely:@"data"];
+                NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
+                
+                [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                    Clinic *clinic = [[Clinic alloc] init];
+                    
+                    clinic.ID = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
+                    clinic.state = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
+                    clinic.name = [obj valueForKey:@"name"];
+                    clinic.icon = [NSURL URLWithString:[obj valueForKey:@"icon"]];
+                    clinic.breifInfo = [obj valueForKey:@"briefIntro"];
+                    clinic.skillTreat = [obj valueForKey:@"skillTreat"];
+                    
+                    [listSubjectDoctor addObject:clinic];
+                }];
+                listModel.items = listSubjectDoctor;
+                result.parsedModelObject = listModel;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+            }
+        }
+        else {
+            NSLog(@"====哦哟，出错了====");
+            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+#else
+    if (resultBlock) {
+        resultBlock(nil, result);
+    }
+#endif
+}
+
 
 
 @end

@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 @property (nonatomic, assign)CLLocationDegrees longitude;  // 经度
 
 @property BOOL isAvailable;
-@property NSInteger doctorState; //0无人约诊 //1有人约诊 2约诊满
+@property NSInteger doctorState; //0无人约诊 //1有人约诊 2约诊满 // -1为不可约诊
 @property CGFloat rate;
 @property double price;
 @property NSInteger zhenLiaoAmount;

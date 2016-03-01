@@ -17,3 +17,8 @@
 
 
 @end
+
+@implementation MyClinicFilter
+
+
+@end

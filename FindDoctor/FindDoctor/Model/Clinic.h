@@ -13,7 +13,7 @@
 @property NSInteger ID;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *address;
-@property (strong, nonatomic) NSString *icon;
+@property (strong, nonatomic) NSURL *icon;
 @property (strong, nonatomic) NSString *doctorsString;
 @property (strong, nonatomic) NSString *breifInfo;
 @property (strong, nonatomic) NSString *detailIntro;
@@ -38,5 +38,15 @@
 @property NSInteger regionID;
 @property double longitude;
 @property double latitude;
+
+@end
+
+typedef NS_ENUM(NSInteger, MyClinicSortType) {
+    MyClinicSortType1  = 1,
+    MyClinicSortType2  = 2,
+};
+@interface MyClinicFilter : NSObject
+
+@property MyClinicSortType sortType;
 
 @end

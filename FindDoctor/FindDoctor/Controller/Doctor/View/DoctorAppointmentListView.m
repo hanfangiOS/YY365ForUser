@@ -46,7 +46,7 @@
     titleLabel.backgroundColor = self.backgroundColor;
     titleLabel.text = @"请选择约诊时间段";
     titleLabel.textColor = UIColorFromHex(Color_Hex_Text_Normal);
-    titleLabel.font = [UIFont systemFontOfSize:16 weight:2];
+    titleLabel.font = [UIFont boldSystemFontOfSize:16];
     titleLabel.textAlignment = NSTextAlignmentJustified;
     [self addSubview:titleLabel];
     
