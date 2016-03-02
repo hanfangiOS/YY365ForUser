@@ -10,6 +10,7 @@
 #import "Doctor.h"
 #import "Disease.h"
 #import "CUUser.h"
+#import "Diagnosis.h"
 
 @interface CUService : NSObject
 
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) Doctor *doctor;
 @property (nonatomic, strong) CUUser *patience;
 @property (nonatomic, strong) Disease *disease;
+@property (nonatomic, strong) Diagnosis *diagnosis;
 
 @property double dealPrice;
 

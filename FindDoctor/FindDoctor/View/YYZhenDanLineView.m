@@ -62,6 +62,7 @@
 }
 
 - (CGFloat)getframeHeight{
+    [_contentTextLabel sizeToFit];
     return _contentTextLabel.frameHeight + lineInterval;
 }
 @end

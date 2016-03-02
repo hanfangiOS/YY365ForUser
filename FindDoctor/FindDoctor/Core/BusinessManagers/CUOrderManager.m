@@ -18,6 +18,7 @@
 #import "TipMessageData.h"
 #import "TipHandler+HUD.h"
 #import "MyAccount.h"
+#import "Diagnosis.h"
 
 @implementation CUOrderManager
 
@@ -278,7 +279,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                         doctor.levelDesc = [obj valueForKey:@"title"];
                         
                         Disease *disease = [[Disease alloc]init];
-                        disease.desc = [obj valueForKey:@"illnessDescription"];
+                        disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
                         
                         CUUser *patience = [[CUUser alloc]init];
                         patience.name = [obj valueForKey:@"userName"];
@@ -287,10 +288,28 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                         patience.cellPhone = [obj valueForKey:@"userPhone"];
                         patience.gender = [[obj valueForKey:@"userSex"] integerValue];
                         
+                        Diagnosis *diagnosis = [[Diagnosis alloc]init];
+                        diagnosis.diagnosisText = [NSString  stringWithFormat:@"%@",[obj valueForKey:@"diagnosisContent"]];
+                        diagnosis.recipeNum = [[obj valueForKey:@"recipeNum"] integerValue];
+                        diagnosis.herbPic = [obj valueForKey:@"recipePic"];
+                        
+                        NSMutableArray *herbArray = [NSMutableArray new];
+                        NSMutableArray *herbRecive = [obj objectForKey:@"recipeData"];
+                        [herbRecive enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            CUHerb *herb = [[CUHerb alloc]init];
+                            herb.unit = [obj valueForKey:@"unit"];
+                            herb.name = [obj valueForKey:@"name"];
+                            herb.herbid = [obj valueForKey:@"dataID"];
+                            herb.weight = [[obj valueForKey:@"num"] integerValue];
+                            [herbArray addObject:herb];
+                        }];
+                        diagnosis.herbArray = herbArray;
+                        
                         CUService *service = [[CUService alloc]init];
                         service.doctor = doctor;
                         service.disease = disease;
                         service.patience = patience;
+                        service.diagnosis = diagnosis;
                         
                         CUOrder *order = [[CUOrder alloc]init];
                         order.service = service;
@@ -392,6 +411,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseGetOrderDetailWithDict:) resultBlock:resultBlock forKey:URL_AfterBase forPageNameGroup:pageName];
 
 }
+
+
 
 
 //首页推送
@@ -548,6 +569,43 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         resultBlock(nil,result);
 #endif
     } forKey:@"HomeTipList" forPageNameGroup:pageName];
+}
+
+
+- (void)CancelOrderWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+    [param setObjectSafely:@"CancelOrderDiagnosis" forKey:@"require"];
+    [param setObjectSafely:@(13105) forKey:@"interfaceID"];
+    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+    
+    NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(diagnosisID) forKey:@"diagnosisID"];
+    
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+            }
+        }
+        else {
+            NSLog(@"====哦哟，出错了====");
+            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+    
 }
 
 

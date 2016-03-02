@@ -248,6 +248,7 @@
 		BCAA4AC91C85964D0085A165 /* ListMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AC41C85964D0085A165 /* ListMoneyView.m */; };
 		BCAA4ACA1C85964D0085A165 /* TotalMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AC61C85964D0085A165 /* TotalMoneyView.m */; };
 		BCAA4ACD1C8597F70085A165 /* MyAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4ACC1C8597F70085A165 /* MyAccount.m */; };
+		BCAA4AD11C8686750085A165 /* Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AD01C8686750085A165 /* Diagnosis.m */; };
 		BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0506B1C15982500F988B1 /* TipMessageData.m */; };
 		BCB0506E1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */; };
 		BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC054AF1C4397F200017202 /* DiseaseSubject.m */; };
@@ -960,6 +961,8 @@
 		BCAA4AC61C85964D0085A165 /* TotalMoneyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalMoneyView.m; sourceTree = "<group>"; };
 		BCAA4ACB1C8597F70085A165 /* MyAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccount.h; sourceTree = "<group>"; };
 		BCAA4ACC1C8597F70085A165 /* MyAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccount.m; sourceTree = "<group>"; };
+		BCAA4ACF1C8686750085A165 /* Diagnosis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Diagnosis.h; sourceTree = "<group>"; };
+		BCAA4AD01C8686750085A165 /* Diagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Diagnosis.m; sourceTree = "<group>"; };
 		BCB0506A1C15982500F988B1 /* TipMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipMessageData.h; sourceTree = "<group>"; };
 		BCB0506B1C15982500F988B1 /* TipMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipMessageData.m; sourceTree = "<group>"; };
 		BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipTableViewCellBackground@2x.png"; sourceTree = "<group>"; };
@@ -3334,6 +3337,8 @@
 				BCC054AF1C4397F200017202 /* DiseaseSubject.m */,
 				BCAA4ACB1C8597F70085A165 /* MyAccount.h */,
 				BCAA4ACC1C8597F70085A165 /* MyAccount.m */,
+				BCAA4ACF1C8686750085A165 /* Diagnosis.h */,
+				BCAA4AD01C8686750085A165 /* Diagnosis.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4208,6 +4213,7 @@
 				D405CC6C1C02B5B100A56264 /* CUEmailViewController.m in Sources */,
 				E1EB1D801B70A43B0048B8EB /* CUServerAPIDataBaseParser.m in Sources */,
 				BCE331F61C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m in Sources */,
+				BCAA4AD11C8686750085A165 /* Diagnosis.m in Sources */,
 				E1EB1E581B70A43B0048B8EB /* BaseCell.m in Sources */,
 				3EDEBAAA1A961C4800E72809 /* PLSqliteMigrationVersionManager.m in Sources */,
 				3EDEBAB71A961C4800E72809 /* NSString+SNExtension.m in Sources */,
@@ -4623,7 +4629,7 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
@@ -4686,7 +4692,7 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
