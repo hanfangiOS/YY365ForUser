@@ -170,6 +170,9 @@
 		3EFB223B1AB5B5A4000872F3 /* SNTopTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB22381AB5B5A4000872F3 /* SNTopTabBar.m */; };
 		3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */; };
 		7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */; };
+		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
+		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
+		7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */; };
 		BC0E84B31C7857E700082AA9 /* AddFamilyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */; };
 		BC0E84B51C78598E00082AA9 /* littleTrumpet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */; };
 		BC0E84B81C7AB95F00082AA9 /* radioButtonActivated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B61C7AB95F00082AA9 /* radioButtonActivated@2x.png */; };
@@ -843,6 +846,12 @@
 		3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTopTabBarItem.m; sourceTree = "<group>"; };
 		7F5610E31C859871004DCCDF /* DoctorSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultViewController.h; sourceTree = "<group>"; };
 		7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultViewController.m; sourceTree = "<group>"; };
+		7FB267C21C8699B4008FCF05 /* Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
+		7FB267C31C8699B4008FCF05 /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
+		7FB267C51C869C4B008FCF05 /* CUSearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSearchManager.h; sourceTree = "<group>"; };
+		7FB267C61C869C4B008FCF05 /* CUSearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSearchManager.m; sourceTree = "<group>"; };
+		7FC36A431C85D69500650F75 /* DoctorSearchResultListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultListModel.h; sourceTree = "<group>"; };
+		7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultListModel.m; sourceTree = "<group>"; };
 		BC0E84B11C7857E700082AA9 /* AddFamilyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFamilyMemberViewController.h; path = AddFamiliMember/AddFamilyMemberViewController.h; sourceTree = "<group>"; };
 		BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddFamilyMemberViewController.m; path = AddFamiliMember/AddFamilyMemberViewController.m; sourceTree = "<group>"; };
 		BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "littleTrumpet@2x.png"; sourceTree = "<group>"; };
@@ -3049,6 +3058,8 @@
 		E1AD6F291B7CC97900FB3C55 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7FC36A431C85D69500650F75 /* DoctorSearchResultListModel.h */,
+				7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */,
 				E1AD6F2A1B7CC99400FB3C55 /* DoctorListModel.h */,
 				E1AD6F2B1B7CC99400FB3C55 /* DoctorListModel.m */,
 				E17B69121B8376D60079DDB5 /* DoctorCell.h */,
@@ -3229,6 +3240,8 @@
 				E1283B2B1BA07A5000FC26C5 /* CUUserManager+FamilyMember.m */,
 				E1C2F4EB1BA8796F0070224F /* CUUserManager+Address.h */,
 				E1C2F4EC1BA8796F0070224F /* CUUserManager+Address.m */,
+				7FB267C51C869C4B008FCF05 /* CUSearchManager.h */,
+				7FB267C61C869C4B008FCF05 /* CUSearchManager.m */,
 			);
 			path = BusinessManagers;
 			sourceTree = "<group>";
@@ -3334,6 +3347,8 @@
 				BCC054AF1C4397F200017202 /* DiseaseSubject.m */,
 				BCAA4ACB1C8597F70085A165 /* MyAccount.h */,
 				BCAA4ACC1C8597F70085A165 /* MyAccount.m */,
+				7FB267C21C8699B4008FCF05 /* Search.h */,
+				7FB267C31C8699B4008FCF05 /* Search.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4209,6 +4224,7 @@
 				E1EB1D801B70A43B0048B8EB /* CUServerAPIDataBaseParser.m in Sources */,
 				BCE331F61C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m in Sources */,
 				E1EB1E581B70A43B0048B8EB /* BaseCell.m in Sources */,
+				7FB267C41C8699B4008FCF05 /* Search.m in Sources */,
 				3EDEBAAA1A961C4800E72809 /* PLSqliteMigrationVersionManager.m in Sources */,
 				3EDEBAB71A961C4800E72809 /* NSString+SNExtension.m in Sources */,
 				E1EB1E591B70A43B0048B8EB /* BaseDataSource.m in Sources */,
@@ -4280,6 +4296,7 @@
 				3ED0A7751AA60D4E0040E529 /* UINavigationBar+Background.m in Sources */,
 				E10EDCA81B8B60930035B6E7 /* OrderCell.m in Sources */,
 				E10EDD0A1B8E1E550035B6E7 /* OrderResultView.m in Sources */,
+				7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */,
 				E1A6B9071BAD6D7A001A458D /* UserDetailController+UploadAvartar.m in Sources */,
 				BC1859B21C80278F0050251B /* ClinicMainHeaderView.m in Sources */,
 				3EDF9E191AAAD0F400F85C44 /* SNLoadMoreControl.m in Sources */,
@@ -4440,6 +4457,7 @@
 				E10EDC6C1B8B598E0035B6E7 /* OrderManager+ThirdPay.m in Sources */,
 				3EDEBA7E1A961C4800E72809 /* SDImageCache.m in Sources */,
 				E10EDC6B1B8B598E0035B6E7 /* CUOrderManager.m in Sources */,
+				7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */,
 				3ED0A75C1AA603C50040E529 /* SNSlideNavigationController+SNSlideStack.m in Sources */,
 				BCAA4AAE1C8548440085A165 /* MyDoctorListViewController.m in Sources */,
 				3EDEBA841A961C4800E72809 /* UIImageView+WebCache.m in Sources */,

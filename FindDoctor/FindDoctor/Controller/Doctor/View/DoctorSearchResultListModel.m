@@ -1,26 +1,24 @@
 //
-//  YueZhenRecordListModel.m
-//  
+//  DoctorSearchResultListModel.m
+//  FindDoctor
 //
-//  Created by Guo on 15/10/6.
+//  Created by zhuhaoran on 16/3/1.
+//  Copyright © 2016年 li na. All rights reserved.
 //
-//
 
-#import "MyDoctorListModel.h"
-#import "CUDoctorManager.h"
+#import "DoctorSearchResultListModel.h"
+#import "CUSearchManager.h"
 
+@implementation DoctorSearchResultListModel
 
-@implementation MyDoctorListModel
-
-- (instancetype)initWithSortType:(MyDoctorSortType)type
+- (instancetype)init
 {
-    MyDoctorFilter *filter = [[MyDoctorFilter alloc] init];
-    filter.sortType = type;
+    SearchFilter * filter = [[SearchFilter alloc] init];
     
     return [self initWithFilter:filter];
 }
 
-- (instancetype)initWithFilter:(MyDoctorFilter *)filter
+- (instancetype)initWithFilter:(SearchFilter *)filter
 {
     self = [super init];
     
@@ -31,12 +29,9 @@
     return self;
 }
 
-
-
-
 - (void)gotoFirstPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUDoctorManager sharedInstance] getMyDoctorWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUSearchManager sharedInstance] getDoctorSearchResultListWithPageNum:startPageNum pageSize:pageSize filter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
             SNBaseListModel * list = result.parsedModelObject;
@@ -50,13 +45,16 @@
             self.pageInfo.totalPage = info.totalPage;
             self.pageInfo.currentPage = startPageNum;
         }
+        else {
+            NSLog(@"====哦哟，出错了====");
+        }
         resultBlock(request,result);
-    } pageName:@"getCurrentTreatmentList"];
+    } pageName:@"DoctorSearchResultList"];
 }
 
 - (void)gotoNextPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUDoctorManager sharedInstance] getMyDoctorWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUSearchManager sharedInstance] getDoctorSearchResultListWithPageNum:self.pageInfo.currentPage + 1 pageSize:pageSize filter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
             SNBaseListModel * list = result.parsedModelObject;
@@ -68,9 +66,7 @@
             self.pageInfo.currentPage++;
         }
         resultBlock(request,result);
-    } pageName:@"getCurrentTreatmentList"];
+    } pageName:@"DoctorSearchResultList"];
 }
-
-
 
 @end
