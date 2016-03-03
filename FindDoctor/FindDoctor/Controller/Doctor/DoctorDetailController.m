@@ -97,7 +97,7 @@
     descLabel.textColor = UIColorFromHex(Color_Hex_Text_Normal);
     [contentScrollView addSubview:descLabel];
     
-    descLabel.text = self.doctor.desc;
+    descLabel.text = self.doctor.detailIntro;
     [descLabel sizeToFit];
 
     if (CGRectGetMaxY(descLabel.frame) > contentScrollView.contentSize.height) {

@@ -23,14 +23,12 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 @property (nonatomic, strong) NSString *name;//姓名
 @property (nonatomic, strong) NSString *avatar;//头像图片
 @property (nonatomic, strong) NSString *phoneNumber;//
-@property (nonatomic, strong) NSString *city;//
-@property (nonatomic, strong) NSString *area;//
-@property (nonatomic, strong) NSString *address;//
-@property (nonatomic, strong) NSString *desc;//
-@property (nonatomic, strong) NSString *levelDesc;//
-@property (nonatomic, strong) NSString *subject;//
+
+@property (nonatomic, strong) NSString *address;//医生就诊地址
+@property (nonatomic, strong) NSString *levelDesc;//医生头衔， 如教授、主任等
+@property (nonatomic, strong) NSString *subject;//医生诊疗科目
 @property (nonatomic, strong) NSString *availableTime;//
-@property (nonatomic, strong) NSString *background;//
+
 @property (nonatomic, strong) NSMutableArray *appointmentList;//
 @property                     NSInteger appointmentSelectedIndex;//
 
@@ -38,34 +36,35 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 @property                     NSInteger numConcern; //医生被关注次数
 @property                     NSInteger goodRemark; //医生好评率
 
+@property (nonatomic, strong) NSString *briefIntro;// 简介
+@property (nonatomic, strong) NSString *skillTreat;  // 擅长科目
 
-@property (nonatomic, strong) NSString *skilledDisease;  // 擅长疾病
-@property (nonatomic, strong) NSString *skilledSubject;  // 擅长科目
+@property (nonatomic, strong) NSString *detailIntro;  // 详细介绍
 
 @property (nonatomic, assign)CLLocationDegrees latitude;  // 纬度
 @property (nonatomic, assign)CLLocationDegrees longitude;  // 经度
 
-@property BOOL isAvailable;
+//@property BOOL isAvailable;
 @property NSInteger doctorState; //0无人约诊 //1有人约诊 2约诊满 // -1为不可约诊
-@property CGFloat rate;
-@property double price;
-@property NSInteger zhenLiaoAmount;
-@property BOOL didConcern;
+
+@property NSInteger price; // 诊疗价格，以分为单位
+@property NSInteger zhenLiaoAmount; // 诊疗次数
+@property BOOL didConcern; //是否被关注
 
 //@property NSInteger queueNumber;  // 已预约数量
 //@property NSInteger queueCount;   // 可预约总数
-
-- (NSString *)availableDesc;
+@property CGFloat rate; //评星， 预留接口
+//@property (nonatomic, strong) NSString *city;//预留， 暂时不用
 
 @end
 
 @interface DoctorAppointmentListItem : NSObject
 
-@property (strong, nonatomic) NSString      *clinicAddr;//
-@property (strong, nonatomic) NSString      *clinicName;//
-@property                     NSInteger     fee;//
-@property                     NSInteger     numOrder;//
-@property                     NSInteger     numRelease;//
+@property (strong, nonatomic) NSString      *clinicAddr;// 诊疗点地理位置
+@property (strong, nonatomic) NSString      *clinicName;// 诊疗点名称
+@property                     NSInteger     fee;//         医生放此号的诊疗价格
+@property                     NSInteger     numOrder;//    放号数量
+@property                     NSInteger     numRelease;//  
 @property                     NSInteger     orderState;//
 @property                     long long     releaseID;//
 @property (strong, nonatomic) NSString      *releaseTime;//
