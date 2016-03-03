@@ -13,7 +13,8 @@
 #import "CUServerAPIConstant.h"
 #import "TipHandler+HUD.h"
 #import "SNBaseListModel.h"
-#import "Search.h"
+#import "Clinic.h"
+#import "Doctor.h"
 
 @implementation CUSearchManager
 
@@ -41,24 +42,36 @@ SINGLETON_IMPLENTATION(CUSearchManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                
-                SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
+                SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
                 NSMutableArray * list1 = [result.responseObject valueForKeySafely:@"data"];
-                Search * search = [[Search alloc] init];
-                search.searchResultList = [[NSMutableArray alloc] initWithCapacity:0];
+                NSMutableArray * searchResultList = [NSMutableArray new];
                 [list1 enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * stop) {
-                    SearchResultListInfo * searchResultListInfo = [[SearchResultListInfo alloc] init];
-                    searchResultListInfo.brief = [obj valueForKeySafely:@"brief"];
-                    searchResultListInfo.dataID = [[obj valueForKeySafely:@"dataID"] integerValue];
-                    searchResultListInfo.dataType = [[obj valueForKeySafely:@"dataType"] integerValue];
-                    searchResultListInfo.icon = [obj valueForKeySafely:@"icon"];
-                    searchResultListInfo.name = [obj valueForKeySafely:@"name"];
-                    searchResultListInfo.numDiag = [[obj valueForKeySafely:@"numDiag"] integerValue];
-                    searchResultListInfo.orderState = [[obj valueForKeySafely:@"orderState"] integerValue];
-                    searchResultListInfo.skill = [obj valueForKeySafely:@"skill"];
-                    searchResultListInfo.time = [[obj valueForKeySafely:@"time"] integerValue];
-                    searchResultListInfo.title = [obj valueForKeySafely:@"title"];
+                    NSInteger dataType = [[obj valueForKeySafely:@"dataType"] integerValue];
+                    switch (dataType) {
+                        case 6:{
+                            Doctor *doctor = [[Doctor alloc]init];
+                            doctor.name = [obj valueForKeySafely:@"name"];
+                            doctor.doctorId =  [[obj valueForKeySafely:@"dataID"] integerValue];
+                            doctor.avatar =  [obj valueForKeySafely:@"icon"];
+                            doctor.background = [obj valueForKeySafely:@"brief"];
+                            doctor.skilledSubject = [obj valueForKeySafely:@"skill"];
+                            [searchResultList addObject:doctor];
+                            
+                        }break;
+                        case 7:{
+                            Clinic *clinic = [[Clinic alloc]init];
+                            clinic.ID =  [[obj valueForKeySafely:@"dataID"] integerValue];
+                            clinic.icon =  [obj valueForKeySafely:@"icon"];
+                            clinic.breifInfo = [obj valueForKeySafely:@"brief"];
+                            clinic.skillTreat = [obj valueForKeySafely:@"skill"];
+                            [searchResultList addObject:clinic];
+                        }break;
+                        default:
+                            break;
+                    }
                 }];
+                listModel.items = searchResultList;
+                result.parsedModelObject = listModel;
             }
             else {
                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];

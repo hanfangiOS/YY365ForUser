@@ -10,12 +10,6 @@
 
 @interface Search : NSObject
 
-@property (nonatomic, strong) NSMutableArray * searchResultList;//搜索结果列表
-
-@end
-
-@interface SearchResultListInfo : NSObject
-
 @property (nonatomic, strong) NSString * brief;//医生（诊所）简介
 @property (nonatomic, assign) NSInteger  dataID;//数据ID，doctorID,clinicID
 @property (nonatomic, assign) NSInteger  dataType;//数据类型，6-医生，7-诊所
