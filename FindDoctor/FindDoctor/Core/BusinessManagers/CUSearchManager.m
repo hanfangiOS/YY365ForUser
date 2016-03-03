@@ -69,7 +69,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                             clinic.breifInfo = [obj valueForKeySafely:@"brief"];
                             clinic.skillTreat = [obj valueForKeySafely:@"skill"];
                             clinic.name = [obj valueForKeySafely:@"name"];
-                            clinic.numDiag = [obj valueForKeySafely:@"numDiag"];
+                            clinic.numDiag = [[obj valueForKeySafely:@"numDiag"] integerValue];
                             [searchResultList addObject:clinic];
                         }break;
                         default:
