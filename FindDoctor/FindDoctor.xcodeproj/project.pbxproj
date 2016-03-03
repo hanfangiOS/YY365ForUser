@@ -3170,6 +3170,7 @@
 		E1EB1B871B70A43A0048B8EB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BC8E36D61C27EB4D00304637 /* User */,
 				E10EDC791B8B60930035B6E7 /* CUOrder */,
 				E1BA19721BD3DA9C00851B01 /* Nearby */,
 				E120632B1BC6D450004920BA /* VIP */,
@@ -3183,7 +3184,6 @@
 				E1283B0A1B9DE1C600FC26C5 /* Personal */,
 				E1EB1B901B70A43A0048B8EB /* SNViewController+ServerAPI.h */,
 				E1EB1B911B70A43A0048B8EB /* SNViewController+ServerAPI.m */,
-				BC8E36D61C27EB4D00304637 /* User */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4647,7 +4647,7 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
@@ -4710,7 +4710,7 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
@@ -4720,14 +4720,18 @@
 		E10706E01B0E2F2F0048FAB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
 			};
 			name = Debug;
 		};
 		E10706E11B0E2F2F0048FAB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
 			};
 			name = Release;
 		};

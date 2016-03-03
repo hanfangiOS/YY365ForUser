@@ -55,6 +55,10 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                             doctor.avatar =  [obj valueForKeySafely:@"icon"];
                             doctor.briefIntro = [obj valueForKeySafely:@"brief"];
                             doctor.skillTreat = [obj valueForKeySafely:@"skill"];
+                            doctor.levelDesc = [obj valueForKeySafely:@"title"];
+                            doctor.numDiag = [[obj valueForKeySafely:@"numDiag"] integerValue];
+//                            doctor.doctorState = [[obj valueForKeySafely:@"orderState"] integerValue];
+                            doctor.doctorState = -1;
                             [searchResultList addObject:doctor];
                             
                         }break;
@@ -64,6 +68,8 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                             clinic.icon =  [obj valueForKeySafely:@"icon"];
                             clinic.breifInfo = [obj valueForKeySafely:@"brief"];
                             clinic.skillTreat = [obj valueForKeySafely:@"skill"];
+                            clinic.name = [obj valueForKeySafely:@"name"];
+                            clinic.numDiag = [[obj valueForKeySafely:@"numDiag"] integerValue];
                             [searchResultList addObject:clinic];
                         }break;
                         default:
