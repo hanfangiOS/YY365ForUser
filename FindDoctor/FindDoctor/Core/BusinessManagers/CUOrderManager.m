@@ -447,7 +447,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 for (int i = 0; i < dataArray.count; i++) {
                     NSMutableDictionary *dic = [dataArray objectAtIndex:i];
                     TipMessageData *data = [[TipMessageData alloc]init];
-                    data.title = [dic valueForKeySafely:@"abstractInfo"];
+                    data.title = [dic valueForKeySafely:@"title"];
                     //                    NSInteger pageid = [[dic valueForKeySafely:@"type"] integerValue];
                     [resultArray addObjectSafely:data];
                 }
