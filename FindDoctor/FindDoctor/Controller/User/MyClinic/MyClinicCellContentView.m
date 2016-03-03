@@ -52,7 +52,7 @@
     
     CGFloat tipWidth = 57.0;
     CGFloat tipHeight = 57.0;
-    tipImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - tipWidth - 7, 0, tipWidth, tipHeight)];
+    tipImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - tipWidth, 0, tipWidth, tipHeight)];
     [self addSubview:tipImageView];
     
     CGFloat nameOriginX = CGRectGetMaxX(imageView.frame) + 20;

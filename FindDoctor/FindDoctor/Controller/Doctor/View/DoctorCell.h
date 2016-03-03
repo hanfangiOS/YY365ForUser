@@ -13,6 +13,6 @@
 
 + (CGFloat)defaultHeight;
 
-@property (nonatomic, strong) DoctorCellContentView *cellContentView;
+@property (nonatomic, strong) DoctorCellContentView * cellContentView;
 
 @end
