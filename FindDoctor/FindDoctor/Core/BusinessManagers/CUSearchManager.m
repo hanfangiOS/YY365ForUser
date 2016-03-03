@@ -53,8 +53,8 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                             doctor.name = [obj valueForKeySafely:@"name"];
                             doctor.doctorId =  [[obj valueForKeySafely:@"dataID"] integerValue];
                             doctor.avatar =  [obj valueForKeySafely:@"icon"];
-                            doctor.background = [obj valueForKeySafely:@"brief"];
-                            doctor.skilledSubject = [obj valueForKeySafely:@"skill"];
+                            doctor.briefIntro = [obj valueForKeySafely:@"brief"];
+                            doctor.skillTreat = [obj valueForKeySafely:@"skill"];
                             [searchResultList addObject:doctor];
                             
                         }break;

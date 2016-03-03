@@ -10,14 +10,14 @@
 
 @implementation Doctor
 
-- (NSString *)availableDesc
-{
-    if (self.isAvailable) {
-        return @"可预约";
-    }
-    
-    return @"预约满";
-}
+//- (NSString *)availableDesc
+//{
+//    if (self.isAvailable) {
+//        return @"可预约";
+//    }
+//    
+//    return @"预约满";
+//}
 
 @end
 

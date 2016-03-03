@@ -176,7 +176,7 @@
     
     rateView.rate = self.data.rate;
     
-    NSString *desc = self.data.background;
+    NSString *desc = self.data.briefIntro;
     
     [zhenLiaoNumberLabel resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%d",_data.numDiag] unit:@"次"];
     [guanZhuNumberLabel resetTitle:@"关注" contents:[NSString stringWithFormat:@"%d",_data.numConcern] unit:@"次"];

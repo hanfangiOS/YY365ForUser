@@ -61,7 +61,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         Doctor *doctor = [[Doctor alloc] init];
                         
                         doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
-                        doctor.background = [obj valueForKey:@"briefIntro"];
+                        doctor.briefIntro = [obj valueForKey:@"briefIntro"];
                         doctor.avatar = [obj valueForKey:@"icon"];
                         if ([doctor.avatar isEqualToString:@"0"]) {
                             NSString *sex = [obj valueForKey:@"sex"];
@@ -73,11 +73,11 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         }
                         doctor.subject = [obj valueForKey:@"matchItemDisease"];
                         doctor.name = [obj valueForKey:@"name"];
-                        doctor.skilledSubject = [obj valueForKey:@"skillTreat"];
+                        doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                         doctor.levelDesc = [obj valueForKey:@"title"];
                         
-                        doctor.isAvailable = YES;  //医生可以约诊， 这个是可约诊列表
-                        if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
+//                        doctor.isAvailable = YES;  //医生可以约诊， 这个是可约诊列表
+//                        if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
                         
                         doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
                         doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
@@ -96,7 +96,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         Doctor *doctor = [[Doctor alloc] init];
                         
                         doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
-                        doctor.background = [obj valueForKey:@"briefIntro"];
+                        doctor.briefIntro = [obj valueForKey:@"briefIntro"];
                         doctor.avatar = [obj valueForKey:@"icon"];
                         if ([doctor.avatar isEqualToString:@"0"]) {
                             NSString *sex = [obj valueForKey:@"sex"];
@@ -108,19 +108,19 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         }
                         doctor.subject = [obj valueForKey:@"matchItemDisease"];
                         doctor.name = [obj valueForKey:@"name"];
-                        doctor.skilledSubject = [obj valueForKey:@"skillTreat"];
+                        doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                         doctor.levelDesc = [obj valueForKey:@"title"];
                         
                         
-                        doctor.isAvailable = YES;
-                        if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
-                        
+//                        doctor.isAvailable = YES;
+//                        if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
+//                        
                         doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
                         doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
                         doctor.availableTime = [obj valueForKey:@"releaseTime"];
                         doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
-                        doctor.background = [NSString stringWithFormat:@"%@",[obj valueForKey:@"briefIntro"]];
-                        doctor.desc = [obj valueForKey:@"skillTreat"];
+                        doctor.briefIntro = [NSString stringWithFormat:@"%@",[obj valueForKey:@"briefIntro"]];
+                        doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                         doctor.doctorState = -1;
                         doctor.zhenLiaoAmount = [[obj valueForKey:@"numDiag"] integerValue];
                         
@@ -189,7 +189,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         Doctor *doctor = [[Doctor alloc] init];
                         
                         doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
-                        doctor.background = [obj valueForKey:@"briefIntro"];
+                        doctor.briefIntro = [obj valueForKey:@"briefIntro"];
                         doctor.avatar = [obj valueForKey:@"icon"];
                         if ([doctor.avatar isEqualToString:@"0"]) {
                             NSString *sex = [obj valueForKey:@"sex"];
@@ -201,12 +201,12 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         }
                         doctor.subject = [obj valueForKey:@"matchItemDisease"];
                         doctor.name = [obj valueForKey:@"name"];
-                        doctor.skilledSubject = [obj valueForKey:@"skillTreat"];
+                        doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                         doctor.levelDesc = [obj valueForKey:@"title"];
-                        
-                        doctor.isAvailable = YES;  //医生可以约诊， 这个是可约诊列表
-                        if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
-                        
+//                        
+//                        doctor.isAvailable = YES;  //医生可以约诊， 这个是可约诊列表
+//                        if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
+//                        
                         doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
                         doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
                         doctor.availableTime = [obj valueForKey:@"releaseTime"];
@@ -224,7 +224,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         Doctor *doctor = [[Doctor alloc] init];
                         
                         doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
-                        doctor.background = [obj valueForKey:@"briefIntro"];
+                        doctor.briefIntro = [obj valueForKey:@"briefIntro"];
                         doctor.avatar = [obj valueForKey:@"icon"];
                         if ([doctor.avatar isEqualToString:@"0"]) {
                             NSString *sex = [obj valueForKey:@"sex"];
@@ -236,19 +236,19 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         }
                         doctor.subject = [obj valueForKey:@"matchItemDisease"];
                         doctor.name = [obj valueForKey:@"name"];
-                        doctor.skilledSubject = [obj valueForKey:@"skillTreat"];
+                        doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                         doctor.levelDesc = [obj valueForKey:@"title"];
                         
-                        
-                        doctor.isAvailable = YES;
-                        if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
+//                        
+//                        doctor.isAvailable = YES;
+//                        if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
                         
                         doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
                         doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
                         doctor.availableTime = [obj valueForKey:@"releaseTime"];
                         doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
-                        doctor.background = [NSString stringWithFormat:@"%@",[obj valueForKey:@"briefIntro"]];
-                        doctor.desc = [obj valueForKey:@"skillTreat"];
+                        doctor.briefIntro = [NSString stringWithFormat:@"%@",[obj valueForKey:@"briefIntro"]];
+                        doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                         doctor.doctorState = -1;
                         doctor.zhenLiaoAmount = [[obj valueForKey:@"numDiag"] integerValue];
                         
@@ -390,8 +390,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                 }];
                 doctor.appointmentList = list;
                 doctor.levelDesc = [doctorInfo valueForKey:@"title"];
-                doctor.background = [NSString stringWithFormat:@"%@",[doctorInfo valueForKey:@"briefIntro"]];
-                doctor.desc = [doctorInfo valueForKey:@"detailIntro"];
+                doctor.briefIntro = [NSString stringWithFormat:@"%@",[doctorInfo valueForKey:@"briefIntro"]];
+                doctor.detailIntro = [doctorInfo valueForKey:@"detailIntro"];
                 doctor.rate = [(NSNumber *)[doctorInfo valueForKey:@"star_grade"] doubleValue];
                 doctor.name = [doctorInfo valueForKey:@"name"];
                 doctor.avatar = [doctorInfo valueForKey:@"icon"];
@@ -535,7 +535,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                     Doctor *doctor = [[Doctor alloc] init];
                     
                     doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
-                    doctor.background = [obj valueForKey:@"briefIntro"];
+                    doctor.briefIntro = [obj valueForKey:@"briefIntro"];
                     doctor.avatar = [obj valueForKey:@"icon"];
                     if ([doctor.avatar isEqualToString:@"0"]) {
                         NSString *sex = [obj valueForKey:@"sex"];
@@ -547,11 +547,11 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                     }
                     doctor.subject = [obj valueForKey:@"matchItemDisease"];
                     doctor.name = [obj valueForKey:@"name"];
-                    doctor.skilledSubject = [obj valueForKey:@"skillTreat"];
+                    doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                     doctor.levelDesc = [obj valueForKey:@"title"];
                     
-                    doctor.isAvailable = YES;  //医生可以约诊， 这个是可约诊列表
-                    if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
+//                    doctor.isAvailable = YES;  //医生可以约诊， 这个是可约诊列表
+//                    if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
                     
                     doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
                     doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
@@ -598,24 +598,24 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
     for (NSInteger i = 0; i < 10; i ++) {
         Doctor *doctor = [[Doctor alloc] init];
-        doctor.doctorId = [NSString stringWithFormat:@"%@", @(i + 100)];
-        doctor.name = @"华佗";
-        doctor.avatar = @"http://www.91danji.com/attachments/201406/25/13/28lp1eh2g.jpg";
-        doctor.desc = @"华佗被后人称为“外科圣手”[5]  、“外科鼻祖”。被后人多用神医华佗称呼他，又以“华佗再世”、“元化重生”称誉有杰出医术的医师。";
-        doctor.levelDesc = @"主任医师";
-        doctor.subject = @"内科 皮肤科 慢性支气管炎 儿科 头疼";
-        doctor.availableTime = @"2015-8-18";
-        doctor.isAvailable = i % 2;
-        doctor.rate = 4.5;
-        doctor.price = 200;
-        doctor.area = @"青羊区";
-        doctor.city = @"成都";
-        doctor.address = @"华西医院";
-        doctor.background = @"华佗[1]  （约公元145年－公元208年），字元化，一名旉，沛国谯县人，东汉末年著名的医学家。华佗与董奉、张仲景并称为“建安三神医”。少时曾在外游学，行医足迹遍及安徽、河南、山东、江苏等地，钻研医术而不求仕途。他医术全面，尤其擅长外科，精于手术。并精通内、妇、儿、针灸各科。[2-4]  晚年因遭曹操怀疑，下狱被拷问致死。";
-        doctor.skilledDisease = @"疑难杂症";
-        doctor.skilledSubject = @"外科、内、妇、儿、针灸各科";
-        doctor.longitude = 104.106953;
-        doctor.latitude = 30.681503;
+//        doctor.doctorId = [NSString stringWithFormat:@"%@", @(i + 100)];
+//        doctor.name = @"华佗";
+//        doctor.avatar = @"http://www.91danji.com/attachments/201406/25/13/28lp1eh2g.jpg";
+//        doctor.desc = @"华佗被后人称为“外科圣手”[5]  、“外科鼻祖”。被后人多用神医华佗称呼他，又以“华佗再世”、“元化重生”称誉有杰出医术的医师。";
+//        doctor.levelDesc = @"主任医师";
+//        doctor.subject = @"内科 皮肤科 慢性支气管炎 儿科 头疼";
+//        doctor.availableTime = @"2015-8-18";
+//        doctor.isAvailable = i % 2;
+//        doctor.rate = 4.5;
+//        doctor.price = 200;
+//        doctor.area = @"青羊区";
+//        doctor.city = @"成都";
+//        doctor.address = @"华西医院";
+//        doctor.background = @"华佗[1]  （约公元145年－公元208年），字元化，一名旉，沛国谯县人，东汉末年著名的医学家。华佗与董奉、张仲景并称为“建安三神医”。少时曾在外游学，行医足迹遍及安徽、河南、山东、江苏等地，钻研医术而不求仕途。他医术全面，尤其擅长外科，精于手术。并精通内、妇、儿、针灸各科。[2-4]  晚年因遭曹操怀疑，下狱被拷问致死。";
+//        doctor.skilledDisease = @"疑难杂症";
+//        doctor.skilledSubject = @"外科、内、妇、儿、针灸各科";
+//        doctor.longitude = 104.106953;
+//        doctor.latitude = 30.681503;
         
         doctor.appointmentList = [NSMutableArray new];
         for (int i = 0; i < 10; i++) {

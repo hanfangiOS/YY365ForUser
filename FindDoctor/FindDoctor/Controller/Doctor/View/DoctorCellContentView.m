@@ -130,7 +130,7 @@
     label1.attributedText = atrStr;
     
     if (_data.doctorState != -1) {
-        if ([self.data isAvailable]) {
+        if (_data.doctorState == 0 || _data.doctorState == 1) {
             tipImageView.image = [UIImage imageNamed:@"keYueZhen"];
         }
         else {
@@ -156,8 +156,8 @@
 
     }
     else{
-        jianJieLabel.text = [NSString stringWithFormat:@"简介: %@",self.data.background];
-        shanChangLabel.text = [NSString stringWithFormat:@"擅长: %@",self.data.skilledSubject];
+        jianJieLabel.text = [NSString stringWithFormat:@"简介: %@",self.data.briefIntro];
+        shanChangLabel.text = [NSString stringWithFormat:@"擅长: %@",self.data.skillTreat];
         label2.text = nil;
         label3.text = nil;
         label4.text = nil;

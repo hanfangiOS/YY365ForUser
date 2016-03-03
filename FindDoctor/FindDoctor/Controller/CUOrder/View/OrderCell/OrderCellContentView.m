@@ -58,7 +58,7 @@
 {
     _data = data;
     
-    ratingView.rate = self.data.service.doctor.rate;
+//    ratingView.rate = self.data.service.doctor.rate;
     
     [imageView setImageWithURL:[NSURL URLWithString:self.data.service.doctor.avatar] placeholderImage:nil];
     
