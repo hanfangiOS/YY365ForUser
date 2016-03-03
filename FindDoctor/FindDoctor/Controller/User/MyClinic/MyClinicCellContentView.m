@@ -135,7 +135,7 @@
 }
 
 - (void)setZhenLiaoAmount{
-//    zhenLiaoAmountLabel.text =[NSString stringWithFormat:@"%ld", _data.zhenLiaoAmount];
+    zhenLiaoAmountLabel.text =[NSString stringWithFormat:@"%ld", _data.numDiag];
     [zhenLiaoAmountLabel sizeToFit];
     CGFloat width = zhenLiaoAmountLabel.frameWidth + zhenLiaoAmountImageView.frameWidth + 5;
     zhenLiaoAmountImageView.frame = CGRectMake(imageView.frameX+imageView.frameWidth*0.5 - width*0.5, zhenLiaoAmountImageView.frameY, zhenLiaoAmountImageView.frameWidth, zhenLiaoAmountImageView.frameHeight);

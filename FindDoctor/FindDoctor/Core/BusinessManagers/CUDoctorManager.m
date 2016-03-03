@@ -84,7 +84,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         doctor.availableTime = [obj valueForKey:@"releaseTime"];
                         doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
                         doctor.doctorState = [[obj valueForKey:@"state"] integerValue];
-                        doctor.zhenLiaoAmount = [[obj valueForKey:@"numDiag"] integerValue];
+                        doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
                         
                         [listSubjectDoctor addObject:doctor];
                     }];
@@ -122,7 +122,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         doctor.briefIntro = [NSString stringWithFormat:@"%@",[obj valueForKey:@"briefIntro"]];
                         doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                         doctor.doctorState = -1;
-                        doctor.zhenLiaoAmount = [[obj valueForKey:@"numDiag"] integerValue];
+                        doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
                         
                         [listSubjectDoctor addObject:doctor];
                     }];
@@ -212,7 +212,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         doctor.availableTime = [obj valueForKey:@"releaseTime"];
                         doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
                         doctor.doctorState = [[obj valueForKey:@"state"] integerValue];
-                        doctor.zhenLiaoAmount = [[obj valueForKey:@"numDiag"] integerValue];
+                        doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
                         
                         [listSubjectDoctor addObject:doctor];
                     }];
@@ -238,19 +238,14 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         doctor.name = [obj valueForKey:@"name"];
                         doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                         doctor.levelDesc = [obj valueForKey:@"title"];
-                        
-//                        
-//                        doctor.isAvailable = YES;
-//                        if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
-                        
-                        doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
+//                        doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
                         doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
                         doctor.availableTime = [obj valueForKey:@"releaseTime"];
                         doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
                         doctor.briefIntro = [NSString stringWithFormat:@"%@",[obj valueForKey:@"briefIntro"]];
                         doctor.skillTreat = [obj valueForKey:@"skillTreat"];
                         doctor.doctorState = -1;
-                        doctor.zhenLiaoAmount = [[obj valueForKey:@"numDiag"] integerValue];
+                        doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
                         
                         [listSubjectDoctor addObject:doctor];
                     }];
@@ -558,7 +553,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                     doctor.availableTime = [obj valueForKey:@"releaseTime"];
                     doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
                     doctor.doctorState = -1;
-                    doctor.zhenLiaoAmount = [[obj valueForKey:@"numDiag"] integerValue];
+                    doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
                     
                     [listSubjectDoctor addObject:doctor];
                 }];

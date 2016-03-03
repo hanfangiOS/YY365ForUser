@@ -14,12 +14,12 @@
 @property (strong, nonatomic) NSString *name;//姓名
 @property (strong, nonatomic) NSString *address;//就诊地址
 @property (strong, nonatomic) NSURL *icon;//头像
-@property (strong, nonatomic) NSString *doctorsString;//
+@property (strong, nonatomic) NSString *doctorsString;//地图页面显示的诊所医生字符串
 @property (strong, nonatomic) NSString *breifInfo;//简介
 @property (strong, nonatomic) NSString *detailIntro;//详细介绍
 @property (strong, nonatomic) NSString *skillTreat;//擅长科目
 
-@property (strong, nonatomic) NSMutableArray *doctorsArray;
+@property (strong, nonatomic) NSMutableArray *doctorsArray;//诊所详情页面用到的医生，对象为Doctor
 @property NSInteger state;
 @property double latitude;
 @property double longitude;
