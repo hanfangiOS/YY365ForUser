@@ -12,6 +12,10 @@
 
 @end
 
+@implementation SearchResultListInfo
+
+@end
+
 @implementation SearchFilter
 
 @end
