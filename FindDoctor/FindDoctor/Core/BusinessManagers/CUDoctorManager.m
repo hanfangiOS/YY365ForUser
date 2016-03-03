@@ -111,7 +111,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         doctor.skilledSubject = [obj valueForKey:@"skillTreat"];
                         doctor.levelDesc = [obj valueForKey:@"title"];
                         
-
+                        
                         doctor.isAvailable = YES;
                         if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
                         
@@ -271,9 +271,10 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             
         }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
     }
-
-
+    
+    
 }
+
 
 - (void)getSubObjectListWithResultBlock:(SNServerAPIResultBlock)resultBlock
 {
@@ -294,7 +295,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
-
+    
 #if !LOCAL
     [[AppCore sharedInstance].apiManager POST:URL_AfterBase
                                    parameters:param
@@ -332,7 +333,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                                           NSLog(@"====哦哟，出错了====");
                                       }
                                       resultBlock(request, result);
-                                  
+                                      
                                   }];
 #else
     if (resultBlock) {
@@ -455,7 +456,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                 
             }
             else {
-//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                //                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
             }
         }
         else {
@@ -503,7 +504,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         resultBlock(request, result);
         
     }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
-
+    
 }
 
 - (void)getMyDoctorWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
@@ -619,7 +620,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         doctor.appointmentList = [NSMutableArray new];
         for (int i = 0; i < 10; i++) {
             DoctorAppointmentListItem *item = [[DoctorAppointmentListItem alloc]init];
-
+            
             [doctor.appointmentList addObjectSafely:item];
         }
         

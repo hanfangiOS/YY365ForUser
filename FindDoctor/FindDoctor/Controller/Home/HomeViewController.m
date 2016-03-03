@@ -28,6 +28,7 @@
 #import "TipMessageData.h"
 
 #import "DoctorSearchResultViewController.h"
+#import "DoctorSearchResultListModel.h"
 
 #define HomeValue(x)   AdaptedValue(x)
 
@@ -256,11 +257,11 @@
 
 - (void)findDoctorWithKeyword:(NSString *)keyword
 {
-    DoctorFilter *filter = [[DoctorFilter alloc] init];
+    SearchFilter * filter = [[SearchFilter alloc] init];
     filter.keyword = keyword;
     
-    DoctorListModel *listModel1 = [[DoctorListModel alloc] initWithFilter:filter];
-    DoctorSearchResultViewController *listVC = [[DoctorSearchResultViewController alloc] initWithPageName:@"DoctorSearchResultViewController" listModel:listModel1];
+    DoctorSearchResultListModel * listModel1 = [[DoctorSearchResultListModel alloc] initWithFilter:filter];
+    DoctorSearchResultViewController * listVC = [[DoctorSearchResultViewController alloc] initWithPageName:@"DoctorSearchResultViewController" listModel:listModel1];
     [self.slideNavigationController pushViewController:listVC animated:YES];
 }
 
