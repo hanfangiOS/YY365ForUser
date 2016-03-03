@@ -17,17 +17,17 @@
 #import "TipHandler+HUD.h"
 #import "NSDate+SNExtension.h"
 #import "DiseaseSubject.h"
-#import "DoctorListModel.h"
+#import "DoctorSearchResultListModel.h"
 
 @interface DoctorSearchResultViewController ()
 
-@property (nonatomic,strong) DoctorListModel * listModel;
+@property (nonatomic,strong) DoctorSearchResultListModel * listModel;
 
 @end
 
 @implementation DoctorSearchResultViewController
 
-- (id)initWithPageName:(NSString *)pageName listModel:(DoctorListModel *)listModel
+- (id)initWithPageName:(NSString *)pageName listModel:(DoctorSearchResultListModel *)listModel
 {
     self = [super initWithPageName:pageName listModel:listModel];
     self.listModel = listModel;

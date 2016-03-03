@@ -11,22 +11,22 @@
 @interface Clinic : NSObject
 
 @property NSInteger ID;
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *address;
-@property (strong, nonatomic) NSURL *icon;
-@property (strong, nonatomic) NSString *doctorsString;
-@property (strong, nonatomic) NSString *breifInfo;
-@property (strong, nonatomic) NSString *detailIntro;
-@property (strong, nonatomic) NSString *skillTreat;
+@property (strong, nonatomic) NSString *name;//姓名
+@property (strong, nonatomic) NSString *address;//就诊地址
+@property (strong, nonatomic) NSURL *icon;//头像
+@property (strong, nonatomic) NSString *doctorsString;//
+@property (strong, nonatomic) NSString *breifInfo;//简介
+@property (strong, nonatomic) NSString *detailIntro;//详细介绍
+@property (strong, nonatomic) NSString *skillTreat;//擅长科目
 
 @property (strong, nonatomic) NSMutableArray *doctorsArray;
 @property NSInteger state;
 @property double latitude;
 @property double longitude;
 
-@property NSInteger numDiag;
-@property NSInteger numConcern;
-@property NSInteger goodRemark;
+@property NSInteger numDiag;//就诊次数
+@property NSInteger numConcern;//被关注次数
+@property NSInteger goodRemark;//好评率
 @property BOOL isConcern;
 
 @property (strong, nonatomic) NSString *phone;
