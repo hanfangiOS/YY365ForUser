@@ -49,12 +49,16 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                 [list1 enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * stop) {
                     SearchResultListInfo * searchResultListInfo = [[SearchResultListInfo alloc] init];
                     searchResultListInfo.brief = [obj valueForKeySafely:@"brief"];
+                    searchResultListInfo.dataID = [[obj valueForKeySafely:@"dataID"] integerValue];
+                    searchResultListInfo.dataType = [[obj valueForKeySafely:@"dataType"] integerValue];
+                    searchResultListInfo.icon = [obj valueForKeySafely:@"icon"];
+                    searchResultListInfo.name = [obj valueForKeySafely:@"name"];
+                    searchResultListInfo.numDiag = [[obj valueForKeySafely:@"numDiag"] integerValue];
+                    searchResultListInfo.orderState = [[obj valueForKeySafely:@"orderState"] integerValue];
+                    searchResultListInfo.skill = [obj valueForKeySafely:@"skill"];
+                    searchResultListInfo.time = [[obj valueForKeySafely:@"time"] integerValue];
+                    searchResultListInfo.title = [obj valueForKeySafely:@"title"];
                 }];
-                
-                
-                
-                
-                
             }
             else {
                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];

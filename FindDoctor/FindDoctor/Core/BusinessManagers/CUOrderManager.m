@@ -447,7 +447,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 for (int i = 0; i < dataArray.count; i++) {
                     NSMutableDictionary *dic = [dataArray objectAtIndex:i];
                     TipMessageData *data = [[TipMessageData alloc]init];
-                    data.title = [dic valueForKeySafely:@"title"];
+                    data.title = [dic valueForKeySafely:@"abstractInfo"];
                     //                    NSInteger pageid = [[dic valueForKeySafely:@"type"] integerValue];
                     [resultArray addObjectSafely:data];
                 }
@@ -456,7 +456,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 for (int i = 0; i < dataArray2.count; i++) {
                     NSMutableDictionary *dic = [dataArray2 objectAtIndex:i];
                     TipMessageData *data = [[TipMessageData alloc]init];
-                    data.title = [dic valueForKeySafely:@"abstractInfo"];
+                    data.title = [dic valueForKeySafely:@"title"];
                     //                    NSInteger pageid = [[dic valueForKeySafely:@"type"] integerValue];
                     [resultArray addObjectSafely:data];
                 }
@@ -465,7 +465,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 for (int i = 0; i < dataArray3.count; i++) {
                     NSMutableDictionary *dic = [dataArray3 objectAtIndex:i];
                     TipMessageData *data = [[TipMessageData alloc]init];
-                    data.title = [dic valueForKeySafely:@"abstractInfo"];
+                    data.title = [dic valueForKeySafely:@"title"];
                     //                    NSInteger pageid = [[dic valueForKeySafely:@"type"] integerValue];
                     [resultArray addObjectSafely:data];
                 }
