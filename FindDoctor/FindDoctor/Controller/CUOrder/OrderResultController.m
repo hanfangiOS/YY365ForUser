@@ -17,6 +17,7 @@
 #import "CUShareConstant.h"
 #import "TipHandler+HUD.h"
 #import "OrderResultView.h"
+#import "MyDiagnosisRecordsDetailViewController.h"
 
 //#import "CUUserManager+Share.h"
 //#import "PointRuleManager.h"
@@ -196,7 +197,8 @@
 
 - (void)checkOrder
 {
-    CUOrderDetailViewController *orderDetailVC = [[CUOrderDetailViewController alloc] initWithPageName:@"CUOrderDetailViewController" order:self.order];
+    MyDiagnosisRecordsDetailViewController *orderDetailVC = [[MyDiagnosisRecordsDetailViewController alloc] initWithPageName:@"CUOrderDetailViewController"];
+    orderDetailVC.data = self.order;
     [self.slideNavigationController pushViewController:orderDetailVC animated:YES];
 }
 

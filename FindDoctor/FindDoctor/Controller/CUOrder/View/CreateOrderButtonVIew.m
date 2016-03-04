@@ -70,8 +70,8 @@
     
     orderButton = [UIButton buttonWithType:UIButtonTypeCustom];
     orderButton.frame = CGRectMake(kButtonOriginX, kButtonOriginY, kButtonWidth, kButtonHeight);
-    [orderButton setBackgroundImage:[[UIImage createImageWithColor:kPayBtnColor] stretchableImageByCenter] forState:UIControlStateNormal];
-    [orderButton setBackgroundImage:[[UIImage createImageWithColor:kDarkPayBtnColor] stretchableImageByCenter] forState:UIControlStateHighlighted];
+    [orderButton setBackgroundImage:[[UIImage createImageWithColor:UIColorFromHex(Color_Hex_NavBackground)] stretchableImageByCenter] forState:UIControlStateNormal];
+    [orderButton setBackgroundImage:[[UIImage createImageWithColor:UIColorFromHex(Color_Hex_NavBackground)] stretchableImageByCenter] forState:UIControlStateHighlighted];
     orderButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [orderButton addTarget:self action:@selector(buttonPress) forControlEvents:UIControlEventTouchUpInside];
     [orderButton setTitle:@"预约" forState:UIControlStateNormal];

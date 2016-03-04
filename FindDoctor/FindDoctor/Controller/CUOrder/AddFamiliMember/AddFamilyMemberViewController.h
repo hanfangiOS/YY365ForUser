@@ -7,6 +7,7 @@
 //
 
 #import "CUViewController.h"
+#import "CUUser.h"
 
 @interface messageInputView : UIView
 
@@ -28,7 +29,7 @@
 
 @end
 
-typedef void(^BackBlock)(NSInteger userId);
+typedef void(^BackBlock)(CUUser *user);
 
 @interface AddFamilyMemberViewController : CUViewController
 

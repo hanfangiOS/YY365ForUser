@@ -65,7 +65,7 @@
 
 - (BOOL)hasDiseaseImage
 {
-    if (self.service.disease.imageArray.count == 0 && self.service.disease.imageNumberArray.count == 0) {
+    if (self.service.disease.imageArray.count == 0 && self.service.disease.imageURLArray.count == 0) {
         return NO;
     }
     

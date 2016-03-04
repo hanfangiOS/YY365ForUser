@@ -143,7 +143,14 @@
             if (!result.hasError) {
                 if (self.backBlock) {
                     NSInteger userId = [[[result.responseObject valueForKey:@"data"] valueForKey:@"accID"] integerValue];
-                    self.backBlock(userId);
+                    CUUser *user = [[CUUser alloc]init];
+                    user.name = [NSString stringWithFormat:@"%@", blockSelf.nameView.contentTextField.text];
+                    user.gender = blockSelf.sexChooseView.sex;
+                    user.age   = [blockSelf.ageView.contentTextField.text integerValue];
+                    user.userId = userId;
+                    user.cellPhone = blockSelf.phoneView.contentTextField.text;
+
+                    self.backBlock(user);
                 }
                 [super backAction];
             }

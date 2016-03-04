@@ -19,6 +19,7 @@
 #import "TipHandler+HUD.h"
 #import "MyAccount.h"
 #import "Diagnosis.h"
+#import "NSDate+SNExtension.h"
 
 @implementation CUOrderManager
 
@@ -154,7 +155,13 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [dataParam setObjectSafely:@([order.service.patience.cellPhone longLongValue]) forKey:@"userPhone"];
     [dataParam setObjectSafely:@(order.diagnosisID) forKey:@"diagnosisID"];
     [dataParam setObjectSafely:order.service.disease.desc forKey:@"description"];
-    [dataParam setObjectSafely:@"" forKey:@"picDisease"];
+    NSString *str = [NSString stringWithFormat:@""];
+    if (order.service.disease.imageURLArray.count) {
+        str = [order.service.disease.imageURLArray componentsJoinedByString:@","];
+    }
+    [dataParam setObjectSafely:str forKey:@"picDisease"];  
+    [dataParam setObjectSafely:order.service.disease.desc forKey:@"description"];
+
     
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -281,6 +288,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                         
                         Disease *disease = [[Disease alloc]init];
                         disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
+                        disease.imageURLArray = [[obj valueForKey:@"illnessPic"] componentsSeparatedByString:@","];
                         
                         CUUser *patience = [[CUUser alloc]init];
                         patience.name = [obj valueForKey:@"userName"];
@@ -317,8 +325,10 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                         order.state = [[obj valueForKey:@"state"] integerValue];
                         order.dealPrice = [[obj valueForKey:@"fee"] integerValue];
                         order.submitTime = [[obj valueForKey:@"submitTime"] integerValue];
+                        order.submitTimeString = [[NSDate dateWithTimeIntervalSince1970:order.submitTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
                         order.diagnosisID = [[obj valueForKey:@"diagnosisID"] longLongValue];
                         order.createTimeStamp = [[obj valueForKey:@"orderStartTime"] integerValue];
+                        order.diagnosisTime = [[NSDate dateWithTimeIntervalSince1970:order.createTimeStamp] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
                         order.finishedTimeStamp = [[obj valueForKey:@"orderEndTime"] integerValue];
                         order.orderNumber = [obj valueForKey:@"orderNo"];
                         
@@ -623,7 +633,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clincName"],[obj valueForKey:@"clincAddr"]];
                 doctor.avatar = [obj valueForKey:@"doctorIcon"];
                 doctor.name = [obj valueForKey:@"doctorName"];
-                doctor.levelDesc = [obj valueForKey:@"title"];
+                doctor.levelDesc = [obj valueForKey:@"doctorTitle"];
                 
                 Disease *disease = [[Disease alloc]init];
                 disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
@@ -643,8 +653,9 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 CUOrder *order = [[CUOrder alloc]init];
                 order.service = service;
                 order.state = [[obj valueForKey:@"state"] integerValue];
-                order.dealPrice = [[obj valueForKey:@"fee"] integerValue];
-                order.submitTime = [[obj valueForKey:@"submitTime"] integerValue];
+                order.dealPrice = [[obj valueForKey:@"payMoney"] integerValue];
+                order.submitTime = [[obj valueForKey:@"orderSumitTime"] integerValue];
+                order.submitTimeString = [[NSDate dateWithTimeIntervalSince1970:order.submitTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
                 order.diagnosisID = [[obj valueForKey:@"diagnosisID"] longLongValue];
                 order.diagnosisTime = [obj valueForKey:@"diagnosisTime"];
                 order.orderNumber = [obj valueForKey:@"orderID"];

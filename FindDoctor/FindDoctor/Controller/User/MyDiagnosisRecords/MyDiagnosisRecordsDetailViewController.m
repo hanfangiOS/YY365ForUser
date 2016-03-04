@@ -69,7 +69,7 @@
     
     view2 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
     [view2 setTitle:@"下单时间:"];
-    [view2 setContentText:[[NSDate dateWithTimeIntervalSince1970:_data.submitTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"]];
+    [view2 setContentText:_data.submitTimeString];
     view2.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view1.frame), kScreenWidth - paadingLeft*2, [view2 getframeHeight]);
     
     view3 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
@@ -91,7 +91,7 @@
 
     view6 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
     [view6 setTitle:@"就诊时间:"];
-    [view6 setContentText:[[NSDate dateWithTimeIntervalSince1970:_data.createTimeStamp] stringWithDateFormat:@"yyyy-MM-dd HH:mm"]];
+    [view6 setContentText:_data.diagnosisTime];
     view6.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view5.frame), kScreenWidth - paadingLeft*2, [view6 getframeHeight]);
 
     view7 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];

@@ -139,26 +139,30 @@
         
         if (self.imageArray.count) {
             [[CUUserManager sharedInstance] uploadImageArray:self.imageArray resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-                if (![(NSNumber *)[result.responseObject valueForKey:@"err_code"] integerValue]) {
-                    NSArray *dataList = [result.responseObject valueForKey:@"data"];
-                    NSMutableArray *imageNumberArray = [[NSMutableArray alloc] init];
-                    [dataList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-                        [imageNumberArray addObject:(NSNumber *)[obj valueForKeyPath:@"no"]];
-                    }];
-                    self.order.service.disease.imageNumberArray = imageNumberArray;
-                    self.order.service.disease.desc = _textView.text;
-                    [weakSelf commitAction];
+                if (!result.hasError) {
+                    if (![(NSNumber *)[result.responseObject valueForKey:@"err_code"] integerValue]) {
+                        NSArray *dataList = [result.responseObject valueForKey:@"data"];
+                        NSMutableArray *imageNumberArray = [[NSMutableArray alloc] init];
+                        [dataList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                            NSString *string = [obj valueForKeyPath:@"ftppath"];
+                            [imageNumberArray addObject:string];
+                        }];
+                        self.order.service.disease.imageURLArray = imageNumberArray;
+                        self.order.service.disease.desc = _textView.text;
+                        [weakSelf commitAction];
+                    }
+                    else
+                    {
+                        NSLog(@"====哦哟，出错了====");
+                        [TipHandler showHUDText:@"图片上传失败，请重试" inView:self.contentView];
+                    }
                 }
-                else
-                {
-                    NSLog(@"====哦哟，出错了====");
-                    [TipHandler showHUDText:@"图片上传失败，请重试" inView:self.contentView];
-                }
+
                 
             }pageName:@"OrderCreateController" progressBlock:nil];
         }
         else {
-            self.order.service.disease.imageNumberArray = [[NSMutableArray alloc] init];
+            self.order.service.disease.imageURLArray = [[NSMutableArray alloc] init];
             self.order.service.disease.desc = _textView.text;
             [weakSelf commitAction];
         }
@@ -246,8 +250,8 @@
     self.order.orderStatus = ORDERSTATUS_UNPAID;
     
     [self showProgressView];
-    __weak __block OrderConfirmController *blockSelf = self;
-    [[CUOrderManager sharedInstance] submitOrder:self.order user:nil resultBlock:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
+    __weak __block OrderCreateController *blockSelf = self;
+    [[CUOrderManager sharedInstance] submitOrder:blockSelf.order user:nil resultBlock:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
         [self hideProgressView];
         if (!result.hasError && result.parsedModelObject) {
             OrderConfirmController *confirmVC = [[OrderConfirmController alloc] init];
@@ -345,35 +349,15 @@
 {
     AddFamilyMemberViewController *memberVC = [[AddFamilyMemberViewController  alloc]init];
     memberVC.diagnosisID = self.order.diagnosisID;
-    __weak __block AddFamilyMemberViewController *blockMemberVC = memberVC;
     __weak __block OrderCreateController *blockSelf = self;
-    memberVC.backBlock = ^(NSInteger userId){
-        CUUser *user = [[CUUser alloc] init];
-        user.name = [NSString stringWithFormat:@"%@", blockMemberVC.nameView.contentTextField.text];
-        user.gender = blockMemberVC.sexChooseView.sex;
-        user.age   = [blockMemberVC.ageView.contentTextField.text integerValue];
-        user.userId = userId;
-        user.cellPhone = blockMemberVC.phoneView.contentTextField.text;
-//        user.profile = @"http://www.91danji.com/attachments/201406/25/13/28lp1eh2g.jpg";
+    memberVC.backBlock = ^(CUUser *user){
         [blockSelf.memberArray addObjectSafely:user];
-        [blockSelf setNeedsFocusUpdate];
+        if (blockSelf.menuView.user == nil) {
+            blockSelf.menuView.user = user;
+            [blockSelf.menuView update];
+        }
     };
     [self.slideNavigationController pushViewController:memberVC animated:YES];
-    
-    //周振华代码
-//    FamilyMemberDetailController *memberVC = [[FamilyMemberDetailController alloc] init];
-//    memberVC.editType = FamilyMemberEditTypeAdd;
-//    [self.slideNavigationController pushViewController:memberVC animated:YES];
-//    
-//    __weak typeof(self) weakSelf = self;
-//    memberVC.addBlock = ^(CUUser *user) {
-//        [weakSelf.memberArray addObjectSafely:user];
-//        
-//        if (weakSelf.menuView.user == nil) {
-//            weakSelf.menuView.user = user;
-//            [weakSelf.menuView update];
-//        }
-//    };
 }
 
 #pragma mark - UIActionSheetDelegate

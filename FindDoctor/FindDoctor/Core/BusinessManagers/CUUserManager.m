@@ -391,12 +391,12 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [param setObjectSafely:@"pud" forKey:@"imgtype"];
     [param setObjectSafely:[CUUserManager sharedInstance].user.cellPhone forKey:@"phone"];
     
-    SNNetworkClient *httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:URL_Base]];
+    SNNetworkClient *httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://101.201.152.191:8080"]];
     
     NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:URL_ImageUpload parameters:param constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
         for (int i = 0; i < imageArray.count; ++i) {
             UIImage *image = (UIImage *)[imageArray objectAtIndex:i];
-            [formData appendPartWithFileData:UIImagePNGRepresentation(image) name:@"file" fileName:[NSString stringWithFormat:@"DiseaseImage%d.png",i] mimeType:@"image/png"];
+            [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.3) name:@"file" fileName:[NSString stringWithFormat:@"DiseaseImage%d.png",i] mimeType:@"image/png"];
         }
     }];
     

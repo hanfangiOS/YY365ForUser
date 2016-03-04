@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) NSString *desc;
 @property (nonatomic, strong) NSArray *imageArray;
-@property (nonatomic, strong) NSArray *imageNumberArray;
+@property (nonatomic, strong) NSArray *imageURLArray;
 
 @end
