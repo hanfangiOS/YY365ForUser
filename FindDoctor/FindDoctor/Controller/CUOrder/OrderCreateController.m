@@ -245,18 +245,22 @@
     
     self.order.orderStatus = ORDERSTATUS_UNPAID;
     
-        [self showProgressView];
-        [[CUOrderManager sharedInstance] submitOrder:self.order user:nil resultBlock:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
-            [self hideProgressView];
-            if (!result.hasError && result.parsedModelObject) {
-                self.order = result.parsedModelObject;
-                
-                [self didCommitOrder];
-            }
-            else {
-                [TipHandler showSmallStringTipWithText:@"提交失败"];
-            }
-        } pageName:self.pageName];
+    [self showProgressView];
+    __weak __block OrderConfirmController *blockSelf = self;
+    [[CUOrderManager sharedInstance] submitOrder:self.order user:nil resultBlock:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
+        [self hideProgressView];
+        if (!result.hasError && result.parsedModelObject) {
+            OrderConfirmController *confirmVC = [[OrderConfirmController alloc] init];
+            CUOrder *order = result.parsedModelObject;
+            blockSelf.order.dealPrice = order.dealPrice;
+            blockSelf.order.diagnosisTime = order.diagnosisTime;
+            confirmVC.order = blockSelf.order;
+            [blockSelf.slideNavigationController pushViewController:confirmVC animated:YES];
+        }
+        else {
+            [TipHandler showSmallStringTipWithText:@"提交失败"];
+        }
+    } pageName:self.pageName];
 //    }
 }
 

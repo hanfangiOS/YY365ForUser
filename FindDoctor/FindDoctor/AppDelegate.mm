@@ -361,7 +361,7 @@
     // com.jiayu.eshijia hm8ufnt0raPVEUrMRSdrb8qq
     _mapManager = [[BMKMapManager alloc]init];
 //    BOOL ret = [_mapManager start:@"iECHAdtn1ql3FlkGKasXyGbs" generalDelegate:self];
-    BOOL ret = [_mapManager start:@"iECHAdtn1ql3FlkGKasXyGbs" generalDelegate:self];
+    BOOL ret = [_mapManager start:@"AZkRPuUHS62q0zY9oPQqPNmZ" generalDelegate:self];
     if (!ret) {
         NSLog(@"manager start failed!");
     }

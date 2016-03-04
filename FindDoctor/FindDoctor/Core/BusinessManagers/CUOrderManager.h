@@ -57,4 +57,7 @@ SINGLETON_DECLARE(CUOrderManager);
 // 取消订单
 - (void)CancelOrderWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
+//成功支付后获取订单状态
+- (void)getOrderStateWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
 @end

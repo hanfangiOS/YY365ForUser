@@ -35,7 +35,6 @@
         self.titleArray = @[@"预约时间从前往后", @"等级从高到低"];
         self.timeArray = @[@"预约时间从前往后", @"预约时间从后往前"];
         self.levelArray = @[@"等级从高到低", @"等级从低到高"];
-        
     }
     
     return self;
@@ -46,6 +45,10 @@
     self.title = @"诊疗记录";
     [super viewDidLoad];
     self.contentTableView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self triggerRefresh];
 }
 
 - (void)loadContentView{

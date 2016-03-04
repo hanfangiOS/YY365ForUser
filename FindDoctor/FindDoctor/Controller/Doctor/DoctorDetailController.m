@@ -132,6 +132,7 @@
         return;
     }
     DoctorAppointmentListItem *appointmentSelected = [_doctor.appointmentList objectAtIndex:doctorApoointmentForHourScrollView.pageControl.currentPage];
+    __weak __block DoctorDetailController *blockSelf = self;
     [[CUDoctorManager sharedInstance] getOrderTimeSegmentWithReleaseID:appointmentSelected.releaseID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
             NSInteger errorCode = [[result.responseObject valueForKey:@"errorCode"] integerValue];
@@ -141,8 +142,9 @@
                     DoctorSelectOrderTimeController *doctorSelectOrderTimeController = [[DoctorSelectOrderTimeController alloc]initWithPageName:@"DoctorDetailController"];
                     appointmentSelected.selectOrderTimeArray = result.parsedModelObject;
                     doctorSelectOrderTimeController.doctorAppointmentListItem = appointmentSelected;
-                    doctorSelectOrderTimeController.doctor = self.doctor;
-                    [self.slideNavigationController pushViewController:doctorSelectOrderTimeController animated:YES];
+                    blockSelf.doctor.address = [NSString stringWithFormat:@"%@(%@)",appointmentSelected.clinicName,appointmentSelected.clinicAddr];
+                    doctorSelectOrderTimeController.doctor = blockSelf.doctor;
+                    [blockSelf.slideNavigationController pushViewController:doctorSelectOrderTimeController animated:YES];
                 }
                     break;
                 default:

@@ -13,6 +13,8 @@
 #import "YYPhotoView.h"
 #import "CUOrderManager.h"
 
+#define commitViewHeight 50
+
 @interface MyDiagnosisRecordsDetailViewController ()<UIAlertViewDelegate>{
     YYZhenDanLineView *view0;
     YYZhenDanLineView *view1;
@@ -179,13 +181,21 @@
 
     if (_data.state == 1){
         self.contentScrollView.frame = CGRectMake(0, 0, kScreenWidth, self.contentView.frame.size.height - 50);
-        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(10, self.contentView.frame.size.height - 40, kScreenWidth - 20, 30)];
-        button.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
-        button.layer.cornerRadius = button.frameHeight/2.f;
-        [button setTitle:@"取 消 订 单" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:button];
+        UIView *commitView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.contentScrollView.frame), kScreenWidth, commitViewHeight)];
+        commitView.backgroundColor = [UIColor whiteColor];
+        [self.contentView addSubview:commitView];
+        
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
+        lineView.layer.backgroundColor = UIColorFromHex(0xc4c4c4).CGColor;
+        [commitView addSubview:lineView];
+        
+        int commitButtonHeight = 35;
+        UIButton *commitButton = [[UIButton alloc]initWithFrame:CGRectMake(15, (commitViewHeight - commitButtonHeight)/2, kScreenWidth - 30, commitButtonHeight)];
+        commitButton.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
+        commitButton.layer.cornerRadius = commitButtonHeight/2.f;
+        [commitButton setTitle:@"取  消  订  单" forState:UIControlStateNormal];
+        [commitButton addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+        [commitView addSubview:commitButton];
     }
     
 
@@ -214,6 +224,7 @@
         //取消订单
         [[CUOrderManager sharedInstance] CancelOrderWithDiagnosisID:_data.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
             if (!result.hasError) {
+//                _cancelOrderBlock();
                 [self.slideNavigationController popViewControllerAnimated:YES];
             }
         } pageName:@"MyDiagnosisRecordsDetailViewController"];
@@ -222,11 +233,11 @@
 
 
 - (void)YYPhotoViewAction{
-//    YYPhotoView *view = [[YYPhotoView alloc]initWithPhotoArray:[NSMutableArray arrayWithObject:_imageView.image] numberOfClickedPhoto:0];
-//    [[self.view superview] addSubview:view];
+    YYPhotoView *view = [[YYPhotoView alloc]initWithPhotoArray:[NSMutableArray arrayWithObject:_imageView.image] numberOfClickedPhoto:0];
+    [[self.view superview] addSubview:view];
 }
 
-- (void)setData:(CUService *)data{
+- (void)setData:(CUOrder *)data{
     _data = data;
 }
 

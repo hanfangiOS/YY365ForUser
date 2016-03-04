@@ -69,10 +69,10 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     [listSubject addObjectSafely:user];
                 }];
                 result.parsedModelObject = listSubject;
-                
+
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
             }
         }
         else {
@@ -170,6 +170,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 parsedModelObject = order;
                 NSMutableDictionary *dic = [result.responseObject objectForKey:@"data"];
                 order.dealPrice = [[dic valueForKey:@"payMoney"] integerValue];
+                order.diagnosisTime = [dic valueForKey:@"orderTime"];
                 
                 result.parsedModelObject = parsedModelObject;
             }
@@ -608,6 +609,65 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
 }
 
+
+- (void)getOrderStateWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObjectSafely:@(diagnosisID) forKey:@"order_no"];
+    NSLog(@"%@",param);
+    [[AppCore sharedInstance].apiManager POST:@"baseFrame/base/verify_order_state.jmw" parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+                NSMutableDictionary *obj = [[result.responseObject valueForKey:@"data"] valueForKey:@"diagnosisRecords"];
+                Doctor *doctor = [[Doctor alloc]init];
+                doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clincName"],[obj valueForKey:@"clincAddr"]];
+                doctor.avatar = [obj valueForKey:@"doctorIcon"];
+                doctor.name = [obj valueForKey:@"doctorName"];
+                doctor.levelDesc = [obj valueForKey:@"title"];
+                
+                Disease *disease = [[Disease alloc]init];
+                disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
+                
+                CUUser *patience = [[CUUser alloc]init];
+                patience.name = [obj valueForKey:@"userName"];
+                patience.age = [[obj valueForKey:@"userAge"] integerValue];
+                patience.userId = [[obj valueForKey:@"userID"] integerValue];
+                patience.cellPhone = [obj valueForKey:@"userPhone"];
+                patience.gender = [[obj valueForKey:@"userSex"] integerValue];
+                
+                CUService *service = [[CUService alloc]init];
+                service.doctor = doctor;
+                service.disease = disease;
+                service.patience = patience;
+                
+                CUOrder *order = [[CUOrder alloc]init];
+                order.service = service;
+                order.state = [[obj valueForKey:@"state"] integerValue];
+                order.dealPrice = [[obj valueForKey:@"fee"] integerValue];
+                order.submitTime = [[obj valueForKey:@"submitTime"] integerValue];
+                order.diagnosisID = [[obj valueForKey:@"diagnosisID"] longLongValue];
+                order.diagnosisTime = [obj valueForKey:@"diagnosisTime"];
+                order.orderNumber = [obj valueForKey:@"orderID"];
+                order.obtainScore = [[obj valueForKey:@"obtainCouponID"] integerValue];
+                order.obtainCouponMoney = [[obj valueForKey:@"obtainCouponMoney"] integerValue];
+                
+                result.parsedModelObject = order;
+                
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+            }
+        }
+        else {
+            NSLog(@"====哦哟，出错了====");
+            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+    
+}
 
 
 @end

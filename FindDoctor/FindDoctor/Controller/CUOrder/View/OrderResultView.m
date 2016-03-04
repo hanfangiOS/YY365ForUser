@@ -37,7 +37,7 @@
     
     [kBlackColor set];
     
-    NSString *orderString = [NSString stringWithFormat:@"约诊单号：%@", self.order.orderId];
+    NSString *orderString = [NSString stringWithFormat:@"约诊单号：%lld", self.order.diagnosisID];
     
     CGRect orderRect = CGRectMake(textOriginX, textOriginY, textWidth, textHeight);
     [orderString drawInRect:[UILabel textRectWithRect:orderRect withFontSize:textFontSize] withFont:textFont];
@@ -45,7 +45,7 @@
     imageRect.origin.y = orderRect.origin.y;
     [checkImage drawInRect:imageRect];
     
-    NSString *numberString = [NSString stringWithFormat:@"预约号：%@", self.order.orderNumber];
+    NSString *numberString = [NSString stringWithFormat:@"预约号：第 %@ 号", self.order.orderNumber];
     
     CGRect numberRect = CGRectMake(textOriginX, CGRectGetMaxY(orderRect) + textSpace, textWidth, textHeight);
     [numberString drawInRect:[UILabel textRectWithRect:numberRect withFontSize:textFontSize] withFont:textFont];
@@ -53,7 +53,7 @@
     imageRect.origin.y = numberRect.origin.y;
     [checkImage drawInRect:imageRect];
 
-    NSString *timeString = [NSString stringWithFormat:@"就诊时间：%@", self.order.service.doctor.availableTime];
+    NSString *timeString = [NSString stringWithFormat:@"就诊时间：%@", self.order.diagnosisTime];
     
     CGRect timeRect = CGRectMake(textOriginX, CGRectGetMaxY(numberRect) + textSpace, textWidth, textHeight);
     [timeString drawInRect:[UILabel textRectWithRect:timeRect withFontSize:textFontSize] withFont:textFont];

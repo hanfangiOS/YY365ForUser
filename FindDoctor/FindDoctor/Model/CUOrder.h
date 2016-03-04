@@ -30,8 +30,9 @@ typedef enum OrderPayment : NSInteger
 @interface CUOrder : NSObject
 
 @property long long diagnosisID;
+@property (nonatomic,strong) NSString *diagnosisTime;  //就诊时间区间，支付成功回调用到
 @property (nonatomic,strong) NSString *orderId;
-@property (nonatomic,strong) NSString *orderNumber;
+@property (nonatomic,strong) NSString *orderNumber; //预约号
 @property (nonatomic,assign) OrderStatus orderStatus;
 @property (nonatomic,assign) OrderPayment payment;
 //@property (nonatomic,strong) NSString * showDealPrice;// 价格展示使用
@@ -44,6 +45,9 @@ typedef enum OrderPayment : NSInteger
 @property NSTimeInterval createTimeStamp;
 @property NSTimeInterval finishedTimeStamp;
 @property NSTimeInterval submitTime;
+
+@property NSInteger obtainScore; //获得积分
+@property NSInteger obtainCouponMoney; //获得诊金券金额
 
 @property NSInteger state;
 

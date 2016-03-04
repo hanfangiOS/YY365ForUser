@@ -111,7 +111,7 @@
     
     if (self.orderResult == OrderResultSuccess) {
         statusLabel.text =  @"支付成功";
-        statusLabel.textColor = kGreenColor;
+        statusLabel.textColor = UIColorFromHex(Color_Hex_NavBackground);
     }
     
     OrderResultView *resultView = [[OrderResultView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(statusView.frame) + statusViewOriginY, self.view.frameWidth, 125)];
@@ -182,11 +182,11 @@
     
     if (indexPath.row == 0) {
         cell.textLabel.text = @"获得积分";
-        cell.detailTextLabel.text = @"200";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",self.order.obtainScore];
     }
     else {
         cell.textLabel.text = @"赠送诊金券";
-        cell.detailTextLabel.text = @"￥10";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0f",self.order.obtainCouponMoney/100.f];;
     }
     
     return cell;

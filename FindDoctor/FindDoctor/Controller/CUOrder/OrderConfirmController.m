@@ -43,7 +43,6 @@
 #define kUrlScheme      @"wx584ad6cae2973f02" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
 //#define kUrlScheme      @"wx7dc59ebba72e1c2d" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
 #define kUrl            @"http://www.uyi365.com/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址，此地址仅供测试用。
-//#define kUrl            @"http://192.168.1.101:8888/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址，此地址仅供测试用。
 
 @interface OrderConfirmController (){
     UIAlertView* mAlert;
@@ -145,8 +144,9 @@
     if (section == 0) {
         return 2;
     }
+    return 2;
     
-    return ([WXApi isWXAppInstalled] ? 3 : 2);
+//    return ([WXApi isWXAppInstalled] ? 3 : 2);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -252,6 +252,8 @@
 
 - (void)payAction
 {
+//    [self test];
+//    return;
 //#warning 测试代码
 //    self.order.diagnosisID = 131313131231;
 //    self.order.service.queueNumber = 10;
@@ -316,23 +318,33 @@
 
 - (void)enterResult:(OrderResult)orderResult
 {
-    SNSlideNavigationController *slide = self.slideNavigationController;
-    UIViewController *vc = nil;
-    for (UIViewController *controller in slide.viewControllers) {
-        if ([controller isKindOfClass:NSClassFromString(@"SNTabViewController")]) {
-            vc = controller;
-            break;
+    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+                SNSlideNavigationController *slide = self.slideNavigationController;
+                UIViewController *vc = nil;
+                for (UIViewController *controller in slide.viewControllers) {
+                    if ([controller isKindOfClass:NSClassFromString(@"SNTabViewController")]) {
+                        vc = controller;
+                        break;
+                    }
+                }
+                
+                if (vc) {
+                    [slide popToViewController:vc animated:NO];
+                }
+                
+                OrderResultController *resultVC = [[OrderResultController alloc] init];
+                resultVC.orderResult = orderResult;
+                resultVC.order = result.parsedModelObject;
+                [slide pushViewController:resultVC animated:YES];
+            }
+            else{
+            
+            }
         }
-    }
-    
-    if (vc) {
-        [slide popToViewController:vc animated:NO];
-    }
-    
-    OrderResultController *resultVC = [[OrderResultController alloc] init];
-    resultVC.orderResult = orderResult;
-    resultVC.order = self.order;
-    [slide pushViewController:resultVC animated:YES];
+    } pageName:@"OrderConfirmController"];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -371,6 +383,26 @@
         [mAlert dismissWithClickedButtonIndex:0 animated:YES];
         mAlert = nil;
     }
+}
+
+- (void)test{
+    SNSlideNavigationController *slide = self.slideNavigationController;
+    UIViewController *vc = nil;
+    for (UIViewController *controller in slide.viewControllers) {
+        if ([controller isKindOfClass:NSClassFromString(@"SNTabViewController")]) {
+            vc = controller;
+            break;
+        }
+    }
+    
+    if (vc) {
+        [slide popToViewController:vc animated:NO];
+    }
+    
+    OrderResultController *resultVC = [[OrderResultController alloc] init];
+    resultVC.orderResult = OrderResultSuccess;
+    resultVC.order = self.order;
+    [slide pushViewController:resultVC animated:YES];
 }
 
 - (void)normalPayAction:(id)sender

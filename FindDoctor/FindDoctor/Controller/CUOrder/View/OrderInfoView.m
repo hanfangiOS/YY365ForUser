@@ -84,7 +84,7 @@
     CGRect numRect = CGRectMake(textOriginX, textOriginY, kScreenWidth - textOriginX, textHeight);
     [numString drawInRect:[UILabel textRectWithRect:numRect withFontSize:textHeight] withFont:[UIFont systemFontOfSize:textHeight]];
     
-    NSString *descString = [NSString stringWithFormat:@"内容：约%@%@，%@", self.order.service.doctor.name, self.order.service.doctor.levelDesc, self.order.service.doctor.availableTime];
+    NSString *descString = [NSString stringWithFormat:@"内容：约%@%@，%@", self.order.service.doctor.name, self.order.service.doctor.levelDesc, self.order.diagnosisTime];
     
     CGRect descRect = CGRectMake(CGRectGetMinX(numRect), CGRectGetMaxY(numRect) + textSpace, CGRectGetWidth(numRect), textHeight);
     [descString drawInRect:[UILabel textRectWithRect:descRect withFontSize:textHeight] withFont:[UIFont systemFontOfSize:textHeight]];
