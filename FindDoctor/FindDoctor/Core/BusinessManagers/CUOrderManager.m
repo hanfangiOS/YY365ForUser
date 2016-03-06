@@ -637,6 +637,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 
                 Disease *disease = [[Disease alloc]init];
                 disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
+                disease.imageURLArray = [[obj valueForKey:@"illnessPic"] componentsSeparatedByString:@","];
                 
                 CUUser *patience = [[CUUser alloc]init];
                 patience.name = [obj valueForKey:@"userName"];

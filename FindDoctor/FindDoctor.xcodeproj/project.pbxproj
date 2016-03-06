@@ -257,6 +257,7 @@
 		BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC054AF1C4397F200017202 /* DiseaseSubject.m */; };
 		BCE331F61C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */; };
 		BCE465C31C06BAAF008DE355 /* DoctorAppointmentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE465C21C06BAAF008DE355 /* DoctorAppointmentListView.m */; };
+		BCF0D2441C89664200D16245 /* PhotosShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF0D2431C89664200D16245 /* PhotosShowView.m */; };
 		D405CC601C003DA700A56264 /* CUPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CC5F1C003DA700A56264 /* CUPasswordView.m */; };
 		D405CC671C00CBB900A56264 /* login_hide_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D405CC651C00CBB900A56264 /* login_hide_password@2x.png */; };
 		D405CC681C00CBB900A56264 /* login_show_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D405CC661C00CBB900A56264 /* login_show_password@2x.png */; };
@@ -981,6 +982,8 @@
 		BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorApoointmentForHourScrollView.m; sourceTree = "<group>"; };
 		BCE465C11C06BAAF008DE355 /* DoctorAppointmentListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorAppointmentListView.h; sourceTree = "<group>"; };
 		BCE465C21C06BAAF008DE355 /* DoctorAppointmentListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorAppointmentListView.m; sourceTree = "<group>"; };
+		BCF0D2421C89664200D16245 /* PhotosShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosShowView.h; sourceTree = "<group>"; };
+		BCF0D2431C89664200D16245 /* PhotosShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosShowView.m; sourceTree = "<group>"; };
 		D405CC5E1C003DA700A56264 /* CUPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUPasswordView.h; sourceTree = "<group>"; };
 		D405CC5F1C003DA700A56264 /* CUPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUPasswordView.m; sourceTree = "<group>"; };
 		D405CC651C00CBB900A56264 /* login_hide_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_hide_password@2x.png"; sourceTree = "<group>"; };
@@ -3625,6 +3628,8 @@
 				BC1859BF1C84394C0050251B /* YYZhenDanLineView.m */,
 				E1A6B91B1BB1B97A001A458D /* CUPickerView.h */,
 				E1A6B91C1BB1B97A001A458D /* CUPickerView.m */,
+				BCF0D2421C89664200D16245 /* PhotosShowView.h */,
+				BCF0D2431C89664200D16245 /* PhotosShowView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4363,6 +4368,7 @@
 				E1EB1D7D1B70A43B0048B8EB /* AppCore.m in Sources */,
 				E17B69261B8383760079DDB5 /* DoctorHeaderView.m in Sources */,
 				E124D7921B915E6D0007B85E /* ImageUploadView.m in Sources */,
+				BCF0D2441C89664200D16245 /* PhotosShowView.m in Sources */,
 				E1EB1E3B1B70A43B0048B8EB /* AvatarHelper.m in Sources */,
 				E689E99D1BA7480800A3ED3C /* QuestionCell.m in Sources */,
 				E1A6B8FB1BAD5ACA001A458D /* UserDetailController.m in Sources */,
@@ -4647,7 +4653,7 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
@@ -4659,7 +4665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -4710,7 +4716,7 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";

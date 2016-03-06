@@ -131,11 +131,11 @@
     [self.contentView addSubview:buttonView];
     
     __weak typeof(self) weakSelf = self;
-    buttonView.checkAction = ^{
+    buttonView.leftAction = ^{
         [weakSelf checkOrder];
     };
     
-    buttonView.backAction = ^{
+    buttonView.rightAction = ^{
         [weakSelf backAction];
     };
 }

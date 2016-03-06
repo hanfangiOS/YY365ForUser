@@ -24,10 +24,8 @@
 #define kLineColor         UIColorFromHex(Color_Hex_Tableview_Separator)
 
 @implementation OrderResultButtonView
-{
-    UIButton     *leftButton;
-    UIButton     *rightButton;
-}
+@synthesize leftButton;
+@synthesize rightButton;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -53,7 +51,7 @@
     
     leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame = CGRectMake(kButtonOriginX, kButtonOriginY, kButtonWidth, kButtonHeight);
-    [leftButton setBackgroundImage:[[UIImage createImageWithColor:kDarkGreenColor] stretchableImageByCenter] forState:UIControlStateNormal];
+    [leftButton setBackgroundImage:[[UIImage createImageWithColor:UIColorFromHex(Color_Hex_NavBackground)] stretchableImageByCenter] forState:UIControlStateNormal];
     [leftButton setTitle:@"查看约诊单" forState:UIControlStateNormal];
     leftButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -62,7 +60,7 @@
     
     rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.frame = CGRectMake(CGRectGetMaxX(leftButton.frame), kButtonOriginY, CGRectGetWidth(leftButton.frame), CGRectGetHeight(leftButton.frame));
-    [rightButton setBackgroundImage:[[UIImage createImageWithColor:UIColorFromRGB(102, 212, 215)] stretchableImageByCenter] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[[UIImage createImageWithColor:UIColorFromRGB(74, 152, 218)] stretchableImageByCenter] forState:UIControlStateNormal];
     [rightButton setTitle:@"返回" forState:UIControlStateNormal];
     rightButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -72,15 +70,15 @@
 
 - (void)leftButtonPress
 {
-    if (self.checkAction) {
-        self.checkAction();
+    if (self.leftAction) {
+        self.leftAction();
     }
 }
 
 - (void)rightButtonPress
 {
-    if (self.backAction) {
-        self.backAction();
+    if (self.rightAction) {
+        self.rightAction();
     }
 }
 

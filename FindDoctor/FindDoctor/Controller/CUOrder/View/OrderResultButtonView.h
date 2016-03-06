@@ -12,8 +12,11 @@ typedef void(^ResultButtonAction)(void);
 
 @interface OrderResultButtonView : UIView
 
-@property (nonatomic, copy) ResultButtonAction checkAction;
-@property (nonatomic, copy) ResultButtonAction backAction;
+@property (nonatomic, copy) ResultButtonAction leftAction;
+@property (nonatomic, copy) ResultButtonAction rightAction;
+
+@property (nonatomic, strong) UIButton     *leftButton;
+@property (nonatomic, strong) UIButton     *rightButton;
 
 + (float)defaultHeight;
 

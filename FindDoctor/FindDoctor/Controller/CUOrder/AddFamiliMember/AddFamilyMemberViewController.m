@@ -130,7 +130,7 @@
     [commitButton setTitle:@"添          加" forState:UIControlStateNormal];
     [commitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     commitButton.layer.cornerRadius = 5.0;
-    commitButton.layer.backgroundColor = [UIColor colorWithRed:114/255.0 green:196/255.0 blue:58/255.0 alpha:1].CGColor;
+    commitButton.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
     [commitButton addTarget:self action:@selector(commitAction) forControlEvents:UIControlEventTouchUpInside];
     
     [commitBackgroundView addSubview:commitButton];

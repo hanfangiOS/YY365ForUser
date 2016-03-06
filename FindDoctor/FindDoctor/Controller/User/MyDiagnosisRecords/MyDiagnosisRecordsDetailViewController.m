@@ -12,6 +12,9 @@
 #import "UIImageView+WebCache.h"
 #import "YYPhotoView.h"
 #import "CUOrderManager.h"
+#import "OrderResultButtonView.h"
+#import "OrderConfirmController.h"
+#import "PhotosShowView.h"
 
 #define commitViewHeight 50
 
@@ -28,6 +31,7 @@
     YYZhenDanLineView *view9;
     YYZhenDanLineView *view10;
     YYZhenDanLineView *view11;
+    YYZhenDanLineView *view12;
 }
 
 @property (nonatomic, strong) UIScrollView *contentScrollView;
@@ -40,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isPanValid = NO;
-//    self.title = [NSString stringWithFormat:@"%@ 就诊单",_data.UserName];
+    self.title = [NSString stringWithFormat:@"订单详情"];
 
 
     [self loadContentScrollView];
@@ -106,48 +110,75 @@
         [view8 setContentText:@"暂无"];
     }
     view8.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view7.frame), kScreenWidth - paadingLeft*2, [view8 getframeHeight]);
-    if (_data.state == 4) {
-        view9 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
-        [view9 setTitle:@"诊断信息:"];
-        [view9 setContentText:_data.service.diagnosis.diagnosisText];
-        view9.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view8.frame), kScreenWidth - paadingLeft*2, [view8 getframeHeight]);
-        
-        
-        if (![_data.service.diagnosis.herbPic isEmpty]) {
-            view10 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
-            [view10 setTitle:@"药       方:"];
-            [view10 setContentText:[NSString stringWithFormat:@""]];
-            view10.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view9.frame), kScreenWidth - paadingLeft*2, [view10 getframeHeight]);
-            
-            _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(view10.frameX + 100,view10.frameY + 8 , view10.frameWidth - 100, view10.frameWidth - 100)];
-            _imageView.userInteractionEnabled = YES;
-            __weak __block MyDiagnosisRecordsDetailViewController * blockSelf = self;
-            
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer   alloc]initWithTarget:self action:@selector(YYPhotoViewAction)];
-            tap.numberOfTapsRequired = 1;
-            tap.numberOfTouchesRequired = 1;
-            [_imageView addGestureRecognizer:tap];
-            
-            [_imageView setImageWithURL:[NSURL URLWithString:_data.service.diagnosis.herbPic] placeholderImage:nil success:^(UIImage *image, BOOL cached) {
-                
-            } failure:^(NSError *error) {
-                
-            }];
-            _imageView.contentMode = 0;
-            _imageView.clipsToBounds = YES;
-            [_contentScrollView addSubview:_imageView];
-            
-            view11 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
-            [view11 setTitle:@"付       数:"];
-            [view11 setContentText:[NSString stringWithFormat:@"%ld",_data.service.diagnosis.recipeNum]];
-            view11.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view10.frame)+ _imageView.frameHeight, kScreenWidth - paadingLeft*2, [view11 getframeHeight]);
-            [self.contentScrollView addSubview:view11];
-            
-            _contentScrollView.contentSize = CGSizeMake(kScreenWidth, CGRectGetMaxY(view11.frame));
+    
+    view9 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
+    [view9 setTitle:@"病症图片:"];
+    [view9 setContentText:@"暂无"];
+    view9.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view8.frame), kScreenWidth - paadingLeft*2, [view9 getframeHeight]);
+    if (_data.service.disease.imageURLArray.count){
+        [view9 setContentText:@""];
+        PhotosShowView *photosShowView = [[PhotosShowView alloc]initWithFrame:CGRectMake(paadingLeft, CGRectGetMaxY(view9.frame), kScreenWidth - paadingLeft*2, 0)];
+        __weak __block PhotosShowView *blockPhotosShowView = photosShowView;
+        photosShowView.imageURLArray = _data.service.disease.imageURLArray;
+        photosShowView.photosShowBlock = ^(NSInteger inex){
+            YYPhotoView *view = [[YYPhotoView alloc]initWithPhotoArray:blockPhotosShowView.imageArray numberOfClickedPhoto:inex];
+            [[self.view superview] addSubview:view];
+        };
+        [_contentScrollView  addSubview:photosShowView];
+        NSString *str = [_data.service.disease.imageURLArray objectAtIndex:0];
+        if ([str isEmpty]) {
+            _contentScrollView.contentSize = CGSizeMake(kScreenWidth, CGRectGetMaxY(view9.frame) + 10);
         }
         else{
-            view10 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
-            [view10 setTitle:@"药       方:"];
+            _contentScrollView.contentSize = CGSizeMake(kScreenWidth, CGRectGetMaxY(view9.frame) + photosShowView.frameHeight + 10);
+        }
+
+    }
+    else{
+        _contentScrollView.contentSize = CGSizeMake(kScreenWidth, CGRectGetMaxY(view9.frame) + 10);
+    }
+
+    
+    
+    if (_data.state == 4) {
+        view10 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
+        [view10 setTitle:@"诊断信息:"];
+        [view10 setContentText:@"暂无"];
+        view10.frame = CGRectMake(paadingLeft, _contentScrollView.contentSize.height - 10, kScreenWidth - paadingLeft*2, [view10 getframeHeight]);
+        if(![_data.service.diagnosis.diagnosisText isEmpty]){
+            [view10 setContentText:_data.service.diagnosis.diagnosisText];
+            view10.frame = CGRectMake(paadingLeft, _contentScrollView.contentSize.height - 10, kScreenWidth - paadingLeft*2, [view10 getframeHeight]);
+        }
+
+        
+        if (![_data.service.diagnosis.herbPic isEmpty]) {
+            view11 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
+            [view11 setTitle:@"药       方:"];
+            [view11 setContentText:[NSString stringWithFormat:@"图片"]];
+            view11.frame = CGRectMake(paadingLeft,CGRectGetMaxY(view10.frame), kScreenWidth - paadingLeft*2, [view10 getframeHeight]);
+            [view11 setContentText:[NSString stringWithFormat:@""]];
+
+            PhotosShowView *photosShowView = [[PhotosShowView alloc]initWithFrame:CGRectMake(paadingLeft, CGRectGetMaxY(view11.frame), kScreenWidth - paadingLeft*2, 0)];
+            __weak __block PhotosShowView *blockPhotosShowView = photosShowView;
+            photosShowView.imageURLArray = [NSArray arrayWithObject:[NSURL URLWithString:_data.service.diagnosis.herbPic]];
+            photosShowView.photosShowBlock = ^(NSInteger inex){
+                YYPhotoView *view = [[YYPhotoView alloc]initWithPhotoArray:blockPhotosShowView.imageArray numberOfClickedPhoto:inex];
+                [[self.view superview] addSubview:view];
+            };
+            [_contentScrollView  addSubview:photosShowView];
+            _contentScrollView.contentSize = CGSizeMake(kScreenWidth, CGRectGetMaxY(view11.frame) + photosShowView.frameHeight + 10);
+            
+            view12 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
+            [view12 setTitle:@"付       数:"];
+            [view12 setContentText:[NSString stringWithFormat:@"%ld",_data.service.diagnosis.recipeNum]];
+            view12.frame = CGRectMake(paadingLeft, _contentScrollView.contentSize.height - 10 , kScreenWidth - paadingLeft*2, [view12 getframeHeight]);
+            [self.contentScrollView addSubview:view12];
+            
+            _contentScrollView.contentSize = CGSizeMake(kScreenWidth, CGRectGetMaxY(view12.frame)+10);
+        }
+        else{
+            view11 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
+            [view11 setTitle:@"药       方:"];
             NSString *string = [[NSString alloc]init];
             for (int i = 0 ; i < _data.service.diagnosis.herbArray.count; i++) {
                 CUHerb *herb = [_data.service.diagnosis.herbArray objectAtIndex:i];
@@ -164,38 +195,36 @@
                 }
                 
             }
-            [view10 setContentText:string];
-            view10.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view9.frame), kScreenWidth - paadingLeft*2, [view10 getframeHeight]);
-            
-            view11 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
-            [view11 setTitle:@"付       数:"];
-            [view11 setContentText:[NSString stringWithFormat:@"%ld",_data.service.diagnosis.recipeNum]];
+            [view11 setContentText:string];
             view11.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view10.frame), kScreenWidth - paadingLeft*2, [view11 getframeHeight]);
             
-            [self.contentScrollView addSubview:view11];
+            view12 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
+            [view12 setTitle:@"付       数:"];
+            [view12 setContentText:[NSString stringWithFormat:@"%ld",_data.service.diagnosis.recipeNum]];
+            view12.frame = CGRectMake(paadingLeft, CGRectGetMaxY(view11.frame), kScreenWidth - paadingLeft*2, [view12 getframeHeight]);
             
-            _contentScrollView.contentSize = CGSizeMake(kScreenWidth, CGRectGetMaxY(view11.frame));
+            [self.contentScrollView addSubview:view12];
+            
+            _contentScrollView.contentSize = CGSizeMake(kScreenWidth, CGRectGetMaxY(view12.frame) + 10);
         }
 
     }
 
     if (_data.state == 1){
-        self.contentScrollView.frame = CGRectMake(0, 0, kScreenWidth, self.contentView.frame.size.height - 50);
-        UIView *commitView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.contentScrollView.frame), kScreenWidth, commitViewHeight)];
-        commitView.backgroundColor = [UIColor whiteColor];
-        [self.contentView addSubview:commitView];
+        self.contentScrollView.frame = CGRectMake(0, 0, kScreenWidth, self.contentView.frame.size.height - [OrderResultButtonView defaultHeight]);
         
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
-        lineView.layer.backgroundColor = UIColorFromHex(0xc4c4c4).CGColor;
-        [commitView addSubview:lineView];
+        OrderResultButtonView *buttonView = [[OrderResultButtonView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.contentView.bounds) - [OrderResultButtonView defaultHeight], kScreenWidth, [OrderResultButtonView defaultHeight])];
+        [self.contentView addSubview:buttonView];
+        [buttonView.leftButton setTitle:@"去支付" forState:UIControlStateNormal];
+        [buttonView.rightButton setTitle:@"取消订单" forState:UIControlStateNormal];
+        __weak typeof(self) weakSelf = self;
+        buttonView.leftAction = ^{
+            [weakSelf payAction];
+        };
         
-        int commitButtonHeight = 35;
-        UIButton *commitButton = [[UIButton alloc]initWithFrame:CGRectMake(15, (commitViewHeight - commitButtonHeight)/2, kScreenWidth - 30, commitButtonHeight)];
-        commitButton.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
-        commitButton.layer.cornerRadius = commitButtonHeight/2.f;
-        [commitButton setTitle:@"取  消  订  单" forState:UIControlStateNormal];
-        [commitButton addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
-        [commitView addSubview:commitButton];
+        buttonView.rightAction = ^{
+            [weakSelf cancelAction];
+        };
     }
     
 
@@ -212,6 +241,14 @@
     [self.contentScrollView addSubview:view8];
     [self.contentScrollView addSubview:view9];
     [self.contentScrollView addSubview:view10];
+    [self.contentScrollView addSubview:view11];
+    [self.contentScrollView addSubview:view12];
+}
+
+- (void)payAction{
+    OrderConfirmController *detailVC = [[OrderConfirmController alloc]initWithPageName:@"MyDiagnosisRecordsDetailViewController"];
+    detailVC.order = self.data;
+    [self.slideNavigationController pushViewController:detailVC animated:YES];
 }
 
 - (void)cancelAction{
