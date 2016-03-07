@@ -109,6 +109,7 @@
             self.title = @"我的空间";
 //            [self loadNavigationBar];
             [userHeaderView resetUserInfo];
+        
         }
         else {
             self.navigationItem.leftBarButtonItem = nil;

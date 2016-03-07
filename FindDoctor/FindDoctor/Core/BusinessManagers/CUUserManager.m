@@ -177,11 +177,11 @@ SINGLETON_IMPLENTATION(CUUserManager);
 
                     
                     NSDictionary *data = [result.responseObject valueForKey:@"data"];
-                    blockSelf.user.token =  [data valueForKey:@"token"];
+                    
                     blockSelf.user.userId = [[data valueForKey:@"accID"] intValue];
                     blockSelf.user.nickName = [data valueForKey:@"name"];
                     blockSelf.user.icon = [data valueForKey:@"icon"];
-                    
+                    blockSelf.user.token =  [data valueForKey:@"token"];
                     NSLog(@"cellPhone:%@",blockSelf.user.cellPhone);
                     NSLog(@"userId:%d",blockSelf.user.userId );
                     
