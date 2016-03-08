@@ -177,7 +177,7 @@
 {
     // 启动画面->新手引导->主页面
     // 新安装
-    if (0 && [CUPlatFormManager sharedInstance].isNewInstall)
+    if ([CUPlatFormManager sharedInstance].isNewInstall)
     {
         [self launchIntroduceView];
     }
