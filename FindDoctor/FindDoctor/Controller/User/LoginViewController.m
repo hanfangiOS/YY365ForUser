@@ -50,6 +50,9 @@
     self.contentView.frame = _contentScrollView.frame;
     self.contentView.layer.contents = (id)[UIImage imageNamed:@"login_bg"].CGImage;
     [_contentScrollView addSubview:self.contentView];
+    
+    UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(endEdit)];
+    [self.contentView addGestureRecognizer:tap];
 }
 
 - (void)loadContens{
@@ -215,8 +218,9 @@
 }
 
 - (void)endEdit{
-    [userTextFeildView.contentTextFeild resignFirstResponder];
-    [passwordTextFeildView.contentTextFeild resignFirstResponder];
+    [self.contentView endEditing:YES];
+//    [userTextFeildView.contentTextFeild resignFirstResponder];
+//    [passwordTextFeildView.contentTextFeild resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
