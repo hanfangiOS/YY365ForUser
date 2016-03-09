@@ -66,13 +66,14 @@ SINGLETON_IMPLENTATION(CUPlatFormManager);
 - (void)appInstallStatistics
 {
     // 本地版本号
-    int versionCache = self.platform.oldVersion;
+    int versionCache = (int) self.platform.oldVersion;
     
     // runtime的版本号
-    int versionCurrent = [CUPlatFormManager appVersionNumInBundle];
+    int versionCurrent = (int) [CUPlatFormManager appVersionNumInBundle];
     
     if (versionCurrent == versionCache)
     {
+//        _isNewInstall = NO;
         return;
     }
     else
@@ -97,6 +98,7 @@ SINGLETON_IMPLENTATION(CUPlatFormManager);
             }
         }
     }
+//    [self save];
 }
 
 - (void)load

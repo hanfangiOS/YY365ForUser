@@ -72,6 +72,7 @@ static UIWindow *window = nil;
         _introduceImageNames = [[NSArray alloc] initWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:kSNIntroduceViewIntroduceImagesPlist]];
         
         [self initIntroduceMainScrollView];
+//        [self initPageControl];
     }
     
     return self;
@@ -117,7 +118,7 @@ static UIWindow *window = nil;
             imageExtension = @"png";
         }
         NSString *imageName = [introduceImageName stringByDeletingPathExtension];
-        imageName = [self compatibleImageName:imageName];
+        //        imageName = [self compatibleImageName:imageName];
         NSString *imagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:imageExtension];
         UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
         UIImageView *introduceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
@@ -152,16 +153,15 @@ static UIWindow *window = nil;
 
 + (void)showWithComplete:(void(^)(SNIntroduceView *introduceView))complete
 {
-    if (!window)
-    {
-        SNIntroduceView *intro = [[SNIntroduceView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        intro.complete = complete;
-        
-        window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        window.windowLevel = UIWindowLevelStatusBar + 1;
-        window.hidden = NO;
-        [window addSubview:intro];
-    }
+//    if (!window)
+//    {
+//        SNIntroduceView *intro = [[SNIntroduceView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//        intro.complete = complete;
+//        window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//        window.windowLevel = UIWindowLevelStatusBar + 1;
+//        window.hidden = NO;
+//        [window addSubview:intro];
+//    }
 }
 
 #pragma mark UIScrollViewDelegate
@@ -186,12 +186,14 @@ static UIWindow *window = nil;
 #ifdef kIntroduceScrollViewHorizontal
     CGFloat xOffset = CGRectGetWidth(self.bounds)*(MAX(0, _introduceImageNames.count-1));
     if (newContentOffset.x >= xOffset+kScrollViewAddtionalSpace) {
-        [self performSelectorOnMainThread:@selector(hide) withObject:nil waitUntilDone:NO];
+        //        [self performSelectorOnMainThread:@selector(hide) withObject:nil waitUntilDone:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AfterFirstView" object:self userInfo:nil];
     }
 #else
     CGFloat yOffset = CGRectGetHeight(self.bounds)*(MAX(0, _introduceImageNames.count-1));
     if (newContentOffset.y >= yOffset+kScrollViewAddtionalSpace) {
-        [self performSelectorOnMainThread:@selector(hide) withObject:nil waitUntilDone:NO];
+        //        [self performSelectorOnMainThread:@selector(hide) withObject:nil waitUntilDone:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AfterFirstView" object:self userInfo:nil];
     }
 #endif
 }

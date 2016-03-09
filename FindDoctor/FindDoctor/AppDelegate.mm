@@ -83,7 +83,7 @@
     
     // 版本号
     [[CUPlatFormManager sharedInstance] sychronizeVersion];
-    
+
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -177,6 +177,7 @@
 {
     // 启动画面->新手引导->主页面
     // 新安装
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(afterFirstView) name:@"AfterFirstView" object:nil];
     if ([CUPlatFormManager sharedInstance].isNewInstall)
     {
         [self launchIntroduceView];
@@ -185,6 +186,12 @@
     {
         [self launchMainView];
     }
+}
+
+- (void)afterFirstView{
+    [[CUPlatFormManager sharedInstance] save];
+    [self launchMainView];
+     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)launchMainView
@@ -211,13 +218,20 @@
 //          nil]];
     }
     self.window.rootViewController = self.slideNaviController;
+   
+
 }
 
 - (void)launchIntroduceView
 {
-    [SNIntroduceView showWithComplete:^(SNIntroduceView *introduceView){
-        [self launchMainView];
-    }];
+//    [SNIntroduceView showWithComplete:^(SNIntroduceView *introduceView){
+//        [self launchMainView];
+//    }];
+    SNIntroduceView *intro = [[SNIntroduceView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIViewController * vc = [[UIViewController alloc] init];
+    vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [vc.view addSubview:intro];
+    self.window.rootViewController = vc;
 }
 
 - (SNTabViewController*)createTabBarController
