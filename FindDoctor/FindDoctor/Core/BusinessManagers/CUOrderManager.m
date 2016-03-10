@@ -432,7 +432,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 #if !LOCAL
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
     [param setObjectSafely:@"ios" forKey:@"from"];
-    [param setObjectSafely:[CUUserManager sharedInstance].user.token forKey:@"token"];
+    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"UserAppMainPush" forKey:@"require"];
     [param setObjectSafely:@(10001) forKey:@"interfaceID"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
@@ -443,8 +443,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     [dataParam setObjectSafely:@([CUUserManager sharedInstance].user.userId) forKey:@"accID"];
     [dataParam setObjectSafely:@(510100) forKey:@"regionID"];
-    [dataParam setObjectSafely:@(104.22) forKey:@"longitude"];
-    [dataParam setObjectSafely:@(30.234) forKey:@"latitude"];
+    [dataParam setObjectSafely:kCurrentLng == nil ? @(30.679694) : kCurrentLng forKey:@"longitude"];
+    [dataParam setObjectSafely:kCurrentLat == nil ? @(104.145051) : kCurrentLat forKey:@"latitude"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);

@@ -44,6 +44,7 @@
 
 // 外网
 #define URL_Base @"http://www.uyi365.com"
+//#define URL_Base @"101.204.28.187"
 
 #elif defined(CollegeUnion_Distribution)
 

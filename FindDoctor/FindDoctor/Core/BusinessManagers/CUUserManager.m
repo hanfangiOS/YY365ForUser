@@ -158,8 +158,8 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [dataParam setObjectSafely:[SNPlatformManager deviceId] forKey:@"device"];
     [dataParam setObjectSafely:[SNPlatformManager deviceIdAddress] forKey:@"ip"];
     [dataParam setObjectSafely:@"成都市" forKey:@"region"];
-    [dataParam setObjectSafely:@(30.679694) forKey:@"latitude"];
-    [dataParam setObjectSafely:@(104.145051) forKey:@"longtitude"];
+    [dataParam setObjectSafely:kCurrentLat forKey:@"latitude"];
+    [dataParam setObjectSafely:kCurrentLng forKey:@"longtitude"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
