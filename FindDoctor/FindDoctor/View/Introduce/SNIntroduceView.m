@@ -49,6 +49,7 @@
 @interface SNIntroduceView ()
 {
     NSArray *_introduceImageNames;
+    UIButton * _btn;
 }
 
 - (void)initIntroduceMainScrollView;
@@ -70,9 +71,10 @@ static UIWindow *window = nil;
     
     if (self) {
         _introduceImageNames = [[NSArray alloc] initWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:kSNIntroduceViewIntroduceImagesPlist]];
-        
+        [self initBtn];
         [self initIntroduceMainScrollView];
-//        [self initPageControl];
+        [self initPageControl];
+        
     }
     
     return self;
@@ -85,6 +87,16 @@ static UIWindow *window = nil;
 
 
 #pragma mark
+
+- (void)initBtn{
+    
+    _btn = [[UIButton alloc] init];
+    CGFloat width = 200;
+    CGFloat height = 50;
+    _btn.frame = CGRectMake(0.5 * (kScreenWidth - width), 0.79 * (kScreenHeight - height), width, height);
+    _btn.backgroundColor = [UIColor redColor];
+    
+}
 
 - (void)initIntroduceMainScrollView
 {
@@ -129,16 +141,17 @@ static UIWindow *window = nil;
         introduceImageViewFrame.origin.y = i * height;
 #endif
         introduceImageView.frame = introduceImageViewFrame;
+        [introduceImageView addSubview:_btn];
         [_introduceMainScrollView addSubview:introduceImageView];
     }
 }
 
 - (void)initPageControl
 {
-    _introducePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame) - 19 - kTopMargin, CGRectGetWidth(self.bounds), kTopMargin)];
+    _introducePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame) - 48 - kTopMargin, CGRectGetWidth(self.bounds), kTopMargin)];
     _introducePageControl.userInteractionEnabled = NO;
     _introducePageControl.backgroundColor = [UIColor clearColor];
-    _introducePageControl.numberOfPages = _introduceImageNames.count;
+    _introducePageControl.numberOfPages = _introduceImageNames.count - 1;
     _introducePageControl.currentPage = 0;
     _introducePageControl.hidesForSinglePage = YES;
     [self addSubview:_introducePageControl];
@@ -173,6 +186,7 @@ static UIWindow *window = nil;
     NSInteger index = floor(scrollView.contentOffset.y/CGRectGetHeight(scrollView.bounds));
 #endif
     _introducePageControl.currentPage = index;
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -184,9 +198,19 @@ static UIWindow *window = nil;
 {
     // 向右 or 向下 滑动并静止
 #ifdef kIntroduceScrollViewHorizontal
+    //该偏移量为所有图片－1张图
+    CGFloat xOffset2 = CGRectGetWidth(self.bounds)*(MAX(0, _introduceImageNames.count-2));
+    
+    if(newContentOffset.x >= xOffset2+kScrollViewAddtionalSpace){
+        _introducePageControl.hidden = YES;
+    }else{
+        _introducePageControl.hidden = NO;
+    }
+    
     CGFloat xOffset = CGRectGetWidth(self.bounds)*(MAX(0, _introduceImageNames.count-1));
     if (newContentOffset.x >= xOffset+kScrollViewAddtionalSpace) {
         //        [self performSelectorOnMainThread:@selector(hide) withObject:nil waitUntilDone:NO];
+       
         [[NSNotificationCenter defaultCenter] postNotificationName:@"AfterFirstView" object:self userInfo:nil];
     }
 #else

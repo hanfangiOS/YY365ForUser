@@ -37,6 +37,8 @@
 #import "OrderManager+ThirdPay.h"
 #import "Pingpp.h"
 
+#import "LaunchView.h"
+
 @interface AppDelegate () <BMKGeneralDelegate>
 
 @property (nonatomic,strong)SNTabViewController * tabController;
@@ -79,7 +81,8 @@
     //[self initShare];
     
     // 主页面
-    [self launchFirstView];
+    [self startLaunchView];
+//    [self launchFirstView];
     
     // 版本号
     [[CUPlatFormManager sharedInstance] sychronizeVersion];
@@ -173,10 +176,22 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)startLaunchView{
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(launchFirstView) name:@"LaunchFirstView" object:nil];
+    LaunchView * launchView = [[LaunchView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIViewController * vc = [[UIViewController alloc] init];
+    vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [vc.view addSubview:launchView];
+    self.window.rootViewController = vc;
+    
+}
+
 - (void)launchFirstView
 {
     // 启动画面->新手引导->主页面
     // 新安装
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(afterFirstView) name:@"AfterFirstView" object:nil];
     if ([CUPlatFormManager sharedInstance].isNewInstall)
     {
