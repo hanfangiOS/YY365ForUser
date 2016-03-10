@@ -180,10 +180,14 @@
     
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(launchFirstView) name:@"LaunchFirstView" object:nil];
     LaunchView * launchView = [[LaunchView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    launchView.alpha = 0;
     UIViewController * vc = [[UIViewController alloc] init];
     vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [vc.view addSubview:launchView];
     self.window.rootViewController = vc;
+    [UIView animateWithDuration:0.2 animations:^{
+        launchView.alpha = 1;
+    }];
     
 }
 
@@ -233,6 +237,11 @@
 //          nil]];
     }
     self.window.rootViewController = self.slideNaviController;
+    self.slideNaviController.view.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.slideNaviController.view.alpha = 1;
+    }];
+   
    
 
 }
@@ -247,6 +256,11 @@
     vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [vc.view addSubview:intro];
     self.window.rootViewController = vc;
+    vc.view.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^{
+        vc.view.alpha = 1;
+    }];
+    
 }
 
 - (SNTabViewController*)createTabBarController
