@@ -52,7 +52,7 @@
         
         textFieldBack = [[UIImageView alloc] initWithFrame:CGRectMake(textFieldBgOriginX, textFieldBgOriginY, textFieldBgWidth, textFieldBgHeight)];
         textFieldBack.image = [[UIImage imageNamed:@"comlaintip_background"] stretchableImageByCenter];
-        textFieldBack.backgroundColor = kDarkGreenColor;//UIColorFromRGB(90, 125, 220);
+        textFieldBack.backgroundColor = [UIColor whiteColor];//UIColorFromRGB(90, 125, 220);
         textFieldBack.userInteractionEnabled = YES;
         [self addSubview:textFieldBack];
         
@@ -68,7 +68,7 @@
         [[UITextField appearance] setTintColor:UIColorFromHex(0x84d2fa)];
 //        _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.returnKeyType = UIReturnKeySearch;
-        _textField.textColor = [UIColor whiteColor];
+//        _textField.textColor = [UIColor whiteColor];
         [_textField addTarget:self action:@selector(searchFieldEditChange:) forControlEvents:UIControlEventEditingChanged];
         _textField.delegate = self;
         [textFieldBack addSubview:_textField];

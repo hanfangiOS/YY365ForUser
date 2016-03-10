@@ -27,7 +27,7 @@
 - (void)initSubviews
 {
     UIImageView *bgImage = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    bgImage.image = [UIImage imageNamed:@"vip_bg"];
+    bgImage.image = [UIImage imageNamed:@"background"];
     [self.view addSubview:bgImage];
     [self.view sendSubviewToBack:bgImage];
     

@@ -162,31 +162,31 @@
     tipTableView.dataSource = self;
     [self.contentView addSubview:tipTableView];
     
-    float margin_left = 30.f;
-    float margin_bottom = 20.f;
+//    float margin_left = 30.f;
+//    float margin_bottom = 20.f;
+//    
+//    UIImage *registerImage = [UIImage imageNamed:@"home_register_button"];
     
-    UIImage *registerImage = [UIImage imageNamed:@"home_register_button"];
-    
-    _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _registerButton.frame = (CGRect){margin_left, self.contentView.frame.size.height-margin_bottom-registerImage.size.height, registerImage.size};
-    [_registerButton setImage:registerImage forState:UIControlStateNormal];
-    [_registerButton setImage:registerImage forState:UIControlStateHighlighted];
-    [_registerButton addTarget:self action:@selector(registerAction) forControlEvents:UIControlEventTouchUpInside];
+//    _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    _registerButton.frame = (CGRect){margin_left, self.contentView.frame.size.height-margin_bottom-registerImage.size.height, registerImage.size};
+//    [_registerButton setImage:registerImage forState:UIControlStateNormal];
+//    [_registerButton setImage:registerImage forState:UIControlStateHighlighted];
+//    [_registerButton addTarget:self action:@selector(registerAction) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:_registerButton];
-    
-    UIImage *loginImage = [UIImage imageNamed:@"home_login_button"];
-    
-    float repair_x = 5;
+//    
+//    UIImage *loginImage = [UIImage imageNamed:@"home_login_button"];
+//    
+//    float repair_x = 5;
 
-    _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _loginButton.frame = (CGRect){kScreenWidth-loginImage.size.width-margin_left, self.contentView.frame.size.height-margin_bottom-loginImage.size.height, loginImage.size};
-    [_loginButton setImage:loginImage forState:UIControlStateNormal];
-    [_loginButton setImage:loginImage forState:UIControlStateHighlighted];
-    [_loginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
+//    _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    _loginButton.frame = (CGRect){kScreenWidth-loginImage.size.width-margin_left, self.contentView.frame.size.height-margin_bottom-loginImage.size.height, loginImage.size};
+//    [_loginButton setImage:loginImage forState:UIControlStateNormal];
+//    [_loginButton setImage:loginImage forState:UIControlStateHighlighted];
+//    [_loginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:_loginButton];
     
     // KVO监听token值
-    [[CUUserManager sharedInstance].user addObserver:self forKeyPath:@"token" options:NSKeyValueObservingOptionNew context:NULL];
+//    [[CUUserManager sharedInstance].user addObserver:self forKeyPath:@"token" options:NSKeyValueObservingOptionNew context:NULL];
     
 //    testBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    testBtn.frame = (CGRect){50, 220, 80, 50};
@@ -196,19 +196,19 @@
 //    [self.contentView addSubview:testBtn];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:@"token"]) {
-        // token值改变时显示/隐藏注册和登录按钮
-        _registerButton.hidden = _loginButton.hidden = [[CUUserManager sharedInstance] isLogin];
-    }
-}
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+//{
+//    if ([keyPath isEqualToString:@"token"]) {
+//        // token值改变时显示/隐藏注册和登录按钮
+//        _registerButton.hidden = _loginButton.hidden = [[CUUserManager sharedInstance] isLogin];
+//    }
+//}
 
-- (void)dealloc
-{
-    // 解除KVO
-    [[CUUserManager sharedInstance].user removeObserver:self forKeyPath:@"token"];
-}
+//- (void)dealloc
+//{
+//    // 解除KVO
+//    [[CUUserManager sharedInstance].user removeObserver:self forKeyPath:@"token"];
+//}
 
 //临时创建搜索入口
 - (void)initSearchEntrance
@@ -222,15 +222,15 @@
 }
 
 //临时创建我的收藏
-- (void)initCollectionButton
-{
-    UIButton *searchbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchbutton.frame = (CGRect){200,100,100,80};
-    [searchbutton setTitle:@"我的收藏" forState:UIControlStateNormal];
-    searchbutton.backgroundColor = [UIColor redColor];
-    [searchbutton addTarget:self action:@selector(showMyCollection) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:searchbutton];
-}
+//- (void)initCollectionButton
+//{
+//    UIButton *searchbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    searchbutton.frame = (CGRect){200,100,100,80};
+//    [searchbutton setTitle:@"我的收藏" forState:UIControlStateNormal];
+//    searchbutton.backgroundColor = [UIColor redColor];
+//    [searchbutton addTarget:self action:@selector(showMyCollection) forControlEvents:UIControlEventTouchUpInside];
+//    [self.contentView addSubview:searchbutton];
+//}
 
 #pragma mark - Private Func
 
@@ -255,11 +255,11 @@
     [self.slideNavigationController pushViewController:listVC animated:YES];
 }
 
-- (void)showMyCollection
-{
-    CUUserCollectionController *usercollectionVC = [[CUUserCollectionController alloc] initWithHeight:kTopTabBarHeight];
-    [self.slideNavigationController pushViewController:usercollectionVC animated:YES];
-}
+//- (void)showMyCollection
+//{
+//    CUUserCollectionController *usercollectionVC = [[CUUserCollectionController alloc] initWithHeight:kTopTabBarHeight];
+//    [self.slideNavigationController pushViewController:usercollectionVC animated:YES];
+//}
 
 - (void)findDoctorAction
 {
@@ -267,29 +267,29 @@
     [self.slideNavigationController pushViewController:homesubVC animated:YES];
 }
 
-- (void)enterMyRecord
-{
-    if (![[CUUserManager sharedInstance] isLogin]) {
-        [self loginAction];
-        return;
-    }
-    
-    CUOrderListContainerController *orderListVC = [[CUOrderListContainerController alloc] initWithHeight:kTopTabBarHeight];
-    [self.slideNavigationController pushViewController:orderListVC animated:YES];
-}
+//- (void)enterMyRecord
+//{
+//    if (![[CUUserManager sharedInstance] isLogin]) {
+//        [self loginAction];
+//        return;
+//    }
+//    
+//    CUOrderListContainerController *orderListVC = [[CUOrderListContainerController alloc] initWithHeight:kTopTabBarHeight];
+//    [self.slideNavigationController pushViewController:orderListVC animated:YES];
+//}
 
-- (void)loginAction
-{
-    CULoginViewController *loginVC = [[CULoginViewController alloc] init];
-    loginVC.intervalY = 0;
-    [self.slideNavigationController pushViewController:loginVC animated:YES];
-}
-
-- (void)registerAction
-{
-    CURegisterController *registerVC = [[CURegisterController alloc] init];
-    [self.slideNavigationController pushViewController:registerVC animated:YES];
-}
+//- (void)loginAction
+//{
+//    CULoginViewController *loginVC = [[CULoginViewController alloc] init];
+//    loginVC.intervalY = 0;
+//    [self.slideNavigationController pushViewController:loginVC animated:YES];
+//}
+//
+//- (void)registerAction
+//{
+//    CURegisterController *registerVC = [[CURegisterController alloc] init];
+//    [self.slideNavigationController pushViewController:registerVC animated:YES];
+//}
 
 #pragma mark - tableViewDelegate
 

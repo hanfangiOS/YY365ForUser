@@ -223,6 +223,16 @@
 
 - (void)commitAction
 {
+    if (self.memberArray.count == 0) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"请添加约诊人" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    if (self.menuView.user == nil){
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"请选择约诊人" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
     [self commitOrder];
 }
 
