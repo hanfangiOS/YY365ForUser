@@ -89,13 +89,15 @@ static UIWindow *window = nil;
 #pragma mark
 
 - (void)initBtn{
-    
     _btn = [[UIButton alloc] init];
-    CGFloat width = 200;
-    CGFloat height = 50;
-    _btn.frame = CGRectMake(0.5 * (kScreenWidth - width), 0.79 * (kScreenHeight - height), width, height);
-    _btn.backgroundColor = [UIColor redColor];
-    
+    CGFloat width = CGRectGetWidth(self.bounds)*(375 - 76*2)/375.f;
+    CGFloat height = CGRectGetHeight(self.bounds)*48.f/667;
+    [_btn setTitle:@"开启轻松之旅" forState:UIControlStateNormal];
+    _btn.frame = CGRectMake(CGRectGetWidth(self.bounds)*76/375.f, CGRectGetHeight(self.bounds)*488/667.f, width, height);
+    _btn.layer.borderColor = [UIColor whiteColor].CGColor;
+    _btn.layer.borderWidth = 1.f;
+    _btn.layer.cornerRadius = 13.f;
+    [_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void)initIntroduceMainScrollView
@@ -148,7 +150,10 @@ static UIWindow *window = nil;
 
 - (void)initPageControl
 {
-    _introducePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame) - 48 - kTopMargin, CGRectGetWidth(self.bounds), kTopMargin)];
+//    _introducePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame) - 48 - kTopMargin, CGRectGetWidth(self.bounds), kTopMargin)];
+    _introducePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds) * (667 - 49)/667.f, CGRectGetWidth(self.bounds), 0)];
+    NSLog(@"CGRectGetHeight(self.bounds): %f",CGRectGetHeight(self.bounds));
+    NSLog(@"%f",kScreenHeight);
     _introducePageControl.userInteractionEnabled = NO;
     _introducePageControl.backgroundColor = [UIColor clearColor];
     _introducePageControl.numberOfPages = _introduceImageNames.count - 1;
