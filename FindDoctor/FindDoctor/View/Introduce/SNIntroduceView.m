@@ -152,8 +152,6 @@ static UIWindow *window = nil;
 {
 //    _introducePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame) - 48 - kTopMargin, CGRectGetWidth(self.bounds), kTopMargin)];
     _introducePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds) * (667 - 49)/667.f, CGRectGetWidth(self.bounds), 0)];
-    NSLog(@"CGRectGetHeight(self.bounds): %f",CGRectGetHeight(self.bounds));
-    NSLog(@"%f",kScreenHeight);
     _introducePageControl.userInteractionEnabled = NO;
     _introducePageControl.backgroundColor = [UIColor clearColor];
     _introducePageControl.numberOfPages = _introduceImageNames.count - 1;
