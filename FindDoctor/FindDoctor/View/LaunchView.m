@@ -23,7 +23,7 @@
         NSString * imagePath = [[NSBundle mainBundle] pathForResource:@"Launch" ofType:@"jpg"];
         _LaunchImageView.image = [UIImage imageWithContentsOfFile:imagePath];
         [self addSubview:_LaunchImageView];
-        _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(timeControl) userInfo:nil repeats:NO];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(timeControl) userInfo:nil repeats:NO];
         return self;
     }
     return nil;
@@ -32,7 +32,6 @@
 
 
 - (void)timeControl{
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"LaunchFirstView" object:self userInfo:nil];
     
 }

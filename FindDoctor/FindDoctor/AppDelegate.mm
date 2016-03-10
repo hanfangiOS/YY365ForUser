@@ -177,7 +177,7 @@
 }
 
 - (void)startLaunchView{
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(launchFirstView) name:@"LaunchFirstView" object:nil];
     LaunchView * launchView = [[LaunchView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     launchView.alpha = 0;
@@ -210,7 +210,6 @@
 - (void)afterFirstView{
     [[CUPlatFormManager sharedInstance] save];
     [self launchMainView];
-     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)launchMainView
@@ -238,7 +237,7 @@
     }
     self.window.rootViewController = self.slideNaviController;
     self.slideNaviController.view.alpha = 0;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.slideNaviController.view.alpha = 1;
     }];
    
@@ -257,7 +256,7 @@
     [vc.view addSubview:intro];
     self.window.rootViewController = vc;
     vc.view.alpha = 0;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         vc.view.alpha = 1;
     }];
     
