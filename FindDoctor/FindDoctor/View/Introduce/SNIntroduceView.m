@@ -98,6 +98,13 @@ static UIWindow *window = nil;
     _btn.layer.borderWidth = 1.f;
     _btn.layer.cornerRadius = 13.f;
     [_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _btn.userInteractionEnabled = YES;
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickBtn)];
+    [_btn addGestureRecognizer:tap];
+}
+
+- (void)clickBtn{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AfterFirstView" object:self userInfo:nil];
 }
 
 - (void)initIntroduceMainScrollView
@@ -143,7 +150,10 @@ static UIWindow *window = nil;
         introduceImageViewFrame.origin.y = i * height;
 #endif
         introduceImageView.frame = introduceImageViewFrame;
-        [introduceImageView addSubview:_btn];
+        if (i == count - 1) {
+            introduceImageView.userInteractionEnabled = YES;
+            [introduceImageView addSubview:_btn];
+        }
         [_introduceMainScrollView addSubview:introduceImageView];
     }
 }
