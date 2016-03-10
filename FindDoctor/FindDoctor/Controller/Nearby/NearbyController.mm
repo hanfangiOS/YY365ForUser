@@ -109,7 +109,7 @@
     [_mapView setCenterCoordinate:{[kCurrentLat floatValue], [kCurrentLng floatValue]} animated:YES];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    [self requestDataAtPage:0];
+    [self requestDataAtPage:0];
 }
 
 - (void)initButtonView
@@ -150,7 +150,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self requestDataAtPage:0];
+//    [self requestDataAtPage:0];
 }
 
 - (void)viewDidUnload {
