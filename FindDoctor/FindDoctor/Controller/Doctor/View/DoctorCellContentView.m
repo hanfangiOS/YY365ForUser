@@ -58,9 +58,9 @@
     CGFloat nameOriginX = CGRectGetMaxX(imageView.frame) + 20;
     CGFloat textWidth = kScreenWidth - tipImageView.frameWidth*0.2 - 7 * 2 - nameOriginX;
     
-    jianJieLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 50, textWidth,30)];
+    jianJieLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 45, textWidth,30)];
     jianJieLabel.backgroundColor = [UIColor clearColor];
-    jianJieLabel.font = [UIFont systemFontOfSize:10];
+    jianJieLabel.font = [UIFont systemFontOfSize:12];
 //    jianJieLabel.textAlignment = NSTextAlignmentCenter;
     jianJieLabel.textColor = kDarkGrayColor;
     jianJieLabel.numberOfLines = 2;
@@ -68,7 +68,7 @@
     
     shanChangLabel = [[UILabel alloc] initWithFrame:CGRectMake(90,80, textWidth, 30)];
     shanChangLabel.backgroundColor = [UIColor clearColor];
-    shanChangLabel.font = [UIFont systemFontOfSize:10];
+    shanChangLabel.font = [UIFont systemFontOfSize:12];
 //    shanChangLabel.textAlignment = NSTextAlignmentCenter;
     shanChangLabel.textColor = kDarkGrayColor;
     shanChangLabel.numberOfLines = 2;
@@ -82,25 +82,25 @@
     
     label2 = [[UILabel alloc] initWithFrame:CGRectMake(90,CGRectGetMaxY(label1.frame)+12, textWidth, 14)];
     label2.backgroundColor = [UIColor clearColor];
-    label2.font = [UIFont systemFontOfSize:10];
+    label2.font = [UIFont systemFontOfSize:12];
     label2.textColor = kDarkGrayColor;
     [self addSubview:label2];
     
     label3 = [[UILabel alloc] initWithFrame:CGRectMake(90,CGRectGetMaxY(label2.frame)+10, textWidth, 14)];
     label3.backgroundColor = [UIColor clearColor];
-    label3.font = [UIFont systemFontOfSize:10];
+    label3.font = [UIFont systemFontOfSize:12];
     label3.textColor = kDarkGrayColor;
     [self addSubview:label3];
     
     label4 = [[UILabel alloc] initWithFrame:CGRectMake(90,CGRectGetMaxY(label3.frame)+10, textWidth, 14)];
     label4.backgroundColor = [UIColor clearColor];
-    label4.font = [UIFont systemFontOfSize:14];
+    label4.font = [UIFont systemFontOfSize:12];
     label4.textColor = kYellowColor;
     [self addSubview:label4];
     
     label5 = [[UILabel alloc] initWithFrame:CGRectMake(90,CGRectGetMaxY(label4.frame)+10, textWidth, 14)];
     label5.backgroundColor = [UIColor clearColor];
-    label5.font = [UIFont systemFontOfSize:14];
+    label5.font = [UIFont systemFontOfSize:12];
     label5.textColor = kDarkGrayColor;
     [self addSubview:label5];
     
@@ -151,7 +151,7 @@
         
         str = [NSString stringWithFormat:@"诊金: ￥%.2f",self.data.price/100.f];
         atrStr = [[NSMutableAttributedString alloc]initWithString:str];
-        [atrStr addAttributes:@{NSFontAttributeName:SystemFont_10,NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"诊金: "]];
+        [atrStr addAttributes:@{NSFontAttributeName:SystemFont_12,NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"诊金: "]];
         label4.attributedText = atrStr;
 
     }
