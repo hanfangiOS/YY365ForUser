@@ -208,6 +208,10 @@
 		BC1859CC1C8440060050251B /* MyDiagnosisRecordsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1859C61C8440060050251B /* MyDiagnosisRecordsDetailViewController.m */; };
 		BC1859CD1C8440060050251B /* MyDiagnosisRecordsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1859C81C8440060050251B /* MyDiagnosisRecordsListModel.m */; };
 		BC1859CE1C8440060050251B /* MyDiagnosisRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1859CA1C8440060050251B /* MyDiagnosisRecordsViewController.m */; };
+		BC190E841C9257F7007BA6A8 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = BC190E801C9257F7007BA6A8 /* Icon-76.png */; };
+		BC190E851C9257F7007BA6A8 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = BC190E811C9257F7007BA6A8 /* Icon-120.png */; };
+		BC190E861C9257F7007BA6A8 /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = BC190E821C9257F7007BA6A8 /* Icon-152.png */; };
+		BC190E871C9257F7007BA6A8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC190E831C9257F7007BA6A8 /* Icon@2x.png */; };
 		BC313D211C3A143C00C9469D /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC313D201C3A143C00C9469D /* UserViewController.m */; };
 		BC313D271C3A147500C9469D /* BigButtonsInUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC313D241C3A147500C9469D /* BigButtonsInUser.m */; };
 		BC313D281C3A147500C9469D /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC313D261C3A147500C9469D /* UserHeaderView.m */; };
@@ -915,6 +919,10 @@
 		BC1859C81C8440060050251B /* MyDiagnosisRecordsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisRecordsListModel.m; sourceTree = "<group>"; };
 		BC1859C91C8440060050251B /* MyDiagnosisRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiagnosisRecordsViewController.h; sourceTree = "<group>"; };
 		BC1859CA1C8440060050251B /* MyDiagnosisRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisRecordsViewController.m; sourceTree = "<group>"; };
+		BC190E801C9257F7007BA6A8 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		BC190E811C9257F7007BA6A8 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		BC190E821C9257F7007BA6A8 /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = "<group>"; };
+		BC190E831C9257F7007BA6A8 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		BC313D1F1C3A143C00C9469D /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserViewController.h; path = User/UserViewController.h; sourceTree = "<group>"; };
 		BC313D201C3A143C00C9469D /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserViewController.m; path = User/UserViewController.m; sourceTree = "<group>"; };
 		BC313D231C3A147500C9469D /* BigButtonsInUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigButtonsInUser.h; sourceTree = "<group>"; };
@@ -1873,7 +1881,7 @@
 			isa = PBXGroup;
 			children = (
 				BC0E84E51C7C66C200082AA9 /* libstdc++.6.0.9.tbd */,
-				E1EB1B831B70A43A0048B8EB /* FindDoctor */,
+				E1EB1B831B70A43A0048B8EB /* uyi365ForPationt */,
 				3ED8566B1A9379B700516900 /* SNArchitecture */,
 				3EDEBAE01A9620C400E72809 /* FrameWork */,
 				3ED8563F1A9376D400516900 /* Products */,
@@ -2381,6 +2389,10 @@
 		7F2B65631C90245B007C2860 /* Launch */ = {
 			isa = PBXGroup;
 			children = (
+				BC190E801C9257F7007BA6A8 /* Icon-76.png */,
+				BC190E811C9257F7007BA6A8 /* Icon-120.png */,
+				BC190E821C9257F7007BA6A8 /* Icon-152.png */,
+				BC190E831C9257F7007BA6A8 /* Icon@2x.png */,
 				7F2B65641C90245B007C2860 /* Launch.jpg */,
 			);
 			path = Launch;
@@ -3185,7 +3197,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E1EB1B831B70A43A0048B8EB /* FindDoctor */ = {
+		E1EB1B831B70A43A0048B8EB /* uyi365ForPationt */ = {
 			isa = PBXGroup;
 			children = (
 				E1EB1B921B70A43A0048B8EB /* Core */,
@@ -3202,6 +3214,7 @@
 				E1EB1ED81B70A5630048B8EB /* SupportFiles */,
 				E1EB1BA21B70A43A0048B8EB /* Images */,
 			);
+			name = uyi365ForPationt;
 			path = FindDoctor;
 			sourceTree = "<group>";
 		};
@@ -3990,7 +4003,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3ED856391A9376D400516900 /* Build configuration list for PBXProject "FindDoctor" */;
+			buildConfigurationList = 3ED856391A9376D400516900 /* Build configuration list for PBXProject "uyi365ForPationt" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -4016,6 +4029,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1EB1E461B70A43B0048B8EB /* UMSCommentInputController.xib in Resources */,
+				BC190E871C9257F7007BA6A8 /* Icon@2x.png in Resources */,
 				E1EB1DD41B70A43B0048B8EB /* navbar_close_button@2x.png in Resources */,
 				E124D7AE1B92ECA80007B85E /* login_icon_code@2x.png in Resources */,
 				BC0E84DB1C7C46DB00082AA9 /* PassGuardCtrlBundle.bundle in Resources */,
@@ -4050,6 +4064,7 @@
 				E6D6B1971BC5451A00B695F7 /* praise_zan_sign@2x.png in Resources */,
 				3ED1711E1AAF0A9A00E5B630 /* TipView.xib in Resources */,
 				E10EDCDE1B8CB3430035B6E7 /* image_btn_add_nor@2x.png in Resources */,
+				BC190E841C9257F7007BA6A8 /* Icon-76.png in Resources */,
 				E6D0F5471B8F6AD200E57628 /* praise_grade_highlighted@2x.png in Resources */,
 				BC3C8A991C435FBC00B8E76A /* guanzhu@2x.png in Resources */,
 				E1EB1E541B70A43B0048B8EB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -4125,6 +4140,7 @@
 				E12063281BC6D435004920BA /* vip_card_gold@2x.png in Resources */,
 				E10EDD041B8E14400035B6E7 /* order_icon_uncheck@2x.png in Resources */,
 				BC0E84D71C7C46DB00082AA9 /* AlipaySDK.bundle in Resources */,
+				BC190E861C9257F7007BA6A8 /* Icon-152.png in Resources */,
 				E1ABA7291BC5809500D209C7 /* tabbar_vip_sel@2x.png in Resources */,
 				E10EDCD21B8CA2140035B6E7 /* btn_green_sel@2x.png in Resources */,
 				3ED1711A1AAF0A9A00E5B630 /* LongTextTipView.xib in Resources */,
@@ -4174,6 +4190,7 @@
 				3EDF9E181AAAD0F400F85C44 /* SNRefreshControl.strings in Resources */,
 				E6D4548C1B93594400F3C3D0 /* praise_flag_pic@2x.png in Resources */,
 				E1EB1DD81B70A43B0048B8EB /* navigationbar_search_icon_search@2x.png in Resources */,
+				BC190E851C9257F7007BA6A8 /* Icon-120.png in Resources */,
 				3E239E731AB33BC1001F0B3F /* checkmark_fail@2x.png in Resources */,
 				3E239E751AB33BCB001F0B3F /* checkmark_success@2x.png in Resources */,
 				BC540E131C43525F002E3B41 /* myRecordBigButtonImage@2x.png in Resources */,
@@ -4790,7 +4807,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3ED856391A9376D400516900 /* Build configuration list for PBXProject "FindDoctor" */ = {
+		3ED856391A9376D400516900 /* Build configuration list for PBXProject "uyi365ForPationt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3ED856621A9376D500516900 /* Debug */,

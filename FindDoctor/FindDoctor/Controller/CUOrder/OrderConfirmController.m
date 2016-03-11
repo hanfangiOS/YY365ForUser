@@ -41,8 +41,8 @@
 #define kMaxAmount        9999999
 
 #define kUrlScheme      @"wx584ad6cae2973f02" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
-//#define kUrlScheme      @"wx7dc59ebba72e1c2d" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
-#define kUrl            @"http://www.uyi365.com/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址，此地址仅供测试用。
+#define kUrl            @"http://www.uyi365.com/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址
+//#define kUrl            @"http://101.204.31.191/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址
 
 @interface OrderConfirmController (){
     UIAlertView* mAlert;
@@ -433,6 +433,8 @@
     [dataParam setObjectSafely:[NSString stringWithFormat:@"iOS端timestamp%ld",(NSInteger)[NSDate timeIntervalSince1970]] forKey:@"body"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
     
 //    NSDictionary* dict =
 //    NSData* data = [NSJSONSerialization dataWithJSONObject:param options:NSJSONWritingPrettyPrinted error:nil];

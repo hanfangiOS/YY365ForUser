@@ -141,19 +141,26 @@
         __weak __block AddFamilyMemberViewController *blockSelf = self;
         [[CUUserManager sharedInstance] AddDiagnosisMemberWithDiagnosisID:self.diagnosisID name:nameView.contentTextField.text sex:sexChooseView.sex age:[ageView.contentTextField.text integerValue] phone:[phoneView.contentTextField.text longLongValue] resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
             if (!result.hasError) {
-                if (self.backBlock) {
-                    NSInteger userId = [[[result.responseObject valueForKey:@"data"] valueForKey:@"accID"] integerValue];
-                    CUUser *user = [[CUUser alloc]init];
-                    user.name = [NSString stringWithFormat:@"%@", blockSelf.nameView.contentTextField.text];
-                    user.gender = blockSelf.sexChooseView.sex;
-                    user.age   = [blockSelf.ageView.contentTextField.text integerValue];
-                    user.userId = userId;
-                    user.cellPhone = blockSelf.phoneView.contentTextField.text;
-
-                    self.backBlock(user);
-                }
-                [super backAction];
-            }
+                if (blockSelf.backBlock) {
+                    NSInteger err_code = [[result.responseObject valueForKey:@"errorCode"]integerValue];
+                    if (err_code == 0) {
+                        NSInteger userId = [[[result.responseObject valueForKey:@"data"] valueForKey:@"accID"] integerValue];
+                        CUUser *user = [[CUUser alloc]init];
+                        user.name = [NSString stringWithFormat:@"%@", blockSelf.nameView.contentTextField.text];
+                        user.gender = blockSelf.sexChooseView.sex;
+                        user.age   = [blockSelf.ageView.contentTextField.text integerValue];
+                        user.userId = userId;
+                        user.cellPhone = blockSelf.phoneView.contentTextField.text;
+                        
+                        blockSelf.backBlock(user);
+                        [blockSelf backAction];
+                    }
+                    else {
+                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"添加失败" message:@"请输入正确的手机号" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                        [alert show];
+                    }//errorCode
+                }//backBlock
+            }//!result.hasError
         } pageName:@"AddFamilyMemberViewController"];
     }
 }
