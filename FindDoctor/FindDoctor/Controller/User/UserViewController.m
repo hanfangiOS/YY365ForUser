@@ -26,8 +26,9 @@
 
 #import "MyAccountMainViewController.h"
 
-@interface UserViewController ()<UIAlertViewDelegate>{
+@interface UserViewController ()<UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>{
     UserHeaderView *userHeaderView;
+    UITableView * _tableView;
 }
 
 @property (nonatomic, strong) LoginViewController *loginVC;
@@ -68,26 +69,44 @@
     userHeaderView = [[UserHeaderView alloc]initWithFrame:CGRectMake(0, 9, kScreenWidth, 95)];
     [_contentScrollView addSubview:userHeaderView];
     
-    BigButtonsInUser *myDoctorButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(userHeaderView.frame) + 23, kScreenWidth/2 - 0.5, kScreenWidth/2 - 0.5)  image:[UIImage imageNamed:@"myDoctorBigButtonImage"] title:@"我的医生"];
-    [myDoctorButton addTarget:self action:@selector(myDoctorAction) forControlEvents:UIControlEventTouchUpInside  ];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(userHeaderView.frame) + 23, kScreenWidth, 63 * 6) style:UITableViewStylePlain];
+    [_contentScrollView addSubview:_tableView];
+    _tableView.tableFooterView = [UIView new];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+//    //间隙
+//    CGFloat gap = 1;
+//    //按钮边长
+//    CGFloat SideLength = (kScreenWidth - gap)/3 ;
+//  
+//    
+//    BigButtonsInUser * myDoctorButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(userHeaderView.frame) + 23, SideLength, SideLength)  image:[UIImage imageNamed:@"myDoctorBigButtonImage"] title:@"我的医生"];
+//    [myDoctorButton addTarget:self action:@selector(myDoctorAction) forControlEvents:UIControlEventTouchUpInside  ];
+//    
+//    BigButtonsInUser * myCollectionButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(SideLength + gap, CGRectGetMaxY(userHeaderView.frame) + 23, SideLength, SideLength) image:[UIImage imageNamed:@"myCollectionBigButtonImage"] title:@"我的诊所"];
+//    [myCollectionButton addTarget:self action:@selector(myCollectionAction) forControlEvents:UIControlEventTouchUpInside  ];
+//    
+//    BigButtonsInUser * zhenLiaoButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake((SideLength + gap) * 2, CGRectGetMaxY(userHeaderView.frame) + 23, SideLength, SideLength)  image:[UIImage imageNamed:@"myRecordBigButtonImage"] title:@"就诊记录"];
+//    [zhenLiaoButton addTarget:self action:@selector(zhenLiaoRecordAction) forControlEvents:UIControlEventTouchUpInside  ];
+//    
+//    BigButtonsInUser * myAccoutButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(myDoctorButton.frame) + 1, SideLength, SideLength)  image:[UIImage imageNamed:@"myAccountBigButtonImage"] title:@"我的账户"];
+//    [myAccoutButton addTarget:self action:@selector(myAccountAction) forControlEvents:UIControlEventTouchUpInside  ];
+//    
+//    BigButtonsInUser * myCommentBtn = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(SideLength + gap, CGRectGetMaxY(myCollectionButton.frame) + 1, SideLength, SideLength)  image:[UIImage imageNamed:@"myAccountBigButtonImage"] title:@"我的点评"];
+//    [myCommentBtn addTarget:self action:@selector(myCommentAction) forControlEvents:UIControlEventTouchUpInside  ];
+//    
+//    BigButtonsInUser * myIntegralBtn = [[BigButtonsInUser alloc]initWithFrame:CGRectMake((SideLength + gap) * 2, CGRectGetMaxY(zhenLiaoButton.frame) + 1, SideLength, SideLength)  image:[UIImage imageNamed:@"myAccountBigButtonImage"] title:@"我的积分"];
+//    [myIntegralBtn addTarget:self action:@selector(myIntegralAction) forControlEvents:UIControlEventTouchUpInside  ];
+//    
+//    [_contentScrollView addSubview:myDoctorButton];
+//    [_contentScrollView addSubview:myCollectionButton];
+//    [_contentScrollView addSubview:zhenLiaoButton];
+//    [_contentScrollView addSubview:myAccoutButton];
+//    [_contentScrollView addSubview:myCommentBtn];
+//    [_contentScrollView addSubview:myIntegralBtn];
     
-    BigButtonsInUser *myCollectionButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(kScreenWidth/2+0.5, CGRectGetMaxY(userHeaderView.frame) + 23, kScreenWidth/2 - 0.5, kScreenWidth /2- 0.5)  image:[UIImage imageNamed:@"myCollectionBigButtonImage"] title:@"我的诊所"];
-    [myCollectionButton addTarget:self action:@selector(myCollectionAction) forControlEvents:UIControlEventTouchUpInside  ];
     
-    BigButtonsInUser *zhenLiaoButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(myDoctorButton.frame) + 1, kScreenWidth/2 - 0.5, kScreenWidth/2 - 0.5)  image:[UIImage imageNamed:@"myRecordBigButtonImage"] title:@"就诊记录"];
-    [zhenLiaoButton addTarget:self action:@selector(zhenLiaoRecordAction) forControlEvents:UIControlEventTouchUpInside  ];
-    
-    BigButtonsInUser *myAccoutButton = [[BigButtonsInUser alloc]initWithFrame:CGRectMake(kScreenWidth/2+0.5, CGRectGetMaxY(myDoctorButton.frame) + 1, kScreenWidth/2 - 0.5, kScreenWidth/2 - 0.5)  image:[UIImage imageNamed:@"myAccountBigButtonImage"] title:@"我的账户"];
-    [myAccoutButton addTarget:self action:@selector(myAccountAction) forControlEvents:UIControlEventTouchUpInside  ];
-    
-    [_contentScrollView addSubview:myDoctorButton];
-    [_contentScrollView addSubview:myCollectionButton];
-    [_contentScrollView addSubview:zhenLiaoButton];
-    [_contentScrollView addSubview:myAccoutButton];
-    
-    
-    
-    UIButton *resignButton = [[UIButton alloc]initWithFrame:CGRectMake(26, CGRectGetMaxY(myAccoutButton.frame)+24, kScreenWidth-52, 40)];
+    UIButton *resignButton = [[UIButton alloc]initWithFrame:CGRectMake(26, CGRectGetMaxY(_tableView.frame)+24, kScreenWidth-52, 40)];
     resignButton.layer.cornerRadius = 20;
     resignButton.clipsToBounds = YES;
     resignButton.layer.backgroundColor = UIColorFromHex(0xe15f31).CGColor;
@@ -97,6 +116,108 @@
     [_contentScrollView addSubview:resignButton];
     [_contentScrollView setContentSize:CGSizeMake(kScreenWidth,CGRectGetMaxY(resignButton.frame) + 15)];
 }
+
+#pragma mark - TableView代理方法
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 6;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 63;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString * CellID = [NSString stringWithFormat:@"Cell%ld",(NSInteger)indexPath.row];
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
+    switch (indexPath.row) {
+        case 0:{
+            cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+            CGRect frame = cell.imageView.frame;
+            cell.imageView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width * 0.1, frame.size.height * 0.1);
+            cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            cell.textLabel.text = @"我的医生";
+            break;
+        }
+        case 1:{
+            cell.imageView.image = [UIImage imageNamed:@"myCollectionBigButtonImage"];
+            cell.textLabel.text = @"我的诊所";
+            break;
+        }
+        case 2:{
+            cell.imageView.image = [UIImage imageNamed:@"myRecordBigButtonImage"];
+            cell.textLabel.text = @"就诊记录";
+            break;
+        }
+        case 3:{
+            cell.imageView.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+            cell.textLabel.text = @"我的账户";
+            break;
+        }
+        case 4:{
+            cell.imageView.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+            cell.textLabel.text = @"我的点评";
+            break;
+        }
+        case 5:{
+            cell.imageView.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+            cell.textLabel.text = @"我的积分";
+            break;
+        }
+        default:{
+            NSLog(@"参数错了吧");
+             break;
+        }
+    }
+    return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    switch (indexPath.row) {
+        case 0:
+            break;
+        case 1:{
+            break;
+        }
+            //约诊记录
+        case 2:{
+            break;
+        }
+            //诊疗记录
+        case 3:{
+            break;
+        }
+            //我的账户
+        {
+            break;
+        }
+        case 4 :
+        {
+            break;
+        }
+        case 5:{
+            break;
+        }
+        default:{
+            NSLog(@"参数错误");
+
+            break;
+        }
+    }
+    
+    
+}
+
+
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     
@@ -143,6 +264,15 @@
 - (void)myAccountAction{
     MyAccountMainViewController   *myAccountVC = [[MyAccountMainViewController alloc]initWithPageName:@"MyAccountMainViewController"];
     [self.slideNavigationController pushViewController:myAccountVC animated:YES];
+}
+
+- (void)myCommentAction{
+    MyAccountMainViewController   *myAccountVC = [[MyAccountMainViewController alloc]initWithPageName:@"MyAccountMainViewController"];
+    [self.slideNavigationController pushViewController:myAccountVC animated:YES];
+}
+
+- (void)myIntegralAction{
+  
 }
 
 - (void)loginAction

@@ -51,6 +51,7 @@
 - (void)loadNavigationBar
 {
     [self addLeftBackButtonItemWithImage];
+    [self addRightButtonItemWithTitle:@"设置" target:self action:@selector(settings)];
 }
 
 - (void)initSubviews
