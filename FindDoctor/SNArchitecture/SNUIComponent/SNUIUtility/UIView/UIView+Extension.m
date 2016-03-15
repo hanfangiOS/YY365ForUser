@@ -43,6 +43,24 @@
     self.frame = CGRectMake(self.frame.origin.x, newY, self.frame.size.width, self.frame.size.height);
 }
 
+- (CGFloat)maxY {
+    return CGRectGetMaxY(self.frame);
+}
+
+- (CGFloat)maxX {
+    return CGRectGetMaxX(self.frame);
+}
+
+- (void)setMaxY :(CGFloat)newY  {
+    CGRect frame = self.frame;
+    self.frame = CGRectMake(frame.origin.x, newY - frame.size.height, frame.size.width, frame.size.height);
+}
+
+- (void)setMaxX :(CGFloat)newX  {
+    CGRect frame = self.frame;
+    self.frame = CGRectMake(newX - frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+}
+
 - (CGFloat)frameWidth {
     return self.frame.size.width;
 }

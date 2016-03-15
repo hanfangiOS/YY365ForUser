@@ -26,6 +26,9 @@
 
 #import "MyAccountMainViewController.h"
 
+#import "MyCommentViewController.h"
+#import "MyCommentListModel.h"
+
 @interface UserViewController ()<UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>{
     UserHeaderView *userHeaderView;
     UITableView * _tableView;
@@ -74,6 +77,7 @@
     _tableView.tableFooterView = [UIView new];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.scrollEnabled = NO;
 //    //间隙
 //    CGFloat gap = 1;
 //    //按钮边长
@@ -137,6 +141,7 @@
 {
     NSString * CellID = [NSString stringWithFormat:@"Cell%ld",(NSInteger)indexPath.row];
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     switch (indexPath.row) {
         case 0:{
             cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
@@ -181,29 +186,44 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
-        case 0:
+            //我的医生
+        case 0:{
+            MyDoctorListModel *listModel = [[MyDoctorListModel alloc]initWithSortType:1];
+            MyDoctorListViewController *myDoctorVC = [[MyDoctorListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+            [self.slideNavigationController  pushViewController:myDoctorVC animated:YES];
             break;
+        }
+            //我的诊所
         case 1:{
+            MyClinicListModel *listModel = [[MyClinicListModel alloc]initWithSortType:1];
+            MyClinicListViewController *myClinicVC = [[MyClinicListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+            [self.slideNavigationController  pushViewController:myClinicVC animated:YES];
             break;
         }
-            //约诊记录
+            //就诊记录
         case 2:{
-            break;
-        }
-            //诊疗记录
-        case 3:{
+            MyDiagnosisRecordsListModel *listModel = [[MyDiagnosisRecordsListModel alloc]initWithSortType:1];
+            MyDiagnosisRecordsViewController *myDiagnosisRecordsVC = [[MyDiagnosisRecordsViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+            [self.slideNavigationController  pushViewController:myDiagnosisRecordsVC animated:YES];
             break;
         }
             //我的账户
-        {
+        case 3:{
+            MyAccountMainViewController   *myAccountVC = [[MyAccountMainViewController alloc]initWithPageName:@"MyAccountMainViewController"];
+            [self.slideNavigationController pushViewController:myAccountVC animated:YES];
             break;
         }
+            //我的点评
         case 4 :
         {
+            MyCommentListModel * listModel = [[MyCommentListModel alloc] init];
+            MyCommentViewController * VC = [[MyCommentViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+            [self.slideNavigationController  pushViewController:VC animated:YES];
             break;
         }
+            //我的积分
         case 5:{
             break;
         }
@@ -266,14 +286,13 @@
     [self.slideNavigationController pushViewController:myAccountVC animated:YES];
 }
 
-- (void)myCommentAction{
-    MyAccountMainViewController   *myAccountVC = [[MyAccountMainViewController alloc]initWithPageName:@"MyAccountMainViewController"];
-    [self.slideNavigationController pushViewController:myAccountVC animated:YES];
-}
-
-- (void)myIntegralAction{
-  
-}
+//- (void)myCommentAction{
+//
+//}
+//
+//- (void)myIntegralAction{
+//  
+//}
 
 - (void)loginAction
 {
