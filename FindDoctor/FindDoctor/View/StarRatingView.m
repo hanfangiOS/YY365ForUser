@@ -72,6 +72,7 @@
     {
         UIButton *imageView = [UIButton buttonWithType:UIButtonTypeCustom];
         imageView.frame = CGRectMake(i * (imageWidth + imageSpace), 0, imageWidth, frame.size.height);
+        imageView.frame = CGRectMake(i * (imageWidth + imageSpace), 0, imageWidth, imageWidth);
         imageView.tag = i + 1;
         imageView.adjustsImageWhenHighlighted = NO;
         imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;

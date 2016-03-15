@@ -20,7 +20,6 @@
 {
     UIImageView     *imageView;
     UILabel         *nameLabel;
-    UILabel         *doctorTitleLabel;
     
     UIButton        *guanzhuButton;
     
@@ -38,7 +37,8 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.backgroundColor = kLightBlueColor;
+//        self.backgroundColor = kLightBlueColor;
+        self.backgroundColor = [UIColor whiteColor];
         
         [self initSubviews];
     }
@@ -64,16 +64,12 @@
     
     imageView.layer.cornerRadius = imageWidth / 2;
     
-    nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 30, CGRectGetMinY(imageView.frame)+5, 100  , 16)];
-    nameLabel.font = [UIFont systemFontOfSize:16];
-    nameLabel.textColor = UIColorFromHex(Color_Hex_Text_Normal);
+    nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 30, CGRectGetMinY(imageView.frame)+5, 1  , 16)];
+    nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.font = [UIFont systemFontOfSize:12];
+    nameLabel.textColor = kDarkGrayColor;
 
     [self addSubview:nameLabel];
-    
-    doctorTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 30, CGRectGetMinY(imageView.frame) + 45-14, 100, 14)];
-    doctorTitleLabel.font = [UIFont systemFontOfSize:14];
-    doctorTitleLabel.textColor = UIColorFromHex(Color_Hex_Text_gray);
-    [self addSubview:doctorTitleLabel];
     
     UIImage *guanzhuImage = [UIImage imageNamed:@"guanzhu"];
     guanzhuButton = [[UIButton alloc]initWithFrame:CGRectMake([self frameWidth]-guanzhuImage.size.width, 0, guanzhuImage.size.width, guanzhuImage.size.height)];
@@ -90,10 +86,10 @@
     haoPingNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding + (kScreenWidth - padding * 2)/3.f*2, CGRectGetMaxY(imageView.frame) + 10, 150, 12) title:@"好评率" contents:[NSString stringWithFormat:@"%d%",_data.goodRemark] unit:@"" hasDot:YES];
     [self addSubview:haoPingNumberLabel];
     
-//    rateView = [[StarRatingView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame) + padding - 5, 60, 14) type:StarTypeSmall starSpace:1];
-//    rateView.editable = NO;
+    rateView = [[StarRatingView alloc] initWithFrame:CGRectMake(nameLabel.frameX, CGRectGetMaxY(nameLabel.frame) + 10,50, 14) type:StarTypeLarge starSpace:0];
+    rateView.editable = NO;
 //    rateView.centerX = imageView.centerX;
-//    [self addSubview:rateView];
+    [self addSubview:rateView];
     
     introLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, CGRectGetMaxY(zhenLiaoNumberLabel.frame) + 10, (kScreenWidth - 2*padding), 105)];
     introLabel.font = [UIFont systemFontOfSize:12];
@@ -171,11 +167,15 @@
     _data = data;
     
     [imageView setImageWithURL:[NSURL URLWithString:self.data.avatar] placeholderImage:nil];
-    nameLabel.text = _data.name;
-    doctorTitleLabel.text = _data.levelDesc;
     
-    rateView.rate = self.data.rate;
+    NSString *str = [NSString stringWithFormat:@"%@      %@",self.data.name,self.data.levelDesc];
+    NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc]initWithString:str];
+    [atrStr addAttributes:@{NSFontAttributeName:SystemFont_14,NSForegroundColorAttributeName:kBlackColor} range:[str rangeOfString:self.data.name]];
+    nameLabel.attributedText = atrStr;
+    [nameLabel sizeToFit];
     
+//    rateView.rate = self.data.rate;
+        rateView.rate = 3.9;
     NSString *desc = self.data.briefIntro;
     
     [zhenLiaoNumberLabel resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%d",_data.numDiag] unit:@"次"];
