@@ -12,10 +12,19 @@
 
 @end
 
-@implementation flagListInfo
+@implementation FlagListInfo
+
+@end
+
+@implementation RemarkListInfo
 
 @end
 
 @implementation MyCommentFilter
 
 @end
+
+@implementation DoctorFameFilter
+
+@end
+

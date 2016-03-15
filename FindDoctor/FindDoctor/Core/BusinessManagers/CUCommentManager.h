@@ -14,6 +14,10 @@
 
 SINGLETON_DECLARE(CUCommentManager);
 
+//11903用户空间-我的点评
 - (void)getMyCommentList:(MyCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//11905医生口碑接口
+- (void)getDoctorFameList:(DoctorFameFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 @end

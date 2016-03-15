@@ -10,7 +10,7 @@
 
 @interface Comment : NSObject
 
-@property (assign,nonatomic) NSInteger            scoreForUserOnece;//返回的点评积分（单次返回给用户的积分）
+@property (assign,nonatomic) NSInteger            score;//返回的点评积分（单次积分）
 //---------------------------------------------------------------------------------//
 @property (assign,nonatomic) NSInteger            diagnosisTime;//就诊时间
 @property (strong,nonatomic) NSString           * doctorIcon;//医生头像
@@ -19,23 +19,41 @@
 @property (strong,nonatomic) NSString           * content;//点评内容
 @property (strong,nonatomic) NSString           * flagName;//锦旗名称
 @property (assign,nonatomic) NSInteger            numStar;//点评星级
-@property (assign,nonatomic) NSInteger            scoreForDoctor;//医生总分
+@property (assign,nonatomic) NSInteger            totalScore;//总分
 @property (assign,nonatomic) NSInteger            time;//点评时间
 //---------------------------------------------------------------------------------//
 @property (strong,nonatomic) NSString           * clinicAddress;//诊所地址
 @property (strong,nonatomic) NSString           * clinicName;//诊所名
 @property (strong,nonatomic) NSMutableArray     * flagList;//锦旗数据列表
+//---------------------------------------------------------------------------------//
+@property (assign,nonatomic) NSInteger            averageStar;//星级  医生
+@property (strong,nonatomic) NSMutableArray     * remarkList;//锦旗数据列表
+@property (assign,nonatomic) NSInteger            totalConern;//总关注度
+@property (assign,nonatomic) NSInteger            totalDiagnosis;//总诊疗次数
 
 @end
 
 //锦旗数据列表
-@interface flagListInfo : NSObject
+@interface FlagListInfo : NSObject
 
 @property (strong,nonatomic) NSString           * ID;//锦旗ID
 @property (strong,nonatomic) NSString           * icon;//锦旗图标
 @property (assign,nonatomic) NSInteger            money;//锦旗给的钱
 @property (strong,nonatomic) NSString           * name;//锦旗名
 @property (assign,nonatomic) NSInteger            scoreForDoctorOnece;//（本次锦旗返回给医生的积分）
+//---------------------------------------------------------------------------------//
+@property (assign,nonatomic) NSInteger            num;
+
+@end
+
+//评论数据列表
+@interface RemarkListInfo : NSObject
+
+@property (strong,nonatomic) NSString           * content;//评论内容
+@property (strong,nonatomic) NSString           * flagName;//锦旗名
+@property (assign,nonatomic) NSInteger            numStar;//评论星级
+@property (assign,nonatomic) NSInteger            time;//评论时间
+@property (strong,nonatomic) NSString           * userName;//用户名
 
 @end
 
@@ -45,5 +63,10 @@
 @property (assign,nonatomic) NSInteger            num;//读取的评论条数
 @property (assign,nonatomic) NSInteger            lastID;//上次读取最后数据ID（就是点评的时间戳），第一次默认为0
 
+@end
+//11905
+@interface DoctorFameFilter : NSObject
+
+@property (assign,nonatomic) NSInteger            doctorID;//医生ID
 
 @end

@@ -13,6 +13,4 @@
 
 @property (nonatomic, strong) MyCommentFilter * filter;
 
-- (instancetype)initWithFilter:(MyCommentFilter *)filter;
-
 @end

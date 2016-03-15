@@ -169,9 +169,15 @@
 		3EFB22361AB5B43F000872F3 /* SNTopTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB22351AB5B43F000872F3 /* SNTopTabViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3EFB223B1AB5B5A4000872F3 /* SNTopTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB22381AB5B5A4000872F3 /* SNTopTabBar.m */; };
 		3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */; };
+		7F229E841C97F57C009C19E8 /* DoctorFameListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E831C97F57C009C19E8 /* DoctorFameListController.m */; };
+		7F229E871C97F59E009C19E8 /* DoctorFameListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */; };
+		7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */; };
 		7F2B655C1C9010E0007C2860 /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2B655B1C9010E0007C2860 /* LaunchView.m */; };
 		7F2B65651C90245B007C2860 /* Launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F2B65641C90245B007C2860 /* Launch.jpg */; };
 		7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */; };
+		7F81A2591C98439D009FEA60 /* clever.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2561C98439D009FEA60 /* clever.png */; };
+		7F81A25A1C98439D009FEA60 /* good.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2571C98439D009FEA60 /* good.png */; };
+		7F81A25B1C98439D009FEA60 /* nice.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2581C98439D009FEA60 /* nice.png */; };
 		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
 		7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */; };
@@ -858,11 +864,20 @@
 		3EFB22381AB5B5A4000872F3 /* SNTopTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTopTabBar.m; sourceTree = "<group>"; };
 		3EFB22391AB5B5A4000872F3 /* SNTopTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTopTabBarItem.h; sourceTree = "<group>"; };
 		3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTopTabBarItem.m; sourceTree = "<group>"; };
+		7F229E821C97F57C009C19E8 /* DoctorFameListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListController.h; sourceTree = "<group>"; };
+		7F229E831C97F57C009C19E8 /* DoctorFameListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameListController.m; sourceTree = "<group>"; };
+		7F229E851C97F59E009C19E8 /* DoctorFameListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListModel.h; sourceTree = "<group>"; };
+		7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameListModel.m; sourceTree = "<group>"; };
+		7F229E881C97F5F8009C19E8 /* DoctorFameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameCell.h; sourceTree = "<group>"; };
+		7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameCell.m; sourceTree = "<group>"; };
 		7F2B655A1C9010E0007C2860 /* LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchView.h; sourceTree = "<group>"; };
 		7F2B655B1C9010E0007C2860 /* LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchView.m; sourceTree = "<group>"; };
 		7F2B65641C90245B007C2860 /* Launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Launch.jpg; sourceTree = "<group>"; };
 		7F5610E31C859871004DCCDF /* DoctorSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultViewController.h; sourceTree = "<group>"; };
 		7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultViewController.m; sourceTree = "<group>"; };
+		7F81A2561C98439D009FEA60 /* clever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clever.png; sourceTree = "<group>"; };
+		7F81A2571C98439D009FEA60 /* good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = good.png; sourceTree = "<group>"; };
+		7F81A2581C98439D009FEA60 /* nice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nice.png; sourceTree = "<group>"; };
 		7FB267C21C8699B4008FCF05 /* Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
 		7FB267C31C8699B4008FCF05 /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		7FB267C51C869C4B008FCF05 /* CUSearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSearchManager.h; sourceTree = "<group>"; };
@@ -2401,6 +2416,16 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		7F81A2551C98439D009FEA60 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				7F81A2561C98439D009FEA60 /* clever.png */,
+				7F81A2571C98439D009FEA60 /* good.png */,
+				7F81A2581C98439D009FEA60 /* nice.png */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		7FFB94871C966ACA003523B4 /* MyComment */ = {
 			isa = PBXGroup;
 			children = (
@@ -3139,6 +3164,8 @@
 				E1A6B92D1BB302A5001A458D /* DoctorSearchController.m */,
 				7F5610E31C859871004DCCDF /* DoctorSearchResultViewController.h */,
 				7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */,
+				7F229E821C97F57C009C19E8 /* DoctorFameListController.h */,
+				7F229E831C97F57C009C19E8 /* DoctorFameListController.m */,
 			);
 			path = Doctor;
 			sourceTree = "<group>";
@@ -3175,6 +3202,10 @@
 				BCE331F41C25341D00F03AAA /* DoctorApoointmentForHourScrollView.h */,
 				BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */,
 				E6D4549A1B93857F00F3C3D0 /* Evaluate */,
+				7F229E851C97F59E009C19E8 /* DoctorFameListModel.h */,
+				7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */,
+				7F229E881C97F5F8009C19E8 /* DoctorFameCell.h */,
+				7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3355,6 +3386,7 @@
 		E1EB1BA21B70A43A0048B8EB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7F81A2551C98439D009FEA60 /* Comment */,
 				7F2B65631C90245B007C2860 /* Launch */,
 				BC6E3A671C8ED473009A0E6F /* Introduce */,
 				BC540E0B1C43525F002E3B41 /* User */,
@@ -4179,6 +4211,7 @@
 				E1ABA7291BC5809500D209C7 /* tabbar_vip_sel@2x.png in Resources */,
 				E10EDCD21B8CA2140035B6E7 /* btn_green_sel@2x.png in Resources */,
 				3ED1711A1AAF0A9A00E5B630 /* LongTextTipView.xib in Resources */,
+				7F81A25B1C98439D009FEA60 /* nice.png in Resources */,
 				E1EB1DD11B70A43B0048B8EB /* navbar_back_button@2x.png in Resources */,
 				E10EDD031B8E14400035B6E7 /* order_icon_check@2x.png in Resources */,
 				E1ABA72D1BC5809500D209C7 /* tabbar_nearby_nor@2x.png in Resources */,
@@ -4208,6 +4241,7 @@
 				BC6272831C7EEECA005FFE45 /* yueZhenMan@2x.png in Resources */,
 				BC8E36E41C27F32E00304637 /* gukeICON@2x.png in Resources */,
 				E6D454941B93677500F3C3D0 /* praise_zan_pic@2x.png in Resources */,
+				7F81A2591C98439D009FEA60 /* clever.png in Resources */,
 				BC540E111C43525F002E3B41 /* myCollectionBigButtonImage@2x.png in Resources */,
 				E10EDCEA1B8CB3940035B6E7 /* detail_collect_btn_sel@2x.png in Resources */,
 				7F2B65651C90245B007C2860 /* Launch.jpg in Resources */,
@@ -4229,6 +4263,7 @@
 				3E239E751AB33BCB001F0B3F /* checkmark_success@2x.png in Resources */,
 				BC540E131C43525F002E3B41 /* myRecordBigButtonImage@2x.png in Resources */,
 				E10EDCDF1B8CB3430035B6E7 /* image_btn_add_sel@2x.png in Resources */,
+				7F81A25A1C98439D009FEA60 /* good.png in Resources */,
 				BC1859B81C83F6370050251B /* clinicPhoneButton@2x.png in Resources */,
 				E10EDCE21B8CB3430035B6E7 /* menu_btn_add_sel@2x.png in Resources */,
 				E1EB1E211B70A43B0048B8EB /* Images.xcassets in Resources */,
@@ -4293,6 +4328,7 @@
 				E1EB1E241B70A43B0048B8EB /* main.m in Sources */,
 				E124D78F1B915DAF0007B85E /* ImageBrowseController.m in Sources */,
 				3EDEBAC21A961C4800E72809 /* UIImage+Compatible.m in Sources */,
+				7F229E871C97F59E009C19E8 /* DoctorFameListModel.m in Sources */,
 				E1C2F4ED1BA8796F0070224F /* CUUserManager+Address.m in Sources */,
 				3ED0A74E1AA603C50040E529 /* SNSlideController+SNControllerHierarchy.m in Sources */,
 				E17B69141B8376D60079DDB5 /* DoctorCell.m in Sources */,
@@ -4426,6 +4462,7 @@
 				BC8E36CD1C27D95900304637 /* CUPageControl.m in Sources */,
 				E10EDCB81B8B64AC0035B6E7 /* OrderConfirmController.m in Sources */,
 				E10EDCB21B8B60DE0035B6E7 /* StarRatingView.m in Sources */,
+				7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */,
 				BC0E84E91C7D5F2C00082AA9 /* ClinicMainViewController.m in Sources */,
 				3EDEBA7F1A961C4800E72809 /* SDWebImageDecoder.m in Sources */,
 				E1EB1E5C1B70A43B0048B8EB /* CUBlankView.m in Sources */,
@@ -4489,6 +4526,7 @@
 				E1C2F4E71BA875460070224F /* AddressDetailController.m in Sources */,
 				E10EDC6F1B8B5A190035B6E7 /* CUOrder.m in Sources */,
 				3EDEBA741A961C4800E72809 /* AFHTTPRequestOperation.m in Sources */,
+				7F229E841C97F57C009C19E8 /* DoctorFameListController.m in Sources */,
 				3EDEBAA61A961C4800E72809 /* PLDatabaseMigrationManager.m in Sources */,
 				E124D78C1B90BDBF0007B85E /* OrderDetailView.m in Sources */,
 				3EDEBA7C1A961C4800E72809 /* UIImageView+AFNetworking.m in Sources */,
