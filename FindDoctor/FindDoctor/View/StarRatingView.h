@@ -26,8 +26,8 @@
 
 #define kImageSpace_S         3.0
 
-#define kImageWidth_S         12.0
-#define kImageHeight_S        12.0
+#define kImageWidth_S         16.0
+#define kImageHeight_S        16.0
 
 #define kStarImageBlank_S     @"comment_star_gray"
 #define kStarImageFull_S      @"comment_star_yellow"

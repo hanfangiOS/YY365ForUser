@@ -24,6 +24,9 @@
 /** 关闭 **/
 - (void)addLeftCloseButtonItemWithTitle;
 
+/** 设置 **/
+- (void)addRightButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)selector;
+
 //- (UIBarButtonItem *)newButtonItemWithTitleAndImage:(NSString *)imageName title:(NSString *)title target:(id)target action:(SEL)selector;
 
 @end

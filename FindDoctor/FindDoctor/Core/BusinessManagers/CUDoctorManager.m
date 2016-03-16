@@ -437,6 +437,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                 NSMutableArray *recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"orderTimeSegment"];
                 NSMutableArray *listSubject = [[NSMutableArray alloc] init];
                 
+                __block BOOL mark = NO;
                 [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                     SelectOrderTime *selectOrderTime = [[SelectOrderTime alloc] init];
                     
@@ -445,7 +446,13 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                     selectOrderTime.orderID     = [[obj valueForKeySafely:@"orderID"] integerValue];
                     selectOrderTime.orderTime   = [obj valueForKeySafely:@"orderTime"];
                     
-                    [listSubject addObject:selectOrderTime];
+                    if (selectOrderTime.isOrdered == NO) {
+                        mark = YES;
+                    }
+                    if (mark) {
+                        [listSubject addObject:selectOrderTime];
+                    }
+                    
                 }];
                 result.parsedModelObject = listSubject;
                 

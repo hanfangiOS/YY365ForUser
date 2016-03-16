@@ -51,6 +51,7 @@
 - (void)loadNavigationBar
 {
     [self addLeftBackButtonItemWithImage];
+    [self addRightButtonItemWithTitle:@"设置" target:self action:@selector(settings)];
 }
 
 - (void)initSubviews
@@ -66,6 +67,9 @@
     NSDateFormatter* formatter = [NSDateFormatter dateFormatterWithFormat:[NSDateFormatter dateFormatString]];
     headerView.dateLable.text = [formatter stringFromDate:[NSDate date]];
     headerView.data = self.doctor;
+    headerView.commentBlock = ^{
+        
+    };
     [contentScrollView addSubview:headerView];
     
     doctorApoointmentForHourScrollView = [[DoctorApoointmentForHourScrollView alloc] init];

@@ -175,6 +175,11 @@
 		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
 		7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */; };
+		7FFB948B1C966D78003523B4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948A1C966D78003523B4 /* MyCommentViewController.m */; };
+		7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948E1C966DFC003523B4 /* MyCommentCell.m */; };
+		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
+		7FFB94951C96BAD1003523B4 /* MyCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */; };
+		7FFB94981C96C3E6003523B4 /* CUCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94971C96C3E6003523B4 /* CUCommentManager.m */; };
 		BC0E84B31C7857E700082AA9 /* AddFamilyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */; };
 		BC0E84B51C78598E00082AA9 /* littleTrumpet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */; };
 		BC0E84B81C7AB95F00082AA9 /* radioButtonActivated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B61C7AB95F00082AA9 /* radioButtonActivated@2x.png */; };
@@ -868,6 +873,16 @@
 		7FB267C61C869C4B008FCF05 /* CUSearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSearchManager.m; sourceTree = "<group>"; };
 		7FC36A431C85D69500650F75 /* DoctorSearchResultListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultListModel.h; sourceTree = "<group>"; };
 		7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultListModel.m; sourceTree = "<group>"; };
+		7FFB94891C966D78003523B4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
+		7FFB948A1C966D78003523B4 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
+		7FFB948D1C966DFC003523B4 /* MyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentCell.h; sourceTree = "<group>"; };
+		7FFB948E1C966DFC003523B4 /* MyCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentCell.m; sourceTree = "<group>"; };
+		7FFB94901C967051003523B4 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		7FFB94911C967051003523B4 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		7FFB94931C96BAD1003523B4 /* MyCommentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentListModel.h; sourceTree = "<group>"; };
+		7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentListModel.m; sourceTree = "<group>"; };
+		7FFB94961C96C3E6003523B4 /* CUCommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUCommentManager.h; sourceTree = "<group>"; };
+		7FFB94971C96C3E6003523B4 /* CUCommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUCommentManager.m; sourceTree = "<group>"; };
 		BC0E84B11C7857E700082AA9 /* AddFamilyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFamilyMemberViewController.h; path = AddFamiliMember/AddFamilyMemberViewController.h; sourceTree = "<group>"; };
 		BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddFamilyMemberViewController.m; path = AddFamiliMember/AddFamilyMemberViewController.m; sourceTree = "<group>"; };
 		BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "littleTrumpet@2x.png"; sourceTree = "<group>"; };
@@ -2398,6 +2413,36 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		7FFB94871C966ACA003523B4 /* MyComment */ = {
+			isa = PBXGroup;
+			children = (
+				7FFB948C1C966DB6003523B4 /* View */,
+				7FFB94891C966D78003523B4 /* MyCommentViewController.h */,
+				7FFB948A1C966D78003523B4 /* MyCommentViewController.m */,
+			);
+			name = MyComment;
+			path = User/MyComment;
+			sourceTree = "<group>";
+		};
+		7FFB94881C966AD2003523B4 /* MyIntegral */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MyIntegral;
+			path = User/MyIntegral;
+			sourceTree = "<group>";
+		};
+		7FFB948C1C966DB6003523B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7FFB948D1C966DFC003523B4 /* MyCommentCell.h */,
+				7FFB948E1C966DFC003523B4 /* MyCommentCell.m */,
+				7FFB94931C96BAD1003523B4 /* MyCommentListModel.h */,
+				7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BC0E84B01C7857A300082AA9 /* AddFamilyMember */ = {
 			isa = PBXGroup;
 			children = (
@@ -2586,6 +2631,8 @@
 		BC8E36D61C27EB4D00304637 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				7FFB94881C966AD2003523B4 /* MyIntegral */,
+				7FFB94871C966ACA003523B4 /* MyComment */,
 				BCAA4ABD1C85964D0085A165 /* MyAccount */,
 				BCAA4AB01C856D610085A165 /* MyClinic */,
 				BCAA4AA81C8548440085A165 /* MyDoctor */,
@@ -3296,6 +3343,8 @@
 				E1C2F4EC1BA8796F0070224F /* CUUserManager+Address.m */,
 				7FB267C51C869C4B008FCF05 /* CUSearchManager.h */,
 				7FB267C61C869C4B008FCF05 /* CUSearchManager.m */,
+				7FFB94961C96C3E6003523B4 /* CUCommentManager.h */,
+				7FFB94971C96C3E6003523B4 /* CUCommentManager.m */,
 			);
 			path = BusinessManagers;
 			sourceTree = "<group>";
@@ -3407,6 +3456,8 @@
 				BCAA4AD01C8686750085A165 /* Diagnosis.m */,
 				7FB267C21C8699B4008FCF05 /* Search.h */,
 				7FB267C31C8699B4008FCF05 /* Search.m */,
+				7FFB94901C967051003523B4 /* Comment.h */,
+				7FFB94911C967051003523B4 /* Comment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4246,6 +4297,7 @@
 				3EDD3C2C1AAC68220038338F /* SNLocationManager.m in Sources */,
 				E1EB1E281B70A43B0048B8EB /* Platform.m in Sources */,
 				3ED0A74C1AA603C50040E529 /* UIViewController+SNAppearance.m in Sources */,
+				7FFB94981C96C3E6003523B4 /* CUCommentManager.m in Sources */,
 				3EDEBABF1A961C4800E72809 /* UIDevice+Resolutions.m in Sources */,
 				E6D4549D1B93893D00F3C3D0 /* ScoreView.m in Sources */,
 				E1EB1E621B70A43B0048B8EB /* SNIntroduceView.m in Sources */,
@@ -4253,6 +4305,7 @@
 				E1EB1D7C1B70A43B0048B8EB /* SNViewController+ServerAPI.m in Sources */,
 				3EDF9E171AAAD0F400F85C44 /* SNRefreshControl.m in Sources */,
 				3EDEBAC61A961C4800E72809 /* UIImage+Resize.m in Sources */,
+				7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */,
 				E1EB1E241B70A43B0048B8EB /* main.m in Sources */,
 				E124D78F1B915DAF0007B85E /* ImageBrowseController.m in Sources */,
 				3EDEBAC21A961C4800E72809 /* UIImage+Compatible.m in Sources */,
@@ -4275,6 +4328,7 @@
 				3EDEBAC91A961C4800E72809 /* UIImage+Stretch.m in Sources */,
 				E1EB1E2B1B70A43B0048B8EB /* UIConstants.m in Sources */,
 				E1EB1ED01B70A4D70048B8EB /* base64.m in Sources */,
+				7FFB948B1C966D78003523B4 /* MyCommentViewController.m in Sources */,
 				D405CC601C003DA700A56264 /* CUPasswordView.m in Sources */,
 				3EDEBA711A961C4800E72809 /* SNHTTPRequestOperationManager.m in Sources */,
 				3EDEBA761A961C4800E72809 /* AFJSONRequestOperation.m in Sources */,
@@ -4304,6 +4358,7 @@
 				3EDEBB051AA36ECD00E72809 /* UIColor+SNExtension.m in Sources */,
 				3EEA8E391AC8E31F0033DCC7 /* CUListViewController.m in Sources */,
 				E124D7BC1B9313500007B85E /* CUVerifyCodeController.m in Sources */,
+				7FFB94951C96BAD1003523B4 /* MyCommentListModel.m in Sources */,
 				BC3C8A9F1C43624F00B8E76A /* BlueDotLabelInDoctorHeaderView.m in Sources */,
 				BC9354AC1C1AB07100C60921 /* HomeSubViewController2.m in Sources */,
 				E1EB1ED71B70A4D70048B8EB /* RSADataVerifier.m in Sources */,
@@ -4460,6 +4515,7 @@
 				E1A6B8FE1BAD5F44001A458D /* UserDetailHeaderView.m in Sources */,
 				3E239E6D1AB2CF90001F0B3F /* TipHandler.m in Sources */,
 				E1A6B8F81BAD4FE2001A458D /* UserCenterFooterView.m in Sources */,
+				7FFB94921C967051003523B4 /* Comment.m in Sources */,
 				3E239E561AB2A645001F0B3F /* SNPhoneHelper.m in Sources */,
 				E1283B291B9F41D600FC26C5 /* FamilyMemberDetailController+UploadAvartar.m in Sources */,
 				3EDEBA751A961C4800E72809 /* AFImageRequestOperation.m in Sources */,

@@ -19,6 +19,8 @@
 @property(nonatomic, assign) CGFloat boundsHeight;
 @property(nonatomic, assign) CGFloat centerX;
 @property(nonatomic, assign) CGFloat centerY;
+@property(nonatomic, assign) CGFloat maxY;
+@property(nonatomic, assign) CGFloat maxX;
 
 /**
  * Returns the UIImage representation of this view.
