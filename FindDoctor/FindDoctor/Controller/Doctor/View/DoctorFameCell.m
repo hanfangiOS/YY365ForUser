@@ -6,10 +6,10 @@
 //  Copyright © 2016年 li na. All rights reserved.
 //
 
-#define upPadding 10
-#define leftPadding 20
+#define upPadding 20
+#define leftPadding 30
 #define downPadding 26
-#define rightPadding 20
+#define rightPadding 30
 
 #define paragraphLineSpacing 2
 
@@ -43,10 +43,10 @@
     _label1 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
     _label1.textColor = UIColorFromHex(0xfdbd06);
     _label1.font = [UIFont systemFontOfSize:11];
-    _label1.textAlignment = NSTextAlignmentLeft;
+    _label1.textAlignment = NSTextAlignmentCenter;
     
     _label2 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
-    _label2.font = [UIFont systemFontOfSize:13];
+    _label2.backgroundColor = [UIColor greenColor];
     _label2.numberOfLines = 0;
     
     _label3 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
@@ -61,17 +61,20 @@
     [super layoutSubviews];
     
     //头像
-    _imageView1.frame = CGRectMake(leftPadding, upPadding, 80, 80);
+    _imageView1.frame = CGRectMake(leftPadding, upPadding, 48, 48);
+    _imageView1.layer.cornerRadius = 48/2;
+    _imageView1.clipsToBounds = YES;
+    _imageView1.contentMode = UIViewContentModeScaleAspectFill;
     
     //@“张＊＊”
-    _label1.frame = CGRectMake(leftPadding, _imageView1.maxY + upPadding, 30, 20);
+    _label1.frame = CGRectMake(leftPadding, _imageView1.maxY + 10, 48, 20);
     
     //@“张仲景医生德高望重XXXXX”
     _label2.frame = CGRectMake(_imageView1.maxX + 10, upPadding, self.frameWidth - _imageView1.maxX - 10 - rightPadding, _heightForLabel2);
     
     
     //@“2015-02XXXXX”
-    _label3.frame = CGRectMake(leftPadding, _label2.maxY , 100, 20);
+    _label3.frame = CGRectMake(_imageView1.maxX + 10, _label2.maxY , 100, 20);
     
     
     _lineView.frame = CGRectMake(0, [self CellHeight] - 0.5, kScreenWidth, 0.5);
@@ -89,9 +92,13 @@
     //temp
     _imageView1.backgroundColor = [UIColor redColor];
     
-    _label1.text = _data.userName;
+    NSString * str = [_data.userName substringToIndex:1];
+    _label1.text = [NSString stringWithFormat:@"%@＊＊",str];
     
     _label2.text  = self.data.content;
+    
+    [self setNeedsDisplay];
+    [self layoutIfNeeded];
     
     _heightForLabel2 = [self handleLabel:_label2 andFontSize:15 andLineSpacing:0 width:self.frameWidth - _imageView1.maxX - 10 - rightPadding];
     
@@ -110,6 +117,7 @@
 - (NSInteger)CellHeight{
     
     [self setNeedsDisplay];
+    [self layoutIfNeeded];
     NSInteger h1 = _label2.frameHeight + _label3.frameHeight;
     NSInteger h2 = _imageView1.frameHeight + _label1.frameHeight;
     NSInteger height = ( h1 > h2 ? h1 : h2);

@@ -8,9 +8,12 @@
 
 #import "CUListViewController.h"
 #import "Doctor.h"
+#import "DoctorFameListModel.h"
 
 @interface DoctorFameListController : CUListViewController
 
 @property (strong,nonatomic) Doctor           * doctor;
+
+//- (id)initWithPageName:(NSString *)pageName listModel:(DoctorFameListModel *)listModel;
 
 @end

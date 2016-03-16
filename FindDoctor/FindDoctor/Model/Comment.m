@@ -10,6 +10,16 @@
 
 @implementation Comment
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.flagList = [[NSMutableArray alloc] init];
+        self.remarkList = [[NSMutableArray alloc] init];
+        return self;
+    }
+    return nil;
+}
+
 @end
 
 @implementation FlagListInfo

@@ -21,6 +21,8 @@
 
 #import "DoctorSelectOrderTimeController.h"
 
+#import "DoctorFameListController.h"
+
 #define commitViewHeight 50
 @interface DoctorDetailController ()
 
@@ -51,11 +53,23 @@
 - (void)loadNavigationBar
 {
     [self addLeftBackButtonItemWithImage];
-    [self addRightButtonItemWithTitle:@"设置" target:self action:@selector(settings)];
+}
+
+- (void)settings{
+    DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
+    listModel.filter.doctorID = self.doctor.doctorId;
+    DoctorFameListController * vc = [[DoctorFameListController alloc] initWithPageName:@"DoctorFameListController" listModel:listModel];
+    vc.doctor = self.doctor;
+    [self.slideNavigationController pushViewController:vc animated:YES];
 }
 
 - (void)initSubviews
 {
+    UIButton * tempBtn = [[UIButton alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
+    tempBtn.backgroundColor = [UIColor redColor];
+    [tempBtn addTarget:self action:@selector(settings) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:tempBtn];
+    
     contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[self contentView] frameWidth], [self.contentView frameHeight] - commitViewHeight)];
     [self.contentView addSubview:contentScrollView];
     

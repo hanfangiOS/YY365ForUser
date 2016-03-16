@@ -36,13 +36,13 @@
 //锦旗数据列表
 @interface FlagListInfo : NSObject
 
-@property (strong,nonatomic) NSString           * ID;//锦旗ID
+@property (assign,nonatomic) NSInteger            ID;//锦旗ID
 @property (strong,nonatomic) NSString           * icon;//锦旗图标
 @property (assign,nonatomic) NSInteger            money;//锦旗给的钱
 @property (strong,nonatomic) NSString           * name;//锦旗名
 @property (assign,nonatomic) NSInteger            scoreForDoctorOnece;//（本次锦旗返回给医生的积分）
 //---------------------------------------------------------------------------------//
-@property (assign,nonatomic) NSInteger            num;
+@property (assign,nonatomic) NSInteger            num;//锦旗数量
 
 @end
 
