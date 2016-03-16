@@ -98,7 +98,7 @@
     _label2.text  = self.data.content;
     
     [self setNeedsDisplay];
-    [self layoutIfNeeded];
+//    [self layoutIfNeeded];
     
     _heightForLabel2 = [self handleLabel:_label2 andFontSize:15 andLineSpacing:0 width:self.frameWidth - _imageView1.maxX - 10 - rightPadding];
     

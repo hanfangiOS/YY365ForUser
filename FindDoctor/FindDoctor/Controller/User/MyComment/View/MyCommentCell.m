@@ -6,7 +6,7 @@
 //  Copyright © 2016年 li na. All rights reserved.
 //
 
-#define upPadding 5
+#define upPadding 7
 #define leftPadding 20
 #define downPadding 26
 #define rightPadding 10
@@ -42,7 +42,8 @@
 
 - (void)initSubViews{
     
-    _starView = [[StarRatingView alloc] initWithFrame:CGRectMake(1 , 1, 1 , 1)];
+    _starView = [[StarRatingView alloc] initWithFrame:CGRectMake(1 , 1, 70 , 20) type:StarTypeSmall starSpace:0];
+//    _starView.backgroundColor = [UIColor redColor];
     
     _label1 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
     _label1.textColor = UIColorFromHex(0xfdbd06);
@@ -51,14 +52,17 @@
     
     _label2 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
     _label2.font = [UIFont systemFontOfSize:15];
+    _label2.textColor = UIColorFromHex(0x666666);
     _label2.numberOfLines = 0;
     
     _label3 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
     _label3.textAlignment = NSTextAlignmentLeft;
+    _label3.textColor = UIColorFromHex(0xcccccc);
     _label3.font = [UIFont systemFontOfSize:11];
     
     _label4 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
     _label4.textAlignment = NSTextAlignmentLeft;
+    _label4.textColor = UIColorFromHex(0xcccccc);
     _label4.font = [UIFont systemFontOfSize:11];
     
     _label5 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
@@ -80,24 +84,24 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    _starView.frame = CGRectMake(leftPadding, upPadding, 72, 20);
+    _starView.frame = CGRectMake(leftPadding, upPadding + 3, 72, 20);
     
     //@“赠送XXX锦旗”
-    _label1.frame = CGRectMake(CGRectGetMaxX(_starView.frame) + 10, upPadding + 5, kScreenWidth - rightPadding - CGRectGetMaxX(_starView.frame) - 10, 15);
+    _label1.frame = CGRectMake(CGRectGetMaxX(_starView.frame) + 20, upPadding + 5, kScreenWidth - rightPadding - CGRectGetMaxX(_starView.frame) - 10, 15);
   
     //@“+20”
     _label5.frame = CGRectMake(self.frameWidth - 16 - 40, [self CellHeight]/2 - 15, 40, 30);
     
     //@“医生水平很高XXXXX”
-    _label2.frame = CGRectMake(leftPadding, _starView.maxY,  self.frameWidth - 16 * 2 - 40 - leftPadding, _heightForLabel2);
+    _label2.frame = CGRectMake(leftPadding, _starView.maxY - 3,  self.frameWidth - 16 * 2 - 40 - leftPadding, _heightForLabel2);
 
     
     //@“2015-02XXXXX”
-    _label3.frame = CGRectMake(leftPadding, _label2.maxY , 100, 20);
+    _label3.frame = CGRectMake(leftPadding, _label2.maxY - 3 , 100, 20);
 
     
     //@“张仲景XXXX”
-    _label4.frame = CGRectMake(_label3.maxX + 5, _label2.maxY, kScreenWidth - _label3.frameWidth - 5 - rightPadding, 20);
+    _label4.frame = CGRectMake(_label3.maxX + 5, _label2.maxY - 3, kScreenWidth - _label3.frameWidth - 5 - rightPadding, 20);
 
     
     _lineView.frame = CGRectMake(0, [self CellHeight] - 0.5, kScreenWidth, 0.5);
@@ -132,8 +136,7 @@
     
     [self setNeedsDisplay];
     [self layoutIfNeeded];
-    return (upPadding + _starView.frameHeight + _label2.frameHeight + _label3.frameHeight);
-    
+    return (upPadding + _starView.frameHeight + _label2.frameHeight + _label3.frameHeight + 7);
 }
 
 #pragma mark handleWays

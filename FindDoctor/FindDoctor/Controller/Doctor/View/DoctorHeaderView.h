@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Doctor.h"
 
-typedef void(^DoctorSelecDateAction)(void);
+typedef void(^CommentBlock)(void);
 
 @interface DoctorHeaderView : UIView
 
 @property (nonatomic, strong) Doctor *data;
 @property (nonatomic, strong) UILabel *dateLable;
-@property (nonatomic, copy) DoctorSelecDateAction selectDateBlock;
+@property (nonatomic, copy) CommentBlock commentBlock;
 
 
 + (CGFloat)defaultHeight;

@@ -6,8 +6,6 @@
 	<string>15B42</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
-	<key>CFBundleExecutable</key>
-	<string>PassGuardCtrlBundle</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.microdone.security.PassGuardCtrlBundle</string>
 	<key>CFBundleInfoDictionaryVersion</key>

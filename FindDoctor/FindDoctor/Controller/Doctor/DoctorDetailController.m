@@ -81,6 +81,9 @@
     NSDateFormatter* formatter = [NSDateFormatter dateFormatterWithFormat:[NSDateFormatter dateFormatString]];
     headerView.dateLable.text = [formatter stringFromDate:[NSDate date]];
     headerView.data = self.doctor;
+    headerView.commentBlock = ^{
+        
+    };
     [contentScrollView addSubview:headerView];
     
     doctorApoointmentForHourScrollView = [[DoctorApoointmentForHourScrollView alloc] init];
