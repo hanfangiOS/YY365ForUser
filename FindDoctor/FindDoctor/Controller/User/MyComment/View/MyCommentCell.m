@@ -57,16 +57,16 @@
     
     _label3 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
     _label3.textAlignment = NSTextAlignmentLeft;
-    _label3.textColor = UIColorFromHex(0xcccccc);
+    _label3.textColor = UIColorFromHex(0x999999);
     _label3.font = [UIFont systemFontOfSize:11];
     
     _label4 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
     _label4.textAlignment = NSTextAlignmentLeft;
-    _label4.textColor = UIColorFromHex(0xcccccc);
+    _label4.textColor = UIColorFromHex(0x999999);
     _label4.font = [UIFont systemFontOfSize:11];
     
     _label5 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
-    _label5.textAlignment = NSTextAlignmentCenter;
+    _label5.textAlignment = NSTextAlignmentRight;
     _label5.textColor = UIColorFromHex(0xfdbd06);
     
     _lineView = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];

@@ -59,6 +59,8 @@
     contentsLabel.text = _contents;
     contentsLabel.font = [UIFont systemFontOfSize:fontSize_contents];
     contentsLabel.textColor = UIColorFromHex(Color_Hex_Text_Highlighted);
+    [contentsLabel sizeToFit];
+    contentsLabel.frame = CGRectMake(CGRectGetMaxX(titleLabel.frame) + 5, (fontSize - fontSize_contents)/2, contentsLabel.frameWidth, contentsLabel.frameHeight);
     [self addSubview:contentsLabel];
     
     CGSize unitSize = [_contents sizeWithAttributes: @{NSFontAttributeName: [UIFont systemFontOfSize:fontSize]}];
@@ -66,6 +68,8 @@
     unitLabel.text = _unit;
     unitLabel.font = [UIFont systemFontOfSize:fontSize];
     unitLabel.textColor = UIColorFromHex(Color_Hex_Text_gray);
+    [unitLabel sizeToFit];
+    unitLabel.frame = CGRectMake(CGRectGetMaxX(contentsLabel.frame) + 5,0, unitLabel.frameWidth, unitLabel.frameHeight);
     [self addSubview:unitLabel];
 }
 
