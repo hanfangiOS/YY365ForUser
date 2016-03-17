@@ -42,7 +42,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-        
+                
                 NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
                 
                 Comment * comment = [[Comment alloc] init];
@@ -64,7 +64,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                     flagListInfo.scoreForDoctorOnece = [[obj valueForKeySafely:@"score"] integerValue];
                     [comment.flagList addObject:flagListInfo];
                 }];
-            
+                
                 result.parsedModelObject = comment;
                 
             }
@@ -160,32 +160,16 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 NSMutableArray * listItemArr = [NSMutableArray new];
                 [dataArr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     Comment * comment = [[Comment alloc] init];
-                    //                    comment.content = [obj valueForKeySafely:@"content"];
-                    //                    comment.doctorName = [obj valueForKeySafely:@"doctorName"];
-                    //                    comment.doctorTitle = [obj valueForKeySafely:@"doctorTitle"];
-                    //                    comment.flagName = [obj valueForKeySafely:@"flagName"];
-                    //                    comment.numStar = [[obj valueForKeySafely:@"numStar"] integerValue];
-                    //                    comment.scoreForUserOnece = [[obj valueForKeySafely:@"score"] integerValue];
-                    //                    comment.time = [[obj valueForKeySafely:@"time"] integerValue];
+                    comment.content = [obj valueForKeySafely:@"content"];
+                    comment.doctorName = [obj valueForKeySafely:@"doctorName"];
+                    comment.doctorTitle = [obj valueForKeySafely:@"doctorTitle"];
+                    comment.flagName = [obj valueForKeySafely:@"flagName"];
+                    comment.numStar = [[obj valueForKeySafely:@"numStar"] integerValue];
+                    comment.score = [[obj valueForKeySafely:@"score"] integerValue];
+                    comment.time = [[obj valueForKeySafely:@"time"] integerValue];
                     
                     [listItemArr addObject:comment];
                 }];
-                
-                
-                Comment * comment = [[Comment alloc] init];
-                comment.content = @"XXXX1dmsakslcscsdcdscsdaasdcascdsvasdfasdasCASCSACASCASDasdcasCDVDSVDSCDSVDmsakslcmadsl才sq";
-                comment.doctorName = @"XXXX2";
-                comment.doctorTitle = @"XXXX3";
-                comment.flagName = @"XXXX4";
-                comment.numStar = 4;
-                comment.score = 20;
-                comment.time = 1458012222;
-                [listItemArr addObject:comment];
-                [listItemArr addObject:comment];
-                [listItemArr addObject:comment];
-                [listItemArr addObject:comment];
-                [listItemArr addObject:comment];
-                
                 listModel.items = listItemArr;
                 result.parsedModelObject = listModel;
                 
@@ -229,33 +213,33 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
                 NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
                 NSMutableArray * listItemArr = [NSMutableArray new];
- 
-                    Comment * comment = [[Comment alloc] init];
-                    comment.averageStar = [[data valueForKeySafely:@"averageStar"] integerValue];
-                    comment.totalConern = [[data valueForKeySafely:@"totalConern"] integerValue];
-                    comment.totalDiagnosis = [[data valueForKeySafely:@"totalDiagnosis"] integerValue];
-                    comment.totalScore = [[data valueForKeySafely:@"totalScore"] integerValue];
-                    NSMutableArray * flagList = [NSMutableArray new];
-                    flagList = [data objectForKeySafely:@"flagList"];
-                    [flagList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        FlagListInfo * flagListInfo = [[FlagListInfo alloc] init];
-                        flagListInfo.ID = [[obj objectForKeySafely:@"ID"] integerValue];
-                        flagListInfo.icon = [obj objectForKeySafely:@"icon"];
-                        flagListInfo.name = [obj objectForKeySafely:@"name"];
-                        flagListInfo.num = [[obj objectForKeySafely:@"num"] integerValue];
-                        [comment.flagList addObject:flagListInfo];
-                    }];
-                    NSMutableArray * remarkList = [NSMutableArray new];
-                    remarkList = [data objectForKeySafely:@"remarkList"];
-                    [remarkList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                        RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
-//                        remarkListInfo.content = [obj objectForKeySafely:@"content"] ;
-//                        remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
-//                        remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
-//                        remarkListInfo.time = [[obj objectForKeySafely:@"time"] integerValue];
-//                        remarkListInfo.userName = [obj objectForKeySafely:@"userName"];
-//                        [comment.remarkList addObject:remarkListInfo];
-                    }];
+                
+                Comment * comment = [[Comment alloc] init];
+                comment.averageStar = [[data valueForKeySafely:@"averageStar"] integerValue];
+                comment.totalConern = [[data valueForKeySafely:@"totalConern"] integerValue];
+                comment.totalDiagnosis = [[data valueForKeySafely:@"totalDiagnosis"] integerValue];
+                comment.totalScore = [[data valueForKeySafely:@"totalScore"] integerValue];
+                NSMutableArray * flagList = [NSMutableArray new];
+                flagList = [data objectForKeySafely:@"flagList"];
+                [flagList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    FlagListInfo * flagListInfo = [[FlagListInfo alloc] init];
+                    flagListInfo.ID = [[obj objectForKeySafely:@"ID"] integerValue];
+                    flagListInfo.icon = [obj objectForKeySafely:@"icon"];
+                    flagListInfo.name = [obj objectForKeySafely:@"name"];
+                    flagListInfo.num = [[obj objectForKeySafely:@"num"] integerValue];
+                    [comment.flagList addObject:flagListInfo];
+                }];
+                NSMutableArray * remarkList = [NSMutableArray new];
+                remarkList = [data objectForKeySafely:@"remarkList"];
+                [remarkList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    //                        RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
+                    //                        remarkListInfo.content = [obj objectForKeySafely:@"content"] ;
+                    //                        remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
+                    //                        remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
+                    //                        remarkListInfo.time = [[obj objectForKeySafely:@"time"] integerValue];
+                    //                        remarkListInfo.userName = [obj objectForKeySafely:@"userName"];
+                    //                        [comment.remarkList addObject:remarkListInfo];
+                }];
                 
                 
                 RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
@@ -268,9 +252,9 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 [comment.remarkList addObject:remarkListInfo];
                 [comment.remarkList addObject:remarkListInfo];
                 
-    
+                
                 [listItemArr addObject:comment];
-       
+                
                 
                 listModel.items = listItemArr;
                 result.parsedModelObject = listModel;

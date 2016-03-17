@@ -27,20 +27,26 @@
         self.title = title;
         self.style = style;
         if (self.style == TitleViewDefaultStyle) {
-            self.titleFont = [UIFont systemFontOfSize:14];
-            self.titleColor = [UIColor blueColor];
-            self.leftPadding = 0;
-            self.rightPadding = 0;
-            self.PaddingInLeftLineAndTitle = 4;
-            self.PaddingInRightLineAndTitle = 4;
-            _leftLineHeight = 0.5;
-            _rightLineHeight= 0.5;
+            [self initWithDefaultStyle];
         }
         [self initSubViews];
         [self resetData];
         return self;
     }
     return nil;
+}
+
+- (void)initWithDefaultStyle{
+    self.titleFont = [UIFont systemFontOfSize:14];
+    self.titleColor = [UIColor blueColor];
+    self.leftLineColor = [UIColor lightGrayColor];
+    self.rightLineColor = [UIColor lightGrayColor];
+    self.leftPadding = 0;
+    self.rightPadding = 0;
+    self.PaddingInLeftLineAndTitle = 4;
+    self.PaddingInRightLineAndTitle = 4;
+    _leftLineHeight = 0.5;
+    _rightLineHeight= 0.5;
 }
 
 - (void)resetData{
@@ -55,7 +61,9 @@
 
 - (void)initSubViews{
     _leftLineView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 1, 1)];
+    
     _rightLineView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 1, 1)];
+    
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(1, 1, 1, 1)];
     _titleLabel.text = self.title;
     _titleLabel.backgroundColor = [UIColor clearColor];
@@ -64,6 +72,8 @@
         _rightLineView.backgroundColor = [UIColor grayColor];
         _titleLabel.textColor = self.titleColor;
         _titleLabel.font = self.titleFont;
+        _leftLineView.backgroundColor = self.leftLineColor;
+        _rightLineView.backgroundColor = self.rightLineColor;
     }
     [self addSubview:_leftLineView];
     [self addSubview:_rightLineView];

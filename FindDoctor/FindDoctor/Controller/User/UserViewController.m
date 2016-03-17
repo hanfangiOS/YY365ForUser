@@ -144,7 +144,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     switch (indexPath.row) {
         case 0:{
-            cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+            cell.imageView.image = [UIImage imageNamed:@"button_myDoctor"];
             CGRect frame = cell.imageView.frame;
             cell.imageView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width * 0.1, frame.size.height * 0.1);
             cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -152,27 +152,27 @@
             break;
         }
         case 1:{
-            cell.imageView.image = [UIImage imageNamed:@"myCollectionBigButtonImage"];
+            cell.imageView.image = [UIImage imageNamed:@"button_myClinic.png"];
             cell.textLabel.text = @"我的诊所";
             break;
         }
         case 2:{
-            cell.imageView.image = [UIImage imageNamed:@"myRecordBigButtonImage"];
+            cell.imageView.image = [UIImage imageNamed:@"button_myRecord.png"];
             cell.textLabel.text = @"就诊记录";
             break;
         }
         case 3:{
-            cell.imageView.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+            cell.imageView.image = [UIImage imageNamed:@"button_myAccount.png"];
             cell.textLabel.text = @"我的账户";
             break;
         }
         case 4:{
-            cell.imageView.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+            cell.imageView.image = [UIImage imageNamed:@"button_myComment.png"];
             cell.textLabel.text = @"我的点评";
             break;
         }
         case 5:{
-            cell.imageView.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+            cell.imageView.image = [UIImage imageNamed:@"button_myScore.png"];
             cell.textLabel.text = @"我的积分";
             break;
         }

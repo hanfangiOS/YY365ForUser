@@ -18,14 +18,16 @@ typedef enum {
 
 @interface DiagnosisRemarkTitleView : UIView
 
-@property (strong,nonatomic) NSString           * title;
-@property (strong,nonatomic) UIColor            * titleColor;
-@property (strong,nonatomic) UIFont             * titleFont;
-@property (assign,nonatomic) CGFloat            leftPadding;
-@property (assign,nonatomic) CGFloat            rightPadding;
-@property (assign,nonatomic) CGFloat            PaddingInLeftLineAndTitle;
-@property (assign,nonatomic) CGFloat            PaddingInRightLineAndTitle;
-@property (assign,nonatomic) TitleViewStyle     style;
+@property (strong,nonatomic) NSString           * title;//标题
+@property (strong,nonatomic) UIColor            * titleColor;//标题颜色
+@property (strong,nonatomic) UIFont             * titleFont;//标题字体
+@property (strong,nonatomic) UIColor            * leftLineColor;//左线颜色
+@property (strong,nonatomic) UIColor            * rightLineColor;//右线颜色
+@property (assign,nonatomic) CGFloat            leftPadding;//左间距
+@property (assign,nonatomic) CGFloat            rightPadding;//右间距
+@property (assign,nonatomic) CGFloat            PaddingInLeftLineAndTitle;//标题与左线间距
+@property (assign,nonatomic) CGFloat            PaddingInRightLineAndTitle;//标题于右线间距
+@property (assign,nonatomic) TitleViewStyle     style;//目前只有TitleViewDefaultStyle
 
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title Style:(TitleViewStyle)style;
 

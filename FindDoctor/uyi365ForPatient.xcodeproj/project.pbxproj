@@ -198,6 +198,12 @@
 		7FD0BBD51C9A58C9004D2E02 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBC41C9A58C9004D2E02 /* IQToolbar.m */; };
 		7FD0BBD61C9A58C9004D2E02 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBC61C9A58C9004D2E02 /* IQUIView+IQKeyboardToolbar.m */; };
 		7FD0BBD71C9A58C9004D2E02 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBC91C9A58C9004D2E02 /* IQKeyboardManager.bundle */; };
+		7FD0BBEC1C9A9D0E004D2E02 /* button_myAccount@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBE61C9A9D0E004D2E02 /* button_myAccount@2x.png */; };
+		7FD0BBED1C9A9D0E004D2E02 /* button_myClinic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBE71C9A9D0E004D2E02 /* button_myClinic@2x.png */; };
+		7FD0BBEE1C9A9D0E004D2E02 /* button_myComment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBE81C9A9D0E004D2E02 /* button_myComment@2x.png */; };
+		7FD0BBEF1C9A9D0E004D2E02 /* button_myDoctor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBE91C9A9D0E004D2E02 /* button_myDoctor@2x.png */; };
+		7FD0BBF01C9A9D0E004D2E02 /* button_myRecord@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBEA1C9A9D0E004D2E02 /* button_myRecord@2x.png */; };
+		7FD0BBF11C9A9D0E004D2E02 /* button_myScore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBEB1C9A9D0E004D2E02 /* button_myScore@2x.png */; };
 		7FFB948B1C966D78003523B4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948A1C966D78003523B4 /* MyCommentViewController.m */; };
 		7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948E1C966DFC003523B4 /* MyCommentCell.m */; };
 		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
@@ -941,6 +947,12 @@
 		7FD0BBC61C9A58C9004D2E02 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		7FD0BBC71C9A58C9004D2E02 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
 		7FD0BBC91C9A58C9004D2E02 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		7FD0BBE61C9A9D0E004D2E02 /* button_myAccount@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myAccount@2x.png"; sourceTree = "<group>"; };
+		7FD0BBE71C9A9D0E004D2E02 /* button_myClinic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myClinic@2x.png"; sourceTree = "<group>"; };
+		7FD0BBE81C9A9D0E004D2E02 /* button_myComment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myComment@2x.png"; sourceTree = "<group>"; };
+		7FD0BBE91C9A9D0E004D2E02 /* button_myDoctor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myDoctor@2x.png"; sourceTree = "<group>"; };
+		7FD0BBEA1C9A9D0E004D2E02 /* button_myRecord@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myRecord@2x.png"; sourceTree = "<group>"; };
+		7FD0BBEB1C9A9D0E004D2E02 /* button_myScore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myScore@2x.png"; sourceTree = "<group>"; };
 		7FFB94891C966D78003523B4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
 		7FFB948A1C966D78003523B4 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
 		7FFB948D1C966DFC003523B4 /* MyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentCell.h; sourceTree = "<group>"; };
@@ -2576,6 +2588,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		7FD0BBE51C9A9D0E004D2E02 /* new */ = {
+			isa = PBXGroup;
+			children = (
+				7FD0BBE61C9A9D0E004D2E02 /* button_myAccount@2x.png */,
+				7FD0BBE71C9A9D0E004D2E02 /* button_myClinic@2x.png */,
+				7FD0BBE81C9A9D0E004D2E02 /* button_myComment@2x.png */,
+				7FD0BBE91C9A9D0E004D2E02 /* button_myDoctor@2x.png */,
+				7FD0BBEA1C9A9D0E004D2E02 /* button_myRecord@2x.png */,
+				7FD0BBEB1C9A9D0E004D2E02 /* button_myScore@2x.png */,
+			);
+			path = new;
+			sourceTree = "<group>";
+		};
 		7FFB94871C966ACA003523B4 /* MyComment */ = {
 			isa = PBXGroup;
 			children = (
@@ -2772,6 +2797,7 @@
 		BC540E0B1C43525F002E3B41 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				7FD0BBE51C9A9D0E004D2E02 /* new */,
 				BC540E0C1C43525F002E3B41 /* myAccountBigButtonImage@2x.png */,
 				BC540E0D1C43525F002E3B41 /* myCollectionBigButtonImage@2x.png */,
 				BC540E0E1C43525F002E3B41 /* myDoctorBigButtonImage@2x.png */,
@@ -4268,6 +4294,7 @@
 				E1EB1E101B70A43B0048B8EB /* tabbar_background@2x.png in Resources */,
 				E689E9AD1BA8890B00A3ED3C /* home_register_button@2x.png in Resources */,
 				E124D7AC1B92ECA80007B85E /* login_code_bg@2x.png in Resources */,
+				7FD0BBEC1C9A9D0E004D2E02 /* button_myAccount@2x.png in Resources */,
 				BC0E84E41C7C46DB00082AA9 /* Pingpp.bundle in Resources */,
 				E1ABA72B1BC5809500D209C7 /* tabbar_mine_sel@2x.png in Resources */,
 				E124D79C1B917C530007B85E /* doctor_tip_green@2x.png in Resources */,
@@ -4322,6 +4349,8 @@
 				E1F98CA51BA5E50A008D3CEA /* doctor_tip_red@2x.png in Resources */,
 				E1283B2E1BA0835500FC26C5 /* btn_delete_red_nor@2x.png in Resources */,
 				E10EDD071B8E14400035B6E7 /* order_icon_zhifubao@2x.png in Resources */,
+				7FD0BBEE1C9A9D0E004D2E02 /* button_myComment@2x.png in Resources */,
+				7FD0BBEF1C9A9D0E004D2E02 /* button_myDoctor@2x.png in Resources */,
 				E1D4D9161BC6D1DA00E367E0 /* family_detail_deader_bg@2x.png in Resources */,
 				E10EDD051B8E14400035B6E7 /* order_icon_weixin@2x.png in Resources */,
 				BC6E3A6D1C8ED473009A0E6F /* introduce_1.jpg in Resources */,
@@ -4355,6 +4384,7 @@
 				E124D7951B916CE80007B85E /* comment_star_gray@2x.png in Resources */,
 				E1A6B8F51BAD4EF2001A458D /* uc_record@2x.png in Resources */,
 				E1ABA72C1BC5809500D209C7 /* tabbar_nearby_sel@2x.png in Resources */,
+				7FD0BBF11C9A9D0E004D2E02 /* button_myScore@2x.png in Resources */,
 				BC62727F1C7EB1B4005FFE45 /* icon_finish@2x.png in Resources */,
 				BC1682C51C1E815D00C0804E /* background@2x.png in Resources */,
 				E124D7B91B9304120007B85E /* login_header_image@2x.png in Resources */,
@@ -4368,6 +4398,7 @@
 				E12063281BC6D435004920BA /* vip_card_gold@2x.png in Resources */,
 				E10EDD041B8E14400035B6E7 /* order_icon_uncheck@2x.png in Resources */,
 				BC0E84D71C7C46DB00082AA9 /* AlipaySDK.bundle in Resources */,
+				7FD0BBED1C9A9D0E004D2E02 /* button_myClinic@2x.png in Resources */,
 				BC190E861C9257F7007BA6A8 /* Icon-152.png in Resources */,
 				E1ABA7291BC5809500D209C7 /* tabbar_vip_sel@2x.png in Resources */,
 				E10EDCD21B8CA2140035B6E7 /* btn_green_sel@2x.png in Resources */,
@@ -4421,6 +4452,7 @@
 				E6D4548C1B93594400F3C3D0 /* praise_flag_pic@2x.png in Resources */,
 				E1EB1DD81B70A43B0048B8EB /* navigationbar_search_icon_search@2x.png in Resources */,
 				BC190E851C9257F7007BA6A8 /* Icon-120.png in Resources */,
+				7FD0BBF01C9A9D0E004D2E02 /* button_myRecord@2x.png in Resources */,
 				3E239E731AB33BC1001F0B3F /* checkmark_fail@2x.png in Resources */,
 				3E239E751AB33BCB001F0B3F /* checkmark_success@2x.png in Resources */,
 				BC540E131C43525F002E3B41 /* myRecordBigButtonImage@2x.png in Resources */,
