@@ -65,12 +65,14 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString * CellID = [NSString stringWithFormat:@"Cell%ld",(NSInteger)indexPath.row];
+    NSString * CellID = [NSString stringWithFormat:@"Cell%d",(NSInteger)indexPath.row];
     MyCommentCell * cell = [[MyCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    Comment * c = [self.listModel.items objectAtIndexSafely:indexPath.row];
-    cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
-    _cellHeight = [cell CellHeight];
+
+    if (self.listModel.items > 0) {
+        cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
+        _cellHeight = [cell CellHeight];
+    }
     return cell;
     
 }
