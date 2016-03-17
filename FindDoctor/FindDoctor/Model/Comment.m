@@ -30,6 +30,14 @@
 
 @end
 
+@implementation DiagnosisCommentFilter
+
+@end
+
+@implementation CommitCommentFilter
+
+@end
+
 @implementation MyCommentFilter
 
 @end

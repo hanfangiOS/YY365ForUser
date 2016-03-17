@@ -175,12 +175,15 @@
 		7F2B655C1C9010E0007C2860 /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2B655B1C9010E0007C2860 /* LaunchView.m */; };
 		7F2B65651C90245B007C2860 /* Launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F2B65641C90245B007C2860 /* Launch.jpg */; };
 		7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */; };
+		7F71E8C51C993BC400656CAF /* DiagnosisRemarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F71E8C41C993BC400656CAF /* DiagnosisRemarkController.m */; };
+		7F71E8C81C9940F900656CAF /* DiagnosisRemarkTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F71E8C71C9940F900656CAF /* DiagnosisRemarkTitleView.m */; };
 		7F81A2591C98439D009FEA60 /* clever.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2561C98439D009FEA60 /* clever.png */; };
 		7F81A25A1C98439D009FEA60 /* good.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2571C98439D009FEA60 /* good.png */; };
 		7F81A25B1C98439D009FEA60 /* nice.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2581C98439D009FEA60 /* nice.png */; };
 		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
 		7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */; };
+		7FD0BBA41C9A43FB004D2E02 /* FlagViewInCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBA31C9A43FB004D2E02 /* FlagViewInCommentList.m */; };
 		7FFB948B1C966D78003523B4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948A1C966D78003523B4 /* MyCommentViewController.m */; };
 		7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948E1C966DFC003523B4 /* MyCommentCell.m */; };
 		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
@@ -879,6 +882,10 @@
 		7F2B65641C90245B007C2860 /* Launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Launch.jpg; sourceTree = "<group>"; };
 		7F5610E31C859871004DCCDF /* DoctorSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultViewController.h; sourceTree = "<group>"; };
 		7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultViewController.m; sourceTree = "<group>"; };
+		7F71E8C31C993BC400656CAF /* DiagnosisRemarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosisRemarkController.h; sourceTree = "<group>"; };
+		7F71E8C41C993BC400656CAF /* DiagnosisRemarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisRemarkController.m; sourceTree = "<group>"; };
+		7F71E8C61C9940F900656CAF /* DiagnosisRemarkTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosisRemarkTitleView.h; sourceTree = "<group>"; };
+		7F71E8C71C9940F900656CAF /* DiagnosisRemarkTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisRemarkTitleView.m; sourceTree = "<group>"; };
 		7F81A2561C98439D009FEA60 /* clever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clever.png; sourceTree = "<group>"; };
 		7F81A2571C98439D009FEA60 /* good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = good.png; sourceTree = "<group>"; };
 		7F81A2581C98439D009FEA60 /* nice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nice.png; sourceTree = "<group>"; };
@@ -888,6 +895,8 @@
 		7FB267C61C869C4B008FCF05 /* CUSearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSearchManager.m; sourceTree = "<group>"; };
 		7FC36A431C85D69500650F75 /* DoctorSearchResultListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultListModel.h; sourceTree = "<group>"; };
 		7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultListModel.m; sourceTree = "<group>"; };
+		7FD0BBA21C9A43F4004D2E02 /* FlagViewInCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagViewInCommentList.h; sourceTree = "<group>"; };
+		7FD0BBA31C9A43FB004D2E02 /* FlagViewInCommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagViewInCommentList.m; sourceTree = "<group>"; };
 		7FFB94891C966D78003523B4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
 		7FFB948A1C966D78003523B4 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
 		7FFB948D1C966DFC003523B4 /* MyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentCell.h; sourceTree = "<group>"; };
@@ -2608,6 +2617,10 @@
 				BC1859C81C8440060050251B /* MyDiagnosisRecordsListModel.m */,
 				BC1859C91C8440060050251B /* MyDiagnosisRecordsViewController.h */,
 				BC1859CA1C8440060050251B /* MyDiagnosisRecordsViewController.m */,
+				7F71E8C31C993BC400656CAF /* DiagnosisRemarkController.h */,
+				7F71E8C41C993BC400656CAF /* DiagnosisRemarkController.m */,
+				7F71E8C61C9940F900656CAF /* DiagnosisRemarkTitleView.h */,
+				7F71E8C71C9940F900656CAF /* DiagnosisRemarkTitleView.m */,
 			);
 			name = MyDiagnosisRecords;
 			path = User/MyDiagnosisRecords;
@@ -3732,6 +3745,8 @@
 		E1EB1D511B70A43B0048B8EB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7FD0BBA31C9A43FB004D2E02 /* FlagViewInCommentList.m */,
+				7FD0BBA21C9A43F4004D2E02 /* FlagViewInCommentList.h */,
 				BC8E36CB1C27D95900304637 /* CUPageControl.h */,
 				BC8E36CC1C27D95900304637 /* CUPageControl.m */,
 				BC8E36C41C27C69400304637 /* TitleView.h */,
@@ -4338,6 +4353,7 @@
 				E1EB1E621B70A43B0048B8EB /* SNIntroduceView.m in Sources */,
 				3EDEBAA51A961C4800E72809 /* PlausibleDatabase.m in Sources */,
 				E1EB1D7C1B70A43B0048B8EB /* SNViewController+ServerAPI.m in Sources */,
+				7F71E8C51C993BC400656CAF /* DiagnosisRemarkController.m in Sources */,
 				3EDF9E171AAAD0F400F85C44 /* SNRefreshControl.m in Sources */,
 				3EDEBAC61A961C4800E72809 /* UIImage+Resize.m in Sources */,
 				7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */,
@@ -4437,6 +4453,7 @@
 				BC313D211C3A143C00C9469D /* UserViewController.m in Sources */,
 				BCE465C31C06BAAF008DE355 /* DoctorAppointmentListView.m in Sources */,
 				3EDEBAA91A961C4800E72809 /* PLSqliteDatabaseOnThread.m in Sources */,
+				7FD0BBA41C9A43FB004D2E02 /* FlagViewInCommentList.m in Sources */,
 				BCAA4AC91C85964D0085A165 /* ListMoneyView.m in Sources */,
 				BC80B20B1C40C76C00A7445A /* LoginTextFeildView.m in Sources */,
 				3ED0A7641AA604E50040E529 /* SNTabBar.m in Sources */,
@@ -4487,6 +4504,7 @@
 				3EDD02AC1B133BDC0081B641 /* SNViewController+Nav.m in Sources */,
 				BCAA4AB61C856D610085A165 /* MyClinicListViewController.m in Sources */,
 				3EDEBA891A961C4800E72809 /* SNNetworkClient+CompletionBlock.m in Sources */,
+				7F71E8C81C9940F900656CAF /* DiagnosisRemarkTitleView.m in Sources */,
 				E1EB1D7B1B70A43B0048B8EB /* HomeViewController.m in Sources */,
 				E1EB1ED61B70A4D70048B8EB /* RSADataSigner.m in Sources */,
 				E1AD6F2C1B7CC99400FB3C55 /* DoctorListModel.m in Sources */,

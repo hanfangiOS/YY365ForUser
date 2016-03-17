@@ -58,8 +58,6 @@
     
 }
 - (void)layoutSubviews{
-    [super layoutSubviews];
-    
     //头像
     _imageView1.frame = CGRectMake(leftPadding, upPadding, 48, 48);
     _imageView1.layer.cornerRadius = 48/2;
@@ -98,7 +96,7 @@
     _label2.text  = self.data.content;
     
     [self setNeedsDisplay];
-//    [self layoutIfNeeded];
+    [self layoutIfNeeded];
     
     _heightForLabel2 = [self handleLabel:_label2 andFontSize:15 andLineSpacing:0 width:self.frameWidth - _imageView1.maxX - 10 - rightPadding];
     

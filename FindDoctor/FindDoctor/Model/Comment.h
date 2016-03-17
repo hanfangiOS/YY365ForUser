@@ -11,8 +11,7 @@
 @interface Comment : NSObject
 
 @property (assign,nonatomic) NSInteger            score;//返回的点评积分（单次积分）
-//---------------------------------------------------------------------------------//
-@property (assign,nonatomic) NSInteger            diagnosisTime;//就诊时间
+@property (assign,nonatomic) NSTimeInterval       diagnosisTime;//就诊时间
 @property (strong,nonatomic) NSString           * doctorIcon;//医生头像
 @property (strong,nonatomic) NSString           * doctorName;//医生名
 @property (strong,nonatomic) NSString           * doctorTitle;//头衔
@@ -21,7 +20,7 @@
 @property (assign,nonatomic) NSInteger            numStar;//点评星级
 @property (assign,nonatomic) NSInteger            totalScore;//总分
 @property (assign,nonatomic) NSInteger            time;//点评时间
-//---------------------------------------------------------------------------------//
+
 @property (strong,nonatomic) NSString           * clinicAddress;//诊所地址
 @property (strong,nonatomic) NSString           * clinicName;//诊所名
 @property (strong,nonatomic) NSMutableArray     * flagList;//锦旗数据列表
@@ -32,7 +31,7 @@
 @property (assign,nonatomic) NSInteger            totalDiagnosis;//总诊疗次数
 
 @end
-
+//---------------------------------------------------------------------------------//
 //锦旗数据列表
 @interface FlagListInfo : NSObject
 
@@ -55,6 +54,25 @@
 @property (assign,nonatomic) NSInteger            time;//评论时间
 @property (strong,nonatomic) NSString           * userName;//用户名
 
+@property (assign,nonatomic) NSInteger            num;//锦旗数量
+
+@end
+//---------------------------------------------------------------------------------//
+//11901点评按钮接口
+@interface DiagnosisCommentFilter : NSObject
+
+@property (assign,nonatomic) NSInteger            diagnosisID;//就诊单号
+
+@end
+
+//11902用户提交点评
+@interface CommitCommentFilter : NSObject
+
+@property (assign,nonatomic) NSInteger            dataID;//就诊单号
+@property (assign,nonatomic) NSInteger            numStar;//点评的星级
+@property (assign,nonatomic) NSInteger            flagID;//锦旗ID
+@property (strong,nonatomic) NSString           * content;//点评内容
+
 @end
 
 //11903
@@ -70,3 +88,4 @@
 @property (assign,nonatomic) NSInteger            doctorID;//医生ID
 
 @end
+
