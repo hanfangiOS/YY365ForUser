@@ -13,6 +13,11 @@
 @interface CUCommentManager : SNBusinessMananger
 
 SINGLETON_DECLARE(CUCommentManager);
+//11901点评按钮接口
+- (void)getDiagnosisComment:(DiagnosisCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//11902用户提交点评
+- (void)getCommitComment:(CommitCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 //11903用户空间-我的点评
 - (void)getMyCommentList:(MyCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;

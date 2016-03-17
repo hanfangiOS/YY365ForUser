@@ -20,6 +20,118 @@
 
 SINGLETON_IMPLENTATION(CUCommentManager);
 
+//11901点评按钮接口
+- (void)getDiagnosisComment:(DiagnosisCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+    [param setObjectSafely:@"UserMyRemarks" forKey:@"require"];
+    [param setObjectSafely:@(11901) forKey:@"interfaceID"];
+    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+    
+    NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(filter.diagnosisID) forKey:@"diagnosisID"];
+    
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+        
+                NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
+                
+                Comment * comment = [[Comment alloc] init];
+                comment.clinicAddress = [data objectForKeySafely:@"clinicAddress"];
+                comment.clinicName = [data objectForKeySafely:@"clinicName"];
+                comment.diagnosisTime = [[data objectForKeySafely:@"diagnosisTime"] integerValue];
+                comment.doctorIcon = [data objectForKeySafely:@"doctorIcon"];
+                comment.doctorName = [data objectForKeySafely:@"doctorName"];
+                comment.doctorTitle = [data objectForKeySafely:@"doctorTitle"];
+                comment.clinicAddress = [data objectForKeySafely:@"clinicAddress"];
+                NSMutableArray * flagList = [NSMutableArray new];
+                flagList = [data objectForKeySafely:@"flagList"];
+                [flagList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    FlagListInfo * flagListInfo = [[FlagListInfo alloc] init];
+                    flagListInfo.ID = [[obj valueForKeySafely:@"ID"] integerValue];
+                    flagListInfo.icon = [obj valueForKeySafely:@"icon"];
+                    flagListInfo.money = [[obj valueForKeySafely:@"money"] integerValue];
+                    flagListInfo.name = [obj valueForKeySafely:@"name"] ;
+                    flagListInfo.scoreForDoctorOnece = [[obj valueForKeySafely:@"score"] integerValue];
+                    [comment.flagList addObject:flagListInfo];
+                }];
+            
+                result.parsedModelObject = comment;
+                
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+            }
+        }
+        else {
+            NSLog(@"====哦哟，出错了====");
+            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    
+}
+
+//11902用户提交点评
+- (void)getCommitComment:(CommitCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+    [param setObjectSafely:@"UserMyRemarks" forKey:@"require"];
+    [param setObjectSafely:@(11901) forKey:@"interfaceID"];
+    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+    
+    NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(filter.dataID) forKey:@"dataID"];
+    [dataParam setObjectSafely:@(filter.numStar) forKey:@"numStar"];
+    [dataParam setObjectSafely:@(filter.flagID) forKey:@"flagID"];
+    [dataParam setObjectSafely:filter.content forKey:@"content"];
+    
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+                
+                NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
+                
+                Comment * comment = [[Comment alloc] init];
+                comment.score = [[data objectForKeySafely:@"score"] integerValue];
+                
+                result.parsedModelObject = comment;
+                
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+            }
+        }
+        else {
+            NSLog(@"====哦哟，出错了====");
+            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    
+}
+
 //11903用户空间-我的点评
 - (void)getMyCommentList:(MyCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     

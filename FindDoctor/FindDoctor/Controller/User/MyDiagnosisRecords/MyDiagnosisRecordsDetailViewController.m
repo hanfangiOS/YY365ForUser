@@ -16,6 +16,8 @@
 #import "OrderConfirmController.h"
 #import "PhotosShowView.h"
 
+#import "DiagnosisRemarkController.h"
+
 #define commitViewHeight 50
 
 @interface MyDiagnosisRecordsDetailViewController ()<UIAlertViewDelegate>{
@@ -50,6 +52,15 @@
     [self loadContentScrollView];
     [self loadContent];
 
+    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(50,50, 50, 50)];
+    [btn addTarget:self action:@selector(temp) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+}
+
+- (void)temp{
+    DiagnosisRemarkController * vc = [[DiagnosisRemarkController alloc] init];
+    vc.order = self.data;
+    [self.slideNavigationController pushViewController:vc animated:YES];
 }
 
 -(void)loadContentScrollView{
