@@ -11,8 +11,7 @@
 @interface Comment : NSObject
 
 @property (assign,nonatomic) NSInteger            score;//返回的点评积分（单次积分）
-
-@property (assign,nonatomic) NSInteger            diagnosisTime;//就诊时间
+@property (assign,nonatomic) NSTimeInterval       diagnosisTime;//就诊时间
 @property (strong,nonatomic) NSString           * doctorIcon;//医生头像
 @property (strong,nonatomic) NSString           * doctorName;//医生名
 @property (strong,nonatomic) NSString           * doctorTitle;//头衔
@@ -25,7 +24,7 @@
 @property (strong,nonatomic) NSString           * clinicAddress;//诊所地址
 @property (strong,nonatomic) NSString           * clinicName;//诊所名
 @property (strong,nonatomic) NSMutableArray     * flagList;//锦旗数据列表
-
+//---------------------------------------------------------------------------------//
 @property (assign,nonatomic) NSInteger            averageStar;//星级  医生
 @property (strong,nonatomic) NSMutableArray     * remarkList;//锦旗数据列表
 @property (assign,nonatomic) NSInteger            totalConern;//总关注度
@@ -41,7 +40,7 @@
 @property (assign,nonatomic) NSInteger            money;//锦旗给的钱
 @property (strong,nonatomic) NSString           * name;//锦旗名
 @property (assign,nonatomic) NSInteger            scoreForDoctorOnece;//（本次锦旗返回给医生的积分）
-
+//---------------------------------------------------------------------------------//
 @property (assign,nonatomic) NSInteger            num;//锦旗数量
 
 @end
@@ -54,6 +53,8 @@
 @property (assign,nonatomic) NSInteger            numStar;//评论星级
 @property (assign,nonatomic) NSInteger            time;//评论时间
 @property (strong,nonatomic) NSString           * userName;//用户名
+
+@property (assign,nonatomic) NSInteger            num;//锦旗数量
 
 @end
 //---------------------------------------------------------------------------------//

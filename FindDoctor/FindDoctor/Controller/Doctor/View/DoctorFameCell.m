@@ -58,8 +58,6 @@
     
 }
 - (void)layoutSubviews{
-//    [super layoutSubviews];
-    
     //头像
     _imageView1.frame = CGRectMake(leftPadding, upPadding, 48, 48);
     _imageView1.layer.cornerRadius = 48/2;
