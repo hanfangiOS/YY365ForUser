@@ -137,12 +137,13 @@
 }
 
 - (void)addRightButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)selector{
-    CGFloat height = 50;
-    CGFloat width = 50;
+    CGFloat height = 30;
+    CGFloat width = 40;
     UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth - width, 0, width, height)];
-    UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    rightBtn.backgroundColor = [UIColor clearColor];
-    rightBtn.frame = rightBtnView.frame;
+    rightBtnView.userInteractionEnabled = YES;
+    rightBtnView.backgroundColor = [UIColor redColor];
+    UIButton * rightBtn = [[UIButton alloc] initWithFrame:rightBtnView.frame];
+    rightBtn.backgroundColor = [UIColor blackColor];
     [rightBtn setTitle:title forState:UIControlStateNormal];
     rightBtn.tintColor = UIColorFromHex(Color_Hex_NavItem_Normal);
     rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 0);

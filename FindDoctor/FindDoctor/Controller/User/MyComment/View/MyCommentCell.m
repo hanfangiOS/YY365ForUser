@@ -127,10 +127,9 @@
     
     _label4.text = [NSString stringWithFormat:@"%@%@",self.data.doctorName,self.data.doctorTitle];
     
-    _label5.text = [NSString stringWithFormat:@"+%ld",(long)self.data.scoreForUserOnece];
+    _label5.text = [NSString stringWithFormat:@"+%ld",(long)self.data.score];
     
     [self setNeedsDisplay];
-//    [self layoutIfNeeded];
 }
 
 - (NSInteger)CellHeight{
