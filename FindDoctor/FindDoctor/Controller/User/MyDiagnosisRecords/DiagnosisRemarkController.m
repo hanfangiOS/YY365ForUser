@@ -10,12 +10,13 @@
 #import "FlagViewInCommentList.h"
 #import "StarRatingView.h"
 #import "DiagnosisRemarkTitleView.h"
-#import "Comment.h"
 #import "CUCommentManager.h"
+#import "TipHandler+HUD.h"
+#import "UIImageView+AFNetworking.h"
 
 #define commitViewHeight 50
 
-@interface DiagnosisRemarkController ()<StarRatingViewDelegate>{
+@interface DiagnosisRemarkController ()<StarRatingViewDelegate,UITextViewDelegate>{
     
     UIScrollView                * _contentScrollView;
     
@@ -29,97 +30,142 @@
     
     UIView                      * _view2;//第二块view
     DiagnosisRemarkTitleView    * _view2_titleView;//就诊评分
+    UIView                      * _view2_starView_containerView;//星星的背景View
     StarRatingView              * _view2_starView;//星星
+    float                         _numStar;//星级
     
     UIView                      * _view3;//第三块view
     DiagnosisRemarkTitleView    * _view3_titleView;//赠送锦旗
     FlagViewInCommentList       * _view3_flagView;//一堆旗
-    UIImageView                 * _view3_selectedView;//那朵花
+    NSInteger                     _flagID;//锦旗ID
     
-    UIView                      * _view4;//第二块view
     DiagnosisRemarkTitleView    * _view4_titleView;//点评内容
-    UITextView                  * _view4_textField;//XXX(须五字以上)
-
-    DiagnosisCommentFilter      * _diagnosisCommentFilter;
+    UITextView                  * _view4_textView;//XXX(须五字以上)
+    UILabel                     * _view4_textView_placeholderLabel;//不解释
+    
     CommitCommentFilter         * _commitCommentFilter;
+
 }
 
 @end
 
 @implementation DiagnosisRemarkController
 
-//11901点评按钮接口
-- (void)postRequestComment{
-   [[CUCommentManager sharedInstance] getDiagnosisComment:_diagnosisCommentFilter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-       ;
-   } pageName:@"DiagnosisRemarkController"];
-    
+
+- (void)commitCheck{
+    NSString *  str = [_commitCommentFilter.content stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if ([str length] < 5) {
+        [TipHandler showHUDText:@"评价需5字以上" inView:self.view];
+        return;
+    }
 }
 
 //11902用户提交点评
 - (void)postRequestCommit{
+    [self showProgressView];
+    _commitCommentFilter.dataID = self.diagnosisID;
+    _commitCommentFilter.numStar =  _numStar;
+    _commitCommentFilter.flagID =  _flagID;
+    [self commitCheck];
     [[CUCommentManager sharedInstance] getCommitComment:_commitCommentFilter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        ;
+        [self hideProgressView];
+        if (!result.hasError) {
+            NSInteger errorCode = [[result.responseObject valueForKey:@"errorCode"] integerValue];
+            if(errorCode == 0){
+                [TipHandler showHUDText:[result.responseObject valueForKey:@"提交成功"] inView:self.view];
+                [self.slideNavigationController popToRootViewControllerAnimated:YES];
+            }
+            else{
+                [TipHandler showHUDText:[result.responseObject valueForKey:@"data"] inView:self.view];
+            }
+        }
+        else {
+            //提示错误
+            NSString *msg = [result.error.userInfo valueForKey:NSLocalizedDescriptionKey];
+            NSLog(@"===ERROR===%@",msg);
+            
+            [TipHandler showTipOnlyTextWithNsstring:msg];
+        };
     } pageName:@"DiagnosisRemarkController"];
+}
+
+#pragma mark - 返回事件
+- (void)loadNavigationBar
+{
+    [self addLeftBackButtonItemWithImage];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _commitCommentFilter = [[CommitCommentFilter alloc] init];
+    _numStar = 5;
     [self loadContentScrollView];
     [self loadContent];
+    [self resetData];
+    self.title = @"就诊点评";
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEidtor)];
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void)endEidtor{
+    [self.view endEditing:YES];
 }
 
 - (void)loadContentScrollView{
     _contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[self contentView] frameWidth], [self.contentView frameHeight] - commitViewHeight)];
     [self.contentView addSubview:_contentScrollView];
-    
-    
+    self.contentView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 
 - (void)loadContent{
     
     [self loadCommitView];
     //第一块view
-    _view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 2, kScreenWidth, 120)];
+    _view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 5, kScreenWidth, 100)];
     _view1.backgroundColor = [UIColor whiteColor];
     [_contentScrollView addSubview:_view1];
     //头像
-    _view1_imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(20 ,_view1.frameHeight - 32, 64, 64)];
+    _view1_imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(20 ,(_view1.frameHeight - 64)/2, 64, 64)];
     _view1_imageView1.layer.cornerRadius = 64/2;
     _view1_imageView1.clipsToBounds = YES;
     _view1_imageView1.contentMode = UIViewContentModeScaleAspectFill;
+    _view1_imageView1.backgroundColor = [UIColor redColor];
     [_view1 addSubview:_view1_imageView1];
     
     //郭晓炜
-    _view1_label1 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, 20, 100, 20)];
+    _view1_label1 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, 20, 80, 20)];
     _view1_label1.font = [UIFont systemFontOfSize:16];
     [_view1 addSubview:_view1_label1];
+    _view1_label1.backgroundColor = [UIColor greenColor];
     
     //主任医师
-    _view1_label2 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_label1.maxX + 5, 25, 110, 15)];
+    _view1_label2 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_label1.maxX + 10, 25, 90, 15)];
     _view1_label2.font = [UIFont systemFontOfSize:12];
     [_view1 addSubview:_view1_label2];
+    _view1_label2.backgroundColor = [UIColor greenColor];
     
     //地址：
-    _view1_label3 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, 2, 40, 20)];
+    _view1_label3 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, _view1_label1.maxY + 5, 40, 20)];
     _view1_label3.text = @"地址：";
     _view1_label3.font = [UIFont systemFontOfSize:12];
     _view1_label3.textColor = [UIColor blueColor];
     [_view1 addSubview:_view1_label3];
     
     //三仙堂XXX
-    _view1_label4 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_label3.maxX, 2, kScreenWidth - _view1_label3.maxX, 20)];
+    _view1_label4 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_label3.maxX, _view1_label1.maxY + 5, kScreenWidth - _view1_label3.maxX -20, 20)];
     _view1_label4.font = [UIFont systemFontOfSize:12];
     [_view1 addSubview:_view1_label4];
+    _view1_label4.backgroundColor = [UIColor greenColor];
     
     //2016-XXXX
-    _view1_label5 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, 2, kScreenWidth - (_view1_imageView1.maxX + 25), 10)];
+    _view1_label5 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, _view1_label3.maxY + 5, kScreenWidth - (_view1_imageView1.maxX + 25) - 20, 10)];
     _view1_label5.font = [UIFont systemFontOfSize:10];
     _view1_label5.textColor = [UIColor grayColor];
     [_view1 addSubview:_view1_label5];
+    _view1_label5.backgroundColor = [UIColor greenColor];
     
     //第二块view
-    _view2 = [[UIView alloc] initWithFrame:CGRectMake(0, _view1.maxY + 23, kScreenWidth, 120)];
+    _view2 = [[UIView alloc] initWithFrame:CGRectMake(0, _view1.maxY + 23, kScreenWidth, 100)];
     _view2.backgroundColor = [UIColor whiteColor];
     [_contentScrollView addSubview:_view2];
     
@@ -127,14 +173,24 @@
     _view2_titleView = [[DiagnosisRemarkTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30) title:@"就诊评分" Style:TitleViewDefaultStyle];
     _view2_titleView.backgroundColor = [UIColor clearColor];
     [_view2 addSubview:_view2_titleView];
+    //星星背景View
+    _view2_starView_containerView = [[UIView alloc] initWithFrame:CGRectMake(0,_view2_titleView.maxY , kScreenWidth, _view2.frameHeight - _view2_titleView.frameHeight)];
+    _view2_starView_containerView.backgroundColor = [UIColor redColor];
+    [_view2 addSubview:_view2_starView_containerView];
     
     //星星
-    _view2_starView = [[StarRatingView alloc] initWithFrame:CGRectMake(0,_view2_titleView.maxY , kScreenWidth, _view2.frameHeight - _view2_titleView.frameHeight) type:StarTypeLarge starSpace:5];
+    CGFloat starPadding = 48;
+    CGFloat starViewHeight = 40;
+    CGFloat starSpace = (kScreenWidth - starPadding * 2 - starViewHeight * 5)/4;
+    CGFloat starViewWidth = starViewHeight * 5 + starSpace * 4;
+    
+    _view2_starView = [[StarRatingView alloc] initWithFrame:CGRectMake(starPadding,(_view2_starView_containerView.frameHeight - starViewHeight)/2,starViewWidth,starViewHeight) type:StarTypeLarge starSpace:starSpace];
     _view2_starView.delegate = self;
-    [_view2 addSubview:_view2_starView];
+    _view2_starView.rate = _numStar;
+    [_view2_starView_containerView addSubview:_view2_starView];
     
     //第三块view
-    _view3 = [[UIView alloc] initWithFrame:CGRectMake(0, _view2.maxY + 23, kScreenWidth, 200)];
+    _view3 = [[UIView alloc] initWithFrame:CGRectMake(0, _view2.maxY + 23, kScreenWidth, 180)];
     _view3.backgroundColor = [UIColor whiteColor];
     [_contentScrollView addSubview:_view3];
     //赠送锦旗
@@ -142,13 +198,34 @@
     _view3_titleView.backgroundColor = [UIColor clearColor];
     [_view3 addSubview:_view3_titleView];
     //一堆旗
-//    _view3_flagView = [[FlagViewInCommentList alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)];
-    //那朵花
+    _view3_flagView = [[FlagViewInCommentList alloc] initWithFrame:CGRectMake(0
+, _view3_titleView.maxY, kScreenWidth, _view3.frameHeight - _view3_titleView.frameHeight)];
+    _view3_flagView.backgroundColor = [UIColor redColor];
+    [_view3 addSubview:_view3_flagView];
+    //第四块view
+    //点评内容
+    _view4_titleView = [[DiagnosisRemarkTitleView alloc] initWithFrame:CGRectMake(0, _view3.maxY, kScreenWidth, 30) title:@"点评内容" Style:TitleViewDefaultStyle];
+    [_contentScrollView addSubview:_view4_titleView];
+    //XXX(须五字以上)
+    _view4_textView = [[UITextView alloc] initWithFrame:CGRectMake(5, _view4_titleView.maxY + 5, kScreenWidth - 5 - 5, 160)];
+    _view4_textView.backgroundColor = [UIColor whiteColor];
+    _view4_textView.font = [UIFont systemFontOfSize:14];
+    _view4_textView.delegate = self;
+    [_view4_textView setAutocorrectionType:UITextAutocorrectionTypeNo];
+    
+    _view4_textView_placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 4, 160, 20)];
+     _view4_textView_placeholderLabel.text = @"好医生（需5个字以上）";
+    _view4_textView_placeholderLabel.font = [UIFont systemFontOfSize:14];
+    _view4_textView_placeholderLabel.enabled = NO;
+    
+    [_view4_textView addSubview:_view4_textView_placeholderLabel];
+    [_contentScrollView addSubview:_view4_textView];
+    
+    _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frameWidth, _view4_textView.maxY + 23);
 }
-UIView                      * _view3;//第三块view
-DiagnosisRemarkTitleView    * _view3_titleView;//赠送锦旗
-FlagViewInCommentList       * _view3_flagView;//一堆旗
-UIImageView                 * _view3_selectedView;//那朵花
+
+DiagnosisRemarkTitleView    * _view4_titleView;//点评内容
+UITextView                  * _view4_textView;//XXX(须五字以上)
 
 - (void)loadCommitView{
     UIView *commitView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_contentScrollView.frame), kScreenWidth, commitViewHeight)];
@@ -168,9 +245,31 @@ UIImageView                 * _view3_selectedView;//那朵花
     [commitView addSubview:commitButton];
 }
 
+
+- (void)resetData{
+    [_view1_imageView1 setImageWithURL:[NSURL URLWithString:self.data.doctorIcon]];
+    _view1_label1.text = self.data.doctorName;
+    _view1_label2.text = self.data.doctorTitle;
+    _view1_label4.text = self.data.clinicAddress;
+    _view1_label5.text = [[NSDate dateWithTimeIntervalSince1970:self.data.diagnosisTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+    _view3_flagView.data = self.data;
+}
+
+#pragma mark UITextViewDelegate
+-(void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length == 0) {
+        _view4_textView_placeholderLabel.hidden = NO;
+    }else{
+        _view4_textView_placeholderLabel.hidden = YES;
+    }
+    
+    _commitCommentFilter.content = textView.text;
+}
+
 #pragma mark StarRatingViewDelegate
 - (void)starRatingView:(StarRatingView *)view rateDidChange:(float)rate{
-    
+    _numStar = rate;
 }
 
 #pragma mark Action
@@ -178,10 +277,6 @@ UIImageView                 * _view3_selectedView;//那朵花
 - (void)commitButtonAction{
     [self postRequestCommit];
 }
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

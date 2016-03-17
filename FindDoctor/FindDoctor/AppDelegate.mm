@@ -39,6 +39,8 @@
 
 #import "LaunchView.h"
 
+#import "IQKeyboardManager.h"
+
 @interface AppDelegate () <BMKGeneralDelegate>
 
 @property (nonatomic,strong)SNTabViewController * tabController;
@@ -68,6 +70,12 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    //输入框随键盘高度自动调整位置
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+//    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = YES;
     
     // 地图
     [self initMapService];

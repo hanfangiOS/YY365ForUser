@@ -13,8 +13,8 @@
 
 #define kImageSpace_B         4.0
 
-#define kImageWidth_B         20.0
-#define kImageHeight_B        20.0
+#define kImageWidth_B         40.0
+#define kImageHeight_B        40.0
 
 //#define kStarImageBlank_B     @"praise_grade_normal"
 //#define kStarImageFull_B      @"praise_grade_highlighted"

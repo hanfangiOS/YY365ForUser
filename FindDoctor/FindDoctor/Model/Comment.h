@@ -60,14 +60,14 @@
 //11901点评按钮接口
 @interface DiagnosisCommentFilter : NSObject
 
-@property (assign,nonatomic) NSInteger            diagnosisID;//就诊单号
+@property (assign,nonatomic) long long            diagnosisID;//就诊单号
 
 @end
 
 //11902用户提交点评
 @interface CommitCommentFilter : NSObject
 
-@property (assign,nonatomic) NSInteger            dataID;//就诊单号
+@property (assign,nonatomic) long long            dataID;//就诊单号
 @property (assign,nonatomic) NSInteger            numStar;//点评的星级
 @property (assign,nonatomic) NSInteger            flagID;//锦旗ID
 @property (strong,nonatomic) NSString           * content;//点评内容

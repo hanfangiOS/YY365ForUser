@@ -17,6 +17,8 @@
 #import "PhotosShowView.h"
 
 #import "DiagnosisRemarkController.h"
+#import "Comment.h"
+#import "CUCommentManager.h"
 
 #define commitViewHeight 50
 
@@ -58,9 +60,26 @@
 }
 
 - (void)temp{
-    DiagnosisRemarkController * vc = [[DiagnosisRemarkController alloc] init];
-    vc.order = self.data;
-    [self.slideNavigationController pushViewController:vc animated:YES];
+    [self postRequestComment];
+
+}
+
+//11901点评按钮接口
+- (void)postRequestComment{
+    DiagnosisCommentFilter * diagnosisCommentFilter = [[DiagnosisCommentFilter alloc] init];
+    diagnosisCommentFilter.diagnosisID = self.data.diagnosisID;
+    [[CUCommentManager sharedInstance] getDiagnosisComment:diagnosisCommentFilter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+            NSInteger errorCode = [[result.responseObject valueForKey:@"errorCode"] integerValue];
+            if(errorCode == 0){
+                DiagnosisRemarkController * vc = [[DiagnosisRemarkController alloc] init];
+                vc.diagnosisID = self.data.diagnosisID;
+                vc.data = result.parsedModelObject;
+                [self.slideNavigationController pushViewController:vc animated:YES];
+            }
+        }
+    } pageName:@"DiagnosisRemarkController"];
+    
 }
 
 -(void)loadContentScrollView{

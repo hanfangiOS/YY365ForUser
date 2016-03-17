@@ -26,7 +26,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:@"ios" forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
-    [param setObjectSafely:@"UserMyRemarks" forKey:@"require"];
+    [param setObjectSafely:@"ClickRemark" forKey:@"require"];
     [param setObjectSafely:@(11901) forKey:@"interfaceID"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
@@ -89,8 +89,8 @@ SINGLETON_IMPLENTATION(CUCommentManager);
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:@"ios" forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
-    [param setObjectSafely:@"UserMyRemarks" forKey:@"require"];
-    [param setObjectSafely:@(11901) forKey:@"interfaceID"];
+    [param setObjectSafely:@"SubmitRemark" forKey:@"require"];
+    [param setObjectSafely:@(11902) forKey:@"interfaceID"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];

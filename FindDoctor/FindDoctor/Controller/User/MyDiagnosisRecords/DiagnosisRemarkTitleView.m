@@ -31,8 +31,8 @@
             self.titleColor = [UIColor blueColor];
             self.leftPadding = 0;
             self.rightPadding = 0;
-            self.PaddingInLeftLineAndTitle = 0;
-            self.PaddingInRightLineAndTitle = 0;
+            self.PaddingInLeftLineAndTitle = 4;
+            self.PaddingInRightLineAndTitle = 4;
             _leftLineHeight = 0.5;
             _rightLineHeight= 0.5;
         }
