@@ -2824,12 +2824,12 @@
 		BC8E36D61C27EB4D00304637 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				BC1859C21C8440060050251B /* MyDiagnosisRecords */,
 				7FFB94881C966AD2003523B4 /* MyIntegral */,
 				7FFB94871C966ACA003523B4 /* MyComment */,
 				BCAA4ABD1C85964D0085A165 /* MyAccount */,
 				BCAA4AB01C856D610085A165 /* MyClinic */,
 				BCAA4AA81C8548440085A165 /* MyDoctor */,
-				BC1859C21C8440060050251B /* MyDiagnosisRecords */,
 				BC313D221C3A147500C9469D /* View */,
 				BC313D1F1C3A143C00C9469D /* UserViewController.h */,
 				BC313D201C3A143C00C9469D /* UserViewController.m */,

@@ -49,10 +49,13 @@
         _type = type;
         _starSpace = space;
         
-        self.rate = 0;
+        [self setRate:0];
         self.editable = YES;
         
         [self initSubviews];
+        
+        self.frame = CGRectMake(self.frameX, self.frameY,((_type == StarTypeLarge) ? kImageWidth_B : kImageWidth_S)*5 + space*4 , (_type == StarTypeLarge) ? kImageWidth_B : kImageWidth_S);
+        self.backgroundColor =  kBlackColor;
     }
     return self;
 }
@@ -71,12 +74,11 @@
     for (int i = 0; i < _numberOfStar; i ++)
     {
         UIButton *imageView = [UIButton buttonWithType:UIButtonTypeCustom];
-//        imageView.frame = CGRectMake(i * (imageWidth + imageSpace), 0, imageWidth, frame.size.height);
         imageView.frame = CGRectMake(i * (imageWidth + imageSpace), 0, imageWidth, imageWidth);
         imageView.tag = i + 1;
         imageView.adjustsImageWhenHighlighted = NO;
         imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-        [imageView addTarget:self action:@selector(tapImage:) forControlEvents:UIControlEventTouchUpInside];
+        imageView.userInteractionEnabled = NO;
         [self addSubview:imageView];
     }
 }
@@ -128,14 +130,31 @@
     self.userInteractionEnabled = editable;
 }
 
-- (void)tapImage:(UIButton *)btn
+- (void)tapImage:(NSInteger)tempRate
 {
-    float tempRate = btn.tag;
     self.rate = tempRate;
     
     if ([self.delegate respondsToSelector:@selector(starRatingView:rateDidChange:)]) {
         [self.delegate starRatingView:self rateDidChange:self.rate];
     }
+}
+
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event{
+    CGPoint point=[touch locationInView:self];
+//    NSLog(@"x:%f,y:%f",point.x,point.y);
+    int tempRate = point.x/((_type == StarTypeLarge) ? kImageWidth_B : kImageWidth_S + _starSpace);
+    if (tempRate < 0) {
+        tempRate = 0;
+    }
+    if (tempRate > kImageCount) {
+        tempRate = kImageCount;
+    }
+    [self tapImage:tempRate+0.5];
+    return [super continueTrackingWithTouch:touch withEvent:event];
+}
+
+- (void)tapImageWithDrag:(UIButton *)sender{
+    
 }
 
 @end

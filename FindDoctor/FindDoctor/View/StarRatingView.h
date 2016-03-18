@@ -47,7 +47,7 @@ typedef enum : NSUInteger {
 
 @end
 
-@interface StarRatingView : UIView
+@interface StarRatingView : UIControl
 
 - (id)initWithFrame:(CGRect)frame type:(StarType)type;
 
