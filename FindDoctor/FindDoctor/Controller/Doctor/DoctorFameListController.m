@@ -25,6 +25,8 @@
     BlueDotLabelInDoctorHeaderView  * _view1_label4;
     
     FlagViewInCommentList           * _view2_flagView;
+    
+    NSInteger                        _lastID;
 }
 @property (nonatomic,strong)    DoctorFameListModel  * listModel;
 
@@ -101,8 +103,6 @@
     //积分XXX
     _view1_label4 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30 , view1.frameHeight - view1.frameHeight * 0.2 - 12, 110, 12) title:@"积分" contents:@"0" unit:@"" hasDot:YES ];
     
-    //    view1_label4.backgroundColor = [UIColor greenColor];
-    
     [view1 addSubview:_view1_label4];
     /*
      * 自然背景View
@@ -168,7 +168,7 @@
                 blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
             }
             else
-            {
+            {            blockSelf.emptyView.hidden = YES;
                 blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
                 ;
             }
@@ -185,41 +185,43 @@
         }
         else // 隐藏空页面
         {
-            blockSelf.emptyView.hidden = YES;
+
         }
         
     }];
 }
 
-- (void)triggerLoadMore
-{
-    [self.freshControl endRefreshing];
-    self.listModel.isLoading = YES;
-    [self.loadMoreControl beginLoading];
-    __block __weak DoctorFameListController * blockSelf = self;
-    [self.listModel gotoNextPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        blockSelf.listModel.isLoading = NO;
-        [blockSelf.loadMoreControl endLoading];
-        if (!result.hasError)
-        {
-            [blockSelf.contentTableView reloadData];
-            if ([blockSelf.listModel hasNext])
-            {
-                blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
-            }
-            else
-            {
-                blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-                ;
-            }
-        }
-        else
-        {
-            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
-            
-        }
-    }];
-}
+//- (void)triggerLoadMore
+//{
+//    [self.freshControl endRefreshing];
+//    self.listModel.isLoading = YES;
+//    [self.loadMoreControl beginLoading];
+//    __block __weak DoctorFameListController * blockSelf = self;
+//    self.listModel.commentFilter.lastID = _lastID;
+//    self.listModel.commentFilter.doctorID = self.doctor.doctorId;
+//    [self.listModel gotoNextPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+//        blockSelf.listModel.isLoading = NO;
+//        [blockSelf.loadMoreControl endLoading];
+//        if (!result.hasError)
+//        {
+//            [blockSelf.contentTableView reloadData];
+//            if ([blockSelf.listModel hasNext])
+//            {
+//                blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
+//            }
+//            else
+//            {
+//                blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+//                ;
+//            }
+//        }
+//        else
+//        {
+//            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
+//            
+//        }
+//    }];
+//}
 
 
 
@@ -248,7 +250,8 @@
     NSString * CellID = [NSString stringWithFormat:@"Cell%ld",(long)indexPath.row];
     DoctorFameCell * cell = [[DoctorFameCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
+    _lastID = cell.data.time;
     _cellHeight = [cell CellHeight];
     
     return cell;

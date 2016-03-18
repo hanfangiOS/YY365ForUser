@@ -27,7 +27,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
 {
     if(filter.classNumber == 0){
         NSMutableDictionary *param = [NSMutableDictionary dictionary];
-        [param setObjectSafely:@"ios" forKey:@"from"];
+        [param setObjectSafely:kPlatForm forKey:@"from"];
         [param setObjectSafely:@"0" forKey:@"token"];
         [param setObjectSafely:@"SearchDoctorBySubject" forKey:@"require"];
         [param setObjectSafely:@(11101) forKey:@"interfaceID"];
@@ -153,7 +153,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     }
     else{
         NSMutableDictionary *param = [NSMutableDictionary dictionary];
-        [param setObjectSafely:@"ios" forKey:@"from"];
+        [param setObjectSafely:kPlatForm forKey:@"from"];
         [param setObjectSafely:@"0" forKey:@"token"];
         [param setObjectSafely:@"DoctorListSelect" forKey:@"require"];
         [param setObjectSafely:@(11202) forKey:@"interfaceID"];
@@ -274,7 +274,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
 - (void)getSubObjectListWithResultBlock:(SNServerAPIResultBlock)resultBlock
 {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"DoctorMain" forKey:@"require"];
     [param setObjectSafely:@(11201) forKey:@"interfaceID"];
@@ -346,7 +346,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
 - (void)updateDoctorInfo:(Doctor *)doctor date:(NSInteger)date resultBlock:(SNServerAPIResultBlock)resultBlock
 {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"DoctorMain" forKey:@"require"];
     [param setObjectSafely:@(11201) forKey:@"interfaceID"];
@@ -415,7 +415,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
 
 - (void)getOrderTimeSegmentWithReleaseID:(long long)releaseID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"OrderTimeSegment" forKey:@"require"];
     [param setObjectSafely:@(11302) forKey:@"interfaceID"];
@@ -474,7 +474,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
 
 - (void)doctorConcernWithDoctorID:(NSInteger)doctorID isConcern:(NSInteger)isConcern resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"DoctorConcern" forKey:@"require"];
     [param setObjectSafely:@(11301) forKey:@"interfaceID"];
@@ -511,7 +511,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
 
 - (void)getMyDoctorWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"MyDoctor" forKey:@"require"];
     [param setObjectSafely:@(13101) forKey:@"interfaceID"];

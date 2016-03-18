@@ -25,7 +25,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
 - (void)getDiagnosisComment:(DiagnosisCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"ClickRemark" forKey:@"require"];
     [param setObjectSafely:@(11901) forKey:@"interfaceID"];
@@ -88,7 +88,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
 - (void)getCommitComment:(CommitCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"SubmitRemark" forKey:@"require"];
     [param setObjectSafely:@(11902) forKey:@"interfaceID"];
@@ -137,7 +137,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
 - (void)getMyCommentList:(MyCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"UserMyRemarks" forKey:@"require"];
     [param setObjectSafely:@(11903) forKey:@"interfaceID"];
@@ -194,7 +194,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
 - (void)getDoctorFameList:(DoctorFameFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"DoctorPraise" forKey:@"require"];
     [param setObjectSafely:@(11905) forKey:@"interfaceID"];
@@ -234,15 +234,15 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 [remarkList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
                     remarkListInfo.content = [obj objectForKeySafely:@"content"] ;
-                    remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
-                    remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
-                    remarkListInfo.time = [[obj objectForKeySafely:@"time"] integerValue];
-                    remarkListInfo.userName = [obj objectForKeySafely:@"userName"];
-                    [comment.remarkList addObject:remarkListInfo];
+//                    remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
+//                    remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
+//                    remarkListInfo.time = [[obj objectForKeySafely:@"time"] integerValue];
+//                    remarkListInfo.userName = [obj objectForKeySafely:@"userName"];
+//                    [comment.remarkList addObject:remarkListInfo];
                 }];
                 
                 listModel.comment = comment;
-            
+                
                 listModel.items = comment.remarkList;
                 
                 result.parsedModelObject = listModel;
@@ -266,7 +266,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
 - (void)getDoctorFameCommentList:(DoctorFameCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"DoctorPraise" forKey:@"require"];
     [param setObjectSafely:@(11906) forKey:@"interfaceID"];
@@ -284,53 +284,23 @@ SINGLETON_IMPLENTATION(CUCommentManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
-                NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
+                DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
+
                 NSMutableArray * listItemArr = [NSMutableArray new];
                 
-                Comment * comment = [[Comment alloc] init];
-                comment.averageStar = [[data valueForKeySafely:@"averageStar"] integerValue];
-                comment.totalConern = [[data valueForKeySafely:@"totalConern"] integerValue];
-                comment.totalDiagnosis = [[data valueForKeySafely:@"totalDiagnosis"] integerValue];
-                comment.totalScore = [[data valueForKeySafely:@"totalScore"] integerValue];
-                NSMutableArray * flagList = [NSMutableArray new];
-                flagList = [data objectForKeySafely:@"flagList"];
-                [flagList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    FlagListInfo * flagListInfo = [[FlagListInfo alloc] init];
-                    flagListInfo.ID = [[obj objectForKeySafely:@"ID"] integerValue];
-                    flagListInfo.icon = [obj objectForKeySafely:@"icon"];
-                    flagListInfo.name = [obj objectForKeySafely:@"name"];
-                    flagListInfo.num = [[obj objectForKeySafely:@"num"] integerValue];
-                    [comment.flagList addObject:flagListInfo];
+                NSMutableArray * data = [result.responseObject valueForKeySafely:@"data"];
+                [data enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
+                    remarkListInfo.content = [obj objectForKeySafely:@"content"] ;
+                    remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
+                    remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
+                    remarkListInfo.time = [[obj objectForKeySafely:@"time"] integerValue];
+                    remarkListInfo.userName = [obj objectForKeySafely:@"userName"];
+                    [listItemArr addObject:remarkListInfo];
                 }];
-                NSMutableArray * remarkList = [NSMutableArray new];
-                remarkList = [data objectForKeySafely:@"remarkList"];
-                [remarkList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    //                        RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
-                    //                        remarkListInfo.content = [obj objectForKeySafely:@"content"] ;
-                    //                        remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
-                    //                        remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
-                    //                        remarkListInfo.time = [[obj objectForKeySafely:@"time"] integerValue];
-                    //                        remarkListInfo.userName = [obj objectForKeySafely:@"userName"];
-                    //                        [comment.remarkList addObject:remarkListInfo];
-                }];
-                
-                
-                RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
-                remarkListInfo.content = @"scjsncmsacsaxssdsamcmasclsacmadsmcqwkfcsacmascmsmmscms水滴石穿撒没吃撒开吃开撒么sq" ;
-                remarkListInfo.flagName = @"阿西吧";
-                remarkListInfo.numStar = 4;
-                remarkListInfo.time = 1458107629;
-                remarkListInfo.userName = @"郭晓薇";
-                [comment.remarkList addObject:remarkListInfo];
-                [comment.remarkList addObject:remarkListInfo];
-                [comment.remarkList addObject:remarkListInfo];
-                
-                
-                [listItemArr addObject:comment];
-                
                 
                 listModel.items = listItemArr;
+                
                 result.parsedModelObject = listModel;
             }
             else {
