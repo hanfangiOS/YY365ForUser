@@ -89,3 +89,10 @@
 
 @end
 
+////11906
+//@interface DoctorFameFilter : NSObject
+//
+//@property (assign,nonatomic) NSInteger            doctorID;//医生ID
+//
+//@end
+

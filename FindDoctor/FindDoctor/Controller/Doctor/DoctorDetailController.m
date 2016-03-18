@@ -55,6 +55,14 @@
     [self addLeftBackButtonItemWithImage];
 }
 
+- (void)settings{
+    DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
+    listModel.filter.doctorID = self.doctor.doctorId;
+    DoctorFameListController * vc= [[DoctorFameListController alloc] initWithPageName:@"" listModel:listModel];
+    vc.doctor = self.doctor;
+    [self.slideNavigationController pushViewController:vc animated:YES];
+}
+
 - (void)initSubviews
 {
     UIButton * tempBtn = [[UIButton alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
