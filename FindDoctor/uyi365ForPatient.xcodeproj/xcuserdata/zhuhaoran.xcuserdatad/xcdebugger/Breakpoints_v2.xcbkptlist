@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUCommentManager.m"
-            timestampString = "479897600.479978"
+            timestampString = "479971834.577646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-getCommitComment:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUCommentManager.m"
-            timestampString = "479897601.856006"
+            timestampString = "479971834.577646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-getCommitComment:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUCommentManager.m"
-            timestampString = "479898455.670799"
+            timestampString = "479971834.577646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-getMyCommentList:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUCommentManager.m"
-            timestampString = "479898457.758507"
+            timestampString = "479971834.577646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-getMyCommentList:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -118,15 +118,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUCommentManager.m"
-            timestampString = "479959283.43231"
+            timestampString = "479971834.577646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-getDoctorFameList:resultBlock:pageName:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Core/BusinessManagers/CUCommentManager.m"
+            timestampString = "479971834.577646"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-getDoctorFameList:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -137,14 +153,24 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUCommentManager.m"
-            timestampString = "479959284.945971"
+            filePath = "FindDoctor/Controller/Doctor/DoctorFameListController.m"
+            timestampString = "479975553.956426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-getDoctorFameList:resultBlock:pageName:"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -153,13 +179,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/Doctor/View/DoctorFameListModel.m"
-            timestampString = "479959335.927428"
+            filePath = "FindDoctor/Controller/Doctor/DoctorFameListController.m"
+            timestampString = "479973711.464171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-gotoFirstPage:"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-resetData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

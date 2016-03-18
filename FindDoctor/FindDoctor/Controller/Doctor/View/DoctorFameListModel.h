@@ -11,6 +11,9 @@
 
 @interface DoctorFameListModel : SNBaseListModel
 
-@property (nonatomic, strong) DoctorFameFilter * filter;
+@property (nonatomic, strong) DoctorFameFilter          * fameFilter;
+@property (nonatomic, strong) Comment                   * comment;
+
+@property (nonatomic, strong) DoctorFameCommentFilter   * commentFilter;
 
 @end

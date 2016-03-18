@@ -44,13 +44,14 @@
 }
 
 - (void)viewDidLoad {
+    self.hasFreshControl = NO;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _comment = [[Comment alloc] init];
-    self.listModel.filter.doctorID = self.doctor.doctorId;
+    self.listModel.fameFilter.doctorID = self.doctor.doctorId;
     
     self.title = [NSString stringWithFormat:@"%@ 教授口碑",self.doctor.name];
-
+    
 }
 
 - (void)loadContentView{
@@ -60,7 +61,8 @@
     
     CGFloat heightForHeader = 0.4 * kScreenHeight;
     
-    self.contentTableView.frameY = heightForHeader;
+    self.contentTableView.frame = CGRectMake(0
+                                             , heightForHeader, self.contentTableView.frame.size.width, self.contentView.frameHeight - heightForHeader);
     
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, heightForHeader)];
     
@@ -82,32 +84,32 @@
     
     //XX人关注
     _view1_label1 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight * 0.2, 110, 12) title:@"" contents:@"0" unit:@"人关注" hasDot:YES ];
-//    view1_label1.backgroundColor = [UIColor greenColor];
+    //    view1_label1.backgroundColor = [UIColor greenColor];
     [view1 addSubview:_view1_label1];
     
     //诊疗XX次
     _view1_label2 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30, view1.frameHeight * 0.2, 110, 12) title:@"诊疗" contents:@"0" unit:@"次" hasDot:YES ];
-//    view1_label2.backgroundColor = [UIColor greenColor];
-
+    //    view1_label2.backgroundColor = [UIColor greenColor];
+    
     [view1 addSubview:_view1_label2];
     
     //服务XX星
     _view1_label3 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight - view1.frameHeight * 0.2 - 12, 110, 12) title:@"服务" contents:@"0" unit:@"星" hasDot:YES ];
-//    view1_label3.backgroundColor = [UIColor greenColor];
-
+    //    view1_label3.backgroundColor = [UIColor greenColor];
+    
     [view1 addSubview:_view1_label3];
     //积分XXX
     _view1_label4 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30 , view1.frameHeight - view1.frameHeight * 0.2 - 12, 110, 12) title:@"积分" contents:@"0" unit:@"" hasDot:YES ];
-
-//    view1_label4.backgroundColor = [UIColor greenColor];
-
+    
+    //    view1_label4.backgroundColor = [UIColor greenColor];
+    
     [view1 addSubview:_view1_label4];
     /*
      * 自然背景View
      */
     UIView * view2 = [[UIView alloc] initWithFrame:CGRectMake(0, view1.maxY, kScreenWidth, heightForHeader * 0.65)];
     view2.backgroundColor = [UIColor grayColor];
-     [_headerView addSubview:view2];
+    [_headerView addSubview:view2];
     //锦旗
     UILabel * view2_label1 = [[UILabel alloc] initWithFrame:CGRectMake(view2.centerX - 20, 10, 40, 20)];
     view2_label1.textColor = [UIColor blueColor];
@@ -117,18 +119,18 @@
     
     //一堆旗
     _view2_flagView = [[FlagViewInCommentList alloc] initWithFrame:CGRectMake(0,10, kScreenWidth, 20)];
-//    [view2 addSubview:_view2_flagView];
-
+    //    [view2 addSubview:_view2_flagView];
+    
     
 }
 
 - (void)resetData{
     
-    if (self.listModel.items.count != 0) {
-        _comment = [self.listModel.items objectAtIndexSafely:0];
+    if (self.listModel.comment) {
+      _comment = self.listModel.comment;
     }
     
-    [_view1_label1 resetTitle:@"" contents:[NSString stringWithFormat:@"%ld",(long)_comment.totalConern] unit:@"人关注"];
+    [_view1_label1 resetTitle:@"" contents:[NSString stringWithFormat:@"%d",_comment.totalConern] unit:@"人关注"];
     
     [_view1_label2 resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)_comment.totalDiagnosis] unit:@"次"];
     
@@ -145,11 +147,13 @@
     [self.freshControl beginRefreshing];
     [self.loadMoreControl endLoading];
     self.listModel.isLoading = YES;
-    __block __weak CUListViewController * blockSelf = self;
+    __block __weak DoctorFameListController * blockSelf = self;
     [self.listModel gotoFirstPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        [self resetData];
+        blockSelf.listModel = result.parsedModelObject;
+        [blockSelf resetData];
         blockSelf.listModel.isLoading = NO;
         [blockSelf.freshControl endRefreshing];
+        
         if (!result.hasError)
         {
             // height
@@ -172,7 +176,6 @@
         else
         {
             [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
-            
         }
         
         // 添加空页面
@@ -187,6 +190,37 @@
         
     }];
 }
+
+- (void)triggerLoadMore
+{
+    [self.freshControl endRefreshing];
+    self.listModel.isLoading = YES;
+    [self.loadMoreControl beginLoading];
+    __block __weak DoctorFameListController * blockSelf = self;
+    [self.listModel gotoNextPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        blockSelf.listModel.isLoading = NO;
+        [blockSelf.loadMoreControl endLoading];
+        if (!result.hasError)
+        {
+            [blockSelf.contentTableView reloadData];
+            if ([blockSelf.listModel hasNext])
+            {
+                blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
+            }
+            else
+            {
+                blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+                ;
+            }
+        }
+        else
+        {
+            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
+            
+        }
+    }];
+}
+
 
 
 #pragma mark - 返回事件
@@ -214,17 +248,9 @@
     NSString * CellID = [NSString stringWithFormat:@"Cell%ld",(long)indexPath.row];
     DoctorFameCell * cell = [[DoctorFameCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    _cellHeight = [cell CellHeight];
     
-    if (self.listModel.items > 0) {
-        Comment * comment = [[Comment alloc] init];
-        comment = [self.listModel.items objectAtIndexSafely:0];
-        if (comment.remarkList.count > 0) {
-            RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
-            remarkListInfo = [comment.remarkList objectAtIndexSafely:indexPath.row];
-            cell.data = remarkListInfo;
-            _cellHeight = [cell CellHeight];
-        }
-    }
     return cell;
     
 }
@@ -239,13 +265,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

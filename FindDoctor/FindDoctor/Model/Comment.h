@@ -89,10 +89,11 @@
 
 @end
 
-////11906
-//@interface DoctorFameFilter : NSObject
-//
-//@property (assign,nonatomic) NSInteger            doctorID;//医生ID
-//
-//@end
+//11906
+@interface DoctorFameCommentFilter : NSObject
+
+@property (assign,nonatomic) NSInteger            doctorID;//医生ID
+@property (assign,nonatomic) NSInteger            lastID;//上次读取最后数据ID（就是点评的时间戳），第一次默认为0
+
+@end
 

@@ -15,6 +15,7 @@
 #import "CUServerAPIConstant.h"
 #import "SNBaseListModel.h"
 #import "Comment.h"
+#import "DoctorFameListModel.h"
 
 @implementation CUCommentManager
 
@@ -210,9 +211,8 @@ SINGLETON_IMPLENTATION(CUCommentManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
+                DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
                 NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
-                NSMutableArray * listItemArr = [NSMutableArray new];
                 
                 Comment * comment = [[Comment alloc] init];
                 comment.averageStar = [[data valueForKeySafely:@"averageStar"] integerValue];
@@ -232,19 +232,19 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 NSMutableArray * remarkList = [NSMutableArray new];
                 remarkList = [data objectForKeySafely:@"remarkList"];
                 [remarkList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                                            RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
-                                            remarkListInfo.content = [obj objectForKeySafely:@"content"] ;
-                                            remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
-                                            remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
-                                            remarkListInfo.time = [[obj objectForKeySafely:@"time"] integerValue];
-                                            remarkListInfo.userName = [obj objectForKeySafely:@"userName"];
-                                            [comment.remarkList addObject:remarkListInfo];
+                    RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
+                    remarkListInfo.content = [obj objectForKeySafely:@"content"] ;
+                    remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
+                    remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
+                    remarkListInfo.time = [[obj objectForKeySafely:@"time"] integerValue];
+                    remarkListInfo.userName = [obj objectForKeySafely:@"userName"];
+                    [comment.remarkList addObject:remarkListInfo];
                 }];
                 
-                [listItemArr addObject:comment];
+                listModel.comment = comment;
+            
+                listModel.items = comment.remarkList;
                 
-                
-                listModel.items = listItemArr;
                 result.parsedModelObject = listModel;
             }
             else {
@@ -262,19 +262,20 @@ SINGLETON_IMPLENTATION(CUCommentManager);
     
 }
 
-//11905医生口碑接口
-- (void)getDoctorFameCommentList:(DoctorFameFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+//11906医生口碑接口 下拉更新更多的点评内容读取接口
+- (void)getDoctorFameCommentList:(DoctorFameCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:@"ios" forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"DoctorPraise" forKey:@"require"];
-    [param setObjectSafely:@(11905) forKey:@"interfaceID"];
+    [param setObjectSafely:@(11906) forKey:@"interfaceID"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:@(filter.doctorID) forKey:@"doctorID"];
-    
+    [dataParam setObjectSafely:@(pageSize) forKey:@"num"];
+    [dataParam setObjectSafely:@(filter.lastID) forKey:@"lastID"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);

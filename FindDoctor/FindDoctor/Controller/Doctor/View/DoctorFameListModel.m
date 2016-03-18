@@ -15,8 +15,10 @@
 {
     self = [super init];
     if (self) {
-        DoctorFameFilter *filter = [[DoctorFameFilter alloc] init];
-        return [self initWithFilter:filter];
+        DoctorFameFilter * fameFilter = [[DoctorFameFilter alloc] init];
+        self.commentFilter = [[DoctorFameCommentFilter alloc] init];
+        self.comment = [[Comment alloc] init];
+        return [self initWithFilter:fameFilter];
     }
     return nil;
     
@@ -27,7 +29,7 @@
     self = [super init];
     
     if (self) {
-        _filter = filter;
+        self.fameFilter = filter;
     }
     
     return self;
@@ -37,10 +39,10 @@
 
 - (void)gotoFirstPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUCommentManager sharedInstance] getDoctorFameList:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUCommentManager sharedInstance] getDoctorFameList:self.fameFilter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
-            SNBaseListModel * list = result.parsedModelObject;
+            DoctorFameListModel * list = result.parsedModelObject;
             NSArray *orderArray = list.items;
             
             [self.items removeAllObjects];
@@ -59,10 +61,10 @@
 
 - (void)gotoNextPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUCommentManager sharedInstance] getDoctorFameList:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUCommentManager sharedInstance] getDoctorFameCommentList:self.commentFilter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
-            SNBaseListModel * list = result.parsedModelObject;
+            DoctorFameListModel * list = result.parsedModelObject;
             [self.items addObjectsFromArray:list.items];
             
             SNPageInfo * info = list.pageInfo;

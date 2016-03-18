@@ -26,6 +26,6 @@ SINGLETON_DECLARE(CUCommentManager);
 - (void)getDoctorFameList:(DoctorFameFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 //11906医生口碑页点评内容读取接口
-- (void)getDoctorFameCommentList:(DoctorFameFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+- (void)getDoctorFameCommentList:(DoctorFameCommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 @end

@@ -46,3 +46,6 @@
 
 @end
 
+@implementation DoctorFameCommentFilter
+
+@end

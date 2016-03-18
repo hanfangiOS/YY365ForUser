@@ -57,8 +57,9 @@
 
 - (void)settings{
     DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
-    listModel.filter.doctorID = self.doctor.doctorId;
+    listModel.fameFilter.doctorID = self.doctor.doctorId;
     DoctorFameListController * vc= [[DoctorFameListController alloc] initWithPageName:@"" listModel:listModel];
+    
     vc.doctor = self.doctor;
     [self.slideNavigationController pushViewController:vc animated:YES];
 }
@@ -83,7 +84,7 @@
     headerView.data = self.doctor;
     headerView.commentBlock = ^{
         DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
-        listModel.filter.doctorID = weakSelf.doctor.doctorId;
+        listModel.fameFilter.doctorID = weakSelf.doctor.doctorId;
         DoctorFameListController * vc = [[DoctorFameListController alloc] initWithPageName:@"DoctorFameListController" listModel:listModel];
         vc.doctor = weakSelf.doctor;
         [weakSelf.slideNavigationController pushViewController:vc animated:YES];
