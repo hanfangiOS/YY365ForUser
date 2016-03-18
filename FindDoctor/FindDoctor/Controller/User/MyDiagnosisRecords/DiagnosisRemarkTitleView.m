@@ -38,7 +38,7 @@
 
 - (void)initWithDefaultStyle{
     self.titleFont = [UIFont systemFontOfSize:14];
-    self.titleColor = [UIColor blueColor];
+    self.titleColor = UIColorFromHex(Color_Hex_NavBackground);
     self.leftLineColor = [UIColor lightGrayColor];
     self.rightLineColor = [UIColor lightGrayColor];
     self.leftPadding = 0;

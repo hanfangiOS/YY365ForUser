@@ -62,6 +62,7 @@
 #pragma mark - 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isPanValid = NO;
     _commitCommentFilter = [[CommitCommentFilter alloc] init];
     _numStar = 5;
     [self loadContentScrollView];
@@ -79,7 +80,6 @@
 }
 
 - (void)loadContent{
-    
     [self loadCommitView];
     //第一块view
     _view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 5, kScreenWidth, 100)];
@@ -140,6 +140,7 @@
     CGFloat starViewWidth = starViewHeight * 5 + starSpace * 4;
     
     _view2_starView = [[StarRatingView alloc] initWithFrame:CGRectMake(starPadding,(_view2_starView_containerView.frameHeight - starViewHeight)/2,starViewWidth,starViewHeight) type:StarTypeLarge starSpace:starSpace];
+    _view2_starView.editable = YES;
     _view2_starView.delegate = self;
     _view2_starView.rate = _numStar;
     [_view2_starView_containerView addSubview:_view2_starView];
