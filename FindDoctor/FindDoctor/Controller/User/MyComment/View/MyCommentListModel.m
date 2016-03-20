@@ -15,14 +15,14 @@
 {
     self = [super init];
     if (self) {
-        MyCommentFilter *filter = [[MyCommentFilter alloc] init];
+        CommentFilter *filter = [[CommentFilter alloc] init];
         return [self initWithFilter:filter];
     }
     return nil;
  
 }
 
-- (instancetype)initWithFilter:(MyCommentFilter *)filter
+- (instancetype)initWithFilter:(CommentFilter *)filter
 {
     self = [super init];
     

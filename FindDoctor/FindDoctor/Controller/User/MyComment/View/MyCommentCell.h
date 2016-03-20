@@ -11,7 +11,7 @@
 
 @interface MyCommentCell : UITableViewCell
 
-@property (strong,nonatomic) Comment * data;
+@property (strong,nonatomic) RemarkListInfo * data;
 
 - (NSInteger)CellHeight;
 

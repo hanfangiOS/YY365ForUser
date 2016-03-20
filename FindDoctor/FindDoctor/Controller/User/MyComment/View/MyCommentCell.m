@@ -108,7 +108,7 @@
     
 }
 
-- (void)setData:(Comment *)data{
+- (void)setData:(RemarkListInfo *)data{
     _data = data;
     _starView.editable = NO;
     _starView.rate = self.data.numStar;

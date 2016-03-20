@@ -36,15 +36,15 @@
     
     UIView                      * _view3;//第三块view
     DiagnosisRemarkTitleView    * _view3_titleView;//赠送锦旗
-    FlagViewInCommentList       * _view3_flagView;//一堆旗
+    //    FlagViewInCommentList       * _view3_flagView;//一堆旗
     NSInteger                     _flagID;//锦旗ID
     
     DiagnosisRemarkTitleView    * _view4_titleView;//点评内容
     UITextView                  * _view4_textView;//XXX(须五字以上)
     UILabel                     * _view4_textView_placeholderLabel;//不解释
     
-    CommitCommentFilter         * _commitCommentFilter;
-
+    CommentFilter               * _filter;
+    
 }
 
 @end
@@ -63,7 +63,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isPanValid = NO;
-    _commitCommentFilter = [[CommitCommentFilter alloc] init];
+    _filter = [[CommentFilter alloc] init];
     _numStar = 5;
     [self loadContentScrollView];
     [self loadContent];
@@ -154,9 +154,9 @@
     _view3_titleView.backgroundColor = [UIColor clearColor];
     [_view3 addSubview:_view3_titleView];
     //一堆旗
-    _view3_flagView = [[FlagViewInCommentList alloc] initWithFrame:CGRectMake(0
-, _view3_titleView.maxY + 10, kScreenWidth, _view3.frameHeight - _view3_titleView.frameHeight)];
-    [_view3 addSubview:_view3_flagView];
+    //    _view3_flagView = [[FlagViewInCommentList alloc] initWithFrame:CGRectMake(0
+    //, _view3_titleView.maxY + 10, kScreenWidth, _view3.frameHeight - _view3_titleView.frameHeight)];
+    //    [_view3 addSubview:_view3_flagView];
     //第四块view
     //点评内容
     _view4_titleView = [[DiagnosisRemarkTitleView alloc] initWithFrame:CGRectMake(0, _view3.maxY, kScreenWidth, 30) title:@"点评内容" Style:TitleViewDefaultStyle];
@@ -169,7 +169,7 @@
     [_view4_textView setAutocorrectionType:UITextAutocorrectionTypeNo];
     
     _view4_textView_placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 4, 160, 20)];
-     _view4_textView_placeholderLabel.text = @"好医生（需5个字以上）";
+    _view4_textView_placeholderLabel.text = @"好医生（需5个字以上）";
     _view4_textView_placeholderLabel.font = [UIFont systemFontOfSize:14];
     _view4_textView_placeholderLabel.enabled = NO;
     
@@ -200,33 +200,34 @@
 
 //刷新数据
 - (void)resetData{
-    [_view1_imageView1 setImageWithURL:[NSURL URLWithString:self.data.doctorIcon]];
-    _view1_label1.text = self.data.doctorName;
-    _view1_label2.text = self.data.doctorTitle;
-    _view1_label4.text = self.data.clinicAddress;
-    _view1_label5.text = [[NSDate dateWithTimeIntervalSince1970:self.data.diagnosisTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
-    _view3_flagView.data = self.data;
+    [_view1_imageView1 setImageWithURL:[NSURL URLWithString:self.data.avatar]];
+    _view1_label1.text = self.data.name;
+    _view1_label2.text = self.data.levelDesc;
+    _view1_label4.text = self.data.address;
+    _view1_label5.text = [[NSDate dateWithTimeIntervalSince1970:self.data.diagnosisTime ] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+    //    _view3_flagView.data = self.data;
 }
 
 #pragma mark - 网络请求
 //11902用户提交点评
 - (void)postRequestCommit{
     [self showProgressView];
-    _commitCommentFilter.dataID = self.diagnosisID;
-    _commitCommentFilter.numStar =  _numStar;
+    _filter.order.diagnosisID = self.diagnosisID;
+    _filter.remarkListInfo.numStar =  _numStar;
     
     //temp
     _flagID = 1;
     
-    _commitCommentFilter.flagID =  _flagID;
+    _filter.remarkListInfo.flagID =  _flagID;
     
-    [[CUCommentManager sharedInstance] getCommitComment:_commitCommentFilter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUCommentManager sharedInstance] getCommitComment:_filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [self hideProgressView];
         if (!result.hasError) {
             NSInteger errorCode = [[result.responseObject valueForKey:@"errorCode"] integerValue];
             if(errorCode == 0){
-                [TipHandler showHUDText:[result.responseObject valueForKey:@"提交成功"] inView:self.view];
-                [self.slideNavigationController popToRootViewControllerAnimated:YES];
+                [TipHandler showHUDText:@"提交成功" inView:self.view];
+                [self performSelector:@selector(commitSuccess) withObject:nil afterDelay:1];
+                
             }
         }
     } pageName:@"DiagnosisRemarkController"];
@@ -242,7 +243,7 @@
         _view4_textView_placeholderLabel.hidden = YES;
     }
     
-    _commitCommentFilter.content = textView.text;
+    _filter.remarkListInfo.content = textView.text;
 }
 
 #pragma mark StarRatingViewDelegate
@@ -260,12 +261,17 @@
 #pragma mark - 辅助方法
 //提交评价按钮检查
 - (void)commitCheck{
-    NSString *  str = [_commitCommentFilter.content stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *  str = [_filter.remarkListInfo.content stringByReplacingOccurrencesOfString:@" " withString:@""];
     if ([str length] < 5) {
         [TipHandler showHUDText:@"评价需5字以上" inView:self.view];
         return;
     }
     [self postRequestCommit];
+}
+
+//提交成功
+- (void)commitSuccess{
+    [self.slideNavigationController popToRootViewControllerAnimated:YES];
 }
 
 //收起键盘
@@ -279,13 +285,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

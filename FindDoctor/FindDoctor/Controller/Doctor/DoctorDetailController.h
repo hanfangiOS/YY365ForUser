@@ -11,7 +11,7 @@
 
 @interface DoctorDetailController : CUViewController
 
-@property (nonatomic, strong) Doctor *doctor;
+@property (nonatomic, strong) Doctor * doctor;
 
 @end
 

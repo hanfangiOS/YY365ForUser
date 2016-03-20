@@ -69,8 +69,8 @@
 
 // { -----------用户相关
 
-// 获取手机验证码
-#define URL_AfterBase @"/baseFrame/base/server.jmt"
+// 获取手机验证码    
+#define URL_AfterBase @"/baseFrame/base/server.jmw"
 
 // }
 

@@ -11,6 +11,6 @@
 
 @interface MyCommentListModel : SNBaseListModel
 
-@property (nonatomic, strong) MyCommentFilter * filter;
+@property (nonatomic, strong) CommentFilter * filter;
 
 @end

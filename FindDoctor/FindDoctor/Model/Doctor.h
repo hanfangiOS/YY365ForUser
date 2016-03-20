@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+@class FlagListInfo;
+@class RemarkListInfo;
+
 
 typedef NS_ENUM(NSInteger, DoctorSortType) {
     DoctorSortTypeRate      = 1,  // 按评分
@@ -25,6 +28,8 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 @property (nonatomic, strong) NSString *phoneNumber;//
 
 @property (nonatomic, strong) NSString *address;//医生就诊地址
+@property (nonatomic, strong) NSString *clinicName;//就诊诊所名
+@property (nonatomic, assign) NSInteger diagnosisTime;//就诊时间
 @property (nonatomic, strong) NSString *levelDesc;//医生头衔， 如教授、主任等
 @property (nonatomic, strong) NSString *subject;//医生诊疗科目
 @property (nonatomic, strong) NSString *availableTime;//
@@ -53,7 +58,12 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 //@property NSInteger queueNumber;  // 已预约数量
 //@property NSInteger queueCount;   // 可预约总数
 @property CGFloat rate; //评星， 预留接口
+@property                     NSInteger score; //积分
 //@property (nonatomic, strong) NSString *city;//预留， 暂时不用
+
+
+@property (nonatomic, strong) NSMutableArray        * flagList;//锦旗列表
+@property (nonatomic, strong) NSMutableArray        * remarkList;//评论列表
 
 @end
 

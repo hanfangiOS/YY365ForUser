@@ -11,6 +11,6 @@
 
 @interface FlagViewInCommentList : UIView
 
-@property (strong, nonatomic) Comment *data;
+//@property (strong, nonatomic) Comment *data;
 
 @end
