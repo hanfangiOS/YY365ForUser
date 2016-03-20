@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define DotWidth 3
+
 @interface BlueDotLabelInDoctorHeaderView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title contents:(NSString *)contents unit:(NSString *)unit hasDot:(BOOL)hasDot;

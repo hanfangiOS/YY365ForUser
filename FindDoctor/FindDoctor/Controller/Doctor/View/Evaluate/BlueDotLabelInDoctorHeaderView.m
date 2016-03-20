@@ -17,6 +17,8 @@
     UILabel *titleLabel;
     UILabel *contentsLabel;
     UILabel *unitLabel;
+    
+    UIView *dotView;
 }
 
 @end
@@ -40,8 +42,7 @@
     int fontSize_contents = 12;
     int leftPaddig = 0;
     if (_hasDot) {
-        int DotWidth = 3;
-        UIView *dotView = [[UIView alloc]initWithFrame:CGRectMake(0, ([self frameHeight])/2,DotWidth, DotWidth)];
+        dotView = [[UIView alloc]initWithFrame:CGRectMake(0, ([self frameHeight])/2,DotWidth, DotWidth)];
         dotView.layer.cornerRadius = DotWidth/2.f;
         dotView.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
         [self addSubview:dotView];
@@ -77,16 +78,7 @@
     int fontSize = 12;
     int fontSize_contents = 12;
     int leftPaddig = 0;
-    
-    if (_hasDot) {
-        int DotWidth = 3;
-        UIView *dotView = [[UIView alloc]initWithFrame:CGRectMake(0, ([self frameHeight])/2,DotWidth, DotWidth)];
-        dotView.layer.cornerRadius = DotWidth/2.f;
-        dotView.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
-        [self addSubview:dotView];
-        leftPaddig = DotWidth + 5;
-    }
-    
+
     _title = title;
     _contents = contents;
     _unit = unit;
@@ -104,7 +96,7 @@
 //    CGSize unitSize = [_contents sizeWithAttributes: @{NSFontAttributeName: [UIFont systemFontOfSize:fontSize]}];
     unitLabel.frame = CGRectMake(CGRectGetMaxX(contentsLabel.frame) + 5,0, unitLabel.frameWidth, unitLabel.frameHeight);
     self.frame = CGRectMake(self.frameX,self.frameY, CGRectGetMaxX(unitLabel.frame), CGRectGetMaxY(unitLabel.frame));
-    
+    dotView.frame = CGRectMake(0, ([self frameHeight])/2,DotWidth, DotWidth);
     [self setNeedsDisplay];
 }
 
