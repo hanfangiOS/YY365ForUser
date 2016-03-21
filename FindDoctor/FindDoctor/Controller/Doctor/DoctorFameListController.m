@@ -42,19 +42,18 @@
     self = [super initWithPageName:pageName listModel:listModel];
     if (self) {
         self.listModel = listModel;
-
+        self.hasFreshControl = NO;
     }
     return self;
 }
 
 - (void)viewDidLoad {
+    self.title = [NSString stringWithFormat:@"%@ 教授口碑",self.listModel.doctor.name];
+    self.contentTableView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
+    self.hasFreshControl = NO;
+    [super viewDidLoad];
     self.hasFreshControl = NO;
     _cellHeight = 0;
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    self.title = [NSString stringWithFormat:@"%@ 教授口碑",self.listModel.doctor.name];
-    
 }
 
 - (void)loadContentView{
@@ -63,9 +62,9 @@
     self.contentTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     CGFloat heightForHeader = 0.4 * kScreenHeight;
+    self.contentTableView.frame = CGRectMake(0, heightForHeader, self.contentTableView.frame.size.width, self.contentView.frameHeight - heightForHeader);
     
-    self.contentTableView.frame = CGRectMake(0
-                                             , heightForHeader, self.contentTableView.frame.size.width, self.contentView.frameHeight - heightForHeader);
+
     
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, heightForHeader)];
     
