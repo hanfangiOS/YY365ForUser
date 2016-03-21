@@ -236,21 +236,24 @@ SINGLETON_IMPLENTATION(CUClinicManager);
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 
-                NSMutableArray *recvListDoctor = [result.responseObject valueForKeySafely:@"data"];
+                NSArray *recvList = [result.responseObject valueForKeySafely:@"data"];
                 NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                 
-                [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-                    Clinic *clinic = [[Clinic alloc] init];
-                    
-                    clinic.ID = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
-                    clinic.state = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
-                    clinic.name = [obj valueForKey:@"name"];
-                    clinic.icon = [NSURL URLWithString:[obj valueForKey:@"icon"]];
-                    clinic.breifInfo = [obj valueForKey:@"briefIntro"];
-                    clinic.skillTreat = [obj valueForKey:@"skillTreat"];
-                    
-                    [listSubjectDoctor addObject:clinic];
-                }];
+                if ([recvList isKindOfClass:[NSArray class]]) {
+                    [recvList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop){
+                        Clinic *clinic = [[Clinic alloc] init];
+                        
+                        clinic.ID = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
+                        clinic.state = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
+                        clinic.name = [obj valueForKey:@"name"];
+                        clinic.icon = [NSURL URLWithString:[obj valueForKey:@"icon"]];
+                        clinic.breifInfo = [obj valueForKey:@"briefIntro"];
+                        clinic.skillTreat = [obj valueForKey:@"skillTreat"];
+                        
+                        [listSubjectDoctor addObject:clinic];
+                    }];
+                }
+
                 listModel.items = listSubjectDoctor;
                 result.parsedModelObject = listModel;
             }

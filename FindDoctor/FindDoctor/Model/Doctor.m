@@ -19,6 +19,16 @@
 //    return @"预约满";
 //}
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.flagList = [[NSMutableArray alloc] init];
+        self.remarkList = [[NSMutableArray alloc] init];
+        return self;
+    }
+    return nil;
+}
+
 @end
 
 

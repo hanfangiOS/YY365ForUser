@@ -12,7 +12,7 @@
 
 @interface DoctorFameListController : CUListViewController
 
-@property (strong,nonatomic) Doctor           * doctor;
+@property (nonatomic,strong)    DoctorFameListModel  * listModel;
 
 //- (id)initWithPageName:(NSString *)pageName listModel:(DoctorFameListModel *)listModel;
 

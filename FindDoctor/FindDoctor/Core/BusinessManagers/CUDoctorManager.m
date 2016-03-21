@@ -530,40 +530,43 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 
-                NSMutableArray *recvListDoctor = [result.responseObject valueForKeySafely:@"data"];
+                NSArray *recvListDoctor = [result.responseObject valueForKeySafely:@"data"];
                 NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                 
-                [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-                    Doctor *doctor = [[Doctor alloc] init];
-                    
-                    doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
-                    doctor.briefIntro = [obj valueForKey:@"briefIntro"];
-                    doctor.avatar = [obj valueForKey:@"icon"];
-                    if ([doctor.avatar isEqualToString:@"0"]) {
-                        NSString *sex = [obj valueForKey:@"sex"];
-                        if ([sex isEqualToString:@"男"]) {
-                            doctor.avatar = [NSString stringWithFormat:@"http://uyi365.com/hanfang_nan.png"];
-                        }else{
-                            doctor.avatar = [NSString stringWithFormat:@"http://uyi365.com/hanfang_nv.png"];
+                if ([recvListDoctor isKindOfClass:[NSArray class]]) {
+                    [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                        Doctor *doctor = [[Doctor alloc] init];
+                        
+                        doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
+                        doctor.briefIntro = [obj valueForKey:@"briefIntro"];
+                        doctor.avatar = [obj valueForKey:@"icon"];
+                        if ([doctor.avatar isEqualToString:@"0"]) {
+                            NSString *sex = [obj valueForKey:@"sex"];
+                            if ([sex isEqualToString:@"男"]) {
+                                doctor.avatar = [NSString stringWithFormat:@"http://uyi365.com/hanfang_nan.png"];
+                            }else{
+                                doctor.avatar = [NSString stringWithFormat:@"http://uyi365.com/hanfang_nv.png"];
+                            }
                         }
-                    }
-                    doctor.subject = [obj valueForKey:@"matchItemDisease"];
-                    doctor.name = [obj valueForKey:@"name"];
-                    doctor.skillTreat = [obj valueForKey:@"skillTreat"];
-                    doctor.levelDesc = [obj valueForKey:@"title"];
-                    
-//                    doctor.isAvailable = YES;  //医生可以约诊， 这个是可约诊列表
-//                    if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
-                    
-                    doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
-                    doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
-                    doctor.availableTime = [obj valueForKey:@"releaseTime"];
-                    doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
-                    doctor.doctorState = -1;
-                    doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
-                    
-                    [listSubjectDoctor addObject:doctor];
-                }];
+                        doctor.subject = [obj valueForKey:@"matchItemDisease"];
+                        doctor.name = [obj valueForKey:@"name"];
+                        doctor.skillTreat = [obj valueForKey:@"skillTreat"];
+                        doctor.levelDesc = [obj valueForKey:@"title"];
+                        
+                        //                    doctor.isAvailable = YES;  //医生可以约诊， 这个是可约诊列表
+                        //                    if([(NSNumber *)[obj valueForKey:@"state"] integerValue] == 2) doctor.isAvailable = NO;
+                        
+                        doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
+                        doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
+                        doctor.availableTime = [obj valueForKey:@"releaseTime"];
+                        doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
+                        doctor.doctorState = -1;
+                        doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
+                        
+                        [listSubjectDoctor addObject:doctor];
+                    }];
+                }
+                
                 listModel.items = listSubjectDoctor;
                 result.parsedModelObject = listModel;
             }

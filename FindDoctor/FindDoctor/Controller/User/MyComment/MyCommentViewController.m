@@ -25,7 +25,6 @@
     self = [super initWithPageName:pageName listModel:listModel];
     self.listModel = listModel;
     _cellHeight = 0;
-    self.listModel.filter.num = 50;
     if (self) {
   
     }

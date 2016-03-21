@@ -83,7 +83,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"附近医生";
+    self.title = @"优医馆";
     self.view.backgroundColor = kTableViewGrayColor;
     
     _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.contentView.bounds), CGRectGetHeight(self.contentView.bounds) - Height_Tabbar)];

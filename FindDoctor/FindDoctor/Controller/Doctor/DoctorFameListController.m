@@ -13,46 +13,46 @@
 #import "BlueDotLabelInDoctorHeaderView.h"
 #import "TipHandler+HUD.h"
 #import "FlagViewInCommentList.h"
+#import "SNListEmptyView.h"
 
-@interface DoctorFameListController (){
+@interface DoctorFameListController ()<SNListEmptyViewDelegate>{
     NSInteger                       _cellHeight;
     UIView                          * _headerView;
-    Comment                         * _comment;
     
     BlueDotLabelInDoctorHeaderView  * _view1_label1;
     BlueDotLabelInDoctorHeaderView  * _view1_label2;
     BlueDotLabelInDoctorHeaderView  * _view1_label3;
     BlueDotLabelInDoctorHeaderView  * _view1_label4;
     
-    FlagViewInCommentList           * _view2_flagView;
-    
+//    FlagViewInCommentList           * _view2_flagView;
+
     NSInteger                        _lastID;
 }
-@property (nonatomic,strong)    DoctorFameListModel  * listModel;
+
 
 
 @end
 
 @implementation DoctorFameListController
+@dynamic listModel;
 
 - (id)initWithPageName:(NSString *)pageName listModel:(DoctorFameListModel *)listModel
 {
     self = [super initWithPageName:pageName listModel:listModel];
     if (self) {
         self.listModel = listModel;
-        _cellHeight = 0;
+
     }
     return self;
 }
 
 - (void)viewDidLoad {
     self.hasFreshControl = NO;
+    _cellHeight = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _comment = [[Comment alloc] init];
-    self.listModel.fameFilter.doctorID = self.doctor.doctorId;
     
-    self.title = [NSString stringWithFormat:@"%@ 教授口碑",self.doctor.name];
+    self.title = [NSString stringWithFormat:@"%@ 教授口碑",self.listModel.doctor.name];
     
 }
 
@@ -78,7 +78,7 @@
     [_headerView addSubview:view1];
     //头像
     UIImageView * view1_imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(30,view1.centerY - 24 , 48, 48)];
-    [view1_imageView1 setImageWithURL:[NSURL URLWithString:self.doctor.avatar] placeholderImage:nil];
+    [view1_imageView1 setImageWithURL:[NSURL URLWithString:self.listModel.doctor.avatar] placeholderImage:nil];
     view1_imageView1.layer.cornerRadius = 48/2;
     view1_imageView1.clipsToBounds = YES;
     view1_imageView1.contentMode = UIViewContentModeScaleAspectFill;
@@ -118,7 +118,7 @@
     [view2 addSubview:view2_label1];
     
     //一堆旗
-    _view2_flagView = [[FlagViewInCommentList alloc] initWithFrame:CGRectMake(0,10, kScreenWidth, 20)];
+//    _view2_flagView = [[FlagViewInCommentList alloc] initWithFrame:CGRectMake(0,10, kScreenWidth, 20)];
     //    [view2 addSubview:_view2_flagView];
     
     
@@ -126,20 +126,31 @@
 
 - (void)resetData{
     
-    if (self.listModel.comment) {
-      _comment = self.listModel.comment;
+    if (self.listModel.doctor){
+        [_view1_label1 resetTitle:@"" contents:[NSString stringWithFormat:@"%d",self.listModel.doctor.numConcern] unit:@"人关注"];
+        
+        [_view1_label2 resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.numDiag] unit:@"次"];
+        
+        [_view1_label3 resetTitle:@"服务" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.rate] unit:@"星"];
+        
+        [_view1_label4 resetTitle:@"积分" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.score] unit:@""];
+        
+//        _view2_flagView.data = _comment;
     }
     
-    [_view1_label1 resetTitle:@"" contents:[NSString stringWithFormat:@"%d",_comment.totalConern] unit:@"人关注"];
-    
-    [_view1_label2 resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)_comment.totalDiagnosis] unit:@"次"];
-    
-    [_view1_label3 resetTitle:@"服务" contents:[NSString stringWithFormat:@"%ld",(long)_comment.averageStar] unit:@"星"];
-    
-    [_view1_label4 resetTitle:@"积分" contents:[NSString stringWithFormat:@"%ld",(long)_comment.totalScore] unit:@""];
-    
-    _view2_flagView.data = _comment;
-    
+}
+
+- (UIView *)listEmptyView
+{
+//    SNListEmptyView * view = [[SNListEmptyView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 240)];
+    SNListEmptyView * view = [[SNListEmptyView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    view.delegate = self;
+    return view;
+}
+
+- (void)emptyViewClicked
+{
+    [self triggerRefresh];
 }
 
 - (void)triggerRefresh
@@ -147,6 +158,7 @@
     [self.freshControl beginRefreshing];
     [self.loadMoreControl endLoading];
     self.listModel.isLoading = YES;
+    self.listModel.filter.lastID = 0;
     __block __weak DoctorFameListController * blockSelf = self;
     [self.listModel gotoFirstPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         blockSelf.listModel = result.parsedModelObject;
@@ -191,37 +203,45 @@
     }];
 }
 
-//- (void)triggerLoadMore
-//{
-//    [self.freshControl endRefreshing];
-//    self.listModel.isLoading = YES;
-//    [self.loadMoreControl beginLoading];
-//    __block __weak DoctorFameListController * blockSelf = self;
-//    self.listModel.commentFilter.lastID = _lastID;
-//    self.listModel.commentFilter.doctorID = self.doctor.doctorId;
-//    [self.listModel gotoNextPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-//        blockSelf.listModel.isLoading = NO;
-//        [blockSelf.loadMoreControl endLoading];
-//        if (!result.hasError)
-//        {
-//            [blockSelf.contentTableView reloadData];
-//            if ([blockSelf.listModel hasNext])
-//            {
-//                blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
-//            }
-//            else
-//            {
-//                blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-//                ;
-//            }
-//        }
-//        else
-//        {
-//            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
-//            
-//        }
-//    }];
-//}
+- (void)triggerLoadMore
+{
+    [self.freshControl endRefreshing];
+    self.listModel.isLoading = YES;
+    [self.loadMoreControl beginLoading];
+    __block __weak DoctorFameListController * blockSelf = self;
+    
+    for (int  i = 0; i < self.listModel.items.count; i++) {
+        RemarkListInfo *item = [self.listModel.items objectAtIndex:i];
+        if (item.time > _lastID) {
+            _lastID = item.time;
+        }
+    }
+    
+    self.listModel.filter.lastID = _lastID;
+//    self.listModel.filter.doctor.doctorId = self.doctor.doctorId;
+    [self.listModel gotoNextPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        blockSelf.listModel.isLoading = NO;
+        [blockSelf.loadMoreControl endLoading];
+        if (!result.hasError)
+        {
+            [blockSelf.contentTableView reloadData];
+            if ([blockSelf.listModel hasNext])
+            {
+                blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
+            }
+            else
+            {
+                blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+                ;
+            }
+        }
+        else
+        {
+            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
+            
+        }
+    }];
+}
 
 
 
@@ -251,7 +271,8 @@
     DoctorFameCell * cell = [[DoctorFameCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
-    _lastID = cell.data.time;
+
+//    self.listModel.filter.lastID = cell.data.time;
     _cellHeight = [cell CellHeight];
     
     return cell;

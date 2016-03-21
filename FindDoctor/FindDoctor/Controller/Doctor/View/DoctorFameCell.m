@@ -65,7 +65,7 @@
     _imageView1.contentMode = UIViewContentModeScaleAspectFill;
     
     //@“张＊＊”
-    _label1.frame = CGRectMake(leftPadding, _imageView1.maxY + 10, 48, 20);
+    _label1.frame = CGRectMake(leftPadding, _imageView1.maxY , 48, 20);
     
     //@“张仲景医生德高望重XXXXX”
     _label2.frame = CGRectMake(_imageView1.maxX + 10, upPadding, self.frameWidth - _imageView1.maxX - 10 - rightPadding, _heightForLabel2);

@@ -8,19 +8,19 @@
 
 #import "Comment.h"
 
-@implementation Comment
+//@implementation Comment
 
-- (instancetype)init{
-    self = [super init];
-    if (self) {
-        self.flagList = [[NSMutableArray alloc] init];
-        self.remarkList = [[NSMutableArray alloc] init];
-        return self;
-    }
-    return nil;
-}
-
-@end
+//- (instancetype)init{
+//    self = [super init];
+//    if (self) {
+//        self.flagList = [[NSMutableArray alloc] init];
+//        self.remarkList = [[NSMutableArray alloc] init];
+//        return self;
+//    }
+//    return nil;
+//}
+//
+//@end
 
 @implementation FlagListInfo
 
@@ -30,22 +30,17 @@
 
 @end
 
-@implementation DiagnosisCommentFilter
+@implementation CommentFilter
+
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.order = [[CUOrder alloc] init];
+        self.remarkListInfo = [[RemarkListInfo alloc] init];
+        return self;
+    }
+    return nil;
+}
 
 @end
 
-@implementation CommitCommentFilter
-
-@end
-
-@implementation MyCommentFilter
-
-@end
-
-@implementation DoctorFameFilter
-
-@end
-
-@implementation DoctorFameCommentFilter
-
-@end

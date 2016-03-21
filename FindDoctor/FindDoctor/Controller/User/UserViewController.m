@@ -219,6 +219,7 @@
         case 4 :
         {
             MyCommentListModel * listModel = [[MyCommentListModel alloc] init];
+            listModel.filter.lastID = 0;
             MyCommentViewController * VC = [[MyCommentViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
             [self.slideNavigationController  pushViewController:VC animated:YES];
             break;

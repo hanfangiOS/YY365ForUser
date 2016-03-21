@@ -8,10 +8,11 @@
 
 #import "CUViewController.h"
 #import "Comment.h"
+#import "Doctor.h"
 
 @interface DiagnosisRemarkController : CUViewController
 
-@property (nonatomic, strong)  Comment            * data;
-@property (nonatomic, assign)  long long            diagnosisID;
+@property (nonatomic, strong)  Doctor            * data;
+@property (nonatomic, assign)  long long           diagnosisID;
 
 @end

@@ -50,12 +50,14 @@
 }
 
 - (void)setContentText:(NSString *)contentText{
+    int titleWidth = 75;
     if ([[NSString stringWithFormat:@"%@",contentText] isEmpty]) {
         _contentTextLabel.text = [NSString stringWithFormat:@"测试"];
         [_contentTextLabel sizeToFit];
         _contentTextLabel.text = [NSString stringWithFormat:@"%@",contentText];
     }
     else{
+        _contentTextLabel.frame = CGRectMake(CGRectGetMaxX(_titleLabel.frame) + 5, lineInterval/2 - 1.5, [self frameWidth]-titleWidth , 0);
         _contentTextLabel.text = [NSString stringWithFormat:@"%@",contentText];
         [_contentTextLabel sizeToFit];
     }

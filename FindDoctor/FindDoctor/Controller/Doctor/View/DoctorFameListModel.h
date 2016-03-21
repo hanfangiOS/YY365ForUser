@@ -8,12 +8,12 @@
 
 #import "SNBaseListModel.h"
 #import "CUCommentManager.h"
+#import "Comment.h"
 
 @interface DoctorFameListModel : SNBaseListModel
 
-@property (nonatomic, strong) DoctorFameFilter          * fameFilter;
-@property (nonatomic, strong) Comment                   * comment;
+@property (nonatomic, strong) CommentFilter          * filter;
 
-@property (nonatomic, strong) DoctorFameCommentFilter   * commentFilter;
+@property (nonatomic, strong) Doctor                 * doctor;
 
 @end

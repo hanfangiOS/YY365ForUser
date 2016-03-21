@@ -78,7 +78,9 @@
     int fontSize = 12;
     int fontSize_contents = 12;
     int leftPaddig = 0;
-
+    
+    if (_hasDot)    leftPaddig = DotWidth + 5;
+    
     _title = title;
     _contents = contents;
     _unit = unit;
@@ -97,6 +99,7 @@
     unitLabel.frame = CGRectMake(CGRectGetMaxX(contentsLabel.frame) + 5,0, unitLabel.frameWidth, unitLabel.frameHeight);
     self.frame = CGRectMake(self.frameX,self.frameY, CGRectGetMaxX(unitLabel.frame), CGRectGetMaxY(unitLabel.frame));
     dotView.frame = CGRectMake(0, ([self frameHeight])/2,DotWidth, DotWidth);
+
     [self setNeedsDisplay];
 }
 

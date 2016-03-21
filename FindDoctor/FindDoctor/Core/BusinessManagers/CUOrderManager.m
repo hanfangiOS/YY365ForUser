@@ -279,61 +279,64 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 case 0:{
                     NSMutableArray *reciveList = [result.responseObject valueForKey:@"data"];
                     NSMutableArray *listSubject = [NSMutableArray new];
-                    [reciveList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        Doctor *doctor = [[Doctor alloc]init];
-                        doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
-                        doctor.avatar = [obj valueForKey:@"doctorIcon"];
-                        doctor.name = [obj valueForKey:@"doctorName"];
-                        doctor.levelDesc = [obj valueForKey:@"title"];
-                        
-                        Disease *disease = [[Disease alloc]init];
-                        disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
-                        disease.imageURLArray = [[obj valueForKey:@"illnessPic"] componentsSeparatedByString:@","];
-                        
-                        CUUser *patience = [[CUUser alloc]init];
-                        patience.name = [obj valueForKey:@"userName"];
-                        patience.age = [[obj valueForKey:@"userAge"] integerValue];
-                        patience.userId = [[obj valueForKey:@"userID"] integerValue];
-                        patience.cellPhone = [obj valueForKey:@"userPhone"];
-                        patience.gender = [[obj valueForKey:@"userSex"] integerValue];
-                        
-                        Diagnosis *diagnosis = [[Diagnosis alloc]init];
-                        diagnosis.diagnosisText = [NSString  stringWithFormat:@"%@",[obj valueForKey:@"diagnosisContent"]];
-                        diagnosis.recipeNum = [[obj valueForKey:@"recipeNum"] integerValue];
-                        diagnosis.herbPic = [obj valueForKey:@"recipePic"];
-                        
-                        NSMutableArray *herbArray = [NSMutableArray new];
-                        NSMutableArray *herbRecive = [obj objectForKey:@"recipeData"];
-                        [herbRecive enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                            CUHerb *herb = [[CUHerb alloc]init];
-                            herb.unit = [obj valueForKey:@"unit"];
-                            herb.name = [obj valueForKey:@"name"];
-                            herb.herbid = [obj valueForKey:@"dataID"];
-                            herb.weight = [[obj valueForKey:@"num"] integerValue];
-                            [herbArray addObject:herb];
+                    if ([reciveList isKindOfClass:[NSMutableArray class]]) {
+                        [reciveList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            Doctor *doctor = [[Doctor alloc]init];
+                            doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
+                            doctor.avatar = [obj valueForKey:@"doctorIcon"];
+                            doctor.name = [obj valueForKey:@"doctorName"];
+                            doctor.levelDesc = [obj valueForKey:@"title"];
+                            
+                            Disease *disease = [[Disease alloc]init];
+                            disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
+                            disease.imageURLArray = [[obj valueForKey:@"illnessPic"] componentsSeparatedByString:@","];
+                            
+                            CUUser *patience = [[CUUser alloc]init];
+                            patience.name = [obj valueForKey:@"userName"];
+                            patience.age = [[obj valueForKey:@"userAge"] integerValue];
+                            patience.userId = [[obj valueForKey:@"userID"] integerValue];
+                            patience.cellPhone = [obj valueForKey:@"userPhone"];
+                            patience.gender = [[obj valueForKey:@"userSex"] integerValue];
+                            
+                            Diagnosis *diagnosis = [[Diagnosis alloc]init];
+                            diagnosis.diagnosisText = [NSString  stringWithFormat:@"%@",[obj valueForKey:@"diagnosisContent"]];
+                            diagnosis.recipeNum = [[obj valueForKey:@"recipeNum"] integerValue];
+                            diagnosis.herbPic = [obj valueForKey:@"recipePic"];
+                            
+                            NSMutableArray *herbArray = [NSMutableArray new];
+                            NSMutableArray *herbRecive = [obj objectForKey:@"recipeData"];
+                            [herbRecive enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                CUHerb *herb = [[CUHerb alloc]init];
+                                herb.unit = [obj valueForKey:@"unit"];
+                                herb.name = [obj valueForKey:@"name"];
+                                herb.herbid = [obj valueForKey:@"dataID"];
+                                herb.weight = [[obj valueForKey:@"num"] integerValue];
+                                [herbArray addObject:herb];
+                            }];
+                            diagnosis.herbArray = herbArray;
+                            
+                            CUService *service = [[CUService alloc]init];
+                            service.doctor = doctor;
+                            service.disease = disease;
+                            service.patience = patience;
+                            service.diagnosis = diagnosis;
+                            
+                            CUOrder *order = [[CUOrder alloc]init];
+                            order.service = service;
+                            order.state = [[obj valueForKey:@"state"] integerValue];
+                            order.dealPrice = [[obj valueForKey:@"fee"] integerValue];
+                            order.submitTime = [[obj valueForKey:@"submitTime"] integerValue];
+                            order.submitTimeString = [[NSDate dateWithTimeIntervalSince1970:order.submitTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+                            order.diagnosisID = [[obj valueForKey:@"diagnosisID"] longLongValue];
+                            order.createTimeStamp = [[obj valueForKey:@"orderStartTime"] integerValue];
+                            order.diagnosisTime = [[NSDate dateWithTimeIntervalSince1970:order.createTimeStamp] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+                            order.finishedTimeStamp = [[obj valueForKey:@"orderEndTime"] integerValue];
+                            order.orderNumber = [obj valueForKey:@"orderNo"];
+                            
+                            [listSubject addObject:order];
                         }];
-                        diagnosis.herbArray = herbArray;
-                        
-                        CUService *service = [[CUService alloc]init];
-                        service.doctor = doctor;
-                        service.disease = disease;
-                        service.patience = patience;
-                        service.diagnosis = diagnosis;
-                        
-                        CUOrder *order = [[CUOrder alloc]init];
-                        order.service = service;
-                        order.state = [[obj valueForKey:@"state"] integerValue];
-                        order.dealPrice = [[obj valueForKey:@"fee"] integerValue];
-                        order.submitTime = [[obj valueForKey:@"submitTime"] integerValue];
-                        order.submitTimeString = [[NSDate dateWithTimeIntervalSince1970:order.submitTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
-                        order.diagnosisID = [[obj valueForKey:@"diagnosisID"] longLongValue];
-                        order.createTimeStamp = [[obj valueForKey:@"orderStartTime"] integerValue];
-                        order.diagnosisTime = [[NSDate dateWithTimeIntervalSince1970:order.createTimeStamp] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
-                        order.finishedTimeStamp = [[obj valueForKey:@"orderEndTime"] integerValue];
-                        order.orderNumber = [obj valueForKey:@"orderNo"];
-                        
-                        [listSubject addObject:order];
-                    }];
+                    }
+                    
                     SNBaseListModel * listModel = [[SNBaseListModel alloc]init];
                     listModel.items = listSubject;
                     result.parsedModelObject = listModel;
