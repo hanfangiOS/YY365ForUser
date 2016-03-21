@@ -108,7 +108,6 @@
 
     
     _lineView.frame = CGRectMake(0, [self CellHeight] - 0.5, kScreenWidth, 0.5);
-    
 }
 
 

@@ -506,13 +506,13 @@ SINGLETON_IMPLENTATION(CUUserManager);
 {
     // param
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"kPlatForm user" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:@"V1.0" forKey:@"version"];
     [param setObjectSafely:[SNPlatformManager deviceId] forKey:@"deviceinfo"];
     [param setObjectSafely:user.token forKey:Key_Token];
     [param setObjectSafely:@"account_mail" forKey:@"require"];
-    [param setObjectSafely:@"0" forKey:@"lantitude"];
-    [param setObjectSafely:@"0" forKey:@"lontitude"];
+    [param setObjectSafely:kCurrentLat forKey:@"lantitude"];
+    [param setObjectSafely:kCurrentLng forKey:@"lontitude"];
     [param setObjectSafely:@"true" forKey:kPlatForm];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];

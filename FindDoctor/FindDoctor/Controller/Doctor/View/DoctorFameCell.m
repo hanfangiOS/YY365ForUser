@@ -40,22 +40,25 @@
     
     self.frame = CGRectMake(0, 0, kScreenWidth, 1);
     
-    _imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(1 , 1, 1 , 1)];
+    _imageView1 = [[UIImageView alloc] init];
     
-    _label1 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
+    _label1 = [[UILabel alloc] init];
     _label1.textColor = UIColorFromHex(0xfdbd06);
     _label1.font = [UIFont systemFontOfSize:11];
     _label1.textAlignment = NSTextAlignmentCenter;
     
-    _label2 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
+    _label2 = [[UILabel alloc] init];
+    _label2.textAlignment = NSTextAlignmentLeft;
     _label2.font = [UIFont systemFontOfSize:14];
     _label2.numberOfLines = 0;
     
-    _label3 = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
+    _label3 = [[UILabel alloc] init];
     _label3.textAlignment = NSTextAlignmentLeft;
     _label3.font = [UIFont systemFontOfSize:11];
+    _label3.textColor = UIColorFromHex(0x999999);
     
-    _lineView = [[UILabel alloc] initWithFrame:CGRectMake(1,1 , 1, 1)];
+    
+    _lineView = [[UILabel alloc] init];
     _lineView.backgroundColor = UIColorFromHex(0xcccccc);
     
     [self addSubview:_imageView1];
@@ -72,21 +75,23 @@
 
 - (void)retView{
     //头像
-    _imageView1.frame = CGRectMake(leftPadding, upPadding, 48, 48);
-    _imageView1.layer.cornerRadius = 48/2;
+    _imageView1.frame = CGRectMake(leftPadding, upPadding, 30, 30);
+    _imageView1.layer.cornerRadius = _imageView1.frameWidth/2;
     _imageView1.clipsToBounds = YES;
     _imageView1.contentMode = UIViewContentModeScaleAspectFill;
     
     //@“张＊＊”
     _label1.frame = CGRectMake(leftPadding, _imageView1.maxY +2 , 48, 20);
+    _label1.centerX = _imageView1.centerX;
     
     //@“张仲景医生德高望重XXXXX”
-    _label2.frame = CGRectMake(_imageView1.maxX + 10, upPadding + 4, self.frameWidth - _imageView1.maxX - 10 - rightPadding, _heightForLabel2);
-    
+    _label2.frame = CGRectMake(_imageView1.maxX + 15, upPadding , self.frameWidth - _imageView1.maxX - 10 - rightPadding, _heightForLabel2);
+    [_label2 sizeToFit];
     
     //@“2015-02XXXXX”
-    _label3.frame = CGRectMake(_imageView1.maxX + 10, _label2.maxY - 2, 100, 20);
-    
+    _label3.frame = CGRectMake(_imageView1.maxX + 15, _label2.maxY +1,kScreenWidth - _imageView1.maxX + 15, 20);
+    [_label3 sizeToFit];
+    _label3.frameX = _imageView1.maxX + 15;
     
     _lineView.frame = CGRectMake(0, [self CellHeight] - 0.5, kScreenWidth, 0.5);
     
@@ -100,12 +105,12 @@
     _imageView1.image = [UIImage imageNamed:@"button_myScore"];
     
     NSString * str = [_data.userName substringToIndex:1];
-    _label1.text = [NSString stringWithFormat:@"%@＊＊",str];
+    _label1.text = [NSString stringWithFormat:@"%@**",str];
     
     _label2.text  = [NSString stringWithFormat:@"%@",self.data.content];
     
-        CGSize size = [self sizeWithString:_label2.text font:[UIFont systemFontOfSize:15] lableWith:self.frameWidth - _imageView1.maxX - 10 - rightPadding];
-        _heightForLabel2 = size.height;
+    CGSize size = [self sizeWithString:_label2.text font:[UIFont systemFontOfSize:15] lableWith:self.frameWidth - _imageView1.maxX - 10 - rightPadding];
+    _heightForLabel2 = size.height;
     
 //    _heightForLabel2 = [self handleLabel:_label2 andFontSize:14 andLineSpacing:0 width:self.frameWidth - _imageView1.maxX - 10 - rightPadding];
     
@@ -120,7 +125,7 @@
     NSInteger h2 = _imageView1.frameHeight + _label1.frameHeight;
     NSInteger height = ( h1 > h2 ? h1 : h2);
     if ( h1 < h2) {
-        _label3.frame = CGRectMake(_imageView1.maxX + 10,_imageView1.maxY +2 , 100, 20);
+        _label3.frame = CGRectMake(_imageView1.maxX + 15,_imageView1.maxY + 2 , 100, 20);
     }
     return (upPadding + height + 5);
     

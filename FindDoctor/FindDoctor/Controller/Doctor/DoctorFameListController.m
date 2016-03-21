@@ -115,7 +115,7 @@
     [view2 addSubview:flagTitle];
     
     //一堆旗
-    _view2_flagView = [[FlagView alloc] initWithFrame:CGRectMake(0,flagTitle.maxY+5, kScreenWidth, 20)];
+    _view2_flagView = [[FlagView alloc] initWithFrame:CGRectMake(0,flagTitle.maxY, kScreenWidth, 20)];
     [view2 addSubview:_view2_flagView];
 }
 
