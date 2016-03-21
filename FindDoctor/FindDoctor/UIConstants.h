@@ -114,4 +114,6 @@
 //======================
 #define kServicePhoneNumber     @"400-890-9636"
 
+#define kPlatForm     @"APP_IOS_USER"
+
 typedef void(^CUCommomButtonAction)(void);

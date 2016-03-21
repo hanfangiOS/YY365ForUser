@@ -411,7 +411,7 @@
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"PayDiagnosisOK" forKey:@"require"];
     [param setObjectSafely:@(11601) forKey:@"interfaceID"];

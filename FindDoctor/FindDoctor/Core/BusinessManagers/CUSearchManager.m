@@ -23,7 +23,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
 - (void)getDoctorSearchResultListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(SearchFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary * param = [NSMutableDictionary new];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"Search" forKey:@"require"];
     [param setObjectSafely:@(11004) forKey:@"interfaceID"];

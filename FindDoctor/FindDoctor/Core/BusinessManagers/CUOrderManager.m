@@ -32,7 +32,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 
 - (void)getMemberListWithDiagnosisID:(long long)diagnosisID releaseID:(long long)releaseID orderID:(NSInteger)orderID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"SelectOrderTime" forKey:@"require"];
     [param setObjectSafely:@(11401) forKey:@"interfaceID"];
@@ -88,7 +88,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 
 - (void)ReturnSelectOrderTimeWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"ReturnSelectOrderTime" forKey:@"require"];
     [param setObjectSafely:@(11402) forKey:@"interfaceID"];
@@ -140,7 +140,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 {
     // param
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"SubmitDiagnosis" forKey:@"require"];
     [param setObjectSafely:@(11502) forKey:@"interfaceID"];
@@ -257,7 +257,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 - (void)getMyDiagnosisRecordsWithUser:(MyDiagnosisRecordsFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     // param
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"MyDiagnosisRecords" forKey:@"require"];
     [param setObjectSafely:@(13103) forKey:@"interfaceID"];
@@ -431,7 +431,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 {
 #if !LOCAL
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"UserAppMainPush" forKey:@"require"];
     [param setObjectSafely:@(10001) forKey:@"interfaceID"];
@@ -506,7 +506,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 - (void)getMyAccountWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:[CUUserManager sharedInstance].user.token forKey:@"token"];
     [param setObjectSafely:@"MyConsumeRecords" forKey:@"require"];
     [param setObjectSafely:@(23004) forKey:@"interfaceID"];
@@ -585,7 +585,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 
 - (void)CancelOrderWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"ios" forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"CancelOrderDiagnosis" forKey:@"require"];
     [param setObjectSafely:@(13105) forKey:@"interfaceID"];
