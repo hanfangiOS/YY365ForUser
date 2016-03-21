@@ -7,12 +7,13 @@
 //
 
 #import "DiagnosisRemarkController.h"
-#import "FlagViewInCommentList.h"
+#import "FlagView.h"
 #import "StarRatingView.h"
 #import "DiagnosisRemarkTitleView.h"
 #import "CUCommentManager.h"
 #import "TipHandler+HUD.h"
 #import "UIImageView+AFNetworking.h"
+#import "TitleView.h"
 
 #define commitViewHeight 50
 
@@ -29,17 +30,17 @@
     UILabel                     * _view1_label5;//2016-XXXX
     
     UIView                      * _view2;//第二块view
-    DiagnosisRemarkTitleView    * _view2_titleView;//就诊评分
+    TitleView    * _view2_titleView;//就诊评分
     UIView                      * _view2_starView_containerView;//星星的背景View
     StarRatingView              * _view2_starView;//星星
     float                         _numStar;//星级
     
     UIView                      * _view3;//第三块view
-    DiagnosisRemarkTitleView    * _view3_titleView;//赠送锦旗
-    //    FlagViewInCommentList       * _view3_flagView;//一堆旗
+    TitleView    * _view3_titleView;//赠送锦旗
+    FlagView                    * _view3_flagView;//一堆旗
     NSInteger                     _flagID;//锦旗ID
     
-    DiagnosisRemarkTitleView    * _view4_titleView;//点评内容
+    TitleView    * _view4_titleView;//点评内容
     UITextView                  * _view4_textView;//XXX(须五字以上)
     UILabel                     * _view4_textView_placeholderLabel;//不解释
     
@@ -106,7 +107,7 @@
     _view1_label3 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, _view1_label1.maxY + 5, 40, 20)];
     _view1_label3.text = @"地址：";
     _view1_label3.font = [UIFont systemFontOfSize:12];
-    _view1_label3.textColor = [UIColor blueColor];
+    _view1_label3.textColor = UIColorFromHex(Color_Hex_NavBackground);
     [_view1 addSubview:_view1_label3];
     
     //三仙堂XXX
@@ -126,7 +127,7 @@
     [_contentScrollView addSubview:_view2];
     
     //就诊评分
-    _view2_titleView = [[DiagnosisRemarkTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30) title:@"就诊评分" Style:TitleViewDefaultStyle];
+    _view2_titleView = [[TitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30) title:@"就诊评分"];
     _view2_titleView.backgroundColor = [UIColor clearColor];
     [_view2 addSubview:_view2_titleView];
     //星星背景View
@@ -146,20 +147,24 @@
     [_view2_starView_containerView addSubview:_view2_starView];
     
     //第三块view
-    _view3 = [[UIView alloc] initWithFrame:CGRectMake(0, _view2.maxY + 23, kScreenWidth, 150)];
+    _view3 = [[UIView alloc] initWithFrame:CGRectMake(0, _view2.maxY + 23, kScreenWidth, 160)];
     _view3.backgroundColor = [UIColor whiteColor];
     [_contentScrollView addSubview:_view3];
     //赠送锦旗
-    _view3_titleView = [[DiagnosisRemarkTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30) title:@"赠送锦旗" Style:TitleViewDefaultStyle];
+    
+    _view3_titleView = [[TitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30) title:@"赠送锦旗"];
     _view3_titleView.backgroundColor = [UIColor clearColor];
     [_view3 addSubview:_view3_titleView];
     //一堆旗
-    //    _view3_flagView = [[FlagViewInCommentList alloc] initWithFrame:CGRectMake(0
-    //, _view3_titleView.maxY + 10, kScreenWidth, _view3.frameHeight - _view3_titleView.frameHeight)];
-    //    [_view3 addSubview:_view3_flagView];
+    _view3_flagView = [[FlagView alloc] initWithFrame:CGRectMake(0
+    , _view3_titleView.maxY, kScreenWidth, _view3.frameHeight - _view3_titleView.frameHeight)];
+    _view3_flagView.editable = YES;
+    [_view3 addSubview:_view3_flagView];
+    
+    _view3.frame = CGRectMake(0, _view2.maxY + 23, kScreenWidth, _view3_flagView.frameHeight + 40);
     //第四块view
     //点评内容
-    _view4_titleView = [[DiagnosisRemarkTitleView alloc] initWithFrame:CGRectMake(0, _view3.maxY, kScreenWidth, 30) title:@"点评内容" Style:TitleViewDefaultStyle];
+    _view4_titleView = [[TitleView alloc] initWithFrame:CGRectMake(0, _view3.maxY+10, kScreenWidth, 30) title:@"点评内容"];
     [_contentScrollView addSubview:_view4_titleView];
     //XXX(须五字以上)
     _view4_textView = [[UITextView alloc] initWithFrame:CGRectMake(5, _view4_titleView.maxY + 5, kScreenWidth - 5 - 5, 160)];
@@ -205,7 +210,7 @@
     _view1_label2.text = self.data.levelDesc;
     _view1_label4.text = self.data.address;
     _view1_label5.text = [[NSDate dateWithTimeIntervalSince1970:self.data.diagnosisTime ] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
-    //    _view3_flagView.data = self.data;
+    _view3_flagView.data = self.data;
 }
 
 #pragma mark - 网络请求
