@@ -108,7 +108,6 @@
     _label4.frame = CGRectMake(_label3.maxX + 5,  _label2.maxY + 3, kScreenWidth - _label3.frameWidth - 5 - rightPadding, 20);
 
     _lineView.frame = CGRectMake(0, [self CellHeight] - 0.5, kScreenWidth, 0.5);
-    
 }
 
 

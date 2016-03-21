@@ -387,7 +387,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                 doctor.levelDesc = [doctorInfo valueForKey:@"title"];
                 doctor.briefIntro = [NSString stringWithFormat:@"%@",[doctorInfo valueForKey:@"briefIntro"]];
                 doctor.detailIntro = [doctorInfo valueForKey:@"detailIntro"];
-                doctor.rate = [(NSNumber *)[doctorInfo valueForKey:@"star_grade"] doubleValue];
+                doctor.rate = [(NSNumber *)[doctorInfo valueForKey:@"starGrade"] doubleValue];
                 doctor.name = [doctorInfo valueForKey:@"name"];
                 doctor.avatar = [doctorInfo valueForKey:@"icon"];
                 doctor.doctorId = [[doctorInfo valueForKey:@"doctorID"] integerValue];

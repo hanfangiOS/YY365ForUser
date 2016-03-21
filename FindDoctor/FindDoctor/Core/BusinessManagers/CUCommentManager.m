@@ -236,7 +236,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 [remarkList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
                     
-                    remarkListInfo.content = [obj valueForKeySafely:@"content"] ;
+                    remarkListInfo.content = [NSString stringWithFormat:@"%@",[obj valueForKeySafely:@"content"]] ;
                     remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
                     remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
                     remarkListInfo.time = [[obj objectForKeySafely:@"time"] integerValue];
