@@ -38,7 +38,6 @@
     UIView                      * _view3;//第三块view
     TitleView    * _view3_titleView;//赠送锦旗
     FlagView                    * _view3_flagView;//一堆旗
-    NSInteger                     _flagID;//锦旗ID
     
     TitleView    * _view4_titleView;//点评内容
     UITextView                  * _view4_textView;//XXX(须五字以上)
@@ -220,10 +219,7 @@
     _filter.order.diagnosisID = self.diagnosisID;
     _filter.remarkListInfo.numStar =  _numStar;
     
-    //temp
-    _flagID = 1;
-    
-    _filter.remarkListInfo.flagID =  _flagID;
+    _filter.remarkListInfo.flagID =  _view3_flagView.selectedFlag.ID;
     
     [[CUCommentManager sharedInstance] getCommitComment:_filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [self hideProgressView];

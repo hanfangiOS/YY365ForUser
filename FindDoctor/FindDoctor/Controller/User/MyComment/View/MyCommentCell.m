@@ -96,17 +96,17 @@
     _label5.frame = CGRectMake(self.frameWidth - 16 - 40, [self CellHeight]/2 - 15, 40, 30);
     
     //@“医生水平很高XXXXX”
-    _label2.frame = CGRectMake(leftPadding, _starView.maxY - 1.5,  self.frameWidth - 16 * 2 - 40 - leftPadding, _heightForLabel2 - 2);
+    _label2.frame = CGRectMake(leftPadding, _starView.maxY ,  self.frameWidth - 16 * 2 - 40 - leftPadding, _heightForLabel2 - 2);
+    [_label2 sizeToFit];
 
     
     //@“2015-02XXXXX”
-    _label3.frame = CGRectMake(leftPadding, _label2.maxY - 0.5 , 100, 20);
+    _label3.frame = CGRectMake(leftPadding, _label2.maxY + 3 , 100, 20);
 
     
     //@“张仲景XXXX”
-    _label4.frame = CGRectMake(_label3.maxX + 5,  _label2.maxY - 0.5, kScreenWidth - _label3.frameWidth - 5 - rightPadding, 20);
+    _label4.frame = CGRectMake(_label3.maxX + 5,  _label2.maxY + 3, kScreenWidth - _label3.frameWidth - 5 - rightPadding, 20);
 
-    
     _lineView.frame = CGRectMake(0, [self CellHeight] - 0.5, kScreenWidth, 0.5);
     
 }
@@ -140,7 +140,7 @@
 
 - (NSInteger)CellHeight{
     
-    return (upPadding + _starView.frameHeight + _label2.frameHeight + _label3.frameHeight + 5);
+    return (upPadding + _starView.frameHeight + _label2.frameHeight + _label3.frameHeight + 13);
 }
 
 #pragma mark handleWays

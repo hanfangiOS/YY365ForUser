@@ -158,6 +158,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 NSMutableArray * dataArr = [result.responseObject valueForKeySafely:@"data"];
                 NSMutableArray * listItemArr = [NSMutableArray new];
+               
                 [dataArr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
                     remarkListInfo.content = [NSString stringWithFormat:@"%@",[obj valueForKeySafely:@"content"]];
@@ -170,6 +171,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                     
                     [listItemArr addObject:remarkListInfo];
                 }];
+                
                 listModel.items = listItemArr;
                 result.parsedModelObject = listModel;
                 

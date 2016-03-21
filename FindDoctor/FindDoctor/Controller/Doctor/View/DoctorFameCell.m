@@ -85,7 +85,7 @@
     
     
     //@“2015-02XXXXX”
-    _label3.frame = CGRectMake(_imageView1.maxX + 10, _label2.maxY - 2, 100, 20);
+    _label3.frame = CGRectMake(_imageView1.maxX + 10, _label2.maxY - 5 , 100, 20);
     
     
     _lineView.frame = CGRectMake(0, [self CellHeight] - 0.5, kScreenWidth, 0.5);

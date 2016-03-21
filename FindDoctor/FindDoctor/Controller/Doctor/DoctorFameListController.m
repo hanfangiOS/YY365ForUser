@@ -62,7 +62,7 @@
     self.contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.contentTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    CGFloat heightForHeader = 0.4 * kScreenHeight;
+    CGFloat heightForHeader = 0.4 * 640;
     
     self.contentTableView.frame = CGRectMake(0
                                              , heightForHeader, self.contentTableView.frame.size.width, self.contentView.frameHeight - heightForHeader);
@@ -74,7 +74,7 @@
     /*
      * 白色背景View
      */
-    UIView * view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, heightForHeader * 0.33)];
+    UIView * view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, heightForHeader * 0.3)];
     view1.backgroundColor = [UIColor whiteColor];
     [_headerView addSubview:view1];
     //头像
@@ -86,23 +86,23 @@
     [view1 addSubview:view1_imageView1];
     
     //XX人关注
-    _view1_label1 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight * 0.2, 110, 12) title:@"关注" contents:@"0" unit:@"人" hasDot:YES ];
+    _view1_label1 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight * 0.2 + 5, 110, 12) title:@"关注" contents:@"0" unit:@"人" hasDot:YES ];
     //    view1_label1.backgroundColor = [UIColor greenColor];
     [view1 addSubview:_view1_label1];
     
     //诊疗XX次
-    _view1_label2 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30, view1.frameHeight * 0.2, 110, 12) title:@"诊疗" contents:@"0" unit:@"次" hasDot:YES ];
+    _view1_label2 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30, view1.frameHeight * 0.2 + 5, 110, 12) title:@"诊疗" contents:@"0" unit:@"次" hasDot:YES ];
     //    view1_label2.backgroundColor = [UIColor greenColor];
     
     [view1 addSubview:_view1_label2];
     
     //服务XX星
-    _view1_label3 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight - view1.frameHeight * 0.2 - 12, 110, 12) title:@"服务" contents:@"0" unit:@"星" hasDot:YES ];
+    _view1_label3 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight - view1.frameHeight * 0.2 - 12 -5, 110, 12) title:@"服务" contents:@"0" unit:@"星" hasDot:YES ];
     //    view1_label3.backgroundColor = [UIColor greenColor];
     
     [view1 addSubview:_view1_label3];
     //积分XXX
-    _view1_label4 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30 , view1.frameHeight - view1.frameHeight * 0.2 - 12, 110, 12) title:@"积分" contents:@"0" unit:@"" hasDot:YES ];
+    _view1_label4 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30 , view1.frameHeight - view1.frameHeight * 0.2 - 12 -5, 110, 12) title:@"积分" contents:@"0" unit:@"" hasDot:YES ];
     
     [view1 addSubview:_view1_label4];
     /*
