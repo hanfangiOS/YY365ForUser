@@ -54,16 +54,16 @@
     [self loadContentScrollView];
     [self loadContent];
 
-    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(50,50, 50, 50)];
-    btn.backgroundColor = [UIColor redColor];
-    [btn addTarget:self action:@selector(temp) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+//    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(50,50, 50, 50)];
+//    btn.backgroundColor = [UIColor redColor];
+//    [btn addTarget:self action:@selector(temp) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:btn];
 }
 
-- (void)temp{
-    [self postRequestComment];
-
-}
+//- (void)temp{
+//    [self postRequestComment];
+//
+//}
 
 //11901点评按钮接口
 - (void)postRequestComment{
@@ -171,7 +171,7 @@
 
     
     
-    if (_data.state == 4) {
+    if (_data.state == 4 || _data.state == 5) {  // 诊疗完成待评价或者已经评价都要显示完整信息
         view10 = [[YYZhenDanLineView alloc]initWithFrame:CGRectMake(paadingLeft, 0, kScreenWidth - paadingLeft*2, 0)];
         [view10 setTitle:@"诊断信息:"];
         [view10 setContentText:@"暂无"];
@@ -256,6 +256,28 @@
         buttonView.rightAction = ^{
             [weakSelf cancelAction];
         };
+    }
+    
+    if (_data.state == 4){
+        
+        self.contentScrollView.frame = CGRectMake(0, 0, kScreenWidth, self.contentView.frame.size.height - [OrderResultButtonView defaultHeight]);
+        
+        UIView *commitView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_contentScrollView.frame), kScreenWidth, [OrderResultButtonView defaultHeight])];
+        commitView.backgroundColor = [UIColor whiteColor];
+        [self.contentView addSubview:commitView];
+        
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
+        lineView.layer.backgroundColor = UIColorFromHex(0xc4c4c4).CGColor;
+        [commitView addSubview:lineView];
+        
+        int commitButtonHeight = 35;
+        UIButton *commitButton = [[UIButton alloc]initWithFrame:CGRectMake(15, (commitViewHeight - commitButtonHeight)/2, kScreenWidth - 30, commitButtonHeight)];
+        commitButton.layer.cornerRadius = commitButtonHeight/2.f;
+        [commitButton setTitle:@"评      价" forState:UIControlStateNormal];
+        [commitButton addTarget:self action:@selector(postRequestComment) forControlEvents:UIControlEventTouchUpInside];
+        commitButton.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
+        
+        [commitView addSubview:commitButton];
     }
     
 

@@ -285,6 +285,7 @@
 		BC8E36E81C27F32E00304637 /* neikeICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8E36DF1C27F32E00304637 /* neikeICON@2x.png */; };
 		BC8E36E91C27F32E00304637 /* erkeICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8E36E01C27F32E00304637 /* erkeICON@2x.png */; };
 		BC9354AC1C1AB07100C60921 /* HomeSubViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9354AB1C1AB07100C60921 /* HomeSubViewController2.m */; };
+		BC9B7B5F1C9F9B2E0088D6FF /* no_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9B7B5E1C9F9B2E0088D6FF /* no_comment@2x.png */; };
 		BCAA4AAD1C8548440085A165 /* MyDoctorListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AAA1C8548440085A165 /* MyDoctorListModel.m */; };
 		BCAA4AAE1C8548440085A165 /* MyDoctorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AAC1C8548440085A165 /* MyDoctorListViewController.m */; };
 		BCAA4AB51C856D610085A165 /* MyClinicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AB21C856D610085A165 /* MyClinicListModel.m */; };
@@ -1067,6 +1068,7 @@
 		BC8E36E01C27F32E00304637 /* erkeICON@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erkeICON@2x.png"; sourceTree = "<group>"; };
 		BC9354AA1C1AB07100C60921 /* HomeSubViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewController2.h; sourceTree = "<group>"; };
 		BC9354AB1C1AB07100C60921 /* HomeSubViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewController2.m; sourceTree = "<group>"; };
+		BC9B7B5E1C9F9B2E0088D6FF /* no_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_comment@2x.png"; path = "new/no_comment@2x.png"; sourceTree = "<group>"; };
 		BCAA4AA91C8548440085A165 /* MyDoctorListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDoctorListModel.h; sourceTree = "<group>"; };
 		BCAA4AAA1C8548440085A165 /* MyDoctorListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDoctorListModel.m; sourceTree = "<group>"; };
 		BCAA4AAB1C8548440085A165 /* MyDoctorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDoctorListViewController.h; sourceTree = "<group>"; };
@@ -2799,6 +2801,7 @@
 			children = (
 				7FD0BBE51C9A9D0E004D2E02 /* new */,
 				BC540E0C1C43525F002E3B41 /* myAccountBigButtonImage@2x.png */,
+				BC9B7B5E1C9F9B2E0088D6FF /* no_comment@2x.png */,
 				BC540E0D1C43525F002E3B41 /* myCollectionBigButtonImage@2x.png */,
 				BC540E0E1C43525F002E3B41 /* myDoctorBigButtonImage@2x.png */,
 				BC540E0F1C43525F002E3B41 /* myRecordBigButtonImage@2x.png */,
@@ -4286,6 +4289,7 @@
 				E1EB1DD41B70A43B0048B8EB /* navbar_close_button@2x.png in Resources */,
 				E124D7AE1B92ECA80007B85E /* login_icon_code@2x.png in Resources */,
 				BC0E84DB1C7C46DB00082AA9 /* PassGuardCtrlBundle.bundle in Resources */,
+				BC9B7B5F1C9F9B2E0088D6FF /* no_comment@2x.png in Resources */,
 				E61DDACA1B8E3C6100120365 /* subobject_placeholder@2x.png in Resources */,
 				E689E9A91BA8856700A3ED3C /* home_tip_footer_line@2x.png in Resources */,
 				BC8E36C91C27C9C400304637 /* titleLine2@2x.png in Resources */,

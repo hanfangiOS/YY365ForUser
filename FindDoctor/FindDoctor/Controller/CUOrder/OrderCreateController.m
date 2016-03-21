@@ -208,10 +208,10 @@
     [super backAction];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [self.view endEditing:YES];
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    [self.view endEditing:YES];
+//}
 
 #pragma mark - Private Action
 

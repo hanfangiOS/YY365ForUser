@@ -20,6 +20,7 @@
 {
     UIImageView     *imageView;
     UILabel         *nameLabel;
+    UILabel         *titleLabel;
     StarRatingView  *rateView;
     UILabel         *rateLabel;
     UIButton        *commentButton;
@@ -74,13 +75,19 @@
 
     [self addSubview:nameLabel];
     
-    rateView = [[StarRatingView alloc] initWithFrame:CGRectMake(nameLabel.frameX, CGRectGetMaxY(nameLabel.frame) + 10,105, 14) type:StarTypeLarge starSpace:0];
+    titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 20, CGRectGetMinY(imageView.frame)+35, 1  , 16)];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont systemFontOfSize:12];
+    titleLabel.textColor = kDarkGrayColor;
+    
+    [self addSubview:titleLabel];
+    
+    rateView = [[StarRatingView alloc] initWithFrame:CGRectMake(nameLabel.frameX, CGRectGetMaxY(nameLabel.frame) + 10,105, 14) type:StarTypeSmall starSpace:0];
     rateView.editable = NO;
 //    rateView.backgroundColor = [UIColor redColor];
-    //    rateView.centerX = imageView.centerX;
     [self addSubview:rateView];
     
-    rateLabel = [[UILabel alloc]initWithFrame:CGRectMake(rateView.maxX, rateView.frameY + 2, 40, 18)];
+    rateLabel = [[UILabel alloc]initWithFrame:CGRectMake(rateView.maxX + 2, rateView.frameY, 40, 18)];
 //    rateLabel.backgroundColor = [UIColor redColor];
     rateLabel.textColor = UIColorFromHex(0xfdbd06);
     rateLabel.font = [UIFont systemFontOfSize:18];
@@ -93,7 +100,7 @@
     commentButton.layer.borderColor = UIColorFromHex(0xfdbd06).CGColor;
     commentButton.layer.borderWidth = 1;
     commentButton.layer.cornerRadius = commentButton.frameHeight/2.f;
-    [commentButton addTarget:self action:@selector(commentBlock) forControlEvents:UIControlEventTouchUpInside];
+    [commentButton addTarget:self action:@selector(commentBlockAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:commentButton];
     
     UIImage *guanzhuImage = [UIImage imageNamed:@"guanzhu"];

@@ -25,28 +25,30 @@
     BlueDotLabelInDoctorHeaderView  * _view1_label4;
     
 //    FlagViewInCommentList           * _view2_flagView;
-    
+
     NSInteger                        _lastID;
 }
-@property (nonatomic,strong)    DoctorFameListModel  * listModel;
+
 
 
 @end
 
 @implementation DoctorFameListController
+@dynamic listModel;
 
 - (id)initWithPageName:(NSString *)pageName listModel:(DoctorFameListModel *)listModel
 {
     self = [super initWithPageName:pageName listModel:listModel];
     if (self) {
         self.listModel = listModel;
-        _cellHeight = 0;
+
     }
     return self;
 }
 
 - (void)viewDidLoad {
     self.hasFreshControl = NO;
+    _cellHeight = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -156,6 +158,7 @@
     [self.freshControl beginRefreshing];
     [self.loadMoreControl endLoading];
     self.listModel.isLoading = YES;
+    self.listModel.filter.lastID = 0;
     __block __weak DoctorFameListController * blockSelf = self;
     [self.listModel gotoFirstPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         blockSelf.listModel = result.parsedModelObject;
@@ -200,37 +203,45 @@
     }];
 }
 
-//- (void)triggerLoadMore
-//{
-//    [self.freshControl endRefreshing];
-//    self.listModel.isLoading = YES;
-//    [self.loadMoreControl beginLoading];
-//    __block __weak DoctorFameListController * blockSelf = self;
-//    self.listModel.commentFilter.lastID = _lastID;
-//    self.listModel.commentFilter.doctorID = self.doctor.doctorId;
-//    [self.listModel gotoNextPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-//        blockSelf.listModel.isLoading = NO;
-//        [blockSelf.loadMoreControl endLoading];
-//        if (!result.hasError)
-//        {
-//            [blockSelf.contentTableView reloadData];
-//            if ([blockSelf.listModel hasNext])
-//            {
-//                blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
-//            }
-//            else
-//            {
-//                blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-//                ;
-//            }
-//        }
-//        else
-//        {
-//            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
-//            
-//        }
-//    }];
-//}
+- (void)triggerLoadMore
+{
+    [self.freshControl endRefreshing];
+    self.listModel.isLoading = YES;
+    [self.loadMoreControl beginLoading];
+    __block __weak DoctorFameListController * blockSelf = self;
+    
+    for (int  i = 0; i < self.listModel.items.count; i++) {
+        RemarkListInfo *item = [self.listModel.items objectAtIndex:i];
+        if (item.time > _lastID) {
+            _lastID = item.time;
+        }
+    }
+    
+    self.listModel.filter.lastID = _lastID;
+//    self.listModel.filter.doctor.doctorId = self.doctor.doctorId;
+    [self.listModel gotoNextPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        blockSelf.listModel.isLoading = NO;
+        [blockSelf.loadMoreControl endLoading];
+        if (!result.hasError)
+        {
+            [blockSelf.contentTableView reloadData];
+            if ([blockSelf.listModel hasNext])
+            {
+                blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
+            }
+            else
+            {
+                blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+                ;
+            }
+        }
+        else
+        {
+            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
+            
+        }
+    }];
+}
 
 
 
@@ -260,7 +271,8 @@
     DoctorFameCell * cell = [[DoctorFameCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
-    self.listModel.filter.lastID = cell.data.time;
+
+//    self.listModel.filter.lastID = cell.data.time;
     _cellHeight = [cell CellHeight];
     
     return cell;

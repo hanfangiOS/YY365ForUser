@@ -32,7 +32,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, kScreenWidth, self.frameHeight);
+   
     if (self) {
 //        self.data = [[Comment alloc] init];
         [self initSubViews];
@@ -42,6 +42,8 @@
 }
 
 - (void)initSubViews{
+    
+     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, kScreenWidth, self.frameHeight);
     
     _starView = [[StarRatingView alloc] initWithFrame:CGRectMake(1 , 1, 70 , 20) type:StarTypeSmall starSpace:0];
 //    _starView.backgroundColor = [UIColor redColor];
@@ -94,20 +96,21 @@
     _label5.frame = CGRectMake(self.frameWidth - 16 - 40, [self CellHeight]/2 - 15, 40, 30);
     
     //@“医生水平很高XXXXX”
-    _label2.frame = CGRectMake(leftPadding, _starView.maxY - 3,  self.frameWidth - 16 * 2 - 40 - leftPadding, _heightForLabel2);
+    _label2.frame = CGRectMake(leftPadding, _starView.maxY - 1.5,  self.frameWidth - 16 * 2 - 40 - leftPadding, _heightForLabel2 - 2);
 
     
     //@“2015-02XXXXX”
-    _label3.frame = CGRectMake(leftPadding, _label2.maxY - 3 , 100, 20);
+    _label3.frame = CGRectMake(leftPadding, _label2.maxY - 0.5 , 100, 20);
 
     
     //@“张仲景XXXX”
-    _label4.frame = CGRectMake(_label3.maxX + 5, _label2.maxY - 3, kScreenWidth - _label3.frameWidth - 5 - rightPadding, 20);
+    _label4.frame = CGRectMake(_label3.maxX + 5,  _label2.maxY - 0.5, kScreenWidth - _label3.frameWidth - 5 - rightPadding, 20);
 
     
     _lineView.frame = CGRectMake(0, [self CellHeight] - 0.5, kScreenWidth, 0.5);
     
 }
+
 
 - (void)setData:(RemarkListInfo *)data{
     _data = data;
@@ -120,9 +123,9 @@
     
     _label2.text  = self.data.content;
 
-//    CGSize size = [self sizeWithString:_label2.text font:[UIFont systemFontOfSize:15] lableWith:self.frameWidth - 16 - 40 - leftPadding];
-//    _heightForLabel2 = size.height;
-    _heightForLabel2 = [self handleLabel:_label2 andFontSize:15 andLineSpacing:0 width:self.frameWidth - 16 * 2 - 40 - leftPadding];
+    CGSize size = [self sizeWithString:_label2.text font:[UIFont systemFontOfSize:15] lableWith:self.frameWidth - 16 - 40 - leftPadding];
+    _heightForLabel2 = size.height;
+//    _heightForLabel2 = [self handleLabel:_label2 andFontSize:15 andLineSpacing:0 width:self.frameWidth - 16 * 2 - 40 - leftPadding];
     
     _label3.text = [[NSDate dateWithTimeIntervalSince1970:self.data.time] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
     
@@ -137,7 +140,7 @@
 
 - (NSInteger)CellHeight{
     
-    return (upPadding + _starView.frameHeight + _label2.frameHeight + _label3.frameHeight + 7);
+    return (upPadding + _starView.frameHeight + _label2.frameHeight + _label3.frameHeight + 5);
 }
 
 #pragma mark handleWays

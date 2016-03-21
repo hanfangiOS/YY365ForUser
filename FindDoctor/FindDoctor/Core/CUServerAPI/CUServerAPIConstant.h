@@ -69,8 +69,18 @@
 
 // { -----------用户相关
 
-// 获取手机验证码    
+#if defined(CollegeUnion_Develop)
+
+#define URL_AfterBase @"/baseFrame/base/server.jmt"
+#define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmt" // 你的服务端创建并返回 charge 的 URL 地址
+
+#elif defined(CollegeUnion_Distribution)
+
 #define URL_AfterBase @"/baseFrame/base/server.jmw"
+#define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址
+
+#endif
+
 
 // }
 

@@ -50,12 +50,12 @@
         _starSpace = space;
         
         [self setRate:0];
-        self.editable = YES;
+        self.editable = NO;
         
         [self initSubviews];
         
         self.frame = CGRectMake(self.frameX, self.frameY,((_type == StarTypeLarge) ? kImageWidth_B : kImageWidth_S)*5 + space*4 , (_type == StarTypeLarge) ? kImageWidth_B : kImageWidth_S);
-        self.backgroundColor =  kBlackColor;
+//        self.backgroundColor =  kBlackColor;
     }
     return self;
 }

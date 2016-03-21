@@ -101,20 +101,22 @@
         case 1:
         {
             _stateImageView.image = [UIImage imageNamed:@"pay_no"];
-        }break;
+        }   break;
         case 2:
         {
             _stateImageView.image = [UIImage imageNamed:@"icon_unfinish"];
-        }break;
+        }   break;
         case 3:
         {
             _stateImageView.image = [UIImage imageNamed:@"icon_unfinish"];
-        }break;
+        }   break;
         case 4:{
+            _stateImageView.image = [UIImage imageNamed:@"no_comment"];
+        }   break;
+        case 5:{
             _stateImageView.image = [UIImage imageNamed:@"icon_finish"];
-        }break;
+        }   break;
         default:
-            
             break;
     }
     

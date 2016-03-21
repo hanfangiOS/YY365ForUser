@@ -160,7 +160,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 NSMutableArray * listItemArr = [NSMutableArray new];
                 [dataArr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
-                    remarkListInfo.content = [obj valueForKeySafely:@"content"];
+                    remarkListInfo.content = [NSString stringWithFormat:@"%@",[obj valueForKeySafely:@"content"]];
                     remarkListInfo.doctorName = [obj valueForKeySafely:@"doctorName"];
                     remarkListInfo.doctorTitle = [obj valueForKeySafely:@"doctorTitle"];
                     remarkListInfo.flagName = [obj valueForKeySafely:@"flagName"];
@@ -233,6 +233,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 remarkList = [data objectForKeySafely:@"remarkList"];
                 [remarkList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
+                    
                     remarkListInfo.content = [obj valueForKeySafely:@"content"] ;
                     remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
                     remarkListInfo.numStar = [[obj objectForKeySafely:@"numStar"] integerValue];
@@ -240,9 +241,6 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                     remarkListInfo.userName = [obj objectForKeySafely:@"userName"];
                     [doctor.remarkList addObject:remarkListInfo];
                 }];
-                
-
-                
                 
                 listModel.doctor = doctor;
                 listModel.filter = filter;
@@ -289,9 +287,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
-                
                 NSMutableArray * listItemArr = [NSMutableArray new];
-                
                 NSMutableArray * data = [result.responseObject valueForKeySafely:@"data"];
                 [data enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];

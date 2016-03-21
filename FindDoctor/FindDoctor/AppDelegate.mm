@@ -295,7 +295,7 @@
 
 - (SNTabBarItem *)tabBarItemAtIndex:(int)index
 {
-    NSArray *titles = @[@"首页",@"附近",@"vip",@"我的"];
+    NSArray *titles = @[@"优医",@"优医馆",@"vip",@"我的"];
     NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_nearby_nor",@"tabbar_vip_nor",@"tabbar_mine_nor"];
 //    NSArray *hilIcons = @[@"tabbar_icon_home_highlighted",@"tabbar_icon_service_highlighted",@"tabbar_icon_discount_highlighted",@"tabbar_icon_mine_highlighted"];
    NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_nearby_sel",@"tabbar_vip_sel",@"tabbar_mine_sel"];

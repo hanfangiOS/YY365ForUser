@@ -66,27 +66,24 @@
 
 - (void)initSubviews
 {
-    UIButton * tempBtn = [[UIButton alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
-    tempBtn.backgroundColor = [UIColor redColor];
-    [tempBtn addTarget:self action:@selector(settings) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:tempBtn];
+//    UIButton * tempBtn = [[UIButton alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
+//    tempBtn.backgroundColor = [UIColor redColor];
+//    [tempBtn addTarget:self action:@selector(settings) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:tempBtn];
     
     contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[self contentView] frameWidth], [self.contentView frameHeight] - commitViewHeight)];
     [self.contentView addSubview:contentScrollView];
     
     [self loadCommitView];
  
-    __weak typeof(self) weakSelf = self;
+    __weak __block DoctorDetailController *blockSelf = self;
 
     headerView = [[DoctorHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), [DoctorHeaderView defaultHeight])];
     NSDateFormatter* formatter = [NSDateFormatter dateFormatterWithFormat:[NSDateFormatter dateFormatString]];
     headerView.dateLable.text = [formatter stringFromDate:[NSDate date]];
     headerView.data = self.doctor;
     headerView.commentBlock = ^{
-        DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
-        listModel.filter.doctor = weakSelf.doctor;
-        DoctorFameListController * vc = [[DoctorFameListController alloc] initWithPageName:@"DoctorFameListController" listModel:listModel];
-        [weakSelf.slideNavigationController pushViewController:vc animated:YES];
+        [blockSelf settings];
     };
     [contentScrollView addSubview:headerView];
     
