@@ -32,6 +32,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, kScreenWidth, self.frameHeight);
     if (self) {
 //        self.data = [[Comment alloc] init];
         [self initSubViews];
@@ -129,13 +130,13 @@
     
     _label5.text = [NSString stringWithFormat:@"+%ld",(long)self.data.score];
     
-    [self setNeedsDisplay];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+    
 }
 
 - (NSInteger)CellHeight{
     
-    [self setNeedsDisplay];
-    [self layoutIfNeeded];
     return (upPadding + _starView.frameHeight + _label2.frameHeight + _label3.frameHeight + 7);
 }
 
