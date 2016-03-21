@@ -160,7 +160,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 NSMutableArray * listItemArr = [NSMutableArray new];
                 [dataArr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
-                    remarkListInfo.content = [obj valueForKeySafely:@"content"];
+                    remarkListInfo.content = [NSString stringWithFormat:@"%@",[obj valueForKeySafely:@"content"]];
                     remarkListInfo.doctorName = [obj valueForKeySafely:@"doctorName"];
                     remarkListInfo.doctorTitle = [obj valueForKeySafely:@"doctorTitle"];
                     remarkListInfo.flagName = [obj valueForKeySafely:@"flagName"];
