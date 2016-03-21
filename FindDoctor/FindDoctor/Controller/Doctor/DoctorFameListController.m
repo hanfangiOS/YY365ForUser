@@ -12,8 +12,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "BlueDotLabelInDoctorHeaderView.h"
 #import "TipHandler+HUD.h"
-#import "FlagViewInCommentList.h"
+#import "FlagView.h"
 #import "SNListEmptyView.h"
+#import "TitleView.h"
 
 @interface DoctorFameListController ()<SNListEmptyViewDelegate>{
     NSInteger                       _cellHeight;
@@ -24,7 +25,7 @@
     BlueDotLabelInDoctorHeaderView  * _view1_label3;
     BlueDotLabelInDoctorHeaderView  * _view1_label4;
     
-//    FlagViewInCommentList           * _view2_flagView;
+    FlagView                        * _view2_flagView;
 
     NSInteger                        _lastID;
 }
@@ -85,7 +86,7 @@
     [view1 addSubview:view1_imageView1];
     
     //XX人关注
-    _view1_label1 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight * 0.2, 110, 12) title:@"" contents:@"0" unit:@"人关注" hasDot:YES ];
+    _view1_label1 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight * 0.2, 110, 12) title:@"关注" contents:@"0" unit:@"人" hasDot:YES ];
     //    view1_label1.backgroundColor = [UIColor greenColor];
     [view1 addSubview:_view1_label1];
     
@@ -108,26 +109,21 @@
      * 自然背景View
      */
     UIView * view2 = [[UIView alloc] initWithFrame:CGRectMake(0, view1.maxY, kScreenWidth, heightForHeader * 0.65)];
-    view2.backgroundColor = [UIColor grayColor];
+//    view2.backgroundColor = [UIColor grayColor];
     [_headerView addSubview:view2];
     //锦旗
-    UILabel * view2_label1 = [[UILabel alloc] initWithFrame:CGRectMake(view2.centerX - 20, 10, 40, 20)];
-    view2_label1.textColor = [UIColor blueColor];
-    view2_label1.text = @"锦旗";
-    view2_label1.font = [UIFont systemFontOfSize:16];
-    [view2 addSubview:view2_label1];
+    TitleView *flagTitle = [[TitleView alloc]initWithFrame:CGRectMake(0, 10, kScreenWidth, 14) title:@"锦旗"];
+    [view2 addSubview:flagTitle];
     
     //一堆旗
-//    _view2_flagView = [[FlagViewInCommentList alloc] initWithFrame:CGRectMake(0,10, kScreenWidth, 20)];
-    //    [view2 addSubview:_view2_flagView];
-    
-    
+    _view2_flagView = [[FlagView alloc] initWithFrame:CGRectMake(0,flagTitle.maxY+5, kScreenWidth, 20)];
+    [view2 addSubview:_view2_flagView];
 }
 
 - (void)resetData{
     
     if (self.listModel.doctor){
-        [_view1_label1 resetTitle:@"" contents:[NSString stringWithFormat:@"%d",self.listModel.doctor.numConcern] unit:@"人关注"];
+        [_view1_label1 resetTitle:@"关注" contents:[NSString stringWithFormat:@"%d",self.listModel.doctor.numConcern] unit:@"人"];
         
         [_view1_label2 resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.numDiag] unit:@"次"];
         
@@ -135,7 +131,8 @@
         
         [_view1_label4 resetTitle:@"积分" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.score] unit:@""];
         
-//        _view2_flagView.data = _comment;
+        _view2_flagView.data = self.listModel.doctor;
+        [_view2_flagView setMark];
     }
     
 }

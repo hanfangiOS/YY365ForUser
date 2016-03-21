@@ -29,8 +29,8 @@
     [self showProgressView];
     __weak __block MyAccountMainViewController *blockSelf = self;
     [[CUOrderManager sharedInstance]getMyAccountWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        [blockSelf hideProgressView];
         if (!result.hasError) {
-            [self hideProgressView];
             blockSelf.data = result.parsedModelObject;
             costView.fee = [NSString stringWithFormat:@"%.2lf",blockSelf.data.totalCost];
             incomeView.fee = [NSString stringWithFormat:@"%.2lf",blockSelf.data.totalIncome];

@@ -183,7 +183,7 @@
 		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
 		7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */; };
-		7FD0BBA41C9A43FB004D2E02 /* FlagViewInCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBA31C9A43FB004D2E02 /* FlagViewInCommentList.m */; };
+		7FD0BBA41C9A43FB004D2E02 /* FlagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBA31C9A43FB004D2E02 /* FlagView.m */; };
 		7FD0BBCA1C9A58C9004D2E02 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBA81C9A58C9004D2E02 /* IQNSArray+Sort.m */; };
 		7FD0BBCB1C9A58C9004D2E02 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBAA1C9A58C9004D2E02 /* IQUITextFieldView+Additions.m */; };
 		7FD0BBCC1C9A58C9004D2E02 /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBAC1C9A58C9004D2E02 /* IQUIView+Hierarchy.m */; };
@@ -209,6 +209,7 @@
 		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
 		7FFB94951C96BAD1003523B4 /* MyCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */; };
 		7FFB94981C96C3E6003523B4 /* CUCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94971C96C3E6003523B4 /* CUCommentManager.m */; };
+		BC003A0D1C9FC215006098BA /* flag_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC003A0C1C9FC215006098BA /* flag_selected@2x.png */; };
 		BC0E84B31C7857E700082AA9 /* AddFamilyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */; };
 		BC0E84B51C78598E00082AA9 /* littleTrumpet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */; };
 		BC0E84B81C7AB95F00082AA9 /* radioButtonActivated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B61C7AB95F00082AA9 /* radioButtonActivated@2x.png */; };
@@ -916,8 +917,8 @@
 		7FB267C61C869C4B008FCF05 /* CUSearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSearchManager.m; sourceTree = "<group>"; };
 		7FC36A431C85D69500650F75 /* DoctorSearchResultListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultListModel.h; sourceTree = "<group>"; };
 		7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultListModel.m; sourceTree = "<group>"; };
-		7FD0BBA21C9A43F4004D2E02 /* FlagViewInCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagViewInCommentList.h; sourceTree = "<group>"; };
-		7FD0BBA31C9A43FB004D2E02 /* FlagViewInCommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagViewInCommentList.m; sourceTree = "<group>"; };
+		7FD0BBA21C9A43F4004D2E02 /* FlagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagView.h; sourceTree = "<group>"; };
+		7FD0BBA31C9A43FB004D2E02 /* FlagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagView.m; sourceTree = "<group>"; };
 		7FD0BBA71C9A58C9004D2E02 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
 		7FD0BBA81C9A58C9004D2E02 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
 		7FD0BBA91C9A58C9004D2E02 /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
@@ -964,6 +965,7 @@
 		7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentListModel.m; sourceTree = "<group>"; };
 		7FFB94961C96C3E6003523B4 /* CUCommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUCommentManager.h; sourceTree = "<group>"; };
 		7FFB94971C96C3E6003523B4 /* CUCommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUCommentManager.m; sourceTree = "<group>"; };
+		BC003A0C1C9FC215006098BA /* flag_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_selected@2x.png"; sourceTree = "<group>"; };
 		BC0E84B11C7857E700082AA9 /* AddFamilyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFamilyMemberViewController.h; path = AddFamiliMember/AddFamilyMemberViewController.h; sourceTree = "<group>"; };
 		BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddFamilyMemberViewController.m; path = AddFamiliMember/AddFamilyMemberViewController.m; sourceTree = "<group>"; };
 		BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "littleTrumpet@2x.png"; sourceTree = "<group>"; };
@@ -2808,6 +2810,7 @@
 				BC62727C1C7EB1B4005FFE45 /* icon_finish@2x.png */,
 				BC62727D1C7EB1B4005FFE45 /* icon_unfinish@2x.png */,
 				BC62727E1C7EB1B4005FFE45 /* pay_no@2x.png */,
+				BC003A0C1C9FC215006098BA /* flag_selected@2x.png */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -3904,8 +3907,8 @@
 		E1EB1D511B70A43B0048B8EB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7FD0BBA31C9A43FB004D2E02 /* FlagViewInCommentList.m */,
-				7FD0BBA21C9A43F4004D2E02 /* FlagViewInCommentList.h */,
+				7FD0BBA21C9A43F4004D2E02 /* FlagView.h */,
+				7FD0BBA31C9A43FB004D2E02 /* FlagView.m */,
 				BC8E36CB1C27D95900304637 /* CUPageControl.h */,
 				BC8E36CC1C27D95900304637 /* CUPageControl.m */,
 				BC8E36C41C27C69400304637 /* TitleView.h */,
@@ -4407,6 +4410,7 @@
 				E1ABA7291BC5809500D209C7 /* tabbar_vip_sel@2x.png in Resources */,
 				E10EDCD21B8CA2140035B6E7 /* btn_green_sel@2x.png in Resources */,
 				3ED1711A1AAF0A9A00E5B630 /* LongTextTipView.xib in Resources */,
+				BC003A0D1C9FC215006098BA /* flag_selected@2x.png in Resources */,
 				7F81A25B1C98439D009FEA60 /* nice.png in Resources */,
 				E1EB1DD11B70A43B0048B8EB /* navbar_back_button@2x.png in Resources */,
 				E10EDD031B8E14400035B6E7 /* order_icon_check@2x.png in Resources */,
@@ -4626,7 +4630,7 @@
 				BC313D211C3A143C00C9469D /* UserViewController.m in Sources */,
 				BCE465C31C06BAAF008DE355 /* DoctorAppointmentListView.m in Sources */,
 				3EDEBAA91A961C4800E72809 /* PLSqliteDatabaseOnThread.m in Sources */,
-				7FD0BBA41C9A43FB004D2E02 /* FlagViewInCommentList.m in Sources */,
+				7FD0BBA41C9A43FB004D2E02 /* FlagView.m in Sources */,
 				BCAA4AC91C85964D0085A165 /* ListMoneyView.m in Sources */,
 				BC80B20B1C40C76C00A7445A /* LoginTextFeildView.m in Sources */,
 				3ED0A7641AA604E50040E529 /* SNTabBar.m in Sources */,

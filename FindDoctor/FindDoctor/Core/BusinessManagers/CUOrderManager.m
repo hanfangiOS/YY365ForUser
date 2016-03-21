@@ -549,15 +549,10 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     result.parsedModelObject = myAccount;
                 }
             }
-            else if (err_code < 0){
-#if useErrCodeForLogout
-                [[CUUserManager sharedInstance] clear];
-                [[AppDelegate app] launchMainView];
-#endif
-            }
-            
-            
-            resultBlock(nil, result);
+        }
+        else {
+            NSLog(@"====哦哟，出错了====");
+            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
         }
 #else
         MyAccount *myAccount = [[MyAccount alloc]init];
@@ -580,8 +575,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
             [myAccount.incomeDetailList addObject:item];
         }
         result.parsedModelObject = myAccount;
-        resultBlock(nil,result);
 #endif
+        resultBlock(nil, result);
     } forKey:@"HomeTipList" forPageNameGroup:pageName];
 }
 
