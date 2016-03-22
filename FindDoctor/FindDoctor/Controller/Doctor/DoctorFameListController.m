@@ -64,7 +64,10 @@
     CGFloat heightForHeader = 0.4 * 640;
     self.contentTableView.frame = CGRectMake(0, heightForHeader, self.contentTableView.frame.size.width, self.contentView.frameHeight - heightForHeader);
     
-
+    
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, heightForHeader - 0.5, kScreenWidth, 0.5)];
+    view.layer.backgroundColor = UIColorFromHex(0xcccccc).CGColor;
+    [self.contentView addSubview:view];
     
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, heightForHeader)];
     

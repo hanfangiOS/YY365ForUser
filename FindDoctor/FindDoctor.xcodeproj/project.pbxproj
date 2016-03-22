@@ -679,7 +679,7 @@
 		3ED4FC101AA8450200AAAD34 /* UIView+AutoLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayoutView.m"; sourceTree = "<group>"; };
 		3ED4FC131AA8775300AAAD34 /* UIBarButtonItem+SNExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+SNExtension.h"; sourceTree = "<group>"; };
 		3ED4FC141AA8775300AAAD34 /* UIBarButtonItem+SNExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+SNExtension.m"; sourceTree = "<group>"; };
-		3ED8563E1A9376D400516900 /* uyi365ForPatient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uyi365ForPatient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ED8563E1A9376D400516900 /* FindDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EDB03D81AB585C400A10747 /* MMLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLocationManager.h; sourceTree = "<group>"; };
 		3EDB03D91AB585C400A10747 /* MMLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLocationManager.m; sourceTree = "<group>"; };
 		3EDD02AA1B133BDC0081B641 /* SNViewController+Nav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNViewController+Nav.h"; sourceTree = "<group>"; };
@@ -1990,7 +1990,7 @@
 		3ED8563F1A9376D400516900 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3ED8563E1A9376D400516900 /* uyi365ForPatient.app */,
+				3ED8563E1A9376D400516900 /* FindDoctor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4228,9 +4228,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3ED8563D1A9376D400516900 /* uyi365ForPatient */ = {
+		3ED8563D1A9376D400516900 /* FindDoctor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3ED856641A9376D500516900 /* Build configuration list for PBXNativeTarget "uyi365ForPatient" */;
+			buildConfigurationList = 3ED856641A9376D500516900 /* Build configuration list for PBXNativeTarget "FindDoctor" */;
 			buildPhases = (
 				3ED8563A1A9376D400516900 /* Sources */,
 				3ED8563B1A9376D400516900 /* Frameworks */,
@@ -4240,9 +4240,9 @@
 			);
 			dependencies = (
 			);
-			name = uyi365ForPatient;
+			name = FindDoctor;
 			productName = EShiJia;
-			productReference = 3ED8563E1A9376D400516900 /* uyi365ForPatient.app */;
+			productReference = 3ED8563E1A9376D400516900 /* FindDoctor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -4256,13 +4256,14 @@
 				TargetAttributes = {
 					3ED8563D1A9376D400516900 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = GT9CXCH43L;
 					};
 					E10706DF1B0E2F2F0048FAB8 = {
 						CreatedOnToolsVersion = 6.1;
 					};
 				};
 			};
-			buildConfigurationList = 3ED856391A9376D400516900 /* Build configuration list for PBXProject "uyi365ForPatient" */;
+			buildConfigurationList = 3ED856391A9376D400516900 /* Build configuration list for PBXProject "FindDoctor" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -4276,7 +4277,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3ED8563D1A9376D400516900 /* uyi365ForPatient */,
+				3ED8563D1A9376D400516900 /* FindDoctor */,
 				E10706DF1B0E2F2F0048FAB8 /* FindDoctorArchive */,
 			);
 		};
@@ -4873,8 +4874,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -4926,8 +4927,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4961,7 +4962,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5012,8 +5013,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = FindDoctor;
+				PROVISIONING_PROFILE = "75c956c6-e83c-4e51-a310-b46eac630056";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Debug;
@@ -5024,7 +5025,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5075,8 +5076,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = FindDoctor;
+				PROVISIONING_PROFILE = "75c956c6-e83c-4e51-a310-b46eac630056";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Release;
@@ -5102,7 +5103,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3ED856391A9376D400516900 /* Build configuration list for PBXProject "uyi365ForPatient" */ = {
+		3ED856391A9376D400516900 /* Build configuration list for PBXProject "FindDoctor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3ED856621A9376D500516900 /* Debug */,
@@ -5111,7 +5112,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3ED856641A9376D500516900 /* Build configuration list for PBXNativeTarget "uyi365ForPatient" */ = {
+		3ED856641A9376D500516900 /* Build configuration list for PBXNativeTarget "FindDoctor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3ED856651A9376D500516900 /* Debug */,
