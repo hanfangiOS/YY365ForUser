@@ -35,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"添加新成员";
     // Do any additional setup after loading the view.
 }
 
@@ -193,35 +194,35 @@
 
 #pragma mark - textFieldDelegate
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    scrollViewY = _contentScrollView.contentOffset.y;
-    
-    if (textField == nameView.contentTextField) {
-        NSInteger mark = [_contentScrollView frameHeight] - (CGRectGetMinY(nameView.frame) + mainMessageViewBackgroundView.frameX -  _contentScrollView.contentOffset.y) - 390;
-        if (mark > 0) {
-            return;
-        }
-        [_contentScrollView setContentOffset:CGPointMake(0,_contentScrollView.contentOffset.y - mark) animated:YES];
-    }
-    if (textField == ageView.contentTextField) {
-        NSInteger mark = [_contentScrollView frameHeight] - (CGRectGetMinY(ageView.frame) + mainMessageViewBackgroundView.frameX -  _contentScrollView.contentOffset.y) - 390;
-        if (mark > 0) {
-            return;
-        }
-        [_contentScrollView setContentOffset:CGPointMake(0,_contentScrollView.contentOffset.y - mark) animated:YES];
-    }
-    if (textField == phoneView.contentTextField) {
-        NSInteger mark = [_contentScrollView frameHeight] - (CGRectGetMinY(phoneView.frame) + mainMessageViewBackgroundView.frameX -  _contentScrollView.contentOffset.y) - 390;
-        if (mark > 0) {
-            return;
-        }
-        [_contentScrollView setContentOffset:CGPointMake(0,_contentScrollView.contentOffset.y - mark) animated:YES];
-    }
-}
+//- (void)textFieldDidBeginEditing:(UITextField *)textField{
+//    scrollViewY = _contentScrollView.contentOffset.y;
+//    
+//    if (textField == nameView.contentTextField) {
+//        NSInteger mark = [_contentScrollView frameHeight] - (CGRectGetMinY(nameView.frame) + mainMessageViewBackgroundView.frameX -  _contentScrollView.contentOffset.y) - 390;
+//        if (mark > 0) {
+//            return;
+//        }
+//        [_contentScrollView setContentOffset:CGPointMake(0,_contentScrollView.contentOffset.y - mark) animated:YES];
+//    }
+//    if (textField == ageView.contentTextField) {
+//        NSInteger mark = [_contentScrollView frameHeight] - (CGRectGetMinY(ageView.frame) + mainMessageViewBackgroundView.frameX -  _contentScrollView.contentOffset.y) - 390;
+//        if (mark > 0) {
+//            return;
+//        }
+//        [_contentScrollView setContentOffset:CGPointMake(0,_contentScrollView.contentOffset.y - mark) animated:YES];
+//    }
+//    if (textField == phoneView.contentTextField) {
+//        NSInteger mark = [_contentScrollView frameHeight] - (CGRectGetMinY(phoneView.frame) + mainMessageViewBackgroundView.frameX -  _contentScrollView.contentOffset.y) - 390;
+//        if (mark > 0) {
+//            return;
+//        }
+//        [_contentScrollView setContentOffset:CGPointMake(0,_contentScrollView.contentOffset.y - mark) animated:YES];
+//    }
+//}
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    [_contentScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-}
+//- (void)textFieldDidEndEditing:(UITextField *)textField{
+//    [_contentScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+//}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self endEdit];

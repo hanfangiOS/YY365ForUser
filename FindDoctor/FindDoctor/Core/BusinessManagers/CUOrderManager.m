@@ -622,7 +622,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:@(diagnosisID) forKey:@"order_no"];
     NSLog(@"%@",param);
-    [[AppCore sharedInstance].apiManager POST:@"baseFrame/base/verify_order_state.jmw" parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:kVerifyOrderStateUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {

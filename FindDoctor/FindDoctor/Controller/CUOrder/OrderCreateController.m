@@ -96,7 +96,7 @@
         [weakSelf addMemberAction];
     };
     
-    UIView *header = [self headerViewWithTitle:@"病情描述（可选）" originY:CGRectGetMaxY(self.menuView.frame) + padding];
+    UIView *header = [self headerViewWithTitle:@"病情描述（必选）" originY:CGRectGetMaxY(self.menuView.frame) + padding];
     header.backgroundColor = _contentScrollView.backgroundColor;
     [_contentScrollView addSubview:header];
     
@@ -233,6 +233,12 @@
         [alert show];
         return;
     }
+    if ([_textView.text isEmpty]){
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"病请描述不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+
     [self commitOrder];
 }
 

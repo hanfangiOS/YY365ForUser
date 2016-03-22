@@ -343,7 +343,6 @@
             }
         }
     } pageName:@"OrderConfirmController"];
-
 }
 
 - (void)didReceiveMemoryWarning {
