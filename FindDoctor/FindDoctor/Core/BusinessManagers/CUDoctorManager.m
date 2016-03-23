@@ -143,7 +143,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                 }
             }
             else {
-                NSLog(@"====哦哟，出错了====");
+                NSLog(@"连接服务器失败，请检查网络");
                 [TipHandler showTipOnlyTextWithNsstring:result.error];
             }
             
@@ -258,7 +258,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                 }
             }
             else {
-                NSLog(@"====哦哟，出错了====");
+                NSLog(@"连接服务器失败，请检查网络");
                 [TipHandler showTipOnlyTextWithNsstring:result.error];
             }
             
@@ -325,7 +325,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                                           result.parsedModelObject = listModel;
                                       }
                                       else {
-                                          NSLog(@"====哦哟，出错了====");
+                                          NSLog(@"连接服务器失败，请检查网络");
                                       }
                                       resultBlock(request, result);
                                       
@@ -402,7 +402,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             }
         }
         else {
-            NSLog(@"====哦哟，出错了====");
+            NSLog(@"连接服务器失败，请检查网络");
         }
         resultBlock(request, result);
     }];
@@ -462,8 +462,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             }
         }
         else {
-            NSLog(@"====哦哟，出错了====");
-            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         
         resultBlock(request, result);
@@ -499,8 +499,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             }
         }
         else {
-            NSLog(@"====哦哟，出错了====");
-            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         
         resultBlock(request, result);
@@ -575,8 +575,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             }
         }
         else {
-            NSLog(@"====哦哟，出错了====");
-            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         
         resultBlock(request, result);

@@ -16,6 +16,7 @@
 #import "JSONKit.h"
 #import "TipHandler+HUD.h"
 #import "CUOrder.h"
+#import "ParserTools.h"
 
 @implementation CUClinicManager
 
@@ -50,10 +51,10 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 
-                NSMutableArray *recvListClinic = [result.responseObject valueForKeySafely:@"data"];
+                NSMutableArray *recvList = [result.responseObject valueForKeySafely:@"data"];
                 NSMutableArray *listSubjectClinic = [[NSMutableArray alloc] init];
                 
-                [recvListClinic enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                [ParserTools enumerateObjects:recvList UsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     Clinic *clinic = [[Clinic alloc] init];
                     
                     clinic.breifInfo = [obj valueForKeySafely:@"briefIntro"];
@@ -78,8 +79,8 @@ SINGLETON_IMPLENTATION(CUClinicManager);
             }
         }
         else {
-            NSLog(@"====哦哟，出错了====");
-            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         
         resultBlock(request, result);
@@ -138,9 +139,21 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 clinic.numConcern   = [[data valueForKeySafely:@"numConcern"] integerValue];
                 clinic.skillTreat   = [data valueForKeySafely:@"skillTreat"];
                 
-                NSMutableArray *recvList = [data objectForKey:@"doctorList"];
+                NSArray *recvList   = [data valueForKeySafely:@"isConcern"];
+//                NSMutableArray *recvList = [data objectForKey:@"doctorList"];
                 NSMutableArray *subjectList = [NSMutableArray new];
-                [recvList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+//                [ParserTools enumerateObjects:recvList UsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                    Doctor *doctor = [[Doctor  alloc]init];
+//                    doctor.doctorId = [[obj valueForKey:@"ID"] integerValue];
+//                    doctor.avatar = [obj valueForKey:@"icon"];
+//                    doctor.name = [obj valueForKey:@"name"];
+//                    doctor.doctorState = [[obj valueForKey:@"state"] integerValue];
+//                    doctor.levelDesc = [obj valueForKey:@"title"];
+//                    [subjectList addObject:doctor];
+//                }];
+                
+                [recvList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     Doctor *doctor = [[Doctor  alloc]init];
                     doctor.doctorId = [[obj valueForKey:@"ID"] integerValue];
                     doctor.avatar = [obj valueForKey:@"icon"];
@@ -156,8 +169,8 @@ SINGLETON_IMPLENTATION(CUClinicManager);
             }
         }
         else {
-            NSLog(@"====哦哟，出错了====");
-            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         
         resultBlock(request, result);
@@ -200,8 +213,8 @@ SINGLETON_IMPLENTATION(CUClinicManager);
             }
         }
         else {
-            NSLog(@"====哦哟，出错了====");
-            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         
         resultBlock(request, result);
@@ -239,20 +252,18 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 NSArray *recvList = [result.responseObject valueForKeySafely:@"data"];
                 NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                 
-                if ([recvList isKindOfClass:[NSArray class]]) {
-                    [recvList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop){
-                        Clinic *clinic = [[Clinic alloc] init];
-                        
-                        clinic.ID = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
-                        clinic.state = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
-                        clinic.name = [obj valueForKey:@"name"];
-                        clinic.icon = [NSURL URLWithString:[obj valueForKey:@"icon"]];
-                        clinic.breifInfo = [obj valueForKey:@"briefIntro"];
-                        clinic.skillTreat = [obj valueForKey:@"skillTreat"];
-                        
-                        [listSubjectDoctor addObject:clinic];
-                    }];
-                }
+                [ParserTools enumerateObjects:recvList UsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    Clinic *clinic = [[Clinic alloc] init];
+                    
+                    clinic.ID = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
+                    clinic.state = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
+                    clinic.name = [obj valueForKey:@"name"];
+                    clinic.icon = [NSURL URLWithString:[obj valueForKey:@"icon"]];
+                    clinic.breifInfo = [obj valueForKey:@"briefIntro"];
+                    clinic.skillTreat = [obj valueForKey:@"skillTreat"];
+                    
+                    [listSubjectDoctor addObject:clinic];
+                }];
 
                 listModel.items = listSubjectDoctor;
                 result.parsedModelObject = listModel;
@@ -262,8 +273,8 @@ SINGLETON_IMPLENTATION(CUClinicManager);
             }
         }
         else {
-            NSLog(@"====哦哟，出错了====");
-            [TipHandler showTipOnlyTextWithNsstring:@"====哦哟，出错了===="];
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         
         resultBlock(request, result);

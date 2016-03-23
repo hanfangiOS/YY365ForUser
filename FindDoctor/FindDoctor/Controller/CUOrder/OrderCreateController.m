@@ -153,7 +153,7 @@
                     }
                     else
                     {
-                        NSLog(@"====哦哟，出错了====");
+                        NSLog(@"连接服务器失败，请检查网络");
                         [TipHandler showHUDText:@"图片上传失败，请重试" inView:self.contentView];
                     }
                 }

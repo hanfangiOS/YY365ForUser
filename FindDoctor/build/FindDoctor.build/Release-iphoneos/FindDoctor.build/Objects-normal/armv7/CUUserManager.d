@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUUserManager.m \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUUserManager.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNMVC/SNBusinessMananger.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNMVC/SNServerAPIDefine.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNMVC/SNServerAPIManager.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/SNHTTPRequestOperation.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/SNHTTPRequestOperationManager.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNMVC/SNServerAPIDataParser.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNMVC/SNServerAPIResultData.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Model/CUUser.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Core/CUServerAPI/CUServerAPIConstant.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Core/AppCore.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNStorage/File/SNFileAccessManager.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Core/CUServerAPI/CUUserParser.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Core/CUServerAPI/CUServerAPIDataBaseParser.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNMVC/SNBaseListModel.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNMVC/SNPlatformManager.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/SNNetWorking/SNNetworkClient.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/AFNetWorking/AFNetworking.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/AFNetWorking/AFURLConnectionOperation.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/AFNetWorking/AFHTTPRequestOperation.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/AFNetWorking/AFJSONRequestOperation.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/AFNetWorking/AFXMLRequestOperation.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/AFNetWorking/AFPropertyListRequestOperation.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/AFNetWorking/AFHTTPClient.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/AFNetWorking/AFImageRequestOperation.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/AFNetWorking/AFNetworkActivityIndicatorManager.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNParser/JSONKit/JSONKit.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Model/Address.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/SNArchitecture/SNCore/SNNetWork/Vendor/SNNetWorking/SNHTTPRequestOperationWrapper.h

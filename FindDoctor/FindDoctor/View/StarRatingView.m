@@ -55,7 +55,6 @@
         [self initSubviews];
         
         self.frame = CGRectMake(self.frameX, self.frameY,((_type == StarTypeLarge) ? kImageWidth_B : kImageWidth_S)*5 + space*4 , (_type == StarTypeLarge) ? kImageWidth_B : kImageWidth_S);
-//        self.backgroundColor =  kBlackColor;
     }
     return self;
 }
@@ -130,8 +129,7 @@
     self.userInteractionEnabled = editable;
 }
 
-- (void)tapImage:(NSInteger)tempRate
-{
+- (void)tapImage:(NSInteger)tempRate{
     self.rate = tempRate;
     
     if ([self.delegate respondsToSelector:@selector(starRatingView:rateDidChange:)]) {
@@ -141,7 +139,6 @@
 
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event{
     CGPoint point=[touch locationInView:self];
-//    NSLog(@"x:%f,y:%f",point.x,point.y);
     int tempRate = point.x/((_type == StarTypeLarge) ? kImageWidth_B : kImageWidth_S + _starSpace);
     if (tempRate < 0) {
         tempRate = 0;
@@ -153,8 +150,5 @@
     return [super continueTrackingWithTouch:touch withEvent:event];
 }
 
-- (void)tapImageWithDrag:(UIButton *)sender{
-    
-}
 
 @end
