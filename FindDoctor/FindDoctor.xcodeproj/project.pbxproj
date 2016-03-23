@@ -4256,7 +4256,7 @@
 				TargetAttributes = {
 					3ED8563D1A9376D400516900 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = GT9CXCH43L;
+						DevelopmentTeam = M8XN28D3G2;
 					};
 					E10706DF1B0E2F2F0048FAB8 = {
 						CreatedOnToolsVersion = 6.1;
@@ -4962,7 +4962,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5014,7 +5014,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "75c956c6-e83c-4e51-a310-b46eac630056";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Debug;
@@ -5025,7 +5025,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5077,7 +5077,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "75c956c6-e83c-4e51-a310-b46eac630056";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Release;

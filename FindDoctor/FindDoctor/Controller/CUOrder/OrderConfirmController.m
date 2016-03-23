@@ -446,11 +446,13 @@
     
     OrderConfirmController * __weak weakSelf = self;
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [self showAlertWait];
+//    [self showAlertWait];
+    [self showProgressView];
     [NSURLConnection sendAsynchronousRequest:postRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-            [weakSelf hideAlert];
+//            [weakSelf hideAlert];
+            [self hideProgressView];
             if (httpResponse.statusCode != 200) {
                 NSLog(@"statusCode=%ld error = %@", (long)httpResponse.statusCode, connectionError);
                 [weakSelf showAlertMessage:kErrorNet];
@@ -464,7 +466,7 @@
 //            NSString* charge = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //            NSData *jsonData = [charge JSONData];
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            NSDictionary *dic2 = [dic objectForKey:@"charge"];
+            NSDictionary * dic2 = [dic objectForKey:@"charge"];
             NSString* charge = [dic2 JSONString];
             NSLog(@"charge = %@", charge);
             [Pingpp createPayment:charge viewController:weakSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
