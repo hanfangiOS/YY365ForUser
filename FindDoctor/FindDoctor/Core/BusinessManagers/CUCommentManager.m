@@ -216,7 +216,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
                 
                 Doctor * doctor = [[Doctor alloc] init];
-                doctor.rate = [[data valueForKeySafely:@"averageStar"] integerValue];
+                doctor.rate = [[data valueForKeySafely:@"averageStar"] floatValue];
                 doctor.numConcern = [[data valueForKeySafely:@"totalConern"] integerValue];
                 doctor.numDiag = [[data valueForKeySafely:@"totalDiagnosis"] integerValue];
                 doctor.score = [[data valueForKeySafely:@"totalScore"] integerValue];

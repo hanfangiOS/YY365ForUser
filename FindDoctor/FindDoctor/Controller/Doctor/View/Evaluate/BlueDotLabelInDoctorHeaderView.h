@@ -13,6 +13,8 @@
 @interface BlueDotLabelInDoctorHeaderView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title contents:(NSString *)contents unit:(NSString *)unit hasDot:(BOOL)hasDot;
-- (void)resetTitle:(NSString *)title contents:(NSString *)contents unit:(NSString *)unit;
+
+- (void)setTitle:(NSString *)title contents:(NSString *)contents unit:(NSString *)unit;
+
 
 @end

@@ -157,9 +157,9 @@
     rateLabel.text = [NSString stringWithFormat:@"%.1f",_data.rate];
     NSString *desc = _data.briefIntro;
     
-    [zhenLiaoNumberLabel resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%d",_data.numDiag] unit:@"次"];
-    [guanZhuNumberLabel resetTitle:@"关注" contents:[NSString stringWithFormat:@"%d",_data.numConcern] unit:@"次"];
-    [haoPingNumberLabel resetTitle:@"好评率" contents:[NSString stringWithFormat:@"%d",_data.goodRemark] unit:@"%"];
+    [zhenLiaoNumberLabel setTitle:@"诊疗" contents:[NSString stringWithFormat:@"%d",_data.numDiag] unit:@"次"];
+    [guanZhuNumberLabel setTitle:@"关注" contents:[NSString stringWithFormat:@"%d",_data.numConcern] unit:@"次"];
+    [haoPingNumberLabel setTitle:@"好评率" contents:[NSString stringWithFormat:@"%d",_data.goodRemark] unit:@"%"];
     
     introLabel.text = desc;
     [introLabel sizeToFit];

@@ -287,25 +287,25 @@
 //    }
     if (self.order.payment == ORDERPAYMENT_WeiXin) {
         self.channel = @"wx";
-        [self CheckOrderHasPaid];
-//            [self normalPayAction:nil];
+//        [self CheckOrderHasPaid];
+        [self normalPayAction:nil];
     }
     else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
         self.channel = @"alipay";
-        [self CheckOrderHasPaid];
-//        [self normalPayAction:nil];
+//        [self CheckOrderHasPaid];
+        [self normalPayAction:nil];
     }
     else{
         return;
     }
 }
 
-- (void)payOrderWithTN:(NSString *)tn
-{
-    [[CUOrderManager sharedInstance] payOrder:self.order tn:tn block:^(NSError *error, id responseObject) {
-        [self handlePayResult:responseObject error:error];
-    }];
-}
+//- (void)payOrderWithTN:(NSString *)tn
+//{
+//    [[CUOrderManager sharedInstance] payOrder:self.order tn:tn block:^(NSError *error, id responseObject) {
+//        [self handlePayResult:responseObject error:error];
+//    }];
+//}
 
 - (void)handlePayResult:(id)responseObject error:(NSError *)error
 {
@@ -383,26 +383,6 @@
         [mAlert dismissWithClickedButtonIndex:0 animated:YES];
         mAlert = nil;
     }
-}
-
-- (void)test{
-    SNSlideNavigationController *slide = self.slideNavigationController;
-    UIViewController *vc = nil;
-    for (UIViewController *controller in slide.viewControllers) {
-        if ([controller isKindOfClass:NSClassFromString(@"SNTabViewController")]) {
-            vc = controller;
-            break;
-        }
-    }
-    
-    if (vc) {
-        [slide popToViewController:vc animated:NO];
-    }
-    
-    OrderResultController *resultVC = [[OrderResultController alloc] init];
-    resultVC.orderResult = OrderResultSuccess;
-    resultVC.order = self.order;
-    [slide pushViewController:resultVC animated:YES];
 }
 
 - (void)CheckOrderHasPaid{

@@ -348,6 +348,10 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     break;
             }
         }
+        else {
+            NSLog(@"MyDiagnosisRecords端口连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
         resultBlock(request,result);
     } forKey:URL_AfterBase forPageNameGroup:pageName];
 }

@@ -89,23 +89,17 @@
     
     //XX人关注
     _view1_label1 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight * 0.2 + 5, 110, 12) title:@"关注" contents:@"0" unit:@"人" hasDot:YES ];
-    //    view1_label1.backgroundColor = [UIColor greenColor];
     [view1 addSubview:_view1_label1];
     
     //诊疗XX次
     _view1_label2 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30, view1.frameHeight * 0.2 + 5, 110, 12) title:@"诊疗" contents:@"0" unit:@"次" hasDot:YES ];
-    //    view1_label2.backgroundColor = [UIColor greenColor];
-    
     [view1 addSubview:_view1_label2];
     
     //服务XX星
     _view1_label3 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(view1_imageView1.maxX + 40, view1.frameHeight - view1.frameHeight * 0.2 - 12 -5, 110, 12) title:@"服务" contents:@"0" unit:@"星" hasDot:YES ];
-    //    view1_label3.backgroundColor = [UIColor greenColor];
-    
     [view1 addSubview:_view1_label3];
     //积分XXX
     _view1_label4 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30 , view1.frameHeight - view1.frameHeight * 0.2 - 12 -5, 110, 12) title:@"积分" contents:@"0" unit:@"" hasDot:YES ];
-    
     [view1 addSubview:_view1_label4];
     /*
      * 自然背景View
@@ -123,15 +117,16 @@
 }
 
 - (void)resetData{
+   
     
     if (self.listModel.doctor){
-        [_view1_label1 resetTitle:@"关注" contents:[NSString stringWithFormat:@"%d",self.listModel.doctor.numConcern] unit:@"人"];
+        [_view1_label1 setTitle:@"关注" contents:[NSString stringWithFormat:@"%d",self.listModel.doctor.numConcern] unit:@"人"];
         
-        [_view1_label2 resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.numDiag] unit:@"次"];
+        [_view1_label2 setTitle:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.numDiag] unit:@"次"];
         
-        [_view1_label3 resetTitle:@"服务" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.rate] unit:@"星"];
+        [_view1_label3 setTitle:@"服务" contents:[NSString stringWithFormat:@"%.1lf",self.listModel.doctor.rate] unit:@"星"];
         
-        [_view1_label4 resetTitle:@"积分" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.score] unit:@""];
+        [_view1_label4 setTitle:@"积分" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.score] unit:@""];
         
         _view2_flagView.data = self.listModel.doctor;
         [_view2_flagView setMark];
