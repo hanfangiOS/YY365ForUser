@@ -19,6 +19,13 @@
     return (object == [NSNull null])?nil:object;
 }
 
+- (void)enumerateObjectsUsingBlockSafety:(void (^)(id  _Nonnull obj, NSUInteger idx, BOOL *stop))block{
+    if ([self isKindOfClass:[NSArray class]]) {
+        NSArray *arr = self;
+        [arr enumerateObjectsUsingBlock:block];
+    }
+}
+
 @end
 
 @implementation NSObject (SNExtension)

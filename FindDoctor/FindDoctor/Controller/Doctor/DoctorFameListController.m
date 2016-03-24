@@ -25,9 +25,13 @@
     BlueDotLabelInDoctorHeaderView  * _view1_label3;
     BlueDotLabelInDoctorHeaderView  * _view1_label4;
     
+    UIView                          * _view2;
     FlagView                        * _view2_flagView;
 
     NSInteger                        _lastID;
+    
+    UILabel                         * _emptyLabel;
+    UILabel                         * _emptyLabelForList;
 }
 
 
@@ -105,27 +109,44 @@
     [view1 addSubview:_view1_label3];
     //积分XXX
     _view1_label4 = [[BlueDotLabelInDoctorHeaderView alloc] initWithFrame:CGRectMake(kScreenWidth - 90 - 30 , view1.frameHeight - view1.frameHeight * 0.2 - 12 -5, 110, 12) title:@"积分" contents:@"0" unit:@"" hasDot:YES ];
-    
     [view1 addSubview:_view1_label4];
     /*
      * 自然背景View
      */
-    UIView * view2 = [[UIView alloc] initWithFrame:CGRectMake(0, view1.maxY, kScreenWidth, heightForHeader * 0.65)];
+     _view2 = [[UIView alloc] initWithFrame:CGRectMake(0, view1.maxY, kScreenWidth, heightForHeader * 0.65)];
 //    view2.backgroundColor = [UIColor grayColor];
-    [_headerView addSubview:view2];
+    [_headerView addSubview:_view2];
     //锦旗
-    TitleView *flagTitle = [[TitleView alloc]initWithFrame:CGRectMake(0, 10, kScreenWidth, 14) title:@"锦旗"];
-    [view2 addSubview:flagTitle];
+    TitleView * flagTitle = [[TitleView alloc]initWithFrame:CGRectMake(0, 10, kScreenWidth, 14) title:@"锦旗"];
+    [_view2 addSubview:flagTitle];
     
     //一堆旗
     _view2_flagView = [[FlagView alloc] initWithFrame:CGRectMake(0,flagTitle.maxY, kScreenWidth, 20)];
-    [view2 addSubview:_view2_flagView];
+    [_view2 addSubview:_view2_flagView];
+    
+    //暂无锦旗
+    _emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (_view2.frameHeight - 24)/2 , kScreenWidth, _view2.frameHeight * 0.35)];
+    _emptyLabel.text = @"暂无锦旗";
+    _emptyLabel.font = [UIFont systemFontOfSize:15];
+    _emptyLabel.textColor = UIColorFromHex(0x999999);
+    _emptyLabel.textAlignment = NSTextAlignmentCenter;
+    _emptyLabel.hidden = YES;
+    [_view2 addSubview:_emptyLabel];
+    
+    //暂无评论
+    _emptyLabelForList = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.contentTableView.frameHeight)];
+    _emptyLabelForList.text = @"暂无评论";
+    _emptyLabelForList.font = [UIFont systemFontOfSize:12];
+    _emptyLabelForList.textColor = UIColorFromHex(0x999999);
+    _emptyLabelForList.textAlignment = NSTextAlignmentCenter;
+    _emptyLabelForList.hidden = YES;
+    
 }
 
 - (void)resetData{
     
     if (self.listModel.doctor){
-        [_view1_label1 resetTitle:@"关注" contents:[NSString stringWithFormat:@"%d",self.listModel.doctor.numConcern] unit:@"人"];
+        [_view1_label1 resetTitle:@"关注" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.numConcern] unit:@"人"];
         
         [_view1_label2 resetTitle:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.numDiag] unit:@"次"];
         
@@ -133,10 +154,29 @@
         
         [_view1_label4 resetTitle:@"积分" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.score] unit:@""];
         
-        _view2_flagView.data = self.listModel.doctor;
-        [_view2_flagView setMark];
+        if (self.listModel.doctor.flagList.count > 0) {
+            _view2_flagView.data = self.listModel.doctor;
+            [_view2_flagView setMark];
+        }else{
+            _view2.frameHeight = 80;
+         
+            _headerView.frameHeight = 0.4 * 640 * 0.3 + _view2.frameHeight;
+            
+            CGRect rect1 = _emptyLabel.frame;
+            _emptyLabel.frame = CGRectMake(0,(_view2.frameHeight - rect1.size.height)/2 + 12, rect1.size.width, rect1.size.height);
+            _emptyLabel.hidden = NO;
+           
+            
+            CGRect rect2 = self.contentTableView.frame;
+            self.contentTableView.frame = CGRectMake(rect2.origin.x, _headerView.maxY, rect2.size.width, kScreenHeight - _headerView.frameHeight);
+        }
+        
+        if (!self.listModel.doctor.remarkList.count) {
+           [self.contentTableView addSubview:_emptyLabelForList];
+            _emptyLabelForList.frameHeight = self.contentTableView.frameHeight;
+            _emptyLabelForList.hidden = NO;
+        }
     }
-    
 }
 
 - (UIView *)listEmptyView

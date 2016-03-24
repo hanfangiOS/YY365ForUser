@@ -46,7 +46,7 @@
             self.pageInfo.currentPage = startPageNum;
         }
         else {
-            NSLog(@"====哦哟，出错了====");
+            NSLog(@"连接服务器失败，请检查网络");
         }
         resultBlock(request,result);
     } pageName:@"DoctorSearchResultList"];

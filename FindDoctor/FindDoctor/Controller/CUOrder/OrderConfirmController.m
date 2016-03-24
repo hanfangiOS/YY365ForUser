@@ -286,12 +286,14 @@
 //        }];
 //    }
     if (self.order.payment == ORDERPAYMENT_WeiXin) {
-            self.channel = @"wx";
-            [self normalPayAction:nil];
+        self.channel = @"wx";
+        [self CheckOrderHasPaid];
+//            [self normalPayAction:nil];
     }
     else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
         self.channel = @"alipay";
-        [self normalPayAction:nil];
+        [self CheckOrderHasPaid];
+//        [self normalPayAction:nil];
     }
     else{
         return;
@@ -403,6 +405,17 @@
     [slide pushViewController:resultVC animated:YES];
 }
 
+- (void)CheckOrderHasPaid{
+    __weak __block OrderConfirmController *blockSelf = self;
+    [[CUOrderManager sharedInstance] CheckOrderHasPaidWithDiagnosisID:self.order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
+                [blockSelf normalPayAction:nil];
+            }
+        }
+    } pageName:@"OrderConfirmController.m"];
+}
+
 - (void)normalPayAction:(id)sender
 {
     NSURL* url = [NSURL URLWithString:kGetChargeUrl];
@@ -469,6 +482,15 @@
             NSDictionary * dic2 = [dic objectForKey:@"charge"];
             NSString* charge = [dic2 JSONString];
             NSLog(@"charge = %@", charge);
+//            [Pingpp createPayment:charge appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
+//                NSLog(@"completion block: %@", result);
+//                if (error == nil) {
+//                    NSLog(@"PingppError is nil");
+//                } else {
+//                    NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+//                }
+//                [weakSelf showAlertMessage:result];
+//            }];
             [Pingpp createPayment:charge viewController:weakSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
                 NSLog(@"completion block: %@", result);
                 if (error == nil) {

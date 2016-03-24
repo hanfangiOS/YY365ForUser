@@ -16,10 +16,9 @@
     {
         return nil;
     }
-
+    
     return [self objectAtIndex:index];
 }
-
 @end
 
 
@@ -67,16 +66,16 @@
 - (NSMutableArray *)pushObjects:(id)object,...
 {
     id obj = object;
-	va_list objects;
-	va_start(objects, object);
-	do
-	{
-		[self addObjectSafely:obj];
-		obj = va_arg(objects, id);
-	} while (nil != obj);
-	va_end(objects);
-	return self;
-
+    va_list objects;
+    va_start(objects, object);
+    do
+    {
+        [self addObjectSafely:obj];
+        obj = va_arg(objects, id);
+    } while (nil != obj);
+    va_end(objects);
+    return self;
+    
 }
 
 - (id)pop

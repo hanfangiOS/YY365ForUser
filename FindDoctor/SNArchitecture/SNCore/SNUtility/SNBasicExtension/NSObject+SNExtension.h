@@ -10,6 +10,8 @@
 - (id)valueForKeySafely:(NSString *)key;
 - (id)valueForKeyPathSafely:(NSString *)keyPath;
 
+- (void)enumerateObjectsUsingBlockSafety:(void (^)(id  _Nonnull obj, NSUInteger idx, BOOL *stop))block;
+
 @end
 
 @interface NSObject (SNExtension)

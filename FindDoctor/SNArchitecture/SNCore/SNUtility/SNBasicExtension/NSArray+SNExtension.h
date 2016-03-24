@@ -10,6 +10,7 @@
 #import "NSDataProtocol.h"
 
 
+
 @interface NSArray (Safety)
 
 - (id)objectAtIndexSafely:(NSUInteger)index;
@@ -33,6 +34,7 @@
 - (NSMutableArray *)pushObjects:(id)object,...;
 
 - (id)pop;
+
 
 
 @end
