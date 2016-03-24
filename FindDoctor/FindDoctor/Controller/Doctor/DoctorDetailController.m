@@ -66,11 +66,6 @@
 
 - (void)initSubviews
 {
-//    UIButton * tempBtn = [[UIButton alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
-//    tempBtn.backgroundColor = [UIColor redColor];
-//    [tempBtn addTarget:self action:@selector(settings) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:tempBtn];
-    
     contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[self contentView] frameWidth], [self.contentView frameHeight] - commitViewHeight)];
     [self.contentView addSubview:contentScrollView];
     

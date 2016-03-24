@@ -117,8 +117,6 @@
 }
 
 - (void)resetData{
-   
-    
     if (self.listModel.doctor){
         [_view1_label1 setTitle:@"关注" contents:[NSString stringWithFormat:@"%d",self.listModel.doctor.numConcern] unit:@"人"];
         
@@ -131,7 +129,6 @@
         _view2_flagView.data = self.listModel.doctor;
         [_view2_flagView setMark];
     }
-    
 }
 
 - (UIView *)listEmptyView
