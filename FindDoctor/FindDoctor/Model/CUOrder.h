@@ -51,6 +51,7 @@ typedef enum OrderPayment : NSInteger
 @property NSInteger obtainScore; //获得积分
 @property NSInteger obtainCouponMoney; //获得诊金券金额
 
+
 @property NSInteger state;
 
 - (NSString *)orderStatusStr;

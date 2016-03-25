@@ -287,13 +287,13 @@
 //    }
     if (self.order.payment == ORDERPAYMENT_WeiXin) {
         self.channel = @"wx";
-        [self CheckOrderHasPaid];
-//        [self normalPayAction:nil];
+//        [self CheckOrderHasPaid];
+        [self normalPayAction:nil];
     }
     else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
         self.channel = @"alipay";
-        [self CheckOrderHasPaid];
-//        [self normalPayAction:nil];
+//        [self CheckOrderHasPaid];
+        [self normalPayAction:nil];
     }
     else{
         return;
@@ -414,6 +414,9 @@
     [dataParam setObjectSafely:@(0) forKey:@"couponID"];
     [dataParam setObjectSafely:@(0) forKey:@"couponMoney"];
     [dataParam setObjectSafely:@(self.order.diagnosisID) forKey:@"order_no"];
+
+    [dataParam setObjectSafely:self.order.service.doctor.name forKey:@"doctorName"];
+    [dataParam setObjectSafely:@([self.order.service.doctor.phoneNumber integerValue]) forKey:@"doctorPhone"];
     [dataParam setObjectSafely:self.order.service.patience.name forKey:@"user_name"];
     [dataParam setObjectSafely:self.order.service.patience.cellPhone forKey:@"user_phone"];
     [dataParam setObjectSafely:@(self.order.service.patience.gender) forKey:@"user_sex"];
