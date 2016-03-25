@@ -52,6 +52,7 @@ typedef void (^PingppCompletion)(NSString *result, PingppError *error);
  *  @param scheme           URL Scheme，支付宝渠道回调需要
  *  @param completionBlock  支付结果回调 Block
  */
+
 + (void)createPayment:(NSObject *)charge viewController:(UIViewController*)viewController appURLScheme:(NSString *)scheme withCompletion:(PingppCompletion)completionBlock;
 
 /**
