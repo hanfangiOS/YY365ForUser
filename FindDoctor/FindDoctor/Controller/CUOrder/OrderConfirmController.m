@@ -287,13 +287,13 @@
 //    }
     if (self.order.payment == ORDERPAYMENT_WeiXin) {
         self.channel = @"wx";
-//        [self CheckOrderHasPaid];
-        [self normalPayAction:nil];
+        [self CheckOrderHasPaid];
+//        [self normalPayAction:nil];
     }
     else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
         self.channel = @"alipay";
-//        [self CheckOrderHasPaid];
-        [self normalPayAction:nil];
+        [self CheckOrderHasPaid];
+//        [self normalPayAction:nil];
     }
     else{
         return;

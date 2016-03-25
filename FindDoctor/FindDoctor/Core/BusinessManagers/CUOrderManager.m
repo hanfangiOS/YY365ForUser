@@ -632,9 +632,9 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSLog(@"%@",param);
     
     
-    SNServerAPIManager *apiMr = [[SNServerAPIManager alloc] initWithServer:@"http://192.168.1.101:8889"];
-    
-    [apiMr POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+//    SNServerAPIManager *apiMr = [[SNServerAPIManager alloc] initWithServer:@"http://192.168.1.101:8889"];
+//    [apiMr POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError) {
             if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
                 
