@@ -27,6 +27,8 @@
 #include <net/if_dl.h>
 #import "Pingpp.h"
 
+#import "MyDiagnosisRecordsListModel.h"
+
 #define KBtn_width        200
 #define KBtn_height       40
 #define KXOffSet          (self.view.frame.size.width - KBtn_width) / 2
@@ -45,6 +47,7 @@
 
 @interface OrderConfirmController (){
     UIAlertView* mAlert;
+    NSString * newCharge;
 }
 
 
@@ -398,7 +401,7 @@
 
 - (void)normalPayAction:(id)sender
 {
-    NSURL* url = [NSURL URLWithString:kGetChargeUrl];
+    NSURL* url = [NSURL URLWithString:@"http://www.uyi365.com/baseFrame/base/getCharge.jmt"];
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
@@ -465,6 +468,7 @@
             NSDictionary * dic2 = [dic objectForKey:@"charge"];
             NSString* charge = [dic2 JSONString];
             NSLog(@"charge = %@", charge);
+            newCharge = charge;
 //            [Pingpp createPayment:charge appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
 //                NSLog(@"completion block: %@", result);
 //                if (error == nil) {
@@ -474,17 +478,57 @@
 //                }
 //                [weakSelf showAlertMessage:result];
 //            }];
-            [Pingpp createPayment:charge viewController:weakSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
-                NSLog(@"completion block: %@", result);
-                if (error == nil) {
-                    NSLog(@"PingppError is nil");
-                } else {
-                    NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
-                }
-                [weakSelf showAlertMessage:result];
-            }];
+            [self postRequestCreatePayMent];
         });
     }];
+}
+
+- (void)postRequestCreatePayMent{
+    [Pingpp createPayment:newCharge viewController:self appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
+        NSLog(@"completion block: %@", result);
+        if (error == nil) {
+            NSLog(@"PingppError is nil");
+        } else {
+            NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+        }
+        
+        [self performSelector:@selector(postRequestForConfirmHasPaid) onThread:[NSThread currentThread] withObject:nil waitUntilDone:YES];
+        
+    }];
+}
+
+- (void)postRequestForConfirmHasPaid{
+    MyDiagnosisRecordsListModel * tempoModel = [[MyDiagnosisRecordsListModel alloc]initWithSortType:1];
+    
+    
+    [[CUOrderManager sharedInstance] getMyDiagnosisRecordsWithUser:tempoModel.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+                
+                NSMutableArray *reciveList = [result.responseObject valueForKey:@"data"];
+                if ([reciveList isKindOfClass:[NSMutableArray class]]) {
+                    [reciveList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        CUOrder *order = [[CUOrder alloc]init];
+                        order.diagnosisID = [[obj valueForKey:@"diagnosisID"] integerValue];
+                        order.state = [[obj valueForKey:@"state"] integerValue];
+                        if (order.diagnosisID == self.order.diagnosisID) {
+                            order.state = [[obj valueForKey:@"state"] integerValue];
+                            if (order.state != ORDERSTATUS_UNPAID) {
+                                [self showAlertMessage:@"success"];
+                            }else{
+                                [self postRequestCreatePayMent];
+                            }
+                        }
+                    }];
+                }
+            }
+        }
+        
+    } pageName:@"getCurrentTreatmentList"];
+    
+    
 }
 
 
