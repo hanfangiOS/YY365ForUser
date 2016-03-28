@@ -27,6 +27,8 @@
 #include <net/if_dl.h>
 #import "Pingpp.h"
 
+#import "MyDiagnosisRecordsListModel.h"
+
 #define KBtn_width        200
 #define KBtn_height       40
 #define KXOffSet          (self.view.frame.size.width - KBtn_width) / 2
@@ -44,9 +46,9 @@
 #define kUrlScheme      @"wx584ad6cae2973f02" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
 
 @interface OrderConfirmController (){
-    UIAlertView* mAlert;
+    UIAlertView     * mAlert;
+    NSString        * newCharge;//charge对象
 }
-
 
 @end
 
@@ -56,10 +58,12 @@
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     self.title = @"确认订单";
     self.view.backgroundColor = kLightBlueColor;
+    
     self.contentView.backgroundColor = self.view.backgroundColor;
     
     self.order.payment = ORDERPAYMENT_ZhiFuBao;
@@ -98,7 +102,7 @@
     CGFloat labelOriginY = 20.0;
     CGFloat labelHeight = 20.0;
     
-    CGFloat headerHeight = [OrderInfoView defaultHeight];//labelOriginY + labelHeight + [UserDropdownMenuView defaultHeight] + [OrderInfoView defaultHeight];
+    CGFloat headerHeight = [OrderInfoView defaultHeight];
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, headerHeight)];
     header.backgroundColor = self.view.backgroundColor;
     
@@ -287,13 +291,13 @@
 //    }
     if (self.order.payment == ORDERPAYMENT_WeiXin) {
         self.channel = @"wx";
-        [self CheckOrderHasPaid];
-//        [self normalPayAction:nil];
+//        [self CheckOrderHasPaid];
+        [self normalPayAction:nil];
     }
     else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
         self.channel = @"alipay";
-        [self CheckOrderHasPaid];
-//        [self normalPayAction:nil];
+//        [self CheckOrderHasPaid];
+        [self normalPayAction:nil];
     }
     else{
         return;
@@ -307,14 +311,21 @@
 //    }];
 //}
 
-- (void)handlePayResult:(id)responseObject error:(NSError *)error
-{
-    if (error == nil && responseObject) {
-        [self enterResult:OrderResultSuccess];
-    }
-    else {
-        [TipHandler showSmallStringTipWithText:error.domain];
-    }
+
+//- (void)handlePayResult:(id)responseObject error:(NSError *)error
+//{
+//    if (error == nil && responseObject) {
+//        [self enterResult:OrderResultSuccess];
+//    }
+//    else {
+//        [TipHandler showSmallStringTipWithText:error.domain];
+//    }
+//}
+
+
+//11601 获取订单状态
+- (void)postRequestCheckOrderStatus{
+    
 }
 
 - (void)enterResult:(OrderResult)orderResult
@@ -330,7 +341,6 @@
                         break;
                     }
                 }
-                
                 if (vc) {
                     [slide popToViewController:vc animated:NO];
                 }
@@ -365,7 +375,7 @@
     [mAlert addSubview:aiv];
 }
 
-- (void)showAlertMessage:(NSString*)msg
+- (void)showAlertAfterSuccess:(NSString*)msg
 {
     if ([msg isEqualToString:@"success"] || [msg isEqualToString:@"fail"]){
         [self enterResult:OrderResultSuccess];
@@ -385,20 +395,20 @@
     }
 }
 
-- (void)CheckOrderHasPaid{
-    __weak __block OrderConfirmController *blockSelf = self;
-    [[CUOrderManager sharedInstance] CheckOrderHasPaidWithDiagnosisID:self.order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        if (!result.hasError) {
-            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
-                [blockSelf normalPayAction:nil];
-            }
-        }
-    } pageName:@"OrderConfirmController.m"];
-}
+//- (void)CheckOrderHasPaid{
+//    __weak __block OrderConfirmController *blockSelf = self;
+//    [[CUOrderManager sharedInstance] CheckOrderHasPaidWithDiagnosisID:self.order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+//        if (!result.hasError) {
+//            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
+//                [blockSelf normalPayAction:nil];
+//            }
+//        }
+//    } pageName:@"OrderConfirmController.m"];
+//}
 
 - (void)normalPayAction:(id)sender
 {
-    NSURL* url = [NSURL URLWithString:kGetChargeUrl];
+    NSURL* url = [NSURL URLWithString:@"http://www.uyi365.com/baseFrame/base/getCharge.jmt"];
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
@@ -414,6 +424,9 @@
     [dataParam setObjectSafely:@(0) forKey:@"couponID"];
     [dataParam setObjectSafely:@(0) forKey:@"couponMoney"];
     [dataParam setObjectSafely:@(self.order.diagnosisID) forKey:@"order_no"];
+
+    [dataParam setObjectSafely:self.order.service.doctor.name forKey:@"doctorName"];
+    [dataParam setObjectSafely:@([self.order.service.doctor.phoneNumber integerValue]) forKey:@"doctorPhone"];
     [dataParam setObjectSafely:self.order.service.patience.name forKey:@"user_name"];
     [dataParam setObjectSafely:self.order.service.patience.cellPhone forKey:@"user_phone"];
     [dataParam setObjectSafely:@(self.order.service.patience.gender) forKey:@"user_sex"];
@@ -445,15 +458,15 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
 //            [weakSelf hideAlert];
-            [self hideProgressView];
+            [weakSelf hideProgressView];
             if (httpResponse.statusCode != 200) {
                 NSLog(@"statusCode=%ld error = %@", (long)httpResponse.statusCode, connectionError);
-                [weakSelf showAlertMessage:kErrorNet];
+                [weakSelf showAlertAfterSuccess:kErrorNet];
                 return;
             }
             if (connectionError != nil) {
                 NSLog(@"error = %@", connectionError);
-                [weakSelf showAlertMessage:kErrorNet];
+                [weakSelf showAlertAfterSuccess:kErrorNet];
                 return;
             }
 //            NSString* charge = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -462,6 +475,7 @@
             NSDictionary * dic2 = [dic objectForKey:@"charge"];
             NSString* charge = [dic2 JSONString];
             NSLog(@"charge = %@", charge);
+            newCharge = charge;
 //            [Pingpp createPayment:charge appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
 //                NSLog(@"completion block: %@", result);
 //                if (error == nil) {
@@ -471,17 +485,55 @@
 //                }
 //                [weakSelf showAlertMessage:result];
 //            }];
-            [Pingpp createPayment:charge viewController:weakSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
-                NSLog(@"completion block: %@", result);
-                if (error == nil) {
-                    NSLog(@"PingppError is nil");
-                } else {
-                    NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
-                }
-                [weakSelf showAlertMessage:result];
-            }];
+            [weakSelf postRequestCreatePayMent];
         });
     }];
+}
+
+- (void)postRequestCreatePayMent{
+    __weak __block OrderConfirmController *blockSelf = self;
+    [Pingpp createPayment:newCharge viewController:blockSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
+        NSLog(@"completion block: %@", result);
+        if (error == nil) {
+            NSLog(@"PingppError is nil");
+        } else {
+            NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+        }
+        
+        [blockSelf performSelector:@selector(postRequestForConfirmHasPaid) onThread:[NSThread currentThread] withObject:nil waitUntilDone:YES];
+        
+    }];
+}
+
+- (void)postRequestForConfirmHasPaid{
+    MyDiagnosisRecordsListModel * tempoModel = [[MyDiagnosisRecordsListModel alloc]initWithSortType:1];
+    [[CUOrderManager sharedInstance] getMyDiagnosisRecordsWithUser:tempoModel.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKeySafely:@"errorCode"] integerValue]) {
+                
+                NSMutableArray * data = [result.responseObject valueForKeySafely:@"data"];
+                if ([data isKindOfClass:[NSMutableArray class]]) {
+                    [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        CUOrder *order = [[CUOrder alloc]init];
+                        order.diagnosisID = [[obj valueForKey:@"diagnosisID"] integerValue];
+                        order.state = [[obj valueForKey:@"state"] integerValue];
+                        if (order.diagnosisID == self.order.diagnosisID) {
+                            order.state = [[obj valueForKey:@"state"] integerValue];
+                            if (order.state != ORDERSTATUS_UNPAID) {
+                                [self showAlertAfterSuccess:@"success"];
+                            }else{
+                                [self postRequestCreatePayMent];
+                            }
+                        }
+                    }];
+                }
+            }
+        }
+        
+    } pageName:@"getCurrentTreatmentList"];
+    
+    
 }
 
 
