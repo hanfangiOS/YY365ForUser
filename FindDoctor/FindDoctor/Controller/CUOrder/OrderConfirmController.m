@@ -367,7 +367,7 @@
 
 - (void)showAlertMessage:(NSString*)msg
 {
-    if ([msg isEqualToString:@"success"]){
+    if ([msg isEqualToString:@"success"] || [msg isEqualToString:@"fail"]){
         [self enterResult:OrderResultSuccess];
         NSLog(@"支付成功， 跳转页面确认订单成功消息");
         return;

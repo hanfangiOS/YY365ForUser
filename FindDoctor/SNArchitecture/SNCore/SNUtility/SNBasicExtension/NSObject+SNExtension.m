@@ -19,9 +19,49 @@
     return (object == [NSNull null])?nil:object;
 }
 
+- (NSString *)stringForKeySafely:(NSString *)key{
+    id object = [self valueForKeyPath:key];
+    if ([object isKindOfClass:[NSString class]]) {
+        return object;
+    }
+    return nil;
+}
+
+- (NSInteger)integerForKeySafely:(NSString *)key{
+    id object = [self valueForKeyPath:key];
+    if ([object isKindOfClass:[NSNumber class]]) {
+        return [object integerValue];
+    }
+    return 0;
+}
+
+- (long long)longlongForKeySafely:(NSString *)key{
+    id object = [self valueForKeyPath:key];
+    if ([object isKindOfClass:[NSNumber class]]) {
+        return [object longLongValue];
+    }
+    return 0;
+}
+
+- (NSDictionary *)dictionaryForKeySafely:(NSString *)key{
+    id object = [self valueForKeyPath:key];
+    if ([object isKindOfClass:[NSDictionary class]]) {
+        return object;
+    }
+    return nil;
+}
+
+- (NSArray *)arrayForKeySafely:(NSString *)key{
+    id object = [self valueForKeyPath:key];
+    if ([object isKindOfClass:[NSArray class]]) {
+        return object;
+    }
+    return nil;
+}
+
 - (void)enumerateObjectsUsingBlockSafety:(void (^)(id  _Nonnull obj, NSUInteger idx, BOOL *stop))block{
     if ([self isKindOfClass:[NSArray class]]) {
-        NSArray *arr = self;
+        NSArray *arr = (NSArray *)self;
         [arr enumerateObjectsUsingBlock:block];
     }
 }

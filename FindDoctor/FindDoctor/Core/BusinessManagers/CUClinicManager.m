@@ -131,7 +131,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 clinic.breifInfo = [data valueForKeySafely:@"briefIntro"];
                 clinic.detailIntro = [data valueForKeySafely:@"detailIntro"];
                 clinic.phone     = [data valueForKeySafely:@"phone"];
-                clinic.goodRemark = [[data valueForKeySafely:@"goodRemark"] integerValue];
+                clinic.goodRemark = [data integerForKeySafely:@"goodRemark"];
                 clinic.icon      = [data valueForKeySafely:@"icon"];
                 clinic.name      = [data valueForKeySafely:@"name"];
                 clinic.isConcern = [[data valueForKeySafely:@"isConcern"] integerValue]!=0 ? YES: NO;
