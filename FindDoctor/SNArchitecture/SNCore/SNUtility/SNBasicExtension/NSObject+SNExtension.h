@@ -5,6 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSObject (Safety)
 
 - (id)valueForKeySafely:(NSString *)key;
@@ -29,3 +31,5 @@
 
 //- (void)enumerateObjectsUsingBlockSafety:(void (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block;
 @end
+
+NS_ASSUME_NONNULL_END
