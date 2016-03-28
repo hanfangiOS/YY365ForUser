@@ -122,12 +122,12 @@
                  [self hideHUD];
                  
                  if (!result.hasError) {
-                     NSInteger errCode = [[result.responseObject valueForKey:@"errCode"] integerValue];
+                     NSInteger errCode = [[result.responseObject valueForKey:@"errorCode"] integerValue];
                      if(errCode == 0){
-                         codetoken = [[result.responseObject valueForKey:@"data"] valueForKey:@"token"];
+                         codetoken = [[result.responseObject dictionaryForKeySafely:@"data"] stringForKeySafely:@"token"];
                      }
                      else{
-                         [TipHandler showHUDText:[result.responseObject valueForKey:@"data"] inView:self.view];
+                         [TipHandler showHUDText:[result.responseObject stringForKeySafely:@"data"] inView:self.view];
                      }
                  }
                  else {

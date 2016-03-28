@@ -9,8 +9,8 @@
 #ifndef CollegeUnion_CUServerAPIConstant_h
 #define CollegeUnion_CUServerAPIConstant_h
 
-#define CollegeUnion_Distribution
-//#define CollegeUnion_Develop
+//#define CollegeUnion_Distribution
+#define CollegeUnion_Develop
 
 
 
@@ -60,19 +60,16 @@
 #if defined(CollegeUnion_Develop)
 
 #define URL_AfterBase @"/baseFrame/base/server.jmt"
-//#define kGetChargeUrl @"http://192.168.1.101:8888/baseFrame/base/getCharge.jmt" // 你的服务端创建并返回 charge 的 URL 地址
 #define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmt" // 你的服务端创建并返回 charge 的 URL 地址
-//#define kGetChargeUrl @"http://192.168.1.101:8889/baseFrame/base/getCharge.jmt" // 你的服务端创建并返回 charge 的 URL 地址
 #define kVerifyOrderStateUrl @"baseFrame/base/verify_order_state.jmt"
-#define KCheckOrderHasPaidUrl @"/baseFrame/base/OrderHasPaid.jmt"
+//#define KCheckOrderHasPaidUrl @"/baseFrame/base/OrderHasPaid.jmt"
 
 #elif defined(CollegeUnion_Distribution)
 
 #define URL_AfterBase @"/baseFrame/base/server.jmw"
 #define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址
-//#define kGetChargeUrl @"http://192.168.1.101:8888/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址
 #define kVerifyOrderStateUrl @"baseFrame/base/verify_order_state.jmw"
-#define KCheckOrderHasPaidUrl @"/baseFrame/base/OrderHasPaid.jmt"
+//#define KCheckOrderHasPaidUrl @"/baseFrame/base/OrderHasPaid.jmt"
 
 #endif
 

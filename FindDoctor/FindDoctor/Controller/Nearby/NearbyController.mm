@@ -58,7 +58,7 @@
     filter.latitude = [kCurrentLat floatValue];
     filter.longitude = [kCurrentLng floatValue];
     
-    __weak typeof(self) weakSelf = self;
+    NearbyController *weakSelf = self;
     
     [[CUClinicManager sharedInstance] getClinicNearbyListWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];

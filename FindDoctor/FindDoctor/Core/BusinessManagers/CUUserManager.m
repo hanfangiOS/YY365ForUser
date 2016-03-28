@@ -15,6 +15,7 @@
 #import "JSONKit.h"
 #import "Address.h"
 #import "SNHTTPRequestOperationWrapper.h"
+#import "CUPlatFormManager.h"
 
 @implementation CUUserManager
 
@@ -86,7 +87,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [dataParam setObjectSafely:cellPhone forKey:@"phone"];
     [dataParam setObjectSafely:@"0" forKey:@"phoneCode"];
     [dataParam setObjectSafely:[SNPlatformManager deviceString] forKey:@"clientType"];
-    [dataParam setObjectSafely:@"1.0.1" forKey:@"clientVer"];
+    [dataParam setObjectSafely:[CUPlatFormManager currentAppVersion] forKey:@"clientVer"];
     [dataParam setObjectSafely:[SNPlatformManager deviceId] forKey:@"device"];
     [dataParam setObjectSafely:[SNPlatformManager deviceIdAddress] forKey:@"ip"];
     
@@ -155,7 +156,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [dataParam setObjectSafely:@([cellPhone longLongValue]) forKey:@"phone"];
     [dataParam setObjectSafely:code forKey:@"phoneCode"];
     [dataParam setObjectSafely:[SNPlatformManager deviceString] forKey:@"clientType"];
-    [dataParam setObjectSafely:@"1.0.1" forKey:@"clientVer"];
+    [dataParam setObjectSafely:[CUPlatFormManager currentAppVersion] forKey:@"clientVer"];
     [dataParam setObjectSafely:[SNPlatformManager deviceId] forKey:@"device"];
     [dataParam setObjectSafely:[SNPlatformManager deviceIdAddress] forKey:@"ip"];
     [dataParam setObjectSafely:@"成都市" forKey:@"region"];
@@ -175,17 +176,13 @@ SINGLETON_IMPLENTATION(CUUserManager);
             NSInteger err_code = [[result.responseObject valueForKey:@"errorCode"]integerValue];
             switch (err_code) {
                 case 0:{
-
-                    
                     NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
-                    
                     blockSelf.user.userId = [data integerForKeySafely:@"accID"];
                     blockSelf.user.nickName = [data stringForKeySafely:@"name"];
                     blockSelf.user.icon = [data stringForKeySafely:@"icon"];
                     blockSelf.user.token =  [data stringForKeySafely:@"token"];
                     NSLog(@"cellPhone:%@",blockSelf.user.cellPhone);
-                    NSLog(@"userId:%d",blockSelf.user.userId );
-                    
+                    NSLog(@"userId:%ld",blockSelf.user.userId );
                     [blockSelf save];
                 }
                     break;
@@ -271,7 +268,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     // param
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
     [param setObjectSafely:@"kPlatForm user" forKey:@"from"];
-    [param setObjectSafely:@"V1.0" forKey:@"version"];
+    [param setObjectSafely:[CUPlatFormManager currentAppVersion] forKey:@"version"];
     [param setObjectSafely:[SNPlatformManager deviceId] forKey:@"deviceinfo"];
     [param setObjectSafely:token forKey:@"token"];
     [param setObjectSafely:@"myspace" forKey:@"require"];

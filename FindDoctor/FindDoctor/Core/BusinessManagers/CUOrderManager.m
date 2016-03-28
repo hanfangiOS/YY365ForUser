@@ -622,41 +622,41 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
 }
 
-- (void)CheckOrderHasPaidWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:kPlatForm forKey:@"from"];
-//    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
-    [param setObjectSafely:@"OrderHashPaid" forKey:@"require"];
-    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
-    
-    NSMutableDictionary * dataParam = [NSMutableDictionary new];
-    [dataParam setObjectSafely:@(diagnosisID) forKey:@"order_no"];
-    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
-    
-    NSLog(@"%@",param);
-    
-    
-//    SNServerAPIManager *apiMr = [[SNServerAPIManager alloc] initWithServer:@"http://192.168.1.101:8889"];
-//    [apiMr POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-    [[AppCore sharedInstance].apiManager POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-        if (!result.hasError) {
-            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
-                
-            }
-            else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
-            }
-        }
-        else {
-            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
-        }
-        
-        resultBlock(request, result);
-        
-    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
-    
-}
-
+//- (void)CheckOrderHasPaidWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+//    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+//    [param setObjectSafely:kPlatForm forKey:@"from"];
+////    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+//    [param setObjectSafely:@"OrderHashPaid" forKey:@"require"];
+//    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+//    
+//    NSMutableDictionary * dataParam = [NSMutableDictionary new];
+//    [dataParam setObjectSafely:@(diagnosisID) forKey:@"order_no"];
+//    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+//    
+//    NSLog(@"%@",param);
+//    
+//    
+////    SNServerAPIManager *apiMr = [[SNServerAPIManager alloc] initWithServer:@"http://192.168.1.101:8889"];
+////    [apiMr POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+//    [[AppCore sharedInstance].apiManager POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+//        if (!result.hasError) {
+//            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
+//                
+//            }
+//            else {
+//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
+//            }
+//        }
+//        else {
+//            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+//        }
+//        
+//        resultBlock(request, result);
+//        
+//    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+//    
+//}
+//
 
 - (void)getOrderStateWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
@@ -702,7 +702,6 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.obtainCouponMoney = [[obj valueForKey:@"obtainCouponMoney"] integerValue];
                 
                 result.parsedModelObject = order;
-                
             }
             else {
                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
