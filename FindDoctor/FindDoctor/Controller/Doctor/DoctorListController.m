@@ -232,7 +232,7 @@
             
             if(!result.hasError){
                 if (blockSelf.listModel.filter.classNumber == 0) {
-                    NSMutableArray *recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"symptomOption"];
+                    NSArray *recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"symptomOption"];
                     NSMutableArray *listSubject = [[NSMutableArray alloc] init];
                     [listSubject addObject:@"全部"];
                     [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
@@ -241,7 +241,7 @@
                     }];
                     blockSelf.diseaseArray = listSubject;
                     
-                    recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"dateOption"];
+                    recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"dateOption"];
                     listSubject = [[NSMutableArray alloc] init];
                     [listSubject addObject:@"全部"];
                     [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
