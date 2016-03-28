@@ -128,10 +128,10 @@ SINGLETON_IMPLENTATION(CUUserManager);
         if (!result.hasError)
         {
             // 赋值user数据
-            blockSelf.user.token = [result.responseObject valueForKey:@"token"];
-            blockSelf.user.cellPhone = [[result.responseObject valueForKey:@"data"] valueForKey:@"phone"];
-            blockSelf.user.accountNum = [[result.responseObject valueForKey:@"data"] valueForKey:@"accountid"];
-            blockSelf.user.userId = [(NSNumber *)[[result.responseObject valueForKey:@"data"] valueForKey:@"iduser"] integerValue];
+            blockSelf.user.token = [result.responseObject stringForKeySafely:@"token"];
+            blockSelf.user.cellPhone = [[result.responseObject dictionaryForKeySafely:@"data"] stringForKeySafely:@"phone"];
+            blockSelf.user.accountNum = [[result.responseObject dictionaryForKeySafely:@"data"] stringForKeySafely:@"accountid"];
+            blockSelf.user.userId = [[result.responseObject dictionaryForKeySafely:@"data"] integerForKeySafely:@"iduser"];
             [blockSelf save];
         }
         resultBlock(request,result);
@@ -178,10 +178,10 @@ SINGLETON_IMPLENTATION(CUUserManager);
                     
                     NSDictionary *data = [result.responseObject valueForKey:@"data"];
                     
-                    blockSelf.user.userId = [[data valueForKey:@"accID"] intValue];
-                    blockSelf.user.nickName = [data valueForKey:@"name"];
-                    blockSelf.user.icon = [data valueForKey:@"icon"];
-                    blockSelf.user.token =  [data valueForKey:@"token"];
+                    blockSelf.user.userId = [data integerForKeySafely:@"accID"];
+                    blockSelf.user.nickName = [data stringForKeySafely:@"name"];
+                    blockSelf.user.icon = [data stringForKeySafely:@"icon"];
+                    blockSelf.user.token =  [data stringForKeySafely:@"token"];
                     NSLog(@"cellPhone:%@",blockSelf.user.cellPhone);
                     NSLog(@"userId:%d",blockSelf.user.userId );
                     
@@ -228,15 +228,15 @@ SINGLETON_IMPLENTATION(CUUserManager);
             // 赋值user数据
 //            blockSelf.user.name = name;
 //            blockSelf.user.userId = ((CUUser *)result.parsedModelObject).userId;
-            blockSelf.user.token = [result.responseObject valueForKey:@"token"];
-            NSDictionary *data = [result.responseObject valueForKey:@"data"];
+            blockSelf.user.token = [result.responseObject stringForKeySafely:@"token"];
+            NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
             
-            blockSelf.user.cellPhone = [data valueForKey:@"phone"];
-            if ((NSNumber *)[data valueForKey:@"ismail"]) {
-                blockSelf.user.email = [data valueForKey:@"mail"];
+            blockSelf.user.cellPhone = [data stringForKeySafely:@"phone"];
+            if ((NSNumber *)[data stringForKeySafely:@"ismail"]) {
+                blockSelf.user.email = [data stringForKeySafely:@"mail"];
             }
-            blockSelf.user.userId = [(NSNumber *)[data valueForKey:@"no"] integerValue];
-            blockSelf.user.accountNum = [data valueForKey:@"accountid"];
+            blockSelf.user.userId = [data integerForKeySafely:@"no"];
+            blockSelf.user.accountNum = [data stringForKeySafely:@"accountid"];
             [blockSelf save];
         }
         resultBlock(request,result);
