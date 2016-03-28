@@ -178,7 +178,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 NSMutableDictionary *dic = [result.responseObject objectForKey:@"data"];
                 order.dealPrice = [[dic valueForKey:@"payMoney"] integerValue];
                 order.diagnosisTime = [dic valueForKey:@"orderTime"];
-                
+                order.service.doctor.name = [dic valueForKey:@"doctorName"];
+                order.service.doctor.phoneNumber = [dic valueForKey:@"doctorPhone"] ;
                 result.parsedModelObject = parsedModelObject;
             }
             else {
@@ -624,10 +625,13 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 - (void)CheckOrderHasPaidWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
-    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+//    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"OrderHashPaid" forKey:@"require"];
-    [param setObjectSafely:@(diagnosisID) forKey:@"order_no"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary new];
+    [dataParam setObjectSafely:@(diagnosisID) forKey:@"order_no"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
     
