@@ -53,10 +53,10 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                NSMutableArray *recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"memberList"];
+                NSArray *recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"memberList"];
                 NSMutableArray *listSubject = [[NSMutableArray alloc] init];
                 
-                [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                [recvList enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                     CUUser *user = [[CUUser alloc] init];
                     user.userId = [[obj valueForKey:@"ID"] integerValue];
                     user.name = [obj valueForKey:@"name"];
@@ -175,7 +175,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 CUOrder *parsedModelObject = [[CUOrder alloc] init];
                 parsedModelObject = order;
-                NSMutableDictionary *dic = [result.responseObject objectForKey:@"data"];
+                NSDictionary *dic = [result.responseObject dictionaryForKeySafely:@"data"];
                 order.dealPrice = [[dic valueForKey:@"payMoney"] integerValue];
                 order.diagnosisTime = [dic valueForKey:@"orderTime"];
                 
@@ -277,7 +277,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
             NSInteger err_code = [[result.responseObject valueForKey:@"errorCode"]integerValue];
             switch (err_code) {
                 case 0:{
-                    NSMutableArray *reciveList = [result.responseObject valueForKey:@"data"];
+                    NSArray *reciveList = [result.responseObject arrayForKeySafely:@"data"];
                     NSMutableArray *listSubject = [NSMutableArray new];
                     if ([reciveList isKindOfClass:[NSMutableArray class]]) {
                         [reciveList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -289,7 +289,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                             
                             Disease *disease = [[Disease alloc]init];
                             disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
-                            disease.imageURLArray = [[obj valueForKey:@"illnessPic"] componentsSeparatedByString:@","];
+                            disease.imageURLArray = [[obj stringForKeySafely:@"illnessPic"] componentsSeparatedByString:@","];
                             
                             CUUser *patience = [[CUUser alloc]init];
                             patience.name = [obj valueForKey:@"userName"];
@@ -304,8 +304,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                             diagnosis.herbPic = [obj valueForKey:@"recipePic"];
                             
                             NSMutableArray *herbArray = [NSMutableArray new];
-                            NSMutableArray *herbRecive = [obj objectForKey:@"recipeData"];
-                            [herbRecive enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            NSArray *herbRecive = [obj arrayForKeySafely:@"recipeData"];
+                            [herbRecive enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                 CUHerb *herb = [[CUHerb alloc]init];
                                 herb.unit = [obj valueForKey:@"unit"];
                                 herb.name = [obj valueForKey:@"name"];
@@ -460,7 +460,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         if (!result.hasError){
             NSInteger err_code = [[result.responseObject valueForKeySafely:@"errorCode"] integerValue];
             if (err_code == 0) {
-                NSMutableArray *dataArray = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"msgCompany"];
+                NSArray *dataArray = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"msgCompany"];
                 NSMutableArray *resultArray = [NSMutableArray new];
                 for (int i = 0; i < dataArray.count; i++) {
                     NSMutableDictionary *dic = [dataArray objectAtIndex:i];
@@ -470,7 +470,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     [resultArray addObjectSafely:data];
                 }
                 
-                NSMutableArray *dataArray2 = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"msgDiagnosis"];
+                NSArray *dataArray2 = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"msgDiagnosis"];
                 for (int i = 0; i < dataArray2.count; i++) {
                     NSMutableDictionary *dic = [dataArray2 objectAtIndex:i];
                     TipMessageData *data = [[TipMessageData alloc]init];
@@ -479,7 +479,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     [resultArray addObjectSafely:data];
                 }
                 
-                NSMutableArray *dataArray3 = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"msgPaper"];
+                NSArray *dataArray3 = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"msgPaper"];
                 for (int i = 0; i < dataArray3.count; i++) {
                     NSMutableDictionary *dic = [dataArray3 objectAtIndex:i];
                     TipMessageData *data = [[TipMessageData alloc]init];
@@ -531,7 +531,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         if (!result.hasError){
             NSInteger err_code = [[result.responseObject valueForKeySafely:@"errorCode"] integerValue];
             if (err_code == 0) {
-                NSMutableDictionary  *dic = [result.responseObject valueForKeySafely:@"data"];
+                NSDictionary  *dic = [result.responseObject dictionaryForKeySafely:@"data"];
                 if([dic isKindOfClass:[NSDictionary class]]){
                     NSMutableArray *dataArray1 = [NSMutableArray new];
                     id obj = [dic objectForKey:@"moneyRecords"];
@@ -539,8 +539,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                         dataArray1 = [dic objectForKey:@"moneyRecords"];
                     }
                     MyAccount *myAccount = [[MyAccount alloc]init];
-                    myAccount.totalCost = [[[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"moneyTotal"] doubleValue]/100.f;
-                    myAccount.totalIncome = [[[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"couponTotal"] doubleValue]/100.f;
+                    myAccount.totalCost = [[[result.responseObject dictionaryForKeySafely:@"data"] valueForKeySafely:@"moneyTotal"] doubleValue]/100.f;
+                    myAccount.totalIncome = [[[result.responseObject dictionaryForKeySafely:@"data"] valueForKeySafely:@"couponTotal"] doubleValue]/100.f;
                     myAccount.costDetailList = [NSMutableArray new];
                     myAccount.incomeDetailList = [NSMutableArray new];
                     for (int i = 0; i < dataArray1.count; i ++) {
@@ -640,7 +640,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
@@ -662,7 +662,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                NSMutableDictionary *obj = [[result.responseObject valueForKey:@"data"] valueForKey:@"diagnosisRecords"];
+                NSDictionary *obj = [[result.responseObject dictionaryForKeySafely:@"data"] dictionaryForKeySafely:@"diagnosisRecords"];
                 Doctor *doctor = [[Doctor alloc]init];
                 doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clincName"],[obj valueForKey:@"clincAddr"]];
                 doctor.avatar = [obj valueForKey:@"doctorIcon"];
@@ -671,7 +671,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 
                 Disease *disease = [[Disease alloc]init];
                 disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
-                disease.imageURLArray = [[obj valueForKey:@"illnessPic"] componentsSeparatedByString:@","];
+                disease.imageURLArray = [[obj stringForKeySafely:@"illnessPic"] componentsSeparatedByString:@","];
                 
                 CUUser *patience = [[CUUser alloc]init];
                 patience.name = [obj valueForKey:@"userName"];
@@ -701,7 +701,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {

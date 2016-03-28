@@ -19,7 +19,7 @@ SINGLETON_IMPLENTATION(CUPlatFormManager);
 //获取info.plist里面的版本号
 + (NSString*)currentAppVersion // d.d.d
 {
-    NSString *curVersionString = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleShortVersionString"];
+    NSString *curVersionString = [[[NSBundle mainBundle] infoDictionary] stringForKeySafely:@"CFBundleShortVersionString"];
     return curVersionString;
 }
 

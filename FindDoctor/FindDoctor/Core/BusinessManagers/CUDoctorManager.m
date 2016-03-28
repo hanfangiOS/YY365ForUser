@@ -54,10 +54,10 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                     
                     SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                     
-                    NSMutableArray *recvListDoctor = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"doctorReleaseList"];
+                    NSArray *recvListDoctor = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"doctorReleaseList"];
                     NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                     
-                    [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                    [recvListDoctor enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                         Doctor *doctor = [[Doctor alloc] init];
                         
                         doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
@@ -89,8 +89,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         [listSubjectDoctor addObject:doctor];
                     }];
                     
-                    recvListDoctor = [NSMutableArray new];
-                    recvListDoctor = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"doctorList"];
+                    recvListDoctor = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"doctorList"];
                     
                     [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                         Doctor *doctor = [[Doctor alloc] init];
@@ -127,7 +126,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         [listSubjectDoctor addObject:doctor];
                     }];
                     
-                    NSMutableArray *recvListSymptomOption = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"symptomOption"];
+                    NSArray *recvListSymptomOption = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"symptomOption"];
                     NSMutableArray *listSubjectSymptomOption = [[NSMutableArray alloc] init];
                     [recvListSymptomOption enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                         NSString *string = [obj valueForKey:@"name"];
@@ -139,12 +138,12 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                     
                 }
                 else {
-                    [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                    [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
                 }
             }
             else {
                 NSLog(@"连接服务器失败，请检查网络");
-                [TipHandler showTipOnlyTextWithNsstring:result.error];
+                [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
             }
             
             resultBlock(request, result);
@@ -182,7 +181,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                     
                     SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                     
-                    NSMutableArray *recvListDoctor = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"doctorReleaseList"];
+                    NSArray *recvListDoctor = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"doctorReleaseList"];
                     NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                     
                     [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
@@ -217,10 +216,9 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                         [listSubjectDoctor addObject:doctor];
                     }];
                     
-                    recvListDoctor = [NSMutableArray new];
-                    recvListDoctor = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"doctorList"];
+                    recvListDoctor = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"doctorList"];
                     
-                    [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                    [recvListDoctor enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                         Doctor *doctor = [[Doctor alloc] init];
                         
                         doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
@@ -254,12 +252,12 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                     
                 }
                 else {
-                    [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                    [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
                 }
             }
             else {
                 NSLog(@"连接服务器失败，请检查网络");
-                [TipHandler showTipOnlyTextWithNsstring:result.error];
+                [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
             }
             
             resultBlock(request, result);
@@ -270,7 +268,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
 }
 
-
+//
 - (void)getSubObjectListWithResultBlock:(SNServerAPIResultBlock)resultBlock
 {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
@@ -310,7 +308,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                                               NSArray *listSubject = [data valueForKeySafely:lists[i]];
                                               NSMutableArray *subList = [[NSMutableArray alloc] init];
                                               
-                                              [listSubject enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                                              [listSubject enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                                                   
                                                   SubObject *subObject = [[SubObject alloc] init];
                                                   subObject.type_id = [NSString stringWithFormat:@"%@",[obj valueForKeySafely:@"data_id"]];
@@ -364,8 +362,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                NSDictionary *doctorInfo = [result.responseObject valueForKey:@"data"];
-                NSArray *appointmentList = [[result.responseObject valueForKey:@"data"] valueForKey:@"releaseList"];
+                NSDictionary *doctorInfo = [result.responseObject dictionaryForKeySafely:@"data"];
+                NSArray *appointmentList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"releaseList"];
                 
                 NSMutableArray *list = [[NSMutableArray alloc] init];
                 [appointmentList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
@@ -434,7 +432,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                NSMutableArray *recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"orderTimeSegment"];
+                NSArray *recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"orderTimeSegment"];
                 NSMutableArray *listSubject = [[NSMutableArray alloc] init];
                 
                 __block BOOL mark = NO;
@@ -495,7 +493,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
@@ -530,11 +528,11 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 
-                NSArray *recvListDoctor = [result.responseObject valueForKeySafely:@"data"];
+                NSArray *recvListDoctor = [result.responseObject arrayForKeySafely:@"data"];
                 NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                 
                 if ([recvListDoctor isKindOfClass:[NSArray class]]) {
-                    [recvListDoctor enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                    [recvListDoctor enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                         Doctor *doctor = [[Doctor alloc] init];
                         
                         doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
@@ -571,7 +569,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                 result.parsedModelObject = listModel;
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {

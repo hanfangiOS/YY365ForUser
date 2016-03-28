@@ -51,7 +51,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 
-                NSMutableArray *recvList = [result.responseObject valueForKeySafely:@"data"];
+                NSArray *recvList = [result.responseObject arrayForKeySafely:@"data"];
                 NSMutableArray *listSubjectClinic = [[NSMutableArray alloc] init];
                 
                 [ParserTools enumerateObjects:recvList UsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -75,7 +75,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
@@ -117,7 +117,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
             //服务器内部正常
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 
-                NSMutableDictionary *data = [result.responseObject valueForKey:@"data"];
+                NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
 
 
                 clinic.doctorsString   = [data valueForKeySafely:@"doctors"];
@@ -139,7 +139,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 clinic.numConcern   = [[data valueForKeySafely:@"numConcern"] integerValue];
                 clinic.skillTreat   = [data valueForKeySafely:@"skillTreat"];
                 
-                NSArray *recvList   = [data valueForKeySafely:@"isConcern"];
+                NSArray *recvList   = [data arrayForKeySafely:@"isConcern"];
 //                NSMutableArray *recvList = [data objectForKey:@"doctorList"];
                 NSMutableArray *subjectList = [NSMutableArray new];
                 
@@ -165,7 +165,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 clinic.doctorsArray = subjectList;
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
@@ -209,7 +209,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
@@ -249,7 +249,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 
-                NSArray *recvList = [result.responseObject valueForKeySafely:@"data"];
+                NSArray *recvList = [result.responseObject arrayForKeySafely:@"data"];
                 NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                 
                 [ParserTools enumerateObjects:recvList UsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -269,7 +269,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 result.parsedModelObject = listModel;
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
