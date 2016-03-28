@@ -75,7 +75,7 @@
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
     manager.enable = YES;
 //    manager.shouldToolbarUsesTextFieldTintColor = YES;
-    manager.enableAutoToolbar = YES;
+    manager.enableAutoToolbar = NO;
     
     // 地图
     [self initMapService];

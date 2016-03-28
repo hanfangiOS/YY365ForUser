@@ -4911,7 +4911,7 @@
 					"-Objc",
 					"-all_loaded",
 				);
-				PROVISIONING_PROFILE = "a4c897f4-6cb6-4735-aa93-0404270d524b";
+				PROVISIONING_PROFILE = "2536a818-3b36-4de5-9df0-67295324ebb6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -4956,7 +4956,7 @@
 					"-Objc",
 					"-all_loaded",
 				);
-				PROVISIONING_PROFILE = "a4c897f4-6cb6-4735-aa93-0404270d524b";
+				PROVISIONING_PROFILE = "2536a818-3b36-4de5-9df0-67295324ebb6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5091,18 +5091,19 @@
 		E10706E01B0E2F2F0048FAB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
+				PROVISIONING_PROFILE = "2536a818-3b36-4de5-9df0-67295324ebb6";
 			};
 			name = Debug;
 		};
 		E10706E11B0E2F2F0048FAB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
+				PROVISIONING_PROFILE = "2536a818-3b36-4de5-9df0-67295324ebb6";
 			};
 			name = Release;
 		};
