@@ -122,7 +122,7 @@
     //暂无锦旗
     _emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (_view2.frameHeight - 24)/2 , kScreenWidth, _view2.frameHeight * 0.35)];
     _emptyLabel.text = @"暂无锦旗";
-    _emptyLabel.font = [UIFont systemFontOfSize:15];
+    _emptyLabel.font = [UIFont systemFontOfSize:12];
     _emptyLabel.textColor = UIColorFromHex(0x999999);
     _emptyLabel.textAlignment = NSTextAlignmentCenter;
     _emptyLabel.hidden = YES;

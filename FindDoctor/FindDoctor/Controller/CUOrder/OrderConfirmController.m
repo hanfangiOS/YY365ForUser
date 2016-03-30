@@ -397,9 +397,9 @@
         if (!result.hasError) {
             if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
 
-                }else {
-                    [self HandleOrdertWithResult:result orderResult:OrderResultSuccess];
-                }
+            }else {
+                [self HandleOrdertWithResult:result orderResult:OrderResultSuccess];
+            }
         }
     } pageName:@"OrderConfirmController"];
     

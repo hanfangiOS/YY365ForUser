@@ -54,11 +54,11 @@
     
     self.title = (self.orderResult == OrderResultSuccess) ? @"约诊成功" : @"约诊失败";
     
-    if (self.orderResult == OrderResultSuccess) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_OrderSubmitSuccess object:self.order];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_OrderCountChange object:[NSNumber numberWithInt:1]];
-    }
+//    if (self.orderResult == OrderResultSuccess) {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_OrderSubmitSuccess object:self.order];
+//        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_OrderCountChange object:[NSNumber numberWithInt:1]];
+//    }
 }
 
 - (void)loadNavigationBar
@@ -77,7 +77,9 @@
     _orderTable.tableHeaderView = [self tableHeaderView];
     _orderTable.tableFooterView = [self tableFooterView];
     
-    [self initButtonView];
+    if (self.orderResult == OrderResultSuccess){
+        [self initButtonView];
+    }
 }
 
 - (UIView *)tableHeaderView
@@ -115,11 +117,20 @@
         statusLabel.textColor = UIColorFromHex(Color_Hex_NavBackground);
     }
     
+    if (self.orderResult == OrderResultFailed) {
+        statusLabel.text =  @"支付失败";
+        statusLabel.textColor = UIColorFromHex(Color_Hex_NavBackground);
+    }
+    
     OrderResultView *resultView = [[OrderResultView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(statusView.frame) + statusViewOriginY, self.view.frameWidth, 125)];
     resultView.backgroundColor = [UIColor clearColor];
     resultView.order = self.order;
     [headerView addSubview:resultView];
     [resultView update];
+    
+    if (self.orderResult == OrderResultFailed){
+        resultView.hidden = YES;
+    }
     
     return headerView;
 }
