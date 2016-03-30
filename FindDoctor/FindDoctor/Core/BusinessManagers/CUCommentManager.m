@@ -44,7 +44,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 
-                NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
                 
                 Doctor * doctor = [[Doctor alloc] init];
                 doctor.address = [data objectForKeySafely:@"clinicAddress"];
@@ -53,9 +53,9 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 doctor.avatar = [data objectForKeySafely:@"doctorIcon"];
                 doctor.name = [data objectForKeySafely:@"doctorName"];
                 doctor.levelDesc = [data objectForKeySafely:@"doctorTitle"];
-                NSMutableArray * flagList = [NSMutableArray new];
-                flagList = [data objectForKeySafely:@"flagList"];
-                [flagList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSArray * flagList = [NSArray new];
+                flagList = [data arrayForKeySafely:@"flagList"];
+                [flagList enumerateObjectsUsingBlockSafety:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     FlagListInfo * flagListInfo = [[FlagListInfo alloc] init];
                     flagListInfo.ID = [[obj valueForKeySafely:@"ID"] integerValue];
                     flagListInfo.icon = [obj valueForKeySafely:@"icon"];
@@ -69,7 +69,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
 //
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
@@ -109,7 +109,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 
-                NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
 //                
 //                Comment * comment = [[Comment alloc] init];
 //                comment.score = [[data objectForKeySafely:@"score"] integerValue];
@@ -118,7 +118,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
@@ -156,10 +156,10 @@ SINGLETON_IMPLENTATION(CUCommentManager);
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
-                NSMutableArray * dataArr = [result.responseObject valueForKeySafely:@"data"];
+                NSArray * dataArr = [result.responseObject arrayForKeySafely:@"data"];
                 NSMutableArray * listItemArr = [NSMutableArray new];
                
-                [dataArr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                [dataArr enumerateObjectsUsingBlockSafety:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
                     remarkListInfo.content = [NSString stringWithFormat:@"%@",[obj valueForKeySafely:@"content"]];
                     remarkListInfo.doctorName = [obj valueForKeySafely:@"doctorName"];
@@ -177,7 +177,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
@@ -213,16 +213,16 @@ SINGLETON_IMPLENTATION(CUCommentManager);
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
-                NSDictionary * data = [result.responseObject valueForKeySafely:@"data"];
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
                 
                 Doctor * doctor = [[Doctor alloc] init];
                 doctor.rate = [[data valueForKeySafely:@"averageStar"] floatValue];
                 doctor.numConcern = [[data valueForKeySafely:@"totalConern"] integerValue];
                 doctor.numDiag = [[data valueForKeySafely:@"totalDiagnosis"] integerValue];
                 doctor.score = [[data valueForKeySafely:@"totalScore"] integerValue];
-                NSMutableArray * flagList = [NSMutableArray new];
-                flagList = [data objectForKeySafely:@"flagList"];
-                [flagList enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSArray * flagList = [NSArray new];
+                flagList = [data arrayForKeySafely:@"flagList"];
+                [flagList enumerateObjectsUsingBlockSafety:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     FlagListInfo * flagListInfo = [[FlagListInfo alloc] init];
                     flagListInfo.ID = [[obj objectForKeySafely:@"ID"] integerValue];
                     flagListInfo.icon = [obj objectForKeySafely:@"icon"];
@@ -231,9 +231,9 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                     [doctor.flagList addObject:flagListInfo];
                 }];
                 
-                NSMutableArray * remarkList = [NSMutableArray new];
-                remarkList = [data objectForKeySafely:@"remarkList"];
-                [remarkList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSArray * remarkList = [NSArray new];
+                remarkList = [data arrayForKeySafely:@"remarkList"];
+                [remarkList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
                     
                     remarkListInfo.content = [NSString stringWithFormat:@"%@",[obj valueForKeySafely:@"content"]] ;
@@ -252,7 +252,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 result.parsedModelObject = listModel;
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {
@@ -290,8 +290,8 @@ SINGLETON_IMPLENTATION(CUCommentManager);
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
                 NSMutableArray * listItemArr = [NSMutableArray new];
-                NSMutableArray * data = [result.responseObject valueForKeySafely:@"data"];
-                [data enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSArray * data = [result.responseObject arrayForKeySafely:@"data"];
+                [data enumerateObjectsUsingBlockSafety:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RemarkListInfo * remarkListInfo = [[RemarkListInfo alloc] init];
                     remarkListInfo.content = [obj objectForKeySafely:@"content"] ;
                     remarkListInfo.flagName = [obj objectForKeySafely:@"flagName"];
@@ -306,7 +306,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 result.parsedModelObject = listModel;
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {

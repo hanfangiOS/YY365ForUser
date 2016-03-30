@@ -289,7 +289,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
         if (!result.hasError && ![(NSNumber *)[result.responseObject valueForKey:@"err_code"] integerValue])
         {
             // 赋值user数据
-            NSDictionary *data = [result.responseObject valueForKey:@"data"];
+            NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
             NSArray *expressAddressList = [data valueForKey:@"list_express_address"];
             [expressAddressList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                 
@@ -552,7 +552,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
                 case 0:{
                     
                     
-                    NSDictionary *data = [result.responseObject valueForKey:@"data"];
+                    NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
 
                 }
                     break;
@@ -565,7 +565,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     } forKey:URL_AfterBase forPageNameGroup:pageName];
 }
 
-//添加成员
+//11501接口 添加新约诊人
 - (void)AddDiagnosisMemberWithDiagnosisID:(long long)diagnosisID name:(NSString *)name sex:(NSInteger)sex age:(NSInteger)age phone:(long long)phone resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
@@ -593,7 +593,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
             NSInteger err_code = [[result.responseObject valueForKey:@"errorCode"]integerValue];
             switch (err_code) {
                 case 0:{
-                    NSString *string = [[result.responseObject valueForKey:@"data"] valueForKey:@"userID"];
+                    NSString *string = [[result.responseObject dictionaryForKeySafely:@"data"] valueForKey:@"userID"];
                     result.parsedModelObject = string;
                 }
                     break;

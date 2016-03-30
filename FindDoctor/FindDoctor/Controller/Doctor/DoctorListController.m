@@ -235,7 +235,7 @@
                     NSArray *recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"symptomOption"];
                     NSMutableArray *listSubject = [[NSMutableArray alloc] init];
                     [listSubject addObject:@"全部"];
-                    [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                    [recvList enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                         NSString *string = [obj valueForKey:@"name"];
                         [listSubject addObject:string];
                     }];
@@ -244,7 +244,7 @@
                     recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"dateOption"];
                     listSubject = [[NSMutableArray alloc] init];
                     [listSubject addObject:@"全部"];
-                    [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                    [recvList enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                         NSString *string = [obj valueForKey:@"date"];
                         [listSubject addObject:string];
                     }];
@@ -267,7 +267,7 @@
         }
         else
         {
-            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
+//            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
             
         }
         

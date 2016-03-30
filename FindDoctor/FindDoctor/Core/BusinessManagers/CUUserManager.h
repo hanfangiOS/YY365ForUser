@@ -63,7 +63,7 @@ SINGLETON_DECLARE(CUUserManager);
 // 修改/设置邮箱
 - (void)updateUser:(CUUser *)user emailAddress:(NSString *)emailAddress resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
-//添加成员
+//11501接口 添加新约诊人
 - (void)AddDiagnosisMemberWithDiagnosisID:(long long)diagnosisID name:(NSString *)name sex:(NSInteger)sex age:(NSInteger)age phone:(long long)phone resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 @end

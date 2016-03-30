@@ -47,7 +47,6 @@
 
 @interface OrderConfirmController (){
     UIAlertView     * mAlert;
-    NSString        * newCharge;//charge对象
 }
 
 @end
@@ -56,6 +55,8 @@
 {
     UITableView *orderTable;
 }
+
+#pragma mark - View
 
 - (void)viewDidLoad {
     
@@ -107,21 +108,21 @@
     header.backgroundColor = self.view.backgroundColor;
     
     /*
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, labelOriginY, header.frameWidth, labelHeight)];
-    label.backgroundColor = [UIColor clearColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = kBlackColor;
-    label.font = [UIFont systemFontOfSize:17];
-    [header addSubview:label];
-    
-    label.text = [NSString stringWithFormat:@"约诊 %@医生", self.order.service.doctor.name];
-    
-    UserDropdownMenuView *menuView = [[UserDropdownMenuView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(label.frame), kScreenWidth, [UserDropdownMenuView defaultHeight])];
-    menuView.backgroundColor = header.backgroundColor;
-    menuView.user = [[CUUser alloc] init];
-    menuView.user.name = @"测试用户";
-    [header addSubview:menuView];
-    [menuView update];*/
+     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, labelOriginY, header.frameWidth, labelHeight)];
+     label.backgroundColor = [UIColor clearColor];
+     label.textAlignment = NSTextAlignmentCenter;
+     label.textColor = kBlackColor;
+     label.font = [UIFont systemFontOfSize:17];
+     [header addSubview:label];
+     
+     label.text = [NSString stringWithFormat:@"约诊 %@医生", self.order.service.doctor.name];
+     
+     UserDropdownMenuView *menuView = [[UserDropdownMenuView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(label.frame), kScreenWidth, [UserDropdownMenuView defaultHeight])];
+     menuView.backgroundColor = header.backgroundColor;
+     menuView.user = [[CUUser alloc] init];
+     menuView.user.name = @"测试用户";
+     [header addSubview:menuView];
+     [menuView update];*/
     
     UserDropdownMenuView *menuView = nil;
     OrderInfoView *infoView = [[OrderInfoView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuView.frame), kScreenWidth, [OrderInfoView defaultHeight])];
@@ -137,6 +138,8 @@
     [self addLeftBackButtonItemWithImage];
 }
 
+#pragma mark - TableViewDelegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
@@ -149,7 +152,7 @@
     }
     return 2;
     
-//    return ([WXApi isWXAppInstalled] ? 3 : 2);
+    //    return ([WXApi isWXAppInstalled] ? 3 : 2);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -205,10 +208,10 @@
     else {
         NSArray *titleArr = @[@"支付宝", @"银联"];
         NSArray *iconArr = @[@"order_icon_zhifubao", @"order_icon_yinlian"];
-//        if ([WXApi isWXAppInstalled]) {
-//            titleArr = @[@"支付宝", @"微信", @"银联"];
-//            iconArr = @[@"order_icon_zhifubao", @"order_icon_weixin", @"order_icon_yinlian"];
-//        }
+        //        if ([WXApi isWXAppInstalled]) {
+        //            titleArr = @[@"支付宝", @"微信", @"银联"];
+        //            iconArr = @[@"order_icon_zhifubao", @"order_icon_weixin", @"order_icon_yinlian"];
+        //        }
         titleArr = @[@"支付宝", @"微信", @"银联"];
         iconArr = @[@"order_icon_zhifubao", @"order_icon_weixin", @"order_icon_yinlian"];
         
@@ -251,58 +254,192 @@
     }
 }
 
-#pragma mark - Private Action
+#pragma mark - AlertDelegate
 
-- (void)payAction
+- (void)showAlertWithMessage:(NSString*)msg
 {
-//    [self test];
-//    return;
-//#warning 测试代码
-//    self.order.diagnosisID = 131313131231;
-//    self.order.service.queueNumber = 10;
-//    self.order.service.queueCount = 100;
-//    self.order.createTimeStamp = 1440780889;
-//    self.order.orderStatus = ORDERSTATUS_PAID;
-//    [self enterResult:OrderResultSuccess];
-//    return;
-    
-//    if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
-//        // 支付宝支付
-//        [[CUOrderManager sharedInstance] payOrder:self.order tn:nil block:^(NSError *error, id responseObject) {
-//            if (error == nil) {
-//                [self enterResult:OrderResultSuccess];
-//            }
-//            else {
-//                [TipHandler showSmallStringTipWithText:error.domain];
-//            }
-//        }];
-//    }
-//    else if (self.order.payment == ORDERPAYMENT_YinLian) {
-//        __weak typeof(self) weakSelf = self;
-//        [[CUOrderManager sharedInstance] getOrderTNWithOrderId:[NSString stringWithFormat:@"%lld",self.order.diagnosisID] block:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
-//            NSString *tn = result.parsedModelObject;
-//            if (!result.hasError && [tn isKindOfClass:[NSString class]]) {
-//                [weakSelf payOrderWithTN:tn];
-//            }
-//            else {
-//                [TipHandler showHUDText:@"银联调用失败" state:TipStateFail inView:self.view];
-//            }
-//        }];
-//    }
-    if (self.order.payment == ORDERPAYMENT_WeiXin) {
-        self.channel = @"wx";
-//        [self CheckOrderHasPaid];
-        [self normalPayAction:nil];
-    }
-    else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
-        self.channel = @"alipay";
-//        [self CheckOrderHasPaid];
-        [self normalPayAction:nil];
-    }
-    else{
-        return;
-    }
+    //    if ([msg isEqualToString:@"success"]){
+    //        NSLog(@"支付成功， 跳转页面确认订单成功消息");
+    //        return;
+    //    }
+    mAlert = [[UIAlertView alloc] initWithTitle:kNote message:msg delegate:nil cancelButtonTitle:kConfirm otherButtonTitles:nil, nil];
+    [mAlert show];
 }
+
+#pragma mark - Post Request
+
+//11601 获取订单状态 （支付前）
+- (void)postRequestCheckOrderStatusBefore{
+    [self showProgressView];
+    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        [self hideProgressView];
+        if (!result.hasError) {
+            if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
+                [self postRequestGetCharge];
+            }else{
+                [TipHandler showTipOnlyTextWithNsstring:@"订单已经支付，请勿重新支付"];
+            }
+        }
+    } pageName:@"OrderConfirmController"];
+    
+}
+
+//获取charge对象
+- (void)postRequestGetCharge{
+    NSURL* url = [NSURL URLWithString:kGetChargeUrl];
+    NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
+    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+    [param setObjectSafely:@"PayDiagnosisOK" forKey:@"require"];
+    [param setObjectSafely:@(11601) forKey:@"interfaceID"];
+    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+    
+    NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:@(self.order.service.patience.userId) forKey:@"accID"];
+    [dataParam setObjectSafely:@(self.order.diagnosisID) forKey:@"diagnosisID"];
+    [dataParam setObjectSafely:@(0) forKey:@"couponID"];
+    [dataParam setObjectSafely:@(0) forKey:@"couponMoney"];
+    [dataParam setObjectSafely:@(self.order.diagnosisID) forKey:@"order_no"];
+    
+    [dataParam setObjectSafely:self.order.service.doctor.name forKey:@"doctorName"];
+    [dataParam setObjectSafely:@([self.order.service.doctor.phoneNumber integerValue]) forKey:@"doctorPhone"];
+    [dataParam setObjectSafely:self.order.service.patience.name forKey:@"user_name"];
+    [dataParam setObjectSafely:self.order.service.patience.cellPhone forKey:@"user_phone"];
+    [dataParam setObjectSafely:@(self.order.service.patience.gender) forKey:@"user_sex"];
+    [dataParam setObjectSafely:@(self.order.service.patience.age) forKey:@"user_age"];
+    [dataParam setObjectSafely:@(self.order.dealPrice) forKey:@"amount"];
+    [dataParam setObjectSafely:self.channel forKey:@"chargetype"];
+    [dataParam setObjectSafely:[NSString stringWithFormat:@"优医365订单 单号: %lld",self.order.diagnosisID] forKey:@"subject"];
+    [dataParam setObjectSafely:[NSString stringWithFormat:@"iOS端timestamp%ld",(NSInteger)[NSDate timeIntervalSince1970]] forKey:@"body"];
+    
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    //    NSDictionary* dict =
+    //    NSData* data = [NSJSONSerialization dataWithJSONObject:param options:NSJSONWritingPrettyPrinted error:nil];
+    //    NSString *bodyData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    NSString *bodyData = [param JSONString];
+    
+    [postRequest setHTTPBody:[NSData dataWithBytes:[bodyData UTF8String] length:strlen([bodyData UTF8String])]];
+    [postRequest setHTTPMethod:@"POST"];
+    [postRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    OrderConfirmController * __weak weakSelf = self;
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    //    [self showAlertWait];
+    
+    [self showProgressView];
+    [NSURLConnection sendAsynchronousRequest:postRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+            [weakSelf hideProgressView];
+            //            [weakSelf hideAlert];
+            //NSURLConnection正确返回码200
+            if (httpResponse.statusCode != 200) {
+                NSLog(@"statusCode=%ld error = %@", (long)httpResponse.statusCode, connectionError);
+                [weakSelf showAlertWithMessage:kErrorNet];
+                return;
+            }
+            if (connectionError != nil) {
+                NSLog(@"error = %@", connectionError);
+                [weakSelf showAlertWithMessage:kErrorNet];
+                return;
+            }
+            //            NSString* charge = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            //            NSData *jsonData = [charge JSONData];
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSDictionary * dic2 = [dic objectForKey:@"charge"];
+            NSString* charge = [dic2 JSONString];
+            NSLog(@"charge = %@", charge);
+            //            [Pingpp createPayment:charge appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
+            //                NSLog(@"completion block: %@", result);
+            //                if (error == nil) {
+            //                    NSLog(@"PingppError is nil");
+            //                } else {
+            //                    NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+            //                }
+            //                [weakSelf showAlertMessage:result];
+            //            }];
+            
+            [weakSelf postRequestCreatePayMent:charge];
+        });
+    }];
+    
+}
+
+//- (void)showAlertWait
+//{
+//    mAlert = [[UIAlertView alloc] initWithTitle:kWaiting message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
+//    [mAlert show];
+//    UIActivityIndicatorView* aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+//    aiv.center = CGPointMake(mAlert.frame.size.width / 2.0f - 15, mAlert.frame.size.height / 2.0f + 10 );
+//    [aiv startAnimating];
+//    [mAlert addSubview:aiv];
+//}
+//
+//
+//- (void)hideAlert
+//{
+//    if (mAlert != nil)
+//    {
+//        [mAlert dismissWithClickedButtonIndex:0 animated:YES];
+//        mAlert = nil;
+//    }
+//}
+
+//11601 获取订单状态 （支付后）
+- (void)postRequestCheckOrderStatusAfter{
+    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+            if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
+
+                }else {
+                    [self HandleOrdertWithResult:result orderResult:OrderResultSuccess];
+                }
+        }
+    } pageName:@"OrderConfirmController"];
+    
+}
+
+//发送请求，调起支付控件
+- (void)postRequestCreatePayMent:(NSString *)charge{
+    __weak __block OrderConfirmController *blockSelf = self;
+    [Pingpp createPayment:charge viewController:blockSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
+        
+        NSLog(@"completion block: %@", result);
+        if (error == nil) {
+            NSLog(@"PingppError is nil");
+        } else {
+            NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+        }
+        [blockSelf postRequestCheckOrderStatusAfter];
+    }];
+}
+
+//- (void)postRequestForConfirmHasPaid{
+//    MyDiagnosisRecordsListModel * tempoModel = [[MyDiagnosisRecordsListModel alloc]initWithSortType:1];
+//    [[CUOrderManager sharedInstance] getMyDiagnosisRecordsWithUser:tempoModel.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+//
+//        if (!result.hasError) {
+//            if (![(NSNumber *)[result.responseObject valueForKeySafely:@"errorCode"] integerValue]) {
+//
+//                NSMutableArray * data = [result.responseObject valueForKeySafely:@"data"];
+//                if ([data isKindOfClass:[NSMutableArray class]]) {
+//                    [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                                               }
+//                    }];
+//                }
+//            }
+//        }
+//
+//    } pageName:@"getCurrentTreatmentList"];
+//
+//
+//}
 
 //- (void)payOrderWithTN:(NSString *)tn
 //{
@@ -322,218 +459,119 @@
 //    }
 //}
 
+//- (void)enterResult:(OrderResult)orderResult
+//{
+//    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+//        if (!result.hasError) {
+//            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+//                SNSlideNavigationController *slide = self.slideNavigationController;
+//                UIViewController *vc = nil;
+//                for (UIViewController *controller in slide.viewControllers) {
+//                    if ([controller isKindOfClass:NSClassFromString(@"SNTabViewController")]) {
+//                        vc = controller;
+//                        break;
+//                    }
+//                }
+//                if (vc) {
+//                    [slide popToViewController:vc animated:NO];
+//                }
+//
+//                OrderResultController *resultVC = [[OrderResultController alloc] init];
+//                resultVC.orderResult = orderResult;
+//                resultVC.order = result.parsedModelObject;
+//                [slide pushViewController:resultVC animated:YES];
+//            }
+//            else{
+//
+//            }
+//        }
+//    } pageName:@"OrderConfirmController"];
+//}
 
-//11601 获取订单状态
-- (void)postRequestCheckOrderStatus{
+#pragma mark - Action
+
+- (void)payAction
+{
+    //    [self test];
+    //    return;
+    //#warning 测试代码
+    //    self.order.diagnosisID = 131313131231;
+    //    self.order.service.queueNumber = 10;
+    //    self.order.service.queueCount = 100;
+    //    self.order.createTimeStamp = 1440780889;
+    //    self.order.orderStatus = ORDERSTATUS_PAID;
+    //    [self enterResult:OrderResultSuccess];
+    //    return;
+    
+    //    if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
+    //        // 支付宝支付
+    //        [[CUOrderManager sharedInstance] payOrder:self.order tn:nil block:^(NSError *error, id responseObject) {
+    //            if (error == nil) {
+    //                [self enterResult:OrderResultSuccess];
+    //            }
+    //            else {
+    //                [TipHandler showSmallStringTipWithText:error.domain];
+    //            }
+    //        }];
+    //    }
+    //    else if (self.order.payment == ORDERPAYMENT_YinLian) {
+    //        __weak typeof(self) weakSelf = self;
+    //        [[CUOrderManager sharedInstance] getOrderTNWithOrderId:[NSString stringWithFormat:@"%lld",self.order.diagnosisID] block:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
+    //            NSString *tn = result.parsedModelObject;
+    //            if (!result.hasError && [tn isKindOfClass:[NSString class]]) {
+    //                [weakSelf payOrderWithTN:tn];
+    //            }
+    //            else {
+    //                [TipHandler showHUDText:@"银联调用失败" state:TipStateFail inView:self.view];
+    //            }
+    //        }];
+    //    }
+    [self CheckOrder];
+}
+
+#pragma mark - Private Methods
+
+- (void)CheckOrder{
+    if (self.order.payment == ORDERPAYMENT_WeiXin) {
+        self.channel = @"wx";
+        [self postRequestCheckOrderStatusBefore];
+    }
+    else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
+        self.channel = @"alipay";
+        [self postRequestCheckOrderStatusBefore];
+    }
+    else{
+        return;
+    }
     
 }
 
-- (void)enterResult:(OrderResult)orderResult
-{
-    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        if (!result.hasError) {
-            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                SNSlideNavigationController *slide = self.slideNavigationController;
-                UIViewController *vc = nil;
-                for (UIViewController *controller in slide.viewControllers) {
-                    if ([controller isKindOfClass:NSClassFromString(@"SNTabViewController")]) {
-                        vc = controller;
-                        break;
-                    }
-                }
-                if (vc) {
-                    [slide popToViewController:vc animated:NO];
-                }
-                
-                OrderResultController *resultVC = [[OrderResultController alloc] init];
-                resultVC.orderResult = orderResult;
-                resultVC.order = result.parsedModelObject;
-                [slide pushViewController:resultVC animated:YES];
-            }
-            else{
-            
-            }
+//根据结果处理订单
+- (void)HandleOrdertWithResult:(SNServerAPIResultData *)result orderResult:(OrderResult)orderResult{
+    SNSlideNavigationController *slide = self.slideNavigationController;
+    UIViewController *vc = nil;
+    for (UIViewController *controller in slide.viewControllers) {
+        if ([controller isKindOfClass:NSClassFromString(@"SNTabViewController")]) {
+            vc = controller;
+            break;
         }
-    } pageName:@"OrderConfirmController"];
+    }
+    if (vc) {
+        [slide popToViewController:vc animated:NO];
+    }
+    
+    OrderResultController *resultVC = [[OrderResultController alloc] init];
+    resultVC.order = result.parsedModelObject;
+    resultVC.orderResult = orderResult;
+    [slide pushViewController:resultVC animated:YES];
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-# pragma mark  -------- ping++ --------
-
-- (void)showAlertWait
-{
-    mAlert = [[UIAlertView alloc] initWithTitle:kWaiting message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
-    [mAlert show];
-    UIActivityIndicatorView* aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    aiv.center = CGPointMake(mAlert.frame.size.width / 2.0f - 15, mAlert.frame.size.height / 2.0f + 10 );
-    [aiv startAnimating];
-    [mAlert addSubview:aiv];
-}
-
-- (void)showAlertAfterSuccess:(NSString*)msg
-{
-    if ([msg isEqualToString:@"success"] || [msg isEqualToString:@"fail"]){
-        [self enterResult:OrderResultSuccess];
-        NSLog(@"支付成功， 跳转页面确认订单成功消息");
-        return;
-    }
-    mAlert = [[UIAlertView alloc] initWithTitle:kNote message:msg delegate:nil cancelButtonTitle:kConfirm otherButtonTitles:nil, nil];
-    [mAlert show];
-}
-
-- (void)hideAlert
-{
-    if (mAlert != nil)
-    {
-        [mAlert dismissWithClickedButtonIndex:0 animated:YES];
-        mAlert = nil;
-    }
-}
-
-//- (void)CheckOrderHasPaid{
-//    __weak __block OrderConfirmController *blockSelf = self;
-//    [[CUOrderManager sharedInstance] CheckOrderHasPaidWithDiagnosisID:self.order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-//        if (!result.hasError) {
-//            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
-//                [blockSelf normalPayAction:nil];
-//            }
-//        }
-//    } pageName:@"OrderConfirmController.m"];
-//}
-
-- (void)normalPayAction:(id)sender
-{
-    NSURL* url = [NSURL URLWithString:@"http://www.uyi365.com/baseFrame/base/getCharge.jmt"];
-    NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
-    
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:kPlatForm forKey:@"from"];
-    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
-    [param setObjectSafely:@"PayDiagnosisOK" forKey:@"require"];
-    [param setObjectSafely:@(11601) forKey:@"interfaceID"];
-    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
-    
-    NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:@(self.order.service.patience.userId) forKey:@"accID"];
-    [dataParam setObjectSafely:@(self.order.diagnosisID) forKey:@"diagnosisID"];
-    [dataParam setObjectSafely:@(0) forKey:@"couponID"];
-    [dataParam setObjectSafely:@(0) forKey:@"couponMoney"];
-    [dataParam setObjectSafely:@(self.order.diagnosisID) forKey:@"order_no"];
-
-    [dataParam setObjectSafely:self.order.service.doctor.name forKey:@"doctorName"];
-    [dataParam setObjectSafely:@([self.order.service.doctor.phoneNumber integerValue]) forKey:@"doctorPhone"];
-    [dataParam setObjectSafely:self.order.service.patience.name forKey:@"user_name"];
-    [dataParam setObjectSafely:self.order.service.patience.cellPhone forKey:@"user_phone"];
-    [dataParam setObjectSafely:@(self.order.service.patience.gender) forKey:@"user_sex"];
-    [dataParam setObjectSafely:@(self.order.service.patience.age) forKey:@"user_age"];
-    [dataParam setObjectSafely:@(self.order.dealPrice) forKey:@"amount"];
-    [dataParam setObjectSafely:self.channel forKey:@"chargetype"];
-    [dataParam setObjectSafely:[NSString stringWithFormat:@"优医365订单 单号: %lld",self.order.diagnosisID] forKey:@"subject"];
-    [dataParam setObjectSafely:[NSString stringWithFormat:@"iOS端timestamp%ld",(NSInteger)[NSDate timeIntervalSince1970]] forKey:@"body"];
-    
-    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
-    
-    NSLog(@"%@",param);
-    
-//    NSDictionary* dict =
-//    NSData* data = [NSJSONSerialization dataWithJSONObject:param options:NSJSONWritingPrettyPrinted error:nil];
-//    NSString *bodyData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    NSString *bodyData = [param JSONString];
-    
-    [postRequest setHTTPBody:[NSData dataWithBytes:[bodyData UTF8String] length:strlen([bodyData UTF8String])]];
-    [postRequest setHTTPMethod:@"POST"];
-    [postRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    OrderConfirmController * __weak weakSelf = self;
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-//    [self showAlertWait];
-    [self showProgressView];
-    [NSURLConnection sendAsynchronousRequest:postRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-//            [weakSelf hideAlert];
-            [weakSelf hideProgressView];
-            if (httpResponse.statusCode != 200) {
-                NSLog(@"statusCode=%ld error = %@", (long)httpResponse.statusCode, connectionError);
-                [weakSelf showAlertAfterSuccess:kErrorNet];
-                return;
-            }
-            if (connectionError != nil) {
-                NSLog(@"error = %@", connectionError);
-                [weakSelf showAlertAfterSuccess:kErrorNet];
-                return;
-            }
-//            NSString* charge = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//            NSData *jsonData = [charge JSONData];
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            NSDictionary * dic2 = [dic objectForKey:@"charge"];
-            NSString* charge = [dic2 JSONString];
-            NSLog(@"charge = %@", charge);
-            newCharge = charge;
-//            [Pingpp createPayment:charge appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
-//                NSLog(@"completion block: %@", result);
-//                if (error == nil) {
-//                    NSLog(@"PingppError is nil");
-//                } else {
-//                    NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
-//                }
-//                [weakSelf showAlertMessage:result];
-//            }];
-            [weakSelf postRequestCreatePayMent];
-        });
-    }];
-}
-
-- (void)postRequestCreatePayMent{
-    __weak __block OrderConfirmController *blockSelf = self;
-    [Pingpp createPayment:newCharge viewController:blockSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
-        NSLog(@"completion block: %@", result);
-        if (error == nil) {
-            NSLog(@"PingppError is nil");
-        } else {
-            NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
-        }
-        
-        [blockSelf performSelector:@selector(postRequestForConfirmHasPaid) onThread:[NSThread currentThread] withObject:nil waitUntilDone:YES];
-        
-    }];
-}
-
-- (void)postRequestForConfirmHasPaid{
-    MyDiagnosisRecordsListModel * tempoModel = [[MyDiagnosisRecordsListModel alloc]initWithSortType:1];
-    [[CUOrderManager sharedInstance] getMyDiagnosisRecordsWithUser:tempoModel.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        
-        if (!result.hasError) {
-            if (![(NSNumber *)[result.responseObject valueForKeySafely:@"errorCode"] integerValue]) {
-                
-                NSMutableArray * data = [result.responseObject valueForKeySafely:@"data"];
-                if ([data isKindOfClass:[NSMutableArray class]]) {
-                    [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        CUOrder *order = [[CUOrder alloc]init];
-                        order.diagnosisID = [[obj valueForKey:@"diagnosisID"] integerValue];
-                        order.state = [[obj valueForKey:@"state"] integerValue];
-                        if (order.diagnosisID == self.order.diagnosisID) {
-                            order.state = [[obj valueForKey:@"state"] integerValue];
-                            if (order.state != ORDERSTATUS_UNPAID) {
-                                [self showAlertAfterSuccess:@"success"];
-                            }else{
-                                [self postRequestCreatePayMent];
-                            }
-                        }
-                    }];
-                }
-            }
-        }
-        
-    } pageName:@"getCurrentTreatmentList"];
-    
-    
 }
 
 

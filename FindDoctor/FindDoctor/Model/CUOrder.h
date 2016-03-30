@@ -15,9 +15,9 @@ typedef enum OrderStatus: NSInteger
     ORDERSTATUS_ALL      = 0,
     ORDERSTATUS_UNPAID   = 1, // 未支付
     ORDERSTATUS_PAID     = 2, // 待服务、已支付
-    ORDERSTATUS_FINISHED = 3, // 已完成
-    ORDERSTATUS_CANCELED = 4, // 已取消
-    ORDERSTATUS_REFUNDED = 5, // 已退款
+    ORDERSTATUS_FINISHED = 3, // 已开方
+    ORDERSTATUS_CANCELED = 4, // 已打印
+    ORDERSTATUS_REFUNDED = 5, // 已评论
 }OrderStatus;
 
 typedef enum OrderPayment : NSInteger

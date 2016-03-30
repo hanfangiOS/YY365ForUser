@@ -49,9 +49,9 @@
 
 @implementation AppDelegate
 {
-    BMKMapManager *_mapManager;
-    BMKLocationService *_locService;
-    BMKGeoCodeSearch   *_geoSearcher;
+    BMKMapManager       *_mapManager;//百度地图引擎
+    BMKLocationService  *_locService;//百度定位服务
+    BMKGeoCodeSearch    *_geoSearcher;//百度GEO搜索
 }
 
 + (AppDelegate *)app
@@ -61,6 +61,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //加载各引擎类
     [[AppCore sharedInstance] load];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
@@ -86,7 +87,7 @@
     //[MobClick setAppVersion:[CUPlatFormManager currentAppVersion]];
     
     // 分享
-    //[self initShare];
+    [self initShare];
     
     // 主页面
     [self startLaunchView];

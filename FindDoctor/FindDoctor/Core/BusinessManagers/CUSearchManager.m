@@ -43,9 +43,9 @@ SINGLETON_IMPLENTATION(CUSearchManager);
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
-                NSMutableArray * list1 = [result.responseObject valueForKeySafely:@"data"];
+                NSArray * list1 = [result.responseObject arrayForKeySafely:@"data"];
                 NSMutableArray * searchResultList = [NSMutableArray new];
-                [list1 enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * stop) {
+                [list1 enumerateObjectsUsingBlockSafety:^(NSDictionary * obj, NSUInteger idx, BOOL * stop) {
                     NSInteger dataType = [[obj valueForKeySafely:@"dataType"] integerValue];
                     switch (dataType) {
                         case 6:{
@@ -80,7 +80,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                 result.parsedModelObject = listModel;
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {

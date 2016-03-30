@@ -4,38 +4,6 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUDoctorManager.m"
-            timestampString = "480847403.311224"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-getDoctorListWithPageNum:pageSize:filter:resultBlock:pageName:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUDoctorManager.m"
-            timestampString = "480847453.786283"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-getDoctorListWithPageNum:pageSize:filter:resultBlock:pageName:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -51,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUDoctorManager.m"
-            timestampString = "480847656.212998"
+            filePath = "FindDoctor/Controller/CUOrder/OrderConfirmController.m"
+            timestampString = "480925831.249203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-getDoctorListWithPageNum:pageSize:filter:resultBlock:pageName:"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "-postRequestCheckOrderStatusBefore"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUDoctorManager.m"
-            timestampString = "480847716.049408"
+            filePath = "FindDoctor/Controller/CUOrder/OrderConfirmController.m"
+            timestampString = "480925831.249203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "-getDoctorListWithPageNum:pageSize:filter:resultBlock:pageName:"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "-postRequestCheckOrderStatusBefore"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUDoctorManager.m"
-            timestampString = "480847717.192758"
+            filePath = "FindDoctor/Core/BusinessManagers/CUOrderManager.m"
+            timestampString = "480939091.273962"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "-getDoctorListWithPageNum:pageSize:filter:resultBlock:pageName:"
+            startingLineNumber = "664"
+            endingLineNumber = "664"
+            landmarkName = "-getOrderStateWithDiagnosisID:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -99,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUDoctorManager.m"
-            timestampString = "480847807.816541"
+            filePath = "FindDoctor/Core/BusinessManagers/CUOrderManager.m"
+            timestampString = "480939091.273962"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-getDoctorListWithPageNum:pageSize:filter:resultBlock:pageName:"
+            startingLineNumber = "661"
+            endingLineNumber = "661"
+            landmarkName = "-getOrderStateWithDiagnosisID:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -115,61 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SNArchitecture/SNCore/SNUtility/SNBasicExtension/NSObject+SNExtension.m"
-            timestampString = "480847864.098244"
+            filePath = "FindDoctor/Controller/CUOrder/OrderCreateController.m"
+            timestampString = "480934868.942251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "-stringForKeySafely:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SNArchitecture/SNCore/SNUtility/SNBasicExtension/NSObject+SNExtension.m"
-            timestampString = "480847868.68983"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "-valueForKeySafely:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUDoctorManager.m"
-            timestampString = "480847969.00572"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-getDoctorListWithPageNum:pageSize:filter:resultBlock:pageName:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SNArchitecture/SNMVC/SNServerAPIManager.m"
-            timestampString = "480848061.281397"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
-            landmarkName = "-POST:parameters:callbackRunInGlobalQueue:parser:parseMethod:resultBlock:forKey:forPageNameGroup:"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "-commitOrder"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
