@@ -113,7 +113,6 @@
         }
         else{
             [self showHUD];
-            
             [self startTimer];
             //    _codeField.text = @"";
             

@@ -178,8 +178,10 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 NSDictionary *dic = [result.responseObject dictionaryForKeySafely:@"data"];
                 order.dealPrice = [[dic valueForKey:@"payMoney"] integerValue];
                 order.diagnosisTime = [dic valueForKey:@"orderTime"];
-                order.service.doctor.name = [dic valueForKey:@"doctorName"];
-                order.service.doctor.phoneNumber = [dic valueForKey:@"doctorPhone"] ;
+//                order.service.doctor.name = [dic valueForKey:@"doctorName"];
+//                order.service.doctor.phoneNumber = [dic valueForKey:@"doctorPhone"];
+                order.service.doctor.phoneNumber = [dic valueForKey:@"phone"];
+
                 result.parsedModelObject = parsedModelObject;
             }
             else {
@@ -704,7 +706,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 result.parsedModelObject = order;
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
+//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
             }
         }
         else {

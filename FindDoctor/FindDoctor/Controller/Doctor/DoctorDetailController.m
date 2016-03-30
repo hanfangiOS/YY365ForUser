@@ -178,17 +178,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)createOrderActionWithData:(Doctor *)data
-{
-//    if (![[CUUserManager sharedInstance] isLogin]) {
-//        [self loginAction];
-//        return;
-//    }
-    
-    OrderCreateController *createVC = [[OrderCreateController alloc] init];
-    createVC.doctor = data;
-    [self.slideNavigationController pushViewController:createVC animated:YES];
-}
+//- (void)createOrderActionWithData:(Doctor *)data
+//{
+////    if (![[CUUserManager sharedInstance] isLogin]) {
+////        [self loginAction];
+////        return;
+////    }
+//    
+//    OrderCreateController *createVC = [[OrderCreateController alloc] init];
+////    createVC.doctor = data;
+//    [self.slideNavigationController pushViewController:createVC animated:YES];
+//}
 
 - (NSString *)dateFromatterWithDate:(NSDate *)date{
     NSDateFormatter* formatter = [NSDateFormatter dateFormatterWithFormat:[NSDateFormatter dateFormatString]];

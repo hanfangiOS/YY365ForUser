@@ -169,19 +169,19 @@
 - (BOOL)checkData{
     BOOL mark = YES;
     NSString *message;
-    if ([nameView.contentTextField.text isEmpty]) {
-        message = @"请输入姓名";
-        mark = NO;
-    }
-    if ([ageView.contentTextField.text isEmpty]) {
-        message = @"请输入年龄";
+    if ([phoneView.contentTextField.text isEmpty]) {
+        message = @"请输入手机号";
         mark = NO;
     }
     if (phoneView.contentTextField.text.length != 11) {
         message = @"请输入正确的手机号";
         mark = NO;
     }
-    if ([phoneView.contentTextField.text isEmpty]) {
+    if ([ageView.contentTextField.text isEmpty]) {
+        message = @"请输入年龄";
+        mark = NO;
+    }
+    if ([nameView.contentTextField.text isEmpty]) {
         message = @"请输入姓名";
         mark = NO;
     }

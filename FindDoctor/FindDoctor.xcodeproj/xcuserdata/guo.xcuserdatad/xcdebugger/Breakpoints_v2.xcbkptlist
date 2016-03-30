@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUUserManager.m"
-            timestampString = "480851266.425343"
+            filePath = "FindDoctor/Controller/CUOrder/OrderConfirmController.m"
+            timestampString = "480936527.754205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "-loginWithCellPhone:code:codetoken:resultBlock:pageName:"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
+            landmarkName = "-CheckOrderHasPaid"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

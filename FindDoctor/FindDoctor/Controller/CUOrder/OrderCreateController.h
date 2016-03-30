@@ -13,7 +13,7 @@
 
 @interface OrderCreateController : CUViewController
 
-@property (nonatomic, strong) Doctor *doctor;
+//@property (nonatomic, strong) Doctor *doctor;
 @property (nonatomic, strong) NSMutableArray *memberArray;
 @property (nonatomic, strong) CUOrder *order;
 

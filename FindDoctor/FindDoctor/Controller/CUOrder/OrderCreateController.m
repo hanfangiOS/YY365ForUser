@@ -140,7 +140,7 @@
         if (self.imageArray.count) {
             [[CUUserManager sharedInstance] uploadImageArray:self.imageArray resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
                 if (!result.hasError) {
-                    if (![(NSNumber *)[result.responseObject valueForKey:@"err_code"] integerValue]) {
+                    if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                         NSArray *dataList = [result.responseObject valueForKey:@"data"];
                         NSMutableArray *imageNumberArray = [[NSMutableArray alloc] init];
                         [dataList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
@@ -268,12 +268,13 @@
     [self showProgressView];
     __weak __block OrderCreateController *blockSelf = self;
     [[CUOrderManager sharedInstance] submitOrder:blockSelf.order user:nil resultBlock:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
-        [self hideProgressView];
+        [blockSelf hideProgressView];
         if (!result.hasError && result.parsedModelObject) {
             OrderConfirmController *confirmVC = [[OrderConfirmController alloc] init];
             CUOrder *order = result.parsedModelObject;
             blockSelf.order.dealPrice = order.dealPrice;
             blockSelf.order.diagnosisTime = order.diagnosisTime;
+            blockSelf.order.service.doctor.phoneNumber = order.service.doctor.phoneNumber;
             confirmVC.order = blockSelf.order;
             [blockSelf.slideNavigationController pushViewController:confirmVC animated:YES];
         }
