@@ -10,11 +10,12 @@
 #import "SNBaseListModel.h"
 #import "SNRefreshControl.h"
 #import "SNLoadMoreControl.h"
+#import "SNListEmptyView.h"
 
 @interface CUListViewController : SNViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UIView * content;
-@property (nonatomic,strong) UIView * emptyView;
+@property (nonatomic,strong) SNListEmptyView * emptyView;
 
 - (instancetype)initWithPageName:(NSString *)pageName listModel:(SNBaseListModel *)listModel;
 

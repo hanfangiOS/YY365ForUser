@@ -415,7 +415,7 @@
 /**集成后由子类实现**/
 - (UIView *)listEmptyView
 {
-    SNListEmptyView * view = [[SNListEmptyView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 240)];
+    SNListEmptyView * view = [[SNListEmptyView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     view.delegate = self;
     return view;
 }

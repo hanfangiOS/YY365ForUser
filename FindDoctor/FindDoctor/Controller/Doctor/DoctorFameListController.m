@@ -53,7 +53,7 @@
 
 - (void)viewDidLoad {
     self.title = [NSString stringWithFormat:@"%@ 教授口碑",self.listModel.doctor.name];
-    self.contentTableView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
+//    self.contentTableView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
     self.hasFreshControl = NO;
     [super viewDidLoad];
     self.hasFreshControl = NO;
@@ -63,15 +63,15 @@
 - (void)loadContentView{
     
     self.contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.contentTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//    self.contentTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     CGFloat heightForHeader = 0.4 * 640;
     self.contentTableView.frame = CGRectMake(0, heightForHeader, self.contentTableView.frame.size.width, self.contentView.frameHeight - heightForHeader);
     
-    
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, heightForHeader - 0.5, kScreenWidth, 0.5)];
-    view.layer.backgroundColor = UIColorFromHex(0xcccccc).CGColor;
-    [self.contentView addSubview:view];
+//    
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, heightForHeader - 0.5, kScreenWidth, 0.5)];
+//    view.layer.backgroundColor = UIColorFromHex(0xcccccc).CGColor;
+//    [self.contentView addSubview:view];
     
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, heightForHeader)];
     
@@ -119,23 +119,26 @@
     _view2_flagView = [[FlagView alloc] initWithFrame:CGRectMake(0,flagTitle.maxY, kScreenWidth, 20)];
     [_view2 addSubview:_view2_flagView];
     
-    //暂无锦旗
+//    暂无锦旗
     _emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (_view2.frameHeight - 24)/2 , kScreenWidth, _view2.frameHeight * 0.35)];
     _emptyLabel.text = @"暂无锦旗";
-    _emptyLabel.font = [UIFont systemFontOfSize:15];
+    _emptyLabel.font = [UIFont systemFontOfSize:12];
     _emptyLabel.textColor = UIColorFromHex(0x999999);
     _emptyLabel.textAlignment = NSTextAlignmentCenter;
     _emptyLabel.hidden = YES;
     [_view2 addSubview:_emptyLabel];
     
-    //暂无评论
-    _emptyLabelForList = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.contentTableView.frameHeight)];
-    _emptyLabelForList.text = @"暂无评论";
-    _emptyLabelForList.font = [UIFont systemFontOfSize:12];
-    _emptyLabelForList.textColor = UIColorFromHex(0x999999);
-    _emptyLabelForList.textAlignment = NSTextAlignmentCenter;
-    _emptyLabelForList.hidden = YES;
+    self.emptyView.textLabel.text = @"暂无评论";
+    self.emptyView.textLabel.frameY = self.contentTableView.frameHeight*0.5 + self.contentTableView.frameY;
+    self.emptyView.userInteractionEnabled = NO;
     
+//    //暂无评论
+//    _emptyLabelForList = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.contentTableView.frameHeight)];
+//    _emptyLabelForList.text = @"暂无评论";
+//    _emptyLabelForList.font = [UIFont systemFontOfSize:12];
+//    _emptyLabelForList.textColor = UIColorFromHex(0x999999);
+//    _emptyLabelForList.textAlignment = NSTextAlignmentCenter;
+//    _emptyLabelForList.hidden = YES;
 }
 
 - (void)resetData{
@@ -159,7 +162,7 @@
             CGRect rect1 = _emptyLabel.frame;
             _emptyLabel.frame = CGRectMake(0,(_view2.frameHeight - rect1.size.height)/2 + 12, rect1.size.width, rect1.size.height);
             _emptyLabel.hidden = NO;
-           
+//
             
             CGRect rect2 = self.contentTableView.frame;
             self.contentTableView.frame = CGRectMake(rect2.origin.x, _headerView.maxY, rect2.size.width, kScreenHeight - _headerView.frameHeight);
@@ -167,18 +170,10 @@
         
         if (!self.listModel.doctor.remarkList.count) {
            [self.contentTableView addSubview:_emptyLabelForList];
-            _emptyLabelForList.frameHeight = self.contentTableView.frameHeight;
-            _emptyLabelForList.hidden = NO;
+//            _emptyLabelForList.frameHeight = self.contentTableView.frameHeight;
+//            _emptyLabelForList.hidden = NO;
         }
     }
-}
-
-- (UIView *)listEmptyView
-{
-//    SNListEmptyView * view = [[SNListEmptyView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 240)];
-    SNListEmptyView * view = [[SNListEmptyView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    view.delegate = self;
-    return view;
 }
 
 - (void)emptyViewClicked
@@ -213,7 +208,8 @@
                 blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
             }
             else
-            {            blockSelf.emptyView.hidden = YES;
+            {
+                blockSelf.emptyView.hidden = YES;
                 blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
                 ;
             }
