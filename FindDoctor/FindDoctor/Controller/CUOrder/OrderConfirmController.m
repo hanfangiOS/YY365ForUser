@@ -277,7 +277,7 @@
             if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
                 [self postRequestGetCharge];
             }else{
-                [TipHandler showTipOnlyTextWithNsstring:@"订单已经支付，请勿重新支付"];
+                [self HandleOrdertWithResult:result orderResult:OrderResultSuccess];
             }
         }
     } pageName:@"OrderConfirmController"];
@@ -396,7 +396,7 @@
     [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
             if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
-
+                [self HandleOrdertWithResult:result orderResult:OrderResultFailed];
             }else {
                 [self HandleOrdertWithResult:result orderResult:OrderResultSuccess];
             }

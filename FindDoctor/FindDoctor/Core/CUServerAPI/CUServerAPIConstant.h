@@ -9,8 +9,8 @@
 #ifndef CollegeUnion_CUServerAPIConstant_h
 #define CollegeUnion_CUServerAPIConstant_h
 
-//#define CollegeUnion_Distribution
-#define CollegeUnion_Develop
+#define CollegeUnion_Distribution
+//#define CollegeUnion_Develop
 
 
 
