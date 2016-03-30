@@ -16,16 +16,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/CUOrder/OrderConfirmController.m"
-            timestampString = "480925831.249203"
+            filePath = "FindDoctor/Controller/CUOrder/OrderCreateController.m"
+            timestampString = "480934868.942251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
-            landmarkName = "-postRequestCheckOrderStatusBefore"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "-commitOrder"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -36,12 +36,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Controller/CUOrder/OrderConfirmController.m"
-            timestampString = "480925831.249203"
+            timestampString = "481024606.51233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
-            landmarkName = "-postRequestCheckOrderStatusBefore"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
+            landmarkName = "-postRequestCheckOrderStatusAfter"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/CUOrder/OrderConfirmController.m"
+            timestampString = "481024720.033555"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "-postRequestCheckOrderStatusAfter"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/CUOrder/OrderConfirmController.m"
+            timestampString = "481024787.202195"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "552"
+            endingLineNumber = "552"
+            landmarkName = "-HandleOrdertWithResult:orderResult:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/CUOrder/OrderConfirmController.m"
+            timestampString = "481024797.394014"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
+            landmarkName = "-HandleOrdertWithResult:orderResult:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -52,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-            timestampString = "480939091.273962"
+            timestampString = "481024861.191849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "664"
@@ -68,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-            timestampString = "480939091.273962"
+            timestampString = "481024992.475569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "661"
-            endingLineNumber = "661"
+            startingLineNumber = "690"
+            endingLineNumber = "690"
             landmarkName = "-getOrderStateWithDiagnosisID:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -83,13 +131,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/CUOrder/OrderCreateController.m"
-            timestampString = "480934868.942251"
+            filePath = "FindDoctor/Core/BusinessManagers/CUUserManager.m"
+            timestampString = "481034798.23193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "-commitOrder"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "-loginWithCellPhone:password:resultBlock:pageName:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Core/BusinessManagers/CUUserManager.m"
+            timestampString = "481035409.841306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-loginWithCellPhone:code:codetoken:resultBlock:pageName:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/User/UserViewController.m"
+            timestampString = "481035545.076342"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-viewDidAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/User/UserViewController.m"
+            timestampString = "481035563.410183"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-viewDidAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/User/View/UserHeaderView.m"
+            timestampString = "481035616.168053"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-resetUserInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

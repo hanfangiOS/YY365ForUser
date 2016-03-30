@@ -37,6 +37,7 @@ SINGLETON_IMPLENTATION(AppCore);
     return self;
 }
 
+
 -(void)resgisterManager
 {
     [self registerBusinessManager:[CUUserManager sharedInstance]];

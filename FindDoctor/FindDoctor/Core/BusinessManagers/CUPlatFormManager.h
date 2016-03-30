@@ -23,5 +23,6 @@ SINGLETON_DECLARE(CUPlatFormManager);
 + (NSString *)currentAppVersion;
 + (NSInteger)appVersionNumInBundle;
 - (void)sychronizeVersion;
++ (NSInteger)changeVersionFromStringToInt:(NSString *)version;
 
 @end
