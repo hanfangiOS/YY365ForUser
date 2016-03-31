@@ -636,22 +636,22 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
 //    SNServerAPIManager *apiMr = [[SNServerAPIManager alloc] initWithServer:@"http://192.168.1.101:8889"];
 //    [apiMr POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-    [[AppCore sharedInstance].apiManager POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-        if (!result.hasError) {
-            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
-                
-            }
-            else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
-            }
-        }
-        else {
-            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
-        }
-        
-        resultBlock(request, result);
-        
-    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+//    [[AppCore sharedInstance].apiManager POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+//        if (!result.hasError) {
+//            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
+//                
+//            }
+//            else {
+//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
+//            }
+//        }
+//        else {
+//            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+//        }
+//        
+//        resultBlock(request, result);
+//        
+//    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
     
 }
 

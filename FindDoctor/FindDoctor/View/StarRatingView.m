@@ -149,6 +149,20 @@
     [self tapImage:tempRate+0.5];
     return [super continueTrackingWithTouch:touch withEvent:event];
 }
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+    if ([super pointInside:point withEvent:event]) {
+        int tempRate = point.x/((_type == StarTypeLarge) ? kImageWidth_B : kImageWidth_S + _starSpace);
+        if (tempRate < 0) {
+            tempRate = 0;
+        }
+        if (tempRate > kImageCount) {
+            tempRate = kImageCount;
+        }
+        [self tapImage:tempRate+1];
+        return YES;
+    }
+    return [super pointInside:point withEvent:event];
+}
 
 
 @end
