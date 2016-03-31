@@ -17,7 +17,6 @@ typedef enum
 }SNServerAPIErrorType;
 
 
-
 @interface SNServerAPIResultData : NSObject
 
 @property (nonatomic,strong) NSDictionary * responseObject;// 是json，没有经过程序解析成为model

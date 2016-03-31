@@ -76,6 +76,7 @@
     _contentTableView.separatorInset = UIEdgeInsetsMake(0, -80, 0, 0);
     _contentTableView.separatorStyle = UITableViewCellSelectionStyleNone;
     _contentTableView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
+    _contentTableView.bounces = NO;
     [self.contentView  addSubview:_contentTableView];
 }
 
@@ -216,6 +217,7 @@
             self.hasNavigationBar = YES;
             self.title = @"我的空间";
             //            [self loadNavigationBar];
+            [_contentTableView reloadData];
             [userHeaderView resetUserInfo];
             
         }

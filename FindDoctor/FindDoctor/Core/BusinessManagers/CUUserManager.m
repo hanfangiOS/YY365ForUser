@@ -15,6 +15,7 @@
 #import "JSONKit.h"
 #import "Address.h"
 #import "SNHTTPRequestOperationWrapper.h"
+#import "TipHandler+HUD.h"
 
 @implementation CUUserManager
 
@@ -176,7 +177,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
                 case 0:{
 
                     
-                    NSDictionary *data = [result.responseObject valueForKey:@"data"];
+                    NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
                     
                     blockSelf.user.userId = [data integerForKeySafely:@"accID"];
                     blockSelf.user.nickName = [data stringForKeySafely:@"name"];
@@ -184,14 +185,18 @@ SINGLETON_IMPLENTATION(CUUserManager);
                     blockSelf.user.token =  [data stringForKeySafely:@"token"];
                     NSLog(@"cellPhone:%@",blockSelf.user.cellPhone);
                     NSLog(@"userId:%d",blockSelf.user.userId );
-                    
                     [blockSelf save];
                 }
                     break;
-                    
+                case -1:{
+                    [TipHandler showTipOnlyTextWithNsstring:[NSString stringWithFormat:@"%@",[result.responseObject stringForKeySafely:@"data"]]];
+                }
+                    break;
                 default:
                     break;
             }
+        }else if(result.hasError){
+            [TipHandler showTipOnlyTextWithNsstring:[NSString stringWithFormat:@"网络连接错误"]];
         }
         resultBlock(request,result);
     } forKey:URL_AfterBase forPageNameGroup:pageName];

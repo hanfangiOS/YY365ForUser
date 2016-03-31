@@ -44,7 +44,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     _searchToolBar = [[SearchTooBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, self.navigationBarHeight)];
-    _searchToolBar.placeHolder = @"请输入症状、医生";
+    _searchToolBar.placeHolder = @"请输入诊所、医生";
     _searchToolBar.delegate = self;
     _searchToolBar.showCancelButton = YES;
     [self.navigationBar addSubview:_searchToolBar];

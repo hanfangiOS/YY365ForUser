@@ -80,6 +80,10 @@
     manager.enable = YES;
 //    manager.shouldToolbarUsesTextFieldTintColor = YES;
     manager.enableAutoToolbar = YES;
+    manager.shouldShowTextFieldPlaceholder = NO;
+    
+    //版本检查
+    [self postRequestVersionCheck];
     
     // 地图
     [self initMapService];
@@ -90,14 +94,14 @@
     //[MobClick setAppVersion:[CUPlatFormManager currentAppVersion]];
     
     // 分享
-    [self initShare];
+//    [self initShare];
     
     // 主页面
     [self startLaunchView];
 //    [self launchFirstView];
     
-    // 版本号
-    [[CUPlatFormManager sharedInstance] sychronizeVersion];
+//    // 版本号
+//    [[CUPlatFormManager sharedInstance] sychronizeVersion];
 
     [self.window makeKeyAndVisible];
     
@@ -413,6 +417,8 @@
     // 要使用百度地图，请先启动BaiduMapManager
     // com.wallet.BaiduFinance iECHAdtn1ql3FlkGKasXyGbs
     // com.jiayu.eshijia hm8ufnt0raPVEUrMRSdrb8qq
+    //AZkRPuUHS62q0zY9oPQqPNmZ forPatient
+    //7orlPDNBtllWuvnREmXSz3HNtYd206jV uqku.demo
     _mapManager = [[BMKMapManager alloc]init];
 //    BOOL ret = [_mapManager start:@"iECHAdtn1ql3FlkGKasXyGbs" generalDelegate:self];
     BOOL ret = [_mapManager start:@"AZkRPuUHS62q0zY9oPQqPNmZ" generalDelegate:self];
@@ -433,7 +439,7 @@
 //版本检查
 - (void)postRequestVersionCheck{
     
-    NSURL* url = [NSURL URLWithString:@"http://192.168.1.101:8888/baseFrame/base/g_VersionCheck.jmw"];
+    NSURL* url = [NSURL URLWithString:@"http://uyi365.com/baseFrame/base/VersionCheck.jmw"];
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     //    [param setObjectSafely:kPlatForm forKey:@"from"];
@@ -457,23 +463,24 @@
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:postRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-            //NSURLConnection正确返回码200
-            if (httpResponse.statusCode == 200) {
-                NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                NSString * appVersion = [dict stringForKeySafely:@"appVersion"];
+            if (!connectionError) {
+                NSDictionary *dict =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+                NSDictionary * dataDict = [dict dictionaryForKeySafely:@"data"];
+                NSString * appVersion = [dataDict stringForKeySafely:@"ios_user"];
                 if([weakSelf checkIfNeedUpdateWithAppVersion:appVersion]){
-                    
+                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"版本更新" message:[NSString stringWithFormat:@"重要更新版本%@,请前往App Store进行更新,否则将无法正常使用",appVersion] delegate:weakSelf cancelButtonTitle:@"退出" otherButtonTitles:@"下载", nil];
+                    [alert show];
                 }
+            }else{
+                return ;
             }
-            return ;
         });
     }];
     
 }
 
+//比较版本号，检查是否更新
 - (BOOL)checkIfNeedUpdateWithAppVersion : (NSString *)appVersion{
-    
     NSInteger oldVer =  [CUPlatFormManager appVersionNumInBundle];
     NSInteger newVer =  [CUPlatFormManager changeVersionFromStringToInt:appVersion];
     if (newVer > oldVer) {
@@ -484,11 +491,23 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {
-        
+        [self exitApp];
     }
     if (buttonIndex == 1) {
-        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1091982091"]];
     }
+}
+
+//退出APP
+- (void)exitApp{
+    [UIView animateWithDuration:0.4f animations:^{
+        self.window.alpha = 0;
+        CGFloat y = self.window.bounds.size.height;
+        CGFloat x = self.window.bounds.size.width / 2;
+        self.window.frame = CGRectMake(x, y, 0, 0);
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
 }
 
 

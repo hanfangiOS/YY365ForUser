@@ -24,6 +24,9 @@
     if ([object isKindOfClass:[NSString class]]) {
         return object;
     }
+    if ([object isKindOfClass:[NSNumber class]]) {
+        return [NSString stringWithFormat:@"%@",object];
+    }
     return nil;
 }
 

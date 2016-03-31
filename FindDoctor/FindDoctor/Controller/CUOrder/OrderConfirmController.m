@@ -26,7 +26,6 @@
 #include <net/if.h>
 #include <net/if_dl.h>
 #import "Pingpp.h"
-#import "IQKeyboardManager.h"
 #import "MyDiagnosisRecordsListModel.h"
 
 #define KBtn_width        200
@@ -61,7 +60,6 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     self.title = @"确认订单";
     self.view.backgroundColor = kLightBlueColor;
     
@@ -534,6 +532,12 @@
 - (void)CheckOrder{
     if (self.order.payment == ORDERPAYMENT_WeiXin) {
         self.channel = @"wx";
+        
+        if(![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]){
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"请先安装微信" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+            return;
+        }
         [self postRequestCheckOrderStatusBefore];
     }
     else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
