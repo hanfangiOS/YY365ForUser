@@ -26,7 +26,7 @@
 #include <net/if.h>
 #include <net/if_dl.h>
 #import "Pingpp.h"
-
+#import "IQKeyboardManager.h"
 #import "MyDiagnosisRecordsListModel.h"
 
 #define KBtn_width        200
@@ -61,7 +61,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     self.title = @"确认订单";
     self.view.backgroundColor = kLightBlueColor;
     

@@ -22,7 +22,7 @@
 #import "CULoginViewController.h"
 #import "FamilyMemberDetailController.h"
 #import "CUPickerView.h"
-
+#import "IQKeyboardManager.h"
 #import "AddFamilyMemberViewController.h"
 
 #define kButtonViewHeight   ([CreateOrderButtonView defaultHeight])
@@ -50,7 +50,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     self.title = [NSString stringWithFormat:@"约诊 %@医生", self.order.service.doctor.name];
     self.contentView.backgroundColor = kLightBlueColor;
     

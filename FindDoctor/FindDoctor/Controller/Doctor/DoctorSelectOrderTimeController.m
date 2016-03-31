@@ -10,7 +10,7 @@
 #import "DoctorAppointmentListView.h"
 #import "OrderCreateController.h"
 #import "CUOrderManager.h"
-
+#import "IQKeyboardManager.h"
 @interface DoctorSelectOrderTimeController (){
     DoctorAppointmentListView *listView;
 }
@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     listView = [[DoctorAppointmentListView alloc] initWithFrame:CGRectMake(0, 0,kScreenWidth,self.contentView.frameHeight) data:_doctorAppointmentListItem];
     [self.contentView addSubview:listView];
     

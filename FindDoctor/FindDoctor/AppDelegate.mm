@@ -40,8 +40,11 @@
 #import "LaunchView.h"
 
 #import "IQKeyboardManager.h"
+#import "JSONKit.h"
+#import "CUServerAPIConstant.h"
+#import "TipHandler+HUD.h"
 
-@interface AppDelegate () <BMKGeneralDelegate>
+@interface AppDelegate () <BMKGeneralDelegate,UIAlertViewDelegate>
 
 @property (nonatomic,strong)SNTabViewController * tabController;
 
@@ -424,5 +427,69 @@
     _geoSearcher = [[BMKGeoCodeSearch alloc]init];
     _geoSearcher.delegate = (id)self;
 }
+
+#pragma mark --------- 临时 ---------
+
+//版本检查
+- (void)postRequestVersionCheck{
+    
+    NSURL* url = [NSURL URLWithString:@"http://192.168.1.101:8888/baseFrame/base/g_VersionCheck.jmw"];
+    NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    //    [param setObjectSafely:kPlatForm forKey:@"from"];
+    //    [param setObjectSafely:@"VersionCheck" forKey:@"require"];
+    //    [param setObjectSafely:@(1111111111) forKey:@"interfaceID"];
+    //    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+    NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:[CUPlatFormManager currentAppVersion] forKey:@"appVersion"];
+    [dataParam setObjectSafely:[[[UIDevice currentDevice] identifierForVendor] UUIDString] forKey:@"deviceID"];
+    [dataParam setObjectSafely:[[UIDevice currentDevice] systemVersion] forKey:@"SystemVersion"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    NSString *bodyData = [param JSONString];
+    [postRequest setHTTPBody:[NSData dataWithBytes:[bodyData UTF8String] length:strlen([bodyData UTF8String])]];
+    [postRequest setHTTPMethod:@"POST"];
+    [postRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    __block __weak typeof(self) weakSelf = self;
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:postRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+            //NSURLConnection正确返回码200
+            if (httpResponse.statusCode == 200) {
+                NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                NSString * appVersion = [dict stringForKeySafely:@"appVersion"];
+                if([weakSelf checkIfNeedUpdateWithAppVersion:appVersion]){
+                    
+                }
+            }
+            return ;
+        });
+    }];
+    
+}
+
+- (BOOL)checkIfNeedUpdateWithAppVersion : (NSString *)appVersion{
+    
+    NSInteger oldVer =  [CUPlatFormManager appVersionNumInBundle];
+    NSInteger newVer =  [CUPlatFormManager changeVersionFromStringToInt:appVersion];
+    if (newVer > oldVer) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        
+    }
+    if (buttonIndex == 1) {
+        
+    }
+}
+
 
 @end

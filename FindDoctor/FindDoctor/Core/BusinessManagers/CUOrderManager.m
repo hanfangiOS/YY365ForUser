@@ -664,7 +664,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                NSArray *obj = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"diagnosisRecords"];
+                NSDictionary *obj = [[result.responseObject dictionaryForKeySafely:@"data"] dictionaryForKeySafely:@"diagnosisRecords"];
                 Doctor *doctor = [[Doctor alloc]init];
                 doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clincName"],[obj valueForKey:@"clincAddr"]];
                 doctor.avatar = [obj valueForKey:@"doctorIcon"];

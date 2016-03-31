@@ -8,8 +8,12 @@
 
 #import "CUPlatFormManager.h"
 #import "AppCore.h"
+#import "JSONKit.h"
+#import "CUServerAPIConstant.h"
+#import "TipHandler+HUD.h"
 
 #define Platform_PlistName  @"platform.plist"
+#define UrlInAppStore @"https://itunes.apple.com/cn/app/uyi365-for-patient/id1091982091?mt=12"
 
 @implementation CUPlatFormManager
 
@@ -125,5 +129,6 @@ SINGLETON_IMPLENTATION(CUPlatFormManager);
 {
     [[AppCore sharedInstance].fileAccessManager saveObject:self.platform forKey:Platform_PlistName error:nil];
 }
+
 
 @end
