@@ -466,7 +466,7 @@
             if (!connectionError) {
                 NSDictionary *dict =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
                 NSDictionary * dataDict = [dict dictionaryForKeySafely:@"data"];
-                NSString * appVersion = [dataDict stringForKeySafely:@"ios_user"];
+                NSString * appVersion = [dataDict stringForKeySafely:@"APP_IOS_USER"];
                 if([weakSelf checkIfNeedUpdateWithAppVersion:appVersion]){
                     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"版本更新" message:[NSString stringWithFormat:@"重要更新版本%@,请前往App Store进行更新,否则将无法正常使用",appVersion] delegate:weakSelf cancelButtonTitle:@"退出" otherButtonTitles:@"下载", nil];
                     [alert show];
