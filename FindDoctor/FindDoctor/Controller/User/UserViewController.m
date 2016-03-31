@@ -53,6 +53,7 @@
 {
     _loginVC.slideNavigationController = self.slideNavigationController;
     [super viewWillAppear:animated];
+    [_contentTableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
