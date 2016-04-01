@@ -442,7 +442,7 @@
     NSURL* url = [NSURL URLWithString:@"http://uyi365.com/baseFrame/base/VersionCheck.jmw"];
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    //    [param setObjectSafely:kPlatForm forKey:@"from"];
+        [param setObjectSafely:kPlatForm forKey:@"from"];
     //    [param setObjectSafely:@"VersionCheck" forKey:@"require"];
     //    [param setObjectSafely:@(1111111111) forKey:@"interfaceID"];
     //    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
@@ -466,7 +466,7 @@
             if (!connectionError) {
                 NSDictionary *dict =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
                 NSDictionary * dataDict = [dict dictionaryForKeySafely:@"data"];
-                NSString * appVersion = [dataDict stringForKeySafely:@"APP_IOS_USER"];
+                NSString * appVersion = [dataDict stringForKeySafely:@"version"];
                 if([weakSelf checkIfNeedUpdateWithAppVersion:appVersion]){
                     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"版本更新" message:[NSString stringWithFormat:@"重要更新版本%@,请前往App Store进行更新,否则将无法正常使用",appVersion] delegate:weakSelf cancelButtonTitle:@"退出" otherButtonTitles:@"下载", nil];
                     [alert show];
