@@ -74,9 +74,14 @@
     }
 }
 
-//- (CGFloat)widthForString{
-//    
-//}
+- (CGFloat)widthForString:(NSString *)string font:(UIFont *)font{
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)//限制最大的宽度和高度
+                                       options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading  |NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:@{NSFontAttributeName: font}
+                                       context:nil];
+    
+    return rect.size.width;
+}
 
 
 @end
