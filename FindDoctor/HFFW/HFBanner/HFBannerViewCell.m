@@ -24,7 +24,7 @@
 
 - (void)setURL:(NSString *)URL{
     _URL = URL;
-    [self sd_setImageWithURL:[NSURL URLWithString:_URL]];
+//    [self sd_setImageWithURL:[NSURL URLWithString:_URL]];
 //    [self sd_setImageWithURL:[NSURL URLWithString:_URL] placeholderImage:nil options:SDWebImageAvoidAutoSetImage progress:^(NSInteger receivedSize, NSInteger expectedSize) {
 //        
 //    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
