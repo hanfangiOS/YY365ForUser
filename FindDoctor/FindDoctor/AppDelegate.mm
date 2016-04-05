@@ -28,7 +28,6 @@
 #import "SNIntroduceView.h"
 #import "CUPlatFormManager.h"
 
-#import "NewHomeViewController.h"
 #import "HomeViewController.h"
 #import "UserCenterController.h"
 #import "VIPController.h"
@@ -293,9 +292,7 @@
 
 - (SNTabViewController*)createTabBarController
 {
-//    HomeViewController *homeVC = [[HomeViewController alloc] initWithPageName:@"HomeViewController"];
-//    homeVC.customTabBarItem = [self tabBarItemAtIndex:0];
-    NewHomeViewController *homeVC = [[NewHomeViewController alloc] initWithPageName:@"NewHomeViewController"];
+    HomeViewController *homeVC = [[HomeViewController alloc] initWithPageName:@"HomeViewController"];
     homeVC.customTabBarItem = [self tabBarItemAtIndex:0];
     
     NearbyController *orderVC = [[NearbyController alloc] initWithPageName:@"NearbyController"];
