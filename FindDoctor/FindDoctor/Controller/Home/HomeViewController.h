@@ -1,15 +1,15 @@
+////
+////  HomeViewController.h
+////  EShiJia
+////
+////  Created by zhouzhenhua on 15-4-19.
+////  Copyright (c) 2015年 li na. All rights reserved.
+////
 //
-//  HomeViewController.h
-//  EShiJia
+//#import "CUViewController.h"
 //
-//  Created by zhouzhenhua on 15-4-19.
-//  Copyright (c) 2015年 li na. All rights reserved.
+//@interface HomeViewController : CUViewController<UITableViewDelegate,UITableViewDataSource>
 //
-
-#import "CUViewController.h"
-
-@interface HomeViewController : CUViewController<UITableViewDelegate,UITableViewDataSource>
-
-@property (nonatomic, strong) UITableView *tipTableView;
-
-@end
+//@property (nonatomic, strong) UITableView *tipTableView;
+//
+//@end

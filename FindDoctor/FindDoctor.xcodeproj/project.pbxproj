@@ -174,6 +174,11 @@
 		7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */; };
 		7F2B655C1C9010E0007C2860 /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2B655B1C9010E0007C2860 /* LaunchView.m */; };
 		7F2B65651C90245B007C2860 /* Launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F2B65641C90245B007C2860 /* Launch.jpg */; };
+		7F49BC371CB3577F00EAA34A /* HFBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC321CB3577F00EAA34A /* HFBannerView.m */; };
+		7F49BC381CB3577F00EAA34A /* HFBannerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC341CB3577F00EAA34A /* HFBannerViewCell.m */; };
+		7F49BC391CB3577F00EAA34A /* HFPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC361CB3577F00EAA34A /* HFPageControl.m */; };
+		7F49BC3D1CB35D2500EAA34A /* HFTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC3C1CB35D2500EAA34A /* HFTitleView.m */; };
+		7F49BC401CB3635500EAA34A /* StarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC3F1CB3635500EAA34A /* StarRatingView.m */; };
 		7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */; };
 		7F71E8C51C993BC400656CAF /* DiagnosisRemarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F71E8C41C993BC400656CAF /* DiagnosisRemarkController.m */; };
 		7F71E8C81C9940F900656CAF /* DiagnosisRemarkTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F71E8C71C9940F900656CAF /* DiagnosisRemarkTitleView.m */; };
@@ -182,6 +187,11 @@
 		7F81A25B1C98439D009FEA60 /* nice.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2581C98439D009FEA60 /* nice.png */; };
 		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
+		7FB3FB371CB20EDB00A99C97 /* NewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB361CB20EDB00A99C97 /* NewHomeViewController.m */; };
+		7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB391CB245A500A99C97 /* Banner.m */; };
+		7FB3FB3D1CB24C3C00A99C97 /* HomeSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */; };
+		7FB3FB401CB24C6000A99C97 /* GoodDoctorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB3F1CB24C6000A99C97 /* GoodDoctorView.m */; };
+		7FB3FB431CB24C8E00A99C97 /* GoodClinicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */; };
 		7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */; };
 		7FD0BBA41C9A43FB004D2E02 /* FlagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBA31C9A43FB004D2E02 /* FlagView.m */; };
 		7FD0BBCA1C9A58C9004D2E02 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBA81C9A58C9004D2E02 /* IQNSArray+Sort.m */; };
@@ -335,7 +345,6 @@
 		E10EDCA91B8B60930035B6E7 /* OrderCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E10EDC931B8B60930035B6E7 /* OrderCellContentView.m */; };
 		E10EDCAC1B8B60930035B6E7 /* OrderResultButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E10EDC991B8B60930035B6E7 /* OrderResultButtonView.m */; };
 		E10EDCAE1B8B60930035B6E7 /* OrderTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E10EDC9D1B8B60930035B6E7 /* OrderTextLabel.m */; };
-		E10EDCB21B8B60DE0035B6E7 /* StarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E10EDCB11B8B60DE0035B6E7 /* StarRatingView.m */; };
 		E10EDCB51B8B649E0035B6E7 /* OrderCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10EDCB41B8B649E0035B6E7 /* OrderCreateController.m */; };
 		E10EDCB81B8B64AC0035B6E7 /* OrderConfirmController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10EDCB71B8B64AC0035B6E7 /* OrderConfirmController.m */; };
 		E10EDCBB1B8B66820035B6E7 /* OrderInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E10EDCBA1B8B66820035B6E7 /* OrderInfoView.m */; };
@@ -903,6 +912,16 @@
 		7F2B655A1C9010E0007C2860 /* LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchView.h; sourceTree = "<group>"; };
 		7F2B655B1C9010E0007C2860 /* LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchView.m; sourceTree = "<group>"; };
 		7F2B65641C90245B007C2860 /* Launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Launch.jpg; sourceTree = "<group>"; };
+		7F49BC311CB3577F00EAA34A /* HFBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBannerView.h; sourceTree = "<group>"; };
+		7F49BC321CB3577F00EAA34A /* HFBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBannerView.m; sourceTree = "<group>"; };
+		7F49BC331CB3577F00EAA34A /* HFBannerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBannerViewCell.h; sourceTree = "<group>"; };
+		7F49BC341CB3577F00EAA34A /* HFBannerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBannerViewCell.m; sourceTree = "<group>"; };
+		7F49BC351CB3577F00EAA34A /* HFPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPageControl.h; sourceTree = "<group>"; };
+		7F49BC361CB3577F00EAA34A /* HFPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPageControl.m; sourceTree = "<group>"; };
+		7F49BC3B1CB35D2500EAA34A /* HFTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTitleView.h; sourceTree = "<group>"; };
+		7F49BC3C1CB35D2500EAA34A /* HFTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTitleView.m; sourceTree = "<group>"; };
+		7F49BC3E1CB3635500EAA34A /* StarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarRatingView.h; sourceTree = "<group>"; };
+		7F49BC3F1CB3635500EAA34A /* StarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarRatingView.m; sourceTree = "<group>"; };
 		7F5610E31C859871004DCCDF /* DoctorSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultViewController.h; sourceTree = "<group>"; };
 		7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultViewController.m; sourceTree = "<group>"; };
 		7F71E8C31C993BC400656CAF /* DiagnosisRemarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosisRemarkController.h; sourceTree = "<group>"; };
@@ -916,6 +935,16 @@
 		7FB267C31C8699B4008FCF05 /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		7FB267C51C869C4B008FCF05 /* CUSearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSearchManager.h; sourceTree = "<group>"; };
 		7FB267C61C869C4B008FCF05 /* CUSearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSearchManager.m; sourceTree = "<group>"; };
+		7FB3FB351CB20EDB00A99C97 /* NewHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHomeViewController.h; sourceTree = "<group>"; };
+		7FB3FB361CB20EDB00A99C97 /* NewHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewHomeViewController.m; sourceTree = "<group>"; };
+		7FB3FB381CB245A500A99C97 /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
+		7FB3FB391CB245A500A99C97 /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
+		7FB3FB3B1CB24C3C00A99C97 /* HomeSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchView.h; sourceTree = "<group>"; };
+		7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchView.m; sourceTree = "<group>"; };
+		7FB3FB3E1CB24C6000A99C97 /* GoodDoctorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodDoctorView.h; sourceTree = "<group>"; };
+		7FB3FB3F1CB24C6000A99C97 /* GoodDoctorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorView.m; sourceTree = "<group>"; };
+		7FB3FB411CB24C8E00A99C97 /* GoodClinicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicView.h; sourceTree = "<group>"; };
+		7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicView.m; sourceTree = "<group>"; };
 		7FC36A431C85D69500650F75 /* DoctorSearchResultListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultListModel.h; sourceTree = "<group>"; };
 		7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultListModel.m; sourceTree = "<group>"; };
 		7FD0BBA21C9A43F4004D2E02 /* FlagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagView.h; sourceTree = "<group>"; };
@@ -1160,8 +1189,6 @@
 		E10EDC991B8B60930035B6E7 /* OrderResultButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderResultButtonView.m; sourceTree = "<group>"; };
 		E10EDC9C1B8B60930035B6E7 /* OrderTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTextLabel.h; sourceTree = "<group>"; };
 		E10EDC9D1B8B60930035B6E7 /* OrderTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTextLabel.m; sourceTree = "<group>"; };
-		E10EDCAF1B8B60C70035B6E7 /* StarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarRatingView.h; sourceTree = "<group>"; };
-		E10EDCB11B8B60DE0035B6E7 /* StarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarRatingView.m; sourceTree = "<group>"; };
 		E10EDCB31B8B649E0035B6E7 /* OrderCreateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCreateController.h; sourceTree = "<group>"; };
 		E10EDCB41B8B649E0035B6E7 /* OrderCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCreateController.m; sourceTree = "<group>"; };
 		E10EDCB61B8B64AC0035B6E7 /* OrderConfirmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmController.h; sourceTree = "<group>"; };
@@ -1982,6 +2009,7 @@
 		3ED856351A9376D400516900 = {
 			isa = PBXGroup;
 			children = (
+				7F49BC2F1CB3577F00EAA34A /* HFFW */,
 				BC0E84E51C7C66C200082AA9 /* libstdc++.6.0.9.tbd */,
 				E1EB1B831B70A43A0048B8EB /* uyi365ForPationt */,
 				3ED8566B1A9379B700516900 /* SNArchitecture */,
@@ -2498,6 +2526,37 @@
 				7F2B65641C90245B007C2860 /* Launch.jpg */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		7F49BC2F1CB3577F00EAA34A /* HFFW */ = {
+			isa = PBXGroup;
+			children = (
+				7F49BC3A1CB35CFC00EAA34A /* HFTitleView */,
+				7F49BC301CB3577F00EAA34A /* HFBanner */,
+			);
+			path = HFFW;
+			sourceTree = "<group>";
+		};
+		7F49BC301CB3577F00EAA34A /* HFBanner */ = {
+			isa = PBXGroup;
+			children = (
+				7F49BC311CB3577F00EAA34A /* HFBannerView.h */,
+				7F49BC321CB3577F00EAA34A /* HFBannerView.m */,
+				7F49BC331CB3577F00EAA34A /* HFBannerViewCell.h */,
+				7F49BC341CB3577F00EAA34A /* HFBannerViewCell.m */,
+				7F49BC351CB3577F00EAA34A /* HFPageControl.h */,
+				7F49BC361CB3577F00EAA34A /* HFPageControl.m */,
+			);
+			path = HFBanner;
+			sourceTree = "<group>";
+		};
+		7F49BC3A1CB35CFC00EAA34A /* HFTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				7F49BC3B1CB35D2500EAA34A /* HFTitleView.h */,
+				7F49BC3C1CB35D2500EAA34A /* HFTitleView.m */,
+			);
+			path = HFTitleView;
 			sourceTree = "<group>";
 		};
 		7F81A2551C98439D009FEA60 /* Comment */ = {
@@ -3515,6 +3574,8 @@
 				BC9354AB1C1AB07100C60921 /* HomeSubViewController2.m */,
 				E1EB1B8E1B70A43A0048B8EB /* HomeViewController.h */,
 				E1EB1B8F1B70A43A0048B8EB /* HomeViewController.m */,
+				7FB3FB351CB20EDB00A99C97 /* NewHomeViewController.h */,
+				7FB3FB361CB20EDB00A99C97 /* NewHomeViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3669,6 +3730,8 @@
 				7FB267C31C8699B4008FCF05 /* Search.m */,
 				7FFB94901C967051003523B4 /* Comment.h */,
 				7FFB94911C967051003523B4 /* Comment.m */,
+				7FB3FB381CB245A500A99C97 /* Banner.h */,
+				7FB3FB391CB245A500A99C97 /* Banner.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3912,6 +3975,8 @@
 		E1EB1D511B70A43B0048B8EB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7F49BC3E1CB3635500EAA34A /* StarRatingView.h */,
+				7F49BC3F1CB3635500EAA34A /* StarRatingView.m */,
 				7FD0BBA21C9A43F4004D2E02 /* FlagView.h */,
 				7FD0BBA31C9A43FB004D2E02 /* FlagView.m */,
 				BC8E36CB1C27D95900304637 /* CUPageControl.h */,
@@ -3929,8 +3994,6 @@
 				D405CC5F1C003DA700A56264 /* CUPasswordView.m */,
 				E1EB1D601B70A43B0048B8EB /* CULoginView.h */,
 				E1EB1D611B70A43B0048B8EB /* CULoginView.m */,
-				E10EDCAF1B8B60C70035B6E7 /* StarRatingView.h */,
-				E10EDCB11B8B60DE0035B6E7 /* StarRatingView.m */,
 				E1283B001B96066E00FC26C5 /* SNDropDownMenu */,
 				E1EB1D621B70A43B0048B8EB /* CycleScrollView */,
 				E1EB1D6D1B70A43B0048B8EB /* Introduce */,
@@ -4168,6 +4231,12 @@
 				E61DDAC71B8E2FBA00120365 /* SubObjectCell.m */,
 				E689E9A31BA87E9E00A3ED3C /* HomeTipView.h */,
 				E689E9A41BA87E9E00A3ED3C /* HomeTipView.m */,
+				7FB3FB3B1CB24C3C00A99C97 /* HomeSearchView.h */,
+				7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */,
+				7FB3FB3E1CB24C6000A99C97 /* GoodDoctorView.h */,
+				7FB3FB3F1CB24C6000A99C97 /* GoodDoctorView.m */,
+				7FB3FB411CB24C8E00A99C97 /* GoodClinicView.h */,
+				7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4532,6 +4601,7 @@
 				3EDEBAA51A961C4800E72809 /* PlausibleDatabase.m in Sources */,
 				E1EB1D7C1B70A43B0048B8EB /* SNViewController+ServerAPI.m in Sources */,
 				7F71E8C51C993BC400656CAF /* DiagnosisRemarkController.m in Sources */,
+				7FB3FB3D1CB24C3C00A99C97 /* HomeSearchView.m in Sources */,
 				3EDF9E171AAAD0F400F85C44 /* SNRefreshControl.m in Sources */,
 				7FD0BBCA1C9A58C9004D2E02 /* IQNSArray+Sort.m in Sources */,
 				3EDEBAC61A961C4800E72809 /* UIImage+Resize.m in Sources */,
@@ -4566,6 +4636,7 @@
 				3EDEBA711A961C4800E72809 /* SNHTTPRequestOperationManager.m in Sources */,
 				3EDEBA761A961C4800E72809 /* AFJSONRequestOperation.m in Sources */,
 				E624AEF71BA1E0650032046E /* ConsultationReply.m in Sources */,
+				7F49BC371CB3577F00EAA34A /* HFBannerView.m in Sources */,
 				3EDEBA851A961C4800E72809 /* AFHTTPRequestOperation+SNNetworking.m in Sources */,
 				3EDB03DA1AB585C400A10747 /* MMLocationManager.m in Sources */,
 				3EDEBABA1A961C4800E72809 /* SNBusinessMananger.m in Sources */,
@@ -4581,6 +4652,7 @@
 				D405CC6C1C02B5B100A56264 /* CUEmailViewController.m in Sources */,
 				E1EB1D801B70A43B0048B8EB /* CUServerAPIDataBaseParser.m in Sources */,
 				BCE331F61C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m in Sources */,
+				7F49BC401CB3635500EAA34A /* StarRatingView.m in Sources */,
 				BCAA4AD11C8686750085A165 /* Diagnosis.m in Sources */,
 				E1EB1E581B70A43B0048B8EB /* BaseCell.m in Sources */,
 				7FB267C41C8699B4008FCF05 /* Search.m in Sources */,
@@ -4591,6 +4663,7 @@
 				3EDEBB051AA36ECD00E72809 /* UIColor+SNExtension.m in Sources */,
 				3EEA8E391AC8E31F0033DCC7 /* CUListViewController.m in Sources */,
 				E124D7BC1B9313500007B85E /* CUVerifyCodeController.m in Sources */,
+				7F49BC3D1CB35D2500EAA34A /* HFTitleView.m in Sources */,
 				7FFB94951C96BAD1003523B4 /* MyCommentListModel.m in Sources */,
 				BC3C8A9F1C43624F00B8E76A /* BlueDotLabelInDoctorHeaderView.m in Sources */,
 				BC9354AC1C1AB07100C60921 /* HomeSubViewController2.m in Sources */,
@@ -4608,6 +4681,7 @@
 				E1EB1ED41B70A4D70048B8EB /* NSDataEx.m in Sources */,
 				3EDEBA791A961C4800E72809 /* AFPropertyListRequestOperation.m in Sources */,
 				3EEA8E3A1AC8E31F0033DCC7 /* CUScrollViewController.m in Sources */,
+				7FB3FB431CB24C8E00A99C97 /* GoodClinicView.m in Sources */,
 				E1BA197D1BD3DB6500851B01 /* MapMechanicView.m in Sources */,
 				E10EDCCB1B8B84D40035B6E7 /* payRequsestHandler.mm in Sources */,
 				E6ECE1611BA1C49600A3F998 /* ReplyHeader.m in Sources */,
@@ -4651,6 +4725,7 @@
 				7FD0BBD01C9A58C9004D2E02 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				E1A6B90F1BAE9DFF001A458D /* PasswordSettingController.m in Sources */,
 				3EDEBAAE1A961C4800E72809 /* NSArray+SNExtension.m in Sources */,
+				7FB3FB371CB20EDB00A99C97 /* NewHomeViewController.m in Sources */,
 				BC8E36C61C27C69400304637 /* TitleView.m in Sources */,
 				BC1859CE1C8440060050251B /* MyDiagnosisRecordsViewController.m in Sources */,
 				3E239E6C1AB2CF90001F0B3F /* TipHandler+HUD.m in Sources */,
@@ -4680,7 +4755,6 @@
 				E1EB1E601B70A43B0048B8EB /* SNCycleScrollView.m in Sources */,
 				BC8E36CD1C27D95900304637 /* CUPageControl.m in Sources */,
 				E10EDCB81B8B64AC0035B6E7 /* OrderConfirmController.m in Sources */,
-				E10EDCB21B8B60DE0035B6E7 /* StarRatingView.m in Sources */,
 				7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */,
 				BC0E84E91C7D5F2C00082AA9 /* ClinicMainViewController.m in Sources */,
 				3EDEBA7F1A961C4800E72809 /* SDWebImageDecoder.m in Sources */,
@@ -4721,6 +4795,7 @@
 				E120632E1BC6D463004920BA /* VIPController.m in Sources */,
 				7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */,
 				3EDEBACB1A961C4800E72809 /* UIView+Extension.m in Sources */,
+				7FB3FB401CB24C6000A99C97 /* GoodDoctorView.m in Sources */,
 				3EDEBA731A961C4800E72809 /* AFHTTPClient.m in Sources */,
 				3EDEBA811A961C4800E72809 /* SDWebImageManager.m in Sources */,
 				E1EB1D7D1B70A43B0048B8EB /* AppCore.m in Sources */,
@@ -4775,10 +4850,12 @@
 				E10EDCCC1B8B84D40035B6E7 /* WXUtil.mm in Sources */,
 				3EDEBA8D1A961C4800E72809 /* SNNetworkImageCache.m in Sources */,
 				3ED0A76E1AA608F40040E529 /* UIViewController+ViewControllerContainerment.m in Sources */,
+				7F49BC391CB3577F00EAA34A /* HFPageControl.m in Sources */,
 				3EDEBACA1A961C4800E72809 /* UIView+Debug.m in Sources */,
 				E1EB1E5A1B70A43B0048B8EB /* CellContentView.m in Sources */,
 				E1BA19751BD3DAB100851B01 /* NearbyController.mm in Sources */,
 				E1AD6F381B7CDF6100FB3C55 /* DoctorListContainerController.m in Sources */,
+				7F49BC381CB3577F00EAA34A /* HFBannerViewCell.m in Sources */,
 				BC1859C11C84394C0050251B /* YYZhenDanLineView.m in Sources */,
 				3EDEBA8C1A961C4800E72809 /* SNNetworkClient.m in Sources */,
 				BC1859C01C84394C0050251B /* YYPhotoView.m in Sources */,
@@ -4817,6 +4894,7 @@
 				E689E9A51BA87E9E00A3ED3C /* HomeTipView.m in Sources */,
 				3ED0A74D1AA603C50040E529 /* UIViewController+SNSlideStatus.m in Sources */,
 				E1EB1E401B70A43B0048B8EB /* UIView+Scale.m in Sources */,
+				7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */,
 				E1EB1ED51B70A4D70048B8EB /* openssl_wrapper.m in Sources */,
 				E1EB1E5D1B70A43B0048B8EB /* CULoginView.m in Sources */,
 				E6ECE15E1BA0AA9700A3F998 /* ConsultationReplyController.m in Sources */,

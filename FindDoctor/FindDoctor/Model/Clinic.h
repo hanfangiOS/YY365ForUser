@@ -11,9 +11,9 @@
 @interface Clinic : NSObject
 
 @property NSInteger ID;
-@property (strong, nonatomic) NSString *name;//姓名
+@property (strong, nonatomic) NSString *name;//名字
 @property (strong, nonatomic) NSString *address;//就诊地址
-@property (strong, nonatomic) NSURL *icon;//头像
+@property (strong, nonatomic) NSURL    *icon;//图片
 @property (strong, nonatomic) NSString *doctorsString;//地图页面显示的诊所医生字符串
 @property (strong, nonatomic) NSString *breifInfo;//简介
 @property (strong, nonatomic) NSString *detailIntro;//详细介绍

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GoodClinicView : NSObject
+@interface GoodClinicView : UIView
+
+- (void)resetData;
 
 @end

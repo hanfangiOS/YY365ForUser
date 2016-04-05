@@ -117,3 +117,9 @@
 #define kPlatForm     @"APP_IOS_USER"
 
 typedef void(^CUCommomButtonAction)(void);
+
+//以5s做标准参考，用来充当固定值比例系数
+//横向
+#define HFixRatio5S  (kScreenWidth / 320.0)
+//纵向
+#define VFixRatio5S  (kScreenHeight / 568.0)

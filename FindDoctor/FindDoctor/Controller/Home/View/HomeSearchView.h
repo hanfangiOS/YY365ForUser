@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HomeSearchView : NSObject
+@protocol HomeSearchViewDelegate
+
+@required
+
+@optional
+
+@end
+
+@interface HomeSearchView : UIView
+
+@property (nonatomic, weak, nullable) id <HomeSearchViewDelegate> delegate;
+
+- (void)resetData;
 
 @end

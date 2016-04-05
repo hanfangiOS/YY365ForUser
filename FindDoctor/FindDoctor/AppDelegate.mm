@@ -28,6 +28,7 @@
 #import "SNIntroduceView.h"
 #import "CUPlatFormManager.h"
 
+#import "NewHomeViewController.h"
 #import "HomeViewController.h"
 #import "UserCenterController.h"
 #import "VIPController.h"
@@ -44,7 +45,7 @@
 #import "CUServerAPIConstant.h"
 #import "TipHandler+HUD.h"
 
-@interface AppDelegate () <BMKGeneralDelegate,UIAlertViewDelegate>
+@interface AppDelegate () <BMKGeneralDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
 
 @property (nonatomic,strong)SNTabViewController * tabController;
 
@@ -52,9 +53,10 @@
 
 @implementation AppDelegate
 {
-    BMKMapManager       *_mapManager;//百度地图引擎
-    BMKLocationService  *_locService;//百度定位服务
-    BMKGeoCodeSearch    *_geoSearcher;//百度GEO搜索
+    BMKMapManager       * _mapManager;//百度地图引擎
+    BMKLocationService  * _locService;//百度定位服务
+    BMKGeoCodeSearch    * _geoSearcher;//百度GEO搜索
+    CLLocationManager   * _locationManager;//苹果自带定位引擎
 }
 
 + (AppDelegate *)app
@@ -87,6 +89,7 @@
     
     // 地图
     [self initMapService];
+    [self initCLLocationService];
     
     // TODO:暂时关闭基础组件
     // 统计
@@ -164,6 +167,16 @@
             navigationItem.leftBarButtonItems = [NSArray arrayWithObjects:leftSpacer, [navigationItem.leftBarButtonItems objectAtIndex:0], nil];
         }
     }];
+}
+
+//初始化苹果自带CLLocationManager
+- (void)initCLLocationService {
+
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+     _locationManager.distanceFilter = kCLDistanceFilterNone;
+    [_locationManager startUpdatingLocation];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -280,7 +293,9 @@
 
 - (SNTabViewController*)createTabBarController
 {
-    HomeViewController *homeVC = [[HomeViewController alloc] initWithPageName:@"HomeViewController"];
+//    HomeViewController *homeVC = [[HomeViewController alloc] initWithPageName:@"HomeViewController"];
+//    homeVC.customTabBarItem = [self tabBarItemAtIndex:0];
+    NewHomeViewController *homeVC = [[NewHomeViewController alloc] initWithPageName:@"NewHomeViewController"];
     homeVC.customTabBarItem = [self tabBarItemAtIndex:0];
     
     NearbyController *orderVC = [[NearbyController alloc] initWithPageName:@"NearbyController"];
@@ -352,6 +367,34 @@
     return canHandleURL;
 }
 
+
+#pragma mark - CLLocationManager Delegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *array, NSError *error){
+        if (array.count > 0){
+            CLPlacemark *placemark = [array objectAtIndex:0];
+            NSString * currentCity = placemark.locality;
+            if (!currentCity) {
+                currentCity = placemark.administrativeArea;
+            }
+            NSLog(@"当前城市是 %@", currentCity);
+            
+            [[NSUserDefaults standardUserDefaults] setObject:currentCity forKey:@"currentCity"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+         }
+        else if (error == nil && [array count] == 0)
+        {
+            NSLog(@"No results were returned.");
+        }
+        else if (error != nil)
+        {
+            NSLog(@"An error occurred = %@", error);
+        }
+    }];
+    [manager stopUpdatingLocation];
+}
 
 #pragma mark - BMKMapManager Delegate
 
