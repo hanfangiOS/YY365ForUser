@@ -187,7 +187,6 @@
 		7F81A25B1C98439D009FEA60 /* nice.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2581C98439D009FEA60 /* nice.png */; };
 		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
-		7FB3FB371CB20EDB00A99C97 /* NewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB361CB20EDB00A99C97 /* NewHomeViewController.m */; };
 		7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB391CB245A500A99C97 /* Banner.m */; };
 		7FB3FB3D1CB24C3C00A99C97 /* HomeSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */; };
 		7FB3FB401CB24C6000A99C97 /* GoodDoctorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB3F1CB24C6000A99C97 /* GoodDoctorView.m */; };
@@ -935,8 +934,6 @@
 		7FB267C31C8699B4008FCF05 /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		7FB267C51C869C4B008FCF05 /* CUSearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSearchManager.h; sourceTree = "<group>"; };
 		7FB267C61C869C4B008FCF05 /* CUSearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSearchManager.m; sourceTree = "<group>"; };
-		7FB3FB351CB20EDB00A99C97 /* NewHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHomeViewController.h; sourceTree = "<group>"; };
-		7FB3FB361CB20EDB00A99C97 /* NewHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewHomeViewController.m; sourceTree = "<group>"; };
 		7FB3FB381CB245A500A99C97 /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
 		7FB3FB391CB245A500A99C97 /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		7FB3FB3B1CB24C3C00A99C97 /* HomeSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchView.h; sourceTree = "<group>"; };
@@ -3574,8 +3571,6 @@
 				BC9354AB1C1AB07100C60921 /* HomeSubViewController2.m */,
 				E1EB1B8E1B70A43A0048B8EB /* HomeViewController.h */,
 				E1EB1B8F1B70A43A0048B8EB /* HomeViewController.m */,
-				7FB3FB351CB20EDB00A99C97 /* NewHomeViewController.h */,
-				7FB3FB361CB20EDB00A99C97 /* NewHomeViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -4725,7 +4720,6 @@
 				7FD0BBD01C9A58C9004D2E02 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				E1A6B90F1BAE9DFF001A458D /* PasswordSettingController.m in Sources */,
 				3EDEBAAE1A961C4800E72809 /* NSArray+SNExtension.m in Sources */,
-				7FB3FB371CB20EDB00A99C97 /* NewHomeViewController.m in Sources */,
 				BC8E36C61C27C69400304637 /* TitleView.m in Sources */,
 				BC1859CE1C8440060050251B /* MyDiagnosisRecordsViewController.m in Sources */,
 				3E239E6C1AB2CF90001F0B3F /* TipHandler+HUD.m in Sources */,
