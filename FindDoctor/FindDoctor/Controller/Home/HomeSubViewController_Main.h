@@ -24,6 +24,8 @@
 
 @interface HomeSubViewController_Main : CUViewController
 
+@property (nonatomic, strong) HomeModel * homeModel;
+
 @end
 
 

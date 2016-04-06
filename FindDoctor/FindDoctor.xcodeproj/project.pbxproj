@@ -213,6 +213,7 @@
 		7FD0BBEF1C9A9D0E004D2E02 /* button_myDoctor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBE91C9A9D0E004D2E02 /* button_myDoctor@2x.png */; };
 		7FD0BBF01C9A9D0E004D2E02 /* button_myRecord@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBEA1C9A9D0E004D2E02 /* button_myRecord@2x.png */; };
 		7FD0BBF11C9A9D0E004D2E02 /* button_myScore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBEB1C9A9D0E004D2E02 /* button_myScore@2x.png */; };
+		7FE327AD1CB4B65900032376 /* HomeSubViewMainBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */; };
 		7FFB948B1C966D78003523B4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948A1C966D78003523B4 /* MyCommentViewController.m */; };
 		7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948E1C966DFC003523B4 /* MyCommentCell.m */; };
 		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
@@ -984,6 +985,8 @@
 		7FD0BBE91C9A9D0E004D2E02 /* button_myDoctor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myDoctor@2x.png"; sourceTree = "<group>"; };
 		7FD0BBEA1C9A9D0E004D2E02 /* button_myRecord@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myRecord@2x.png"; sourceTree = "<group>"; };
 		7FD0BBEB1C9A9D0E004D2E02 /* button_myScore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myScore@2x.png"; sourceTree = "<group>"; };
+		7FE327AB1CB4B65900032376 /* HomeSubViewMainBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewMainBannerCell.h; sourceTree = "<group>"; };
+		7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainBannerCell.m; sourceTree = "<group>"; };
 		7FFB94891C966D78003523B4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
 		7FFB948A1C966D78003523B4 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
 		7FFB948D1C966DFC003523B4 /* MyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentCell.h; sourceTree = "<group>"; };
@@ -4242,6 +4245,8 @@
 				7FB3FB3F1CB24C6000A99C97 /* GoodDoctorView.m */,
 				7FB3FB411CB24C8E00A99C97 /* GoodClinicView.h */,
 				7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */,
+				7FE327AB1CB4B65900032376 /* HomeSubViewMainBannerCell.h */,
+				7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4848,6 +4853,7 @@
 				BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */,
 				3EDEBA701A961C4800E72809 /* SNHTTPRequestOperation.m in Sources */,
 				3ED0A7591AA603C50040E529 /* SNSlideNavigationController+SNControllerHierarchy.m in Sources */,
+				7FE327AD1CB4B65900032376 /* HomeSubViewMainBannerCell.m in Sources */,
 				E17B691E1B837A920079DDB5 /* UIView+Scale.m in Sources */,
 				3EDD3C2D1AAC68220038338F /* SNLocationRequest.m in Sources */,
 				3ED0A7541AA603C50040E529 /* SNNavigationBar.m in Sources */,

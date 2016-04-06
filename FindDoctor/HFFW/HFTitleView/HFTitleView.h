@@ -15,9 +15,18 @@ typedef NS_ENUM(NSInteger, HFTitleViewStyle)
     HFTitleViewStyleNone = 2
 };
 
+@protocol HFTitleViewDelegate <NSObject>
+
+@optional
+//重绘方法
+- (void)redrawTitleView;
+
+@end
+
 @interface HFTitleView : UIView
 
 @property (strong,nonatomic) UILabel * title;
+@property (assign,nonatomic) BOOL      ifRedraw;//是否手动重绘 重绘需实现HFTitleViewDelegate中的redrawTitleView方法
 
 - (instancetype)initWithFrame:(CGRect)frame;
 
@@ -27,7 +36,14 @@ typedef NS_ENUM(NSInteger, HFTitleViewStyle)
 
 - (void)resetData;//刷新数据
 
-- (void)redrawTitleView;//手动调整HFTitleView的UI
+@property (nonatomic, weak) id <HFTitleViewDelegate> delegate;
+
+/*
+ * HFTitleViewStyleDefault  -------- 标题 ---------
+ */
+
+@property (strong,nonatomic) UIImageView * leftLine;//左线
+@property (strong,nonatomic) UIImageView * rightLine;//右线
 
 /*
  * HFTitleViewStyleLoadMore  图片 标题            加载更多
@@ -38,8 +54,6 @@ typedef void(^LoadMoreAction)(void);//加载更多的Block
 @property (strong,nonatomic) UIImageView * pic;//图片
 @property (strong,nonatomic) UIButton * loadMoreBtn;//加载更多
 @property (nonatomic, copy) LoadMoreAction loadMoreAction;//Block对象
-
-- (void)setLoadMoreText:(NSString *)text;//设置加载更多文字
 
 @end
 

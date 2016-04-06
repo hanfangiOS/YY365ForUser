@@ -10,7 +10,7 @@
 
 @interface Banner : NSObject
 
-@property (strong,nonatomic) NSString                   * image;//
+@property (strong,nonatomic) NSString                   * imageUrl;//
 @property (strong,nonatomic) NSString                   * url;//
 @property (assign,nonatomic) NSInteger                    type;//
 @property (assign,nonatomic) NSInteger                    ID;//
