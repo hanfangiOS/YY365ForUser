@@ -35,7 +35,7 @@
     
     NSMutableArray * _subjectArray;//科室数组
 }
-@property (strong, nonatomic) UIScrollView        * scrollView;
+
 @property (strong, nonatomic) HomeSearchView      * homeSearchView;
 @property (strong, nonatomic) HFBannerView        * mainBannerView;
 @property (strong, nonatomic) UICollectionView    * collectionView;
@@ -70,6 +70,10 @@
     [self initSubviews];
 }
 
+- (void)loadContentView{
+    self.contentView.backgroundColor = [UIColor purpleColor];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [self postRequestHomeInfo];
@@ -94,54 +98,6 @@
 }
 
 - (void)initSubviews{
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    
-    self.contentView.backgroundColor = [UIColor clearColor];
-    
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.contentView.bounds];
-    [self.contentView addSubview:self.scrollView];
-    
-    //搜索栏
-    self.homeSearchView = [[HomeSearchView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 60 * VFixRatio5S)];
-    [self.scrollView addSubview:self.homeSearchView];
-    
-    //主轮播图
-    self.mainBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, self.homeSearchView.maxY, kScreenWidth, kScreenWidth/2)];
-    self.mainBannerView.delegate = self;
-    self.mainBannerView.dataSource = self;
-    [self.scrollView addSubview:self.mainBannerView];
-    
-    //科室
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.mainBannerView.maxY, kScreenWidth, kScreenWidth/2) collectionViewLayout:layout];
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
-    self.collectionView.scrollEnabled = NO;
-    [self.scrollView addSubview:self.collectionView];
-    
-    //好评医生
-    self.goodDoctorView = [[GoodDoctorView alloc] initWithFrame:CGRectMake(0, self.collectionView.maxY + 10, kScreenWidth, 200 * VFixRatio5S)];
-    [self.scrollView addSubview:self.goodDoctorView];
-    
-    //广告轮播图
-    self.adverBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, self.goodDoctorView.maxY + 10, kScreenWidth, 85 * VFixRatio5S)];
-    self.adverBannerView.delegate = self;
-    self.adverBannerView.dataSource = self;
-    [self.scrollView addSubview:self.adverBannerView];
-    
-    //好评诊所
-    self.goodClinicView = [[GoodClinicView alloc] initWithFrame:CGRectMake(0, self.adverBannerView.maxY, kScreenWidth, 284 * VFixRatio5S)];
-    [self.scrollView addSubview:self.goodClinicView];
-    
-    //名医馆
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.goodClinicView.maxY + 10, kScreenWidth, 388 * VFixRatio5S) style:UITableViewStylePlain];
-    self.tableView.tableFooterView = [UIView new];
-    HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30 * VFixRatio5S)];
-    self.tableView.tableHeaderView = titleView;
-    self.tableView.scrollEnabled = NO;
-    [self.scrollView addSubview:self.tableView];
-    
     
 }
 

@@ -263,6 +263,8 @@
 		BC3C8A981C435FBC00B8E76A /* haveguanzhu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3C8A961C435FBC00B8E76A /* haveguanzhu@2x.png */; };
 		BC3C8A991C435FBC00B8E76A /* guanzhu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3C8A971C435FBC00B8E76A /* guanzhu@2x.png */; };
 		BC3C8A9F1C43624F00B8E76A /* BlueDotLabelInDoctorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3C8A9E1C43624F00B8E76A /* BlueDotLabelInDoctorHeaderView.m */; };
+		BC4DE6BB1CB4F31100D223B0 /* home_iconCity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4DE6BA1CB4F31100D223B0 /* home_iconCity@2x.png */; };
+		BC4DE6BE1CB4F94C00D223B0 /* CityChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4DE6BD1CB4F94C00D223B0 /* CityChooseButton.m */; };
 		BC540E101C43525F002E3B41 /* myAccountBigButtonImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC540E0C1C43525F002E3B41 /* myAccountBigButtonImage@2x.png */; };
 		BC540E111C43525F002E3B41 /* myCollectionBigButtonImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC540E0D1C43525F002E3B41 /* myCollectionBigButtonImage@2x.png */; };
 		BC540E121C43525F002E3B41 /* myDoctorBigButtonImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC540E0E1C43525F002E3B41 /* myDoctorBigButtonImage@2x.png */; };
@@ -1062,6 +1064,9 @@
 		BC3C8A971C435FBC00B8E76A /* guanzhu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanzhu@2x.png"; sourceTree = "<group>"; };
 		BC3C8A9D1C43624F00B8E76A /* BlueDotLabelInDoctorHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueDotLabelInDoctorHeaderView.h; sourceTree = "<group>"; };
 		BC3C8A9E1C43624F00B8E76A /* BlueDotLabelInDoctorHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueDotLabelInDoctorHeaderView.m; sourceTree = "<group>"; };
+		BC4DE6BA1CB4F31100D223B0 /* home_iconCity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_iconCity@2x.png"; sourceTree = "<group>"; };
+		BC4DE6BC1CB4F94B00D223B0 /* CityChooseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityChooseButton.h; sourceTree = "<group>"; };
+		BC4DE6BD1CB4F94C00D223B0 /* CityChooseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityChooseButton.m; sourceTree = "<group>"; };
 		BC540E0C1C43525F002E3B41 /* myAccountBigButtonImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myAccountBigButtonImage@2x.png"; sourceTree = "<group>"; };
 		BC540E0D1C43525F002E3B41 /* myCollectionBigButtonImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCollectionBigButtonImage@2x.png"; sourceTree = "<group>"; };
 		BC540E0E1C43525F002E3B41 /* myDoctorBigButtonImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myDoctorBigButtonImage@2x.png"; sourceTree = "<group>"; };
@@ -4242,6 +4247,8 @@
 				7FB3FB3F1CB24C6000A99C97 /* GoodDoctorView.m */,
 				7FB3FB411CB24C8E00A99C97 /* GoodClinicView.h */,
 				7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */,
+				BC4DE6BC1CB4F94B00D223B0 /* CityChooseButton.h */,
+				BC4DE6BD1CB4F94C00D223B0 /* CityChooseButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4249,6 +4256,7 @@
 		E689E99E1BA876E700A3ED3C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BC4DE6BA1CB4F31100D223B0 /* home_iconCity@2x.png */,
 				BC8E36D71C27F29400304637 /* ICONsubject */,
 				D41954D71BF5A547004859EF /* Icon@2x.png */,
 				BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */,
@@ -4418,6 +4426,7 @@
 				E1EB1E491B70A43B0048B8EB /* UMShareEditViewControlleriPad.xib in Resources */,
 				E124D7B01B92ECA80007B85E /* login_icon_lock@2x.png in Resources */,
 				3E6F0DA11AB67CAC00D6742A /* flotageBackgroud@2x.png in Resources */,
+				BC4DE6BB1CB4F31100D223B0 /* home_iconCity@2x.png in Resources */,
 				E1EB1E4B1B70A43B0048B8EB /* UMSnsAccountViewController.xib in Resources */,
 				E10EDCD31B8CA2140035B6E7 /* btn_white_nor@2x.png in Resources */,
 				BC8E36D41C27E02900304637 /* activePoint@2x.png in Resources */,
@@ -4691,6 +4700,7 @@
 				7FB3FB431CB24C8E00A99C97 /* GoodClinicView.m in Sources */,
 				E1BA197D1BD3DB6500851B01 /* MapMechanicView.m in Sources */,
 				E10EDCCB1B8B84D40035B6E7 /* payRequsestHandler.mm in Sources */,
+				BC4DE6BE1CB4F94C00D223B0 /* CityChooseButton.m in Sources */,
 				E6ECE1611BA1C49600A3F998 /* ReplyHeader.m in Sources */,
 				7FD0BBCF1C9A58C9004D2E02 /* IQKeyboardManager.m in Sources */,
 				E1EB1E611B70A43B0048B8EB /* SNFocusImageItem.m in Sources */,

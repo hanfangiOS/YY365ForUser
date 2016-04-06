@@ -23,7 +23,7 @@
 
 
 @interface HomeSubViewController_Main : CUViewController
-
+@property (strong, nonatomic) UIScrollView        * scrollView;
 @end
 
 
