@@ -14,9 +14,17 @@
 
 @implementation HomeSubViewController_Search
 
+- (id)initWithPageName:(NSString *)pageName
+{
+    self = [super initWithPageName:pageName];
+    if (self) {
+        _hasNavigationBar = NO;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.hasNavigationBar = NO;
     // Do any additional setup after loading the view.
 }
 

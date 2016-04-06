@@ -38,6 +38,7 @@
     
     NSMutableArray * _subjectArray;//科室数组
 }
+
 @property (strong, nonatomic) UITableView         * tableView;
 @property (strong, nonatomic) UIView              * headerView;
 @property (strong, nonatomic) HFBannerView        * mainBannerView;
@@ -100,7 +101,15 @@
     
     self.contentView.backgroundColor = [UIColor clearColor];
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.contentView.bounds];
+    //名医馆
+    self.tableView = [[UITableView alloc] initWithFrame:self.contentView.bounds style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.tableFooterView = [UIView new];
+    self.tableView.scrollEnabled = NO;
+    self.tableView.backgroundColor = [UIColor purpleColor];
+    [self.contentView addSubview:self.tableView];
+
     
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1015 * VFixRatio6)];
     self.tableView.tableHeaderView = self.headerView;
@@ -109,16 +118,17 @@
     self.mainBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth/2)];
     self.mainBannerView.delegate = self;
     self.mainBannerView.dataSource = self;
+    self.mainBannerView.backgroundColor = [UIColor redColor];
     [self.headerView addSubview:self.mainBannerView];
     
     //科室
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.mainBannerView.maxY, kScreenWidth, kScreenWidth/2) collectionViewLayout:layout];
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
+//    self.collectionView.dataSource = self;
+//    self.collectionView.delegate = self;
     self.collectionView.scrollEnabled = NO;
-    self.collectionView.backgroundColor = [UIColor redColor];
+//    self.collectionView.backgroundColor = [UIColor redColor];
     [self.headerView addSubview:self.collectionView];
     
     //好评医生
@@ -135,11 +145,6 @@
     self.goodClinicView = [[GoodClinicView alloc] initWithFrame:CGRectMake(0, self.adverBannerView.maxY, kScreenWidth, 284 * VFixRatio6)];
     [self.headerView addSubview:self.goodClinicView];
     
-    //名医馆
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 425 * VFixRatio6) style:UITableViewStylePlain];
-    self.tableView.tableFooterView = [UIView new];
-    self.tableView.scrollEnabled = NO;
-    [self.headerView addSubview:self.tableView];
 }
 
 - (void)resetData{
