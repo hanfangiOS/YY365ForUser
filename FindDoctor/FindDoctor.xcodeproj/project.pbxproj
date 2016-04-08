@@ -191,7 +191,6 @@
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
 		7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB391CB245A500A99C97 /* Banner.m */; };
 		7FB3FB3D1CB24C3C00A99C97 /* HomeSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */; };
-		7FB3FB401CB24C6000A99C97 /* GoodDoctorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB3F1CB24C6000A99C97 /* GoodDoctorView.m */; };
 		7FB3FB431CB24C8E00A99C97 /* GoodClinicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */; };
 		7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */; };
 		7FD0BBA41C9A43FB004D2E02 /* FlagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBA31C9A43FB004D2E02 /* FlagView.m */; };
@@ -224,6 +223,7 @@
 		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
 		7FFB94951C96BAD1003523B4 /* MyCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */; };
 		7FFB94981C96C3E6003523B4 /* CUCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94971C96C3E6003523B4 /* CUCommentManager.m */; };
+		7FFD7AA41CB751FE000C45E3 /* GoodDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */; };
 		BC003A0D1C9FC215006098BA /* flag_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC003A0C1C9FC215006098BA /* flag_selected@2x.png */; };
 		BC0E84B31C7857E700082AA9 /* AddFamilyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */; };
 		BC0E84B51C78598E00082AA9 /* littleTrumpet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */; };
@@ -952,8 +952,6 @@
 		7FB3FB391CB245A500A99C97 /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		7FB3FB3B1CB24C3C00A99C97 /* HomeSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchView.h; sourceTree = "<group>"; };
 		7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchView.m; sourceTree = "<group>"; };
-		7FB3FB3E1CB24C6000A99C97 /* GoodDoctorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodDoctorView.h; sourceTree = "<group>"; };
-		7FB3FB3F1CB24C6000A99C97 /* GoodDoctorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorView.m; sourceTree = "<group>"; };
 		7FB3FB411CB24C8E00A99C97 /* GoodClinicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicView.h; sourceTree = "<group>"; };
 		7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicView.m; sourceTree = "<group>"; };
 		7FC36A431C85D69500650F75 /* DoctorSearchResultListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultListModel.h; sourceTree = "<group>"; };
@@ -1014,6 +1012,8 @@
 		7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentListModel.m; sourceTree = "<group>"; };
 		7FFB94961C96C3E6003523B4 /* CUCommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUCommentManager.h; sourceTree = "<group>"; };
 		7FFB94971C96C3E6003523B4 /* CUCommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUCommentManager.m; sourceTree = "<group>"; };
+		7FFD7AA21CB751FE000C45E3 /* GoodDoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodDoctorViewController.h; sourceTree = "<group>"; };
+		7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorViewController.m; sourceTree = "<group>"; };
 		BC003A0C1C9FC215006098BA /* flag_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_selected@2x.png"; sourceTree = "<group>"; };
 		BC0E84B11C7857E700082AA9 /* AddFamilyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFamilyMemberViewController.h; path = AddFamiliMember/AddFamilyMemberViewController.h; sourceTree = "<group>"; };
 		BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddFamilyMemberViewController.m; path = AddFamiliMember/AddFamilyMemberViewController.m; sourceTree = "<group>"; };
@@ -3604,6 +3604,8 @@
 				BCEC31D31CB3AC220003851A /* HomeSubViewController_Main.m */,
 				E1EB1B8E1B70A43A0048B8EB /* HomeViewController.h */,
 				E1EB1B8F1B70A43A0048B8EB /* HomeViewController.m */,
+				7FFD7AA21CB751FE000C45E3 /* GoodDoctorViewController.h */,
+				7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -4261,8 +4263,6 @@
 				E689E9A41BA87E9E00A3ED3C /* HomeTipView.m */,
 				7FB3FB3B1CB24C3C00A99C97 /* HomeSearchView.h */,
 				7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */,
-				7FB3FB3E1CB24C6000A99C97 /* GoodDoctorView.h */,
-				7FB3FB3F1CB24C6000A99C97 /* GoodDoctorView.m */,
 				7FB3FB411CB24C8E00A99C97 /* GoodClinicView.h */,
 				7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */,
 				7FE327AB1CB4B65900032376 /* HomeSubViewMainBannerCell.h */,
@@ -4843,7 +4843,6 @@
 				E120632E1BC6D463004920BA /* VIPController.m in Sources */,
 				7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */,
 				3EDEBACB1A961C4800E72809 /* UIView+Extension.m in Sources */,
-				7FB3FB401CB24C6000A99C97 /* GoodDoctorView.m in Sources */,
 				3EDEBA731A961C4800E72809 /* AFHTTPClient.m in Sources */,
 				3EDEBA811A961C4800E72809 /* SDWebImageManager.m in Sources */,
 				E1EB1D7D1B70A43B0048B8EB /* AppCore.m in Sources */,
@@ -4910,6 +4909,7 @@
 				BC1859C01C84394C0050251B /* YYPhotoView.m in Sources */,
 				E10EDCA11B8B60930035B6E7 /* CUOrderListViewController.m in Sources */,
 				7FD0BBD61C9A58C9004D2E02 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				7FFD7AA41CB751FE000C45E3 /* GoodDoctorViewController.m in Sources */,
 				3EDF9E211AAAD42400F85C44 /* SNSegmentControl.m in Sources */,
 				3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */,
 				BC14A9991C72D3860053CEAF /* Clinic.m in Sources */,

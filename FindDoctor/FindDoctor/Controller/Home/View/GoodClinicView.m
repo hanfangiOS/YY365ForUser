@@ -11,13 +11,13 @@
 
 @implementation GoodClinicView
 
-- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
-    self = [super initWithFrame:frame collectionViewLayout:layout];
-    if (self) {
-        _data = [NSMutableArray new];
-        return self;
-    }
-    return nil;
-}
+//- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
+//    self = [super initWithFrame:frame collectionViewLayout:layout];
+//    if (self) {
+//        _data = [NSMutableArray new];
+//        return self;
+//    }
+//    return nil;
+//}
 
 @end

@@ -13,4 +13,10 @@
 
 @property (strong,nonatomic) Doctor * data;
 
+@property (strong,nonatomic) UIView * bottomLine;
+
++ (float)defaultHeight;
+
++ (float)defaultWidth;
+
 @end
