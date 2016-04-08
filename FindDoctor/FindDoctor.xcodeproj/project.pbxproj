@@ -262,6 +262,7 @@
 		BC190E851C9257F7007BA6A8 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = BC190E811C9257F7007BA6A8 /* Icon-120.png */; };
 		BC190E861C9257F7007BA6A8 /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = BC190E821C9257F7007BA6A8 /* Icon-152.png */; };
 		BC190E871C9257F7007BA6A8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC190E831C9257F7007BA6A8 /* Icon@2x.png */; };
+		BC1A58A41CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1A58A31CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.m */; };
 		BC313D211C3A143C00C9469D /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC313D201C3A143C00C9469D /* UserViewController.m */; };
 		BC313D271C3A147500C9469D /* BigButtonsInUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC313D241C3A147500C9469D /* BigButtonsInUser.m */; };
 		BC313D281C3A147500C9469D /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC313D261C3A147500C9469D /* UserHeaderView.m */; };
@@ -1070,6 +1071,8 @@
 		BC190E811C9257F7007BA6A8 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		BC190E821C9257F7007BA6A8 /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = "<group>"; };
 		BC190E831C9257F7007BA6A8 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		BC1A58A21CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHistoryCollectionViewCell.h; sourceTree = "<group>"; };
+		BC1A58A31CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHistoryCollectionViewCell.m; sourceTree = "<group>"; };
 		BC313D1F1C3A143C00C9469D /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserViewController.h; path = User/UserViewController.h; sourceTree = "<group>"; };
 		BC313D201C3A143C00C9469D /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserViewController.m; path = User/UserViewController.m; sourceTree = "<group>"; };
 		BC313D231C3A147500C9469D /* BigButtonsInUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigButtonsInUser.h; sourceTree = "<group>"; };
@@ -4279,6 +4282,8 @@
 				7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */,
 				7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */,
 				7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */,
+				BC1A58A21CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.h */,
+				BC1A58A31CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4657,6 +4662,7 @@
 				E1C2F4ED1BA8796F0070224F /* CUUserManager+Address.m in Sources */,
 				3ED0A74E1AA603C50040E529 /* SNSlideController+SNControllerHierarchy.m in Sources */,
 				E17B69141B8376D60079DDB5 /* DoctorCell.m in Sources */,
+				BC1A58A41CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.m in Sources */,
 				D405D8141B7DF01F0043FD76 /* MiscFiveStarsState.m in Sources */,
 				D405D8111B7DF0130043FD76 /* DoctorTableViewCell.m in Sources */,
 				3EDEBAEE1AA0452900E72809 /* SNBaseListModel.m in Sources */,

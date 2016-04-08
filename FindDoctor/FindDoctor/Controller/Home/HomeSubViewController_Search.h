@@ -8,6 +8,6 @@
 
 #import "CUViewController.h"
 
-@interface HomeSubViewController_Search : CUViewController
+@interface HomeSubViewController_Search : CUViewController<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @end
