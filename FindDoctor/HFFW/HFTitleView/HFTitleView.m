@@ -62,8 +62,8 @@
     }
 }
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
+- (void)layoutSubviews{
+    [super layoutSubviews];
     
     //是否重绘
     if (self.ifRedraw == YES) {
@@ -104,12 +104,12 @@
 }
 
 - (void)resetData{
-    [self setNeedsDisplay];
+    [self setNeedsLayout];
 }
 
 - (void)loadMoreClick:(id)sender{
     if (self.loadMoreAction) {
-        self.loadMoreAction();
+        self.loadMoreAction(sender);
     }
 }
 

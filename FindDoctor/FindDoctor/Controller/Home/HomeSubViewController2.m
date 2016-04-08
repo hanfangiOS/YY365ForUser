@@ -157,7 +157,7 @@
 {
     NSString *collectionCellName = NSStringFromClass([SubObjectCell class]);
     SubObjectCell *collectionCell = (SubObjectCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
-    collectionCell.subobject = [_itemArray objectAtIndex:indexPath.row];
+    collectionCell.subobject = [_itemArray objectAtIndexSafely:indexPath.row];
     return collectionCell;
 }
 

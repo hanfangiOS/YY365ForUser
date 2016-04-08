@@ -169,6 +169,8 @@
 		3EFB22361AB5B43F000872F3 /* SNTopTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB22351AB5B43F000872F3 /* SNTopTabViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3EFB223B1AB5B5A4000872F3 /* SNTopTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB22381AB5B5A4000872F3 /* SNTopTabBar.m */; };
 		3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */; };
+		7F0469FC1CB65C9F00C9C054 /* GoodDoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */; };
+		7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */; };
 		7F229E841C97F57C009C19E8 /* DoctorFameListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E831C97F57C009C19E8 /* DoctorFameListController.m */; };
 		7F229E871C97F59E009C19E8 /* DoctorFameListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */; };
 		7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */; };
@@ -214,6 +216,9 @@
 		7FD0BBF01C9A9D0E004D2E02 /* button_myRecord@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBEA1C9A9D0E004D2E02 /* button_myRecord@2x.png */; };
 		7FD0BBF11C9A9D0E004D2E02 /* button_myScore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBEB1C9A9D0E004D2E02 /* button_myScore@2x.png */; };
 		7FE327AD1CB4B65900032376 /* HomeSubViewMainBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */; };
+		7FE327B01CB51A4200032376 /* HomeSubViewMainTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */; };
+		7FE327B61CB51A8200032376 /* HomeSubViewMainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327B51CB51A8200032376 /* HomeSubViewMainCollectionCell.m */; };
+		7FE327BB1CB525E600032376 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327BA1CB525E600032376 /* ScoreLabel.m */; };
 		7FFB948B1C966D78003523B4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948A1C966D78003523B4 /* MyCommentViewController.m */; };
 		7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948E1C966DFC003523B4 /* MyCommentCell.m */; };
 		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
@@ -907,6 +912,10 @@
 		3EFB22381AB5B5A4000872F3 /* SNTopTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTopTabBar.m; sourceTree = "<group>"; };
 		3EFB22391AB5B5A4000872F3 /* SNTopTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTopTabBarItem.h; sourceTree = "<group>"; };
 		3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTopTabBarItem.m; sourceTree = "<group>"; };
+		7F0469FA1CB65C9F00C9C054 /* GoodDoctorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodDoctorCell.h; sourceTree = "<group>"; };
+		7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorCell.m; sourceTree = "<group>"; };
+		7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicCell.h; sourceTree = "<group>"; };
+		7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicCell.m; sourceTree = "<group>"; };
 		7F229E821C97F57C009C19E8 /* DoctorFameListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListController.h; sourceTree = "<group>"; };
 		7F229E831C97F57C009C19E8 /* DoctorFameListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameListController.m; sourceTree = "<group>"; };
 		7F229E851C97F59E009C19E8 /* DoctorFameListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListModel.h; sourceTree = "<group>"; };
@@ -989,6 +998,12 @@
 		7FD0BBEB1C9A9D0E004D2E02 /* button_myScore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_myScore@2x.png"; sourceTree = "<group>"; };
 		7FE327AB1CB4B65900032376 /* HomeSubViewMainBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewMainBannerCell.h; sourceTree = "<group>"; };
 		7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainBannerCell.m; sourceTree = "<group>"; };
+		7FE327AE1CB51A4200032376 /* HomeSubViewMainTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewMainTableCell.h; sourceTree = "<group>"; };
+		7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainTableCell.m; sourceTree = "<group>"; };
+		7FE327B41CB51A8200032376 /* HomeSubViewMainCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewMainCollectionCell.h; sourceTree = "<group>"; };
+		7FE327B51CB51A8200032376 /* HomeSubViewMainCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainCollectionCell.m; sourceTree = "<group>"; };
+		7FE327B91CB525E600032376 /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
+		7FE327BA1CB525E600032376 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
 		7FFB94891C966D78003523B4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
 		7FFB948A1C966D78003523B4 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
 		7FFB948D1C966DFC003523B4 /* MyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentCell.h; sourceTree = "<group>"; };
@@ -4254,6 +4269,16 @@
 				7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */,
 				BC4DE6BC1CB4F94B00D223B0 /* CityChooseButton.h */,
 				BC4DE6BD1CB4F94C00D223B0 /* CityChooseButton.m */,
+				7FE327AE1CB51A4200032376 /* HomeSubViewMainTableCell.h */,
+				7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */,
+				7FE327B41CB51A8200032376 /* HomeSubViewMainCollectionCell.h */,
+				7FE327B51CB51A8200032376 /* HomeSubViewMainCollectionCell.m */,
+				7FE327B91CB525E600032376 /* ScoreLabel.h */,
+				7FE327BA1CB525E600032376 /* ScoreLabel.m */,
+				7F0469FA1CB65C9F00C9C054 /* GoodDoctorCell.h */,
+				7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */,
+				7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */,
+				7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4766,6 +4791,7 @@
 				3EDEBA7A1A961C4800E72809 /* AFURLConnectionOperation.m in Sources */,
 				E61DDACD1B8E41DC00120365 /* DoctorPraiseController.m in Sources */,
 				3EDEBA8E1A961C4800E72809 /* SNNetworkOAuthClient.m in Sources */,
+				7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */,
 				BC883BD81C74430000333B47 /* DoctorSelectOrderTimeController.m in Sources */,
 				E1A6B91D1BB1B97A001A458D /* CUPickerView.m in Sources */,
 				3EDEBA8A1A961C4800E72809 /* SNNetworkClient+Image.m in Sources */,
@@ -4784,6 +4810,7 @@
 				E1EB1E3F1B70A43B0048B8EB /* UIImageView+LBBlurredImage.m in Sources */,
 				3EDD02AC1B133BDC0081B641 /* SNViewController+Nav.m in Sources */,
 				BCAA4AB61C856D610085A165 /* MyClinicListViewController.m in Sources */,
+				7FE327B61CB51A8200032376 /* HomeSubViewMainCollectionCell.m in Sources */,
 				3EDEBA891A961C4800E72809 /* SNNetworkClient+CompletionBlock.m in Sources */,
 				7F71E8C81C9940F900656CAF /* DiagnosisRemarkTitleView.m in Sources */,
 				E1EB1D7B1B70A43B0048B8EB /* HomeViewController.m in Sources */,
@@ -4893,6 +4920,7 @@
 				3EDEBAF61AA0721A00E72809 /* SNPlatformManager.m in Sources */,
 				3ED0A75A1AA603C50040E529 /* SNSlideNavigationController+SNGeometry.m in Sources */,
 				3EDEBAB81A961C4800E72809 /* SNSingleton.m in Sources */,
+				7FE327BB1CB525E600032376 /* ScoreLabel.m in Sources */,
 				BCAA4AC71C85964D0085A165 /* MyAccountMainViewController.m in Sources */,
 				BC1859BB1C841C860050251B /* SubjectOfClinicMainCollectionViewCell.m in Sources */,
 				3ED0A7681AA607FD0040E529 /* SNTabViewController.m in Sources */,
@@ -4914,6 +4942,7 @@
 				3EDEBA781A961C4800E72809 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3EDEBAC81A961C4800E72809 /* UIImage+SNExtension.m in Sources */,
 				E689E9A51BA87E9E00A3ED3C /* HomeTipView.m in Sources */,
+				7F0469FC1CB65C9F00C9C054 /* GoodDoctorCell.m in Sources */,
 				3ED0A74D1AA603C50040E529 /* UIViewController+SNSlideStatus.m in Sources */,
 				E1EB1E401B70A43B0048B8EB /* UIView+Scale.m in Sources */,
 				7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */,
@@ -4942,6 +4971,7 @@
 				E10EDC751B8B5D570035B6E7 /* Disease.m in Sources */,
 				E1EB1D811B70A43B0048B8EB /* CUUserParser.m in Sources */,
 				3EDEBA721A961C4800E72809 /* SNNetWorkReachability.m in Sources */,
+				7FE327B01CB51A4200032376 /* HomeSubViewMainTableCell.m in Sources */,
 				E6D4548A1B92C51E00F3C3D0 /* DoctorFlagCell.m in Sources */,
 				BC1859CD1C8440060050251B /* MyDiagnosisRecordsListModel.m in Sources */,
 				3EDEBAAC1A961C4800E72809 /* PLSqliteResultSet.m in Sources */,

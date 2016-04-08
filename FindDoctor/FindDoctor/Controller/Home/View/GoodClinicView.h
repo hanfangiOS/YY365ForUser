@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GoodClinicView : UIView
+@interface GoodClinicView : UICollectionView
 
-- (void)resetData;
+@property (strong,nonatomic)NSMutableArray * data;//数组内包含Clinic模型
 
 @end
