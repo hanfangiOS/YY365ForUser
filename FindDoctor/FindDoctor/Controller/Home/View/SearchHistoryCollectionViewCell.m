@@ -40,7 +40,7 @@
     _string = string;
     _label.text = _string;
     [_label sizeToFit];
-    _label.frame = CGRectMake(_label.frameX, _label.frameY, _label.frameWidth + 10, _label.frameHeight + 10);
+    _label.frame = CGRectMake(_label.frameX, _label.frameY, _label.frameWidth + 20, _label.frameHeight + 15);
     _label.layer.cornerRadius = _label.frameHeight/2.f;
 }
 

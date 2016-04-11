@@ -56,8 +56,8 @@
         [self addSubview:self.pic];
         
         self.loadMoreBtn = [[UIButton alloc] init];
-        self.loadMoreBtn.titleLabel.textAlignment = NSTextAlignmentRight;
-        [self.loadMoreBtn addTarget:self action:@selector(loadMoreClick:) forControlEvents:UIControlEventTouchUpInside];
+        self.loadMoreBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        
         [self addSubview:self.loadMoreBtn];
     }
 }
@@ -93,7 +93,7 @@
             CGSize titleSize = [self sizeForString:self.title.text font:self.title.font limitSize:CGSizeMake(0, self.pic.frameHeight)];
             self.title.frame = CGRectMake(8 * HFixRatio6 + self.pic.maxX, (self.frameHeight - titleSize.height)/2, titleSize.width, titleSize.height);
             
-            self.loadMoreBtn.frame = CGRectMake(self.title.maxX + 10 * HFixRatio6, (self.frameWidth - self.frameHeight - 9 * VFixRatio6 * 2)/2, self.frameHeight - (self.title.maxX + 10 * HFixRatio6) - 8 * HFixRatio6 , self.frameHeight - 9 * VFixRatio6 * 2);
+            self.loadMoreBtn.frame = CGRectMake(self.title.maxX + 10 * HFixRatio6,9 * VFixRatio6,kScreenWidth - (self.title.maxX + 10 * HFixRatio6) - 10 * HFixRatio6,self.frameHeight - 9 * VFixRatio6 * 2);
         }
         
         if (_style == HFTitleViewStyleNone) {
@@ -105,12 +105,6 @@
 
 - (void)resetData{
     [self setNeedsLayout];
-}
-
-- (void)loadMoreClick:(id)sender{
-    if (self.loadMoreAction) {
-        self.loadMoreAction(sender);
-    }
 }
 
 - (CGSize)sizeForString:(NSString *)string font:(UIFont *)font limitSize:(CGSize)limitSize{

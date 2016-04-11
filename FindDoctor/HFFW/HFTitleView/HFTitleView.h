@@ -49,11 +49,8 @@ typedef NS_ENUM(NSInteger, HFTitleViewStyle)
  * HFTitleViewStyleLoadMore  图片 标题            加载更多
  */
 
-typedef void(^LoadMoreAction)(id sender);//加载更多的Block
-
 @property (strong,nonatomic) UIImageView * pic;//图片
 @property (strong,nonatomic) UIButton * loadMoreBtn;//加载更多
-@property (nonatomic, copy) LoadMoreAction loadMoreAction;//Block对象
 
 @end
 

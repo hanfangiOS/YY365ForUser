@@ -9,8 +9,10 @@
 #import "HomeSubViewController_Search.h"
 #import "SearchHistoryCollectionViewCell.h"
 #import "SearchHistoryHelper.h"
+#import "EqualSpaceFlowLayout.h"
+#import "SubObjectHeaderView.h"
 
-@interface HomeSubViewController_Search ()
+@interface HomeSubViewController_Search ()<EqualSpaceFlowLayoutDelegate>
 
 @property (nonatomic, strong) UICollectionView *searchHistoryCollectionView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -35,24 +37,11 @@
 }
 
 - (void)loadContentView{
-    float item_interval_x = 15*kScreenRatio;
-    float margin = 30*kScreenRatio;
-    float item_interval_y = 12*kScreenRatio;
-    
-    int line_number = 3;
-    float item_width = (kScreenWidth-margin*2-item_interval_x*(line_number-1))/line_number;
-    float item_height = 100*kScreenRatio;
-    
-    float header_height = 55.f;
-    
     [self loadHistory];
     
-    UICollectionViewFlowLayout *collectionLayout = [[UICollectionViewFlowLayout alloc] init];
-    collectionLayout.itemSize = CGSizeMake(item_width, item_height);
-    collectionLayout.minimumInteritemSpacing = item_interval_x;
-    collectionLayout.minimumLineSpacing = item_interval_y;
-    collectionLayout.sectionInset = UIEdgeInsetsMake(0, margin, 0, margin);
-    collectionLayout.headerReferenceSize = CGSizeMake(kScreenWidth, header_height);
+    EqualSpaceFlowLayout *collectionLayout = [[EqualSpaceFlowLayout alloc] init];
+    collectionLayout.headerReferenceSize = CGSizeMake(kScreenWidth, 40);
+    collectionLayout.delegate = self;
     
     CGRect collectionFrame = self.contentView.bounds;
     
@@ -67,6 +56,9 @@
     
     NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
     [self.searchHistoryCollectionView registerClass:[SearchHistoryCollectionViewCell class] forCellWithReuseIdentifier:collectionCellName];
+    
+    NSString *collectionHeaderName = NSStringFromClass([SubObjectHeaderView class]);
+    [self.searchHistoryCollectionView registerClass:[SubObjectHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:collectionHeaderName];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,30 +72,18 @@
 }
 
 #pragma mark --UICollectionViewDelegateFlowLayout
-//定义每个UICollectionView 的大小
+////定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGSize size = [self sizeForString:(NSString *)[self.dataArray objectAtIndex:indexPath.row] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
     
-    return CGSizeMake(size.width+10, size.height+10);
-}
-//定义每个UICollectionView 的 margin
-//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    return UIEdgeInsetsMake(5, 5, 5, 5);
-//}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 5;
-}
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return -5;
+    return CGSizeMake(size.width+20, size.height+15);
 }
 
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return 4;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -122,6 +102,18 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        NSString *collectionHeaderName = NSStringFromClass([SubObjectHeaderView class]);
+        SubObjectHeaderView *headerview = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:collectionHeaderName forIndexPath:indexPath];
+        NSArray *headers = [[NSArray alloc] initWithObjects:@"搜索记录", @"热搜医师", @"热搜病症",@"热搜诊所", nil];
+        headerview.headerTitle = [headers objectAtIndex:indexPath.section];
+        return headerview;
+    }
+    return nil;
 }
 
 #pragma mark - Search History
