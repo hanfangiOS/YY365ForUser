@@ -107,7 +107,7 @@
     self.contentView.backgroundColor = [UIColor clearColor];
     
     //名医馆
-    self.tableView = [[UITableView alloc] initWithFrame:self.contentView.bounds style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, self.contentView.frameHeight - 60) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [UIView new];
@@ -135,7 +135,7 @@
     [self.subjectCollectionView registerClass:[SubObjectCell class] forCellWithReuseIdentifier:@"SubObjectCell"];
     [self.headerView addSubview:self.subjectCollectionView];
     
-    //好评医生
+
     UICollectionViewFlowLayout * doctorLayout = [[UICollectionViewFlowLayout alloc] init];
     [doctorLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self.goodDoctorCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.subjectCollectionView.maxY + 10, kScreenWidth, 200 * VFixRatio6) collectionViewLayout:doctorLayout];
@@ -150,7 +150,6 @@
     self.adverBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, self.self.goodDoctorCollectionView.maxY + 10 * VFixRatio6, kScreenWidth, 85 * VFixRatio6)];
     self.adverBannerView.delegate = self;
     self.adverBannerView.dataSource = self;
-    self.adverBannerView.backgroundColor = [UIColor greenColor];
     [self.headerView addSubview:self.adverBannerView];
     
     //好评诊所
@@ -190,33 +189,45 @@
 
 #pragma mark - HFBannerViewDelegate
 - (NSInteger)numberOfCellInView:(HFBannerView *)view{
-    if (view == self.mainBannerView) {
-        return  self.homeModel.mainBannerList.count;
-    }
-    if (view == self.adverBannerView) {
-        return self.homeModel.adverBannerList.count;
-    }
-    return 0;
+//    if (view == self.mainBannerView) {
+//        return  self.homeModel.mainBannerList.count;
+//    }
+//    if (view == self.adverBannerView) {
+//        return self.homeModel.adverBannerList.count;
+//    }
+//    return 0;
+    return 3;
 }
 
 - (HFBannerViewCell *)HFBannerView:(HFBannerView *)view cellForIndex:(NSInteger)index{
-    HomeSubViewMainBannerCell * cell = [[HomeSubViewMainBannerCell alloc] init];
-    if (view == self.mainBannerView) {
-        cell.data = [self.homeModel.mainBannerList objectAtIndexSafely:index];
+//    HomeSubViewMainBannerCell * cell = [[HomeSubViewMainBannerCell alloc] init];
+//    if (view == self.mainBannerView) {
+//        cell.data = [self.homeModel.mainBannerList objectAtIndexSafely:index];
+//    }
+//    if (view == self.adverBannerView) {
+//        cell.data = [self.homeModel.adverBannerList objectAtIndexSafely:index];
+//    }
+//    return cell;
+    HFBannerViewCell *cell = [[HFBannerViewCell alloc]init];
+    if (index == 0) {
+        cell.backgroundColor = [UIColor yellowColor];
     }
-    if (view == self.adverBannerView) {
-        cell.data = [self.homeModel.adverBannerList objectAtIndexSafely:index];
+    if (index == 1) {
+        cell.backgroundColor = [UIColor grayColor];
+    }
+    if (index == 2) {
+        cell.backgroundColor = [UIColor greenColor];
     }
     return cell;
 }
 
 - (void)HFBannerView:(HFBannerView *)view didSelectAtIndex:(NSInteger)index{
-    if (view == self.mainBannerView) {
-        
-    }
-    if (view == self.adverBannerView) {
-        
-    }
+//    if (view == self.mainBannerView) {
+//        
+//    }
+//    if (view == self.adverBannerView) {
+//        
+//    }
 }
 
 #pragma mark - UICollectionViewDelegate

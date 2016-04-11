@@ -10,6 +10,7 @@
 #import "AppCore.h"
 
 #define kSearchHistoryArray          @"SearchHistoryArray"
+#define historyNumber                6
 
 @implementation SearchHistoryHelper
 
@@ -39,6 +40,10 @@
     }
     
     [array insertObject:history atIndex:0];
+    
+    if (array.count > historyNumber){
+        [array removeLastObject];
+    }
     
     [self saveSearchHistoryArray:array];
 }
