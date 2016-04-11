@@ -9,8 +9,8 @@
 #import "ClinicAdverCell.h"
 #import "UIImageView+WebCache.h"
 
-#define CelldefaultHeight 105 * VFixRatio6
-#define CelldefaultWidth ((kScreenWidth - 30 * HFixRatio6)/2)
+#define CelldefaultHeight 105
+#define CelldefaultWidth ((kScreenWidth - 30)/2)
 
 @implementation ClinicAdverCell{
     UIImageView * icon;

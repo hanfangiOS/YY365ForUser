@@ -12,7 +12,7 @@
 #import "ClinicAdverCell.h"
 #import "HFTitleView.h"
 
-#define sectionHeaderViewHeight 30 * VFixRatio6
+#define sectionHeaderViewHeight 30 
 
 @interface GoodClinicViewController ()
 
@@ -86,17 +86,17 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(16.5 * VFixRatio6 ,10 * HFixRatio6,16 * VFixRatio6,10 * HFixRatio6);
+    return UIEdgeInsetsMake(16.5 ,10 ,16 ,10);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 10 * HFixRatio6;
+    return 10;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 10 * VFixRatio6;
+    return 10;
 }
 
 
@@ -106,12 +106,12 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
-    CGSize size = CGSizeMake(kScreenWidth, 0.5 * VFixRatio6);
+    CGSize size = CGSizeMake(kScreenWidth, 0.5);
     return size;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    CGSize size = CGSizeMake(kScreenWidth, 30 * VFixRatio6);
+    CGSize size = CGSizeMake(kScreenWidth, 30 );
     return size;
 }
 
@@ -137,12 +137,12 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
         titleView.tag = 4000;
         [reuseHeaderView addSubview:titleView];
         
-        UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5 * VFixRatio6)];
+        UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
         topLine.backgroundColor = [UIColor blackColor];
         topLine.tag = 4001;
         [reuseHeaderView addSubview:topLine];
         
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 * HFixRatio6 , sectionHeaderViewHeight - 0.5 * VFixRatio6, kScreenWidth - 10 * 2 * HFixRatio6, 0.5 * VFixRatio6)];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 , sectionHeaderViewHeight - 0.5, kScreenWidth - 10 * 2, 0.5)];
         bottomLine.backgroundColor = [UIColor blackColor];
         bottomLine.tag = 4002;
         [reuseHeaderView addSubview:bottomLine];
@@ -156,7 +156,7 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
             }
         }
         
-        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5 * VFixRatio6)];
+        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
         line.backgroundColor = [UIColor blackColor];
         line.tag = 5000;
         [reuseFooterrView addSubview:line];
