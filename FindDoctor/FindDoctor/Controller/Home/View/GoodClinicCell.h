@@ -13,4 +13,8 @@
 
 @property (strong,nonatomic) Clinic * data;
 
++ (float)defaultHeight;
+
++ (float)defaultWidth;
+
 @end

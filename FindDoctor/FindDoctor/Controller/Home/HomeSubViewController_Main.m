@@ -11,7 +11,7 @@
 #import "DoctorSearchResultListModel.h"
 #import "HomeSearchView.h"
 #import "GoodDoctorViewController.h"
-#import "GoodClinicView.h"
+#import "GoodClinicViewController.h"
 #import "SubObject.h"
 #import "SubObjectCell.h"
 #import "HomeSubViewMainBannerCell.h"
@@ -19,6 +19,7 @@
 #import "DoctorListController.h"
 #import "HomeSubViewMainTableCell.h"
 #import "HomeSubViewMainCollectionCell.h"
+
 
 #define sectionHeaderViewHeight 30 * VFixRatio6
 
@@ -49,8 +50,9 @@
 @property (strong, nonatomic) UICollectionView              * subjectCollectionView;
 @property (strong, nonatomic) GoodDoctorViewController      * goodDoctorVC;
 @property (strong, nonatomic) UICollectionView              * goodDoctorCollectionView;
+@property (strong, nonatomic) GoodClinicViewController      * goodClinicVC;
+@property (strong, nonatomic) UICollectionView              * goodclinicCollectionView;
 @property (strong, nonatomic) HFBannerView                  * adverBannerView;
-@property (strong, nonatomic) GoodClinicView                * goodClinicView;
 
 
 
@@ -157,13 +159,19 @@
     [self.headerView addSubview:self.adverBannerView];
     
     //好评诊所
-    self.goodClinicView = [[GoodClinicView alloc] initWithFrame:CGRectMake(0, self.adverBannerView.maxY, kScreenWidth, 284 * VFixRatio6)];
-    self.goodClinicView.backgroundColor = [UIColor purpleColor];
-        [self.headerView addSubview:self.goodClinicView];
+    UICollectionViewFlowLayout * clinicLayout = [[UICollectionViewFlowLayout alloc] init];
+    [clinicLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    self.goodclinicCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.adverBannerView.maxY, kScreenWidth, 284 * VFixRatio6) collectionViewLayout:clinicLayout];
+    self.goodclinicCollectionView.backgroundColor = [UIColor purpleColor];
+        [self.headerView addSubview:self.goodclinicCollectionView];
     
-    self.headerView.frame = CGRectMake(0, 0, kScreenWidth, self.goodClinicView.maxY);
+    self.headerView.frame = CGRectMake(0, 0, kScreenWidth, self.goodclinicCollectionView.maxY);
     
     [self.tableView setTableHeaderView:self.headerView];
+    
+    self.goodClinicVC = [[GoodClinicViewController alloc] initWithCollectionView:self.goodclinicCollectionView];
+    self.goodclinicCollectionView.delegate = self.goodClinicVC;
+    self.goodclinicCollectionView.dataSource = self.goodClinicVC;
     
 }
 
@@ -172,7 +180,7 @@
     [self.subjectCollectionView reloadData];
     self.goodDoctorVC.data = self.homeModel.goodDoctorList;
     [self.adverBannerView reloadData];
-    self.goodClinicView.data = self.homeModel.goodClinicList;
+    self.goodClinicVC.data = self.homeModel;
     [self.tableView reloadData];
 }
 
@@ -324,6 +332,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat sectionHeaderHeight = sectionHeaderViewHeight;
+    if (scrollView.contentOffset.y <= sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+    } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
+        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+    }
 }
 
 @end

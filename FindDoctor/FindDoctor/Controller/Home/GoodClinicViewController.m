@@ -1,28 +1,30 @@
 //
-//  GoodDoctorViewController.m
+//  GoodClinicViewController.m
 //  FindDoctor
 //
 //  Created by ZhuHaoRan on 16/4/8.
 //  Copyright © 2016年 li na. All rights reserved.
 //
 
-#import "GoodDoctorViewController.h"
-#import "GoodDoctorCell.h"
-#import "Doctor.h"
+#import "GoodClinicViewController.h"
+#import "Clinic.h"
+#import "GoodClinicCell.h"
+#import "ClinicAdverCell.h"
 #import "HFTitleView.h"
 
 #define sectionHeaderViewHeight 30 * VFixRatio6
 
-@interface GoodDoctorViewController ()
+@interface GoodClinicViewController ()
 
 @property (strong,nonatomic)UICollectionView * collectionView;
 
 @end
 
-@implementation GoodDoctorViewController
-
-static NSString * const reuseCellID = @"GoodDoctorCell";
+static NSString * const reuseCellID = @"GoodClinicCell";
+static NSString * const reuseAdverCellID = @"ClinicAdverCell";
 static NSString * const reuseHeaderID = @"ReuseHeaderView";
+
+@implementation GoodClinicViewController
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView{
     self = [super init];
@@ -35,12 +37,13 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
 }
 
 - (void)registerCell{
-
-    [self.collectionView registerClass:[GoodDoctorCell class] forCellWithReuseIdentifier:reuseCellID];
+    
+    [self.collectionView registerClass:[GoodClinicCell class] forCellWithReuseIdentifier:reuseCellID];
+    [self.collectionView registerClass:[ClinicAdverCell class] forCellWithReuseIdentifier:reuseAdverCellID];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseHeaderID];
 }
 
-- (void)setData:(NSMutableArray *)data{
+- (void)setData:(HomeModel *)data{
     _data = data;
     [self.collectionView reloadData];
 }
@@ -48,46 +51,31 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
 #pragma mark - UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-//    return _data.count;
+    //    return _data.count;
     return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    GoodDoctorCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseCellID forIndexPath:indexPath];
-    
-    for (UIView * view in cell.subviews) {
-        if (view.tag == 1000 || view.tag == 1001 || view.tag == 1002) {
-            [view removeFromSuperview];
-        };
-    }
-    
     if (indexPath.row == 0) {
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 * HFixRatio6, 85 * VFixRatio6 - 0.5 * VFixRatio6, kScreenWidth/2 - 0.5 * HFixRatio6, 0.5 * VFixRatio6)];
-        bottomLine.backgroundColor = [UIColor blackColor];
-        bottomLine.tag = 1000;
-        [cell addSubview:bottomLine];
-    }else if (indexPath.row == 1) {
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85 * VFixRatio6 - 0.5 * VFixRatio6, kScreenWidth/2 - 10 * HFixRatio6, 0.5 * VFixRatio6)];
-        bottomLine.backgroundColor = [UIColor blackColor];
-        bottomLine.tag = 1001;
-        [cell addSubview:bottomLine];
+        if (!([self.data.promotionInfo isEqualToString:@""] || !self.data.promotionInfo)) {
+            ClinicAdverCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseAdverCellID forIndexPath:indexPath];
+            cell.backgroundColor = [UIColor whiteColor];
+            return cell;
+        }
     }else{
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85 * VFixRatio6 - 0.5 * VFixRatio6, kScreenWidth/2, 0.5 * VFixRatio6)];
-        bottomLine.backgroundColor = [UIColor blackColor];
-        bottomLine.tag = 1002;
-        [cell addSubview:bottomLine];
+        GoodClinicCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseCellID forIndexPath:indexPath];
+        cell.data = [self.data.goodClinicList objectAtIndexSafely:indexPath.row];
+        cell.backgroundColor = [UIColor whiteColor];
+        return cell;
     }
-    
-    cell.data = [_data objectAtIndexSafely:indexPath.row];
-    cell.backgroundColor = [UIColor whiteColor];
-    return cell;
+    return nil;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return CGSizeMake([GoodDoctorCell defaultWidth],[GoodDoctorCell defaultHeight]);
+    return CGSizeMake([GoodClinicCell defaultWidth],[GoodClinicCell defaultHeight]);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -121,31 +109,31 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
     UICollectionReusableView * reuseHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseHeaderID forIndexPath:indexPath];
     
     for (UIView * view in reuseHeaderView.subviews) {
-        if (view.tag == 3000 || view.tag == 3001 || view.tag == 3002) {
+        if (view.tag == 4000 || view.tag == 4001 || view.tag == 4002) {
             [view removeFromSuperview];
         }
     }
     
     if (kind == UICollectionElementKindSectionHeader){
         
-        HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight) titleText:@"好评医生" Style:HFTitleViewStyleLoadMore];
+        HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight) titleText:@"好评诊所" Style:HFTitleViewStyleLoadMore];
         titleView.pic.backgroundColor = [UIColor blueColor];
-        [titleView.loadMoreBtn setTitle:@"更多医生" forState:UIControlStateNormal];
+        [titleView.loadMoreBtn setTitle:@"更多诊所" forState:UIControlStateNormal];
         [titleView.loadMoreBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [titleView.loadMoreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
         titleView.loadMoreBtn.backgroundColor = [UIColor blackColor];
-        titleView.tag = 3000;
+        titleView.tag = 4000;
         [reuseHeaderView addSubview:titleView];
         
         UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5 * VFixRatio6)];
         topLine.backgroundColor = [UIColor darkGrayColor];
-        topLine.tag = 3001;
+        topLine.tag = 4001;
         [reuseHeaderView addSubview:topLine];
         
         UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 * HFixRatio6 , sectionHeaderViewHeight - 0.5 * VFixRatio6, kScreenWidth - 10 * 2 * HFixRatio6, 0.5 * VFixRatio6)];
         bottomLine.backgroundColor = [UIColor darkGrayColor];
-        bottomLine.tag = 3002;
+        bottomLine.tag = 4002;
         [reuseHeaderView addSubview:bottomLine];
     }
     
@@ -157,9 +145,20 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
     
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
+    // Dispose of any resources that can be recreated.
 }
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

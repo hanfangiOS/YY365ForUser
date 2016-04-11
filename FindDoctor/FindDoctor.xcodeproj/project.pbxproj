@@ -191,7 +191,6 @@
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
 		7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB391CB245A500A99C97 /* Banner.m */; };
 		7FB3FB3D1CB24C3C00A99C97 /* HomeSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */; };
-		7FB3FB431CB24C8E00A99C97 /* GoodClinicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */; };
 		7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */; };
 		7FD0BBA41C9A43FB004D2E02 /* FlagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBA31C9A43FB004D2E02 /* FlagView.m */; };
 		7FD0BBCA1C9A58C9004D2E02 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBA81C9A58C9004D2E02 /* IQNSArray+Sort.m */; };
@@ -224,6 +223,8 @@
 		7FFB94951C96BAD1003523B4 /* MyCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */; };
 		7FFB94981C96C3E6003523B4 /* CUCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94971C96C3E6003523B4 /* CUCommentManager.m */; };
 		7FFD7AA41CB751FE000C45E3 /* GoodDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */; };
+		7FFD7AA71CB7B1E9000C45E3 /* GoodClinicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA61CB7B1E9000C45E3 /* GoodClinicViewController.m */; };
+		7FFD7AAA1CB7B574000C45E3 /* ClinicAdverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA91CB7B574000C45E3 /* ClinicAdverCell.m */; };
 		BC003A0D1C9FC215006098BA /* flag_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC003A0C1C9FC215006098BA /* flag_selected@2x.png */; };
 		BC0E84B31C7857E700082AA9 /* AddFamilyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */; };
 		BC0E84B51C78598E00082AA9 /* littleTrumpet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */; };
@@ -952,8 +953,6 @@
 		7FB3FB391CB245A500A99C97 /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		7FB3FB3B1CB24C3C00A99C97 /* HomeSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchView.h; sourceTree = "<group>"; };
 		7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchView.m; sourceTree = "<group>"; };
-		7FB3FB411CB24C8E00A99C97 /* GoodClinicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicView.h; sourceTree = "<group>"; };
-		7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicView.m; sourceTree = "<group>"; };
 		7FC36A431C85D69500650F75 /* DoctorSearchResultListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultListModel.h; sourceTree = "<group>"; };
 		7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultListModel.m; sourceTree = "<group>"; };
 		7FD0BBA21C9A43F4004D2E02 /* FlagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagView.h; sourceTree = "<group>"; };
@@ -1014,6 +1013,10 @@
 		7FFB94971C96C3E6003523B4 /* CUCommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUCommentManager.m; sourceTree = "<group>"; };
 		7FFD7AA21CB751FE000C45E3 /* GoodDoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodDoctorViewController.h; sourceTree = "<group>"; };
 		7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorViewController.m; sourceTree = "<group>"; };
+		7FFD7AA51CB7B1E9000C45E3 /* GoodClinicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicViewController.h; sourceTree = "<group>"; };
+		7FFD7AA61CB7B1E9000C45E3 /* GoodClinicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicViewController.m; sourceTree = "<group>"; };
+		7FFD7AA81CB7B574000C45E3 /* ClinicAdverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClinicAdverCell.h; sourceTree = "<group>"; };
+		7FFD7AA91CB7B574000C45E3 /* ClinicAdverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClinicAdverCell.m; sourceTree = "<group>"; };
 		BC003A0C1C9FC215006098BA /* flag_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_selected@2x.png"; sourceTree = "<group>"; };
 		BC0E84B11C7857E700082AA9 /* AddFamilyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFamilyMemberViewController.h; path = AddFamiliMember/AddFamilyMemberViewController.h; sourceTree = "<group>"; };
 		BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddFamilyMemberViewController.m; path = AddFamiliMember/AddFamilyMemberViewController.m; sourceTree = "<group>"; };
@@ -3606,6 +3609,8 @@
 				E1EB1B8F1B70A43A0048B8EB /* HomeViewController.m */,
 				7FFD7AA21CB751FE000C45E3 /* GoodDoctorViewController.h */,
 				7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */,
+				7FFD7AA51CB7B1E9000C45E3 /* GoodClinicViewController.h */,
+				7FFD7AA61CB7B1E9000C45E3 /* GoodClinicViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -4263,8 +4268,6 @@
 				E689E9A41BA87E9E00A3ED3C /* HomeTipView.m */,
 				7FB3FB3B1CB24C3C00A99C97 /* HomeSearchView.h */,
 				7FB3FB3C1CB24C3C00A99C97 /* HomeSearchView.m */,
-				7FB3FB411CB24C8E00A99C97 /* GoodClinicView.h */,
-				7FB3FB421CB24C8E00A99C97 /* GoodClinicView.m */,
 				7FE327AB1CB4B65900032376 /* HomeSubViewMainBannerCell.h */,
 				7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */,
 				BC4DE6BC1CB4F94B00D223B0 /* CityChooseButton.h */,
@@ -4279,6 +4282,8 @@
 				7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */,
 				7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */,
 				7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */,
+				7FFD7AA81CB7B574000C45E3 /* ClinicAdverCell.h */,
+				7FFD7AA91CB7B574000C45E3 /* ClinicAdverCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4727,7 +4732,6 @@
 				E1EB1ED41B70A4D70048B8EB /* NSDataEx.m in Sources */,
 				3EDEBA791A961C4800E72809 /* AFPropertyListRequestOperation.m in Sources */,
 				3EEA8E3A1AC8E31F0033DCC7 /* CUScrollViewController.m in Sources */,
-				7FB3FB431CB24C8E00A99C97 /* GoodClinicView.m in Sources */,
 				E1BA197D1BD3DB6500851B01 /* MapMechanicView.m in Sources */,
 				E10EDCCB1B8B84D40035B6E7 /* payRequsestHandler.mm in Sources */,
 				BC4DE6BE1CB4F94C00D223B0 /* CityChooseButton.m in Sources */,
@@ -4799,6 +4803,7 @@
 				E1AD6F351B7CD0C500FB3C55 /* CUDoctorParser.m in Sources */,
 				3EDEBAC71A961C4800E72809 /* UIImage+RoundedCorner.m in Sources */,
 				E1283B1A1B9DE2D400FC26C5 /* FamilyMemberListView.m in Sources */,
+				7FFD7AA71CB7B1E9000C45E3 /* GoodClinicViewController.m in Sources */,
 				E1EB1E601B70A43B0048B8EB /* SNCycleScrollView.m in Sources */,
 				BC8E36CD1C27D95900304637 /* CUPageControl.m in Sources */,
 				E10EDCB81B8B64AC0035B6E7 /* OrderConfirmController.m in Sources */,
@@ -4954,6 +4959,7 @@
 				3EDEBA7B1A961C4800E72809 /* AFXMLRequestOperation.m in Sources */,
 				E10EDCD61B8CA9690035B6E7 /* UserDropdownMenuView.m in Sources */,
 				7F2B655C1C9010E0007C2860 /* LaunchView.m in Sources */,
+				7FFD7AAA1CB7B574000C45E3 /* ClinicAdverCell.m in Sources */,
 				E1C2F4EA1BA875770070224F /* Address.m in Sources */,
 				3ED171161AAF0A9A00E5B630 /* CustomIOS7AlertView.m in Sources */,
 				E1EB1E271B70A43B0048B8EB /* CUUser.m in Sources */,
