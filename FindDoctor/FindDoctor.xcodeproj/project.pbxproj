@@ -172,7 +172,7 @@
 		7F229E841C97F57C009C19E8 /* DoctorFameListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E831C97F57C009C19E8 /* DoctorFameListController.m */; };
 		7F229E871C97F59E009C19E8 /* DoctorFameListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */; };
 		7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */; };
-		7F2B655C1C9010E0007C2860 /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2B655B1C9010E0007C2860 /* LaunchView.m */; };
+		7F2B655C1C9010E0007C2860 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2B655B1C9010E0007C2860 /* LoadingView.m */; };
 		7F2B65651C90245B007C2860 /* Launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F2B65641C90245B007C2860 /* Launch.jpg */; };
 		7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */; };
 		7F71E8C51C993BC400656CAF /* DiagnosisRemarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F71E8C41C993BC400656CAF /* DiagnosisRemarkController.m */; };
@@ -900,8 +900,8 @@
 		7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameListModel.m; sourceTree = "<group>"; };
 		7F229E881C97F5F8009C19E8 /* DoctorFameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameCell.h; sourceTree = "<group>"; };
 		7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameCell.m; sourceTree = "<group>"; };
-		7F2B655A1C9010E0007C2860 /* LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchView.h; sourceTree = "<group>"; };
-		7F2B655B1C9010E0007C2860 /* LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchView.m; sourceTree = "<group>"; };
+		7F2B655A1C9010E0007C2860 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		7F2B655B1C9010E0007C2860 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		7F2B65641C90245B007C2860 /* Launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Launch.jpg; sourceTree = "<group>"; };
 		7F5610E31C859871004DCCDF /* DoctorSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultViewController.h; sourceTree = "<group>"; };
 		7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultViewController.m; sourceTree = "<group>"; };
@@ -3945,8 +3945,8 @@
 				E1A6B91C1BB1B97A001A458D /* CUPickerView.m */,
 				BCF0D2421C89664200D16245 /* PhotosShowView.h */,
 				BCF0D2431C89664200D16245 /* PhotosShowView.m */,
-				7F2B655A1C9010E0007C2860 /* LaunchView.h */,
-				7F2B655B1C9010E0007C2860 /* LaunchView.m */,
+				7F2B655A1C9010E0007C2860 /* LoadingView.h */,
+				7F2B655B1C9010E0007C2860 /* LoadingView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4824,7 +4824,7 @@
 				E1EB1D7F1B70A43B0048B8EB /* CUUserManager.m in Sources */,
 				3EDEBA7B1A961C4800E72809 /* AFXMLRequestOperation.m in Sources */,
 				E10EDCD61B8CA9690035B6E7 /* UserDropdownMenuView.m in Sources */,
-				7F2B655C1C9010E0007C2860 /* LaunchView.m in Sources */,
+				7F2B655C1C9010E0007C2860 /* LoadingView.m in Sources */,
 				E1C2F4EA1BA875770070224F /* Address.m in Sources */,
 				3ED171161AAF0A9A00E5B630 /* CustomIOS7AlertView.m in Sources */,
 				E1EB1E271B70A43B0048B8EB /* CUUser.m in Sources */,

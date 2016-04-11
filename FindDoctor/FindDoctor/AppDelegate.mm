@@ -37,14 +37,14 @@
 #import "OrderManager+ThirdPay.h"
 #import "Pingpp.h"
 
-#import "LaunchView.h"
+#import "LoadingView.h"
 
 #import "IQKeyboardManager.h"
 #import "JSONKit.h"
 #import "CUServerAPIConstant.h"
 #import "TipHandler+HUD.h"
 
-@interface AppDelegate () <BMKGeneralDelegate,UIAlertViewDelegate>
+@interface AppDelegate () <BMKGeneralDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
 
 @property (nonatomic,strong)SNTabViewController * tabController;
 
@@ -52,9 +52,10 @@
 
 @implementation AppDelegate
 {
-    BMKMapManager       *_mapManager;//百度地图引擎
-    BMKLocationService  *_locService;//百度定位服务
-    BMKGeoCodeSearch    *_geoSearcher;//百度GEO搜索
+    BMKMapManager       * _mapManager;//百度地图引擎
+    BMKLocationService  * _locService;//百度定位服务
+    BMKGeoCodeSearch    * _geoSearcher;//百度GEO搜索
+    CLLocationManager   * _locationManager;//苹果自带定位引擎
 }
 
 + (AppDelegate *)app
@@ -78,7 +79,7 @@
     //输入框随键盘高度自动调整位置
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
     manager.enable = YES;
-//    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    //    manager.shouldToolbarUsesTextFieldTintColor = YES;
     manager.enableAutoToolbar = YES;
     manager.shouldShowTextFieldPlaceholder = NO;
     
@@ -87,6 +88,7 @@
     
     // 地图
     [self initMapService];
+    [self initCLLocationService];
     
     // TODO:暂时关闭基础组件
     // 统计
@@ -94,15 +96,15 @@
     //[MobClick setAppVersion:[CUPlatFormManager currentAppVersion]];
     
     // 分享
-//    [self initShare];
+    //    [self initShare];
     
     // 主页面
-    [self startLaunchView];
-//    [self launchFirstView];
+    [self startLoadingView];
+    //    [self launchFirstView];
     
-//    // 版本号
-//    [[CUPlatFormManager sharedInstance] sychronizeVersion];
-
+    //    // 版本号
+    //    [[CUPlatFormManager sharedInstance] sychronizeVersion];
+    
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -156,14 +158,24 @@
         }
         
         UIBarButtonItem *leftSpacer = [[UIBarButtonItem alloc]
-                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                           target:nil action:nil];
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
         leftSpacer.width = -15;
         
         if (navigationItem.leftBarButtonItems.count == 1) {
             navigationItem.leftBarButtonItems = [NSArray arrayWithObjects:leftSpacer, [navigationItem.leftBarButtonItems objectAtIndex:0], nil];
         }
     }];
+}
+
+//初始化苹果自带CLLocationManager
+- (void)initCLLocationService {
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    [_locationManager startUpdatingLocation];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -192,18 +204,18 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)startLaunchView{
+- (void)startLoadingView{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(launchFirstView) name:@"LaunchFirstView" object:nil];
-    LaunchView * launchView = [[LaunchView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    launchView.alpha = 0;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(launchFirstView) name:@"LaunchFirstView" object:nil];
+    LoadingView * loadingView = [[LoadingView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //    loadingView.alpha = 0;
     UIViewController * vc = [[UIViewController alloc] init];
     vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [vc.view addSubview:launchView];
+    [vc.view addSubview:loadingView];
     self.window.rootViewController = vc;
-    [UIView animateWithDuration:0.2 animations:^{
-        launchView.alpha = 1;
-    }];
+    //    [UIView animateWithDuration:0.2 animations:^{
+    //        loadingView.alpha = 1;
+    //    }];
     
 }
 
@@ -239,33 +251,33 @@
     if (self.slideNaviController == nil)
     {
         self.slideNaviController = [[SNSlideNavigationController alloc] initWithRootViewController:[self createTabBarController]];
-//        [[UINavigationBar appearance] setTitleTextAttributes:
-//         [NSDictionary dictionaryWithObjectsAndKeys:
-//          [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
-//          UITextAttributeTextColor,
-//          [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],
-//          UITextAttributeTextShadowColor,
-//          [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
-//          UITextAttributeTextShadowOffset,
-//          [UIFont fontWithName:@"Arial-Bold" size:0.0],
-//          UITextAttributeFont,
-//          nil]];
+        //        [[UINavigationBar appearance] setTitleTextAttributes:
+        //         [NSDictionary dictionaryWithObjectsAndKeys:
+        //          [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
+        //          UITextAttributeTextColor,
+        //          [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],
+        //          UITextAttributeTextShadowColor,
+        //          [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
+        //          UITextAttributeTextShadowOffset,
+        //          [UIFont fontWithName:@"Arial-Bold" size:0.0],
+        //          UITextAttributeFont,
+        //          nil]];
     }
     self.window.rootViewController = self.slideNaviController;
-    self.slideNaviController.view.alpha = 0;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.slideNaviController.view.alpha = 1;
-    }];
-   
-   
-
+    //    self.slideNaviController.view.alpha = 0;
+    //    [UIView animateWithDuration:0.25 animations:^{
+    //        self.slideNaviController.view.alpha = 1;
+    //    }];
+    
+    
+    
 }
 
 - (void)launchIntroduceView
 {
-//    [SNIntroduceView showWithComplete:^(SNIntroduceView *introduceView){
-//        [self launchMainView];
-//    }];
+    //    [SNIntroduceView showWithComplete:^(SNIntroduceView *introduceView){
+    //        [self launchMainView];
+    //    }];
     SNIntroduceView *intro = [[SNIntroduceView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UIViewController * vc = [[UIViewController alloc] init];
     vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -305,13 +317,13 @@
 {
     NSArray *titles = @[@"优医",@"优医馆",@"vip",@"我的"];
     NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_nearby_nor",@"tabbar_vip_nor",@"tabbar_mine_nor"];
-//    NSArray *hilIcons = @[@"tabbar_icon_home_highlighted",@"tabbar_icon_service_highlighted",@"tabbar_icon_discount_highlighted",@"tabbar_icon_mine_highlighted"];
-   NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_nearby_sel",@"tabbar_vip_sel",@"tabbar_mine_sel"];
+    //    NSArray *hilIcons = @[@"tabbar_icon_home_highlighted",@"tabbar_icon_service_highlighted",@"tabbar_icon_discount_highlighted",@"tabbar_icon_mine_highlighted"];
+    NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_nearby_sel",@"tabbar_vip_sel",@"tabbar_mine_sel"];
     
-//    NSArray *titles = @[@"养生",@"附近",@"首页",@"上门",@"我的"];
-//    NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_order_nor",@"tabbar_home_nor",@"tabbar_rank_nor",@"tabbar_mine_nor"];
-//    //    NSArray *hilIcons = @[@"tabbar_icon_home_highlighted",@"tabbar_icon_service_highlighted",@"tabbar_icon_discount_highlighted",@"tabbar_icon_mine_highlighted"];
-//    NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_order_sel",@"tabbar_home_sel",@"tabbar_rank_sel",@"tabbar_mine_sel"];
+    //    NSArray *titles = @[@"养生",@"附近",@"首页",@"上门",@"我的"];
+    //    NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_order_nor",@"tabbar_home_nor",@"tabbar_rank_nor",@"tabbar_mine_nor"];
+    //    //    NSArray *hilIcons = @[@"tabbar_icon_home_highlighted",@"tabbar_icon_service_highlighted",@"tabbar_icon_discount_highlighted",@"tabbar_icon_mine_highlighted"];
+    //    NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_order_sel",@"tabbar_home_sel",@"tabbar_rank_sel",@"tabbar_mine_sel"];
     
     float tabBarWidth = kScreenWidth / titles.count;
     SNTabBarItem *customTabBarItem = [[SNTabBarItem alloc] initWithFrame:CGRectMake(tabBarWidth * index, 0, tabBarWidth, Height_Tabbar)];
@@ -337,21 +349,49 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-//    if ([[CUOrderManager sharedInstance] isThirdPayURL:url]) {
-//        [[CUOrderManager sharedInstance] handleThirdPayOpenURL:url];
-//    }
-//    
-//    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+    //    if ([[CUOrderManager sharedInstance] isThirdPayURL:url]) {
+    //        [[CUOrderManager sharedInstance] handleThirdPayOpenURL:url];
+    //    }
+    //
+    //    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
     BOOL canHandleURL = [Pingpp handleOpenURL:url withCompletion:nil];
     return canHandleURL;
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<NSString *,id> *)options{
-// IOS greater than 9
+    // IOS greater than 9
     BOOL canHandleURL =  [Pingpp handleOpenURL:url withCompletion:nil];
     return canHandleURL;
 }
 
+
+#pragma mark - CLLocationManager Delegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *array, NSError *error){
+        if (array.count > 0){
+            CLPlacemark *placemark = [array objectAtIndex:0];
+            NSString * currentCity = placemark.locality;
+            if (!currentCity) {
+                currentCity = placemark.administrativeArea;
+            }
+            NSLog(@"当前城市是 %@", currentCity);
+            
+            [[NSUserDefaults standardUserDefaults] setObject:currentCity forKey:@"currentCity"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        else if (error == nil && [array count] == 0)
+        {
+            NSLog(@"No results were returned.");
+        }
+        else if (error != nil)
+        {
+            NSLog(@"An error occurred = %@", error);
+        }
+    }];
+    [manager stopUpdatingLocation];
+}
 
 #pragma mark - BMKMapManager Delegate
 
@@ -420,7 +460,7 @@
     //AZkRPuUHS62q0zY9oPQqPNmZ forPatient
     //7orlPDNBtllWuvnREmXSz3HNtYd206jV uqku.demo
     _mapManager = [[BMKMapManager alloc]init];
-//    BOOL ret = [_mapManager start:@"iECHAdtn1ql3FlkGKasXyGbs" generalDelegate:self];
+    //    BOOL ret = [_mapManager start:@"iECHAdtn1ql3FlkGKasXyGbs" generalDelegate:self];
     BOOL ret = [_mapManager start:@"AZkRPuUHS62q0zY9oPQqPNmZ" generalDelegate:self];
     if (!ret) {
         NSLog(@"manager start failed!");
@@ -442,7 +482,7 @@
     NSURL* url = [NSURL URLWithString:@"http://uyi365.com/baseFrame/base/g_VersionCheck.jmw"];
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-        [param setObjectSafely:kPlatForm forKey:@"from"];
+    [param setObjectSafely:kPlatForm forKey:@"from"];
     //    [param setObjectSafely:@"VersionCheck" forKey:@"require"];
     //    [param setObjectSafely:@(1111111111) forKey:@"interfaceID"];
     //    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
