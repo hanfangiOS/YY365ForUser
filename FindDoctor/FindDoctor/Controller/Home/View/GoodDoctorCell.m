@@ -98,6 +98,8 @@
     goodAt.text = [NSString stringWithFormat:@"%@",_data.skillTreat];
     
     goodComment.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
+    
+    goodComment.backgroundColor = [UIColor grayColor];
 
 }
 
