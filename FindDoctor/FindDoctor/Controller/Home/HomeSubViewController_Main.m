@@ -18,7 +18,6 @@
 #import "DoctorListModel.h"
 #import "DoctorListController.h"
 #import "HomeSubViewMainTableCell.h"
-#import "HomeSubViewMainCollectionCell.h"
 
 
 #define sectionHeaderViewHeight 30 * VFixRatio6

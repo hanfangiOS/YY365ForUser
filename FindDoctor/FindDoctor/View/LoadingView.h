@@ -1,5 +1,5 @@
 //
-//  LaunchView.h
+//  LoadingView.h
 //  FindDoctor
 //
 //  Created by ZhuHaoRan on 16/3/9.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LaunchView : UIView
+@interface LoadingView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame;
 
