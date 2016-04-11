@@ -296,7 +296,7 @@
          cell = [[HomeSubViewMainTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSubViewMainTableCell"];
     }
     cell.data = [self.homeModel.goodDoctorList objectAtIndexSafely:indexPath.row];
-    cell.backgroundColor = [UIColor blueColor];
+    cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 

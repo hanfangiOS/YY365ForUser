@@ -44,40 +44,48 @@
 
 - (void)initSubViews{
     //头像
-    icon = [[UIImageView alloc] initWithFrame:CGRectMake(10 * HFixRatio6, 16 * VFixRatio6, 53 * VFixRatio6, 53 * HFixRatio6)];
+    icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 16, 53, 53)];
     [self addSubview:icon];
     
     //评分
-    score = [[ScoreLabel alloc] initWithFrame:CGRectMake(kScreenWidth - 12 * HFixRatio6 - [ScoreLabel defaultWidth], 15 * VFixRatio6, [ScoreLabel defaultWidth], [ScoreLabel defaultHeight])];
+    score = [[ScoreLabel alloc] initWithFrame:CGRectMake(kScreenWidth - 10 - [ScoreLabel defaultWidth], 15, [ScoreLabel defaultWidth], [ScoreLabel defaultHeight])];
+    [self addSubview:score];
     //刘渊 教授
     name = [[UILabel alloc] init];
     name.font = [UIFont systemFontOfSize:14];
     name.textAlignment = NSTextAlignmentLeft;
     name.textColor = UIColorFromHex(Color_Hex_NavBackground);
-    name.frame = CGRectMake(icon.maxX + 12 * HFixRatio6, icon.frameX, 30 * HFixRatio6, 15 * VFixRatio6);
+    name.frame = CGRectMake(icon.maxX + 12, icon.frameY, 80, 15 );
+    [self addSubview:name];
     //简介
-    briefLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxX + 10 * VFixRatio6, 35 * HFixRatio6, 13 * VFixRatio6)];
+    briefLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxY + 10, 54, 13)];
     briefLabel.text = @"简介：";
     briefLabel.textAlignment = NSTextAlignmentLeft;
     briefLabel.textColor = kLightGrayColor;
+    [self addSubview:briefLabel];
     //中西医结合XXXXX
-    brief = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.maxX + 5 * HFixRatio6, briefLabel.frameY, kScreenWidth - briefLabel.maxX - 10 * HFixRatio6, 25 * VFixRatio6)];
+    brief = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.maxX + 5, briefLabel.frameY, kScreenWidth - briefLabel.maxX - 10, 25)];
     brief.numberOfLines = 2;
     brief.textColor = kLightGrayColor;
     brief.textAlignment = NSTextAlignmentLeft;
+    [self addSubview:brief];
     //擅长
-    goodAtLabel = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.frameX, briefLabel.maxY + 25 * VFixRatio6, briefLabel.frameWidth, briefLabel.frameHeight)];
+    goodAtLabel = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.frameX, briefLabel.maxY + 25, briefLabel.frameWidth, briefLabel.frameHeight)];
     goodAtLabel.text = @"擅长；";
     goodAtLabel.textAlignment = NSTextAlignmentLeft;
     goodAtLabel.textColor = kLightGrayColor;
+    [self addSubview:goodAtLabel];
     //擅长内儿科治疗XXXX
-    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 5 * HFixRatio6, goodAtLabel.frameY, kScreenWidth - goodAtLabel.maxX - 10 * HFixRatio6, 25 * VFixRatio6)];
+    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 5, goodAtLabel.frameY, kScreenWidth - goodAtLabel.maxX - 10, 25)];
     goodAt.numberOfLines = 2;
     goodAt.textColor = kLightGrayColor;
     goodAt.textAlignment = NSTextAlignmentLeft;
     
-    bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 * HFixRatio6, kCellHeight - 0.5 * VFixRatio6, kScreenWidth - 2 * 5 * HFixRatio6, 0.5 * VFixRatio6)];
+    [self addSubview:goodAt];
+    
+    bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, kCellHeight - 0.5, kScreenWidth - 2 * 5, 0.5)];
     bottomLine.backgroundColor = kLightLineColor;
+    [self addSubview:bottomLine];
 }
 
 - (void)setData:(Doctor *)data{
@@ -97,6 +105,14 @@
     brief.text = _data.briefIntro;
     
     goodAt.text = _data.skillTreat;
+    
+    icon.backgroundColor = [UIColor yellowColor];
+    score.backgroundColor = [UIColor redColor];
+    name.backgroundColor = [UIColor greenColor];
+    briefLabel.backgroundColor = [UIColor blackColor];
+    brief.backgroundColor = [UIColor purpleColor];
+    goodAtLabel.backgroundColor = [UIColor orangeColor];
+    goodAt.backgroundColor = [UIColor groupTableViewBackgroundColor];
 
 }
 
