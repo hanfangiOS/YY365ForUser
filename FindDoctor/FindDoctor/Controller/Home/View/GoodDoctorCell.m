@@ -12,6 +12,7 @@
 
 #define CelldefaultHeight 85 * VFixRatio6
 #define CelldefaultWidth (kScreenWidth/2)
+#define BottomLineTag 1000
 
 @implementation GoodDoctorCell{
     UIImageView * icon;
@@ -30,6 +31,10 @@
 + (float)defaultWidth{
     return CelldefaultWidth;
     
+}
+
++ (NSInteger)bottomLineTag{
+    return BottomLineTag;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -71,11 +76,7 @@
     //100分
     goodComment = [[ScoreLabel alloc] initWithFrame:CGRectMake(goodCommentLabel.maxX + 10 * HFixRatio6, goodCommentLabel.frameY, CelldefaultWidth - (goodCommentLabel.maxX + 10 * HFixRatio6), goodCommentLabel.frameHeight)];
     [self addSubview:goodComment];
-    
-    //底线
-    self.bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, CelldefaultHeight - 0.5 * VFixRatio6, self.frameWidth, 0.5 * VFixRatio6)];
-    self.bottomLine.backgroundColor = [UIColor blackColor];
-    [self addSubview:self.bottomLine];
+
 }
 
 - (void)setData:(Doctor *)data{
@@ -97,6 +98,9 @@
     goodAt.text = [NSString stringWithFormat:@"%@",_data.skillTreat];
     
     goodComment.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
+    
+    goodComment.backgroundColor = [UIColor grayColor];
+
 }
 
 - (void)clearCach{
