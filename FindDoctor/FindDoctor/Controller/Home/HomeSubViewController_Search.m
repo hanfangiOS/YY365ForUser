@@ -41,6 +41,7 @@
     
     EqualSpaceFlowLayout *collectionLayout = [[EqualSpaceFlowLayout alloc] init];
     collectionLayout.headerReferenceSize = CGSizeMake(kScreenWidth, 40);
+    collectionLayout.footerReferenceSize = CGSizeMake(kScreenWidth, 40);
     collectionLayout.delegate = self;
     
     CGRect collectionFrame = self.contentView.bounds;
@@ -111,11 +112,16 @@
         SubObjectHeaderView *headerview = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:collectionHeaderName forIndexPath:indexPath];
         NSArray *headers = [[NSArray alloc] initWithObjects:@"搜索记录", @"热搜医师", @"热搜病症",@"热搜诊所", nil];
         headerview.headerTitle = [headers objectAtIndex:indexPath.section];
+        headerview.backgroundColor = [UIColor blueColor];
         return headerview;
     }
+    else{}
     return nil;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    return CGSizeMake(kScreenWidth, 40);
+}
 #pragma mark - Search History
 
 - (void)loadHistory
