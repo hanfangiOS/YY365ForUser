@@ -39,9 +39,9 @@
 - (void)loadContentView{
     [self loadHistory];
     
+//    UICollectionViewFlowLayout *collectionLayout = [[UICollectionViewFlowLayout alloc] init];
     EqualSpaceFlowLayout *collectionLayout = [[EqualSpaceFlowLayout alloc] init];
     collectionLayout.headerReferenceSize = CGSizeMake(kScreenWidth, 40);
-    collectionLayout.footerReferenceSize = CGSizeMake(kScreenWidth, 40);
     collectionLayout.delegate = self;
     
     CGRect collectionFrame = self.contentView.bounds;
@@ -115,7 +115,9 @@
         headerview.backgroundColor = [UIColor blueColor];
         return headerview;
     }
-    else{}
+    else{
+
+    }
     return nil;
 }
 
