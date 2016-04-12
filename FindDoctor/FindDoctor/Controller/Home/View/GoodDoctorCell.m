@@ -10,7 +10,7 @@
 #import "ScoreLabel.h"
 #import "UIImageView+WebCache.h"
 
-#define CelldefaultHeight 85 * VFixRatio6
+#define CelldefaultHeight 85
 #define CelldefaultWidth (kScreenWidth/2)
 #define BottomLineTag 1000
 
@@ -48,33 +48,33 @@
 
 - (void)initSubViews{
     //头像
-    icon = [[UIImageView alloc] initWithFrame:CGRectMake(10 * HFixRatio6, (CelldefaultHeight - 52 * VFixRatio6)/2, 52 * HFixRatio6, 52 * VFixRatio6)];
+    icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, (CelldefaultHeight - 52)/2, 52, 52)];
     icon.backgroundColor = [UIColor redColor];
     [self addSubview:icon];
      //刘渊 教授
-    name = [[UILabel alloc] initWithFrame:CGRectMake(icon.maxX + 10 * HFixRatio6, icon.frameY, CelldefaultWidth - (icon.maxX + 10 * HFixRatio6), 15 * VFixRatio6)];
+    name = [[UILabel alloc] initWithFrame:CGRectMake(icon.maxX + 10, icon.frameY, CelldefaultWidth - (icon.maxX + 10), 15)];
     UIColorFromHex(Color_Hex_NavBackground);
     name.font = [UIFont systemFontOfSize:13];
     [self addSubview:name];
     //擅长
-    goodAtLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxY + 3.5 * VFixRatio6, 32 * HFixRatio6, 15 * VFixRatio6)];
+    goodAtLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxY + 3.5, 32 , 15)];
     goodAtLabel.text = @"擅长:";
     goodAtLabel.textColor = [UIColor lightGrayColor];
     goodAtLabel.font = [UIFont systemFontOfSize:13];
     [self addSubview:goodAtLabel];
     //内科、外科
-    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 10 * HFixRatio6, goodAtLabel.frameY, CelldefaultWidth - (goodAtLabel.maxX + 10 * HFixRatio6), goodAtLabel.frameHeight)];
+    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 10, goodAtLabel.frameY, CelldefaultWidth - (goodAtLabel.maxX + 10), goodAtLabel.frameHeight)];
     goodAt.textColor = [UIColor lightGrayColor];
     goodAt.font = [UIFont systemFontOfSize:13];
     [self addSubview:goodAt];
     //好评
-    goodCommentLabel = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.frameX, goodAtLabel.maxY + 3.5 * VFixRatio6, goodAtLabel.frameWidth, goodAtLabel.frameHeight)];
+    goodCommentLabel = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.frameX, goodAtLabel.maxY + 3.5, goodAtLabel.frameWidth, goodAtLabel.frameHeight)];
     goodCommentLabel.text = @"好评:";
     goodCommentLabel.textColor = [UIColor lightGrayColor];
     goodCommentLabel.font = [UIFont systemFontOfSize:13];
     [self addSubview:goodCommentLabel];
     //100分
-    goodComment = [[ScoreLabel alloc] initWithFrame:CGRectMake(goodCommentLabel.maxX + 10 * HFixRatio6, goodCommentLabel.frameY, CelldefaultWidth - (goodCommentLabel.maxX + 10 * HFixRatio6), goodCommentLabel.frameHeight)];
+    goodComment = [[ScoreLabel alloc] initWithFrame:CGRectMake(goodCommentLabel.maxX + 10, goodCommentLabel.frameY, CelldefaultWidth - (goodCommentLabel.maxX + 10), goodCommentLabel.frameHeight)];
     [self addSubview:goodComment];
 
 }

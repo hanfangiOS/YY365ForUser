@@ -37,7 +37,7 @@
 #import "OrderManager+ThirdPay.h"
 #import "Pingpp.h"
 
-#import "LaunchView.h"
+#import "LoadingView.h"
 
 #import "IQKeyboardManager.h"
 #import "JSONKit.h"
@@ -99,7 +99,7 @@
 //    [self initShare];
     
     // 主页面
-    [self startLaunchView];
+    [self startLoadingView];
 //    [self launchFirstView];
     
 //    // 版本号
@@ -204,18 +204,18 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)startLaunchView{
+- (void)startLoadingView{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(launchFirstView) name:@"LaunchFirstView" object:nil];
-    LaunchView * launchView = [[LaunchView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    launchView.alpha = 0;
+    LoadingView * loadingView = [[LoadingView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    loadingView.alpha = 0;
     UIViewController * vc = [[UIViewController alloc] init];
     vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [vc.view addSubview:launchView];
+    [vc.view addSubview:loadingView];
     self.window.rootViewController = vc;
-    [UIView animateWithDuration:0.2 animations:^{
-        launchView.alpha = 1;
-    }];
+//    [UIView animateWithDuration:0.2 animations:^{
+//        loadingView.alpha = 1;
+//    }];
     
 }
 
@@ -264,10 +264,10 @@
 //          nil]];
     }
     self.window.rootViewController = self.slideNaviController;
-    self.slideNaviController.view.alpha = 0;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.slideNaviController.view.alpha = 1;
-    }];
+//    self.slideNaviController.view.alpha = 0;
+//    [UIView animateWithDuration:0.25 animations:^{
+//        self.slideNaviController.view.alpha = 1;
+//    }];
    
    
 

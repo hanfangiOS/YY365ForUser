@@ -1,14 +1,14 @@
 //
-//  LaunchView.m
+//  LoadingView.m
 //  FindDoctor
 //
 //  Created by ZhuHaoRan on 16/3/9.
 //  Copyright © 2016年 li na. All rights reserved.
 //
 
-#import "LaunchView.h"
+#import "LoadingView.h"
 
-@implementation LaunchView{
+@implementation LoadingView{
     
     UIImageView * _LaunchImageView;
     NSTimer * _timer;
@@ -23,7 +23,7 @@
         NSString * imagePath = [[NSBundle mainBundle] pathForResource:@"Launch" ofType:@"jpg"];
         _LaunchImageView.image = [UIImage imageWithContentsOfFile:imagePath];
         [self addSubview:_LaunchImageView];
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(timeControl) userInfo:nil repeats:NO];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeControl) userInfo:nil repeats:NO];
         return self;
     }
     return nil;

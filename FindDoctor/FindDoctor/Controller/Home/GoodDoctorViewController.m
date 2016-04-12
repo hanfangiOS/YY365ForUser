@@ -11,7 +11,7 @@
 #import "Doctor.h"
 #import "HFTitleView.h"
 
-#define sectionHeaderViewHeight 30 * VFixRatio6
+#define sectionHeaderViewHeight 30
 
 @interface GoodDoctorViewController ()
 
@@ -63,17 +63,17 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
     }
     
     if (indexPath.row == 0) {
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 * HFixRatio6, 85 * VFixRatio6 - 0.5 * VFixRatio6, kScreenWidth/2 - 0.5 * HFixRatio6, 0.5 * VFixRatio6)];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, 85 - 0.5, kScreenWidth/2 - 0.5, 0.5)];
         bottomLine.backgroundColor = [UIColor blackColor];
         bottomLine.tag = 1000;
         [cell addSubview:bottomLine];
     }else if (indexPath.row == 1) {
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85 * VFixRatio6 - 0.5 * VFixRatio6, kScreenWidth/2 - 10 * HFixRatio6, 0.5 * VFixRatio6)];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85  - 0.5, kScreenWidth/2 - 10 , 0.5)];
         bottomLine.backgroundColor = [UIColor blackColor];
         bottomLine.tag = 1001;
         [cell addSubview:bottomLine];
     }else{
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85 * VFixRatio6 - 0.5 * VFixRatio6, kScreenWidth/2, 0.5 * VFixRatio6)];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85 - 0.5, kScreenWidth/2, 0.5)];
         bottomLine.backgroundColor = [UIColor blackColor];
         bottomLine.tag = 1002;
         [cell addSubview:bottomLine];
@@ -112,7 +112,7 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    CGSize size = CGSizeMake(kScreenWidth, 30 * VFixRatio6);
+    CGSize size = CGSizeMake(kScreenWidth, 30);
     return size;
 }
 
@@ -131,19 +131,19 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
         HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight) titleText:@"好评医生" Style:HFTitleViewStyleLoadMore];
         titleView.pic.backgroundColor = [UIColor blueColor];
         [titleView.loadMoreBtn setTitle:@"更多医生" forState:UIControlStateNormal];
-        [titleView.loadMoreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [titleView.loadMoreBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         [titleView.loadMoreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
         titleView.loadMoreBtn.backgroundColor = [UIColor blackColor];
         titleView.tag = 3000;
         [reuseHeaderView addSubview:titleView];
         
-        UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5 * VFixRatio6)];
+        UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
         topLine.backgroundColor = [UIColor blackColor];
         topLine.tag = 3001;
         [reuseHeaderView addSubview:topLine];
         
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 * HFixRatio6 , sectionHeaderViewHeight - 0.5 * VFixRatio6, kScreenWidth - 10 * 2 * HFixRatio6, 0.5 * VFixRatio6)];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, sectionHeaderViewHeight - 0.5, kScreenWidth - 10 * 2, 0.5)];
         bottomLine.backgroundColor = [UIColor blackColor];
         bottomLine.tag = 3002;
         [reuseHeaderView addSubview:bottomLine];

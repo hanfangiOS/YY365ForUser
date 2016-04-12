@@ -8,8 +8,8 @@
 
 #import "ScoreLabel.h"
 
-#define ViewDefaultWidth 55 * HFixRatio6
-#define ViewDefaultHeight 15 * VFixRatio6
+#define ViewDefaultWidth 55
+#define ViewDefaultHeight 15
 
 @implementation ScoreLabel{
     UILabel * score;
@@ -44,7 +44,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     CGSize size = [self sizeForString:score.text font:score.font limitSize:CGSizeMake(0, self.frameHeight)];
-    score.frame = CGRectMake(18 * HFixRatio6, 0, size.width, size.height);
+    score.frame = CGRectMake(18, 0, size.width, size.height);
 }
 
 - (CGSize)sizeForString:(NSString *)string font:(UIFont *)font limitSize:(CGSize)limitSize{

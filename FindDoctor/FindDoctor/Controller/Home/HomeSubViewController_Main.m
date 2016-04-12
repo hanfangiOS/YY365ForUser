@@ -18,10 +18,9 @@
 #import "DoctorListModel.h"
 #import "DoctorListController.h"
 #import "HomeSubViewMainTableCell.h"
-#import "HomeSubViewMainCollectionCell.h"
 
 
-#define sectionHeaderViewHeight 30 * VFixRatio6
+#define sectionHeaderViewHeight 30
 
 @implementation HomeModel
 
@@ -127,7 +126,7 @@
     //科室
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    self.subjectCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.mainBannerView.maxY, kScreenWidth, (kScreenWidth - 5 * HFixRatio6)/4 * 2 + 3 * HFixRatio6) collectionViewLayout:layout];
+    self.subjectCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.mainBannerView.maxY, kScreenWidth, (kScreenWidth - 5)/4 * 2 + 3) collectionViewLayout:layout];
     self.subjectCollectionView.dataSource = self;
     self.subjectCollectionView.delegate = self;
     self.subjectCollectionView.scrollEnabled = NO;
@@ -139,7 +138,7 @@
 
     UICollectionViewFlowLayout * doctorLayout = [[UICollectionViewFlowLayout alloc] init];
     [doctorLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    self.goodDoctorCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.subjectCollectionView.maxY + 10, kScreenWidth, 200 * VFixRatio6) collectionViewLayout:doctorLayout];
+    self.goodDoctorCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.subjectCollectionView.maxY + 10, kScreenWidth, 200) collectionViewLayout:doctorLayout];
     self.goodDoctorCollectionView.backgroundColor = [UIColor yellowColor];
     [self.headerView addSubview: self.goodDoctorCollectionView];
     
@@ -148,15 +147,16 @@
     self.goodDoctorCollectionView.dataSource = self.goodDoctorVC;
 
     //广告轮播图
-    self.adverBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, self.self.goodDoctorCollectionView.maxY + 10 * VFixRatio6, kScreenWidth, 85 * VFixRatio6)];
+    self.adverBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, self.self.goodDoctorCollectionView.maxY + 10 * VFixRatio6, kScreenWidth, 85)];
     self.adverBannerView.delegate = self;
     self.adverBannerView.dataSource = self;
+    self.adverBannerView.backgroundColor = [UIColor greenColor];
     [self.headerView addSubview:self.adverBannerView];
     
     //好评诊所
     UICollectionViewFlowLayout * clinicLayout = [[UICollectionViewFlowLayout alloc] init];
     [clinicLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    self.goodclinicCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.adverBannerView.maxY + 10 * VFixRatio6, kScreenWidth, 283 * VFixRatio6) collectionViewLayout:clinicLayout];
+    self.goodclinicCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.adverBannerView.maxY + 10 * VFixRatio6, kScreenWidth, 283) collectionViewLayout:clinicLayout];
     self.goodclinicCollectionView.backgroundColor = [UIColor purpleColor];
         [self.headerView addSubview:self.goodclinicCollectionView];
     
@@ -165,7 +165,7 @@
     self.goodclinicCollectionView.dataSource = self.goodClinicVC;
     
     //透明空白View
-    UIView * paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, self.goodclinicCollectionView.maxY,kScreenWidth, 10 * VFixRatio6)];
+    UIView * paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, self.goodclinicCollectionView.maxY,kScreenWidth, 10)];
     paddingView.backgroundColor = [UIColor clearColor];
     [self.headerView addSubview:paddingView];
     
@@ -248,14 +248,14 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat side = (kScreenWidth - 5 * HFixRatio6)/4;
+    CGFloat side = (kScreenWidth - 6)/4;
     return CGSizeMake(side  ,side);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     if (section == 0) {
-        return UIEdgeInsetsMake(1 * VFixRatio6,1 * HFixRatio6,0,1 * HFixRatio6);
+        return UIEdgeInsetsMake(1,1,1,1);
     }
     return UIEdgeInsetsMake(0,0,0,0);
 }
@@ -296,7 +296,7 @@
          cell = [[HomeSubViewMainTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSubViewMainTableCell"];
     }
     cell.data = [self.homeModel.goodDoctorList objectAtIndexSafely:indexPath.row];
-    cell.backgroundColor = [UIColor blueColor];
+    cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -322,12 +322,12 @@
     titleView.tag = 2000;
     [sectionHeaderView addSubview:titleView];
     
-    UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5 * VFixRatio6)];
+    UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
     topLine.backgroundColor = [UIColor blackColor];
     topLine.tag = 2001;
     [sectionHeaderView addSubview:topLine];
     
-    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 * HFixRatio6 , sectionHeaderViewHeight - 0.5 * VFixRatio6, kScreenWidth - 10 * 2 * HFixRatio6, 0.5 * VFixRatio6)];
+    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, sectionHeaderViewHeight - 0.5, kScreenWidth - 10 * 2, 0.5)];
     bottomLine.backgroundColor = [UIColor blackColor];
     bottomLine.tag = 2002;
     [sectionHeaderView addSubview:bottomLine];

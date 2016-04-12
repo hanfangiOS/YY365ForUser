@@ -82,18 +82,18 @@
             //线与title距离
             CGFloat space = 8 * HFixRatio6;
 
-            self.leftLine.frame = CGRectMake(padding, (self.frameHeight - 1 * VFixRatio6)/2, self.title.frameX - padding - space, 1 * VFixRatio6);
-            self.rightLine.frame = CGRectMake(self.title.maxX + space, (self.frameHeight - 1 * VFixRatio6)/2, self.frameWidth - (self.title.maxX + space) - padding, 1 * VFixRatio6);
+            self.leftLine.frame = CGRectMake(padding, (self.frameHeight - 1)/2, self.title.frameX - padding - space, 1);
+            self.rightLine.frame = CGRectMake(self.title.maxX + space, (self.frameHeight - 1)/2, self.frameWidth - (self.title.maxX + space) - padding, 1);
         }
         
         if (_style == HFTitleViewStyleLoadMore) {
             
-            self.pic.frame = CGRectMake(8 * HFixRatio6, (self.frameHeight - (self.frameHeight - 8 * VFixRatio6 * 2))/2, 4 * HFixRatio6, self.frameHeight - 8 * VFixRatio6 * 2);
+            self.pic.frame = CGRectMake(8, (self.frameHeight - (self.frameHeight - 8 * 2))/2, 4, self.frameHeight - 8 * 2);
             
             CGSize titleSize = [self sizeForString:self.title.text font:self.title.font limitSize:CGSizeMake(0, self.pic.frameHeight)];
-            self.title.frame = CGRectMake(8 * HFixRatio6 + self.pic.maxX, (self.frameHeight - titleSize.height)/2, titleSize.width, titleSize.height);
+            self.title.frame = CGRectMake(8 + self.pic.maxX, (self.frameHeight - titleSize.height)/2, titleSize.width, titleSize.height);
             
-            self.loadMoreBtn.frame = CGRectMake(self.title.maxX + 10 * HFixRatio6,9 * VFixRatio6,kScreenWidth - (self.title.maxX + 10 * HFixRatio6) - 10 * HFixRatio6,self.frameHeight - 9 * VFixRatio6 * 2);
+            self.loadMoreBtn.frame = CGRectMake(self.title.maxX + 10,7,kScreenWidth - (self.title.maxX + 10) - 10,self.frameHeight - 7 * 2);
         }
         
         if (_style == HFTitleViewStyleNone) {

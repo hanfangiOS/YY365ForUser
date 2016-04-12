@@ -174,7 +174,7 @@
 		7F229E841C97F57C009C19E8 /* DoctorFameListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E831C97F57C009C19E8 /* DoctorFameListController.m */; };
 		7F229E871C97F59E009C19E8 /* DoctorFameListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */; };
 		7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */; };
-		7F2B655C1C9010E0007C2860 /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2B655B1C9010E0007C2860 /* LaunchView.m */; };
+		7F2B655C1C9010E0007C2860 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2B655B1C9010E0007C2860 /* LoadingView.m */; };
 		7F2B65651C90245B007C2860 /* Launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F2B65641C90245B007C2860 /* Launch.jpg */; };
 		7F49BC371CB3577F00EAA34A /* HFBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC321CB3577F00EAA34A /* HFBannerView.m */; };
 		7F49BC381CB3577F00EAA34A /* HFBannerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC341CB3577F00EAA34A /* HFBannerViewCell.m */; };
@@ -215,7 +215,6 @@
 		7FD0BBF11C9A9D0E004D2E02 /* button_myScore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBEB1C9A9D0E004D2E02 /* button_myScore@2x.png */; };
 		7FE327AD1CB4B65900032376 /* HomeSubViewMainBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */; };
 		7FE327B01CB51A4200032376 /* HomeSubViewMainTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */; };
-		7FE327B61CB51A8200032376 /* HomeSubViewMainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327B51CB51A8200032376 /* HomeSubViewMainCollectionCell.m */; };
 		7FE327BB1CB525E600032376 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327BA1CB525E600032376 /* ScoreLabel.m */; };
 		7FFB948B1C966D78003523B4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948A1C966D78003523B4 /* MyCommentViewController.m */; };
 		7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948E1C966DFC003523B4 /* MyCommentCell.m */; };
@@ -925,8 +924,8 @@
 		7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameListModel.m; sourceTree = "<group>"; };
 		7F229E881C97F5F8009C19E8 /* DoctorFameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameCell.h; sourceTree = "<group>"; };
 		7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameCell.m; sourceTree = "<group>"; };
-		7F2B655A1C9010E0007C2860 /* LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchView.h; sourceTree = "<group>"; };
-		7F2B655B1C9010E0007C2860 /* LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchView.m; sourceTree = "<group>"; };
+		7F2B655A1C9010E0007C2860 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		7F2B655B1C9010E0007C2860 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		7F2B65641C90245B007C2860 /* Launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Launch.jpg; sourceTree = "<group>"; };
 		7F49BC311CB3577F00EAA34A /* HFBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBannerView.h; sourceTree = "<group>"; };
 		7F49BC321CB3577F00EAA34A /* HFBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBannerView.m; sourceTree = "<group>"; };
@@ -999,8 +998,6 @@
 		7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainBannerCell.m; sourceTree = "<group>"; };
 		7FE327AE1CB51A4200032376 /* HomeSubViewMainTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewMainTableCell.h; sourceTree = "<group>"; };
 		7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainTableCell.m; sourceTree = "<group>"; };
-		7FE327B41CB51A8200032376 /* HomeSubViewMainCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewMainCollectionCell.h; sourceTree = "<group>"; };
-		7FE327B51CB51A8200032376 /* HomeSubViewMainCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainCollectionCell.m; sourceTree = "<group>"; };
 		7FE327B91CB525E600032376 /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
 		7FE327BA1CB525E600032376 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
 		7FFB94891C966D78003523B4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
@@ -4049,8 +4046,8 @@
 				E1A6B91C1BB1B97A001A458D /* CUPickerView.m */,
 				BCF0D2421C89664200D16245 /* PhotosShowView.h */,
 				BCF0D2431C89664200D16245 /* PhotosShowView.m */,
-				7F2B655A1C9010E0007C2860 /* LaunchView.h */,
-				7F2B655B1C9010E0007C2860 /* LaunchView.m */,
+				7F2B655A1C9010E0007C2860 /* LoadingView.h */,
+				7F2B655B1C9010E0007C2860 /* LoadingView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4280,8 +4277,6 @@
 				BC4DE6BD1CB4F94C00D223B0 /* CityChooseButton.m */,
 				7FE327AE1CB51A4200032376 /* HomeSubViewMainTableCell.h */,
 				7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */,
-				7FE327B41CB51A8200032376 /* HomeSubViewMainCollectionCell.h */,
-				7FE327B51CB51A8200032376 /* HomeSubViewMainCollectionCell.m */,
 				7FE327B91CB525E600032376 /* ScoreLabel.h */,
 				7FE327BA1CB525E600032376 /* ScoreLabel.m */,
 				7F0469FA1CB65C9F00C9C054 /* GoodDoctorCell.h */,
@@ -4826,7 +4821,6 @@
 				E1EB1E3F1B70A43B0048B8EB /* UIImageView+LBBlurredImage.m in Sources */,
 				3EDD02AC1B133BDC0081B641 /* SNViewController+Nav.m in Sources */,
 				BCAA4AB61C856D610085A165 /* MyClinicListViewController.m in Sources */,
-				7FE327B61CB51A8200032376 /* HomeSubViewMainCollectionCell.m in Sources */,
 				3EDEBA891A961C4800E72809 /* SNNetworkClient+CompletionBlock.m in Sources */,
 				7F71E8C81C9940F900656CAF /* DiagnosisRemarkTitleView.m in Sources */,
 				E1EB1D7B1B70A43B0048B8EB /* HomeViewController.m in Sources */,
@@ -4970,7 +4964,7 @@
 				E1EB1D7F1B70A43B0048B8EB /* CUUserManager.m in Sources */,
 				3EDEBA7B1A961C4800E72809 /* AFXMLRequestOperation.m in Sources */,
 				E10EDCD61B8CA9690035B6E7 /* UserDropdownMenuView.m in Sources */,
-				7F2B655C1C9010E0007C2860 /* LaunchView.m in Sources */,
+				7F2B655C1C9010E0007C2860 /* LoadingView.m in Sources */,
 				7FFD7AAA1CB7B574000C45E3 /* ClinicAdverCell.m in Sources */,
 				E1C2F4EA1BA875770070224F /* Address.m in Sources */,
 				3ED171161AAF0A9A00E5B630 /* CustomIOS7AlertView.m in Sources */,
