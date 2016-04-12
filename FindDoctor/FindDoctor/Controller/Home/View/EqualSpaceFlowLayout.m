@@ -33,13 +33,18 @@
 
     self.itemAttributes = [NSMutableArray new];
     
+    CGFloat yOffset = self.sectionInset.top;
+    
     for (int section = 0; section < self.collectionView.numberOfSections; section++) {
         NSInteger itemCount = [[self collectionView] numberOfItemsInSection:section];
         NSMutableArray *itemAttributesInSection = [NSMutableArray arrayWithCapacity:itemCount];
 //        self.itemAttributes = [NSMutableArray arrayWithCapacity:itemCount];
         
         CGFloat xOffset = self.sectionInset.left;
-        CGFloat yOffset = self.sectionInset.top;
+        
+        if (section != 0) {
+            yOffset += self.sectionInset.bottom + 60;
+        }
         CGFloat xNextOffset = self.sectionInset.left;
         for (NSInteger idx = 0; idx < itemCount; idx++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:idx inSection:section];
@@ -71,6 +76,11 @@
     }
 }
 
+- (CGSize)collectionViewContentSize{
+    CGSize size = CGSizeMake(kScreenWidth, self.collectionView.frameHeight * 2);
+    return size;
+}
+
 - (nullable UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return (self.itemAttributes)[indexPath.section][indexPath.row];
@@ -96,9 +106,14 @@
     NSMutableArray *layoutAttributes = [NSMutableArray array];
     
     for (int section = 0; section < self.collectionView.numberOfSections; section++) {
-        [layoutAttributes addObjectsFromArray:[self.itemAttributes[section] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UICollectionViewLayoutAttributes *evaluatedObject, NSDictionary *bindings) {
+        
+        NSPredicate * predicate = [NSPredicate predicateWithBlock:^BOOL(UICollectionViewLayoutAttributes *evaluatedObject, NSDictionary *bindings) {
             return CGRectIntersectsRect(rect, [evaluatedObject frame]);
-        }]]];
+        }];
+        
+        NSArray * array1 = [self.itemAttributes[section] filteredArrayUsingPredicate:predicate];
+        
+        [layoutAttributes addObjectsFromArray:array1];
     }
     return layoutAttributes;
 }
