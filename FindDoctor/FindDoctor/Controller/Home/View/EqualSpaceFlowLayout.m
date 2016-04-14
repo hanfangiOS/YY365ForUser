@@ -51,7 +51,7 @@
 {
     [super prepareLayout];
     [self registerClass:[HFWV class] forDecorationViewOfKind:@"HFWV"];//注册Decoration View
-
+    
     self.itemAttributes = [NSMutableArray new];
     
     
@@ -66,6 +66,7 @@
         CGFloat xOffset = tempSectionInset.left;
         CGFloat xNextOffset = tempSectionInset.left;
         CGSize headerSize = [self.delegate collectionView:self.collectionView layout:self referenceSizeForHeaderInSection:section]; // 此代理必须执行
+
         UICollectionViewLayoutAttributes *layoutAttributes2 = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader withIndexPath:[NSIndexPath indexPathForItem:itemCount inSection:section]];
         layoutAttributes2.frame = CGRectMake(0, yOffset, headerSize.width,headerSize.height);
         [itemAttributesInSection addObject:layoutAttributes2];
@@ -82,7 +83,6 @@
 
         yOffset += tempMinimumLineSpacing;
         
-
         for (NSInteger idx = 0; idx < itemCount; idx++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:idx inSection:section];
             CGSize itemSize = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:indexPath]; // 此代理必须执行

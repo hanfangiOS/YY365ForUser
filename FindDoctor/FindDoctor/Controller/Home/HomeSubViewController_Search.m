@@ -42,7 +42,7 @@
     self.contentView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
     EqualSpaceFlowLayout *collectionLayout = [[EqualSpaceFlowLayout alloc] init];
     collectionLayout.delegate = self;
-
+    
     CGRect collectionFrame = CGRectMake(0, 0, kScreenWidth, self.contentView.frameHeight - 60 - 49);
     
     UICollectionView *collectionview = [[UICollectionView alloc] initWithFrame:collectionFrame collectionViewLayout:collectionLayout];
@@ -143,7 +143,7 @@
         return headerview;
     }
     else{
-
+        
     }
     return nil;
 }
@@ -178,9 +178,9 @@
     self.currSearchStr = searchStr;
     [SearchHistoryHelper saveSearchHistory:searchStr];
     
-//    if (self.action) {
-//        self.action(searchStr);
-//    }
+    //    if (self.action) {
+    //        self.action(searchStr);
+    //    }
 }
 
 - (void)searchStringDidChange:(NSString *)searchStr
