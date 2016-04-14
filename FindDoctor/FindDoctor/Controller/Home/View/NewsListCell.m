@@ -34,7 +34,7 @@
     [self addSubview:self.icon];
     
     UILabel * label = [[UILabel alloc] init];
-    label.backgroundColor = [UIColor blackColor];
+    label.backgroundColor = [UIColor yellowColor];
     label.textAlignment = NSTextAlignmentLeft;
     label.numberOfLines = 0;
     label.font = [UIFont systemFontOfSize:15];
@@ -46,7 +46,7 @@
     
     self.icon.frame = CGRectMake(12, 12, 28, 22);
     
-    CGSize size = [self sizeForString:self.label.text font:self.label.font limitSize:CGSizeMake(self.frameWidth - (self.icon.maxX + 15 + 25), 0)];
+    CGSize size = [self sizeForString:self.label.text font:self.label.font limitSize:CGSizeMake(self.frameWidth - (40 + 15 + 25), 0)];
     self.label.frame = CGRectMake(self.icon.maxX + 15, self.icon.frameY, size.width, size.height);
 }
 
@@ -66,6 +66,7 @@
     }
     
     [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 - (void)clearCache{
@@ -74,8 +75,8 @@
 }
 
 - (NSInteger)CellHeight{
-    
-    return (self.label.maxY + 15);
+        CGSize size = [self sizeForString:self.label.text font:self.label.font limitSize:CGSizeMake(self.frameWidth - (40 + 15 + 25), 0)];
+    return (size.height + 15 + 12);
 }
 
 - (CGSize)sizeForString:(NSString *)string font:(UIFont *)font limitSize:(CGSize)limitSize{

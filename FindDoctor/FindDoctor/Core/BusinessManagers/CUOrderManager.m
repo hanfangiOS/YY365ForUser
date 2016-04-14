@@ -486,7 +486,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     //                    NSInteger pageid = [[dic valueForKeySafely:@"type"] integerValue];
                     [resultArray addObjectSafely:data];
                 }
-    
+
                 result.parsedModelObject = resultArray;
             }
             resultBlock(nil, result);

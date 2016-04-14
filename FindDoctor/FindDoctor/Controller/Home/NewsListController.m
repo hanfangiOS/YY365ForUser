@@ -32,6 +32,10 @@
     return self;
 }
 
+- (void)loadNavigationBar{
+    [self addLeftBackButtonItemWithImage];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -43,13 +47,21 @@
     return 2;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return _cellHeight;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * cellID = @"NewsListCell";
-    NewsListCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    NewsListCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
         cell = [[NewsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
+    if (self.listModel.items.count > 0) {
+        cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
+        _cellHeight = cell.CellHeight;
+    }
+    cell.backgroundColor = [UIColor blueColor];
     return cell;
 }
 

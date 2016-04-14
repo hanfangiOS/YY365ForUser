@@ -10,6 +10,8 @@
 #import "HomeSubViewController_Main.h"
 #import "HomeSubViewController_Search.h"
 #import "CityChooseButton.h"
+#import "NewsListController.h"
+#import "NewsListModel.h"
 
 @interface HomeViewController ()<UITextFieldDelegate>{
     CityChooseButton    *_cityButton;
@@ -100,7 +102,10 @@
 }
 
 - (void)messageAction{
-
+    
+    NewsListModel * listMiodel = [[NewsListModel alloc] init];
+    NewsListController * VC = [[NewsListController alloc] initWithPageName:@"NewsListController" listModel:listMiodel];
+    [self.slideNavigationController pushViewController:VC animated:YES];
 }
 
 - (void)searchCancel{
