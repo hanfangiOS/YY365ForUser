@@ -320,6 +320,7 @@
 		BCAA4AD11C8686750085A165 /* Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AD01C8686750085A165 /* Diagnosis.m */; };
 		BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0506B1C15982500F988B1 /* TipMessageData.m */; };
 		BCB0506E1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */; };
+		BCB51CF41CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB51CF31CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m */; };
 		BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC054AF1C4397F200017202 /* DiseaseSubject.m */; };
 		BCC9AAED1CA238D7009D3F9B /* ParserTools.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC9AAEC1CA238D7009D3F9B /* ParserTools.m */; };
 		BCE331F61C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */; };
@@ -1156,6 +1157,8 @@
 		BCB0506A1C15982500F988B1 /* TipMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipMessageData.h; sourceTree = "<group>"; };
 		BCB0506B1C15982500F988B1 /* TipMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipMessageData.m; sourceTree = "<group>"; };
 		BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipTableViewCellBackground@2x.png"; sourceTree = "<group>"; };
+		BCB51CF21CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSearchDoctorCollectionViewCell.h; sourceTree = "<group>"; };
+		BCB51CF31CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSearchDoctorCollectionViewCell.m; sourceTree = "<group>"; };
 		BCC054AE1C4397F200017202 /* DiseaseSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiseaseSubject.h; sourceTree = "<group>"; };
 		BCC054AF1C4397F200017202 /* DiseaseSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiseaseSubject.m; sourceTree = "<group>"; };
 		BCC9AAEB1CA238D7009D3F9B /* ParserTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserTools.h; sourceTree = "<group>"; };
@@ -4283,6 +4286,8 @@
 				7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */,
 				7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */,
 				7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */,
+				BCB51CF21CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.h */,
+				BCB51CF31CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m */,
 				BC1A58A21CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.h */,
 				BC1A58A31CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.m */,
 				BC1A58A51CB7BC670054DDE6 /* EqualSpaceFlowLayout.h */,
@@ -4837,6 +4842,7 @@
 				3ED0A7561AA603C50040E529 /* SNTableView.m in Sources */,
 				E1AD6F251B7CC7F900FB3C55 /* DoctorListController.m in Sources */,
 				E1EB1D791B70A43B0048B8EB /* CUWebController.m in Sources */,
+				BCB51CF41CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m in Sources */,
 				BCAA4AB51C856D610085A165 /* MyClinicListModel.m in Sources */,
 				3EDEBAC01A961C4800E72809 /* UIImage+Alpha.m in Sources */,
 				E1A6B9311BB30422001A458D /* SearchHistoryHelper.m in Sources */,

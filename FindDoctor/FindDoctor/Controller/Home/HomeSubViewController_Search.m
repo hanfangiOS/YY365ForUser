@@ -8,6 +8,7 @@
 
 #import "HomeSubViewController_Search.h"
 #import "SearchHistoryCollectionViewCell.h"
+#import "HotSearchDoctorCollectionViewCell.h"
 #import "SearchHistoryHelper.h"
 #import "EqualSpaceFlowLayout.h"
 #import "SubObjectHeaderView.h"
@@ -38,20 +39,13 @@
 
 - (void)loadContentView{
     [self loadHistory];
-    
-//    UICollectionViewFlowLayout *collectionLayout = [[UICollectionViewFlowLayout alloc] init];
-//    collectionLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-//    collectionLayout.minimumInteritemSpacing = 5;
-//    collectionLayout.minimumLineSpacing = 5;
-//    collectionLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-//    collectionLayout.headerReferenceSize = CGSizeMake(kScreenWidth, 40);
+    self.contentView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
     EqualSpaceFlowLayout *collectionLayout = [[EqualSpaceFlowLayout alloc] init];
     collectionLayout.delegate = self;
 
     CGRect collectionFrame = CGRectMake(0, 0, kScreenWidth, self.contentView.frameHeight - 60 - 49);
     
     UICollectionView *collectionview = [[UICollectionView alloc] initWithFrame:collectionFrame collectionViewLayout:collectionLayout];
-    
     collectionview.backgroundColor = [UIColor clearColor];
     collectionview.delegate = self;
     collectionview.dataSource = self;
@@ -59,8 +53,11 @@
     
     self.searchHistoryCollectionView = collectionview;
     
-    NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
-    [self.searchHistoryCollectionView registerClass:[SearchHistoryCollectionViewCell class] forCellWithReuseIdentifier:collectionCellName];
+    NSString *historyCollectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
+    [self.searchHistoryCollectionView registerClass:[SearchHistoryCollectionViewCell class] forCellWithReuseIdentifier:historyCollectionCellName];
+    
+    NSString *hotSearchDoctorcollectionCellName = NSStringFromClass([HotSearchDoctorCollectionViewCell class]);
+    [self.searchHistoryCollectionView registerClass:[HotSearchDoctorCollectionViewCell class] forCellWithReuseIdentifier:hotSearchDoctorcollectionCellName];
     
     NSString *collectionHeaderName = NSStringFromClass([SubObjectHeaderView class]);
     [self.searchHistoryCollectionView registerClass:[SubObjectHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:collectionHeaderName];
@@ -80,8 +77,10 @@
 ////定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 1) {
+        return CGSizeMake(kScreenWidth, 50);
+    }
     CGSize size = [self sizeForString:(NSString *)[self.dataArray objectAtIndex:indexPath.row] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
-    
     return CGSizeMake(size.width+20, size.height+15);
 }
 
@@ -93,20 +92,45 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    if (section == 1) {
+        return 2;
+    }
     return self.dataArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 1) {
+        NSString *collectionCellName = NSStringFromClass([HotSearchDoctorCollectionViewCell  class]);
+        HotSearchDoctorCollectionViewCell *collectionCell = (HotSearchDoctorCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
+        return collectionCell;
+    }
+
     NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
     SearchHistoryCollectionViewCell *collectionCell = (SearchHistoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
     collectionCell.string = (NSString *)[self.dataArray objectAtIndex:indexPath.row];
+    collectionCell.backgroundColor = [UIColor clearColor];
+
     return collectionCell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    if(section == 1){
+        return 0;
+    }
+    return 10;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    if(section == 1){
+        return 0;
+    }
+    return 5;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -116,7 +140,6 @@
         SubObjectHeaderView *headerview = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:collectionHeaderName forIndexPath:indexPath];
         NSArray *headers = [[NSArray alloc] initWithObjects:@"搜索记录", @"热搜医师", @"热搜病症",@"热搜诊所", nil];
         headerview.headerTitle = [headers objectAtIndex:indexPath.section];
-        headerview.backgroundColor = [UIColor blueColor];
         return headerview;
     }
     else{
@@ -126,7 +149,15 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(kScreenWidth, 40);
+    return CGSizeMake(kScreenWidth, 27);
+}
+
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    if(section == 1){
+        return UIEdgeInsetsMake(0,0,0,0);
+    }
+    return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 #pragma mark - Search History
 
