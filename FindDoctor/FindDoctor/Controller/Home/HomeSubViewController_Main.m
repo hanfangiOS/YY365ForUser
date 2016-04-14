@@ -19,7 +19,6 @@
 #import "DoctorListController.h"
 #import "HomeSubViewMainTableCell.h"
 
-
 #define sectionHeaderViewHeight 30
 
 @implementation HomeModel
