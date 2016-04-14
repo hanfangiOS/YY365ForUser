@@ -36,7 +36,9 @@
     
     _signView = [[UILabel alloc] init];
     _signView.backgroundColor = kGreenColor;
-    _signView.frame = (CGRect){margin,content_height-sign_width-padding_bottom,sign_width,sign_width};
+//    _signView.frame = (CGRect){margin,content_height-sign_width-padding_bottom,sign_width,sign_width};
+    _signView.frame = (CGRect){0,0,sign_width,sign_width};
+
     [self addSubview:_signView];
 
     _titleLabel = [[UILabel alloc] init];

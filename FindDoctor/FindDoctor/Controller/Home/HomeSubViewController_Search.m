@@ -40,11 +40,15 @@
     [self loadHistory];
     
 //    UICollectionViewFlowLayout *collectionLayout = [[UICollectionViewFlowLayout alloc] init];
+//    collectionLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//    collectionLayout.minimumInteritemSpacing = 5;
+//    collectionLayout.minimumLineSpacing = 5;
+//    collectionLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+//    collectionLayout.headerReferenceSize = CGSizeMake(kScreenWidth, 40);
     EqualSpaceFlowLayout *collectionLayout = [[EqualSpaceFlowLayout alloc] init];
-    collectionLayout.headerReferenceSize = CGSizeMake(kScreenWidth, 40);
     collectionLayout.delegate = self;
-    
-    CGRect collectionFrame = self.contentView.bounds;
+
+    CGRect collectionFrame = CGRectMake(0, 0, kScreenWidth, self.contentView.frameHeight - 60 - 49);
     
     UICollectionView *collectionview = [[UICollectionView alloc] initWithFrame:collectionFrame collectionViewLayout:collectionLayout];
     
