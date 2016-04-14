@@ -15,6 +15,7 @@
     CityChooseButton    *_cityButton;
     UITextField *_searchTextField;
     UIButton    *_searchCancelButton;
+    UIButton    *_messageButton;
 }
 @property (nonatomic, strong) HomeSubViewController_Main *homeSubViewController_Main;
 @property (nonatomic, strong) HomeSubViewController_Search *homeSubViewController_Search;
@@ -59,7 +60,7 @@
     _cityButton.cityLabel.text = @"成都";
     [headerView addSubview:_cityButton];
     
-    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(70, 28, kScreenWidth - 90, 24)];
+    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(70, 28, kScreenWidth - 120, 24)];
     _searchTextField.placeholder = @"搜索病症/医师/症状/诊所";
     [_searchTextField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
     _searchTextField.font = [UIFont systemFontOfSize:12];
@@ -80,6 +81,15 @@
     _searchCancelButton.hidden = YES;
     [_searchCancelButton addTarget:self action:@selector(searchCancel) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:_searchCancelButton];
+    
+    _messageButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 55, 28 ,60, 24)];
+    [_messageButton setTitle:@"消息" forState:UIControlStateNormal];
+    _messageButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    _messageButton.titleLabel.textColor = [UIColor whiteColor];
+    _messageButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _messageButton.hidden = NO;
+    [_messageButton addTarget:self action:@selector(messageAction) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:_messageButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -89,8 +99,45 @@
     _homeSubViewController_Search.slideNavigationController = self.slideNavigationController;
 }
 
+- (void)messageAction{
+
+}
+
 - (void)searchCancel{
     [self.view endEditing:YES];
+    //关闭搜索
+    float timeDuration = 0.5;
+    //搜索激活状态
+    CAKeyframeAnimation *popAnimation2 = [CAKeyframeAnimation animationWithKeyPath:@"transform2"];
+    popAnimation2.duration = timeDuration;
+    popAnimation2.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.8f, 0.8f, 1.0f)],
+                             [NSValue valueWithCATransform3D:CATransform3DIdentity]];
+    popAnimation2.keyTimes = @[@(timeDuration)];
+    popAnimation2.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                      [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [_homeSubViewController_Main.view.layer addAnimation:popAnimation2 forKey:nil];
+    _homeSubViewController_Search.view.alpha = 1;
+    _homeSubViewController_Main.view.alpha = 0;
+    _searchCancelButton.hidden = NO;
+    _searchCancelButton.alpha = 1;
+    _messageButton.hidden = NO;
+    _messageButton.alpha = 0;
+    _cityButton.hidden = NO;
+    _cityButton.alpha = 0;
+    [UIView animateWithDuration:timeDuration delay:0 usingSpringWithDamping:1 initialSpringVelocity:5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+        _searchTextField.frame = CGRectMake(70, 28, kScreenWidth - 120, 24);
+        _searchCancelButton.alpha = 0;
+        _cityButton.alpha = 1;
+        _messageButton.alpha = 1;
+        _homeSubViewController_Search.view.alpha = 0;
+        _homeSubViewController_Main.view.alpha = 1;
+    } completion:^(BOOL finished) {
+        _searchCancelButton.hidden = YES;
+        _cityButton.hidden = NO;
+        _messageButton.hidden = NO;
+        [self.view bringSubviewToFront:_homeSubViewController_Main.view];
+    }];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -109,51 +156,27 @@
     _homeSubViewController_Main.view.alpha = 1.f;
     _searchCancelButton.hidden = NO;
     _searchCancelButton.alpha = 0;
+    _messageButton.hidden = NO;
+    _messageButton.alpha = 1;
     _cityButton.hidden = NO;
     _cityButton.alpha = 1;
     [UIView animateWithDuration:timeDuration delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:3 options:UIViewAnimationOptionLayoutSubviews animations:^{
         _searchTextField.frame = CGRectMake(10, 28, kScreenWidth - 60 , 24);
         _searchCancelButton.alpha = 1;
         _cityButton.alpha = 0;
+        _messageButton.alpha = 0;
         _homeSubViewController_Search.view.alpha = 0.5f;
         _homeSubViewController_Main.view.alpha = 0.f;
     } completion:^(BOOL finished) {
         _searchCancelButton.hidden = NO;
         _cityButton.hidden = YES;
+        _messageButton.hidden = YES;
         [self.view bringSubviewToFront:_homeSubViewController_Search.view];
     }];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    //关闭搜索
-    float timeDuration = 0.5;
-    //搜索激活状态
-    CAKeyframeAnimation *popAnimation2 = [CAKeyframeAnimation animationWithKeyPath:@"transform2"];
-    popAnimation2.duration = timeDuration;
-    popAnimation2.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.8f, 0.8f, 1.0f)],
-                            [NSValue valueWithCATransform3D:CATransform3DIdentity]];
-    popAnimation2.keyTimes = @[@(timeDuration)];
-    popAnimation2.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    [_homeSubViewController_Main.view.layer addAnimation:popAnimation2 forKey:nil];
-    _homeSubViewController_Search.view.alpha = 1;
-    _homeSubViewController_Main.view.alpha = 0;
-    _searchCancelButton.hidden = NO;
-    _searchCancelButton.alpha = 1;
-    _cityButton.hidden = NO;
-    _cityButton.alpha = 0;
-    [UIView animateWithDuration:timeDuration delay:0 usingSpringWithDamping:1 initialSpringVelocity:5 options:UIViewAnimationOptionLayoutSubviews animations:^{
-        _searchTextField.frame = CGRectMake(70, 28, kScreenWidth - 90, 24);
-        _searchCancelButton.alpha = 0;
-        _cityButton.alpha = 1;
-        _homeSubViewController_Search.view.alpha = 0;
-        _homeSubViewController_Main.view.alpha = 1;
-    } completion:^(BOOL finished) {
-        _searchCancelButton.hidden = YES;
-        _cityButton.hidden = NO;
-        [self.view bringSubviewToFront:_homeSubViewController_Main.view];
-    }];
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
