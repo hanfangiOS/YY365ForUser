@@ -10,6 +10,4 @@
 
 @interface UserViewController : CUViewController
 
-@property (nonatomic, strong) UIScrollView *contentScrollView;
-
 @end

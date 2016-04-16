@@ -9,13 +9,10 @@
 #import "UserHeaderView.h"
 #import "UIImageView+WebCache.h"
 #import "CUUserManager.h"
+#import "BigButtonsInUser.h"
 
-@implementation UserHeaderView{
-    UIImageView *headImageView;
-    UILabel *label1;
-    UILabel *label2;
-}
 
+@implementation UserHeaderView
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
@@ -26,33 +23,58 @@
 }
 
 - (void)initSubViews{
-    headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 16, 67, 67)];
-    headImageView.layer.cornerRadius = 67 / 2.f;
-    headImageView.clipsToBounds = YES;
-    headImageView.layer.borderColor = UIColorFromHex(0xbbdaff).CGColor;
-    headImageView.layer.borderWidth = 1.5;
-    [headImageView setImageWithURL:[CUUserManager sharedInstance].user.icon placeholderImage:[UIImage imageNamed:@"DefaultHeaderImage"]];
-    [self addSubview:headImageView];
+    self.userInfoBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 75)];
+    [self addSubview:self.userInfoBackgroundView];
+    self.userInfoBackgroundView.backgroundColor  = [UIColor purpleColor];
     
-    label1 = [[UILabel alloc]initWithFrame:CGRectMake(105, 28, self.frameWidth - 105, 14)];
-    label1.font = [UIFont systemFontOfSize:14];
-    label1.textAlignment = NSTextAlignmentLeft;
-    label1.textColor = UIColorFromHex(0x000000);
-    label1.text = [NSString stringWithFormat:@"%@",[CUUserManager sharedInstance].user.nickName];
-    [self addSubview:label1];
+    self.icon = [[UIImageView alloc]initWithFrame:CGRectMake(28, 6, 64, 64)];
+    self.icon.layer.cornerRadius = 64 / 2.f;
+    self.icon.clipsToBounds = YES;
+    [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"DefaultHeaderImage"]];
+    [self.userInfoBackgroundView addSubview:self.icon];
+    self.icon.backgroundColor = [UIColor redColor];
     
-    label2 = [[UILabel alloc]initWithFrame:CGRectMake([label1 frameX], CGRectGetMaxY(label1.frame)+12, label1.frameWidth, label1.frameHeight)];
-    label2.font = [UIFont systemFontOfSize:12];
-    label2.textColor = UIColorFromHex(0x454545);
-    label2.textAlignment = NSTextAlignmentLeft;
-    label2.text = [NSString stringWithFormat:@"ID : %ld",[CUUserManager sharedInstance].user.userId];
-    [self addSubview:label2];
+    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 28 - 4, 16, 28, 28)];
+    self.arrow.image = [UIImage imageNamed:@""];
+    self.arrow.backgroundColor = [UIColor redColor];
+    [self.userInfoBackgroundView addSubview:self.arrow];
+    
+    self.name = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 16, self.icon.frameY + 12, kScreenWidth - (self.icon.maxX + 16 + self.arrow.frameWidth + 4 + 8), 24)];
+
+    self.name.backgroundColor = [UIColor yellowColor];
+    [self.userInfoBackgroundView addSubview:self.name];
+    
+    self.userID = [[UILabel alloc] initWithFrame:CGRectMake(self.name.frameX, self.name.maxY + 6, self.name.frameWidth, 15)];
+    self.userID.font = [UIFont systemFontOfSize:12];
+    self.userID.backgroundColor = [UIColor blueColor];
+    [self.userInfoBackgroundView addSubview:self.userID];
+    
+    self.btnBackgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 140, kScreenWidth, 83)];
+    [self addSubview:self.btnBackgroundView];
+    
+    CGFloat padding = 2;
+    CGFloat btnWidth = (kScreenWidth - padding * 4)/3;
+    
+    self.myDoctorBtn = [[BigButtonsInUser alloc] initWithFrame:CGRectMake(padding, 0, btnWidth, self.btnBackgroundView.frameHeight) image:[UIImage imageNamed:@""] title:@"我的医生"];
+    [self.btnBackgroundView addSubview:self.myDoctorBtn];
+    
+    self.myClinicBtn = [[BigButtonsInUser alloc] initWithFrame:CGRectMake(self.myDoctorBtn.maxX + padding, 0, btnWidth, self.btnBackgroundView.frameHeight) image:[UIImage imageNamed:@""] title:@"我的诊所"];
+    [self.btnBackgroundView addSubview:self.myClinicBtn];
+    
+    self.myCommentBtn = [[BigButtonsInUser alloc] initWithFrame:CGRectMake(self.myClinicBtn.maxX + padding, 0, btnWidth, self.btnBackgroundView.frameHeight) image:[UIImage imageNamed:@""] title:@"我的点评"];
+    [self.btnBackgroundView addSubview:self.myCommentBtn];
 }
 
 - (void)resetUserInfo{
-    [headImageView setImageWithURL:[CUUserManager sharedInstance].user.icon placeholderImage:[UIImage imageNamed:@"DefaultHeaderImage"]];
-    label1.text = [NSString stringWithFormat:@"%@",[CUUserManager sharedInstance].user.nickName];
-    label2.text = [NSString stringWithFormat:@"ID : %ld",[CUUserManager sharedInstance].user.userId];
+    [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"DefaultHeaderImage"]];
+    
+    
+    if ([CUUserManager sharedInstance].isLogin == YES) {
+        self.name.text = [[CUUserManager sharedInstance].user.name length] > 0?[CUUserManager sharedInstance].user.name:@"优医用户";
+        self.userID.text = [NSString stringWithFormat:@"优医号：%ld",(long)[CUUserManager sharedInstance].user.userId];
+    }else{
+        self.name.text = @"未登录";
+    }
 }
 
 @end
