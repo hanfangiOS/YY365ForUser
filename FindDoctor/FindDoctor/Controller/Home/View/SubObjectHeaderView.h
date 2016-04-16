@@ -11,5 +11,6 @@
 @interface SubObjectHeaderView : UICollectionReusableView
 
 @property (nonatomic, copy) NSString *headerTitle;
+@property (nonatomic) BOOL hasLine;
 
 @end

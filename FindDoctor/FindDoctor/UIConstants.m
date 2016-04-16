@@ -14,7 +14,8 @@ NSInteger Color_Hex_NavText_Selected = 0xffffff;
 NSInteger Color_Hex_NavText = 0xffffff;
 NSInteger Color_Hex_ContentViewBackground = 0xffffff;
 
-NSInteger Color_Hex_NavBackground = 0x2f76cb;//0x429EA2;//0x57B526;
+//NSInteger Color_Hex_NavBackground = 0x2f76cb;//0x429EA2;//0x57B526;
+NSInteger Color_Hex_NavBackground = 0x3170c8;//0x429EA2;//0x57B526;
 NSInteger Color_Hex_NavShadow = 0x2f76cb;
 
 NSInteger Color_Hex_Text_Normal = 0x444444;
@@ -22,7 +23,7 @@ NSInteger Color_Hex_Text_Selected = 0x2f76cb;//0x57B526;
 NSInteger Color_Hex_Text_Readed = 0x999999;
 NSInteger Color_Hex_Text_Highlighted = 0xf07320;
 NSInteger Color_Hex_Text_gray = 0x6c6c6c;
-NSInteger Color_Hex_ImageDefault = 0xf4f4f4;
+NSInteger Color_Hex_ImageDefault = 0xf2f4fa;
 
 NSInteger Color_Hex_Tableview_Separator = 0xE6E6E6;
 

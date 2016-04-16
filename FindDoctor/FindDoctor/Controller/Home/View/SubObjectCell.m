@@ -31,7 +31,8 @@
 - (void)createContentView
 {
     float content_width = self.frame.size.width;
-        
+
+    
     _iconView = [[UIImageView alloc] init];
     _iconView.contentMode = UIViewContentModeScaleAspectFit;
     CGFloat side = 52;
@@ -57,5 +58,7 @@
     [_iconView setImage:[UIImage imageNamed:_subobject.localImageName]];
     _titleLabel.text = subobject.name;
 }
+
+
 
 @end

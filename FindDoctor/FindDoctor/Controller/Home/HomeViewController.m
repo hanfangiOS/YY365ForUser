@@ -111,7 +111,7 @@
 - (void)searchCancel{
     [self.view endEditing:YES];
     //关闭搜索
-    float timeDuration = 0.5;
+    float timeDuration = 0.25;
     //搜索激活状态
     CAKeyframeAnimation *popAnimation2 = [CAKeyframeAnimation animationWithKeyPath:@"transform2"];
     popAnimation2.duration = timeDuration;
@@ -146,7 +146,7 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    float timeDuration = 0.5f;
+    float timeDuration = 0.25f;
     //搜索激活状态
     CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     popAnimation.duration = timeDuration;
@@ -170,7 +170,7 @@
         _searchCancelButton.alpha = 1;
         _cityButton.alpha = 0;
         _messageButton.alpha = 0;
-        _homeSubViewController_Search.view.alpha = 0.5f;
+        _homeSubViewController_Search.view.alpha = 1.f;
         _homeSubViewController_Main.view.alpha = 0.f;
     } completion:^(BOOL finished) {
         _searchCancelButton.hidden = NO;

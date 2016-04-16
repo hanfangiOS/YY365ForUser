@@ -8,6 +8,7 @@
 
 #import "HomeSubViewController_Search.h"
 #import "SearchHistoryCollectionViewCell.h"
+#import "HotSearchDoctorCollectionViewCell.h"
 #import "SearchHistoryHelper.h"
 #import "EqualSpaceFlowLayout.h"
 #import "SubObjectHeaderView.h"
@@ -52,8 +53,11 @@
     
     self.searchHistoryCollectionView = collectionview;
     
-    NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
-    [self.searchHistoryCollectionView registerClass:[SearchHistoryCollectionViewCell class] forCellWithReuseIdentifier:collectionCellName];
+    NSString *historyCollectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
+    [self.searchHistoryCollectionView registerClass:[SearchHistoryCollectionViewCell class] forCellWithReuseIdentifier:historyCollectionCellName];
+    
+    NSString *hotSearchDoctorcollectionCellName = NSStringFromClass([HotSearchDoctorCollectionViewCell class]);
+    [self.searchHistoryCollectionView registerClass:[HotSearchDoctorCollectionViewCell class] forCellWithReuseIdentifier:hotSearchDoctorcollectionCellName];
     
     NSString *collectionHeaderName = NSStringFromClass([SubObjectHeaderView class]);
     [self.searchHistoryCollectionView registerClass:[SubObjectHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:collectionHeaderName];
@@ -73,8 +77,10 @@
 ////定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 1) {
+        return CGSizeMake(kScreenWidth, 50);
+    }
     CGSize size = [self sizeForString:(NSString *)[self.dataArray objectAtIndex:indexPath.row] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
-    
     return CGSizeMake(size.width+20, size.height+15);
 }
 
@@ -86,20 +92,45 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    if (section == 1) {
+        return 2;
+    }
     return self.dataArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 1) {
+        NSString *collectionCellName = NSStringFromClass([HotSearchDoctorCollectionViewCell  class]);
+        HotSearchDoctorCollectionViewCell *collectionCell = (HotSearchDoctorCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
+        return collectionCell;
+    }
+
     NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
     SearchHistoryCollectionViewCell *collectionCell = (SearchHistoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
     collectionCell.string = (NSString *)[self.dataArray objectAtIndex:indexPath.row];
+    collectionCell.backgroundColor = [UIColor clearColor];
+
     return collectionCell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    if(section == 1){
+        return 0;
+    }
+    return 10;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    if(section == 1){
+        return 0;
+    }
+    return 5;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -119,6 +150,14 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     return CGSizeMake(kScreenWidth, 27);
+}
+
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    if(section == 1){
+        return UIEdgeInsetsMake(0,0,0,0);
+    }
+    return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 #pragma mark - Search History
 

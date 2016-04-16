@@ -12,6 +12,7 @@
 {
     UILabel *_titleLabel;
     UIView *_signView;
+    UIView  *_footerLine;
 }
 @end
 
@@ -29,25 +30,27 @@
 - (void)createSubViews
 {
     float interval_x = 5.f;
-    float sign_width = 18.f;
-    float content_height = 55.f;
-    float margin = 30*kScreenRatio;
-    float padding_bottom = 10.f;
+    float sign_width = 18;
+    self.backgroundColor = [UIColor whiteColor];
+    
+    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frameWidth, 2)];
+    line.backgroundColor = UIColorFromHex(0xf3f6f9);
+    [self addSubview:line];
+    
+    _footerLine = [[UIView alloc]initWithFrame:CGRectMake(8, self.frameHeight, self.frameWidth-16, 2)];
+    _footerLine.backgroundColor = UIColorFromHex(0xf3f6f9);
+    [self addSubview:_footerLine];
     
     _signView = [[UILabel alloc] init];
-    _signView.backgroundColor = kGreenColor;
-//    _signView.frame = (CGRect){margin,content_height-sign_width-padding_bottom,sign_width,sign_width};
-    _signView.frame = (CGRect){0,0,sign_width,sign_width};
-
+    _signView.backgroundColor = UIColorFromHex(Color_Hex_NavBackground);
+    _signView.frame = (CGRect){8,(self.frameHeight - sign_width)/2,4,sign_width};
     [self addSubview:_signView];
 
     _titleLabel = [[UILabel alloc] init];
-    _titleLabel.backgroundColor = kTableViewCellGrayColor;
     _titleLabel.textColor = kBlackColor;
     _titleLabel.font = SystemFont_14;
     _titleLabel.frame = (CGRect){CGRectGetMaxX(_signView.frame)+interval_x,CGRectGetMinY(_signView.frame),kScreenWidth-CGRectGetMaxX(_signView.frame)-interval_x,sign_width};
     [self addSubview:_titleLabel];
-    
 }
 
 - (void)setHeaderTitle:(NSString *)headerTitle
@@ -60,6 +63,11 @@
     [headerAttributedStr addAttributes:@{NSParagraphStyleAttributeName:paragraph} range:NSMakeRange(0, headerTitle.length)];
     
     _titleLabel.attributedText = headerAttributedStr;
+}
+
+- (void)setHasLine:(BOOL)hasLine{
+    _hasLine = hasLine;
+    _footerLine.hidden = !hasLine;
 }
 
 @end
