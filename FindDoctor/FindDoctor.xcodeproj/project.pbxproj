@@ -171,6 +171,8 @@
 		3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */; };
 		7F0469FC1CB65C9F00C9C054 /* GoodDoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */; };
 		7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */; };
+		7F0A9ECA1CC3CEB90095C08D /* AddMemberBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A9EC91CC3CEB90095C08D /* AddMemberBtnCell.m */; };
+		7F0A9ECD1CC3CECC0095C08D /* AddMemberLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A9ECC1CC3CECC0095C08D /* AddMemberLabelCell.m */; };
 		7F229E841C97F57C009C19E8 /* DoctorFameListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E831C97F57C009C19E8 /* DoctorFameListController.m */; };
 		7F229E871C97F59E009C19E8 /* DoctorFameListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */; };
 		7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */; };
@@ -180,6 +182,12 @@
 		7F31510B1CC24D75002A11C3 /* MyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31510A1CC24D75002A11C3 /* MyMemberViewController.m */; };
 		7F31510F1CC2517F002A11C3 /* MyInfoAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31510E1CC2517F002A11C3 /* MyInfoAvatarCell.m */; };
 		7F3151121CC251BD002A11C3 /* MyInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151111CC251BD002A11C3 /* MyInfoCell.m */; };
+		7F3151161CC28137002A11C3 /* MyMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151151CC28137002A11C3 /* MyMemberCell.m */; };
+		7F3151191CC2814E002A11C3 /* MyMemberListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151181CC2814E002A11C3 /* MyMemberListModel.m */; };
+		7F31511C1CC281B2002A11C3 /* AddMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31511B1CC281B2002A11C3 /* AddMemberViewController.m */; };
+		7F31511F1CC281C4002A11C3 /* ModifyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31511E1CC281C4002A11C3 /* ModifyMemberViewController.m */; };
+		7F3151221CC28210002A11C3 /* AddMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151211CC28210002A11C3 /* AddMemberCell.m */; };
+		7F3151251CC28248002A11C3 /* AddMemberPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151241CC28248002A11C3 /* AddMemberPickerCell.m */; };
 		7F49BC371CB3577F00EAA34A /* HFBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC321CB3577F00EAA34A /* HFBannerView.m */; };
 		7F49BC381CB3577F00EAA34A /* HFBannerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC341CB3577F00EAA34A /* HFBannerViewCell.m */; };
 		7F49BC391CB3577F00EAA34A /* HFPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC361CB3577F00EAA34A /* HFPageControl.m */; };
@@ -945,6 +953,10 @@
 		7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorCell.m; sourceTree = "<group>"; };
 		7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicCell.h; sourceTree = "<group>"; };
 		7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicCell.m; sourceTree = "<group>"; };
+		7F0A9EC81CC3CEB90095C08D /* AddMemberBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberBtnCell.h; sourceTree = "<group>"; };
+		7F0A9EC91CC3CEB90095C08D /* AddMemberBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberBtnCell.m; sourceTree = "<group>"; };
+		7F0A9ECB1CC3CECC0095C08D /* AddMemberLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberLabelCell.h; sourceTree = "<group>"; };
+		7F0A9ECC1CC3CECC0095C08D /* AddMemberLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberLabelCell.m; sourceTree = "<group>"; };
 		7F229E821C97F57C009C19E8 /* DoctorFameListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListController.h; sourceTree = "<group>"; };
 		7F229E831C97F57C009C19E8 /* DoctorFameListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameListController.m; sourceTree = "<group>"; };
 		7F229E851C97F59E009C19E8 /* DoctorFameListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListModel.h; sourceTree = "<group>"; };
@@ -962,6 +974,18 @@
 		7F31510E1CC2517F002A11C3 /* MyInfoAvatarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoAvatarCell.m; sourceTree = "<group>"; };
 		7F3151101CC251BD002A11C3 /* MyInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoCell.h; sourceTree = "<group>"; };
 		7F3151111CC251BD002A11C3 /* MyInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoCell.m; sourceTree = "<group>"; };
+		7F3151141CC28137002A11C3 /* MyMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemberCell.h; sourceTree = "<group>"; };
+		7F3151151CC28137002A11C3 /* MyMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemberCell.m; sourceTree = "<group>"; };
+		7F3151171CC2814E002A11C3 /* MyMemberListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemberListModel.h; sourceTree = "<group>"; };
+		7F3151181CC2814E002A11C3 /* MyMemberListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemberListModel.m; sourceTree = "<group>"; };
+		7F31511A1CC281B2002A11C3 /* AddMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberViewController.h; sourceTree = "<group>"; };
+		7F31511B1CC281B2002A11C3 /* AddMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberViewController.m; sourceTree = "<group>"; };
+		7F31511D1CC281C4002A11C3 /* ModifyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyMemberViewController.h; sourceTree = "<group>"; };
+		7F31511E1CC281C4002A11C3 /* ModifyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyMemberViewController.m; sourceTree = "<group>"; };
+		7F3151201CC28210002A11C3 /* AddMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberCell.h; sourceTree = "<group>"; };
+		7F3151211CC28210002A11C3 /* AddMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberCell.m; sourceTree = "<group>"; };
+		7F3151231CC28248002A11C3 /* AddMemberPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberPickerCell.h; sourceTree = "<group>"; };
+		7F3151241CC28248002A11C3 /* AddMemberPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberPickerCell.m; sourceTree = "<group>"; };
 		7F49BC311CB3577F00EAA34A /* HFBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBannerView.h; sourceTree = "<group>"; };
 		7F49BC321CB3577F00EAA34A /* HFBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBannerView.m; sourceTree = "<group>"; };
 		7F49BC331CB3577F00EAA34A /* HFBannerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBannerViewCell.h; sourceTree = "<group>"; };
@@ -2655,8 +2679,13 @@
 		7F3151081CC24CCC002A11C3 /* MyMember */ = {
 			isa = PBXGroup;
 			children = (
+				7F3151131CC27C7F002A11C3 /* View */,
 				7F3151091CC24D75002A11C3 /* MyMemberViewController.h */,
 				7F31510A1CC24D75002A11C3 /* MyMemberViewController.m */,
+				7F31511A1CC281B2002A11C3 /* AddMemberViewController.h */,
+				7F31511B1CC281B2002A11C3 /* AddMemberViewController.m */,
+				7F31511D1CC281C4002A11C3 /* ModifyMemberViewController.h */,
+				7F31511E1CC281C4002A11C3 /* ModifyMemberViewController.m */,
 			);
 			name = MyMember;
 			path = User/MyMember;
@@ -2669,6 +2698,25 @@
 				7F31510E1CC2517F002A11C3 /* MyInfoAvatarCell.m */,
 				7F3151101CC251BD002A11C3 /* MyInfoCell.h */,
 				7F3151111CC251BD002A11C3 /* MyInfoCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7F3151131CC27C7F002A11C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7F3151141CC28137002A11C3 /* MyMemberCell.h */,
+				7F3151151CC28137002A11C3 /* MyMemberCell.m */,
+				7F3151171CC2814E002A11C3 /* MyMemberListModel.h */,
+				7F3151181CC2814E002A11C3 /* MyMemberListModel.m */,
+				7F3151201CC28210002A11C3 /* AddMemberCell.h */,
+				7F3151211CC28210002A11C3 /* AddMemberCell.m */,
+				7F3151231CC28248002A11C3 /* AddMemberPickerCell.h */,
+				7F3151241CC28248002A11C3 /* AddMemberPickerCell.m */,
+				7F0A9EC81CC3CEB90095C08D /* AddMemberBtnCell.h */,
+				7F0A9EC91CC3CEB90095C08D /* AddMemberBtnCell.m */,
+				7F0A9ECB1CC3CECC0095C08D /* AddMemberLabelCell.h */,
+				7F0A9ECC1CC3CECC0095C08D /* AddMemberLabelCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4877,6 +4925,7 @@
 				3EDF9E171AAAD0F400F85C44 /* SNRefreshControl.m in Sources */,
 				7FD0BBCA1C9A58C9004D2E02 /* IQNSArray+Sort.m in Sources */,
 				3EDEBAC61A961C4800E72809 /* UIImage+Resize.m in Sources */,
+				7F3151191CC2814E002A11C3 /* MyMemberListModel.m in Sources */,
 				7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */,
 				E1EB1E241B70A43B0048B8EB /* main.m in Sources */,
 				E124D78F1B915DAF0007B85E /* ImageBrowseController.m in Sources */,
@@ -5009,6 +5058,7 @@
 				7FD0BBCE1C9A58C9004D2E02 /* IQUIWindow+Hierarchy.m in Sources */,
 				7FD0BBD01C9A58C9004D2E02 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				E1A6B90F1BAE9DFF001A458D /* PasswordSettingController.m in Sources */,
+				7F3151161CC28137002A11C3 /* MyMemberCell.m in Sources */,
 				3EDEBAAE1A961C4800E72809 /* NSArray+SNExtension.m in Sources */,
 				BC8E36C61C27C69400304637 /* TitleView.m in Sources */,
 				BC1859CE1C8440060050251B /* MyDiagnosisRecordsViewController.m in Sources */,
@@ -5033,6 +5083,7 @@
 				7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */,
 				BC883BD81C74430000333B47 /* DoctorSelectOrderTimeController.m in Sources */,
 				E1A6B91D1BB1B97A001A458D /* CUPickerView.m in Sources */,
+				7F3151221CC28210002A11C3 /* AddMemberCell.m in Sources */,
 				3EDEBA8A1A961C4800E72809 /* SNNetworkClient+Image.m in Sources */,
 				3ED0A7581AA603C50040E529 /* SNViewController.m in Sources */,
 				E1AD6F351B7CD0C500FB3C55 /* CUDoctorParser.m in Sources */,
@@ -5041,6 +5092,7 @@
 				7FFD7AA71CB7B1E9000C45E3 /* GoodClinicViewController.m in Sources */,
 				E1EB1E601B70A43B0048B8EB /* SNCycleScrollView.m in Sources */,
 				BC8E36CD1C27D95900304637 /* CUPageControl.m in Sources */,
+				7F0A9ECD1CC3CECC0095C08D /* AddMemberLabelCell.m in Sources */,
 				E10EDCB81B8B64AC0035B6E7 /* OrderConfirmController.m in Sources */,
 				7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */,
 				7F31510F1CC2517F002A11C3 /* MyInfoAvatarCell.m in Sources */,
@@ -5149,6 +5201,7 @@
 				7F49BC391CB3577F00EAA34A /* HFPageControl.m in Sources */,
 				3EDEBACA1A961C4800E72809 /* UIView+Debug.m in Sources */,
 				E1EB1E5A1B70A43B0048B8EB /* CellContentView.m in Sources */,
+				7F0A9ECA1CC3CEB90095C08D /* AddMemberBtnCell.m in Sources */,
 				E1BA19751BD3DAB100851B01 /* NearbyController.mm in Sources */,
 				E1AD6F381B7CDF6100FB3C55 /* DoctorListContainerController.m in Sources */,
 				7F49BC381CB3577F00EAA34A /* HFBannerViewCell.m in Sources */,
@@ -5160,7 +5213,9 @@
 				7FFD7AA41CB751FE000C45E3 /* GoodDoctorViewController.m in Sources */,
 				3EDF9E211AAAD42400F85C44 /* SNSegmentControl.m in Sources */,
 				3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */,
+				7F31511C1CC281B2002A11C3 /* AddMemberViewController.m in Sources */,
 				BC14A9991C72D3860053CEAF /* Clinic.m in Sources */,
+				7F3151251CC28248002A11C3 /* AddMemberPickerCell.m in Sources */,
 				7FD0BBCB1C9A58C9004D2E02 /* IQUITextFieldView+Additions.m in Sources */,
 				7FA561FD1CBDE3020092D978 /* MJRefreshNormalHeader.m in Sources */,
 				BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */,
@@ -5171,6 +5226,7 @@
 				3EDEBAB81A961C4800E72809 /* SNSingleton.m in Sources */,
 				7FE327BB1CB525E600032376 /* ScoreLabel.m in Sources */,
 				BCAA4AC71C85964D0085A165 /* MyAccountMainViewController.m in Sources */,
+				7F31511F1CC281C4002A11C3 /* ModifyMemberViewController.m in Sources */,
 				BC1859BB1C841C860050251B /* SubjectOfClinicMainCollectionViewCell.m in Sources */,
 				3ED0A7681AA607FD0040E529 /* SNTabViewController.m in Sources */,
 				E1A6B8E61BAD4302001A458D /* UserCenterController.m in Sources */,

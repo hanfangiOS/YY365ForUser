@@ -35,6 +35,9 @@
 
 #import "MyInfoViewController.h"
 
+#import "MyMemberViewController.h"
+#import "MyMemberListModel.h"
+
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UserHeaderView    * headerView;
@@ -190,7 +193,11 @@
     }
     
     if (indexPath.section == 1) {
-        ;
+        MyMemberListModel * listModel = [[MyMemberListModel alloc] init];
+        
+        MyMemberViewController * VC = [[MyMemberViewController alloc] initWithPageName:@"MyMemberViewController" listModel:listModel];
+        
+        [self.slideNavigationController pushViewController:VC animated:YES];
     }
     
     if (indexPath.section == 2) {

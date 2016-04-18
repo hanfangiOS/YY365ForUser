@@ -6,8 +6,11 @@
 //  Copyright © 2016年 li na. All rights reserved.
 //
 
-#import "CUViewController.h"
+#import "CUListViewController.h"
+#import "MyMemberListModel.h"
 
-@interface MyMemberViewController : CUViewController
+@interface MyMemberViewController : CUListViewController
+
+- (id)initWithPageName:(NSString *)pageName listModel:(MyMemberListModel *)listModel;
 
 @end

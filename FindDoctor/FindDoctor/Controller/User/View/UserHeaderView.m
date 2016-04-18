@@ -50,6 +50,7 @@
     [self.userInfoBackgroundView addSubview:self.userID];
     
     self.btnBackgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 140, kScreenWidth, 83)];
+    self.btnBackgroundView.userInteractionEnabled = YES;
     [self addSubview:self.btnBackgroundView];
     
     CGFloat padding = 2;
