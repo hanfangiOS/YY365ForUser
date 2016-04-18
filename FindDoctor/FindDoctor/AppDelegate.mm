@@ -298,14 +298,14 @@
     NearbyController *orderVC = [[NearbyController alloc] initWithPageName:@"NearbyController"];
     orderVC.customTabBarItem = [self tabBarItemAtIndex:1];
     
-    VIPController *scoreBoradVC = [[VIPController alloc] initWithPageName:@"VIPController"];
-    scoreBoradVC.customTabBarItem = [self tabBarItemAtIndex:2];
+//    VIPController *scoreBoradVC = [[VIPController alloc] initWithPageName:@"VIPController"];
+//    scoreBoradVC.customTabBarItem = [self tabBarItemAtIndex:2];
     
     UserViewController *userVC = [[UserViewController alloc] initWithPageName:@"UserViewController"];
-    userVC.customTabBarItem = [self tabBarItemAtIndex:3];
+    userVC.customTabBarItem = [self tabBarItemAtIndex:2];
     
     self.tabController = [[SNTabViewController alloc] initWithHeight:Height_Tabbar];
-    self.tabController.viewControllers = @[homeVC,orderVC,scoreBoradVC,userVC];
+    self.tabController.viewControllers = @[homeVC,orderVC,userVC];
     
     self.tabController.selectedIndex = 0;
     self.tabController.customTabBar.selectedIndex = 0;
@@ -315,10 +315,10 @@
 
 - (SNTabBarItem *)tabBarItemAtIndex:(int)index
 {
-    NSArray *titles = @[@"优医",@"优医馆",@"vip",@"我的"];
-    NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_nearby_nor",@"tabbar_vip_nor",@"tabbar_mine_nor"];
+    NSArray *titles = @[@"优医",@"优医馆",@"我的",@"VIP"];
+    NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_nearby_nor",@"tabbar_mine_nor",@"tabbar_vip_nor"];
     //    NSArray *hilIcons = @[@"tabbar_icon_home_highlighted",@"tabbar_icon_service_highlighted",@"tabbar_icon_discount_highlighted",@"tabbar_icon_mine_highlighted"];
-    NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_nearby_sel",@"tabbar_vip_sel",@"tabbar_mine_sel"];
+    NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_nearby_sel",@"tabbar_mine_sel",@"tabbar_vip_sel"];
     
     //    NSArray *titles = @[@"养生",@"附近",@"首页",@"上门",@"我的"];
     //    NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_order_nor",@"tabbar_home_nor",@"tabbar_rank_nor",@"tabbar_mine_nor"];
