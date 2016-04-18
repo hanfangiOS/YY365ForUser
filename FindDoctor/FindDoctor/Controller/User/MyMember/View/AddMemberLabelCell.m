@@ -20,9 +20,10 @@
 }
 
 - (void)initSubViews{
-    NSString * str = @"添加新的成员，可以使用当前登录的优医365账号进行约诊／就诊，约诊人的病例在当前账户统一管理。";
+    NSString * str = @"添加新的成员，可以使用当前登录的优医365账号进行约诊、就诊，约诊人的病例在当前账户统一管理。";
     CGSize size = [self sizeForString:str font:[UIFont systemFontOfSize:13] limitSize:CGSizeMake(kScreenWidth - 24 * 2, 0)];
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(24, 0,size.width, size.height)];
+    self.label.text = str;
     self.label.font = [UIFont systemFontOfSize:13];
     self.label.numberOfLines = 0;
     

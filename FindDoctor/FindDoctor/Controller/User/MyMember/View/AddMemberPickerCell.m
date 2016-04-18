@@ -24,6 +24,8 @@
 }
 
 - (void)initSubViews{
+
+    
     self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(20, (AddMemberPickerCellHeight - 36)/2 + 10, 36, 36)];
     self.icon.layer.cornerRadius = 36/2;
     self.icon.clipsToBounds = YES;
@@ -33,12 +35,12 @@
     self.Label.font = [UIFont systemFontOfSize:13];
     [self addSubview:self.Label];
     
-    self.btn = [[UIButton alloc] initWithFrame:CGRectMake(self.Label.maxX + 10, (AddMemberPickerCellHeight - 25)/2 + 10, kScreenWidth - (self.Label.maxX + 10 + 50), 25)];
+    self.btn = [[UIButton alloc] initWithFrame:CGRectMake(self.Label.maxX + 10, (AddMemberPickerCellHeight - 25)/2 + 10, kScreenWidth - (self.Label.maxX + 10 + 25), 25)];
     self.btn.layer.borderColor = [UIColor clearColor].CGColor;
     self.btn.layer.borderWidth = 0;
     self.btn.titleLabel.textAlignment = NSTextAlignmentRight;
+    [self.btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self addSubview:self.btn];
-    self.btn.backgroundColor = [UIColor yellowColor];
     
     self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 30 - 25, (AddMemberPickerCellHeight - 25)/2 + 10, 25, 25)];
     [self addSubview:self.arrow];

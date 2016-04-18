@@ -38,6 +38,11 @@
 #import "MyMemberViewController.h"
 #import "MyMemberListModel.h"
 
+#import "MyAppointmentController.h"
+#import "MyAppointmentListModel.h"
+
+#import "CUOrder.h"
+
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UserHeaderView    * headerView;
@@ -172,7 +177,13 @@
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:{
-                
+                OrderFilter * filter = [[OrderFilter alloc] init];
+                filter.user = [CUUserManager sharedInstance].user;
+                filter.orderStatus = ORDERSTATUS_UNPAID;
+                filter.pageNum = 0;
+                MyAppointmentListModel * listModel = [[MyAppointmentListModel alloc] initWithFilter:filter];
+                MyAppointmentController * VC = [[MyAppointmentController alloc] initWithPageName:@"MyAppointmentController" listModel:listModel];
+                [self.slideNavigationController pushViewController:VC animated:YES];
             }
                 break;
             case 1:{

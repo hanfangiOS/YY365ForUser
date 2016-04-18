@@ -171,8 +171,6 @@
 		3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */; };
 		7F0469FC1CB65C9F00C9C054 /* GoodDoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */; };
 		7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */; };
-		7F0A9ECA1CC3CEB90095C08D /* AddMemberBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A9EC91CC3CEB90095C08D /* AddMemberBtnCell.m */; };
-		7F0A9ECD1CC3CECC0095C08D /* AddMemberLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A9ECC1CC3CECC0095C08D /* AddMemberLabelCell.m */; };
 		7F229E841C97F57C009C19E8 /* DoctorFameListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E831C97F57C009C19E8 /* DoctorFameListController.m */; };
 		7F229E871C97F59E009C19E8 /* DoctorFameListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */; };
 		7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */; };
@@ -180,14 +178,8 @@
 		7F2B65651C90245B007C2860 /* Launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F2B65641C90245B007C2860 /* Launch.jpg */; };
 		7F3151071CC24BC5002A11C3 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151061CC24BC5002A11C3 /* MyInfoViewController.m */; };
 		7F31510B1CC24D75002A11C3 /* MyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31510A1CC24D75002A11C3 /* MyMemberViewController.m */; };
-		7F31510F1CC2517F002A11C3 /* MyInfoAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31510E1CC2517F002A11C3 /* MyInfoAvatarCell.m */; };
-		7F3151121CC251BD002A11C3 /* MyInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151111CC251BD002A11C3 /* MyInfoCell.m */; };
-		7F3151161CC28137002A11C3 /* MyMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151151CC28137002A11C3 /* MyMemberCell.m */; };
-		7F3151191CC2814E002A11C3 /* MyMemberListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151181CC2814E002A11C3 /* MyMemberListModel.m */; };
 		7F31511C1CC281B2002A11C3 /* AddMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31511B1CC281B2002A11C3 /* AddMemberViewController.m */; };
 		7F31511F1CC281C4002A11C3 /* ModifyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31511E1CC281C4002A11C3 /* ModifyMemberViewController.m */; };
-		7F3151221CC28210002A11C3 /* AddMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151211CC28210002A11C3 /* AddMemberCell.m */; };
-		7F3151251CC28248002A11C3 /* AddMemberPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3151241CC28248002A11C3 /* AddMemberPickerCell.m */; };
 		7F49BC371CB3577F00EAA34A /* HFBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC321CB3577F00EAA34A /* HFBannerView.m */; };
 		7F49BC381CB3577F00EAA34A /* HFBannerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC341CB3577F00EAA34A /* HFBannerViewCell.m */; };
 		7F49BC391CB3577F00EAA34A /* HFPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC361CB3577F00EAA34A /* HFPageControl.m */; };
@@ -199,6 +191,8 @@
 		7F81A2591C98439D009FEA60 /* clever.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2561C98439D009FEA60 /* clever.png */; };
 		7F81A25A1C98439D009FEA60 /* good.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2571C98439D009FEA60 /* good.png */; };
 		7F81A25B1C98439D009FEA60 /* nice.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81A2581C98439D009FEA60 /* nice.png */; };
+		7FA42A1A1CC53E6200564182 /* TreatmentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA42A191CC53E6200564182 /* TreatmentDetailsController.m */; };
+		7FA42A1D1CC53FCF00564182 /* TreatmentTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA42A1C1CC53FCF00564182 /* TreatmentTimeView.m */; };
 		7FA561F11CBDE3020092D978 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA561C71CBDE3020092D978 /* MJRefreshAutoFooter.m */; };
 		7FA561F21CBDE3020092D978 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA561C91CBDE3020092D978 /* MJRefreshBackFooter.m */; };
 		7FA561F31CBDE3020092D978 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA561CB1CBDE3020092D978 /* MJRefreshComponent.m */; };
@@ -221,6 +215,26 @@
 		7FA5620A1CBE2D270092D978 /* NewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA562091CBE2D270092D978 /* NewsListController.m */; };
 		7FA5620D1CBE2D8D0092D978 /* NewsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5620C1CBE2D8D0092D978 /* NewsListModel.m */; };
 		7FA562101CBE2DB10092D978 /* NewsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5620F1CBE2DB10092D978 /* NewsListCell.m */; };
+		7FA56BCC1CC483620011EEE1 /* AddMemberBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BC11CC483620011EEE1 /* AddMemberBtnCell.m */; };
+		7FA56BCD1CC483620011EEE1 /* AddMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BC31CC483620011EEE1 /* AddMemberCell.m */; };
+		7FA56BCE1CC483620011EEE1 /* AddMemberLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BC51CC483620011EEE1 /* AddMemberLabelCell.m */; };
+		7FA56BCF1CC483620011EEE1 /* AddMemberPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BC71CC483620011EEE1 /* AddMemberPickerCell.m */; };
+		7FA56BD01CC483620011EEE1 /* MyMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BC91CC483620011EEE1 /* MyMemberCell.m */; };
+		7FA56BD11CC483620011EEE1 /* MyMemberListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BCB1CC483620011EEE1 /* MyMemberListModel.m */; };
+		7FA56BDA1CC4A3630011EEE1 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BD41CC4A3630011EEE1 /* MyCommentViewController.m */; };
+		7FA56BDB1CC4A3630011EEE1 /* MyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BD71CC4A3630011EEE1 /* MyCommentCell.m */; };
+		7FA56BDC1CC4A3630011EEE1 /* MyCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BD91CC4A3630011EEE1 /* MyCommentListModel.m */; };
+		7FA56BE11CC4A3740011EEE1 /* MyInfoAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BDE1CC4A3740011EEE1 /* MyInfoAvatarCell.m */; };
+		7FA56BE21CC4A3740011EEE1 /* MyInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BE01CC4A3740011EEE1 /* MyInfoCell.m */; };
+		7FA56BEC1CC4A5B90011EEE1 /* MyAppointmentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BEB1CC4A5B90011EEE1 /* MyAppointmentListModel.m */; };
+		7FA56BEF1CC4A5D10011EEE1 /* MyAppointmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BEE1CC4A5D10011EEE1 /* MyAppointmentController.m */; };
+		7FA56BF21CC4A6460011EEE1 /* MyAppointmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BF11CC4A6460011EEE1 /* MyAppointmentCell.m */; };
+		7FA56BF51CC4BA460011EEE1 /* MyAppointMentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BF41CC4BA460011EEE1 /* MyAppointMentHeaderView.m */; };
+		7FA56BF81CC4EB900011EEE1 /* AppointmentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BF71CC4EB900011EEE1 /* AppointmentDetailsController.m */; };
+		7FA56BFB1CC4F2130011EEE1 /* DetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56BFA1CC4F2130011EEE1 /* DetailsHeaderView.m */; };
+		7FA56C011CC4F26F0011EEE1 /* DetailsAppointInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56C001CC4F26F0011EEE1 /* DetailsAppointInfoView.m */; };
+		7FA56C041CC4F2910011EEE1 /* DetailsPaymentInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56C031CC4F2910011EEE1 /* DetailsPaymentInfoView.m */; };
+		7FA56C071CC4F2BC0011EEE1 /* DetailsOrderInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56C061CC4F2BC0011EEE1 /* DetailsOrderInfoView.m */; };
 		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
 		7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB391CB245A500A99C97 /* Banner.m */; };
@@ -250,10 +264,7 @@
 		7FE327AD1CB4B65900032376 /* HomeSubViewMainBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */; };
 		7FE327B01CB51A4200032376 /* HomeSubViewMainTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */; };
 		7FE327BB1CB525E600032376 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327BA1CB525E600032376 /* ScoreLabel.m */; };
-		7FFB948B1C966D78003523B4 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948A1C966D78003523B4 /* MyCommentViewController.m */; };
-		7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB948E1C966DFC003523B4 /* MyCommentCell.m */; };
 		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
-		7FFB94951C96BAD1003523B4 /* MyCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */; };
 		7FFB94981C96C3E6003523B4 /* CUCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94971C96C3E6003523B4 /* CUCommentManager.m */; };
 		7FFD7AA41CB751FE000C45E3 /* GoodDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */; };
 		7FFD7AA71CB7B1E9000C45E3 /* GoodClinicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA61CB7B1E9000C45E3 /* GoodClinicViewController.m */; };
@@ -953,10 +964,6 @@
 		7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorCell.m; sourceTree = "<group>"; };
 		7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicCell.h; sourceTree = "<group>"; };
 		7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicCell.m; sourceTree = "<group>"; };
-		7F0A9EC81CC3CEB90095C08D /* AddMemberBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberBtnCell.h; sourceTree = "<group>"; };
-		7F0A9EC91CC3CEB90095C08D /* AddMemberBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberBtnCell.m; sourceTree = "<group>"; };
-		7F0A9ECB1CC3CECC0095C08D /* AddMemberLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberLabelCell.h; sourceTree = "<group>"; };
-		7F0A9ECC1CC3CECC0095C08D /* AddMemberLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberLabelCell.m; sourceTree = "<group>"; };
 		7F229E821C97F57C009C19E8 /* DoctorFameListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListController.h; sourceTree = "<group>"; };
 		7F229E831C97F57C009C19E8 /* DoctorFameListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameListController.m; sourceTree = "<group>"; };
 		7F229E851C97F59E009C19E8 /* DoctorFameListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListModel.h; sourceTree = "<group>"; };
@@ -970,22 +977,10 @@
 		7F3151061CC24BC5002A11C3 /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoViewController.m; sourceTree = "<group>"; };
 		7F3151091CC24D75002A11C3 /* MyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemberViewController.h; sourceTree = "<group>"; };
 		7F31510A1CC24D75002A11C3 /* MyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemberViewController.m; sourceTree = "<group>"; };
-		7F31510D1CC2517F002A11C3 /* MyInfoAvatarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoAvatarCell.h; sourceTree = "<group>"; };
-		7F31510E1CC2517F002A11C3 /* MyInfoAvatarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoAvatarCell.m; sourceTree = "<group>"; };
-		7F3151101CC251BD002A11C3 /* MyInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoCell.h; sourceTree = "<group>"; };
-		7F3151111CC251BD002A11C3 /* MyInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoCell.m; sourceTree = "<group>"; };
-		7F3151141CC28137002A11C3 /* MyMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemberCell.h; sourceTree = "<group>"; };
-		7F3151151CC28137002A11C3 /* MyMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemberCell.m; sourceTree = "<group>"; };
-		7F3151171CC2814E002A11C3 /* MyMemberListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemberListModel.h; sourceTree = "<group>"; };
-		7F3151181CC2814E002A11C3 /* MyMemberListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemberListModel.m; sourceTree = "<group>"; };
 		7F31511A1CC281B2002A11C3 /* AddMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberViewController.h; sourceTree = "<group>"; };
 		7F31511B1CC281B2002A11C3 /* AddMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberViewController.m; sourceTree = "<group>"; };
 		7F31511D1CC281C4002A11C3 /* ModifyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyMemberViewController.h; sourceTree = "<group>"; };
 		7F31511E1CC281C4002A11C3 /* ModifyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyMemberViewController.m; sourceTree = "<group>"; };
-		7F3151201CC28210002A11C3 /* AddMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberCell.h; sourceTree = "<group>"; };
-		7F3151211CC28210002A11C3 /* AddMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberCell.m; sourceTree = "<group>"; };
-		7F3151231CC28248002A11C3 /* AddMemberPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberPickerCell.h; sourceTree = "<group>"; };
-		7F3151241CC28248002A11C3 /* AddMemberPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberPickerCell.m; sourceTree = "<group>"; };
 		7F49BC311CB3577F00EAA34A /* HFBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBannerView.h; sourceTree = "<group>"; };
 		7F49BC321CB3577F00EAA34A /* HFBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBannerView.m; sourceTree = "<group>"; };
 		7F49BC331CB3577F00EAA34A /* HFBannerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBannerViewCell.h; sourceTree = "<group>"; };
@@ -1005,6 +1000,10 @@
 		7F81A2561C98439D009FEA60 /* clever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clever.png; sourceTree = "<group>"; };
 		7F81A2571C98439D009FEA60 /* good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = good.png; sourceTree = "<group>"; };
 		7F81A2581C98439D009FEA60 /* nice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nice.png; sourceTree = "<group>"; };
+		7FA42A181CC53E6200564182 /* TreatmentDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentDetailsController.h; sourceTree = "<group>"; };
+		7FA42A191CC53E6200564182 /* TreatmentDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentDetailsController.m; sourceTree = "<group>"; };
+		7FA42A1B1CC53FCF00564182 /* TreatmentTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentTimeView.h; sourceTree = "<group>"; };
+		7FA42A1C1CC53FCF00564182 /* TreatmentTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentTimeView.m; sourceTree = "<group>"; };
 		7FA561C61CBDE3020092D978 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		7FA561C71CBDE3020092D978 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		7FA561C81CBDE3020092D978 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -1049,6 +1048,46 @@
 		7FA5620C1CBE2D8D0092D978 /* NewsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListModel.m; sourceTree = "<group>"; };
 		7FA5620E1CBE2DB10092D978 /* NewsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListCell.h; sourceTree = "<group>"; };
 		7FA5620F1CBE2DB10092D978 /* NewsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListCell.m; sourceTree = "<group>"; };
+		7FA56BC01CC483620011EEE1 /* AddMemberBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberBtnCell.h; sourceTree = "<group>"; };
+		7FA56BC11CC483620011EEE1 /* AddMemberBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberBtnCell.m; sourceTree = "<group>"; };
+		7FA56BC21CC483620011EEE1 /* AddMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberCell.h; sourceTree = "<group>"; };
+		7FA56BC31CC483620011EEE1 /* AddMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberCell.m; sourceTree = "<group>"; };
+		7FA56BC41CC483620011EEE1 /* AddMemberLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberLabelCell.h; sourceTree = "<group>"; };
+		7FA56BC51CC483620011EEE1 /* AddMemberLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberLabelCell.m; sourceTree = "<group>"; };
+		7FA56BC61CC483620011EEE1 /* AddMemberPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberPickerCell.h; sourceTree = "<group>"; };
+		7FA56BC71CC483620011EEE1 /* AddMemberPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberPickerCell.m; sourceTree = "<group>"; };
+		7FA56BC81CC483620011EEE1 /* MyMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemberCell.h; sourceTree = "<group>"; };
+		7FA56BC91CC483620011EEE1 /* MyMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemberCell.m; sourceTree = "<group>"; };
+		7FA56BCA1CC483620011EEE1 /* MyMemberListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemberListModel.h; sourceTree = "<group>"; };
+		7FA56BCB1CC483620011EEE1 /* MyMemberListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemberListModel.m; sourceTree = "<group>"; };
+		7FA56BD31CC4A3630011EEE1 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
+		7FA56BD41CC4A3630011EEE1 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
+		7FA56BD61CC4A3630011EEE1 /* MyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentCell.h; sourceTree = "<group>"; };
+		7FA56BD71CC4A3630011EEE1 /* MyCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentCell.m; sourceTree = "<group>"; };
+		7FA56BD81CC4A3630011EEE1 /* MyCommentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentListModel.h; sourceTree = "<group>"; };
+		7FA56BD91CC4A3630011EEE1 /* MyCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentListModel.m; sourceTree = "<group>"; };
+		7FA56BDD1CC4A3740011EEE1 /* MyInfoAvatarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoAvatarCell.h; sourceTree = "<group>"; };
+		7FA56BDE1CC4A3740011EEE1 /* MyInfoAvatarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoAvatarCell.m; sourceTree = "<group>"; };
+		7FA56BDF1CC4A3740011EEE1 /* MyInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoCell.h; sourceTree = "<group>"; };
+		7FA56BE01CC4A3740011EEE1 /* MyInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoCell.m; sourceTree = "<group>"; };
+		7FA56BEA1CC4A5B90011EEE1 /* MyAppointmentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentListModel.h; sourceTree = "<group>"; };
+		7FA56BEB1CC4A5B90011EEE1 /* MyAppointmentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentListModel.m; sourceTree = "<group>"; };
+		7FA56BED1CC4A5D10011EEE1 /* MyAppointmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentController.h; sourceTree = "<group>"; };
+		7FA56BEE1CC4A5D10011EEE1 /* MyAppointmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentController.m; sourceTree = "<group>"; };
+		7FA56BF01CC4A6460011EEE1 /* MyAppointmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentCell.h; sourceTree = "<group>"; };
+		7FA56BF11CC4A6460011EEE1 /* MyAppointmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentCell.m; sourceTree = "<group>"; };
+		7FA56BF31CC4BA460011EEE1 /* MyAppointMentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointMentHeaderView.h; sourceTree = "<group>"; };
+		7FA56BF41CC4BA460011EEE1 /* MyAppointMentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointMentHeaderView.m; sourceTree = "<group>"; };
+		7FA56BF61CC4EB900011EEE1 /* AppointmentDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentDetailsController.h; sourceTree = "<group>"; };
+		7FA56BF71CC4EB900011EEE1 /* AppointmentDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentDetailsController.m; sourceTree = "<group>"; };
+		7FA56BF91CC4F2130011EEE1 /* DetailsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsHeaderView.h; sourceTree = "<group>"; };
+		7FA56BFA1CC4F2130011EEE1 /* DetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsHeaderView.m; sourceTree = "<group>"; };
+		7FA56BFF1CC4F26F0011EEE1 /* DetailsAppointInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsAppointInfoView.h; sourceTree = "<group>"; };
+		7FA56C001CC4F26F0011EEE1 /* DetailsAppointInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsAppointInfoView.m; sourceTree = "<group>"; };
+		7FA56C021CC4F2910011EEE1 /* DetailsPaymentInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsPaymentInfoView.h; sourceTree = "<group>"; };
+		7FA56C031CC4F2910011EEE1 /* DetailsPaymentInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsPaymentInfoView.m; sourceTree = "<group>"; };
+		7FA56C051CC4F2BC0011EEE1 /* DetailsOrderInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsOrderInfoView.h; sourceTree = "<group>"; };
+		7FA56C061CC4F2BC0011EEE1 /* DetailsOrderInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsOrderInfoView.m; sourceTree = "<group>"; };
 		7FB267C21C8699B4008FCF05 /* Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
 		7FB267C31C8699B4008FCF05 /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		7FB267C51C869C4B008FCF05 /* CUSearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSearchManager.h; sourceTree = "<group>"; };
@@ -1103,14 +1142,8 @@
 		7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainTableCell.m; sourceTree = "<group>"; };
 		7FE327B91CB525E600032376 /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
 		7FE327BA1CB525E600032376 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
-		7FFB94891C966D78003523B4 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
-		7FFB948A1C966D78003523B4 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
-		7FFB948D1C966DFC003523B4 /* MyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentCell.h; sourceTree = "<group>"; };
-		7FFB948E1C966DFC003523B4 /* MyCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentCell.m; sourceTree = "<group>"; };
 		7FFB94901C967051003523B4 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		7FFB94911C967051003523B4 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
-		7FFB94931C96BAD1003523B4 /* MyCommentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentListModel.h; sourceTree = "<group>"; };
-		7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentListModel.m; sourceTree = "<group>"; };
 		7FFB94961C96C3E6003523B4 /* CUCommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUCommentManager.h; sourceTree = "<group>"; };
 		7FFB94971C96C3E6003523B4 /* CUCommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUCommentManager.m; sourceTree = "<group>"; };
 		7FFD7AA21CB751FE000C45E3 /* GoodDoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodDoctorViewController.h; sourceTree = "<group>"; };
@@ -2694,10 +2727,10 @@
 		7F31510C1CC250F3002A11C3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7F31510D1CC2517F002A11C3 /* MyInfoAvatarCell.h */,
-				7F31510E1CC2517F002A11C3 /* MyInfoAvatarCell.m */,
-				7F3151101CC251BD002A11C3 /* MyInfoCell.h */,
-				7F3151111CC251BD002A11C3 /* MyInfoCell.m */,
+				7FA56BDD1CC4A3740011EEE1 /* MyInfoAvatarCell.h */,
+				7FA56BDE1CC4A3740011EEE1 /* MyInfoAvatarCell.m */,
+				7FA56BDF1CC4A3740011EEE1 /* MyInfoCell.h */,
+				7FA56BE01CC4A3740011EEE1 /* MyInfoCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2705,18 +2738,18 @@
 		7F3151131CC27C7F002A11C3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7F3151141CC28137002A11C3 /* MyMemberCell.h */,
-				7F3151151CC28137002A11C3 /* MyMemberCell.m */,
-				7F3151171CC2814E002A11C3 /* MyMemberListModel.h */,
-				7F3151181CC2814E002A11C3 /* MyMemberListModel.m */,
-				7F3151201CC28210002A11C3 /* AddMemberCell.h */,
-				7F3151211CC28210002A11C3 /* AddMemberCell.m */,
-				7F3151231CC28248002A11C3 /* AddMemberPickerCell.h */,
-				7F3151241CC28248002A11C3 /* AddMemberPickerCell.m */,
-				7F0A9EC81CC3CEB90095C08D /* AddMemberBtnCell.h */,
-				7F0A9EC91CC3CEB90095C08D /* AddMemberBtnCell.m */,
-				7F0A9ECB1CC3CECC0095C08D /* AddMemberLabelCell.h */,
-				7F0A9ECC1CC3CECC0095C08D /* AddMemberLabelCell.m */,
+				7FA56BC01CC483620011EEE1 /* AddMemberBtnCell.h */,
+				7FA56BC11CC483620011EEE1 /* AddMemberBtnCell.m */,
+				7FA56BC21CC483620011EEE1 /* AddMemberCell.h */,
+				7FA56BC31CC483620011EEE1 /* AddMemberCell.m */,
+				7FA56BC41CC483620011EEE1 /* AddMemberLabelCell.h */,
+				7FA56BC51CC483620011EEE1 /* AddMemberLabelCell.m */,
+				7FA56BC61CC483620011EEE1 /* AddMemberPickerCell.h */,
+				7FA56BC71CC483620011EEE1 /* AddMemberPickerCell.m */,
+				7FA56BC81CC483620011EEE1 /* MyMemberCell.h */,
+				7FA56BC91CC483620011EEE1 /* MyMemberCell.m */,
+				7FA56BCA1CC483620011EEE1 /* MyMemberListModel.h */,
+				7FA56BCB1CC483620011EEE1 /* MyMemberListModel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2855,6 +2888,74 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		7FA56BD21CC4A3630011EEE1 /* MyComment */ = {
+			isa = PBXGroup;
+			children = (
+				7FA56BD31CC4A3630011EEE1 /* MyCommentViewController.h */,
+				7FA56BD41CC4A3630011EEE1 /* MyCommentViewController.m */,
+				7FA56BD51CC4A3630011EEE1 /* View */,
+			);
+			name = MyComment;
+			path = User/MyComment;
+			sourceTree = "<group>";
+		};
+		7FA56BD51CC4A3630011EEE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7FA56BD61CC4A3630011EEE1 /* MyCommentCell.h */,
+				7FA56BD71CC4A3630011EEE1 /* MyCommentCell.m */,
+				7FA56BD81CC4A3630011EEE1 /* MyCommentListModel.h */,
+				7FA56BD91CC4A3630011EEE1 /* MyCommentListModel.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7FA56BE31CC4A3D30011EEE1 /* MyAppointment */ = {
+			isa = PBXGroup;
+			children = (
+				7FA56BE51CC4A52D0011EEE1 /* View */,
+				7FA56BED1CC4A5D10011EEE1 /* MyAppointmentController.h */,
+				7FA56BEE1CC4A5D10011EEE1 /* MyAppointmentController.m */,
+				7FA56BF61CC4EB900011EEE1 /* AppointmentDetailsController.h */,
+				7FA56BF71CC4EB900011EEE1 /* AppointmentDetailsController.m */,
+			);
+			name = MyAppointment;
+			path = User/MyAppointment;
+			sourceTree = "<group>";
+		};
+		7FA56BE41CC4A3DC0011EEE1 /* MyTreatment */ = {
+			isa = PBXGroup;
+			children = (
+				7FA56BE61CC4A53B0011EEE1 /* View */,
+				7FA42A181CC53E6200564182 /* TreatmentDetailsController.h */,
+				7FA42A191CC53E6200564182 /* TreatmentDetailsController.m */,
+			);
+			name = MyTreatment;
+			path = User/MyTreatment;
+			sourceTree = "<group>";
+		};
+		7FA56BE51CC4A52D0011EEE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7FA56BEA1CC4A5B90011EEE1 /* MyAppointmentListModel.h */,
+				7FA56BEB1CC4A5B90011EEE1 /* MyAppointmentListModel.m */,
+				7FA56BF01CC4A6460011EEE1 /* MyAppointmentCell.h */,
+				7FA56BF11CC4A6460011EEE1 /* MyAppointmentCell.m */,
+				7FA56BF31CC4BA460011EEE1 /* MyAppointMentHeaderView.h */,
+				7FA56BF41CC4BA460011EEE1 /* MyAppointMentHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7FA56BE61CC4A53B0011EEE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7FA42A1B1CC53FCF00564182 /* TreatmentTimeView.h */,
+				7FA42A1C1CC53FCF00564182 /* TreatmentTimeView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7FD0BBA51C9A58C9004D2E02 /* IQKeyBoardManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -2953,34 +3054,12 @@
 			path = new;
 			sourceTree = "<group>";
 		};
-		7FFB94871C966ACA003523B4 /* MyComment */ = {
-			isa = PBXGroup;
-			children = (
-				7FFB948C1C966DB6003523B4 /* View */,
-				7FFB94891C966D78003523B4 /* MyCommentViewController.h */,
-				7FFB948A1C966D78003523B4 /* MyCommentViewController.m */,
-			);
-			name = MyComment;
-			path = ../MyComment;
-			sourceTree = "<group>";
-		};
 		7FFB94881C966AD2003523B4 /* MyIntegral */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = MyIntegral;
 			path = User/MyIntegral;
-			sourceTree = "<group>";
-		};
-		7FFB948C1C966DB6003523B4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7FFB948D1C966DFC003523B4 /* MyCommentCell.h */,
-				7FFB948E1C966DFC003523B4 /* MyCommentCell.m */,
-				7FFB94931C96BAD1003523B4 /* MyCommentListModel.h */,
-				7FFB94941C96BAD1003523B4 /* MyCommentListModel.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		BC0E84B01C7857A300082AA9 /* AddFamilyMember */ = {
@@ -3115,7 +3194,6 @@
 		BC1859C21C8440060050251B /* MyDiagnosisRecords */ = {
 			isa = PBXGroup;
 			children = (
-				7FFB94871C966ACA003523B4 /* MyComment */,
 				BC1859C31C8440060050251B /* MyDiagnosisRecordsCell.h */,
 				BC1859C41C8440060050251B /* MyDiagnosisRecordsCell.m */,
 				BC1859C51C8440060050251B /* MyDiagnosisRecordsDetailViewController.h */,
@@ -3142,6 +3220,14 @@
 				BC313D261C3A147500C9469D /* UserHeaderView.m */,
 				BC80B2091C40C76C00A7445A /* LoginTextFeildView.h */,
 				BC80B20A1C40C76C00A7445A /* LoginTextFeildView.m */,
+				7FA56BF91CC4F2130011EEE1 /* DetailsHeaderView.h */,
+				7FA56BFA1CC4F2130011EEE1 /* DetailsHeaderView.m */,
+				7FA56BFF1CC4F26F0011EEE1 /* DetailsAppointInfoView.h */,
+				7FA56C001CC4F26F0011EEE1 /* DetailsAppointInfoView.m */,
+				7FA56C021CC4F2910011EEE1 /* DetailsPaymentInfoView.h */,
+				7FA56C031CC4F2910011EEE1 /* DetailsPaymentInfoView.m */,
+				7FA56C051CC4F2BC0011EEE1 /* DetailsOrderInfoView.h */,
+				7FA56C061CC4F2BC0011EEE1 /* DetailsOrderInfoView.m */,
 			);
 			name = View;
 			path = User/View;
@@ -3179,6 +3265,9 @@
 		BC8E36D61C27EB4D00304637 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				7FA56BE41CC4A3DC0011EEE1 /* MyTreatment */,
+				7FA56BE31CC4A3D30011EEE1 /* MyAppointment */,
+				7FA56BD21CC4A3630011EEE1 /* MyComment */,
 				7F3151081CC24CCC002A11C3 /* MyMember */,
 				7F3151041CC24B68002A11C3 /* MyInfo */,
 				BC1859C21C8440060050251B /* MyDiagnosisRecords */,
@@ -4921,12 +5010,11 @@
 				3EDEBAA51A961C4800E72809 /* PlausibleDatabase.m in Sources */,
 				E1EB1D7C1B70A43B0048B8EB /* SNViewController+ServerAPI.m in Sources */,
 				7F71E8C51C993BC400656CAF /* DiagnosisRemarkController.m in Sources */,
+				7FA56C011CC4F26F0011EEE1 /* DetailsAppointInfoView.m in Sources */,
 				7FB3FB3D1CB24C3C00A99C97 /* HomeSearchView.m in Sources */,
 				3EDF9E171AAAD0F400F85C44 /* SNRefreshControl.m in Sources */,
 				7FD0BBCA1C9A58C9004D2E02 /* IQNSArray+Sort.m in Sources */,
 				3EDEBAC61A961C4800E72809 /* UIImage+Resize.m in Sources */,
-				7F3151191CC2814E002A11C3 /* MyMemberListModel.m in Sources */,
-				7FFB948F1C966DFC003523B4 /* MyCommentCell.m in Sources */,
 				E1EB1E241B70A43B0048B8EB /* main.m in Sources */,
 				E124D78F1B915DAF0007B85E /* ImageBrowseController.m in Sources */,
 				3EDEBAC21A961C4800E72809 /* UIImage+Compatible.m in Sources */,
@@ -4938,6 +5026,7 @@
 				D405D8141B7DF01F0043FD76 /* MiscFiveStarsState.m in Sources */,
 				D405D8111B7DF0130043FD76 /* DoctorTableViewCell.m in Sources */,
 				3EDEBAEE1AA0452900E72809 /* SNBaseListModel.m in Sources */,
+				7FA56BDA1CC4A3630011EEE1 /* MyCommentViewController.m in Sources */,
 				E17B69291B8383880079DDB5 /* DoctorSectionView.m in Sources */,
 				BCAA4ACA1C85964D0085A165 /* TotalMoneyView.m in Sources */,
 				7FD0BBD11C9A58C9004D2E02 /* IQSegmentedNextPrevious.m in Sources */,
@@ -4947,6 +5036,7 @@
 				E10EDCCA1B8B84D40035B6E7 /* ApiXml.mm in Sources */,
 				3EDEBA901A961C4800E72809 /* JSONKit.m in Sources */,
 				7FD0BBCD1C9A58C9004D2E02 /* IQUIViewController+Additions.m in Sources */,
+				7FA56BE21CC4A3740011EEE1 /* MyInfoCell.m in Sources */,
 				3ED0A74B1AA603C50040E529 /* NSMutableArray+SNSlideStack.m in Sources */,
 				E10EDCA61B8B60930035B6E7 /* CreateOrderButtonVIew.m in Sources */,
 				D405D81C1B7DF03B0043FD76 /* CollectionConroller.m in Sources */,
@@ -4954,14 +5044,15 @@
 				3EDEBAC91A961C4800E72809 /* UIImage+Stretch.m in Sources */,
 				E1EB1E2B1B70A43B0048B8EB /* UIConstants.m in Sources */,
 				E1EB1ED01B70A4D70048B8EB /* base64.m in Sources */,
-				7FFB948B1C966D78003523B4 /* MyCommentViewController.m in Sources */,
 				D405CC601C003DA700A56264 /* CUPasswordView.m in Sources */,
 				BCEC31D41CB3AC220003851A /* HomeSubViewController_Main.m in Sources */,
 				3EDEBA711A961C4800E72809 /* SNHTTPRequestOperationManager.m in Sources */,
 				3EDEBA761A961C4800E72809 /* AFJSONRequestOperation.m in Sources */,
 				E624AEF71BA1E0650032046E /* ConsultationReply.m in Sources */,
+				7FA56C071CC4F2BC0011EEE1 /* DetailsOrderInfoView.m in Sources */,
 				7F49BC371CB3577F00EAA34A /* HFBannerView.m in Sources */,
 				3EDEBA851A961C4800E72809 /* AFHTTPRequestOperation+SNNetworking.m in Sources */,
+				7FA56BF21CC4A6460011EEE1 /* MyAppointmentCell.m in Sources */,
 				3EDB03DA1AB585C400A10747 /* MMLocationManager.m in Sources */,
 				3EDEBABA1A961C4800E72809 /* SNBusinessMananger.m in Sources */,
 				E1EB1E3C1B70A43B0048B8EB /* AVCaptureDevice+Permission.m in Sources */,
@@ -4973,6 +5064,7 @@
 				E6ECE1571BA0A3C200A3F998 /* ConsultationListController.m in Sources */,
 				BCAA4ACD1C8597F70085A165 /* MyAccount.m in Sources */,
 				3EDEBABE1A961C4800E72809 /* UIDevice+Hardware.m in Sources */,
+				7FA56BEF1CC4A5D10011EEE1 /* MyAppointmentController.m in Sources */,
 				7FA561F61CBDE3020092D978 /* MJRefreshAutoGifFooter.m in Sources */,
 				E1EB1ECD1B70A4D70048B8EB /* AlixPayOrder.m in Sources */,
 				D405CC6C1C02B5B100A56264 /* CUEmailViewController.m in Sources */,
@@ -4982,6 +5074,7 @@
 				BCAA4AD11C8686750085A165 /* Diagnosis.m in Sources */,
 				E1EB1E581B70A43B0048B8EB /* BaseCell.m in Sources */,
 				7FB267C41C8699B4008FCF05 /* Search.m in Sources */,
+				7FA56BE11CC4A3740011EEE1 /* MyInfoAvatarCell.m in Sources */,
 				3EDEBAAA1A961C4800E72809 /* PLSqliteMigrationVersionManager.m in Sources */,
 				3EDEBAB71A961C4800E72809 /* NSString+SNExtension.m in Sources */,
 				E1EB1E591B70A43B0048B8EB /* BaseDataSource.m in Sources */,
@@ -4992,17 +5085,19 @@
 				E124D7BC1B9313500007B85E /* CUVerifyCodeController.m in Sources */,
 				7FA561FC1CBDE3020092D978 /* MJRefreshGifHeader.m in Sources */,
 				7F49BC3D1CB35D2500EAA34A /* HFTitleView.m in Sources */,
-				7FFB94951C96BAD1003523B4 /* MyCommentListModel.m in Sources */,
 				7FA561F31CBDE3020092D978 /* MJRefreshComponent.m in Sources */,
 				BC3C8A9F1C43624F00B8E76A /* BlueDotLabelInDoctorHeaderView.m in Sources */,
+				7FA56BCD1CC483620011EEE1 /* AddMemberCell.m in Sources */,
 				BC9354AC1C1AB07100C60921 /* HomeSubViewController2.m in Sources */,
 				E1EB1ED71B70A4D70048B8EB /* RSADataVerifier.m in Sources */,
+				7FA56BD01CC483620011EEE1 /* MyMemberCell.m in Sources */,
 				BC1859AE1C8002440050251B /* CUClinicManager.m in Sources */,
 				3EDEBABB1A961C4800E72809 /* SNServerAPIDataParser.m in Sources */,
 				7FA561FE1CBDE3020092D978 /* MJRefreshStateHeader.m in Sources */,
 				3EDEBAAB1A961C4800E72809 /* PLSqlitePreparedStatement.m in Sources */,
 				E1AD6F281B7CC82400FB3C55 /* Doctor.m in Sources */,
 				E1EB1E5B1B70A43B0048B8EB /* CellDisplayInfo.m in Sources */,
+				7FA56BFB1CC4F2130011EEE1 /* DetailsHeaderView.m in Sources */,
 				BCEC31D11CB3AC0C0003851A /* HomeSubViewController_Search.m in Sources */,
 				3EDEBAC51A961C4800E72809 /* UIImage+Hilight.m in Sources */,
 				E61DDAC01B8E231100120365 /* SubObject.m in Sources */,
@@ -5016,7 +5111,6 @@
 				E10EDCCB1B8B84D40035B6E7 /* payRequsestHandler.mm in Sources */,
 				BC4DE6BE1CB4F94C00D223B0 /* CityChooseButton.m in Sources */,
 				E6ECE1611BA1C49600A3F998 /* ReplyHeader.m in Sources */,
-				7F3151121CC251BD002A11C3 /* MyInfoCell.m in Sources */,
 				7FD0BBCF1C9A58C9004D2E02 /* IQKeyboardManager.m in Sources */,
 				E1EB1E611B70A43B0048B8EB /* SNFocusImageItem.m in Sources */,
 				E61DDABD1B8E221B00120365 /* CUServiceManager.m in Sources */,
@@ -5026,12 +5120,14 @@
 				3EDD02B21B140B8E0081B641 /* UIViewController+TitleView.m in Sources */,
 				E10EDCB51B8B649E0035B6E7 /* OrderCreateController.m in Sources */,
 				3EDEBAB51A961C4800E72809 /* NSObject+SNExtension.m in Sources */,
+				7FA56BDB1CC4A3630011EEE1 /* MyCommentCell.m in Sources */,
 				7FA562011CBDE3020092D978 /* UIScrollView+MJExtension.m in Sources */,
 				7FD0BBD41C9A58C9004D2E02 /* IQTitleBarButtonItem.m in Sources */,
 				3EDEBAC41A961C4800E72809 /* UIImage+GIF.m in Sources */,
 				E124D7C11B9317480007B85E /* CURegisterController.m in Sources */,
 				E10EDC9F1B8B60930035B6E7 /* CUOrderDetailViewController.m in Sources */,
 				BC1859CB1C8440060050251B /* MyDiagnosisRecordsCell.m in Sources */,
+				7FA56BF51CC4BA460011EEE1 /* MyAppointMentHeaderView.m in Sources */,
 				3EDEBAB41A961C4800E72809 /* NSFileManager+Size.m in Sources */,
 				E1EB1E421B70A43B0048B8EB /* MobClickConstants.m in Sources */,
 				3EDEBAA01A961C4800E72809 /* SNFileAccessManager.m in Sources */,
@@ -5058,7 +5154,6 @@
 				7FD0BBCE1C9A58C9004D2E02 /* IQUIWindow+Hierarchy.m in Sources */,
 				7FD0BBD01C9A58C9004D2E02 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				E1A6B90F1BAE9DFF001A458D /* PasswordSettingController.m in Sources */,
-				7F3151161CC28137002A11C3 /* MyMemberCell.m in Sources */,
 				3EDEBAAE1A961C4800E72809 /* NSArray+SNExtension.m in Sources */,
 				BC8E36C61C27C69400304637 /* TitleView.m in Sources */,
 				BC1859CE1C8440060050251B /* MyDiagnosisRecordsViewController.m in Sources */,
@@ -5066,6 +5161,7 @@
 				3EDEBAAF1A961C4800E72809 /* NSData+Base64.m in Sources */,
 				E1C2F4F01BA9CB720070224F /* AddressListView.m in Sources */,
 				7F31510B1CC24D75002A11C3 /* MyMemberViewController.m in Sources */,
+				7FA56BCC1CC483620011EEE1 /* AddMemberBtnCell.m in Sources */,
 				3ED4FC151AA8775300AAAD34 /* UIBarButtonItem+SNExtension.m in Sources */,
 				3EDEBAA11A961C4800E72809 /* SNFileAccessManagerInner.m in Sources */,
 				BCAA4AAD1C8548440085A165 /* MyDoctorListModel.m in Sources */,
@@ -5083,7 +5179,6 @@
 				7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */,
 				BC883BD81C74430000333B47 /* DoctorSelectOrderTimeController.m in Sources */,
 				E1A6B91D1BB1B97A001A458D /* CUPickerView.m in Sources */,
-				7F3151221CC28210002A11C3 /* AddMemberCell.m in Sources */,
 				3EDEBA8A1A961C4800E72809 /* SNNetworkClient+Image.m in Sources */,
 				3ED0A7581AA603C50040E529 /* SNViewController.m in Sources */,
 				E1AD6F351B7CD0C500FB3C55 /* CUDoctorParser.m in Sources */,
@@ -5092,10 +5187,9 @@
 				7FFD7AA71CB7B1E9000C45E3 /* GoodClinicViewController.m in Sources */,
 				E1EB1E601B70A43B0048B8EB /* SNCycleScrollView.m in Sources */,
 				BC8E36CD1C27D95900304637 /* CUPageControl.m in Sources */,
-				7F0A9ECD1CC3CECC0095C08D /* AddMemberLabelCell.m in Sources */,
 				E10EDCB81B8B64AC0035B6E7 /* OrderConfirmController.m in Sources */,
+				7FA56BCE1CC483620011EEE1 /* AddMemberLabelCell.m in Sources */,
 				7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */,
-				7F31510F1CC2517F002A11C3 /* MyInfoAvatarCell.m in Sources */,
 				BC0E84E91C7D5F2C00082AA9 /* ClinicMainViewController.m in Sources */,
 				3EDEBA7F1A961C4800E72809 /* SDWebImageDecoder.m in Sources */,
 				E1EB1E5C1B70A43B0048B8EB /* CUBlankView.m in Sources */,
@@ -5133,6 +5227,7 @@
 				3ED0A75E1AA603C50040E529 /* SNSlideNavigationController.m in Sources */,
 				7FA562021CBDE3020092D978 /* UIScrollView+MJRefresh.m in Sources */,
 				7FA561F91CBDE3020092D978 /* MJRefreshBackGifFooter.m in Sources */,
+				7FA42A1D1CC53FCF00564182 /* TreatmentTimeView.m in Sources */,
 				3ED0A7511AA603C50040E529 /* SNSlideController+SNSlideAttribute.m in Sources */,
 				3EDEBAB01A961C4800E72809 /* NSData+SNExtension.m in Sources */,
 				E1EB1E3D1B70A43B0048B8EB /* LocationHelper.m in Sources */,
@@ -5141,6 +5236,7 @@
 				3EDEBACB1A961C4800E72809 /* UIView+Extension.m in Sources */,
 				3EDEBA731A961C4800E72809 /* AFHTTPClient.m in Sources */,
 				3EDEBA811A961C4800E72809 /* SDWebImageManager.m in Sources */,
+				7FA56BD11CC483620011EEE1 /* MyMemberListModel.m in Sources */,
 				E1EB1D7D1B70A43B0048B8EB /* AppCore.m in Sources */,
 				E17B69261B8383760079DDB5 /* DoctorHeaderView.m in Sources */,
 				E124D7921B915E6D0007B85E /* ImageUploadView.m in Sources */,
@@ -5169,6 +5265,7 @@
 				7FA561F41CBDE3020092D978 /* MJRefreshFooter.m in Sources */,
 				7FA561F51CBDE3020092D978 /* MJRefreshHeader.m in Sources */,
 				3EDEBAA61A961C4800E72809 /* PLDatabaseMigrationManager.m in Sources */,
+				7FA56BEC1CC4A5B90011EEE1 /* MyAppointmentListModel.m in Sources */,
 				E124D78C1B90BDBF0007B85E /* OrderDetailView.m in Sources */,
 				3EDEBA7C1A961C4800E72809 /* UIImageView+AFNetworking.m in Sources */,
 				E10EDCAC1B8B60930035B6E7 /* OrderResultButtonView.m in Sources */,
@@ -5201,7 +5298,6 @@
 				7F49BC391CB3577F00EAA34A /* HFPageControl.m in Sources */,
 				3EDEBACA1A961C4800E72809 /* UIView+Debug.m in Sources */,
 				E1EB1E5A1B70A43B0048B8EB /* CellContentView.m in Sources */,
-				7F0A9ECA1CC3CEB90095C08D /* AddMemberBtnCell.m in Sources */,
 				E1BA19751BD3DAB100851B01 /* NearbyController.mm in Sources */,
 				E1AD6F381B7CDF6100FB3C55 /* DoctorListContainerController.m in Sources */,
 				7F49BC381CB3577F00EAA34A /* HFBannerViewCell.m in Sources */,
@@ -5215,7 +5311,7 @@
 				3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */,
 				7F31511C1CC281B2002A11C3 /* AddMemberViewController.m in Sources */,
 				BC14A9991C72D3860053CEAF /* Clinic.m in Sources */,
-				7F3151251CC28248002A11C3 /* AddMemberPickerCell.m in Sources */,
+				7FA56BCF1CC483620011EEE1 /* AddMemberPickerCell.m in Sources */,
 				7FD0BBCB1C9A58C9004D2E02 /* IQUITextFieldView+Additions.m in Sources */,
 				7FA561FD1CBDE3020092D978 /* MJRefreshNormalHeader.m in Sources */,
 				BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */,
@@ -5227,6 +5323,7 @@
 				7FE327BB1CB525E600032376 /* ScoreLabel.m in Sources */,
 				BCAA4AC71C85964D0085A165 /* MyAccountMainViewController.m in Sources */,
 				7F31511F1CC281C4002A11C3 /* ModifyMemberViewController.m in Sources */,
+				7FA56BDC1CC4A3630011EEE1 /* MyCommentListModel.m in Sources */,
 				BC1859BB1C841C860050251B /* SubjectOfClinicMainCollectionViewCell.m in Sources */,
 				3ED0A7681AA607FD0040E529 /* SNTabViewController.m in Sources */,
 				E1A6B8E61BAD4302001A458D /* UserCenterController.m in Sources */,
@@ -5234,6 +5331,7 @@
 				E10EDCA51B8B60930035B6E7 /* OrderResultController.m in Sources */,
 				3EDEBAC31A961C4800E72809 /* UIImage+Draw.m in Sources */,
 				E1BA197F1BD3DB6500851B01 /* MapMerchantView.m in Sources */,
+				7FA56C041CC4F2910011EEE1 /* DetailsPaymentInfoView.m in Sources */,
 				E6ECE1581BA0A3C200A3F998 /* ConsultationCell.m in Sources */,
 				3EDEBA831A961C4800E72809 /* UIButton+WebCache.m in Sources */,
 				E6D454921B9360D400F3C3D0 /* DoctorZanCell.m in Sources */,
@@ -5248,6 +5346,7 @@
 				E1EB1E651B70A43B0048B8EB /* SearchTooBar.m in Sources */,
 				3EDEBAB11A961C4800E72809 /* NSDate+SNExtension.m in Sources */,
 				E1283B2C1BA07A5000FC26C5 /* CUUserManager+FamilyMember.m in Sources */,
+				7FA56BF81CC4EB900011EEE1 /* AppointmentDetailsController.m in Sources */,
 				3EDEBA781A961C4800E72809 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3EDEBAC81A961C4800E72809 /* UIImage+SNExtension.m in Sources */,
 				E689E9A51BA87E9E00A3ED3C /* HomeTipView.m in Sources */,
@@ -5256,6 +5355,7 @@
 				3ED0A74D1AA603C50040E529 /* UIViewController+SNSlideStatus.m in Sources */,
 				E1EB1E401B70A43B0048B8EB /* UIView+Scale.m in Sources */,
 				7F3151071CC24BC5002A11C3 /* MyInfoViewController.m in Sources */,
+				7FA42A1A1CC53E6200564182 /* TreatmentDetailsController.m in Sources */,
 				7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */,
 				E1EB1ED51B70A4D70048B8EB /* openssl_wrapper.m in Sources */,
 				E1EB1E5D1B70A43B0048B8EB /* CULoginView.m in Sources */,

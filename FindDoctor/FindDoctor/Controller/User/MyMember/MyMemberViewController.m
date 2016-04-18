@@ -8,6 +8,8 @@
 
 #import "MyMemberViewController.h"
 #import "MyMemberCell.h"
+#import "ModifyMemberViewController.h"
+#import "AddMemberViewController.h"
 
 @interface MyMemberViewController ()
 
@@ -41,7 +43,8 @@
 }
 
 - (void)addMemberAction{
-    
+    AddMemberViewController * VC = [[AddMemberViewController alloc] initWithPageName:@"AddMemberViewController"];
+    [self.slideNavigationController pushViewController:VC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -63,6 +66,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ModifyMemberViewController * VC = [[ModifyMemberViewController alloc] initWithPageName:@"ModifyMemberViewController"];
+    [self.slideNavigationController pushViewController:VC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
