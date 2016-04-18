@@ -26,8 +26,7 @@
 
 @implementation HomeViewController
 
-- (id)initWithPageName:(NSString *)pageName
-{
+- (id)initWithPageName:(NSString *)pageName{
     self = [super initWithPageName:pageName];
     if (self) {
         self.hasNavigationBar = NO;
@@ -35,8 +34,7 @@
     return self;
 }
 
-- (void)setShouldHaveTab
-{
+- (void)setShouldHaveTab {
     self.hasTab = YES;
 }
 
@@ -94,15 +92,13 @@
     [headerView addSubview:_messageButton];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     _homeSubViewController_Main.slideNavigationController = self.slideNavigationController;
     _homeSubViewController_Search.slideNavigationController = self.slideNavigationController;
 }
 
 - (void)messageAction{
-    
     NewsListModel * listMiodel = [[NewsListModel alloc] init];
     NewsListController * VC = [[NewsListController alloc] initWithPageName:@"NewsListController" listModel:listMiodel];
     [self.slideNavigationController pushViewController:VC animated:YES];

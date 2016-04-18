@@ -37,10 +37,10 @@
 {
     if (self = [super init]) {
         self.scrollDirection = UICollectionViewScrollDirectionVertical;
-        self.minimumInteritemSpacing = 10;
-        self.minimumLineSpacing = 10;
-//        self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-        self.headerReferenceSize = CGSizeMake(kScreenWidth, 40);
+        self.minimumInteritemSpacing = 10;   //默认cell之间的最小间距，可以用代理重写
+        self.minimumLineSpacing = 10;     //默认的行间距（包括section直接的间距），可以用代码修改，如果全部用代理修改， 则此条只改变section直接的间距
+        self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        self.headerReferenceSize = CGSizeMake(kScreenWidth, 40);   //默认sectionHeader大小
         self.sectionHeadersPinToVisibleBounds = NO;
     }
     return self;
@@ -59,7 +59,10 @@
     CGFloat yOffSetDecoration = 0;
     
     for (int section = 0; section < self.collectionView.numberOfSections; section++) {
-        UIEdgeInsets tempSectionInset = [self.delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:section];// 此代理必须执行
+        UIEdgeInsets tempSectionInset = self.sectionInset;
+        if ([self.delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)]) {
+            tempSectionInset = [self.delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:section];
+        }
         NSInteger itemCount = [[self collectionView] numberOfItemsInSection:section];
         NSMutableArray *itemAttributesInSection = [NSMutableArray arrayWithCapacity:itemCount];
 
@@ -78,9 +81,14 @@
 //        layoutAttributes3.frame = CGRectMake(0, yOffSetDecoration, self.collectionView.frameWidth,0);
         layoutAttributes3.zIndex = -1;
         
-        CGFloat tempMinimumInteritemSpacing = [self.delegate collectionView:self.collectionView layout:self minimumInteritemSpacingForSectionAtIndex:section];// 此代理必须执行
-        CGFloat tempMinimumLineSpacing = [self.delegate collectionView:self.collectionView layout:self minimumLineSpacingForSectionAtIndex:section];// 此代理必须执行
-
+        CGFloat tempMinimumInteritemSpacing = self.minimumInteritemSpacing;
+        if ([self.delegate respondsToSelector:@selector(collectionView:layout:minimumInteritemSpacingForSectionAtIndex:)]) {
+            tempMinimumInteritemSpacing = [self.delegate collectionView:self.collectionView layout:self minimumInteritemSpacingForSectionAtIndex:section];
+        }
+        CGFloat tempMinimumLineSpacing = self.minimumLineSpacing;
+        if ([self.delegate respondsToSelector:@selector(collectionView:layout:minimumLineSpacingForSectionAtIndex:)]) {
+            tempMinimumLineSpacing = [self.delegate collectionView:self.collectionView layout:self minimumLineSpacingForSectionAtIndex:section];
+        }
         yOffset += tempMinimumLineSpacing;
         
         for (NSInteger idx = 0; idx < itemCount; idx++) {

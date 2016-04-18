@@ -489,9 +489,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 
                 result.parsedModelObject = resultArray;
             }
-            resultBlock(nil, result);
-            
         }
+        resultBlock(nil, result);
     } forKey:@"HomeTipList" forPageNameGroup:pageName];
 #else
     SNServerAPIResultData *result = [[SNServerAPIResultData alloc]init];

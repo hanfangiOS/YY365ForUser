@@ -29,7 +29,7 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)setCollectionViewData{
+- (void)setCollectionViewData {
     _itemArray  = [NSMutableArray new];
     for (int i = 0 ; i < 9 ;  i++ ) {
         SubObject *subobject = [[SubObject alloc]init];
