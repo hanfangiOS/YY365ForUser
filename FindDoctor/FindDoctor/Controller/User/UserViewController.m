@@ -6,44 +6,36 @@
 //  Copyright © 2016年 li na. All rights reserved.
 //
 
-#import "UserViewController.h"
-#import "UserHeaderView.h"
-#import "BigButtonsInUser.h"
+
+#import "UIImage+Color.h"
 
 #import "AppDelegate.h"
 #import "CUUserManager.h"
+#import "CUOrder.h"
+
+#import "UserViewController.h"
+#import "UserHeaderView.h"
 
 #import "LoginViewController.h"
-
-#import "MyDiagnosisRecordsListModel.h"
-#import "MyDiagnosisRecordsViewController.h"
-
 #import "MyDoctorListModel.h"
 #import "MyDoctorListViewController.h"
-
 #import "MyClinicListViewController.h"
 #import "MyClinicListModel.h"
-
 #import "MyAccountMainViewController.h"
-
 #import "MyCommentViewController.h"
 #import "MyCommentListModel.h"
-#import "UIImage+Color.h"
-
 #import "NewsListModel.h"
 #import "NewsListController.h"
-
 #import "MyInfoViewController.h"
-
 #import "MyMemberViewController.h"
 #import "MyMemberListModel.h"
-
 #import "MyAppointmentController.h"
 #import "MyAppointmentListModel.h"
-
 #import "SettingViewController.h"
 
 #import "CUOrder.h"
+#import "MyTreatmentController.h"
+#import "MyTreatmentListModel.h"
 
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -189,9 +181,14 @@
             }
                 break;
             case 1:{
-                MyDiagnosisRecordsListModel * listModel = [[MyDiagnosisRecordsListModel alloc]initWithSortType:1];
-                MyDiagnosisRecordsViewController * myDiagnosisRecordsVC = [[MyDiagnosisRecordsViewController alloc]initWithPageName:@"MyDiagnosisRecordsViewController" listModel:listModel];
-                [self.slideNavigationController  pushViewController:myDiagnosisRecordsVC animated:YES];
+                OrderFilter * filter = [[OrderFilter alloc] init];
+                filter.user = [CUUserManager sharedInstance].user;
+                filter.orderStatus = ORDERSTATUS_FINISHED;
+                filter.pageNum = 0;
+                
+                MyTreatmentListModel * listModel = [[MyTreatmentListModel alloc]initWithFilter:filter];
+                MyTreatmentController * VC = [[MyTreatmentController alloc]initWithPageName:@"MyTreatmentController" listModel:listModel];
+                [self.slideNavigationController  pushViewController:VC animated:YES];
             }
                 break;
             case 2:{

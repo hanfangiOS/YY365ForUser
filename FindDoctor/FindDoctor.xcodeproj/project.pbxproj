@@ -264,6 +264,10 @@
 		7FE327AD1CB4B65900032376 /* HomeSubViewMainBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */; };
 		7FE327B01CB51A4200032376 /* HomeSubViewMainTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */; };
 		7FE327BB1CB525E600032376 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327BA1CB525E600032376 /* ScoreLabel.m */; };
+		7FF0C02E1CC5C0A10055FF88 /* MyTreatmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C02D1CC5C0A10055FF88 /* MyTreatmentController.m */; };
+		7FF0C0311CC5C0CE0055FF88 /* MyTreatmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C0301CC5C0CE0055FF88 /* MyTreatmentCell.m */; };
+		7FF0C0341CC5C0FB0055FF88 /* MyTreatmentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C0331CC5C0FB0055FF88 /* MyTreatmentListModel.m */; };
+		7FF0C03A1CC6112B0055FF88 /* HFRequestHeaderDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C0391CC6112B0055FF88 /* HFRequestHeaderDict.m */; };
 		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
 		7FFB94981C96C3E6003523B4 /* CUCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94971C96C3E6003523B4 /* CUCommentManager.m */; };
 		7FFD7AA41CB751FE000C45E3 /* GoodDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */; };
@@ -1144,6 +1148,14 @@
 		7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainTableCell.m; sourceTree = "<group>"; };
 		7FE327B91CB525E600032376 /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
 		7FE327BA1CB525E600032376 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
+		7FF0C02C1CC5C0A10055FF88 /* MyTreatmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTreatmentController.h; sourceTree = "<group>"; };
+		7FF0C02D1CC5C0A10055FF88 /* MyTreatmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTreatmentController.m; sourceTree = "<group>"; };
+		7FF0C02F1CC5C0CE0055FF88 /* MyTreatmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTreatmentCell.h; sourceTree = "<group>"; };
+		7FF0C0301CC5C0CE0055FF88 /* MyTreatmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTreatmentCell.m; sourceTree = "<group>"; };
+		7FF0C0321CC5C0FB0055FF88 /* MyTreatmentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTreatmentListModel.h; sourceTree = "<group>"; };
+		7FF0C0331CC5C0FB0055FF88 /* MyTreatmentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTreatmentListModel.m; sourceTree = "<group>"; };
+		7FF0C0381CC6112B0055FF88 /* HFRequestHeaderDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFRequestHeaderDict.h; sourceTree = "<group>"; };
+		7FF0C0391CC6112B0055FF88 /* HFRequestHeaderDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFRequestHeaderDict.m; sourceTree = "<group>"; };
 		7FFB94901C967051003523B4 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		7FFB94911C967051003523B4 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		7FFB94961C96C3E6003523B4 /* CUCommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUCommentManager.h; sourceTree = "<group>"; };
@@ -2765,6 +2777,8 @@
 			children = (
 				7F49BC3A1CB35CFC00EAA34A /* HFTitleView */,
 				7F49BC301CB3577F00EAA34A /* HFBanner */,
+				7FF0C0381CC6112B0055FF88 /* HFRequestHeaderDict.h */,
+				7FF0C0391CC6112B0055FF88 /* HFRequestHeaderDict.m */,
 			);
 			path = HFFW;
 			sourceTree = "<group>";
@@ -2935,6 +2949,8 @@
 				7FA56BE61CC4A53B0011EEE1 /* View */,
 				7FA42A181CC53E6200564182 /* TreatmentDetailsController.h */,
 				7FA42A191CC53E6200564182 /* TreatmentDetailsController.m */,
+				7FF0C02C1CC5C0A10055FF88 /* MyTreatmentController.h */,
+				7FF0C02D1CC5C0A10055FF88 /* MyTreatmentController.m */,
 			);
 			name = MyTreatment;
 			path = User/MyTreatment;
@@ -2958,6 +2974,10 @@
 			children = (
 				7FA42A1B1CC53FCF00564182 /* TreatmentTimeView.h */,
 				7FA42A1C1CC53FCF00564182 /* TreatmentTimeView.m */,
+				7FF0C02F1CC5C0CE0055FF88 /* MyTreatmentCell.h */,
+				7FF0C0301CC5C0CE0055FF88 /* MyTreatmentCell.m */,
+				7FF0C0321CC5C0FB0055FF88 /* MyTreatmentListModel.h */,
+				7FF0C0331CC5C0FB0055FF88 /* MyTreatmentListModel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5136,6 +5156,8 @@
 				BCAA4ABB1C8578480085A165 /* MyClinicCell.m in Sources */,
 				E1EB1D7A1B70A43B0048B8EB /* HomeSubController.m in Sources */,
 				E1EB1E631B70A43B0048B8EB /* HYCAnnotation.m in Sources */,
+				7FF0C02E1CC5C0A10055FF88 /* MyTreatmentController.m in Sources */,
+				7FF0C0341CC5C0FB0055FF88 /* MyTreatmentListModel.m in Sources */,
 				3EDD02B21B140B8E0081B641 /* UIViewController+TitleView.m in Sources */,
 				E10EDCB51B8B649E0035B6E7 /* OrderCreateController.m in Sources */,
 				3EDEBAB51A961C4800E72809 /* NSObject+SNExtension.m in Sources */,
@@ -5236,6 +5258,7 @@
 				BCAA4AB51C856D610085A165 /* MyClinicListModel.m in Sources */,
 				3EDEBAC01A961C4800E72809 /* UIImage+Alpha.m in Sources */,
 				E1A6B9311BB30422001A458D /* SearchHistoryHelper.m in Sources */,
+				7FF0C03A1CC6112B0055FF88 /* HFRequestHeaderDict.m in Sources */,
 				E6D454871B92C30C00F3C3D0 /* DoctorFlagView.m in Sources */,
 				3EDEBA861A961C4800E72809 /* SNHTTPRequestOperationWrapper.m in Sources */,
 				E6D4548F1B9360B400F3C3D0 /* DoctorZanView.m in Sources */,
@@ -5332,6 +5355,7 @@
 				7F31511C1CC281B2002A11C3 /* AddMemberViewController.m in Sources */,
 				BC14A9991C72D3860053CEAF /* Clinic.m in Sources */,
 				7FA56BCF1CC483620011EEE1 /* AddMemberPickerCell.m in Sources */,
+				7FF0C0311CC5C0CE0055FF88 /* MyTreatmentCell.m in Sources */,
 				7FD0BBCB1C9A58C9004D2E02 /* IQUITextFieldView+Additions.m in Sources */,
 				7FA561FD1CBDE3020092D978 /* MJRefreshNormalHeader.m in Sources */,
 				BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */,

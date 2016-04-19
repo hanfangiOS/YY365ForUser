@@ -10,6 +10,7 @@
 #import "SNBusinessMananger.h"
 #import "SNServerAPIDefine.h"
 #import "CUUser.h"
+#import "HFRequestHeaderDict.h"
 
 @interface CUUserManager : SNBusinessMananger
 
@@ -42,7 +43,7 @@ SINGLETON_DECLARE(CUUserManager);
 // 获取用户信息
 - (void)getUserInfo:(NSString *)token resultBlock:(SNServerAPIResultBlock)resultBlock;// pageName:(NSString *)pageName;
 
-// 修改用户信息
+// 修改个人资料
 - (void)updateUserInfo:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 // 上传头像

@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *desc;// 描述
 @property (nonatomic, strong) NSString *imageName;
-@property (nonatomic, strong) NSString *serviceTime;
+@property (nonatomic, strong) NSString *serviceTime;//--
 
 @property NSInteger queueNumber;
 @property NSInteger queueCount;

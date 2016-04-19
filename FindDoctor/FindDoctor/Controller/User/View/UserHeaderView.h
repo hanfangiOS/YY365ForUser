@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class BigButtonsInUser;
+#import "BigButtonsInUser.h"
 
 @interface UserHeaderView : UIView
 
