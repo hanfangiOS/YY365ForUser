@@ -16,7 +16,6 @@
 #import "JSONKit.h"
 #import "TipHandler+HUD.h"
 #import "CUOrder.h"
-#import "ParserTools.h"
 
 @implementation CUClinicManager
 
@@ -54,7 +53,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 NSArray *recvList = [result.responseObject arrayForKeySafely:@"data"];
                 NSMutableArray *listSubjectClinic = [[NSMutableArray alloc] init];
                 
-                [ParserTools enumerateObjects:recvList UsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                [recvList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     Clinic *clinic = [[Clinic alloc] init];
                     
                     clinic.breifInfo = [obj valueForKeySafely:@"briefIntro"];
@@ -252,7 +251,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 NSArray *recvList = [result.responseObject arrayForKeySafely:@"data"];
                 NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                 
-                [ParserTools enumerateObjects:recvList UsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                [recvList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     Clinic *clinic = [[Clinic alloc] init];
                     
                     clinic.ID = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];

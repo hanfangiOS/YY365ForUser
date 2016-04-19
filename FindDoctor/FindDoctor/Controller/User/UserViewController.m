@@ -1,4 +1,4 @@
- //
+//
 //  UserViewController.m
 //  FindDoctor
 //
@@ -28,244 +28,261 @@
 
 #import "MyCommentViewController.h"
 #import "MyCommentListModel.h"
+#import "UIImage+Color.h"
 
-@interface UserViewController ()<UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>{
-    UserHeaderView *userHeaderView;
-    UITableView * _contentTableView;
-    NSArray *contentTableViewCellIcon;
-    NSArray *contentTableViewCellText;
-}
+#import "NewsListModel.h"
+#import "NewsListController.h"
 
-@property (nonatomic, strong) LoginViewController *loginVC;
+#import "MyInfoViewController.h"
+
+#import "MyMemberViewController.h"
+#import "MyMemberListModel.h"
+
+#import "MyAppointmentController.h"
+#import "MyAppointmentListModel.h"
+
+#import "SettingViewController.h"
+
+#import "CUOrder.h"
+
+@interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) UserHeaderView    * headerView;
+@property (nonatomic, strong) UITableView       * tableView;
 
 @end
 
 @implementation UserViewController
 
+- (void)loadNavigationBar{
+    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myDoctorBigButtonImage"] action:@selector(messageAction)];
+    
+}
+
+- (void)messageAction{
+    NewsListModel * listMiodel = [[NewsListModel alloc] init];
+    NewsListController * VC = [[NewsListController alloc] initWithPageName:@"NewsListController" listModel:listMiodel];
+    [self.slideNavigationController pushViewController:VC animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.headerView resetUserInfo];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[CUUserManager sharedInstance].user addObserver:self forKeyPath:@"token" options:NSKeyValueObservingOptionNew context:NULL];
+    self.title = @"我的空间";
+    [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.01]]];
+    [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
+    
     [self initSubView];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    _loginVC.slideNavigationController = self.slideNavigationController;
-    [super viewWillAppear:animated];
-    [_contentTableView reloadData];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    if ([[CUUserManager sharedInstance] isLogin]) {
-    }
-    else{
-        [self loginAction];
-    }
-    [userHeaderView resetUserInfo];
-    [super viewDidAppear:animated];
-}
-
-
 - (void)initSubView{
-    [self initData];
+    self.contentView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     
-    _contentTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, self.contentView.frame.size.height-49) style:UITableViewStylePlain];
-    _contentTableView.delegate = self;
-    _contentTableView.dataSource = self;
-    _contentTableView.separatorInset = UIEdgeInsetsMake(0, -80, 0, 0);
-    _contentTableView.separatorStyle = UITableViewCellSelectionStyleNone;
-    _contentTableView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
-    _contentTableView.bounces = NO;
-    [self.contentView  addSubview:_contentTableView];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kDefaultToolbarHeight) style:UITableViewStyleGrouped];
+    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.tableView.tableFooterView = [UIView new];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.bounces = NO;
+    [self.contentView addSubview:self.tableView];
+    
+    self.headerView = [[UserHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 223)];
+    self.headerView.layer.contents = [UIImage imageNamed:@""];
+    self.headerView.backgroundColor = [UIColor blueColor];
+    
+    self.tableView.tableHeaderView = self.headerView;
+    
+    [self.headerView.myDoctorBtn addTarget:self action:@selector(myDoctorAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.headerView.myClinicBtn addTarget:self action:@selector(myClinicAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.headerView.myCommentBtn addTarget:self action:@selector(myCommentAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userInfoBackgroundAction)];
+    [self.headerView.userInfoBackgroundView addGestureRecognizer:tap];
 }
 
-- (void)initData{
-    contentTableViewCellIcon = @[@"button_myDoctor",@"button_myClinic.png",@"button_myRecord.png",@"button_myAccount.png",@"button_myComment.png",@"button_myScore.png"];
-    contentTableViewCellText = @[@"我的医生",@"我的诊所",@"我的订单",@"我的账户",@"我的点评",@"退出登录"];
-}
-
-
-#pragma mark - TableView代理方法
+#pragma mark - tableViewDelegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 1;
+    return 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return contentTableViewCellText.count+1;
+    switch (section) {
+        case 0:{
+            return 3;
+        }
+            break;
+        default:{
+            return 1;
+        }
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 0){
-        return 116;
-    }
-    if(indexPath.row == contentTableViewCellText.count){
-        return 63+24;
-    }
-    return 63;
+    
+    return 52;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
-        
-        UserHeaderView *userHeaderView = [[UserHeaderView alloc]initWithFrame:CGRectMake(0, 9, kScreenWidth, 95)];
-        [cell addSubview:userHeaderView];
-        
-        return cell;
+    static NSString * cellID = @"defaultCell";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     
-    if(indexPath.row == contentTableViewCellText.count){
-        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
-        
-        UIButton *resignButton = [[UIButton alloc]initWithFrame:CGRectMake(26, 24, kScreenWidth-52, 40)];
-        resignButton.layer.cornerRadius = 20;
-        resignButton.clipsToBounds = YES;
-        resignButton.layer.backgroundColor = UIColorFromHex(0xe15f31).CGColor;
-        [resignButton setTitle:@"退出当前账号" forState:UIControlStateNormal];
-        [resignButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [resignButton addTarget:self action:@selector(resignAction) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:resignButton];
-        return cell;
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:{
+                cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+                cell.textLabel.text = @"我的约诊";
+            }
+                break;
+            case 1:{
+                cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+                cell.textLabel.text = @"就诊记录";
+            }
+                break;
+            case 2:{
+                cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+                cell.textLabel.text = @"消费记录";
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    if (indexPath.section == 1) {
+        cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+        cell.textLabel.text = @"我的成员";
+    }
+    if (indexPath.section == 2) {
+        cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+        cell.textLabel.text = @"设置";
     }
     
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.imageView.image = [UIImage imageNamed:[contentTableViewCellIcon objectAtIndex:(indexPath.row -1)]];
-    cell.textLabel.text = [contentTableViewCellText objectAtIndex:(indexPath.row - 1)];
-    cell.textLabel.font = [UIFont systemFontOfSize:13];
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(20, 62.5, kScreenWidth-20, 0.5)];
-    lineView.backgroundColor = UIColorFromHex(0xcccccc);
-    [cell.contentView addSubview:lineView];
     return cell;
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.row) {
-            //我的医生
-        case 1:{
-            MyDoctorListModel *listModel = [[MyDoctorListModel alloc]initWithSortType:1];
-            MyDoctorListViewController *myDoctorVC = [[MyDoctorListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
-            [self.slideNavigationController  pushViewController:myDoctorVC animated:YES];
-            break;
-        }
-            //我的诊所
-        case 2:{
-            MyClinicListModel *listModel = [[MyClinicListModel alloc]initWithSortType:1];
-            MyClinicListViewController *myClinicVC = [[MyClinicListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
-            [self.slideNavigationController  pushViewController:myClinicVC animated:YES];
-            break;
-        }
-            //就诊记录
-        case 3:{
-            MyDiagnosisRecordsListModel *listModel = [[MyDiagnosisRecordsListModel alloc]initWithSortType:1];
-            MyDiagnosisRecordsViewController *myDiagnosisRecordsVC = [[MyDiagnosisRecordsViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
-            [self.slideNavigationController  pushViewController:myDiagnosisRecordsVC animated:YES];
-            break;
-        }
-            //我的账户
-        case 4:{
-            MyAccountMainViewController   *myAccountVC = [[MyAccountMainViewController alloc]initWithPageName:@"MyAccountMainViewController"];
-            [self.slideNavigationController pushViewController:myAccountVC animated:YES];
-            break;
-        }
-            //我的点评
-        case 5 :
-        {
-            MyCommentListModel * listModel = [[MyCommentListModel alloc] init];
-            listModel.filter.lastID = 0;
-            MyCommentViewController * VC = [[MyCommentViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
-            [self.slideNavigationController  pushViewController:VC animated:YES];
-            break;
-        }
-            //我的积分
-        case 6:{
-            break;
-        }
-        default:{
-            NSLog(@"参数错误");
-            
-            break;
+    
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:{
+                OrderFilter * filter = [[OrderFilter alloc] init];
+                filter.user = [CUUserManager sharedInstance].user;
+                filter.orderStatus = ORDERSTATUS_UNPAID;
+                filter.pageNum = 0;
+                MyAppointmentListModel * listModel = [[MyAppointmentListModel alloc] initWithFilter:filter];
+                MyAppointmentController * VC = [[MyAppointmentController alloc] initWithPageName:@"MyAppointmentController" listModel:listModel];
+                [self.slideNavigationController pushViewController:VC animated:YES];
+            }
+                break;
+            case 1:{
+                MyDiagnosisRecordsListModel * listModel = [[MyDiagnosisRecordsListModel alloc]initWithSortType:1];
+                MyDiagnosisRecordsViewController * myDiagnosisRecordsVC = [[MyDiagnosisRecordsViewController alloc]initWithPageName:@"MyDiagnosisRecordsViewController" listModel:listModel];
+                [self.slideNavigationController  pushViewController:myDiagnosisRecordsVC animated:YES];
+            }
+                break;
+            case 2:{
+                MyAccountMainViewController * myAccountVC = [[MyAccountMainViewController alloc]initWithPageName:@"MyAccountMainViewController"];
+                [self.slideNavigationController pushViewController:myAccountVC animated:YES];
+            }
+                break;
+                
+            default:
+                break;
         }
     }
     
+    if (indexPath.section == 1) {
+        MyMemberListModel * listModel = [[MyMemberListModel alloc] init];
+        
+        MyMemberViewController * VC = [[MyMemberViewController alloc] initWithPageName:@"MyMemberViewController" listModel:listModel];
+        
+        [self.slideNavigationController pushViewController:VC animated:YES];
+    }
+    
+    if (indexPath.section == 2) {
+        SettingViewController *VC = [[SettingViewController alloc]initWithPageName:@"SettingViewController"];
+        [self.slideNavigationController pushViewController:VC  animated:YES];
+    }
     
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 12;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
+}
+
+#pragma mark - scrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat offSetY = scrollView.contentOffset.y;
+
+    if (offSetY < 4) {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.01]]];
+            [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
+        }];
+    }
     
-    if ([keyPath isEqualToString:@"token"]) {
-        if ([[CUUserManager sharedInstance] isLogin]) {
-            [self.loginVC.view removeFromSuperview];
-            [self.loginVC removeFromParentViewController];
-            self.loginVC = nil;
-            self.hasNavigationBar = YES;
-            self.title = @"我的空间";
-            //            [self loadNavigationBar];
-            [_contentTableView reloadData];
-            [userHeaderView resetUserInfo];
-            
-        }
-        else {
-            self.navigationItem.leftBarButtonItem = nil;
-            self.navigationItem.rightBarButtonItem = nil;
-        }
+    if (offSetY > 4 && offSetY < self.headerView.frameHeight - 85) {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:[UIColor darkGrayColor]]];
+            [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
+        }];
+    }
+    
+    if (offSetY > self.headerView.frameHeight - 85) {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:UIColorFromHex(Color_Hex_NavBackground)]];
+            [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
+        }];
     }
 }
 
-- (void)dealloc {
-    [[CUUserManager sharedInstance].user removeObserver:self forKeyPath:@"token"];
+#pragma mark Action
+
+- (void)myDoctorAction{
+    MyDoctorListModel *listModel = [[MyDoctorListModel alloc]initWithSortType:1];
+    MyDoctorListViewController *myDoctorVC = [[MyDoctorListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+    [self.slideNavigationController  pushViewController:myDoctorVC animated:YES];
 }
 
-
-- (void)loginAction
-{
-    if (!self.loginVC) {
-        self.loginVC = [[LoginViewController alloc] init];
-    }
-    self.loginVC.hasNavigationBar = NO;
-    //    self.loginVC.verifyCode = YES;
-    //    self.loginVC.intervalY = kTabBarHeight + kNavigationHeight;
-    self.loginVC.slideNavigationController = self.slideNavigationController;
-    self.loginVC.view.userInteractionEnabled = YES;
-    
-    self.hasNavigationBar = NO;
-    self.title = @"汉方就医登录";
-    
-    [self addChildViewController:self.loginVC];
-    [self.view addSubview:self.loginVC.view];
-    
-    //    [self.slideNavigationController pushViewController:loginVC animated:NO];
+- (void)myClinicAction{
+    MyClinicListModel * listModel = [[MyClinicListModel alloc]initWithSortType:1];
+    MyClinicListViewController * myClinicVC = [[MyClinicListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+    [self.slideNavigationController  pushViewController:myClinicVC animated:YES];
 }
 
-- (void)resignAction{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"确认退出？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
-    alert.tag = 1;
-    [alert show];
+- (void)myCommentAction{
+    MyCommentListModel * listModel = [[MyCommentListModel alloc] init];
+    listModel.filter.lastID = 0;
+    MyCommentViewController * VC = [[MyCommentViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+    [self.slideNavigationController  pushViewController:VC animated:YES];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(alertView.tag == 1){
-        if (buttonIndex == 0) {
-            return;
-        }
-        if (buttonIndex == 1) {
-            [[CUUserManager sharedInstance] clear];
-            [self loginAction];
-        }
+- (void)userInfoBackgroundAction{
+    if([CUUserManager sharedInstance].isLogin == YES){
+        MyInfoViewController * VC = [[MyInfoViewController alloc] init];
+        [self.slideNavigationController pushViewController:VC animated:YES];
+    }else{
+        LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+        [[UIApplication sharedApplication] delegate].window.rootViewController = VC;
     }
 }
 

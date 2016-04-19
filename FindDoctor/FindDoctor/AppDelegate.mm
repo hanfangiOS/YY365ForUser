@@ -338,6 +338,10 @@
     return customTabBarItem;
 }
 
+- (void)tabViewControllerSingleTap:(SNTabViewController *)tabBarController{
+    
+}
+
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     if ([[CUOrderManager sharedInstance] isThirdPayURL:url]) {

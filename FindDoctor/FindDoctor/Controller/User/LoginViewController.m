@@ -12,6 +12,7 @@
 #import "CUUserManager.h"
 #import "MBProgressHUD.h"
 #import "TipHandler+HUD.h"
+#import "AppDelegate.h"
 
 #define kCodeButtonWith         80
 
@@ -212,6 +213,8 @@
             [self hideHUD];
             if (!result.hasError) {
                 
+                AppDelegate * appDelegate = [[UIApplication sharedApplication]delegate];
+                appDelegate.window.rootViewController = appDelegate.slideNaviController;
             }
             
         } pageName:@"LoginViewController"];

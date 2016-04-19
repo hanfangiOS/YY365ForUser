@@ -8,22 +8,43 @@
 
 #import "BigButtonsInUser.h"
 
+@interface BigButtonsInUser()
+
+@property (strong,nonatomic)UIImageView * icon;
+@property (strong,nonatomic)UIImageView * pointIcon;
+@property (strong,nonatomic)UILabel * label;
+
+@end
+
 @implementation BigButtonsInUser
 
 - (instancetype)initWithFrame:(CGRect)frame image:(UIImage *)image title:(NSString *)title{
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake((self.frameWidth - image.size.width)/2, (self.frameHeight - 88)/2, image.size.width, image.size.height)];
-        imageView.image = image;
-        [self addSubview:imageView];
         
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame)+9, self.frameWidth, 15)];
-        label.text = title;
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [UIFont systemFontOfSize:15];
-        label.textColor = UIColorFromHex(0x858585);
-        [self addSubview:label];
+        self.backgroundColor = [UIColor blackColor];
+        
+        CGFloat imageWidth = image.size.width;
+        CGFloat imageHeight = image.size.height;
+        
+        imageWidth = 80;
+        imageHeight = 40;
+        
+        self.icon = [[UIImageView alloc]initWithFrame:CGRectMake((self.frameWidth - imageWidth)/2, 6, imageWidth, imageHeight)];
+        self.icon.image = image;
+        [self addSubview:self.icon];
+        self.icon.backgroundColor = [UIColor greenColor];
+        
+        self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, self.icon.maxY + 9, self.frameWidth, 20)];
+        self.label.text = title;
+        self.label.textAlignment = NSTextAlignmentCenter;
+        self.label.font = [UIFont systemFontOfSize:15];
+        self.label.textColor = UIColorFromHex(0x858585);
+        [self addSubview:self.label];
+        
+        self.pointIcon = [[UIImageView alloc] initWithFrame:CGRectMake(self.frameWidth - 20 -10, 6 , 20, 20)];
+        self.pointIcon.backgroundColor = [UIColor yellowColor];
+        [self addSubview:self.pointIcon];
     }
     return self;
 }

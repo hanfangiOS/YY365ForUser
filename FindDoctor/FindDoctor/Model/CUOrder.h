@@ -67,3 +67,11 @@ typedef enum OrderPayment : NSInteger
 - (NSString *)finishedTime;
 
 @end
+
+@interface OrderFilter : NSObject
+
+@property (strong,nonatomic)CUUser          * user;
+@property (assign,nonatomic)OrderStatus       orderStatus;
+@property (assign,nonatomic)NSInteger         pageNum;
+
+@end
