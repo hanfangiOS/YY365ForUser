@@ -304,43 +304,56 @@ SINGLETON_IMPLENTATION(CUUserManager);
                 
             }];
             [blockSelf save];
+        }else{
+            NSLog(@"获取用户信息 出错");
         }
         resultBlock(request,result);
     }   forKey:@"myspace"];
 }
 
-// 修改用户信息
+// 修改个人资料
 - (void)updateUserInfo:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
     // param
-    NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:user.token forKey:Key_Token];
-    [param setObjectSafely:user.nickName forKey:@"nickname"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14100 require:@"PersonalProfile"];
     
-    NSString *baseURL = [NSString stringWithFormat:@"%@/",URL_ImageBase];
-    NSString *profile = [user.profile stringByReplacingOccurrencesOfString:baseURL withString:@""];
-    if (profile.length) {
-        [param setObjectSafely:profile forKey:@"avatar"];
-    }
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:user.nickName forKey:@"nickname"];
+    [dataParam setObjectSafely:user.name forKey:@"name"];
+    [dataParam setObjectSafely:@(user.gender) forKey:@"sex"];
+    [dataParam setObjectSafely:@(user.age) forKey:@"age"];
+    [dataParam setObjectSafely:user.cellPhone forKey:@"phone"];
+    [dataParam setObjectSafely:user.nickName forKey:@"nickname"];
+    
+    [dataParam setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
     
     CUUserParser * parser = [[CUUserParser alloc] init];
     __block CUUserManager * blockSelf = self;
-    [[AppCore sharedInstance].apiManager GET:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData * result) {
         if (!result.hasError)
         {
+            NSInteger errorCode = (NSInteger)[result.responseObject objectForKeySafely:@"errorCode"];
+            if (errorCode != -1) {
+                
+            }
             // 赋值user数据
-            NSString * profile = user.profile;
-            NSString * nickName = user.nickName;
-            
-            if (profile != nil)
-            {
-                blockSelf.user.profile = profile;
-            }
-            if (nickName != nil)
-            {
-                blockSelf.user.nickName = nickName;
-            }
-            [blockSelf save];
+//            NSString * profile = user.profile;
+//            NSString * nickName = user.nickName;
+//            
+//            if (profile != nil)
+//            {
+//                blockSelf.user.profile = profile;
+//            }
+//            if (nickName != nil)
+//            {
+//                blockSelf.user.nickName = nickName;
+//            }
+//            [blockSelf save];
+        }else{
+            NSLog(@"修改个人资料出错");
         }
         resultBlock(request,result);
     } forKey:URL_AfterBase forPageNameGroup:pageName];

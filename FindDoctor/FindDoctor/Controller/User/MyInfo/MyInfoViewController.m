@@ -10,13 +10,17 @@
 #import "MyInfoAvatarCell.h"
 #import "MyInfoCell.h"
 #import "CUUserManager.h"
+#import "CUUser.h"
+
 
 @interface MyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (strong,nonatomic)UITableView     * tableView;
 
 @property (assign,nonatomic)BOOL              isEditing;
-@property (assign,nonatomic)NSDictionary    * dataDict;
+@property (assign,nonatomic)NSString        * editStatus;
+
+@property (strong,nonatomic)CUUser          * tempData;//不能直接传user 要传属性
 
 @end
 
@@ -24,44 +28,59 @@
 
 - (void)loadNavigationBar{
     [self addLeftBackButtonItemWithImage];
-    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myAccountBigButtonImage"] action:@selector(edit)];
+    [self addRightButtonItemWithTitle:self.editStatus action:@selector(edit)];
 }
 
 - (void)edit{
+    self.isEditing = !self.isEditing;
     if (self.isEditing == YES) {
-        self.isEditing = NO;
+        self.editStatus = @"编辑";
     }else{
-        self.isEditing = YES;
+        self.editStatus = @"保存";
     }
+    
     [self.tableView reloadData];
 }
 
+
+
 - (void)viewDidLoad {
+    [self initData];
+    
     [super viewDidLoad];
     
     self.title = @"我的信息";
-    
-    [self initData];
     
     [self initSubViews];
 
 }
 
 - (void)initData{
-    self.dataDict = @{@"avatar":@"",
-                      @"ID":@"",
-                      @"nickName":@"",
-                      @"name":@"",
-                      @"sex":@"",
-                      @"age":@"",
-                      @"phone":@""};
+    self.editStatus = @"编辑";
+    
+    self.tempData = [[CUUser alloc] init];
+    self.tempData.icon = [CUUserManager sharedInstance].user.icon.copy;
+    self.tempData.userId = [CUUserManager sharedInstance].user.userId;
+    self.tempData.nickName = [CUUserManager sharedInstance].user.nickName.copy;
+    self.tempData.name = [CUUserManager sharedInstance].user.name.copy;
+    self.tempData.gender = [CUUserManager sharedInstance].user.gender;
+    self.tempData.age = [CUUserManager sharedInstance].user.age;
+    self.tempData.cellPhone = [CUUserManager sharedInstance].user.token.copy;
 }
 
 - (void)initSubViews{
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEdit)];
+    [self.contentView addGestureRecognizer:tap];
+    
     self.tableView = [[UITableView alloc] initWithFrame:self.contentView.bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.contentView addSubview:self.tableView];
+}
+
+- (void)endEdit{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - tableViewDelegate
@@ -193,6 +212,19 @@
 - (void)textFieldChange:(UITextField *)textField{
     textField.text = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
+
+#pragma mark - postRequest
+
+- (void)postRequestGetUserInfo{
+    [[CUUserManager sharedInstance] getUserInfo:[CUUserManager sharedInstance].user.token resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+    }];
+}
+
+//- (void)postRequestUpdateyUserInfo{
+//    [[CUUserManager sharedInstance] updateUserInfo:<#(CUUser *)#> resultBlock:<#^(SNHTTPRequestOperation *request, SNServerAPIResultData *result)resultBlock#> pageName:<#(NSString *)#>]
+//}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

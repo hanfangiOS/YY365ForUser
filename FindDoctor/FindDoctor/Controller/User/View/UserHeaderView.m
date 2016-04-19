@@ -9,7 +9,6 @@
 #import "UserHeaderView.h"
 #import "UIImageView+WebCache.h"
 #import "CUUserManager.h"
-#import "BigButtonsInUser.h"
 
 
 @implementation UserHeaderView
