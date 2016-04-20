@@ -54,8 +54,7 @@
 - (void)setSubobject:(SubObject *)subobject
 {
     _subobject = subobject;
-//    [_iconView setImageWithURL:[NSURL URLWithString:_subobject.imageURL] placeholderImage:[UIImage imageNamed:_subobject.localImageName]];
-    [_iconView setImage:[UIImage imageNamed:_subobject.localImageName]];
+    [_iconView setImageWithURL:[NSURL URLWithString:_subobject.imageURL] placeholderImage:[UIImage imageNamed:_subobject.localImageName]];
     _titleLabel.text = subobject.name;
 }
 

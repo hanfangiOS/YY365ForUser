@@ -68,28 +68,28 @@
     return doctor;
 }
 
-- (SubObject *)subobjectWithDict:(NSDictionary *)dict
-{
-    SubObject *subobject = [[SubObject alloc] init];
-    subobject.imageURL = [dict valueForKeyPathSafely:@"imageURL"];
-    subobject.type_id = [dict valueForKeyPathSafely:@"type_id"];
-    subobject.name = [dict valueForKeyPathSafely:@"name"];
-    NSArray *sub_types = [dict valueForKeyPathSafely:@"sub_types"];
-    NSMutableArray *tempSubTypes = [NSMutableArray new];
-    [sub_types enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
-        [tempSubTypes addObjectSafely:[self subtypeObjectWithDict:obj]];
-    }];
-    subobject.sub_types = tempSubTypes;
-    return subobject;
-}
+//- (SubObject *)subobjectWithDict:(NSDictionary *)dict
+//{
+//    SubObject *subobject = [[SubObject alloc] init];
+//    subobject.imageURL = [dict valueForKeyPathSafely:@"imageURL"];
+//    subobject.type_id = [dict valueForKeyPathSafely:@"type_id"];
+//    subobject.name = [dict valueForKeyPathSafely:@"name"];
+//    NSArray *sub_types = [dict valueForKeyPathSafely:@"sub_types"];
+//    NSMutableArray *tempSubTypes = [NSMutableArray new];
+//    [sub_types enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+//        [tempSubTypes addObjectSafely:[self subtypeObjectWithDict:obj]];
+//    }];
+//    subobject.sub_types = tempSubTypes;
+//    return subobject;
+//}
 
-- (SubTypeObject *)subtypeObjectWithDict:(NSDictionary *)dict
-{
-    SubTypeObject *subtypeObject = [[SubTypeObject alloc] init];
-    subtypeObject.subType_id = [dict objectForKeySafely:@"subType_id"];
-    subtypeObject.imageURL = [dict objectForKeySafely:@"imageURL"];
-    subtypeObject.name = [dict objectForKeySafely:@"name"];
-    return subtypeObject;
-}
+//- (SubTypeObject *)subtypeObjectWithDict:(NSDictionary *)dict
+//{
+//    SubTypeObject *subtypeObject = [[SubTypeObject alloc] init];
+//    subtypeObject.subType_id = [dict objectForKeySafely:@"subType_id"];
+//    subtypeObject.imageURL = [dict objectForKeySafely:@"imageURL"];
+//    subtypeObject.name = [dict objectForKeySafely:@"name"];
+//    return subtypeObject;
+//}
 
 @end

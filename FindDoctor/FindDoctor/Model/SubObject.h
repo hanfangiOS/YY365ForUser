@@ -8,22 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SubTypeObject @end
+@interface SubObject : NSObject
 
-@interface SubTypeObject : NSObject
-
-@property (nonatomic, copy) NSString *subType_id;
+@property long long type_id;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *imageURL;
+@property (nonatomic, copy) NSString *localImageName;
 
 @end
 
-@interface SubObject : NSObject
-
-@property NSInteger type_id;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, strong) NSArray <SubTypeObject> *sub_types;
-@property (nonatomic, copy) NSString *imageURL;
-@property (nonatomic, copy) NSString *localImageName;
+@interface SubObjectFilter : NSObject
 
 @end

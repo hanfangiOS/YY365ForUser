@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 @interface Doctor : NSObject
 
 
-@property                     NSInteger doctorId;//医生ID
+@property  long long                    doctorId;//医生ID
 @property (nonatomic, strong) NSString *name;//姓名
 @property (nonatomic, strong) NSString *avatar;//头像图片
 @property (nonatomic, strong) NSString *phoneNumber;//

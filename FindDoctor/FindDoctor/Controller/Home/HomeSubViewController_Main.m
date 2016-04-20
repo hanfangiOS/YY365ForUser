@@ -18,6 +18,9 @@
 #import "DoctorListModel.h"
 #import "DoctorListController.h"
 #import "HomeSubViewMainTableCell.h"
+#import "CommonManager.h"
+#import "CUDoctorManager.h"
+#import "CUClinicManager.h"
 
 #define sectionHeaderViewHeight 30
 
@@ -30,6 +33,7 @@
         self.adverBannerList = [NSMutableArray new];
         self.goodDoctorList = [NSMutableArray new];
         self.goodClinicList = [NSMutableArray new];
+        self.subjectList = [NSMutableArray new];
         return self;
     }
     return nil;
@@ -78,8 +82,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self postRequestHomeInfo];
     [super viewWillAppear:animated];
+    
+    [self postRequestSubjectList];
+    [self postRequestgoodRemarkDoctorList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,6 +103,9 @@
         subject.localImageName = [subjectImageArray objectAtIndex:i];
         [_subjectArray addObject:subject];
     }
+    
+    self.homeModel = [[HomeModel alloc] init];
+    [self.homeModel.subjectList addObjectsFromArray:_subjectArray];
 }
 
 - (void)loadContentView{
@@ -181,12 +190,6 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - Post Request
-//10001接口-主页-消息推送
-- (void)postRequestHomeInfo{
-    
-}
-
 #pragma mark - HFBannerViewDelegate
 - (NSInteger)numberOfCellInView:(HFBannerView *)view{
 //    if (view == self.mainBannerView) {
@@ -233,14 +236,14 @@
 #pragma mark - UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _subjectArray.count;
+    return self.homeModel.subjectList.count;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     SubObjectCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SubObjectCell" forIndexPath:indexPath];
-    cell.subobject = [_subjectArray objectAtIndex:indexPath.row];
+    cell.subobject = [self.homeModel.subjectList objectAtIndexSafely:indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
@@ -273,7 +276,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DoctorListModel * listModel = [[DoctorListModel alloc] initWithSortType:DoctorSortTypeNone];
-    SubObject *subobject = (SubObject *)[_subjectArray objectAtIndex:indexPath.row];
+    SubObject *subobject = (SubObject *)[self.homeModel.subjectList objectAtIndex:indexPath.row];
     listModel.filter.typeId = subobject.type_id;
     DoctorListController *listVC = [[DoctorListController alloc] initWithPageName:@"DoctorListController" listModel:listModel];
     [self.slideNavigationController pushViewController:listVC animated:YES];
@@ -351,5 +354,49 @@
         scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
     }
 }
+
+#pragma mark - Post Request
+//14202获取科目列表
+- (void)postRequestSubjectList{
+    [[CommonManager sharedInstance]getSubjectListWithFilter:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData * result) {
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if ([errorCode integerValue] != -1) {
+                [self.homeModel.subjectList removeAllObjects];
+                [self.homeModel.subjectList addObjectsFromArray:result.parsedModelObject];
+                [self.subjectCollectionView reloadData];
+            }
+        }
+        
+    } pageName:@"HomeSubViewController_Main"];
+}
+
+//好评医生
+- (void)postRequestgoodRemarkDoctorList{
+    [[CUDoctorManager sharedInstance] getGoodRemarkDoctorListWithFilter:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if ([errorCode integerValue] != -1) {
+                [self.homeModel.goodDoctorList removeAllObjects];
+                [self.homeModel.goodDoctorList addObjectsFromArray:result.parsedModelObject];
+                self.goodDoctorVC.data = self.homeModel.goodDoctorList;
+            }
+        }
+        
+    } pageName:@"HomeSubViewController_Main"];
+}
+
+//好评诊所
+- (void)postRequestGoodRemarkClinicList{
+    
+}
+
+//优医管
+- (void)postRequestFamousDoctorClinic{
+    
+}
+
 
 @end

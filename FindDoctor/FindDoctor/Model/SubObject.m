@@ -8,12 +8,10 @@
 
 #import "SubObject.h"
 
-@implementation SubTypeObject
-
-
+@implementation SubObject
 
 @end
 
-@implementation SubObject
+@implementation SubObjectFilter
 
 @end

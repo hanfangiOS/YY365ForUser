@@ -235,6 +235,8 @@
 		7FA56C011CC4F26F0011EEE1 /* DetailsAppointInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56C001CC4F26F0011EEE1 /* DetailsAppointInfoView.m */; };
 		7FA56C041CC4F2910011EEE1 /* DetailsPaymentInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56C031CC4F2910011EEE1 /* DetailsPaymentInfoView.m */; };
 		7FA56C071CC4F2BC0011EEE1 /* DetailsOrderInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56C061CC4F2BC0011EEE1 /* DetailsOrderInfoView.m */; };
+		7FABC5881CC75A03006C47BB /* CommonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FABC5871CC75A03006C47BB /* CommonManager.m */; };
+		7FABC58B1CC7704F006C47BB /* Consultation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FABC58A1CC7704F006C47BB /* Consultation.m */; };
 		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
 		7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB391CB245A500A99C97 /* Banner.m */; };
@@ -658,7 +660,6 @@
 		E6D6B1921BC4C12900B695F7 /* home_tip_top_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D6B1911BC4C12900B695F7 /* home_tip_top_line@2x.png */; };
 		E6D6B1951BC4F15A00B695F7 /* SubObjectHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D6B1941BC4F15A00B695F7 /* SubObjectHeaderView.m */; };
 		E6D6B1971BC5451A00B695F7 /* praise_zan_sign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D6B1961BC5451A00B695F7 /* praise_zan_sign@2x.png */; };
-		E6ECE1511B9DF3CA00A3F998 /* Consultation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE1501B9DF3CA00A3F998 /* Consultation.m */; };
 		E6ECE1571BA0A3C200A3F998 /* ConsultationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE1531BA0A3C200A3F998 /* ConsultationListController.m */; };
 		E6ECE1581BA0A3C200A3F998 /* ConsultationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE1561BA0A3C200A3F998 /* ConsultationCell.m */; };
 		E6ECE15E1BA0AA9700A3F998 /* ConsultationReplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE15D1BA0AA9700A3F998 /* ConsultationReplyController.m */; };
@@ -1095,6 +1096,10 @@
 		7FA56C031CC4F2910011EEE1 /* DetailsPaymentInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsPaymentInfoView.m; sourceTree = "<group>"; };
 		7FA56C051CC4F2BC0011EEE1 /* DetailsOrderInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsOrderInfoView.h; sourceTree = "<group>"; };
 		7FA56C061CC4F2BC0011EEE1 /* DetailsOrderInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsOrderInfoView.m; sourceTree = "<group>"; };
+		7FABC5861CC75A03006C47BB /* CommonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonManager.h; sourceTree = "<group>"; };
+		7FABC5871CC75A03006C47BB /* CommonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonManager.m; sourceTree = "<group>"; };
+		7FABC5891CC7704F006C47BB /* Consultation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consultation.h; sourceTree = "<group>"; };
+		7FABC58A1CC7704F006C47BB /* Consultation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consultation.m; sourceTree = "<group>"; };
 		7FB267C21C8699B4008FCF05 /* Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
 		7FB267C31C8699B4008FCF05 /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		7FB267C51C869C4B008FCF05 /* CUSearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSearchManager.h; sourceTree = "<group>"; };
@@ -1920,8 +1925,6 @@
 		E6D6B1931BC4F15A00B695F7 /* SubObjectHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubObjectHeaderView.h; sourceTree = "<group>"; };
 		E6D6B1941BC4F15A00B695F7 /* SubObjectHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubObjectHeaderView.m; sourceTree = "<group>"; };
 		E6D6B1961BC5451A00B695F7 /* praise_zan_sign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "praise_zan_sign@2x.png"; sourceTree = "<group>"; };
-		E6ECE14F1B9DF3CA00A3F998 /* Consultation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consultation.h; sourceTree = "<group>"; };
-		E6ECE1501B9DF3CA00A3F998 /* Consultation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consultation.m; sourceTree = "<group>"; };
 		E6ECE1521BA0A3C200A3F998 /* ConsultationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultationListController.h; sourceTree = "<group>"; };
 		E6ECE1531BA0A3C200A3F998 /* ConsultationListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultationListController.m; sourceTree = "<group>"; };
 		E6ECE1551BA0A3C200A3F998 /* ConsultationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultationCell.h; sourceTree = "<group>"; };
@@ -4045,6 +4048,8 @@
 				7FB267C61C869C4B008FCF05 /* CUSearchManager.m */,
 				7FFB94961C96C3E6003523B4 /* CUCommentManager.h */,
 				7FFB94971C96C3E6003523B4 /* CUCommentManager.m */,
+				7FABC5861CC75A03006C47BB /* CommonManager.h */,
+				7FABC5871CC75A03006C47BB /* CommonManager.m */,
 			);
 			path = BusinessManagers;
 			sourceTree = "<group>";
@@ -4123,6 +4128,8 @@
 		E1EB1C511B70A43A0048B8EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7FABC5891CC7704F006C47BB /* Consultation.h */,
+				7FABC58A1CC7704F006C47BB /* Consultation.m */,
 				BCB0506A1C15982500F988B1 /* TipMessageData.h */,
 				BCB0506B1C15982500F988B1 /* TipMessageData.m */,
 				E10EDC701B8B5AA30035B6E7 /* CUService.h */,
@@ -4139,8 +4146,6 @@
 				E1AD6F271B7CC82400FB3C55 /* Doctor.m */,
 				E61DDABE1B8E231100120365 /* SubObject.h */,
 				E61DDABF1B8E231100120365 /* SubObject.m */,
-				E6ECE14F1B9DF3CA00A3F998 /* Consultation.h */,
-				E6ECE1501B9DF3CA00A3F998 /* Consultation.m */,
 				E624AEF51BA1E0650032046E /* ConsultationReply.h */,
 				E624AEF61BA1E0650032046E /* ConsultationReply.m */,
 				E6D4547F1B92B1FA00F3C3D0 /* DoctorPraise.h */,
@@ -5191,6 +5196,7 @@
 				BC80B20B1C40C76C00A7445A /* LoginTextFeildView.m in Sources */,
 				3ED0A7641AA604E50040E529 /* SNTabBar.m in Sources */,
 				7FD0BBD31C9A58C9004D2E02 /* IQBarButtonItem.m in Sources */,
+				7FABC58B1CC7704F006C47BB /* Consultation.m in Sources */,
 				E6D6B1951BC4F15A00B695F7 /* SubObjectHeaderView.m in Sources */,
 				BC313D281C3A147500C9469D /* UserHeaderView.m in Sources */,
 				E68CBEB41B94CCCC005A247D /* CUUserCollectionController.m in Sources */,
@@ -5201,6 +5207,7 @@
 				7FD0BBD01C9A58C9004D2E02 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				E1A6B90F1BAE9DFF001A458D /* PasswordSettingController.m in Sources */,
 				3EDEBAAE1A961C4800E72809 /* NSArray+SNExtension.m in Sources */,
+				7FABC5881CC75A03006C47BB /* CommonManager.m in Sources */,
 				BC8E36C61C27C69400304637 /* TitleView.m in Sources */,
 				BC1859CE1C8440060050251B /* MyDiagnosisRecordsViewController.m in Sources */,
 				3E239E6C1AB2CF90001F0B3F /* TipHandler+HUD.m in Sources */,
@@ -5365,7 +5372,6 @@
 				7FA561FD1CBDE3020092D978 /* MJRefreshNormalHeader.m in Sources */,
 				BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */,
 				E1EB1E5F1B70A43B0048B8EB /* DDPageControl.m in Sources */,
-				E6ECE1511B9DF3CA00A3F998 /* Consultation.m in Sources */,
 				3EDEBAF61AA0721A00E72809 /* SNPlatformManager.m in Sources */,
 				3ED0A75A1AA603C50040E529 /* SNSlideNavigationController+SNGeometry.m in Sources */,
 				3EDEBAB81A961C4800E72809 /* SNSingleton.m in Sources */,

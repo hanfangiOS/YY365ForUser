@@ -32,6 +32,9 @@ SINGLETON_DECLARE(CUDoctorManager);
 //关注医生
 - (void)doctorConcernWithDoctorID:(NSInteger)doctorID isConcern:(NSInteger)isConcern resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
+//好评医生
+- (void)getGoodRemarkDoctorListWithFilter:(DoctorFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
 //#warning 测试数据
 - (NSMutableArray *)fakeDoctorList;
 

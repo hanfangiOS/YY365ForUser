@@ -52,29 +52,30 @@
     icon.backgroundColor = [UIColor redColor];
     [self addSubview:icon];
      //刘渊 教授
-    name = [[UILabel alloc] initWithFrame:CGRectMake(icon.maxX + 10, icon.frameY, CelldefaultWidth - (icon.maxX + 10), 15)];
+    name = [[UILabel alloc] initWithFrame:CGRectMake(icon.maxX + 7, icon.frameY, CelldefaultWidth - (icon.maxX + 10), 15)];
     UIColorFromHex(Color_Hex_NavBackground);
-    name.font = [UIFont systemFontOfSize:13];
+    name.font = [UIFont systemFontOfSize:12];
+    name.textColor = [UIColor blackColor];
     [self addSubview:name];
     //擅长
-    goodAtLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxY + 3.5, 32 , 15)];
+    goodAtLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxY + 3.5, 29 , 15)];
     goodAtLabel.text = @"擅长:";
     goodAtLabel.textColor = [UIColor lightGrayColor];
-    goodAtLabel.font = [UIFont systemFontOfSize:13];
+    goodAtLabel.font = [UIFont systemFontOfSize:12];
     [self addSubview:goodAtLabel];
     //内科、外科
-    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 10, goodAtLabel.frameY, CelldefaultWidth - (goodAtLabel.maxX + 10), goodAtLabel.frameHeight)];
+    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 2, goodAtLabel.frameY, CelldefaultWidth - (goodAtLabel.maxX + 2 - 2), goodAtLabel.frameHeight)];
     goodAt.textColor = [UIColor lightGrayColor];
-    goodAt.font = [UIFont systemFontOfSize:13];
+    goodAt.font = [UIFont systemFontOfSize:12];
     [self addSubview:goodAt];
     //好评
     goodCommentLabel = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.frameX, goodAtLabel.maxY + 3.5, goodAtLabel.frameWidth, goodAtLabel.frameHeight)];
     goodCommentLabel.text = @"好评:";
     goodCommentLabel.textColor = [UIColor lightGrayColor];
-    goodCommentLabel.font = [UIFont systemFontOfSize:13];
+    goodCommentLabel.font = [UIFont systemFontOfSize:12];
     [self addSubview:goodCommentLabel];
     //100分
-    goodComment = [[ScoreLabel alloc] initWithFrame:CGRectMake(goodCommentLabel.maxX + 10, goodCommentLabel.frameY, CelldefaultWidth - (goodCommentLabel.maxX + 10), goodCommentLabel.frameHeight)];
+    goodComment = [[ScoreLabel alloc] initWithFrame:CGRectMake(goodCommentLabel.maxX + 2, goodCommentLabel.frameY, CelldefaultWidth - (goodCommentLabel.maxX + 2) - 2, goodCommentLabel.frameHeight)];
     [self addSubview:goodComment];
 
 }
@@ -86,20 +87,18 @@
     
     [icon setImageWithURL:[NSURL URLWithString:_data.avatar]];
     
-    NSString * string = [NSString stringWithFormat:@"%@   %@",_data.name,_data.levelDesc];
-    name.text = string;
+    NSString * string = [NSString stringWithFormat:@"%@ %@",_data.name,_data.levelDesc];
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
     NSInteger length = [_data.name length];
     [AtrStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:NSMakeRange(0, length)];
     [AtrStr addAttribute:NSForegroundColorAttributeName
-                   value:[UIColor blackColor]
+                   value:[UIColor blueColor]
                    range:NSMakeRange(0, length)];
+    name.attributedText = AtrStr;
     
     goodAt.text = [NSString stringWithFormat:@"%@",_data.skillTreat];
     
     goodComment.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
-    
-    goodComment.backgroundColor = [UIColor grayColor];
 
 }
 

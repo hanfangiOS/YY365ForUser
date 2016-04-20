@@ -11,6 +11,6 @@
 
 @interface SubObjectCell : UICollectionViewCell
 
-@property (nonatomic, weak) SubObject *subobject;
+@property (nonatomic, weak) SubObject * subobject;
 
 @end
