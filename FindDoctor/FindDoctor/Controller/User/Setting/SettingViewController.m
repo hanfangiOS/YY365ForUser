@@ -9,6 +9,7 @@
 #import "SettingViewController.h"
 #import "AboutViewController.h"
 #import "AccountSecurityViewController.h"
+#import "LoginViewController.h"
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -26,6 +27,7 @@
     _logoutView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 44)];
     button.center = _logoutView.center;
+    [button addTarget:self action:@selector(loginOut) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"退出登录" forState:UIControlStateNormal];
     button.backgroundColor = [UIColor redColor];
     [_logoutView addSubview:button];
@@ -48,6 +50,17 @@
 
 }
 
+- (void)loginOut{
+    LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+    [VC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
+    [self performSelector:@selector(backUserVC) withObject:nil afterDelay:1];
+   
+}
+
+- (void)backUserVC{
+     [self.slideNavigationController popViewControllerAnimated:NO];
+}
 #pragma mark tableViewDelegata&dataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

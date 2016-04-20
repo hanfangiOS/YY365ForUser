@@ -455,7 +455,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:@"UserAppMainPush.jmm" parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError){
             NSInteger err_code = [[result.responseObject valueForKeySafely:@"errorCode"] integerValue];
             if (err_code == 0) {
