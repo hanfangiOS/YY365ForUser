@@ -256,26 +256,26 @@
 
 - (void)myDoctorAction{
     MyDoctorListModel *listModel = [[MyDoctorListModel alloc]initWithSortType:1];
-    MyDoctorListViewController *myDoctorVC = [[MyDoctorListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+    MyDoctorListViewController *myDoctorVC = [[MyDoctorListViewController alloc]initWithPageName:@"MyDoctorListViewController" listModel:listModel];
     [self.slideNavigationController  pushViewController:myDoctorVC animated:YES];
 }
 
 - (void)myClinicAction{
     MyClinicListModel * listModel = [[MyClinicListModel alloc]initWithSortType:1];
-    MyClinicListViewController * myClinicVC = [[MyClinicListViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+    MyClinicListViewController * myClinicVC = [[MyClinicListViewController alloc]initWithPageName:@"MyClinicListViewController" listModel:listModel];
     [self.slideNavigationController  pushViewController:myClinicVC animated:YES];
 }
 
 - (void)myCommentAction{
     MyCommentListModel * listModel = [[MyCommentListModel alloc] init];
     listModel.filter.lastID = 0;
-    MyCommentViewController * VC = [[MyCommentViewController alloc]initWithPageName:@"UserViewController" listModel:listModel];
+    MyCommentViewController * VC = [[MyCommentViewController alloc]initWithPageName:@"MyCommentViewController" listModel:listModel];
     [self.slideNavigationController  pushViewController:VC animated:YES];
 }
 
 - (void)userInfoBackgroundAction{
     if([CUUserManager sharedInstance].isLogin == YES){
-        MyInfoViewController * VC = [[MyInfoViewController alloc] init];
+        MyInfoViewController * VC = [[MyInfoViewController alloc] initWithPageName:@"MyInfoViewController"];
         [self.slideNavigationController pushViewController:VC animated:YES];
     }else{
         LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
