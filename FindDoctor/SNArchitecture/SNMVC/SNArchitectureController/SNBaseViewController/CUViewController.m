@@ -87,7 +87,7 @@
 }
 - (void)loadContentView
 {
-    
+    self.contentView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
 }
 
 @end

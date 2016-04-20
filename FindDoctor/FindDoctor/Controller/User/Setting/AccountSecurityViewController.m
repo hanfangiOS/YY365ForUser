@@ -8,6 +8,8 @@
 
 #import "AccountSecurityViewController.h"
 #import "CUUserManager.h"
+#import "ChangePhoneViewController1.h"
+#import "ChangePasswordViewController.h"
 
 @interface AccountSecurityViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -71,12 +73,31 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 10;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0:
+        {
+            ChangePhoneViewController1 *VC = [[ChangePhoneViewController1 alloc]initWithPageName:@"ChangePhoneViewController1"];
+            [self.slideNavigationController pushViewController:VC  animated:YES];
+        }
+            break;
+        case 1:
+        {
+            ChangePasswordViewController *VC = [[ChangePasswordViewController alloc]initWithPageName:@"ChangePasswordViewController"];
+            [self.slideNavigationController pushViewController:VC  animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 
