@@ -268,6 +268,7 @@
 		7FF0C0311CC5C0CE0055FF88 /* MyTreatmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C0301CC5C0CE0055FF88 /* MyTreatmentCell.m */; };
 		7FF0C0341CC5C0FB0055FF88 /* MyTreatmentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C0331CC5C0FB0055FF88 /* MyTreatmentListModel.m */; };
 		7FF0C03A1CC6112B0055FF88 /* HFRequestHeaderDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C0391CC6112B0055FF88 /* HFRequestHeaderDict.m */; };
+		7FF0C03D1CC634D40055FF88 /* MyInfoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C03C1CC634D40055FF88 /* MyInfoPickerCell.m */; };
 		7FFB94921C967051003523B4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94911C967051003523B4 /* Comment.m */; };
 		7FFB94981C96C3E6003523B4 /* CUCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB94971C96C3E6003523B4 /* CUCommentManager.m */; };
 		7FFD7AA41CB751FE000C45E3 /* GoodDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */; };
@@ -1156,6 +1157,8 @@
 		7FF0C0331CC5C0FB0055FF88 /* MyTreatmentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTreatmentListModel.m; sourceTree = "<group>"; };
 		7FF0C0381CC6112B0055FF88 /* HFRequestHeaderDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFRequestHeaderDict.h; sourceTree = "<group>"; };
 		7FF0C0391CC6112B0055FF88 /* HFRequestHeaderDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFRequestHeaderDict.m; sourceTree = "<group>"; };
+		7FF0C03B1CC634D40055FF88 /* MyInfoPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoPickerCell.h; sourceTree = "<group>"; };
+		7FF0C03C1CC634D40055FF88 /* MyInfoPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoPickerCell.m; sourceTree = "<group>"; };
 		7FFB94901C967051003523B4 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		7FFB94911C967051003523B4 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		7FFB94961C96C3E6003523B4 /* CUCommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUCommentManager.h; sourceTree = "<group>"; };
@@ -2749,6 +2752,8 @@
 				7FA56BDE1CC4A3740011EEE1 /* MyInfoAvatarCell.m */,
 				7FA56BDF1CC4A3740011EEE1 /* MyInfoCell.h */,
 				7FA56BE01CC4A3740011EEE1 /* MyInfoCell.m */,
+				7FF0C03B1CC634D40055FF88 /* MyInfoPickerCell.h */,
+				7FF0C03C1CC634D40055FF88 /* MyInfoPickerCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5424,6 +5429,7 @@
 				3ED0A75C1AA603C50040E529 /* SNSlideNavigationController+SNSlideStack.m in Sources */,
 				BCAA4AAE1C8548440085A165 /* MyDoctorListViewController.m in Sources */,
 				3EDEBA841A961C4800E72809 /* UIImageView+WebCache.m in Sources */,
+				7FF0C03D1CC634D40055FF88 /* MyInfoPickerCell.m in Sources */,
 				3EFB22361AB5B43F000872F3 /* SNTopTabViewController.m in Sources */,
 				E10EDC751B8B5D570035B6E7 /* Disease.m in Sources */,
 				E1EB1D811B70A43B0048B8EB /* CUUserParser.m in Sources */,

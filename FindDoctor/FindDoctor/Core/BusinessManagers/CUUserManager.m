@@ -17,6 +17,7 @@
 #import "SNHTTPRequestOperationWrapper.h"
 #import "TipHandler+HUD.h"
 
+
 @implementation CUUserManager
 
 SINGLETON_IMPLENTATION(CUUserManager);
@@ -327,18 +328,13 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [dataParam setObjectSafely:user.cellPhone forKey:@"phone"];
     [dataParam setObjectSafely:user.nickName forKey:@"nickname"];
     
-    [dataParam setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     
     CUUserParser * parser = [[CUUserParser alloc] init];
     __block CUUserManager * blockSelf = self;
     [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData * result) {
-        if (!result.hasError)
-        {
-            NSInteger errorCode = (NSInteger)[result.responseObject objectForKeySafely:@"errorCode"];
-            if (errorCode != -1) {
-                
-            }
+
             // 赋值user数据
 //            NSString * profile = user.profile;
 //            NSString * nickName = user.nickName;
@@ -352,9 +348,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
 //                blockSelf.user.nickName = nickName;
 //            }
 //            [blockSelf save];
-        }else{
-            NSLog(@"修改个人资料出错");
-        }
+ 
         resultBlock(request,result);
     } forKey:URL_AfterBase forPageNameGroup:pageName];
 }
