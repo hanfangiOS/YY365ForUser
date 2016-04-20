@@ -136,7 +136,9 @@
     
 }
 
-- (void)addRightButtonItemWithTitle:(NSString *)title  action:(SEL)selector{
+
+
+- (UIButton *)addRightButtonItemWithTitle:(NSString *)title  action:(SEL)selector{
     CGFloat height = 30;
     CGFloat width = 40;
     UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth - width, 0, width, height)];
@@ -147,10 +149,10 @@
     [rightBtn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     [rightBtnView addSubview:rightBtn];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtnView];
-
+    return rightBtn;
 }
 
-- (void)addRightButtonItemWithImage:(UIImage *)image action:(SEL)selector{
+- (UIButton *)addRightButtonItemWithImage:(UIImage *)image action:(SEL)selector{
     CGFloat height = 30;
     CGFloat width = 40;
     UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth - width, 0, width, height)];
@@ -161,6 +163,7 @@
     [rightBtn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     [rightBtnView addSubview:rightBtn];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtnView];
+    return rightBtn;
 }
 
 @end

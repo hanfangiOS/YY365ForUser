@@ -13,12 +13,14 @@
 #import "MBProgressHUD.h"
 #import "TipHandler+HUD.h"
 #import "AppDelegate.h"
+#import "UserViewController.h"
 
 #define kCodeButtonWith         80
 
 @interface LoginViewController (){
     UIButton *_codeButton;
     UILabel *_codeLabel;
+    UIButton * cancelBtn;
     
     LoginTextFeildView *userTextFeildView;
     LoginTextFeildView *passwordTextFeildView;
@@ -34,6 +36,14 @@
 @end
 
 @implementation LoginViewController
+- (instancetype)initWithPageName:(NSString *)pageName{
+    self = [super initWithPageName:pageName];
+    if (self) {
+        self.hasNavigationBar = NO;
+        return self;
+    }
+    return nil;
+}
 
 - (void)viewDidLoad {
     self.title = @"登陆";
@@ -97,6 +107,17 @@
     [loginButton setTitle:@"登           陆" forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(loginButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:loginButton];
+    
+    cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(25, 20, 20 , 20)];
+    cancelBtn.backgroundColor = [UIColor redColor];
+    [cancelBtn addTarget:self action:@selector(cancelLogin) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:cancelBtn];
+    
+}
+
+- (void)cancelLogin{
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)codeLableAction
@@ -212,9 +233,7 @@
         [[CUUserManager sharedInstance] loginWithCellPhone:userTextFeildView.contentTextFeild.text code:passwordTextFeildView.contentTextFeild.text codetoken:codetoken resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
             [self hideHUD];
             if (!result.hasError) {
-                
-                AppDelegate * appDelegate = [[UIApplication sharedApplication]delegate];
-                appDelegate.window.rootViewController = appDelegate.slideNaviController;
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             }
             
         } pageName:@"LoginViewController"];

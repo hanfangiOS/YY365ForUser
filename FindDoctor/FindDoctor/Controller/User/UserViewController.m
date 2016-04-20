@@ -278,8 +278,7 @@
         MyInfoViewController * VC = [[MyInfoViewController alloc] initWithPageName:@"MyInfoViewController"];
         [self.slideNavigationController pushViewController:VC animated:YES];
     }else{
-        LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
-        [[UIApplication sharedApplication] delegate].window.rootViewController = VC;
+
     }
 }
 
