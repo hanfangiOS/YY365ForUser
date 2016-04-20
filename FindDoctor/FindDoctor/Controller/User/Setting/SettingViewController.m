@@ -41,11 +41,7 @@
 
 - (void)loadNavigationBar{
     [self addLeftBackButtonItemWithImage];
-    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myAccountBigButtonImage"] action:@selector(edit)];
-}
-
-- (void)edit{
-
+//    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myAccountBigButtonImage"] action:@selector(edit)];
 }
 
 #pragma mark tableViewDelegata&dataSource

@@ -7,6 +7,7 @@
 //
 
 #import "AccountSecurityViewController.h"
+#import "CUUserManager.h"
 
 @interface AccountSecurityViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -59,7 +60,7 @@
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"手机号";
-            cell.detailTextLabel.text = @"15522463978";
+            cell.detailTextLabel.text = [CUUserManager sharedInstance].user.cellPhone;
             break;
         case 1:
             cell.textLabel.text = @"修改密码";
