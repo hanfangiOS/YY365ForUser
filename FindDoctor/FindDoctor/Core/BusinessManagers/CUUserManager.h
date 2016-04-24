@@ -37,7 +37,7 @@ SINGLETON_DECLARE(CUUserManager);
 // 手机号+密码登录
 - (void)loginWithCellPhone:(NSString *)name password:(NSString *)password resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
-// 登出
+// 99999 登出
 - (void)logoutWithUser:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 // 获取用户信息

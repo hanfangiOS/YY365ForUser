@@ -278,7 +278,9 @@
         MyInfoViewController * VC = [[MyInfoViewController alloc] initWithPageName:@"MyInfoViewController"];
         [self.slideNavigationController pushViewController:VC animated:YES];
     }else{
-
+        LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+        [VC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
     }
 }
 

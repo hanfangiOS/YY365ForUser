@@ -16,7 +16,7 @@
 @property (assign, nonatomic) NSTimeInterval * activityTime;//活动时间
 @property (nonatomic, strong) NSMutableArray * mainBannerList;//
 @property (nonatomic, strong) NSMutableArray * subjectList;//
-@property (nonatomic, strong) NSMutableArray * adverBannerList;//
+@property (nonatomic, strong) NSMutableArray * secondBannerList;//
 
 @property (nonatomic, strong) NSMutableArray * goodDoctorList;//
 @property (nonatomic, strong) NSMutableArray * goodClinicList;//

@@ -10,5 +10,8 @@
 
 @implementation Banner
 
+@end
+
+@implementation BannerFilter
 
 @end

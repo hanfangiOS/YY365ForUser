@@ -249,22 +249,27 @@ SINGLETON_IMPLENTATION(CUUserManager);
     } forKey:URL_AfterBase forPageNameGroup:pageName];
 }
 
-// 登出
+// 99999 登出
 - (void)logoutWithUser:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
-    // param
-    NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:user.token forKey:Key_Token];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:99999 require:@"ExitAccount"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:([[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0)) forKey:@"accID"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     CUUserParser * parser = [[CUUserParser alloc] init];
     __block CUUserManager * blockSelf = self;
     
-    [[AppCore sharedInstance].apiManager GET:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseLogoutWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseLogoutWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
-            // 赋值user数据
-            [blockSelf clear];
-            [blockSelf save];
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorcode"];
+            if ([errorCode integerValue] != -1) {
+                // 赋值user数据
+                [blockSelf clear];
+                [blockSelf save];
+            }
         }
         resultBlock(request,result);
     }  forKey:URL_AfterBase forPageNameGroup:pageName];

@@ -9,7 +9,8 @@
 #import "SettingViewController.h"
 #import "AboutViewController.h"
 #import "AccountSecurityViewController.h"
-#import "LoginViewController.h"
+#import "CUUserManager.h"
+#import "TipHandler+HUD.h"
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -44,15 +45,11 @@
 
 - (void)loadNavigationBar{
     [self addLeftBackButtonItemWithImage];
-//    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myAccountBigButtonImage"] action:@selector(edit)];
+    //    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myAccountBigButtonImage"] action:@selector(edit)];
 }
 
 - (void)loginOut{
-    LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
-    [VC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
-    [self performSelector:@selector(backAction) withObject:nil afterDelay:1];
-   
+    [self postRequestExitAccount];
 }
 
 - (void)updateSwitch:(UISwitch *)sender {
@@ -181,19 +178,38 @@
     }
 }
 
+#pragma mark postRequest
+
+- (void)postRequestExitAccount{
+    [[CUUserManager sharedInstance] logoutWithUser:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError)
+        {
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorcode"];
+            if ([errorCode integerValue] != -1) {
+               [self performSelector:@selector(backAction) withObject:nil];
+            }else{
+                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }else{
+             [TipHandler showTipOnlyTextWithNsstring:@"网络连接失败"];
+        }
+        
+    } pageName:@"SettingViewController"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HFFilter.h"
 
 @interface Search : NSObject
 

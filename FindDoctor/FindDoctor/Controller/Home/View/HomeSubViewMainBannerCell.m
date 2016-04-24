@@ -19,7 +19,7 @@
 
 - (void)setData:(Banner *)data{
     _data = data;
-    self.URL = _data.imageUrl;
+    self.URL = _data.imagePath;
 }
 
 /*
