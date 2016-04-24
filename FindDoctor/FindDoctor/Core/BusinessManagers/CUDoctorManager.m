@@ -644,7 +644,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"goodRemarkDoctorList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/goodRemarkDoctorList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -675,6 +675,58 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         else {
             NSLog(@"连接服务器失败，请检查网络");
 //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    
+}
+
+- (void)getfamousDoctorClinicWithFilter:(DoctorFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"goodRemarkClinicList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
+    [dataParam setObjectSafely:@(filter.rows) forKey:@"total"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/goodRemarkClinicList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if ([errorCode integerValue] != -1) {
+                
+                NSMutableArray * dataList = [NSMutableArray array];
+                
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
+                NSArray * tempList1 = [data arrayForKeySafely:@"famousDoctorClinic"];
+                [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    Doctor * doctor = [[Doctor alloc] init];
+                    
+                    doctor.doctorId = [obj longlongForKeySafely:@"doctorID"];
+                    doctor.goodRemark = [obj integerForKeySafely:@"goodRemark"];
+                    doctor.skillTreat = [obj stringForKeySafely:@"skillTreat"];
+                    doctor.avatar = [obj stringForKeySafely:@"icon"];
+                    doctor.name = [obj stringForKeySafely:@"name"];
+                    doctor.levelDesc = [obj stringForKeySafely:@"levelDesc"];
+                    doctor.briefIntro = [obj stringForKeySafely:@"briefIntro"];
+                    
+                    [dataList addObjectSafely:doctor];
+                }];
+                result.parsedModelObject = dataList;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         
         resultBlock(request, result);

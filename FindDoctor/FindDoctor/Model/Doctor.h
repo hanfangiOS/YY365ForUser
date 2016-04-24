@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "HFFilter.h"
 @class FlagListInfo;
 @class RemarkListInfo;
 
@@ -91,12 +92,12 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 
 @end
 
-@interface DoctorFilter : NSObject
+@interface DoctorFilter : HFFilter
 
 @property CGFloat longitude;
 @property CGFloat latitude;
 @property NSInteger level;
-@property NSInteger typeId;
+@property long long typeId;
 @property NSInteger subTypeId;
 @property NSMutableArray *symptomOptionArray;
 @property DoctorSortType sortType;
@@ -112,7 +113,7 @@ typedef NS_ENUM(NSInteger, MyDoctorSortType) {
 };
 @end
 
-@interface MyDoctorFilter : NSObject
+@interface MyDoctorFilter : HFFilter
 
 @property MyDoctorSortType sortType;
 

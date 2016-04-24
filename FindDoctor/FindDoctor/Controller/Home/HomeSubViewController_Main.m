@@ -34,6 +34,7 @@
         self.goodDoctorList = [NSMutableArray new];
         self.goodClinicList = [NSMutableArray new];
         self.subjectList = [NSMutableArray new];
+        self.famousDoctorList = [NSMutableArray new];
         return self;
     }
     return nil;
@@ -66,6 +67,8 @@
     
     if (self) {
         _hasNavigationBar = NO;
+        
+        [self postRequestFamousDoctorClinic];
     }
     return self;
 }
@@ -86,6 +89,7 @@
     
     [self postRequestSubjectList];
     [self postRequestgoodRemarkDoctorList];
+    [self postRequestGoodRemarkClinicList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -165,7 +169,7 @@
     UICollectionViewFlowLayout * clinicLayout = [[UICollectionViewFlowLayout alloc] init];
     [clinicLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self.goodclinicCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.adverBannerView.maxY + 10 * VFixRatio6, kScreenWidth, 283) collectionViewLayout:clinicLayout];
-    self.goodclinicCollectionView.backgroundColor = [UIColor purpleColor];
+    self.goodclinicCollectionView.backgroundColor = [UIColor whiteColor];
         [self.headerView addSubview:self.goodclinicCollectionView];
     
     self.goodClinicVC = [[GoodClinicViewController alloc] initWithCollectionView:self.goodclinicCollectionView];
@@ -390,11 +394,36 @@
 
 //好评诊所
 - (void)postRequestGoodRemarkClinicList{
-    
+    [[CUClinicManager sharedInstance] getGoodRemarkClinicListWithFilter:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if ([errorCode integerValue] != -1) {
+                [self.homeModel.goodClinicList removeAllObjects];
+                [self.homeModel.goodClinicList addObjectsFromArray:result.parsedModelObject];
+                self.goodClinicVC.data = self.homeModel;
+            }
+        }
+        
+    } pageName:@"HomeSubViewController_Main"];
 }
 
 //优医管
 - (void)postRequestFamousDoctorClinic{
+    DoctorFilter * filter = [[DoctorFilter alloc] init];
+    filter.rows = 3;
+    filter.total = self.homeModel.famousDoctorList.count;
+    [[CUDoctorManager sharedInstance] getfamousDoctorClinicWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if ([errorCode integerValue] != -1) {
+                [self.homeModel.famousDoctorList addObjectsFromArray:result.parsedModelObject];
+                [self.tableView reloadData];
+            }
+        }
+        
+    } pageName:@"HomeSubViewController_Main"];
     
 }
 

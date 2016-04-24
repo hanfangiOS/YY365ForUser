@@ -449,6 +449,19 @@ SINGLETON_IMPLENTATION(CUUserManager);
     //    [[AppCore sharedInstance].apiManager POST:URL_ImageUpload parameters:nil callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUploadAvatarWithDict:) resultBlock:resultBlock forKey:URL_ImageUpload forPageNameGroup:pageName];
 }
 
+- (void)checkIfHasOldPasswordWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14000 require:@"CheckExistPwd"];
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    CUUserParser * parser = [[CUUserParser alloc] init];
+    __block CUUserManager * blockSelf = self;
+    [[AppCore sharedInstance].apiManager GET:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        resultBlock(request,result);
+    } forKey:URL_AfterBase forPageNameGroup:pageName];
+}
+
 - (void)updateUser:(CUUser *)user oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
     // param

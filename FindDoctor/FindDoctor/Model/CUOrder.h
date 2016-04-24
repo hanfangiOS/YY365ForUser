@@ -68,7 +68,7 @@ typedef enum OrderPayment : NSInteger
 
 @end
 
-@interface OrderFilter : NSObject
+@interface OrderFilter : HFFilter
 
 @property (strong,nonatomic)CUUser          * user;
 @property (assign,nonatomic)OrderStatus       orderStatus;

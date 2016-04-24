@@ -29,4 +29,7 @@ SINGLETON_DECLARE(CUClinicManager);
 //获取我的诊所
 - (void)getMyClinicWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
+//好评诊所
+- (void)getGoodRemarkClinicListWithFilter:(ClinicFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
 @end

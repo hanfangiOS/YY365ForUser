@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/Home/View/EqualSpaceFlowLayout.m"
-            timestampString = "482320508.679209"
+            filePath = "FindDoctor/Core/BusinessManagers/CUOrderManager.m"
+            timestampString = "482379846.140672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-prepareLayout"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
+            landmarkName = "-getHomeTipListWithResultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-            timestampString = "482379846.140672"
+            filePath = "FindDoctor/Controller/User/Setting/ChangePasswordViewController.m"
+            timestampString = "482838718.068724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
-            landmarkName = "-getHomeTipListWithResultBlock:pageName:"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

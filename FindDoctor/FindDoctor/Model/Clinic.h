@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HFFilter.h"
 
 @interface Clinic : NSObject
 
-@property NSInteger ID;
+@property long long ID;
 @property (strong, nonatomic) NSString *name;//名字
 @property (strong, nonatomic) NSString *address;//就诊地址
-@property (strong, nonatomic) NSURL    *icon;//图片
+@property (strong, nonatomic) NSString *icon;//图片
 @property (strong, nonatomic) NSString *doctorsString;//地图页面显示的诊所医生字符串
 @property (strong, nonatomic) NSString *breifInfo;//简介
 @property (strong, nonatomic) NSString *detailIntro;//详细介绍
@@ -33,7 +34,7 @@
 
 @end
 
-@interface ClinicFilter : NSObject
+@interface ClinicFilter : HFFilter
 
 @property NSInteger regionID;
 @property double longitude;

@@ -237,6 +237,7 @@
 		7FA56C071CC4F2BC0011EEE1 /* DetailsOrderInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA56C061CC4F2BC0011EEE1 /* DetailsOrderInfoView.m */; };
 		7FABC5881CC75A03006C47BB /* CommonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FABC5871CC75A03006C47BB /* CommonManager.m */; };
 		7FABC58B1CC7704F006C47BB /* Consultation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FABC58A1CC7704F006C47BB /* Consultation.m */; };
+		7FABC58E1CC79ED5006C47BB /* HFFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FABC58D1CC79ED5006C47BB /* HFFilter.m */; };
 		7FB267C41C8699B4008FCF05 /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C31C8699B4008FCF05 /* Search.m */; };
 		7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB267C61C869C4B008FCF05 /* CUSearchManager.m */; };
 		7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3FB391CB245A500A99C97 /* Banner.m */; };
@@ -361,6 +362,11 @@
 		BC8E36E91C27F32E00304637 /* erkeICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8E36E01C27F32E00304637 /* erkeICON@2x.png */; };
 		BC9354AC1C1AB07100C60921 /* HomeSubViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9354AB1C1AB07100C60921 /* HomeSubViewController2.m */; };
 		BC9B7B5F1C9F9B2E0088D6FF /* no_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9B7B5E1C9F9B2E0088D6FF /* no_comment@2x.png */; };
+		BCA6ED3D1CC75BDF00D85E0D /* ChangePhoneViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6ED3C1CC75BDF00D85E0D /* ChangePhoneViewController2.m */; };
+		BCA6ED421CC761CE00D85E0D /* ChangePhoneViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6ED3F1CC761CE00D85E0D /* ChangePhoneViewController1.m */; };
+		BCA6ED431CC761CE00D85E0D /* ChangePhoneViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6ED411CC761CE00D85E0D /* ChangePhoneViewController3.m */; };
+		BCA6ED471CC7780F00D85E0D /* SettingTextFeildView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6ED461CC7780F00D85E0D /* SettingTextFeildView.m */; };
+		BCA6ED4A1CC781B900D85E0D /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6ED491CC781B900D85E0D /* ChangePasswordViewController.m */; };
 		BCAA4AAD1C8548440085A165 /* MyDoctorListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AAA1C8548440085A165 /* MyDoctorListModel.m */; };
 		BCAA4AAE1C8548440085A165 /* MyDoctorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AAC1C8548440085A165 /* MyDoctorListViewController.m */; };
 		BCAA4AB51C856D610085A165 /* MyClinicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AB21C856D610085A165 /* MyClinicListModel.m */; };
@@ -1100,6 +1106,8 @@
 		7FABC5871CC75A03006C47BB /* CommonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonManager.m; sourceTree = "<group>"; };
 		7FABC5891CC7704F006C47BB /* Consultation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consultation.h; sourceTree = "<group>"; };
 		7FABC58A1CC7704F006C47BB /* Consultation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consultation.m; sourceTree = "<group>"; };
+		7FABC58C1CC79ED5006C47BB /* HFFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFFilter.h; sourceTree = "<group>"; };
+		7FABC58D1CC79ED5006C47BB /* HFFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFFilter.m; sourceTree = "<group>"; };
 		7FB267C21C8699B4008FCF05 /* Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
 		7FB267C31C8699B4008FCF05 /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		7FB267C51C869C4B008FCF05 /* CUSearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSearchManager.h; sourceTree = "<group>"; };
@@ -1293,6 +1301,16 @@
 		BC9354AA1C1AB07100C60921 /* HomeSubViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewController2.h; sourceTree = "<group>"; };
 		BC9354AB1C1AB07100C60921 /* HomeSubViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewController2.m; sourceTree = "<group>"; };
 		BC9B7B5E1C9F9B2E0088D6FF /* no_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_comment@2x.png"; path = "new/no_comment@2x.png"; sourceTree = "<group>"; };
+		BCA6ED3B1CC75BDF00D85E0D /* ChangePhoneViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePhoneViewController2.h; sourceTree = "<group>"; };
+		BCA6ED3C1CC75BDF00D85E0D /* ChangePhoneViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneViewController2.m; sourceTree = "<group>"; };
+		BCA6ED3E1CC761CE00D85E0D /* ChangePhoneViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePhoneViewController1.h; sourceTree = "<group>"; };
+		BCA6ED3F1CC761CE00D85E0D /* ChangePhoneViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneViewController1.m; sourceTree = "<group>"; };
+		BCA6ED401CC761CE00D85E0D /* ChangePhoneViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePhoneViewController3.h; sourceTree = "<group>"; };
+		BCA6ED411CC761CE00D85E0D /* ChangePhoneViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneViewController3.m; sourceTree = "<group>"; };
+		BCA6ED451CC7780F00D85E0D /* SettingTextFeildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingTextFeildView.h; path = View/SettingTextFeildView.h; sourceTree = "<group>"; };
+		BCA6ED461CC7780F00D85E0D /* SettingTextFeildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingTextFeildView.m; path = View/SettingTextFeildView.m; sourceTree = "<group>"; };
+		BCA6ED481CC781B900D85E0D /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		BCA6ED491CC781B900D85E0D /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		BCAA4AA91C8548440085A165 /* MyDoctorListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDoctorListModel.h; sourceTree = "<group>"; };
 		BCAA4AAA1C8548440085A165 /* MyDoctorListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDoctorListModel.m; sourceTree = "<group>"; };
 		BCAA4AAB1C8548440085A165 /* MyDoctorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDoctorListViewController.h; sourceTree = "<group>"; };
@@ -2787,6 +2805,8 @@
 				7F49BC301CB3577F00EAA34A /* HFBanner */,
 				7FF0C0381CC6112B0055FF88 /* HFRequestHeaderDict.h */,
 				7FF0C0391CC6112B0055FF88 /* HFRequestHeaderDict.m */,
+				7FABC58C1CC79ED5006C47BB /* HFFilter.h */,
+				7FABC58D1CC79ED5006C47BB /* HFFilter.m */,
 			);
 			path = HFFW;
 			sourceTree = "<group>";
@@ -3270,12 +3290,21 @@
 		BC3ED4AA1CC614D700495025 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				BCA6ED441CC777D100D85E0D /* View */,
 				BC3ED4AB1CC614D700495025 /* AboutViewController.h */,
 				BC3ED4AC1CC614D700495025 /* AboutViewController.m */,
 				BC3ED4AD1CC614D700495025 /* AccountSecurityViewController.h */,
 				BC3ED4AE1CC614D700495025 /* AccountSecurityViewController.m */,
+				BCA6ED3E1CC761CE00D85E0D /* ChangePhoneViewController1.h */,
+				BCA6ED3F1CC761CE00D85E0D /* ChangePhoneViewController1.m */,
+				BCA6ED3B1CC75BDF00D85E0D /* ChangePhoneViewController2.h */,
+				BCA6ED3C1CC75BDF00D85E0D /* ChangePhoneViewController2.m */,
+				BCA6ED401CC761CE00D85E0D /* ChangePhoneViewController3.h */,
+				BCA6ED411CC761CE00D85E0D /* ChangePhoneViewController3.m */,
 				BC3ED4AF1CC614D700495025 /* SettingViewController.h */,
 				BC3ED4B01CC614D700495025 /* SettingViewController.m */,
+				BCA6ED481CC781B900D85E0D /* ChangePasswordViewController.h */,
+				BCA6ED491CC781B900D85E0D /* ChangePasswordViewController.m */,
 			);
 			name = Setting;
 			path = User/Setting;
@@ -3347,6 +3376,15 @@
 				BC8E36E01C27F32E00304637 /* erkeICON@2x.png */,
 			);
 			name = ICONsubject;
+			sourceTree = "<group>";
+		};
+		BCA6ED441CC777D100D85E0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCA6ED451CC7780F00D85E0D /* SettingTextFeildView.h */,
+				BCA6ED461CC7780F00D85E0D /* SettingTextFeildView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		BCAA4AA81C8548440085A165 /* MyDoctor */ = {
@@ -5177,9 +5215,11 @@
 				3EDEBAC41A961C4800E72809 /* UIImage+GIF.m in Sources */,
 				E124D7C11B9317480007B85E /* CURegisterController.m in Sources */,
 				E10EDC9F1B8B60930035B6E7 /* CUOrderDetailViewController.m in Sources */,
+				BCA6ED431CC761CE00D85E0D /* ChangePhoneViewController3.m in Sources */,
 				BC1859CB1C8440060050251B /* MyDiagnosisRecordsCell.m in Sources */,
 				7FA56BF51CC4BA460011EEE1 /* MyAppointMentHeaderView.m in Sources */,
 				3EDEBAB41A961C4800E72809 /* NSFileManager+Size.m in Sources */,
+				BCA6ED3D1CC75BDF00D85E0D /* ChangePhoneViewController2.m in Sources */,
 				E1EB1E421B70A43B0048B8EB /* MobClickConstants.m in Sources */,
 				3EDEBAA01A961C4800E72809 /* SNFileAccessManager.m in Sources */,
 				3EDEBA871A961C4800E72809 /* SNImageRequestOperation.m in Sources */,
@@ -5286,6 +5326,7 @@
 				3EDEBAB01A961C4800E72809 /* NSData+SNExtension.m in Sources */,
 				E1EB1E3D1B70A43B0048B8EB /* LocationHelper.m in Sources */,
 				E120632E1BC6D463004920BA /* VIPController.m in Sources */,
+				BCA6ED471CC7780F00D85E0D /* SettingTextFeildView.m in Sources */,
 				7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */,
 				BC3ED4B11CC614D700495025 /* AboutViewController.m in Sources */,
 				3EDEBACB1A961C4800E72809 /* UIView+Extension.m in Sources */,
@@ -5340,6 +5381,7 @@
 				BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */,
 				3EDEBA701A961C4800E72809 /* SNHTTPRequestOperation.m in Sources */,
 				7FA561F71CBDE3020092D978 /* MJRefreshAutoNormalFooter.m in Sources */,
+				7FABC58E1CC79ED5006C47BB /* HFFilter.m in Sources */,
 				3ED0A7591AA603C50040E529 /* SNSlideNavigationController+SNControllerHierarchy.m in Sources */,
 				7FE327AD1CB4B65900032376 /* HomeSubViewMainBannerCell.m in Sources */,
 				E17B691E1B837A920079DDB5 /* UIView+Scale.m in Sources */,
@@ -5410,6 +5452,7 @@
 				3ED0A74D1AA603C50040E529 /* UIViewController+SNSlideStatus.m in Sources */,
 				E1EB1E401B70A43B0048B8EB /* UIView+Scale.m in Sources */,
 				7F3151071CC24BC5002A11C3 /* MyInfoViewController.m in Sources */,
+				BCA6ED421CC761CE00D85E0D /* ChangePhoneViewController1.m in Sources */,
 				7FA42A1A1CC53E6200564182 /* TreatmentDetailsController.m in Sources */,
 				7FB3FB3A1CB245A500A99C97 /* Banner.m in Sources */,
 				E1EB1ED51B70A4D70048B8EB /* openssl_wrapper.m in Sources */,
@@ -5430,6 +5473,7 @@
 				E624AEF41BA1DC5A0032046E /* ReplyCell.m in Sources */,
 				E10EDC6C1B8B598E0035B6E7 /* OrderManager+ThirdPay.m in Sources */,
 				3EDEBA7E1A961C4800E72809 /* SDImageCache.m in Sources */,
+				BCA6ED4A1CC781B900D85E0D /* ChangePasswordViewController.m in Sources */,
 				E10EDC6B1B8B598E0035B6E7 /* CUOrderManager.m in Sources */,
 				7FB267C71C869C4B008FCF05 /* CUSearchManager.m in Sources */,
 				3ED0A75C1AA603C50040E529 /* SNSlideNavigationController+SNSlideStack.m in Sources */,

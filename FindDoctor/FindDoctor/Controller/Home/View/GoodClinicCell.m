@@ -44,16 +44,17 @@
 - (void)initSubViews{
     //诊所照片
     clinicIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CelldefaultWidth, CelldefaultHeight - 24)];
-    clinicIcon.contentMode = UIViewContentModeScaleAspectFill;
+//    clinicIcon.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:clinicIcon];
     //诊所名字背景
     nameContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, CelldefaultHeight - 24 * 2, CelldefaultWidth, 24)];
-    nameContainerView.backgroundColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.4f];
+    nameContainerView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.2f];
     [clinicIcon addSubview:nameContainerView];
     //诊所名
-    name = [[UILabel alloc] initWithFrame:nameContainerView.bounds];
+    name = [[UILabel alloc] initWithFrame:CGRectMake(6, 0, nameContainerView.frameWidth, nameContainerView.frameHeight)];
     name.textColor = [UIColor whiteColor];
     name.textAlignment = NSTextAlignmentLeft;
+    name.font = [UIFont systemFontOfSize:14];
     [nameContainerView addSubview:name];
     //小图标
     smallIcon = [[UIImageView alloc] initWithFrame:CGRectMake(4, clinicIcon.maxY + 6, 12, 12)];
@@ -64,6 +65,7 @@
     [self addSubview:goodComment];
     //内科、外科
     subject = [[UILabel alloc] initWithFrame:CGRectMake(smallIcon.maxX + 2, smallIcon.frameY, CelldefaultWidth - (smallIcon.maxX + 2 + [ScoreLabel defaultWidth] + 4), smallIcon.frameHeight)];
+    subject.font = [UIFont systemFontOfSize:11];
     [self addSubview:subject];
     
     
@@ -74,16 +76,13 @@
     
     [self clearCach];
     
-    [clinicIcon setImageWithURL:_data.icon];
+    [clinicIcon setImageWithURL:[NSURL URLWithString: _data.icon]];
     
     name.text = _data.name;
-    name.backgroundColor = [UIColor blackColor];
     
     subject.text = _data.skillTreat;
-    subject.backgroundColor = [UIColor blueColor];
     
     goodComment.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
-    goodComment.backgroundColor = [UIColor purpleColor];
     
     smallIcon.backgroundColor = [UIColor greenColor];
     

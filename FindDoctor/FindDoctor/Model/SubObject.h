@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HFFilter.h"
 
 @interface SubObject : NSObject
 
@@ -17,6 +18,6 @@
 
 @end
 
-@interface SubObjectFilter : NSObject
+@interface SubObjectFilter : HFFilter
 
 @end

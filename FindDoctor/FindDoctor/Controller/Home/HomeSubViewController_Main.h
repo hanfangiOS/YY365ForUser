@@ -17,8 +17,10 @@
 @property (nonatomic, strong) NSMutableArray * mainBannerList;//
 @property (nonatomic, strong) NSMutableArray * subjectList;//
 @property (nonatomic, strong) NSMutableArray * adverBannerList;//
+
 @property (nonatomic, strong) NSMutableArray * goodDoctorList;//
 @property (nonatomic, strong) NSMutableArray * goodClinicList;//
+@property (nonatomic, strong) NSMutableArray * famousDoctorList;//
 
 @end
 

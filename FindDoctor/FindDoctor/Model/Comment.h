@@ -64,7 +64,7 @@
 @end
 
 
-@interface CommentFilter : NSObject
+@interface CommentFilter : HFFilter
 
 @property (strong,nonatomic) CUOrder                    * order;
 @property (strong,nonatomic) Doctor                     * doctor;

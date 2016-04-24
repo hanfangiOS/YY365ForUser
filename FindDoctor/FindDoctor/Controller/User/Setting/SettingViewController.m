@@ -14,6 +14,7 @@
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *_logoutView;
+    UISwitch *_messageNotificationSwitch;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -43,23 +44,26 @@
 
 - (void)loadNavigationBar{
     [self addLeftBackButtonItemWithImage];
-    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myAccountBigButtonImage"] action:@selector(edit)];
-}
-
-- (void)edit{
-
+//    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myAccountBigButtonImage"] action:@selector(edit)];
 }
 
 - (void)loginOut{
     LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
     [VC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
-    [self performSelector:@selector(backUserVC) withObject:nil afterDelay:1];
+    [self performSelector:@selector(backAction) withObject:nil afterDelay:1];
    
 }
 
-- (void)backUserVC{
-     [self.slideNavigationController popViewControllerAnimated:NO];
+- (void)updateSwitch:(UISwitch *)sender {
+    if (sender == _messageNotificationSwitch) {
+        if (sender.on) {
+            NSLog(@"消息通知已经开启");
+        }
+        else{
+            NSLog(@"消息通知已经关闭");
+        }
+    }
 }
 #pragma mark tableViewDelegata&dataSource
 
@@ -93,6 +97,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        static NSString *cellIdentifier = @"MessageNotificationCell";
+        
+        UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        
+        if (cell == nil) {
+            cell =  [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            _messageNotificationSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+            [_messageNotificationSwitch addTarget:self action:@selector(updateSwitch:) forControlEvents:UIControlEventValueChanged];
+            cell.accessoryView = _messageNotificationSwitch;
+            cell.imageView.backgroundColor = [UIColor redColor];
+            cell.textLabel.text = @"消息通知";
+            cell.detailTextLabel.text = nil;
+            cell.accessoryType=UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        return cell;
+    }
     
     static NSString *cellIdentifier = @"SettingCell";
     
@@ -112,27 +134,22 @@
             if (indexPath.row == 1) {
                 cell.imageView.backgroundColor = [UIColor redColor];
                 cell.textLabel.text = @"账号安全";
+                cell.detailTextLabel.text = nil;
                 cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-            }
-            break;
-        case 1:
-            if (indexPath.row == 0) {
-                cell.imageView.backgroundColor = [UIColor redColor];
-                cell.textLabel.text = @"消息通知";
-                cell.detailTextLabel.text = @"开";
-                cell.accessoryType=UITableViewCellAccessoryNone;
             }
             break;
         case 2:
             if (indexPath.row == 0) {
                 cell.imageView.backgroundColor = [UIColor redColor];
                 cell.textLabel.text = @"清除本地缓存";
+                cell.textLabel.textColor = UIColorFromHex(Color_Hex_NavBackground);
                 cell.detailTextLabel.text = @"0.67MB";
                 cell.accessoryType=UITableViewCellAccessoryNone;
             }
             if (indexPath.row == 1) {
                 cell.imageView.backgroundColor = [UIColor redColor];
                 cell.textLabel.text = @"关于优医";
+                cell.detailTextLabel.text = nil;
                 cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
             }
             break;
@@ -144,6 +161,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
         case 0:
             if (indexPath.row == 1) {

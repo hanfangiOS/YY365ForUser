@@ -25,7 +25,7 @@
 
 
 
-@interface SearchFilter : NSObject
+@interface SearchFilter : HFFilter
 
 @property (nonatomic, strong) NSString * keyword;//搜索内容
 

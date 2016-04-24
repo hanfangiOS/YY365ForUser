@@ -52,6 +52,8 @@ SINGLETON_DECLARE(CUUserManager);
 // 上传图片
 - (void)uploadImageArray:(NSMutableArray *)imageArray resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName progressBlock:(SNServerAPIProgressBlock)progressBlock;
 
+// 验证是否设置过密码
+- (void)checkIfHasOldPasswordWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 // 修改密码 旧密码+新密码
 - (void)updateUser:(CUUser *)user oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 

@@ -9,8 +9,8 @@
 #ifndef CollegeUnion_CUServerAPIConstant_h
 #define CollegeUnion_CUServerAPIConstant_h
 
-#define CollegeUnion_Distribution
-//#define CollegeUnion_Develop
+//#define CollegeUnion_Distribution
+#define CollegeUnion_Develop
 
 
 
@@ -33,20 +33,17 @@
  */
 #if defined(CollegeUnion_Develop)
 
-#define URL_Base @"http://www.uyi365.com"
+//#define URL_Base @"http://192.168.0.100:8080"
+//#define URL_Base @"http://192.168.1.100:8080"
+#define URL_Base @"http://192.168.1.128:8080"
+
 
 #elif defined(CollegeUnion_Distribution)
 
-//#define URL_Base @"http://www.uyi365.com"
-//#define URL_Base @"http://123.57.27.91"
-//#define URL_Base @"http://192.168.1.101:8889/baseFrame/base/"
-#define URL_Base @"http://192.168.0.100:8080/baseFrame/base/"
+#define URL_Base @"http://www.uyi365.com"
+
 
 #endif
-
-#define URL_getCharge @"http://www.uyi365.com/baseFrame/base/getCharge.jmw"
-
-
 /*
  * Business URL
  */
@@ -62,24 +59,21 @@
 
 #if defined(CollegeUnion_Develop)
 
-#define URL_AfterBase @"/baseFrame/base/server.jmt"
-//#define kGetChargeUrl @"http://192.168.1.101:8888/baseFrame/base/getCharge.jmt" // 你的服务端创建并返回 charge 的 URL 地址
-#define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmt" // 你的服务端创建并返回 charge 的 URL 地址
-//#define kGetChargeUrl @"http://192.168.1.101:8889/baseFrame/base/getCharge.jmt" // 你的服务端创建并返回 charge 的 URL 地址
-#define kVerifyOrderStateUrl @"/baseFrame/base/verify_order_state.jmt"
-//#define KCheckOrderHasPaidUrl @"/baseFrame/base/OrderHasPaid.jmt"
+#define URL_AfterBase @"/baseFrame/base/server.jmm"
+#define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmm" // 你的服务端创建并返回 charge 的 URL 地址
+#define kVerifyOrderStateUrl @"/baseFrame/base/verify_order_state.jmm"
 
 #elif defined(CollegeUnion_Distribution)
 
 #define URL_AfterBase @"/baseFrame/base/server.jmw"
 #define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址
-//#define kGetChargeUrl @"http://192.168.1.101:8888/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址
 #define kVerifyOrderStateUrl @"/baseFrame/base/verify_order_state.jmw"
-//#define KCheckOrderHasPaidUrl @"/baseFrame/base/OrderHasPaid.jmt"
 
 #endif
 
 
+
+#define URL_getHomeTipList @"/baseFrame/base/UserAppMainPush.jmm"
 // }
 
 // -----------------------------------------------

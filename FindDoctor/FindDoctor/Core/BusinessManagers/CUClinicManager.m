@@ -257,7 +257,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                     clinic.ID = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
                     clinic.state = [(NSNumber *)[obj valueForKey:@"clinicID"] integerValue];
                     clinic.name = [obj valueForKey:@"name"];
-                    clinic.icon = [NSURL URLWithString:[obj valueForKey:@"icon"]];
+                    clinic.icon = [obj valueForKey:@"icon"];
                     clinic.breifInfo = [obj valueForKey:@"briefIntro"];
                     clinic.skillTreat = [obj valueForKey:@"skillTreat"];
                     
@@ -286,6 +286,54 @@ SINGLETON_IMPLENTATION(CUClinicManager);
 #endif
 }
 
+//好评诊所
+- (void)getGoodRemarkClinicListWithFilter:(ClinicFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"goodRemarkDoctorList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/goodRemarkClinicList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if ([errorCode integerValue] != -1) {
+                
+                NSMutableArray * dataList = [NSMutableArray array];
+                
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
+                NSArray * tempList1 = [data arrayForKeySafely:@"goodRemarkClinicList"];
+                [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    Clinic * clinic = [[Clinic alloc] init];
+                    
+                    clinic.ID = [obj longlongForKeySafely:@"clinicID"];
+                    clinic.goodRemark = [obj integerForKeySafely:@"goodRemark"];
+                    clinic.skillTreat = [obj stringForKeySafely:@"goodatsubjects"];
+                    clinic.icon = [obj stringForKeySafely:@"icon"];
+                    clinic.name = [obj stringForKeySafely:@"name"];
+                    
+                    [dataList addObjectSafely:clinic];
+                }];
+                result.parsedModelObject = dataList;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    
+}
 
 
 @end

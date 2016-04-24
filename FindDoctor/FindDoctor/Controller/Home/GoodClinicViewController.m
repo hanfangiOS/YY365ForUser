@@ -63,14 +63,11 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
         ClinicAdverCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseAdverCellID forIndexPath:indexPath];
         cell.data = self.data.promotionInfo;
         cell.backgroundColor = [UIColor yellowColor];
-        cell.layer.borderColor = [UIColor blackColor].CGColor;
         cell.layer.borderWidth = 0.5f;
         return cell;
     }else{
         GoodClinicCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseCellID forIndexPath:indexPath];
         cell.data = [self.data.goodClinicList objectAtIndexSafely:indexPath.row];
-        cell.backgroundColor = [UIColor whiteColor];
-        cell.layer.borderColor = [UIColor blackColor].CGColor;
         cell.layer.borderWidth = 0.5f;
         return cell;
     }
@@ -133,7 +130,6 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
         [titleView.loadMoreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [titleView.loadMoreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
-        titleView.loadMoreBtn.backgroundColor = [UIColor blackColor];
         titleView.tag = 4000;
         [reuseHeaderView addSubview:titleView];
         
