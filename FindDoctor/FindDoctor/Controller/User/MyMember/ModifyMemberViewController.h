@@ -7,7 +7,10 @@
 //
 
 #import "CUViewController.h"
+#import "CUUser.h"
 
 @interface ModifyMemberViewController : CUViewController
+
+@property (strong,nonatomic)CUUser          * user;
 
 @end

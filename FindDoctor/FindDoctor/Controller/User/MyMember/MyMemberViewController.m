@@ -66,7 +66,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    CUUser * user = [self.listModel.items objectAtIndexSafely:indexPath.row];
     ModifyMemberViewController * VC = [[ModifyMemberViewController alloc] initWithPageName:@"ModifyMemberViewController"];
+    VC.user = user;
     [self.slideNavigationController pushViewController:VC animated:YES];
 }
 

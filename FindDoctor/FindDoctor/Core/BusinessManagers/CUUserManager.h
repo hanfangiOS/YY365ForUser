@@ -78,4 +78,7 @@ SINGLETON_DECLARE(CUUserManager);
 //14202 删除我的成员
 - (void)DeleteMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
+//14203 修改我的成员
+- (void)ModifyMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
 @end

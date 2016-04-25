@@ -42,24 +42,8 @@
 - (void)loadNavigationBar{
     [self addLeftBackButtonItemWithImage];
     
-    self.editBtn = [self addRightButtonItemWithTitle:@"编辑" action:@selector(editAndSave)];
+    self.editBtn = [self addRightButtonItemWithTitle:@"编辑" action:@selector(editAndSaveAction)];
 }
-
-- (void)editAndSave{
-    
-    if (self.isEditing == YES) {
-        [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
-        [self postRequestUpdateyUserInfo];
-        
-    }else{
-        [self.editBtn setTitle:@"保存" forState:UIControlStateNormal];
-        
-    }
-    self.isEditing = !self.isEditing;
-    [self.tableView reloadData];
-}
-
-
 
 - (void)viewDidLoad {
     [self initData];
@@ -512,6 +496,20 @@
 
 - (void)chooseSexAction{
     [self showPickerIfNeed];
+}
+
+- (void)editAndSaveAction{
+    
+    if (self.isEditing == YES) {
+        [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        [self postRequestUpdateyUserInfo];
+        
+    }else{
+        [self.editBtn setTitle:@"保存" forState:UIControlStateNormal];
+        
+    }
+    self.isEditing = !self.isEditing;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

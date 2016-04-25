@@ -104,6 +104,7 @@
                 AddMemberCell * cell = [[AddMemberCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddMemberCell"];
                 //20000 20002 20003
                 cell.textField.tag = [[NSString stringWithFormat:@"200%ld%ld",(long)indexPath.section,(long)indexPath.row] integerValue];
+                cell.textField.delegate = self;
                 switch (cell.textField.tag) {
                     case 20000:
                     {
@@ -115,12 +116,14 @@
                     {
                         cell.Label.text = @"年龄";
                         cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+                        cell.textField.keyboardType = UIKeyboardTypeNumberPad;
                     }
                         break;
                     case 20003:
                     {
                         cell.Label.text = @"电话";
                         cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+                        cell.textField.keyboardType = UIKeyboardTypePhonePad;
                     }
                         break;
                     default:
@@ -247,9 +250,11 @@
 
 - (void)postRequestInsertMember{
     
+    [self progressView];
     UserFilter * filter = [[UserFilter alloc] init];
     filter.user = self.user;
     [[CUUserManager sharedInstance] InsertMemberWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        [self hideProgressView];
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
