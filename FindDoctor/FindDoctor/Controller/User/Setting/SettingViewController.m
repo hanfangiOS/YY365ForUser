@@ -11,8 +11,9 @@
 #import "AccountSecurityViewController.h"
 #import "CUUserManager.h"
 #import "TipHandler+HUD.h"
+#import "AppDelegate.h"
 
-@interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     UIView *_logoutView;
     UISwitch *_messageNotificationSwitch;
@@ -29,7 +30,7 @@
     _logoutView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 44)];
     button.center = _logoutView.center;
-    [button addTarget:self action:@selector(loginOut) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(loginOutAction) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"退出登录" forState:UIControlStateNormal];
     button.backgroundColor = [UIColor redColor];
     [_logoutView addSubview:button];
@@ -48,8 +49,26 @@
     //    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myAccountBigButtonImage"] action:@selector(edit)];
 }
 
+- (void)loginOutAction{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"确认退出？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+    alert.tag = 1000;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == 1000) {
+        if (buttonIndex == 0) {
+            
+        }
+        else {
+            [[CUUserManager sharedInstance] clear];
+            [self.slideNavigationController popViewControllerAnimated:NO];
+        }
+    }
+}
+
 - (void)loginOut{
-    [self postRequestExitAccount];
+    
 }
 
 - (void)updateSwitch:(UISwitch *)sender {

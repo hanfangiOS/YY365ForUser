@@ -184,7 +184,8 @@
     // 点击第一个，即‘全部’
     if (indexPath.row == 0)
     {
-        [self.dropdownMenu updateMenuTitle:self.titleArray[indexPath.column] inColumn:indexPath.column];
+//        [self.dropdownMenu updateMenuTitle:self.titleArray[indexPath.column] inColumn:indexPath.column];
+        [self.dropdownMenu reloadData];
     }
     switch (indexPath.column) {
         case 0:{
@@ -249,7 +250,7 @@
                         [listSubject addObject:string];
                     }];
                     blockSelf.timeArray = listSubject;
-                    [blockSelf.dropdownMenu resetMenu];
+                    [blockSelf.dropdownMenu reloadData];
                 }
             }
 

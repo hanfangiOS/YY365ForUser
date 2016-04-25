@@ -94,5 +94,30 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     
 }
 
+- (void)getGoodRemarkClinicListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"goodRemarkClinicList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/hortSearchClinic.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        resultBlock(request, result);
+    }forKey:@"goodRemarkClinicList" forPageNameGroup:pageName];
+}
+
 
 @end

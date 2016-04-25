@@ -460,11 +460,11 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
-    CUUserParser * parser = [[CUUserParser alloc] init];
-    __block CUUserManager * blockSelf = self;
-    [[AppCore sharedInstance].apiManager GET:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         resultBlock(request,result);
-    } forKey:URL_AfterBase forPageNameGroup:pageName];
+    } forKey:@"CheckExistPwd" forPageNameGroup:pageName];
 }
 
 - (void)updateUser:(CUUser *)user oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName

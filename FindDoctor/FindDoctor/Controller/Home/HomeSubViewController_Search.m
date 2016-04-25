@@ -12,11 +12,13 @@
 #import "SearchHistoryHelper.h"
 #import "EqualSpaceFlowLayout.h"
 #import "SubObjectHeaderView.h"
+#import "CUSearchManager.h"
 
 @interface HomeSubViewController_Search ()<EqualSpaceFlowLayoutDelegate>
 
 @property (nonatomic, strong) UICollectionView *searchHistoryCollectionView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *hotSearchClinicArray;
 @property (nonatomic, strong) NSString *currSearchStr;
 
 @end
@@ -35,6 +37,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    __weak __block HomeSubViewController_Search *blockSelf = self;
+    [[CUSearchManager sharedInstance] getGoodRemarkClinicListWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+            blockSelf.hotSearchClinicArray = result.parsedModelObject;
+        }
+        else{
+        
+        }
+    } pageName:self.pageName];
 }
 
 - (void)loadContentView{
@@ -105,10 +120,18 @@
         HotSearchDoctorCollectionViewCell *collectionCell = (HotSearchDoctorCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
         return collectionCell;
     }
+    
+    if (indexPath.section == 3){
+        NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
+        SearchHistoryCollectionViewCell *collectionCell = (SearchHistoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
+        collectionCell.string = (NSString *)[self.dataArray objectAtIndex:indexPath.row];
+        collectionCell.backgroundColor = [UIColor clearColor];
+        return collectionCell;
+    }
 
     NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
     SearchHistoryCollectionViewCell *collectionCell = (SearchHistoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
-    collectionCell.string = (NSString *)[self.dataArray objectAtIndex:indexPath.row];
+    collectionCell.string = (NSString *)[self.hotSearchClinicArray objectAtIndex:indexPath.row];
     collectionCell.backgroundColor = [UIColor clearColor];
 
     return collectionCell;

@@ -77,7 +77,7 @@ SINGLETON_IMPLENTATION(CommonManager);
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-            if ([errorCode integerValue] != -1) {
+            if (![errorCode integerValue]) {
                 
                 NSMutableDictionary * dataDict = [NSMutableDictionary dictionary];
                 NSMutableArray * mainList = [NSMutableArray array];
