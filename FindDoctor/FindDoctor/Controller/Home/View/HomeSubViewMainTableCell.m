@@ -55,32 +55,35 @@
     name.font = [UIFont systemFontOfSize:14];
     name.textAlignment = NSTextAlignmentLeft;
     name.textColor = UIColorFromHex(Color_Hex_NavBackground);
-    name.frame = CGRectMake(icon.maxX + 12, icon.frameY, 80, 15 );
+    name.frame = CGRectMake(icon.maxX + 12, icon.frameY, 160, 15 );
     [self addSubview:name];
     //简介
-    briefLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxY + 10, 54, 13)];
-    briefLabel.text = @"简介：";
+    briefLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxY + 10, 40, 15)];
+    briefLabel.text = @"简介:";
     briefLabel.textAlignment = NSTextAlignmentLeft;
+    briefLabel.font = [UIFont systemFontOfSize:14];
     briefLabel.textColor = kLightGrayColor;
     [self addSubview:briefLabel];
     //中西医结合XXXXX
-    brief = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.maxX + 5, briefLabel.frameY, kScreenWidth - briefLabel.maxX - 10, 25)];
+    brief = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.maxX + 2, briefLabel.frameY - 2, kScreenWidth - briefLabel.maxX - 10, 35)];
     brief.numberOfLines = 2;
     brief.textColor = kLightGrayColor;
     brief.textAlignment = NSTextAlignmentLeft;
+    brief.font = [UIFont systemFontOfSize:14];
     [self addSubview:brief];
     //擅长
     goodAtLabel = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.frameX, briefLabel.maxY + 25, briefLabel.frameWidth, briefLabel.frameHeight)];
-    goodAtLabel.text = @"擅长；";
+    goodAtLabel.text = @"擅长:";
     goodAtLabel.textAlignment = NSTextAlignmentLeft;
+    goodAtLabel.font = [UIFont systemFontOfSize:14];
     goodAtLabel.textColor = kLightGrayColor;
     [self addSubview:goodAtLabel];
     //擅长内儿科治疗XXXX
-    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 5, goodAtLabel.frameY, kScreenWidth - goodAtLabel.maxX - 10, 25)];
+    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 2, goodAtLabel.frameY - 2, kScreenWidth - goodAtLabel.maxX - 10, 35)];
     goodAt.numberOfLines = 2;
     goodAt.textColor = kLightGrayColor;
     goodAt.textAlignment = NSTextAlignmentLeft;
-    
+    goodAt.font = [UIFont systemFontOfSize:14];
     [self addSubview:goodAt];
     
     bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, kCellHeight - 0.5, kScreenWidth - 2 * 5, 0.5)];
@@ -90,16 +93,21 @@
 
 - (void)setData:(Doctor *)data{
     
+    _data = data;
+    
     [icon setImageWithURL:[NSURL URLWithString:_data.avatar]];
     
-    NSString * string = [NSString stringWithFormat:@"%@ %@",_data.name,_data.levelDesc];
-    name.text = string;
+    NSString * string = [NSString stringWithFormat:@"%@ %@ %@",_data.name,_data.levelDesc,_data.grade];
+    
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
     NSInteger length = [_data.name length];
-    [AtrStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:NSMakeRange(0, length)];
+    [AtrStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:18] range:NSMakeRange(0, length)];
     [AtrStr addAttribute:NSForegroundColorAttributeName
                    value:[UIColor blackColor]
                        range:NSMakeRange(0, length)];
+    
+    name.attributedText = AtrStr;
+    
     score.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
     
     brief.text = _data.briefIntro;
@@ -107,12 +115,6 @@
     goodAt.text = _data.skillTreat;
     
     icon.backgroundColor = [UIColor yellowColor];
-    score.backgroundColor = [UIColor redColor];
-    name.backgroundColor = [UIColor greenColor];
-    briefLabel.backgroundColor = [UIColor blackColor];
-    brief.backgroundColor = [UIColor purpleColor];
-    goodAtLabel.backgroundColor = [UIColor orangeColor];
-    goodAt.backgroundColor = [UIColor groupTableViewBackgroundColor];
 
 }
 

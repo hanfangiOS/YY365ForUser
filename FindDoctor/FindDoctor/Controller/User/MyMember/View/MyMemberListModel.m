@@ -11,19 +11,18 @@
 
 @implementation MyMemberListModel
 
-- (instancetype)init
-{
+- (instancetype)initWithFilter:(UserFilter *)filter{
     self = [super init];
     if (self) {
+        self.filter = filter;
         return self;
     }
     return nil;
-    
 }
 
 - (void)gotoFirstPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUUserManager sharedInstance] getUserInfo:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUUserManager sharedInstance] getUserMemberListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         
         if (!result.hasError)
         {
@@ -39,7 +38,7 @@
             self.pageInfo.currentPage = startPageNum;
         }
         resultBlock(request,result);
-    }];
+    } pageName:@""];
 }
 
 - (void)gotoNextPage:(SNServerAPIResultBlock)resultBlock

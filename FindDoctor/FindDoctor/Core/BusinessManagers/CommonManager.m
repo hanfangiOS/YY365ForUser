@@ -60,7 +60,7 @@ SINGLETON_IMPLENTATION(CommonManager);
         
         resultBlock(request, result);
         
-    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    }forKey:@"subjectList" forPageNameGroup:pageName];
     
 }
 
@@ -120,7 +120,7 @@ SINGLETON_IMPLENTATION(CommonManager);
         
         resultBlock(request, result);
         
-    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    }forKey:@"ActivityBanner" forPageNameGroup:pageName];
     
 }
 

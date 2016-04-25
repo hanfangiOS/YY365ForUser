@@ -95,3 +95,7 @@
 }
 
 @end
+
+@implementation UserFilter
+
+@end

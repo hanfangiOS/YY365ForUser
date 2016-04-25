@@ -7,7 +7,10 @@
 //
 
 #import "SNBaseListModel.h"
+#import "CUUser.h"
 
 @interface MyMemberListModel : SNBaseListModel
+
+@property (strong,nonatomic)UserFilter * filter;
 
 @end

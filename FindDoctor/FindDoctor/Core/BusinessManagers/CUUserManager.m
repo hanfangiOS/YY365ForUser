@@ -635,4 +635,52 @@ SINGLETON_IMPLENTATION(CUUserManager);
         resultBlock(request,result);
     } forKey:URL_AfterBase forPageNameGroup:pageName];
 }
+
+//14200 查询我的成员
+- (void)getUserMemberListWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14200 require:@"UserMemberList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:@([CUUserManager sharedInstance].user.userId) forKey:@"accID"];
+    [dataParam setObjectSafely:filter.listgType forKey:@"listgType"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/UserMemberList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                NSMutableArray * dataList = [NSMutableArray array];
+                
+                NSMutableArray * data = (NSMutableArray *)[result.responseObject arrayForKeySafely:@"data"];
+                [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    CUUser * user = [[CUUser alloc] init];
+                    user.age = [obj integerForKeySafely:@"age"];
+                    user.memberId = [obj integerForKeySafely:@"memberId"];
+                    user.name = [obj stringForKeySafely:@"name"];
+                    user.cellPhone = [obj stringForKeySafely:@"cellPhone"];
+                    user.gender = [obj integerForKeySafely:@"sex"];
+                    [dataList addObjectSafely:user];
+                }];
+                result.parsedModelObject = dataList;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"UserMemberList" forPageNameGroup:pageName];
+    
+}
+
 @end
