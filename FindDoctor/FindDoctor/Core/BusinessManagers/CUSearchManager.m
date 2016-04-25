@@ -94,18 +94,25 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     
 }
 
-- (void)getGoodRemarkClinicListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"goodRemarkClinicList"];
+- (void)gethotSearchClinicListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"hotSearchClinic"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
 
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/hortSearchClinic.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/hotSearchClinic.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
+                NSArray *recList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"hotSearchClinicList"];
+                NSMutableArray *dataList = [NSMutableArray new];
+                [recList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    NSString *str = [obj valueForKey:@"keys"];
+                    [dataList addObject:str];
+                }];
+                result.parsedModelObject = dataList;
             }
             else {
                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
@@ -116,7 +123,71 @@ SINGLETON_IMPLENTATION(CUSearchManager);
             //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         resultBlock(request, result);
-    }forKey:@"goodRemarkClinicList" forPageNameGroup:pageName];
+    }forKey:@"hotSearchClinicList" forPageNameGroup:pageName];
+}
+
+- (void)gethotSearchSymptomListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"hotSearchSymptom"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/hotSearchSymptom.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                NSArray *recList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"hotSearchSymptomList"];
+                NSMutableArray *dataList = [NSMutableArray new];
+                [recList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    NSString *str = [obj valueForKey:@"keys"];
+                    [dataList addObject:str];
+                }];
+                result.parsedModelObject = dataList;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        resultBlock(request, result);
+    }forKey:@"hotSearchSymptom" forPageNameGroup:pageName];
+}
+
+- (void)gethotSearchDoctorListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"hotSearchDoctor"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/hotSearchDoctor.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                NSArray *recList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"hotSearchDoctorList"];
+                NSMutableArray *dataList = [NSMutableArray new];
+                [recList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    NSString *str = [obj valueForKey:@"keys"];
+                    [dataList addObject:str];
+                }];
+                result.parsedModelObject = dataList;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        resultBlock(request, result);
+    }forKey:@"hotSearchDoctor" forPageNameGroup:pageName];
 }
 
 

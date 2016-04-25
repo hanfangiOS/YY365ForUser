@@ -12,6 +12,8 @@
 #import "AddMemberPickerCell.h"
 #import "AddMemberBtnCell.h"
 #import "AddMemberLabelCell.h"
+#import "CUUsermanager.h"
+#import "CUUser.h"
 
 
 @interface AddMemberViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
@@ -23,6 +25,8 @@
 @property (strong,nonatomic)NSArray         * sexArray;
 @property (assign,nonatomic)NSInteger         selectedIndex;
 
+@property (strong,nonatomic)CUUser          * user;
+
 @end
 
 @implementation AddMemberViewController
@@ -32,16 +36,18 @@
 }
 
 - (void)viewDidLoad {
+    [self initData];
     [super viewDidLoad];
     
     self.title = @"添加成员";
     
-    [self initData];
     [self initSubViews];
 }
 
 - (void)initData{
-    self.sexArray = @[@"男",@"女"];
+    self.user = [[CUUser alloc] init];
+    
+    self.sexArray = @[@"女",@"男"];
     self.selectedIndex = 0;
 }
 
@@ -140,6 +146,7 @@
         case 1:
         {
             AddMemberBtnCell * cell = [[AddMemberBtnCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddMemberBtnCell"];
+            [cell.btn addTarget:self action:@selector(saveAction) forControlEvents:UIControlEventTouchUpInside];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -159,20 +166,6 @@
     }
 }
 
-#pragma mark alertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1) {
-        [self postRequest];
-    }else{
-        
-    }
-}
-
-- (void)postRequest{
-    [self.slideNavigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark textFieldDelegate
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -186,6 +179,29 @@
 
 - (void)textFieldChange:(UITextField *)textField{
     textField.text = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    switch (textField.tag) {
+            //姓名
+        case 20000:
+        {
+            self.user.name = textField.text;
+        }
+            break;
+            //年龄
+        case 20002:
+        {
+             self.user.age = [textField.text integerValue];
+        }
+            break;
+            //电话
+        case 20003:
+        {
+             self.user.cellPhone = textField.text;
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - Picker
@@ -208,6 +224,7 @@
     __weak typeof(self) weakSelf = self;
     self.pickerView.confirmBlock = ^(NSInteger index) {
         weakSelf.selectedIndex = index;
+        weakSelf.user.gender = (weakSelf.selectedIndex == 0?CUUserGenderFemale:CUUserGenderMale);
         [weakSelf.tableView reloadData];
     };
     
@@ -226,10 +243,56 @@
     return sex;
 }
 
+#pragma mark PostRequest
+
+- (void)postRequestInsertMember{
+    
+    UserFilter * filter = [[UserFilter alloc] init];
+    filter.user = self.user;
+    [[CUUserManager sharedInstance] InsertMemberWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                [self.slideNavigationController popViewControllerAnimated:YES];
+            }
+        }
+    } pageName:@"AddMemberViewController"];
+}
+
+#pragma mark Action
+
 - (void)chooseSexAction{
     [self showPickerIfNeed];
 }
 
+- (void)saveAction{
+    
+    if (self.user.name == nil || [self.user.name isEqualToString:@""]) {
+            UIAlertView * alter = [[UIAlertView alloc] initWithTitle:nil message:@"请输入姓名" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+        return;
+    }
+    
+    if (self.user.age <= 0) {
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:nil message:@"请正确输入年龄" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+        return;
+    }
+    
+    if (self.user.cellPhone == nil || [self.user.cellPhone isEqualToString:@""] ) {
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:nil message:@"请输入手机号码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+        return;
+    }
+    
+    if ([self.user.cellPhone length] != 11) {
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:nil message:@"请正确输入手机号码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+        return;
+    }
+    [self postRequestInsertMember];
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

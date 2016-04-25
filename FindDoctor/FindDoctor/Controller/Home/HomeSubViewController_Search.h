@@ -10,4 +10,6 @@
 
 @interface HomeSubViewController_Search : CUViewController<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
+- (void)searchClickWithString:(NSString *)searchStr;
+
 @end

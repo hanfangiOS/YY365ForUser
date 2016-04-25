@@ -32,6 +32,7 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 @property (nonatomic, strong) NSString *clinicName;//就诊诊所名
 @property (nonatomic, assign) NSInteger diagnosisTime;//就诊时间
 @property (nonatomic, strong) NSString *levelDesc;//医生头衔， 如教授、主任等
+@property (nonatomic, strong) NSString *grade;//级别 ，如主治医师
 @property (nonatomic, strong) NSString *subject;//医生诊疗科目
 @property (nonatomic, strong) NSString *availableTime;//
 

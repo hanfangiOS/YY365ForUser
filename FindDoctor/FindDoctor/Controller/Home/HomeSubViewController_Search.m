@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UICollectionView *searchHistoryCollectionView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *hotSearchClinicArray;
+@property (nonatomic, strong) NSMutableArray *hotSearchSymptomArray;
 @property (nonatomic, strong) NSString *currSearchStr;
 
 @end
@@ -42,12 +43,36 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     __weak __block HomeSubViewController_Search *blockSelf = self;
-    [[CUSearchManager sharedInstance] getGoodRemarkClinicListWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    
+    //热搜诊所
+    [[CUSearchManager sharedInstance] gethotSearchClinicListWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
             blockSelf.hotSearchClinicArray = result.parsedModelObject;
+            [self.searchHistoryCollectionView  reloadData];
         }
         else{
         
+        }
+    } pageName:self.pageName];
+    
+    //热搜病症
+    [[CUSearchManager sharedInstance] gethotSearchSymptomListWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+            blockSelf.hotSearchSymptomArray = result.parsedModelObject;
+            [self.searchHistoryCollectionView  reloadData];
+        }
+        else{
+            
+        }
+    } pageName:self.pageName];
+    
+    [[CUSearchManager sharedInstance] gethotSearchDoctorListWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+//            blockSelf.hotSearchSymptomArray = result.parsedModelObject;
+//            [self.searchHistoryCollectionView  reloadData];
+        }
+        else{
+            
         }
     } pageName:self.pageName];
 }
@@ -95,6 +120,14 @@
     if (indexPath.section == 1) {
         return CGSizeMake(kScreenWidth, 50);
     }
+    if (indexPath.section == 2) {
+        CGSize size = [self sizeForString:(NSString *)[self.hotSearchSymptomArray objectAtIndex:indexPath.row] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
+        return CGSizeMake(size.width+20, size.height+15);
+    }
+    if (indexPath.section == 3) {
+        CGSize size = [self sizeForString:(NSString *)[self.hotSearchClinicArray objectAtIndex:indexPath.row] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
+        return CGSizeMake(size.width+20, size.height+15);
+    }
     CGSize size = [self sizeForString:(NSString *)[self.dataArray objectAtIndex:indexPath.row] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
     return CGSizeMake(size.width+20, size.height+15);
 }
@@ -110,6 +143,12 @@
     if (section == 1) {
         return 2;
     }
+    if (section == 2){
+        return self.hotSearchSymptomArray.count;
+    }
+    if (section == 3){
+        return self.hotSearchClinicArray.count;
+    }
     return self.dataArray.count;
 }
 
@@ -121,17 +160,25 @@
         return collectionCell;
     }
     
+    if (indexPath.section == 2){
+        NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
+        SearchHistoryCollectionViewCell *collectionCell = (SearchHistoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
+        collectionCell.string = (NSString *)[self.hotSearchSymptomArray objectAtIndex:indexPath.row];
+        collectionCell.backgroundColor = [UIColor clearColor];
+        return collectionCell;
+    }
+    
     if (indexPath.section == 3){
         NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
         SearchHistoryCollectionViewCell *collectionCell = (SearchHistoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
-        collectionCell.string = (NSString *)[self.dataArray objectAtIndex:indexPath.row];
+        collectionCell.string = (NSString *)[self.hotSearchClinicArray objectAtIndex:indexPath.row];
         collectionCell.backgroundColor = [UIColor clearColor];
         return collectionCell;
     }
 
     NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
     SearchHistoryCollectionViewCell *collectionCell = (SearchHistoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
-    collectionCell.string = (NSString *)[self.hotSearchClinicArray objectAtIndex:indexPath.row];
+    collectionCell.string = (NSString *)[self.dataArray objectAtIndex:indexPath.row];
     collectionCell.backgroundColor = [UIColor clearColor];
 
     return collectionCell;
@@ -186,9 +233,8 @@
 
 - (void)loadHistory
 {
-    NSArray *arr = @[@"历史记录",@"历史记录历史记录",@"历史记录",@"历史记录历史记录",@"历史记录",@"历史记录历史记录"];
-    self.dataArray = [NSMutableArray arrayWithArray:arr];
-    //    self.dataArray = [NSMutableArray arrayWithArray:[SearchHistoryHelper searchHistoryArray]];
+//    NSArray *arr = @[@"历史记录",@"历史记录历史记录",@"历史记录",@"历史记录历史记录",@"历史记录",@"历史记录历史记录"];
+    self.dataArray = [NSMutableArray arrayWithArray:[SearchHistoryHelper searchHistoryArray]];
     [self.searchHistoryCollectionView reloadData];
 }
 
@@ -201,9 +247,7 @@
     self.currSearchStr = searchStr;
     [SearchHistoryHelper saveSearchHistory:searchStr];
     
-    //    if (self.action) {
-    //        self.action(searchStr);
-    //    }
+    [self loadHistory];
 }
 
 - (void)searchStringDidChange:(NSString *)searchStr

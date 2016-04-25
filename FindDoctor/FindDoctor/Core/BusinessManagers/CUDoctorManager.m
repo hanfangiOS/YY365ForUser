@@ -679,32 +679,32 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         
         resultBlock(request, result);
         
-    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    }forKey:@"goodRemarkDoctorList" forPageNameGroup:pageName];
     
 }
 
 - (void)getfamousDoctorClinicWithFilter:(DoctorFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"goodRemarkClinicList"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"famousDoctorClinicList"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
-    [dataParam setObjectSafely:@(filter.rows) forKey:@"total"];
+    [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/goodRemarkClinicList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/famousDoctorClinic.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-            if ([errorCode integerValue] != -1) {
+            if (![errorCode integerValue]) {
                 
                 NSMutableArray * dataList = [NSMutableArray array];
                 
                 NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
-                NSArray * tempList1 = [data arrayForKeySafely:@"famousDoctorClinic"];
+                NSArray * tempList1 = [data arrayForKeySafely:@"famousDoctorClinicList"];
                 [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     Doctor * doctor = [[Doctor alloc] init];
                     
@@ -713,7 +713,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                     doctor.skillTreat = [obj stringForKeySafely:@"skillTreat"];
                     doctor.avatar = [obj stringForKeySafely:@"icon"];
                     doctor.name = [obj stringForKeySafely:@"name"];
-                    doctor.levelDesc = [obj stringForKeySafely:@"levelDesc"];
+                    doctor.levelDesc = [obj stringForKeySafely:@"titleDoctor"];
+                    doctor.grade = [obj stringForKeySafely:@"gradeDoctor"];
                     doctor.briefIntro = [obj stringForKeySafely:@"briefIntro"];
                     
                     [dataList addObjectSafely:doctor];
@@ -731,7 +732,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         
         resultBlock(request, result);
         
-    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    }forKey:@"famousDoctorClinic" forPageNameGroup:pageName];
     
 }
 

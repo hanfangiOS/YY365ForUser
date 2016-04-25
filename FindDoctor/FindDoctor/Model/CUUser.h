@@ -8,6 +8,7 @@
 // 注：也能当做是FamilyMember来使用
 
 #import <Foundation/Foundation.h>
+#import "HFFilter.h"
 
 typedef NS_ENUM(NSInteger, CUUserGender) {
     CUUserGenderMale   = 1, // 男
@@ -29,6 +30,7 @@ typedef NS_ENUM(NSInteger, CUUserGender) {
 @property (nonatomic,strong) NSString *relation;
 @property (nonatomic,strong) NSString *icon;
 
+
 @property (nonatomic,copy) NSMutableArray *favoriteDoctorList;
 @property (nonatomic,copy) NSMutableArray *expressAddressList;
 @property (nonatomic,copy) NSMutableArray *orderDiagnosis;
@@ -37,7 +39,15 @@ typedef NS_ENUM(NSInteger, CUUserGender) {
 @property CUUserGender gender;
 @property NSInteger age;
 @property NSInteger level;
+@property NSInteger memberId;  // 成员ID
 
 - (NSString *)genderDesc;
+
+@end
+
+@interface UserFilter : HFFilter
+
+@property (nonatomic,strong) NSString * listType;//member-仅成员；all-包含我自己
+@property (nonatomic,strong) CUUser   * user;
 
 @end

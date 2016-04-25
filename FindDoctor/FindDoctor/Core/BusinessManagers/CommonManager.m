@@ -21,6 +21,7 @@
 
 SINGLETON_IMPLENTATION(CommonManager);
 
+//获取科目列表
 - (void)getSubjectListWithFilter:(SubObjectFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"subjectList"];
@@ -34,7 +35,7 @@ SINGLETON_IMPLENTATION(CommonManager);
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-            if ([errorCode integerValue] != -1) {
+            if (![errorCode integerValue]) {
                 
                 NSMutableArray * dataList = [NSMutableArray array];
                 
@@ -60,10 +61,11 @@ SINGLETON_IMPLENTATION(CommonManager);
         
         resultBlock(request, result);
         
-    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    }forKey:@"subjectList" forPageNameGroup:pageName];
     
 }
 
+//轮播图
 - (void)getActivityBannerWithFilter:(BannerFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"ActivityBanner"];
@@ -120,7 +122,7 @@ SINGLETON_IMPLENTATION(CommonManager);
         
         resultBlock(request, result);
         
-    }forKey:URL_AfterBase forPageNameGroup:pageName];
+    }forKey:@"ActivityBanner" forPageNameGroup:pageName];
     
 }
 

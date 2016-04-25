@@ -17,6 +17,12 @@ SINGLETON_DECLARE(CUSearchManager);
 - (void)getDoctorSearchResultListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(SearchFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 //热搜诊所
-- (void)getGoodRemarkClinicListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+- (void)gethotSearchClinicListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//热搜病症
+- (void)gethotSearchSymptomListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//热搜医师
+- (void)gethotSearchDoctorListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 @end

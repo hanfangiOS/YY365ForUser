@@ -69,4 +69,13 @@ SINGLETON_DECLARE(CUUserManager);
 //11501接口 添加新约诊人
 - (void)AddDiagnosisMemberWithDiagnosisID:(long long)diagnosisID name:(NSString *)name sex:(NSInteger)sex age:(NSInteger)age phone:(long long)phone resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
+//14200 查询我的成员
+- (void)getUserMemberListWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//14201 新增我的成员
+- (void)InsertMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//14202 删除我的成员
+- (void)DeleteMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
 @end

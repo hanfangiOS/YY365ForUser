@@ -149,7 +149,7 @@
     [self.subjectCollectionView registerClass:[SubObjectCell class] forCellWithReuseIdentifier:@"SubObjectCell"];
     [self.headerView addSubview:self.subjectCollectionView];
     
-
+    //好评医生
     UICollectionViewFlowLayout * doctorLayout = [[UICollectionViewFlowLayout alloc] init];
     [doctorLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self.goodDoctorCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.subjectCollectionView.maxY + 10, kScreenWidth, 200) collectionViewLayout:doctorLayout];
@@ -317,8 +317,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return self.homeModel.goodDoctorList.count;
-    return 3;
+    return self.homeModel.famousDoctorList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -327,7 +326,7 @@
     if (!cell) {
          cell = [[HomeSubViewMainTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSubViewMainTableCell"];
     }
-    cell.data = [self.homeModel.goodDoctorList objectAtIndexSafely:indexPath.row];
+    cell.data = [self.homeModel.famousDoctorList objectAtIndexSafely:indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }

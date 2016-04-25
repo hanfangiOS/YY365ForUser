@@ -12,6 +12,7 @@
 #import "AddMemberBtnCell.h"
 #import "AddMemberLabelCell.h"
 #import "CUPickerView.h"
+#import "CUUsermanager.h"
 
 @interface ModifyMemberViewController ()<UIAlertViewDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
