@@ -391,7 +391,7 @@
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-            if ([errorCode integerValue] != -1) {
+            if (![errorCode integerValue]) {
                 [self.homeModel.subjectList removeAllObjects];
                 [self.homeModel.subjectList addObjectsFromArray:result.parsedModelObject];
                 [self.subjectCollectionView reloadData];
@@ -407,7 +407,7 @@
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-            if ([errorCode integerValue] != -1) {
+            if (![errorCode integerValue]) {
                 [self.homeModel.goodDoctorList removeAllObjects];
                 [self.homeModel.goodDoctorList addObjectsFromArray:result.parsedModelObject];
                 self.goodDoctorVC.data = self.homeModel.goodDoctorList;
@@ -423,7 +423,7 @@
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-            if ([errorCode integerValue] != -1) {
+            if (![errorCode integerValue]) {
                 [self.homeModel.goodClinicList removeAllObjects];
                 [self.homeModel.goodClinicList addObjectsFromArray:result.parsedModelObject];
                 self.goodClinicVC.data = self.homeModel;
@@ -452,7 +452,7 @@
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-            if ([errorCode integerValue] != -1) {
+            if (![errorCode integerValue]) {
                 [self.homeModel.famousDoctorList addObjectsFromArray:result.parsedModelObject];
                 [self.tableView reloadData];
             }
@@ -468,7 +468,7 @@
        
        if (!result.hasError) {
            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-           if ([errorCode integerValue] != -1) {
+           if (![errorCode integerValue]) {
                [self.homeModel.mainBannerList removeAllObjects];
                [self.homeModel.mainBannerList addObjectsFromArray:[result.parsedModelObject arrayForKeySafely:@"main"]];
                [self.mainBannerView reloadData];

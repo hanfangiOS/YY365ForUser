@@ -33,9 +33,9 @@
  */
 #if defined(CollegeUnion_Develop)
 
-//#define URL_Base @"http://192.168.1.101:8889"
-#define URL_Base @"http://192.168.1.115:8080"
-//#define URL_Base @"http://192.168.0.105:8080"
+
+#define URL_Base @"http://192.168.1.101:8889"
+//#define URL_Base @"http://192.168.1.115:8080"
 //#define URL_Base @"http://192.168.1.128:8080"
 
 
