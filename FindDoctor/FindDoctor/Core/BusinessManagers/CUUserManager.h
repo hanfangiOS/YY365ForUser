@@ -72,4 +72,10 @@ SINGLETON_DECLARE(CUUserManager);
 //14200 查询我的成员
 - (void)getUserMemberListWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
+//14201 新增我的成员
+- (void)InsertMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//14202 删除我的成员
+- (void)DeleteMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
 @end

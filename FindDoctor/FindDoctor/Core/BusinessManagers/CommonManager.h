@@ -16,8 +16,9 @@
 
 SINGLETON_DECLARE(CommonManager);
 
+//获取科目列表
 - (void)getSubjectListWithFilter:(SubObjectFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
-
+//轮播图
 - (void)getActivityBannerWithFilter:(BannerFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 @end

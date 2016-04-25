@@ -9,61 +9,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/Home/HomeSubViewController_Main.m"
-            timestampString = "483245477.644648"
+            filePath = "FindDoctor/Controller/User/MyMember/View/MyMemberCell.m"
+            timestampString = "483248256.454409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "449"
-            endingLineNumber = "449"
-            landmarkName = "-postRequestFamousDoctorClinic"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUDoctorManager.m"
-            timestampString = "483246220.119072"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "722"
-            endingLineNumber = "722"
-            landmarkName = "-getfamousDoctorClinicWithFilter:resultBlock:pageName:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/Home/HomeSubViewController_Main.m"
-            timestampString = "483245512.737091"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/Home/View/HomeSubViewMainTableCell.m"
-            timestampString = "483246654.65871"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-setData:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Core/BusinessManagers/CUUserManager.m"
+            timestampString = "483257588.166269"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "703"
+            endingLineNumber = "703"
+            landmarkName = "-InsertMemberWithFilter:resultBlock:pageName:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CUUserManager(Network) InsertMemberWithFilter:resultBlock:pageName:]"
+                  moduleName = "FindDoctor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUUserManager.m"
+                  timestampString = "483257613.054658"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "704"
+                  endingLineNumber = "704"
+                  offsetFromSymbolStart = "1184">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__70-[CUUserManager(Network) InsertMemberWithFilter:resultBlock:pageName:]_block_invoke"
+                  moduleName = "FindDoctor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUUserManager.m"
+                  timestampString = "483257613.054779"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "706"
+                  endingLineNumber = "706"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Core/BusinessManagers/CUUserManager.m"
+            timestampString = "483257589.08665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "705"
+            endingLineNumber = "705"
+            landmarkName = "-InsertMemberWithFilter:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -52,7 +52,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return self.listModel.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -60,7 +60,7 @@
     if (!cell) {
         cell = [[MyMemberCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyMemberCell"];
     }
-    cell.backgroundColor = [UIColor purpleColor];
+    cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
     return cell;
 }
 

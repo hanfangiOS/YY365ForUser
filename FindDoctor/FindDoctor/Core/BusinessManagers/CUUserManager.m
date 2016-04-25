@@ -643,12 +643,12 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:@([CUUserManager sharedInstance].user.userId) forKey:@"accID"];
-    [dataParam setObjectSafely:filter.listgType forKey:@"listgType"];
+    [dataParam setObjectSafely:filter.listType forKey:@"listType"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/UserMemberList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/server.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -666,7 +666,10 @@ SINGLETON_IMPLENTATION(CUUserManager);
                     user.gender = [obj integerForKeySafely:@"sex"];
                     [dataList addObjectSafely:user];
                 }];
-                result.parsedModelObject = dataList;
+                
+                SNBaseListModel * listModel  =[[SNBaseListModel alloc] init];
+                listModel.items = dataList;
+                result.parsedModelObject = listModel;
             }
             else {
                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
@@ -674,7 +677,78 @@ SINGLETON_IMPLENTATION(CUUserManager);
         }
         else {
             NSLog(@"连接服务器失败，请检查网络");
-            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+                        [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"UserMemberList" forPageNameGroup:pageName];
+    
+}
+
+//14201 新增我的成员
+- (void)InsertMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:142001 require:@"InsertMember"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:@([CUUserManager sharedInstance].user.userId) forKey:@"accID"];
+    [dataParam setObjectSafely:filter.user.name forKey:@"name"];
+    [dataParam setObjectSafely:filter.user.cellPhone forKey:@"phone"];
+    [dataParam setObjectSafely:(filter.user.gender == CUUserGenderMale?@"男":@"女") forKey:@"sex"];
+    [dataParam setObjectSafely:@(filter.user.age) forKey:@"age"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/server.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"UserMemberList" forPageNameGroup:pageName];
+    
+}
+
+//14202 删除我的成员
+- (void)DeleteMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"DeleteMember"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:@([CUUserManager sharedInstance].user.userId) forKey:@"accID"];
+    [dataParam setObjectSafely:@(filter.user.memberId) forKey:@"memberId"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/server.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
         
         resultBlock(request, result);

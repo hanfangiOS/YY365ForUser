@@ -203,7 +203,10 @@
     }
     
     if (indexPath.section == 1) {
-        MyMemberListModel * listModel = [[MyMemberListModel alloc] init];
+        UserFilter * filter = [[UserFilter alloc] init];
+        filter.listType = @"member";
+        
+        MyMemberListModel * listModel = [[MyMemberListModel alloc] initWithFilter:filter];
         
         MyMemberViewController * VC = [[MyMemberViewController alloc] initWithPageName:@"MyMemberViewController" listModel:listModel];
         

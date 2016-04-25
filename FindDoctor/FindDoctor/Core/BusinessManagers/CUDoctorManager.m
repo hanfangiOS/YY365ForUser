@@ -689,7 +689,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
-    [dataParam setObjectSafely:@(filter.rows) forKey:@"total"];
+    [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     

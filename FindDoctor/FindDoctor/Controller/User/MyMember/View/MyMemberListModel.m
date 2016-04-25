@@ -38,12 +38,13 @@
             self.pageInfo.currentPage = startPageNum;
         }
         resultBlock(request,result);
-    } pageName:@""];
+    } pageName:@"MyMemberViewController"];
 }
 
 - (void)gotoNextPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUUserManager sharedInstance] getUserInfo:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUUserManager sharedInstance] getUserMemberListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
         if (!result.hasError)
         {
             SNBaseListModel * list = result.parsedModelObject;
@@ -55,7 +56,8 @@
             self.pageInfo.currentPage++;
         }
         resultBlock(request,result);
-    }];
+    } pageName:@"MyMemberViewController"];
+    
 }
 
 

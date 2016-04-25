@@ -13,4 +13,6 @@
 
 @property (strong,nonatomic)UserFilter * filter;
 
+- (instancetype)initWithFilter:(UserFilter *)filter;
+
 @end

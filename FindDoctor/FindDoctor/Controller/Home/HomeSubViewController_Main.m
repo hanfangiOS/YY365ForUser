@@ -149,7 +149,7 @@
     [self.subjectCollectionView registerClass:[SubObjectCell class] forCellWithReuseIdentifier:@"SubObjectCell"];
     [self.headerView addSubview:self.subjectCollectionView];
     
-
+    //好评医生
     UICollectionViewFlowLayout * doctorLayout = [[UICollectionViewFlowLayout alloc] init];
     [doctorLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self.goodDoctorCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.subjectCollectionView.maxY + 10, kScreenWidth, 200) collectionViewLayout:doctorLayout];
