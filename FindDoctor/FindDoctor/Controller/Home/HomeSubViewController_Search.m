@@ -18,8 +18,9 @@
 
 @property (nonatomic, strong) UICollectionView *searchHistoryCollectionView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong) NSMutableArray *hotSearchClinicArray;
-@property (nonatomic, strong) NSMutableArray *hotSearchSymptomArray;
+@property (nonatomic, strong) NSMutableArray *hotSearchClinicArray;  //string
+@property (nonatomic, strong) NSMutableArray *hotSearchSymptomArray; //string
+@property (nonatomic, strong) NSMutableArray *hotSearchDoctorArray; // Doctor 对象
 @property (nonatomic, strong) NSString *currSearchStr;
 
 @end
@@ -68,8 +69,8 @@
     
     [[CUSearchManager sharedInstance] gethotSearchDoctorListWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
-//            blockSelf.hotSearchSymptomArray = result.parsedModelObject;
-//            [self.searchHistoryCollectionView  reloadData];
+            blockSelf.hotSearchDoctorArray = result.parsedModelObject;
+            [self.searchHistoryCollectionView  reloadData];
         }
         else{
             
@@ -118,7 +119,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
-        return CGSizeMake(kScreenWidth, 50);
+        return CGSizeMake(kScreenWidth, [HotSearchDoctorCollectionViewCell defaultHeight]);
     }
     if (indexPath.section == 2) {
         CGSize size = [self sizeForString:(NSString *)[self.hotSearchSymptomArray objectAtIndex:indexPath.row] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
@@ -141,7 +142,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if (section == 1) {
-        return 2;
+        return self.hotSearchDoctorArray.count;
     }
     if (section == 2){
         return self.hotSearchSymptomArray.count;
@@ -157,6 +158,13 @@
     if (indexPath.section == 1) {
         NSString *collectionCellName = NSStringFromClass([HotSearchDoctorCollectionViewCell  class]);
         HotSearchDoctorCollectionViewCell *collectionCell = (HotSearchDoctorCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
+        collectionCell.data = [self.hotSearchDoctorArray objectAtIndex:indexPath.row];
+        if (indexPath.row == self.hotSearchDoctorArray.count - 1) {
+            collectionCell.hasLine = NO;
+        }
+        else{
+            collectionCell.hasLine = YES;
+        }
         return collectionCell;
     }
     

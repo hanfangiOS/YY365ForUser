@@ -31,7 +31,7 @@
 
 - (void)initSubView{
     int imageViewWidth = 27;
-    int textSize = 14;
+    int textSize = 17;
     self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, ([self frameHeight] - imageViewWidth)/2, imageViewWidth, imageViewWidth)];
     self.imageView.contentMode = 1;
     self.imageView.layer.cornerRadius = imageViewWidth/2.f;
@@ -47,7 +47,7 @@
     [self addSubview:_titleLabel];
     
     _contentTextFeild = [[UITextField alloc]initWithFrame:CGRectMake(_titleLabel.maxX+10,(self.frameHeight - textSize)/2, [self frameWidth] - _titleLabel.maxX -10, textSize)];
-    _contentTextFeild.font = [UIFont systemFontOfSize:18];
+    _contentTextFeild.font = [UIFont systemFontOfSize:15];
     _contentTextFeild.textAlignment = NSTextAlignmentRight;
 //    _contentTextFeild.placeholder = @"0";
 //    [_contentTextFeild setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];

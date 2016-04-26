@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Doctor.h"
 
 @interface HotSearchDoctorCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) Doctor *data;
+@property (nonatomic) BOOL hasLine;
+
++ (CGFloat)defaultHeight;
 
 @end
