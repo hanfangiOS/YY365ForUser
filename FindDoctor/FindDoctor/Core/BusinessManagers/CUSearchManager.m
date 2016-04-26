@@ -173,8 +173,12 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                 NSArray *recList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"hotSearchDoctorList"];
                 NSMutableArray *dataList = [NSMutableArray new];
                 [recList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    NSString *str = [obj valueForKey:@"keys"];
-                    [dataList addObject:str];
+                    Doctor *doctor =  [[Doctor alloc]init];
+                    doctor.name = [obj valueForKey:@"name"];
+                    doctor.doctorId = [obj integerForKeySafely:@"doctorid"];
+                    doctor.avatar = [obj valueForKey:@"icon"];
+                    doctor.skillTreat = [obj valueForKey:@"goodatdisease"];
+                    [dataList addObject:doctor];
                 }];
                 result.parsedModelObject = dataList;
             }
