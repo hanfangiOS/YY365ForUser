@@ -33,6 +33,38 @@
             endingLineNumber = "703"
             landmarkName = "-InsertMemberWithFilter:resultBlock:pageName:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CUUserManager(Network) InsertMemberWithFilter:resultBlock:pageName:]"
+                  moduleName = "FindDoctor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUUserManager.m"
+                  timestampString = "483350598.988368"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "704"
+                  endingLineNumber = "704"
+                  offsetFromSymbolStart = "1240">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__70-[CUUserManager(Network) InsertMemberWithFilter:resultBlock:pageName:]_block_invoke"
+                  moduleName = "FindDoctor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUUserManager.m"
+                  timestampString = "483350598.988608"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "706"
+                  endingLineNumber = "706"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,6 +96,38 @@
             startingLineNumber = "259"
             endingLineNumber = "259"
             landmarkName = "-postRequestInsertMember"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/User/Setting/SettingViewController.m"
+            timestampString = "483348358.645549"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/User/Setting/ChangePhoneViewController1.m"
+            timestampString = "483350496.990348"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-loadContentView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

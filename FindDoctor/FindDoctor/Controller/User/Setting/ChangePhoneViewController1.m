@@ -35,6 +35,16 @@
     button.titleLabel.textColor = [UIColor whiteColor];
     [button addTarget:self action:@selector(PushAction) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:button];
+    
+    NSString * str = @"手机号是您登录优医365的唯一帐号，用于接收帐号通知，获取验证码等。您可以在这里更换当前账户的手机号。";
+    CGSize size = [self sizeForString:str font:[UIFont systemFontOfSize:17] limitSize:CGSizeMake(kScreenWidth - 24 * 2, 0)];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(24, button.maxY + 40, size.width, size.height)];
+    label.text = str;
+    label.numberOfLines = 0;
+    label.font = [UIFont systemFontOfSize:17];
+    label.textColor = kLightGrayColor;
+    [label sizeToFit];
+    [self.contentView addSubview:label];
 }
 
 - (void)PushAction{
@@ -44,6 +54,24 @@
 
 - (void)loadNavigationBar{
     [self addLeftBackButtonItemWithImage];
+}
+
+- (CGSize)sizeForString:(NSString *)string font:(UIFont *)font limitSize:(CGSize)limitSize{
+    
+    CGFloat width = limitSize.width;
+    CGFloat height = limitSize.height;
+    if (!width) {
+        width = CGFLOAT_MAX;
+    }
+    if (!height) {
+        height = CGFLOAT_MAX;
+    }
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(width, height)
+                                       options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading  |NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:@{NSFontAttributeName: font}
+                                       context:nil];
+    
+    return rect.size;
 }
 
 - (void)didReceiveMemoryWarning {

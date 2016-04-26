@@ -12,6 +12,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame Title:(NSString *)title;
 
++ (CGFloat)defaultHeight;
+
 @property (nonatomic, strong) UILabel     *titleLabel;
 @property (nonatomic, strong) UITextField *contentTextFeild;
 @property (nonatomic, strong) UIImageView *imageView;

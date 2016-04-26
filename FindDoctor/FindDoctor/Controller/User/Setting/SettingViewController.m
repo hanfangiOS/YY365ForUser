@@ -19,7 +19,9 @@
     UISwitch *_messageNotificationSwitch;
 }
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView       * tableView;
+
+@property (nonatomic, strong) UITableViewCell   * cacheCell;//清除缓存那个cell
 
 @end
 
@@ -27,6 +29,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"设置";
+    [self initSubViews];
+}
+
+- (void)initSubViews{
     _logoutView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 44)];
     button.center = _logoutView.center;
@@ -55,6 +62,8 @@
     [alert show];
 }
 
+#pragma mark alertViewDelegate
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 1000) {
         if (buttonIndex == 0) {
@@ -64,6 +73,13 @@
             [[CUUserManager sharedInstance] clear];
             [self.slideNavigationController popViewControllerAnimated:NO];
         }
+    }
+    
+    if (alertView.tag == 2000) {
+        
+        [self clearCache];
+        self.cacheCell.textLabel.text = @"XX";
+        [self.tableView reloadData];
     }
 }
 
@@ -156,10 +172,11 @@
             break;
         case 2:
             if (indexPath.row == 0) {
+                self.cacheCell = cell;
                 cell.imageView.backgroundColor = [UIColor redColor];
                 cell.textLabel.text = @"清除本地缓存";
                 cell.textLabel.textColor = UIColorFromHex(Color_Hex_NavBackground);
-                cell.detailTextLabel.text = @"0.67MB";
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2fM",[self sizeForCache]];
                 cell.accessoryType=UITableViewCellAccessoryNone;
             }
             if (indexPath.row == 1) {
@@ -186,6 +203,13 @@
             }
             break;
         case 2:
+            if (indexPath.row == 0) {
+                UIAlertView * alert =[[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"确认要清除缓存吗"] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                alert.delegate = self;
+                alert.tag = 2000;
+                [alert show];
+            }
+            
             if(indexPath.row == 1){
                 AboutViewController *VC = [[AboutViewController alloc]initWithPageName:@"AboutViewController"];
                 [self.slideNavigationController pushViewController:VC animated:YES];
@@ -196,6 +220,49 @@
             break;
     }
 }
+
+#pragma mark -------- 缓存相关 ---------
+//计算文件大小
+- (float)sizeForFilePath:(NSString *)path{
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager fileExistsAtPath:path]) {
+        long long size = [fileManager attributesOfItemAtPath:path error:nil].fileSize;
+        return size/1024/1024;
+    }
+    return 0;
+}
+//缓存大小
+- (float)sizeForCache{
+    NSString * path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)lastObject];
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    
+    float folderSize;
+    
+    if ([fileManager fileExistsAtPath:path]) {
+        NSArray * subFiles = [fileManager subpathsAtPath:path];
+        for (NSString * fileNmae in subFiles) {
+            NSString * fullPath = [path stringByAppendingPathComponent:fileNmae];
+            folderSize += [self sizeForFilePath:fullPath];
+        }
+    }
+    
+    return folderSize;
+}
+//移除缓存
+- (void)clearCache{
+    NSString * path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)lastObject];
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:path]) {
+        NSArray * subFiles = [fileManager subpathsAtPath:path];
+        for (NSString * fileName in subFiles) {
+            NSString * fullPath = [path stringByAppendingPathComponent:fileName];
+            [fileManager removeItemAtPath:fullPath error:nil];
+        }
+    }
+}
+
+
 
 #pragma mark postRequest
 

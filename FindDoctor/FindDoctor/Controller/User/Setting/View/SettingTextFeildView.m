@@ -25,6 +25,10 @@
     return self;
 }
 
++ (CGFloat)defaultHeight{
+    return 35;
+}
+
 - (void)initSubView{
     int imageViewWidth = 27;
     int textSize = 14;

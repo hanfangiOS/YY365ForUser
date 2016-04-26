@@ -8,8 +8,19 @@
 
 #import "ChangePasswordViewController.h"
 #import "CUUserManager.h"
+#import "SettingTextFeildView.h"
 
 @interface ChangePasswordViewController ()
+
+@property (strong,nonatomic)UIScrollView            * scrollViiew;
+
+@property (strong,nonatomic)UIView                  * beforePwdBackgroundView;
+@property (strong,nonatomic)SettingTextFeildView    * beforePwdView;
+
+@property (strong,nonatomic)UIView                  * nowPwdBackgroundView;
+@property (strong,nonatomic)SettingTextFeildView    * nowPwdView;
+@property (strong,nonatomic)SettingTextFeildView    * confirmPwdView;
+
 
 @end
 
@@ -32,8 +43,12 @@
                 NSInteger isExistNum = [[result.responseObject dictionaryForKeySafely:@"data"] integerForKeySafely:@"isExist"];
                 if (isExistNum) {
                     NSLog(@"存在旧密码， 启用旧密码+新密码形式改密码");
+                    [self.scrollViiew addSubview:self.beforePwdBackgroundView];
+                    [self.scrollViiew addSubview:self.nowPwdBackgroundView];
                 }
                 else{
+                    self.nowPwdBackgroundView.frameY = 10;
+                    [self.scrollViiew addSubview:self.nowPwdBackgroundView];
                     NSLog(@"不存在旧密码， 直接设置新密码");
                 }
             }
@@ -43,7 +58,28 @@
 }
 
 - (void)loadContentView{
+    self.scrollViiew = [[UIScrollView alloc] initWithFrame:self.contentView.bounds];
+    self.scrollViiew.scrollEnabled = YES;
+    self.scrollViiew.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self.contentView addSubview:self.scrollViiew];
     
+    //第一块view
+    self.beforePwdBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 90)];
+    self.beforePwdBackgroundView.backgroundColor = [UIColor whiteColor];
+    
+    //旧密码
+    self.beforePwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22, (90 - [SettingTextFeildView defaultHeight]/2), kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"旧密码"];
+    [self.beforePwdBackgroundView addSubview:self.beforePwdView];
+    //第二块View
+    self.nowPwdBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0,self.beforePwdBackgroundView.maxY + 10, kScreenWidth, 150)];
+    self.nowPwdBackgroundView.backgroundColor = [UIColor whiteColor];
+    
+    //新密码
+    self.nowPwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22, 25, kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"新密码"];
+    [self.nowPwdBackgroundView addSubview:self.nowPwdView];
+    //确认密码
+    self.confirmPwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22,self.nowPwdView.maxY + 25, kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"确认密码"];
+    [self.nowPwdBackgroundView addSubview:self.confirmPwdView];
 }
 
 - (void)loadNavigationBar{

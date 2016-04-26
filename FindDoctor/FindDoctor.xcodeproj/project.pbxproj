@@ -171,6 +171,7 @@
 		3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */; };
 		7F0469FC1CB65C9F00C9C054 /* GoodDoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */; };
 		7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */; };
+		7F1DE01E1CCF149B00C3CDC7 /* UserProtocolController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE01D1CCF149B00C3CDC7 /* UserProtocolController.m */; };
 		7F229E841C97F57C009C19E8 /* DoctorFameListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E831C97F57C009C19E8 /* DoctorFameListController.m */; };
 		7F229E871C97F59E009C19E8 /* DoctorFameListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */; };
 		7F229E8A1C97F5F8009C19E8 /* DoctorFameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E891C97F5F8009C19E8 /* DoctorFameCell.m */; };
@@ -978,6 +979,8 @@
 		7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorCell.m; sourceTree = "<group>"; };
 		7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicCell.h; sourceTree = "<group>"; };
 		7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicCell.m; sourceTree = "<group>"; };
+		7F1DE01C1CCF149B00C3CDC7 /* UserProtocolController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProtocolController.h; sourceTree = "<group>"; };
+		7F1DE01D1CCF149B00C3CDC7 /* UserProtocolController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProtocolController.m; sourceTree = "<group>"; };
 		7F229E821C97F57C009C19E8 /* DoctorFameListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListController.h; sourceTree = "<group>"; };
 		7F229E831C97F57C009C19E8 /* DoctorFameListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorFameListController.m; sourceTree = "<group>"; };
 		7F229E851C97F59E009C19E8 /* DoctorFameListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListModel.h; sourceTree = "<group>"; };
@@ -3305,6 +3308,8 @@
 				BC3ED4B01CC614D700495025 /* SettingViewController.m */,
 				BCA6ED481CC781B900D85E0D /* ChangePasswordViewController.h */,
 				BCA6ED491CC781B900D85E0D /* ChangePasswordViewController.m */,
+				7F1DE01C1CCF149B00C3CDC7 /* UserProtocolController.h */,
+				7F1DE01D1CCF149B00C3CDC7 /* UserProtocolController.m */,
 			);
 			name = Setting;
 			path = User/Setting;
@@ -5119,6 +5124,7 @@
 				7FD0BBD11C9A58C9004D2E02 /* IQSegmentedNextPrevious.m in Sources */,
 				7FA562101CBE2DB10092D978 /* NewsListCell.m in Sources */,
 				3ED0A7501AA603C50040E529 /* SNSlideController+SNObserver.m in Sources */,
+				7F1DE01E1CCF149B00C3CDC7 /* UserProtocolController.m in Sources */,
 				E124D7A01B92E9D10007B85E /* CULoginViewController.m in Sources */,
 				E10EDCCA1B8B84D40035B6E7 /* ApiXml.mm in Sources */,
 				3EDEBA901A961C4800E72809 /* JSONKit.m in Sources */,
