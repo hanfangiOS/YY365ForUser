@@ -34,7 +34,7 @@
 #if defined(CollegeUnion_Develop)
 
 
-//#define URL_Base @"http://192.168.1.101:8889"
+//#define URL_Base @"http://192.168.1.101:8888"
 #define URL_Base @"http://192.168.1.123:8080"
 //#define URL_Base @"http://192.168.1.128:8080"
 
@@ -61,13 +61,18 @@
 #if defined(CollegeUnion_Develop)
 
 #define URL_AfterBase @"/baseFrame/base/server.jmm"
-#define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmm" // 你的服务端创建并返回 charge 的 URL 地址
+//#define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmm" // 你的服务端创建并返回 charge 的 URL 地址
+
+#define kGetChargeUrl  @"http://192.168.1.101:8888/baseFrame/base/PayDiagnosisOK.jmm"
+
+
 #define kVerifyOrderStateUrl @"/baseFrame/base/verify_order_state.jmm"
 
 #elif defined(CollegeUnion_Distribution)
 
 #define URL_AfterBase @"/baseFrame/base/server.jmw"
 #define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmw" // 你的服务端创建并返回 charge 的 URL 地址
+
 #define kVerifyOrderStateUrl @"/baseFrame/base/verify_order_state.jmw"
 
 #endif

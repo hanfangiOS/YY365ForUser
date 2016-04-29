@@ -27,6 +27,7 @@
 #include <net/if_dl.h>
 #import "Pingpp.h"
 #import "MyDiagnosisRecordsListModel.h"
+#import "AppointmentDetailsController.h"
 
 #define KBtn_width        200
 #define KBtn_height       40
@@ -98,29 +99,10 @@
 
 - (UIView *)tableHeaderView
 {
-    CGFloat labelOriginY = 20.0;
-    CGFloat labelHeight = 20.0;
     
     CGFloat headerHeight = [OrderInfoView defaultHeight];
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, headerHeight)];
     header.backgroundColor = self.view.backgroundColor;
-    
-    /*
-     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, labelOriginY, header.frameWidth, labelHeight)];
-     label.backgroundColor = [UIColor clearColor];
-     label.textAlignment = NSTextAlignmentCenter;
-     label.textColor = kBlackColor;
-     label.font = [UIFont systemFontOfSize:17];
-     [header addSubview:label];
-     
-     label.text = [NSString stringWithFormat:@"约诊 %@医生", self.order.service.doctor.name];
-     
-     UserDropdownMenuView *menuView = [[UserDropdownMenuView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(label.frame), kScreenWidth, [UserDropdownMenuView defaultHeight])];
-     menuView.backgroundColor = header.backgroundColor;
-     menuView.user = [[CUUser alloc] init];
-     menuView.user.name = @"测试用户";
-     [header addSubview:menuView];
-     [menuView update];*/
     
     UserDropdownMenuView *menuView = nil;
     OrderInfoView *infoView = [[OrderInfoView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuView.frame), kScreenWidth, [OrderInfoView defaultHeight])];
@@ -266,21 +248,21 @@
 
 #pragma mark - Post Request
 
-//11601 获取订单状态 （支付前）
-- (void)postRequestCheckOrderStatusBefore{
-    [self showProgressView];
-    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        [self hideProgressView];
-        if (!result.hasError) {
-            if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
-                [self postRequestGetCharge];
-            }else{
-                [self HandleOrdertWithResult:result orderResult:OrderResultSuccess];
-            }
-        }
-    } pageName:@"OrderConfirmController"];
-    
-}
+////11601 获取订单状态 （支付前）
+//- (void)postRequestCheckOrderStatusBefore{
+//    [self showProgressView];
+//    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+//        [self hideProgressView];
+//        if (!result.hasError) {
+//            if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
+//                [self postRequestGetCharge];
+//            }else{
+//                [self handleOrderResult];
+//            }
+//        }
+//    } pageName:@"OrderConfirmController"];
+//    
+//}
 
 //获取charge对象
 - (void)postRequestGetCharge{
@@ -310,15 +292,11 @@
     [dataParam setObjectSafely:@(self.order.dealPrice) forKey:@"amount"];
     [dataParam setObjectSafely:self.channel forKey:@"chargetype"];
     [dataParam setObjectSafely:[NSString stringWithFormat:@"优医365订单 单号: %lld",self.order.diagnosisID] forKey:@"subject"];
-    [dataParam setObjectSafely:[NSString stringWithFormat:@"iOS端timestamp%ld",(NSInteger)[NSDate timeIntervalSince1970]] forKey:@"body"];
+    [dataParam setObjectSafely:[NSString stringWithFormat:@"iOS端timestamp%ld",(long)[NSDate timeIntervalSince1970]] forKey:@"body"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
-    
-    //    NSDictionary* dict =
-    //    NSData* data = [NSJSONSerialization dataWithJSONObject:param options:NSJSONWritingPrettyPrinted error:nil];
-    //    NSString *bodyData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     NSString *bodyData = [param JSONString];
     
@@ -337,66 +315,40 @@
             [weakSelf hideProgressView];
             //            [weakSelf hideAlert];
             //NSURLConnection正确返回码200
-            if (httpResponse.statusCode != 200) {
+            if (httpResponse.statusCode == 200) {
+                
+                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                NSNumber * errorCode = [dic objectForKeySafely:@"errorCode"];
+                
+                if (![errorCode integerValue]) {
+                    NSDictionary * dict1 = [dic dictionaryForKeySafely:@"data"];
+                    NSDictionary * dic2 = [dict1 objectForKey:@"charge"];
+                    NSString* charge = [dic2 JSONString];
+                    NSLog(@"charge = %@", charge);
+                    [weakSelf postRequestCreatePayMent:charge];
+                }else{
+                    [TipHandler showTipOnlyTextWithNsstring:[dic stringForKeySafely:@"message"]];
+                }
+            }else{
                 NSLog(@"statusCode=%ld error = %@", (long)httpResponse.statusCode, connectionError);
                 [weakSelf showAlertWithMessage:kErrorNet];
                 return;
             }
-            if (connectionError != nil) {
-                NSLog(@"error = %@", connectionError);
-                [weakSelf showAlertWithMessage:kErrorNet];
-                return;
-            }
-            //            NSString* charge = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            //            NSData *jsonData = [charge JSONData];
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            NSDictionary * dic2 = [dic objectForKey:@"charge"];
-            NSString* charge = [dic2 JSONString];
-            NSLog(@"charge = %@", charge);
-            //            [Pingpp createPayment:charge appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
-            //                NSLog(@"completion block: %@", result);
-            //                if (error == nil) {
-            //                    NSLog(@"PingppError is nil");
-            //                } else {
-            //                    NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
-            //                }
-            //                [weakSelf showAlertMessage:result];
-            //            }];
-            
-            [weakSelf postRequestCreatePayMent:charge];
+
         });
     }];
     
 }
-
-//- (void)showAlertWait
-//{
-//    mAlert = [[UIAlertView alloc] initWithTitle:kWaiting message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
-//    [mAlert show];
-//    UIActivityIndicatorView* aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-//    aiv.center = CGPointMake(mAlert.frame.size.width / 2.0f - 15, mAlert.frame.size.height / 2.0f + 10 );
-//    [aiv startAnimating];
-//    [mAlert addSubview:aiv];
-//}
-//
-//
-//- (void)hideAlert
-//{
-//    if (mAlert != nil)
-//    {
-//        [mAlert dismissWithClickedButtonIndex:0 animated:YES];
-//        mAlert = nil;
-//    }
-//}
 
 //11601 获取订单状态 （支付后）
 - (void)postRequestCheckOrderStatusAfter{
     [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
             if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
-                [self HandleOrdertWithResult:result orderResult:OrderResultFailed];
+               [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"message"]];
             }else {
-                [self HandleOrdertWithResult:result orderResult:OrderResultSuccess];
+                self.order = result.parsedModelObject;
+                [self handleOrderResult];
             }
         }
     } pageName:@"OrderConfirmController"];
@@ -418,118 +370,16 @@
     }];
 }
 
-//- (void)postRequestForConfirmHasPaid{
-//    MyDiagnosisRecordsListModel * tempoModel = [[MyDiagnosisRecordsListModel alloc]initWithSortType:1];
-//    [[CUOrderManager sharedInstance] getMyDiagnosisRecordsWithUser:tempoModel.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-//
-//        if (!result.hasError) {
-//            if (![(NSNumber *)[result.responseObject valueForKeySafely:@"errorCode"] integerValue]) {
-//
-//                NSMutableArray * data = [result.responseObject valueForKeySafely:@"data"];
-//                if ([data isKindOfClass:[NSMutableArray class]]) {
-//                    [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                                               }
-//                    }];
-//                }
-//            }
-//        }
-//
-//    } pageName:@"getCurrentTreatmentList"];
-//
-//
-//}
-
-//- (void)payOrderWithTN:(NSString *)tn
-//{
-//    [[CUOrderManager sharedInstance] payOrder:self.order tn:tn block:^(NSError *error, id responseObject) {
-//        [self handlePayResult:responseObject error:error];
-//    }];
-//}
-
-
-//- (void)handlePayResult:(id)responseObject error:(NSError *)error
-//{
-//    if (error == nil && responseObject) {
-//        [self enterResult:OrderResultSuccess];
-//    }
-//    else {
-//        [TipHandler showSmallStringTipWithText:error.domain];
-//    }
-//}
-
-//- (void)enterResult:(OrderResult)orderResult
-//{
-//    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-//        if (!result.hasError) {
-//            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-//                SNSlideNavigationController *slide = self.slideNavigationController;
-//                UIViewController *vc = nil;
-//                for (UIViewController *controller in slide.viewControllers) {
-//                    if ([controller isKindOfClass:NSClassFromString(@"SNTabViewController")]) {
-//                        vc = controller;
-//                        break;
-//                    }
-//                }
-//                if (vc) {
-//                    [slide popToViewController:vc animated:NO];
-//                }
-//
-//                OrderResultController *resultVC = [[OrderResultController alloc] init];
-//                resultVC.orderResult = orderResult;
-//                resultVC.order = result.parsedModelObject;
-//                [slide pushViewController:resultVC animated:YES];
-//            }
-//            else{
-//
-//            }
-//        }
-//    } pageName:@"OrderConfirmController"];
-//}
-
 #pragma mark - Action
 
 - (void)payAction
 {
-    //    [self test];
-    //    return;
-    //#warning 测试代码
-    //    self.order.diagnosisID = 131313131231;
-    //    self.order.service.queueNumber = 10;
-    //    self.order.service.queueCount = 100;
-    //    self.order.createTimeStamp = 1440780889;
-    //    self.order.orderStatus = ORDERSTATUS_PAID;
-    //    [self enterResult:OrderResultSuccess];
-    //    return;
-    
-    //    if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
-    //        // 支付宝支付
-    //        [[CUOrderManager sharedInstance] payOrder:self.order tn:nil block:^(NSError *error, id responseObject) {
-    //            if (error == nil) {
-    //                [self enterResult:OrderResultSuccess];
-    //            }
-    //            else {
-    //                [TipHandler showSmallStringTipWithText:error.domain];
-    //            }
-    //        }];
-    //    }
-    //    else if (self.order.payment == ORDERPAYMENT_YinLian) {
-    //        __weak typeof(self) weakSelf = self;
-    //        [[CUOrderManager sharedInstance] getOrderTNWithOrderId:[NSString stringWithFormat:@"%lld",self.order.diagnosisID] block:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
-    //            NSString *tn = result.parsedModelObject;
-    //            if (!result.hasError && [tn isKindOfClass:[NSString class]]) {
-    //                [weakSelf payOrderWithTN:tn];
-    //            }
-    //            else {
-    //                [TipHandler showHUDText:@"银联调用失败" state:TipStateFail inView:self.view];
-    //            }
-    //        }];
-    //    }
-    [self CheckOrder];
+    [self checkOrder];
 }
 
 #pragma mark - Private Methods
 
-- (void)CheckOrder{
+- (void)checkOrder{
     if (self.order.payment == ORDERPAYMENT_WeiXin) {
         self.channel = @"wx";
         
@@ -538,11 +388,11 @@
             [alert show];
             return;
         }
-        [self postRequestCheckOrderStatusBefore];
+        [self postRequestGetCharge];
     }
     else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
         self.channel = @"alipay";
-        [self postRequestCheckOrderStatusBefore];
+        [self postRequestGetCharge];
     }
     else{
         return;
@@ -551,27 +401,15 @@
 }
 
 //根据结果处理订单
-- (void)HandleOrdertWithResult:(SNServerAPIResultData *)result orderResult:(OrderResult)orderResult{
-    SNSlideNavigationController *slide = self.slideNavigationController;
-    UIViewController *vc = nil;
-    for (UIViewController *controller in slide.viewControllers) {
-        if ([controller isKindOfClass:NSClassFromString(@"SNTabViewController")]) {
-            vc = controller;
-            break;
-        }
-    }
-    if (vc) {
-        [slide popToViewController:vc animated:NO];
-    }
+- (void)handleOrderResult{
     
-    OrderResultController *resultVC = [[OrderResultController alloc] init];
-    resultVC.order = result.parsedModelObject;
-    resultVC.orderResult = orderResult;
-    [slide pushViewController:resultVC animated:YES];
+    AppointmentDetailsController * VC = [[AppointmentDetailsController alloc] initWithPageName:@"AppointmentDetailsController"];
+    VC.order = self.order;
+    VC.from = @"支付";
+    
+    [self.slideNavigationController pushViewController:VC animated:YES];
+    
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -7,8 +7,11 @@
 //
 
 #import "CUViewController.h"
+#import "HomeViewController.h"
 
 @interface HomeSubViewController_Search : CUViewController<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+
+@property(strong,nonatomic)HomeViewController * homeViewController;
 
 - (void)searchClickWithString:(NSString *)searchStr;
 

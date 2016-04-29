@@ -30,7 +30,8 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary new];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:filter.keyword forKey:@"search"];
     [dataParam setObjectSafely:@([kCurrentLng doubleValue]) forKey:@"longtitude"];
     [dataParam setObjectSafely:@([kCurrentLat doubleValue]) forKey:@"latitude"];

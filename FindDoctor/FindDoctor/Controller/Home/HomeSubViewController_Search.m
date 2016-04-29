@@ -31,6 +31,7 @@
 {
     self = [super initWithPageName:pageName];
     if (self) {
+        _hasToolbar = NO;
         _hasNavigationBar = NO;
     }
     return self;
@@ -43,6 +44,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     __weak __block HomeSubViewController_Search *blockSelf = self;
     
     //热搜诊所

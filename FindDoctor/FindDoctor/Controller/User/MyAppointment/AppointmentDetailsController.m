@@ -11,6 +11,8 @@
 #import "DetailsAppointInfoView.h"
 #import "DetailsPaymentInfoView.h"
 #import "DetailsOrderInfoView.h"
+#import "CUOrderManager.h"
+#import "OrderConfirmController.h"
 
 @interface AppointmentDetailsController ()<UIAlertViewDelegate>
 
@@ -35,6 +37,14 @@
     [super viewDidLoad];
     self.title = @"约诊详情";
     
+    if ([self.from isEqualToString:@"支付"]) {
+        for (CUViewController * vc in self.slideNavigationController.viewControllers) {
+            if ([vc isKindOfClass:[OrderConfirmController class]]) {
+                [vc.slideNavigationController popToRootViewControllerAnimated:NO];
+            }
+        }
+    }
+    
     [self initsubViews];
 }
 
@@ -46,18 +56,22 @@
     
     
     self.headerView = [[DetailsHeaderView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, [DetailsHeaderView defaultHeight])];
+    self.headerView.data = self.order.service.doctor;
     [self.scrollView addSubview:self.headerView];
     self.headerView.backgroundColor = [UIColor whiteColor];
     
     self.appointInfoView = [[DetailsAppointInfoView alloc] initWithFrame:CGRectMake(0, self.headerView.maxY + 10, kScreenWidth, [DetailsAppointInfoView defaultHeight])];
+    self.appointInfoView.data = self.order;
     [self.scrollView addSubview:self.appointInfoView];
     self.appointInfoView.backgroundColor = [UIColor whiteColor];
     
     self.paymentInfoView = [[DetailsPaymentInfoView alloc] initWithFrame:CGRectMake(0, self.appointInfoView.maxY + 10, kScreenWidth, [DetailsPaymentInfoView defaultHeight])];
+    self.paymentInfoView.data = self.order;
     [self.scrollView addSubview:self.paymentInfoView];
     self.paymentInfoView.backgroundColor = [UIColor whiteColor];
     
     self.orderInfoView = [[DetailsOrderInfoView alloc] initWithFrame:CGRectMake(0, self.paymentInfoView.maxY + 10, kScreenWidth, [DetailsOrderInfoView defaultHeight])];
+    self.orderInfoView.data = self.order;
     [self.scrollView addSubview:self.orderInfoView];
     self.orderInfoView.backgroundColor = [UIColor whiteColor];
     
@@ -82,7 +96,28 @@
 }
 
 - (void)resetData{
-    
+    switch (self.order.orderStatus) {
+        case 0:
+        {
+            
+        }
+            break;
+        case 1:
+        {
+            self.cancelBtn.frame = self.payBtn.frame;
+            self.payBtn.hidden = YES;
+            [self.scrollView setNeedsLayout];
+        }
+            break;
+        case 2:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)payAction{

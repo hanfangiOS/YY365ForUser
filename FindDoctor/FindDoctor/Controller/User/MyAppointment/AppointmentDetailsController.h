@@ -7,7 +7,12 @@
 //
 
 #import "CUViewController.h"
+#import "CUOrder.h"
 
 @interface AppointmentDetailsController : CUViewController
+
+@property (strong,nonatomic)CUOrder * order;
+
+@property (strong,nonatomic)NSString * from;
 
 @end

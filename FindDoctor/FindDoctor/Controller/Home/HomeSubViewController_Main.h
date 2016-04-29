@@ -9,6 +9,7 @@
 #import "CUViewController.h"
 #import "Doctor.h"
 #import "Clinic.h"
+#import "HomeViewController.h"
 
 @interface HomeModel : NSObject
 
@@ -28,6 +29,8 @@
 @interface HomeSubViewController_Main : CUViewController
 
 @property (nonatomic, strong) HomeModel * homeModel;
+
+@property(strong,nonatomic)HomeViewController * homeViewController;
 
 @end
 

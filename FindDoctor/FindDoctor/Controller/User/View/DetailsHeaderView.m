@@ -38,13 +38,13 @@
 
 - (void)initSubViews{
     self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, (DetailsHeaderViewHeight - 70)/2, 70, 70)];
+    self.icon.layer.cornerRadius = 5.0f;
     [self addSubview:self.icon];
     self.icon.backgroundColor = [UIColor brownColor];
     
     self.name = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 6, self.icon.frameX + 2, kScreenWidth - self.icon.maxX - 6 - 50, 25)];
-    self.name.backgroundColor = [UIColor redColor];
-    self.name.font = [UIFont systemFontOfSize:14];
-    self.name.textColor = [UIColor blueColor];
+    self.name.font = [UIFont systemFontOfSize:12];
+    self.name.textColor = kBlueColor;
     [self addSubview:self.name];
     
     self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 20, (DetailsHeaderViewHeight - 25)/2, 20, 25)];
@@ -53,11 +53,10 @@
     [self addSubview:self.arrow];
     
     self.brief = [[UILabel alloc] initWithFrame:CGRectMake(self.name.frameX, self.name.maxY + 4, kScreenWidth - self.name.frameX - self.arrow.frameWidth - 30, 40)];
-    self.brief.font = [UIFont systemFontOfSize:12];
-    self.brief.textColor = [UIColor grayColor];
+    self.brief.font = [UIFont systemFontOfSize:10];
+    self.brief.textColor = kLightGrayColor;
     self.brief.numberOfLines = 2;
     [self addSubview:self.brief];
-    self.brief.backgroundColor = [UIColor blackColor];
 }
 
 - (void)setData:(Doctor *)data{
@@ -65,14 +64,14 @@
     
     [self.icon setImageWithURL:[NSURL URLWithString:_data.avatar]];
     
-    NSString * string = [NSString stringWithFormat:@"%@   %@",_data.name,_data.levelDesc];
-    self.name.text = string;
+    NSString * string = [NSString stringWithFormat:@"%@  %@  %@",_data.name,_data.levelDesc,_data.grade];
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
     NSInteger length = [_data.name length];
-    [AtrStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:NSMakeRange(0, length)];
+    [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, length)];
     [AtrStr addAttribute:NSForegroundColorAttributeName
                    value:[UIColor blackColor]
                    range:NSMakeRange(0, length)];
+    self.name.attributedText = AtrStr;
     
     self.brief.text = [NSString stringWithFormat:@"%@",_data.briefIntro];
 }

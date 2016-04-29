@@ -278,6 +278,7 @@
 		7FFD7AA41CB751FE000C45E3 /* GoodDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA31CB751FE000C45E3 /* GoodDoctorViewController.m */; };
 		7FFD7AA71CB7B1E9000C45E3 /* GoodClinicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA61CB7B1E9000C45E3 /* GoodClinicViewController.m */; };
 		7FFD7AAA1CB7B574000C45E3 /* ClinicAdverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA91CB7B574000C45E3 /* ClinicAdverCell.m */; };
+		7FFFB6201CD33C43006AB8CB /* MyAppointmentForTreatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFB61F1CD33C43006AB8CB /* MyAppointmentForTreatCell.m */; };
 		BC003A0D1C9FC215006098BA /* flag_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC003A0C1C9FC215006098BA /* flag_selected@2x.png */; };
 		BC0E84B31C7857E700082AA9 /* AddFamilyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */; };
 		BC0E84B51C78598E00082AA9 /* littleTrumpet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84B41C78598E00082AA9 /* littleTrumpet@2x.png */; };
@@ -1185,6 +1186,8 @@
 		7FFD7AA61CB7B1E9000C45E3 /* GoodClinicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicViewController.m; sourceTree = "<group>"; };
 		7FFD7AA81CB7B574000C45E3 /* ClinicAdverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClinicAdverCell.h; sourceTree = "<group>"; };
 		7FFD7AA91CB7B574000C45E3 /* ClinicAdverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClinicAdverCell.m; sourceTree = "<group>"; };
+		7FFFB61E1CD33C43006AB8CB /* MyAppointmentForTreatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentForTreatCell.h; sourceTree = "<group>"; };
+		7FFFB61F1CD33C43006AB8CB /* MyAppointmentForTreatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentForTreatCell.m; sourceTree = "<group>"; };
 		BC003A0C1C9FC215006098BA /* flag_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_selected@2x.png"; sourceTree = "<group>"; };
 		BC0E84B11C7857E700082AA9 /* AddFamilyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFamilyMemberViewController.h; path = AddFamiliMember/AddFamilyMemberViewController.h; sourceTree = "<group>"; };
 		BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddFamilyMemberViewController.m; path = AddFamiliMember/AddFamilyMemberViewController.m; sourceTree = "<group>"; };
@@ -2964,11 +2967,11 @@
 		7FA56BE31CC4A3D30011EEE1 /* MyAppointment */ = {
 			isa = PBXGroup;
 			children = (
-				7FA56BE51CC4A52D0011EEE1 /* View */,
 				7FA56BED1CC4A5D10011EEE1 /* MyAppointmentController.h */,
 				7FA56BEE1CC4A5D10011EEE1 /* MyAppointmentController.m */,
 				7FA56BF61CC4EB900011EEE1 /* AppointmentDetailsController.h */,
 				7FA56BF71CC4EB900011EEE1 /* AppointmentDetailsController.m */,
+				7FA56BE51CC4A52D0011EEE1 /* View */,
 			);
 			name = MyAppointment;
 			path = User/MyAppointment;
@@ -2996,6 +2999,8 @@
 				7FA56BF11CC4A6460011EEE1 /* MyAppointmentCell.m */,
 				7FA56BF31CC4BA460011EEE1 /* MyAppointMentHeaderView.h */,
 				7FA56BF41CC4BA460011EEE1 /* MyAppointMentHeaderView.m */,
+				7FFFB61E1CD33C43006AB8CB /* MyAppointmentForTreatCell.h */,
+				7FFFB61F1CD33C43006AB8CB /* MyAppointmentForTreatCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5493,6 +5498,7 @@
 				7FE327B01CB51A4200032376 /* HomeSubViewMainTableCell.m in Sources */,
 				E6D4548A1B92C51E00F3C3D0 /* DoctorFlagCell.m in Sources */,
 				BC1859CD1C8440060050251B /* MyDiagnosisRecordsListModel.m in Sources */,
+				7FFFB6201CD33C43006AB8CB /* MyAppointmentForTreatCell.m in Sources */,
 				3EDEBAAC1A961C4800E72809 /* PLSqliteResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

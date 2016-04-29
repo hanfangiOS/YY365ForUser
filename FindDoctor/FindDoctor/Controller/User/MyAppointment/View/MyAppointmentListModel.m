@@ -22,40 +22,85 @@
 
 - (void)gotoFirstPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUOrderManager sharedInstance] getOrderListWithPageNum:0 pageSize:kPageSize user:self.filter.user searchedWithOrderStatus:self.filter.orderStatus resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    if (self.filter.orderStatus == ORDERSTATUS_UNPAID) {
+    [[CUOrderManager sharedInstance]getOrderNotPayListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
         if (!result.hasError)
         {
-            SNBaseListModel * list = result.parsedModelObject;
-            NSArray *orderArray = list.items;
+            SNBaseListModel * listModel = result.parsedModelObject;
+            NSArray *orderArray = listModel.items;
             
             [self.items removeAllObjects];
             [self.items addObjectsFromArray:orderArray];
             
-            SNPageInfo * info = list.pageInfo;
+            SNPageInfo * info = listModel.pageInfo;
             self.pageInfo.pageSize = info.pageSize;
             self.pageInfo.totalPage = info.totalPage;
             self.pageInfo.currentPage = startPageNum;
         }
         resultBlock(request,result);
+        
     } pageName:@"MyAppointmentController"];
+}
+    
+    if (self.filter.orderStatus == ORDERSTATUS_PAID) {
+        [[CUOrderManager sharedInstance]getOrderHasPayNotMeetListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+            if (!result.hasError)
+            {
+                SNBaseListModel * listModel = result.parsedModelObject;
+                NSArray *orderArray = listModel.items;
+                
+                [self.items removeAllObjects];
+                [self.items addObjectsFromArray:orderArray];
+                
+                SNPageInfo * info = listModel.pageInfo;
+                self.pageInfo.pageSize = info.pageSize;
+                self.pageInfo.totalPage = info.totalPage;
+                self.pageInfo.currentPage = startPageNum;
+            }
+            resultBlock(request,result);
+        } pageName:@"MyAppointmentController"];
+   }
 }
 
 - (void)gotoNextPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUOrderManager sharedInstance] getOrderListWithPageNum:self.filter.pageNum pageSize:kPageSize user:self.filter.user searchedWithOrderStatus:self.filter.orderStatus resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        if (!result.hasError)
-        {
-            SNBaseListModel * list = result.parsedModelObject;
-            [self.items addObjectsFromArray:list.items];
+    if (self.filter.orderStatus == ORDERSTATUS_UNPAID) {
+        [[CUOrderManager sharedInstance]getOrderNotPayListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
             
-            SNPageInfo * info = list.pageInfo;
-            self.pageInfo.pageSize = info.pageSize;
-            self.pageInfo.totalPage = info.totalPage;
-            self.pageInfo.currentPage++;
-        }
-        resultBlock(request,result);
-    } pageName:@"MyAppointmentController"];
-    
+            if (!result.hasError)
+            {
+
+                    SNBaseListModel * listModel = result.parsedModelObject;
+                    [self.items addObjectsFromArray:listModel.items];
+                    
+                    SNPageInfo * info = listModel.pageInfo;
+                    self.pageInfo.pageSize = info.pageSize;
+                    self.pageInfo.totalPage = info.totalPage;
+                    self.pageInfo.currentPage++;
+            }
+            resultBlock(request,result);
+            
+        } pageName:@"MyAppointmentController"];
+    }
+
+    if (self.filter.orderStatus == ORDERSTATUS_PAID) {
+        [[CUOrderManager sharedInstance]getOrderHasPayNotMeetListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+            
+            if (!result.hasError)
+            {
+                    SNBaseListModel * listModel = result.parsedModelObject;
+                    [self.items addObjectsFromArray:listModel.items];
+                    
+                    SNPageInfo * info = listModel.pageInfo;
+                    self.pageInfo.pageSize = info.pageSize;
+                    self.pageInfo.totalPage = info.totalPage;
+                    self.pageInfo.currentPage++;
+            }
+            resultBlock(request,result);
+            
+        } pageName:@"MyAppointmentController"];
+    }
 }
 
 @end

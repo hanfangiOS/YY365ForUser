@@ -35,17 +35,11 @@
         case ORDERSTATUS_UNPAID:
             statusStr = @"未支付";
             break;
-        case ORDERSTATUS_CANCELED:
-            statusStr = @"已取消";
-            break;
         case ORDERSTATUS_FINISHED:
-            statusStr = @"已完成";
+            statusStr = @"已诊疗";
             break;
         case ORDERSTATUS_PAID:
             statusStr = @"待服务";
-            break;
-        case ORDERSTATUS_REFUNDED:
-            statusStr = @"已退款";
             break;
         default:
             break;

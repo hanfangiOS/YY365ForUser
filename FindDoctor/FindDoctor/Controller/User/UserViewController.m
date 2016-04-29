@@ -174,7 +174,8 @@
                 OrderFilter * filter = [[OrderFilter alloc] init];
                 filter.user = [CUUserManager sharedInstance].user;
                 filter.orderStatus = ORDERSTATUS_UNPAID;
-                filter.pageNum = 0;
+                filter.total = 0;
+                filter.rows = 20;
                 MyAppointmentListModel * listModel = [[MyAppointmentListModel alloc] initWithFilter:filter];
                 MyAppointmentController * VC = [[MyAppointmentController alloc] initWithPageName:@"MyAppointmentController" listModel:listModel];
                 [self.slideNavigationController pushViewController:VC animated:YES];
@@ -184,8 +185,8 @@
                 OrderFilter * filter = [[OrderFilter alloc] init];
                 filter.user = [CUUserManager sharedInstance].user;
                 filter.orderStatus = ORDERSTATUS_FINISHED;
-                filter.pageNum = 0;
-                
+                filter.total = 0;
+                filter.rows = 20;
                 MyTreatmentListModel * listModel = [[MyTreatmentListModel alloc]initWithFilter:filter];
                 MyTreatmentController * VC = [[MyTreatmentController alloc]initWithPageName:@"MyTreatmentController" listModel:listModel];
                 [self.slideNavigationController  pushViewController:VC animated:YES];

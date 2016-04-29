@@ -44,7 +44,13 @@
 
 - (void)addMemberAction{
     AddMemberViewController * VC = [[AddMemberViewController alloc] initWithPageName:@"AddMemberViewController"];
+    __weak __block typeof(self)weakSelf = self;
+    VC.backWithUserBlock = ^(CUUser * user){
+        [weakSelf triggerRefresh];
+    };
     [self.slideNavigationController pushViewController:VC animated:YES];
+    
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -36,7 +36,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         //    NSArray *types = @[@"subject", @"symptom", @"disease"];
         
         NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+        //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+        [dataParam setObjectSafely:@(19) forKey:@"accID"];
         [dataParam setObjectSafely:@(filter.typeId) forKey:@"subjectID"];
         [dataParam setObjectSafely:@(510000) forKey:@"regionID"];
         [dataParam setObjectSafely:@([kCurrentLng doubleValue]) forKey:@"longitude"];
@@ -162,7 +163,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         //    NSArray *types = @[@"subject", @"symptom", @"disease"];
         
         NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+        //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+        [dataParam setObjectSafely:@(19) forKey:@"accID"];
         [dataParam setObjectSafely:@(filter.typeId) forKey:@"subjectID"];
         [dataParam setObjectSafely:@(510000) forKey:@"regionID"];
         [dataParam setObjectSafely:@([kCurrentLng doubleValue]) forKey:@"longitude"];
@@ -282,7 +284,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     //    NSArray *types = @[@"subject", @"symptom", @"disease"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(0) forKey:@"doctorID"];
     
     
@@ -352,7 +355,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(doctor.doctorId) forKey:@"doctorID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -421,7 +425,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(releaseID) forKey:@"releaseID"];
     [dataParam setObjectSafely:[SNPlatformManager deviceId] forKey:@"deviceInfo"];
     
@@ -480,7 +485,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(doctorID) forKey:@"doctorID"];
     [dataParam setObjectSafely:@(isConcern) forKey:@"isConcern"];
     
@@ -517,7 +523,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     

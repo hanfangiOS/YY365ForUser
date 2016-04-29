@@ -12,6 +12,7 @@
 #import "CityChooseButton.h"
 #import "NewsListController.h"
 #import "NewsListModel.h"
+#import "AppDelegate.h"
 
 @interface HomeViewController ()<UITextFieldDelegate>{
     CityChooseButton    *_cityButton;
@@ -29,14 +30,15 @@
 - (id)initWithPageName:(NSString *)pageName{
     self = [super initWithPageName:pageName];
     if (self) {
+        self.hasToolbar = NO;
         self.hasNavigationBar = NO;
     }
     return self;
 }
 
-- (void)setShouldHaveTab {
-    self.hasTab = YES;
-}
+//- (void)setShouldHaveTab {
+//    self.hasTab = YES;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,7 +46,11 @@
 
 - (void)loadContentView{
     _homeSubViewController_Main = [[HomeSubViewController_Main alloc]initWithPageName:@"HomeSubViewController_Main"];
+    _homeSubViewController_Main.homeViewController = self;
+    
     _homeSubViewController_Search = [[HomeSubViewController_Search alloc]initWithPageName:@"HomeSubViewController_Search"];
+    _homeSubViewController_Search.homeViewController = self;
+    
     [self addChildViewController:_homeSubViewController_Search];
     [self addChildViewController:_homeSubViewController_Main];
     _homeSubViewController_Search.view.frame = CGRectMake(0, 60, kScreenWidth, self.contentView.frameHeight - 60);
@@ -134,6 +140,8 @@
         _messageButton.alpha = 1;
         _homeSubViewController_Search.view.alpha = 0;
         _homeSubViewController_Main.view.alpha = 1;
+        AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+        appDelegate.tabController.customTabBar.hidden = NO;
     } completion:^(BOOL finished) {
         _searchCancelButton.hidden = YES;
         _cityButton.hidden = NO;
@@ -165,6 +173,8 @@
         _messageButton.alpha = 1;
         _cityButton.hidden = NO;
         _cityButton.alpha = 1;
+        
+        __weak __block typeof(self)weakSelf = self;
         [UIView animateWithDuration:timeDuration delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:3 options:UIViewAnimationOptionLayoutSubviews animations:^{
             _searchTextField.frame = CGRectMake(10, 28, kScreenWidth - 60 , 24);
             _searchCancelButton.alpha = 1;
@@ -172,11 +182,15 @@
             _messageButton.alpha = 0;
             _homeSubViewController_Search.view.alpha = 1.f;
             _homeSubViewController_Main.view.alpha = 0.f;
+            AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+            appDelegate.tabController.customTabBar.hidden = YES;
+//            _homeSubViewController_Search.contentView
         } completion:^(BOOL finished) {
             _searchCancelButton.hidden = NO;
             _cityButton.hidden = YES;
             _messageButton.hidden = YES;
-            [self.view bringSubviewToFront:_homeSubViewController_Search.view];
+            [weakSelf.view bringSubviewToFront:_homeSubViewController_Search.view];
+            
         }];
     }
 }

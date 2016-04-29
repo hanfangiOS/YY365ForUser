@@ -22,40 +22,45 @@
 
 - (void)gotoFirstPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUOrderManager sharedInstance] getUncommentOrderListWithPageNum:0 pageSize:kPageSize user:self.filter.user searchedWithOrderStatus:self.filter.orderStatus resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUOrderManager sharedInstance] getOrderHasPayHasMeetListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
-            SNBaseListModel * list = result.parsedModelObject;
-            NSArray *orderArray = list.items;
-            
-            [self.items removeAllObjects];
-            [self.items addObjectsFromArray:orderArray];
-            
-            SNPageInfo * info = list.pageInfo;
-            self.pageInfo.pageSize = info.pageSize;
-            self.pageInfo.totalPage = info.totalPage;
-            self.pageInfo.currentPage = startPageNum;
+            if (!result.hasError)
+            {
+                SNBaseListModel * list = result.parsedModelObject;
+                NSArray *orderArray = list.items;
+                
+                [self.items removeAllObjects];
+                [self.items addObjectsFromArray:orderArray];
+                
+                SNPageInfo * info = list.pageInfo;
+                self.pageInfo.pageSize = info.pageSize;
+                self.pageInfo.totalPage = info.totalPage;
+                self.pageInfo.currentPage = startPageNum;
+            }
         }
-        resultBlock(request,result);
-    } pageName:@"MyAppointmentController"];
+    } pageName:@"MyTreatmentController"];
 }
 
 - (void)gotoNextPage:(SNServerAPIResultBlock)resultBlock
 {
-    [[CUOrderManager sharedInstance] getUncommentOrderListWithPageNum:self.filter.pageNum pageSize:kPageSize user:self.filter.user searchedWithOrderStatus:self.filter.orderStatus resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+
+    [[CUOrderManager sharedInstance] getOrderHasPayHasMeetListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
-            SNBaseListModel * list = result.parsedModelObject;
-            [self.items addObjectsFromArray:list.items];
-            
-            SNPageInfo * info = list.pageInfo;
-            self.pageInfo.pageSize = info.pageSize;
-            self.pageInfo.totalPage = info.totalPage;
-            self.pageInfo.currentPage++;
+            if (!result.hasError)
+            {
+                SNBaseListModel * list = result.parsedModelObject;
+                [self.items addObjectsFromArray:list.items];
+                
+                SNPageInfo * info = list.pageInfo;
+                self.pageInfo.pageSize = info.pageSize;
+                self.pageInfo.totalPage = info.totalPage;
+                self.pageInfo.currentPage++;
+            }
         }
-        resultBlock(request,result);
-    } pageName:@"MyAppointmentController"];
-    
+    } pageName:@"MyTreatmentController"];
+
 }
 
 @end

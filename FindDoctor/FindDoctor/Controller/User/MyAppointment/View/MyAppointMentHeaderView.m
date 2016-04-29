@@ -31,8 +31,8 @@
 
     [self addSubview:self.leftBtn];
     
-    self.leftBottomLine = [[UILabel alloc] initWithFrame:CGRectMake(45, self.frameHeight - 2,(self.leftBtn.centerX - 45) * 2, 2)];
-    self.leftBottomLine.backgroundColor = [UIColor blueColor];
+    self.leftBottomLine = [[UILabel alloc] initWithFrame:CGRectMake(45, self.frameHeight - 3,(self.leftBtn.centerX - 45) * 2, 3)];
+    self.leftBottomLine.backgroundColor = kDarkBlueColor;
     [self addSubview:self.leftBottomLine];
     
     self.rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth - padding - btnWidth, 0, btnWidth, self.frameHeight)];
@@ -41,7 +41,7 @@
     [self addSubview:self.rightBtn];
     
     self.rightBottomLine = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 45 - self.leftBottomLine.frameWidth, self.frameHeight - 2,self.leftBottomLine.frameWidth, 2)];
-    self.rightBottomLine.backgroundColor = [UIColor blueColor];
+    self.rightBottomLine.backgroundColor = kDarkBlueColor;
     [self addSubview:self.rightBottomLine];
 }
 

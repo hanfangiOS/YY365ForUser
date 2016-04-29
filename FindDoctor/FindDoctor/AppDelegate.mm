@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "SNTabViewController.h"
+
 #import "AppCore.h"
 #import "CUUIContant.h"
 #import "BMapKit.h"
@@ -46,7 +46,7 @@
 
 @interface AppDelegate () <BMKGeneralDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
 
-@property (nonatomic,strong)SNTabViewController * tabController;
+
 
 @end
 

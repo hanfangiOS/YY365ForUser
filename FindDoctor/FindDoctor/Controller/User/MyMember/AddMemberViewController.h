@@ -7,7 +7,12 @@
 //
 
 #import "CUViewController.h"
+#import "CUUser.h"
+
+typedef void(^BackWithUserBlock)(CUUser * user);
 
 @interface AddMemberViewController : CUViewController
+
+@property (copy,nonatomic)BackWithUserBlock backWithUserBlock;
 
 @end
