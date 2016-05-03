@@ -34,11 +34,11 @@
 #if defined(CollegeUnion_Develop)
 
 
-//#define URL_Base @"http://192.168.1.101:8889"
-//#define URL_Base @"http://192.168.1.101:8888"
-#define URL_Base @"http://192.168.1.123:8080"
-//#define URL_Base @"http://192.168.1.128:8080"
 
+//#define URL_Base @"http://192.168.1.101:8888"//
+#define URL_Base @"http://192.168.1.123:8080"//威
+//#define URL_Base @"http://192.168.1.121:8080"//银
+//#define URL_Base @"http://192.168.0.210:8080"//军
 
 #elif defined(CollegeUnion_Distribution)
 

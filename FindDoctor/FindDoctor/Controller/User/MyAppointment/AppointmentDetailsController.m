@@ -120,6 +120,8 @@
     }
 }
 
+#pragma mark Action
+
 - (void)payAction{
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"确认付款吗" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
     alert.tag = 10000;
@@ -139,7 +141,9 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if (alertView.tag == 10000) {
-//        [self postRequest1];
+        OrderConfirmController * vc = [[OrderConfirmController alloc] initWithPageName:@"OrderConfirmController"];
+        vc.order = self.order;
+        [self.slideNavigationController pushViewController:vc animated:YES];
     }
     
     if (alertView.tag == 20000) {

@@ -306,9 +306,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DoctorListModel * listModel = [[DoctorListModel alloc] initWithSortType:DoctorSortTypeNone];
+    DoctorListModel * listModel = [[DoctorListModel alloc] initWithSortType:SubObjectSortTypeNone];
     SubObject *subobject = (SubObject *)[self.homeModel.subjectList objectAtIndex:indexPath.row];
-    listModel.filter.typeId = subobject.type_id;
+//    listModel.filter.typeId = subobject.type_id;
     DoctorListController *listVC = [[DoctorListController alloc] initWithPageName:@"DoctorListController" listModel:listModel];
     [self.slideNavigationController pushViewController:listVC animated:YES];
 

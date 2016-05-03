@@ -14,6 +14,7 @@
 #import "TipHandler+HUD.h"
 #import "CUOrder.h"
 #import "CUOrderManager.h"
+#import "OrderConfirmController.h"
 
 typedef NS_ENUM(NSInteger,ListType){
     ListTypeForPay = 0,//待支付
@@ -101,6 +102,7 @@ typedef NS_ENUM(NSInteger,ListType){
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //待付款
     if (self.listType == ListTypeForPay) {
         MyAppointmentCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyAppointmentCell"];
         if (!cell) {
@@ -108,7 +110,13 @@ typedef NS_ENUM(NSInteger,ListType){
         }
         cell.data = [self.listModel.items objectAtIndexSafely:indexPath.section];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.clickPayBtn = ^{
+            OrderConfirmController * vc = [[OrderConfirmController alloc] initWithPageName:@"OrderConfirmController"];
+            vc.order = [self.listModel.items objectAtIndexSafely:indexPath.section];
+            [self.slideNavigationController pushViewController:vc animated:YES];
+        };
         return cell;
+    //待就诊
     }else{
         MyAppointmentForTreatCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyAppointmentForTreatCell"];
         if (!cell) {
@@ -199,6 +207,8 @@ typedef NS_ENUM(NSInteger,ListType){
     self.listModel.filter.total = self.listModel.items.count;
     self.listModel.filter.rows = 10;
     [self.listModel.items removeAllObjects];
+    
+    [self.contentTableView reloadData];
     [self triggerRefresh];
     
     
@@ -216,8 +226,10 @@ typedef NS_ENUM(NSInteger,ListType){
     self.listModel.filter.orderStatus = ORDERSTATUS_PAID;
     self.listModel.filter.total = self.listModel.items.count;
     self.listModel.filter.rows = 10;
-    [self triggerRefresh];
     [self.listModel.items removeAllObjects];
+    
+    [self.contentTableView reloadData];
+    [self triggerRefresh];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

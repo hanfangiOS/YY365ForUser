@@ -381,6 +381,7 @@
 		BCAA4ACA1C85964D0085A165 /* TotalMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AC61C85964D0085A165 /* TotalMoneyView.m */; };
 		BCAA4ACD1C8597F70085A165 /* MyAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4ACC1C8597F70085A165 /* MyAccount.m */; };
 		BCAA4AD11C8686750085A165 /* Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AD01C8686750085A165 /* Diagnosis.m */; };
+		BCACDC8F1CD8463600C5DDC1 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACDC8E1CD8463600C5DDC1 /* SearchResultViewController.m */; };
 		BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0506B1C15982500F988B1 /* TipMessageData.m */; };
 		BCB0506E1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */; };
 		BCB51CF41CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB51CF31CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m */; };
@@ -1341,6 +1342,8 @@
 		BCAA4ACC1C8597F70085A165 /* MyAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccount.m; sourceTree = "<group>"; };
 		BCAA4ACF1C8686750085A165 /* Diagnosis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Diagnosis.h; sourceTree = "<group>"; };
 		BCAA4AD01C8686750085A165 /* Diagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Diagnosis.m; sourceTree = "<group>"; };
+		BCACDC8D1CD8463600C5DDC1 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchResultViewController.h; path = SearchResult/SearchResultViewController.h; sourceTree = "<group>"; };
+		BCACDC8E1CD8463600C5DDC1 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchResultViewController.m; path = SearchResult/SearchResultViewController.m; sourceTree = "<group>"; };
 		BCB0506A1C15982500F988B1 /* TipMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipMessageData.h; sourceTree = "<group>"; };
 		BCB0506B1C15982500F988B1 /* TipMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipMessageData.m; sourceTree = "<group>"; };
 		BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipTableViewCellBackground@2x.png"; sourceTree = "<group>"; };
@@ -3449,6 +3452,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		BCACDC8C1CD8460600C5DDC1 /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				BCACDC8D1CD8463600C5DDC1 /* SearchResultViewController.h */,
+				BCACDC8E1CD8463600C5DDC1 /* SearchResultViewController.m */,
+			);
+			name = SearchResult;
+			sourceTree = "<group>";
+		};
 		D405CC641C0061FD00A56264 /* CUPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -4039,6 +4051,7 @@
 		E1EB1B8B1B70A43A0048B8EB /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BCACDC8C1CD8460600C5DDC1 /* SearchResult */,
 				E61DDAC51B8E2FA800120365 /* View */,
 				E1EB1B8C1B70A43A0048B8EB /* HomeSubController.h */,
 				E1EB1B8D1B70A43A0048B8EB /* HomeSubController.m */,
@@ -5435,6 +5448,7 @@
 				BC1859BB1C841C860050251B /* SubjectOfClinicMainCollectionViewCell.m in Sources */,
 				3ED0A7681AA607FD0040E529 /* SNTabViewController.m in Sources */,
 				E1A6B8E61BAD4302001A458D /* UserCenterController.m in Sources */,
+				BCACDC8F1CD8463600C5DDC1 /* SearchResultViewController.m in Sources */,
 				BC313D271C3A147500C9469D /* BigButtonsInUser.m in Sources */,
 				E10EDCA51B8B60930035B6E7 /* OrderResultController.m in Sources */,
 				3EDEBAC31A961C4800E72809 /* UIImage+Draw.m in Sources */,

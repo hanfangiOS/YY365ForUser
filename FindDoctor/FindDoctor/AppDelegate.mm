@@ -208,15 +208,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(launchFirstView) name:@"LaunchFirstView" object:nil];
     LoadingView * loadingView = [[LoadingView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    loadingView.alpha = 0;
     UIViewController * vc = [[UIViewController alloc] init];
     vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [vc.view addSubview:loadingView];
     self.window.rootViewController = vc;
-//    [UIView animateWithDuration:0.2 animations:^{
-//        loadingView.alpha = 1;
-//    }];
-    
 }
 
 - (void)launchFirstView
@@ -251,25 +246,8 @@
     if (self.slideNaviController == nil)
     {
         self.slideNaviController = [[SNSlideNavigationController alloc] initWithRootViewController:[self createTabBarController]];
-//        [[UINavigationBar appearance] setTitleTextAttributes:
-//         [NSDictionary dictionaryWithObjectsAndKeys:
-//          [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
-//          UITextAttributeTextColor,
-//          [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],
-//          UITextAttributeTextShadowColor,
-//          [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
-//          UITextAttributeTextShadowOffset,
-//          [UIFont fontWithName:@"Arial-Bold" size:0.0],
-//          UITextAttributeFont,
-//          nil]];
     }
     self.window.rootViewController = self.slideNaviController;
-//    self.slideNaviController.view.alpha = 0;
-//    [UIView animateWithDuration:0.25 animations:^{
-//        self.slideNaviController.view.alpha = 1;
-//    }];
-   
-   
 
 }
 
@@ -298,14 +276,15 @@
     NearbyController *orderVC = [[NearbyController alloc] initWithPageName:@"NearbyController"];
     orderVC.customTabBarItem = [self tabBarItemAtIndex:1];
     
-    VIPController *scoreBoradVC = [[VIPController alloc] initWithPageName:@"VIPController"];
-    scoreBoradVC.customTabBarItem = [self tabBarItemAtIndex:2];
+//    VIPController *scoreBoradVC = [[VIPController alloc] initWithPageName:@"VIPController"];
+//    scoreBoradVC.customTabBarItem = [self tabBarItemAtIndex:2];
     
     UserViewController *userVC = [[UserViewController alloc] initWithPageName:@"UserViewController"];
-    userVC.customTabBarItem = [self tabBarItemAtIndex:3];
+    userVC.customTabBarItem = [self tabBarItemAtIndex:2];
     
     self.tabController = [[SNTabViewController alloc] initWithHeight:Height_Tabbar];
-    self.tabController.viewControllers = @[homeVC,orderVC,scoreBoradVC,userVC];
+//    self.tabController.viewControllers = @[homeVC,orderVC,scoreBoradVC,userVC];
+    self.tabController.viewControllers = @[homeVC,orderVC,userVC];
     
     self.tabController.selectedIndex = 0;
     self.tabController.customTabBar.selectedIndex = 0;
@@ -315,15 +294,11 @@
 
 - (SNTabBarItem *)tabBarItemAtIndex:(int)index
 {
-    NSArray *titles = @[@"优医",@"优医馆",@"vip",@"我的"];
-    NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_nearby_nor",@"tabbar_vip_nor",@"tabbar_mine_nor"];
-//    NSArray *hilIcons = @[@"tabbar_icon_home_highlighted",@"tabbar_icon_service_highlighted",@"tabbar_icon_discount_highlighted",@"tabbar_icon_mine_highlighted"];
-   NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_nearby_sel",@"tabbar_vip_sel",@"tabbar_mine_sel"];
+    NSArray *titles = @[@"优医",@"优医馆",@"我的"];
+    NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_nearby_nor",@"tabbar_mine_nor"];
     
-//    NSArray *titles = @[@"养生",@"附近",@"首页",@"上门",@"我的"];
-//    NSArray *norIcons = @[@"tabbar_home_nor",@"tabbar_order_nor",@"tabbar_home_nor",@"tabbar_rank_nor",@"tabbar_mine_nor"];
-//    //    NSArray *hilIcons = @[@"tabbar_icon_home_highlighted",@"tabbar_icon_service_highlighted",@"tabbar_icon_discount_highlighted",@"tabbar_icon_mine_highlighted"];
-//    NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_order_sel",@"tabbar_home_sel",@"tabbar_rank_sel",@"tabbar_mine_sel"];
+   NSArray *selIcons = @[@"tabbar_home_sel",@"tabbar_nearby_sel",@"tabbar_mine_sel"];
+    
     
     float tabBarWidth = kScreenWidth / titles.count;
     SNTabBarItem *customTabBarItem = [[SNTabBarItem alloc] initWithFrame:CGRectMake(tabBarWidth * index, 0, tabBarWidth, Height_Tabbar)];

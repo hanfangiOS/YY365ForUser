@@ -7,14 +7,14 @@
 //
 
 #import "SNBaseListModel.h"
-#import "Doctor.h"
+#import "SubObject.h"
 
 @interface DoctorListModel : SNBaseListModel
 
-@property (nonatomic, strong) DoctorFilter *filter;
+@property (nonatomic, strong) SubObjectFilter *filter;
 
-- (instancetype)initWithSortType:(DoctorSortType)type;
+- (instancetype)initWithSortType:(SubObjectSortType)type;
 
-- (instancetype)initWithFilter:(DoctorFilter *)filter;
+- (instancetype)initWithFilter:(SubObjectFilter *)filter;
 
 @end

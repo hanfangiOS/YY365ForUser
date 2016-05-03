@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 li na. All rights reserved.
 //
 
-#import "DoctorListController.h"
+#import "SearchResultViewController.h"
 #import "DoctorCell.h"
 #import "DOPDropDownMenu.h"
 #import "DoctorDetailController.h"
@@ -19,7 +19,7 @@
 #import "DoctorListModel.h"
 #import "CommonManager.h"
 
-@interface DoctorListController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate>
+@interface SearchResultViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate>
 
 @property (nonatomic,strong) DOPDropDownMenu *dropdownMenu;
 
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation DoctorListController
+@implementation SearchResultViewController
 
 - (id)initWithPageName:(NSString *)pageName listModel:(DoctorListModel *)listModel
 {
@@ -43,7 +43,7 @@
     if (self) {
         self.titleArray = @[@"病症", @"距离", @"时间"];
         //            self.diseaseArray = [NSArray arrayWithArray:[DiseaseSubject contentsWithName:listModel.filter.keyword]];
-//        self.diseaseArray = listModel.filter.symptomOptionArray;
+        //        self.diseaseArray = listModel.filter.symptomOptionArray;
         self.distanseArray = @[@"全部", @"距离从近到远"];
         self.timeArray = @[];
     }
@@ -61,7 +61,7 @@
     [super viewWillAppear:animated];
     [[CommonManager sharedInstance] getSubjectListWithFilter:self.listModel.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if(!result.hasError){
-        
+            
         }
         else{
             
@@ -117,7 +117,7 @@
     detailVC.doctor = [self.listModel.items objectAtIndexSafely:indexPath.row];
 #if !LOCAL
     
-//    NSDateFormatter* formatter = [NSDateFormatter dateFormatterWithFormat:[NSDateFormatter dateFormatString]];
+    //    NSDateFormatter* formatter = [NSDateFormatter dateFormatterWithFormat:[NSDateFormatter dateFormatString]];
     
     [[CUDoctorManager sharedInstance] updateDoctorInfo:detailVC.doctor date:[[[NSDate date] dateAtStartOfDay] timeIntervalSince1970] resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
@@ -193,32 +193,32 @@
 
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
 {
-//    self.listModel.filter.classNumber = 1;
+    //    self.listModel.filter.classNumber = 1;
     // 点击第一个，即‘全部’
-//    if (indexPath.row == 0)
-//    {
-////        [self.dropdownMenu updateMenuTitle:self.titleArray[indexPath.column] inColumn:indexPath.column];
-//        [self.dropdownMenu reloadData];
-//    }
-//    switch (indexPath.column) {
-//        case 0:{
-//            self.listModel.filter.subTypeId = indexPath.row;
-//        }
-//            break;
-//        case 1:{
-//        }
-//            break;
-//        case 2:{
-//            self.listModel.filter.orderDate = [self.timeArray objectAtIndex:indexPath.row];
-//            if (indexPath.row == 0) {
-//                self.listModel.filter.orderDate = @"0";
-//            }
-//        }
-//            break;
-//        default:
-//            break;
-//    }
-//    
+    //    if (indexPath.row == 0)
+    //    {
+    ////        [self.dropdownMenu updateMenuTitle:self.titleArray[indexPath.column] inColumn:indexPath.column];
+    //        [self.dropdownMenu reloadData];
+    //    }
+    //    switch (indexPath.column) {
+    //        case 0:{
+    //            self.listModel.filter.subTypeId = indexPath.row;
+    //        }
+    //            break;
+    //        case 1:{
+    //        }
+    //            break;
+    //        case 2:{
+    //            self.listModel.filter.orderDate = [self.timeArray objectAtIndex:indexPath.row];
+    //            if (indexPath.row == 0) {
+    //                self.listModel.filter.orderDate = @"0";
+    //            }
+    //        }
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //
     // TODO:filter设置
     [self triggerRefresh];
 }
@@ -226,77 +226,6 @@
 {
 }
 
-- (void)triggerRefresh
-{
-    [self.freshControl beginRefreshing];
-    [self.loadMoreControl endLoading];
-    self.listModel.isLoading = YES;
-    __block __weak DoctorListController * blockSelf = self;
-    [self.listModel gotoFirstPage:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        
-        blockSelf.listModel.isLoading = NO;
-        [blockSelf.freshControl endRefreshing];
-        if (!result.hasError)
-        {
-            // height
-            [blockSelf.heightDictOfCells removeAllObjects];
-            
-            [blockSelf.freshControl refreshLastUpdatedTime:[NSDate date]];
-            [blockSelf.contentTableView reloadData];
-            
-//            if(!result.hasError){
-//                if (blockSelf.listModel.filter.classNumber == 0) {
-//                    NSArray *recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"symptomOption"];
-//                    NSMutableArray *listSubject = [[NSMutableArray alloc] init];
-//                    [listSubject addObject:@"全部"];
-//                    [recvList enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-//                        NSString *string = [obj valueForKey:@"name"];
-//                        [listSubject addObject:string];
-//                    }];
-//                    blockSelf.diseaseArray = listSubject;
-//                    
-//                    recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"dateOption"];
-//                    listSubject = [[NSMutableArray alloc] init];
-//                    [listSubject addObject:@"全部"];
-//                    [recvList enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-//                        NSString *string = [obj valueForKey:@"date"];
-//                        [listSubject addObject:string];
-//                    }];
-//                    blockSelf.timeArray = listSubject;
-//                    [blockSelf.dropdownMenu reloadData];
-//                }
-//            }
-
-            
-            // footer
-            if ([blockSelf.listModel hasNext])
-            {
-                blockSelf.contentTableView.tableFooterView = self.loadMoreControl;
-            }
-            else
-            {
-                blockSelf.contentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-                ;
-            }
-        }
-        else
-        {
-//            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] inView:blockSelf.view];
-            
-        }
-        
-        // 添加空页面
-        if ([blockSelf.listModel.items count] == 0)
-        {
-            blockSelf.emptyView.hidden = NO;
-        }
-        else // 隐藏空页面
-        {
-            blockSelf.emptyView.hidden = YES;
-        }
-        
-    }];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
