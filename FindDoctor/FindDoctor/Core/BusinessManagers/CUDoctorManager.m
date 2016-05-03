@@ -641,6 +641,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     return doctorArray;
 }
 
+//好评医生
 - (void)getGoodRemarkDoctorListWithFilter:(DoctorFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"goodRemarkDoctorList"];
@@ -651,7 +652,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/goodRemarkDoctorList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_goodRemarkDoctorList parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -702,7 +703,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/famousDoctorClinic.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_famousDoctorClinic parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];

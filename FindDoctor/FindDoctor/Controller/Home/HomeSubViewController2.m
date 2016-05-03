@@ -163,9 +163,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DoctorListModel *listModel = [[DoctorListModel alloc] initWithSortType:DoctorSortTypeNone];
-    SubObject *subobject = (SubObject *)[_itemArray objectAtIndex:indexPath.row];
-    listModel.filter.typeId = subobject.type_id;
+//    DoctorListModel *listModel = [[DoctorListModel alloc] initWithSortType:DoctorSortTypeNone];
+//    SubObject *subobject = (SubObject *)[_itemArray objectAtIndex:indexPath.row];
+//    listModel.filter.typeId = subobject.type_id;
 //#if !LOCAL
 //    listModel.filter.typeId = indexPath.section;
 //    listModel.filter.subTypeId = [[[[_showObjectList.items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] type_id] integerValue];
@@ -173,8 +173,8 @@
 //#else
 //    listModel.filter.typeId = [[[_showObjectList.items objectAtIndex:indexPath.row] type_id] integerValue];
 //#endif
-    DoctorListController *listVC = [[DoctorListController alloc] initWithPageName:@"DoctorListController" listModel:listModel];
-    [self.slideNavigationController pushViewController:listVC animated:YES];
+//    DoctorListController *listVC = [[DoctorListController alloc] initWithPageName:@"DoctorListController" listModel:listModel];
+//    [self.slideNavigationController pushViewController:listVC animated:YES];
 }
 
 - (void)loadNavigationBar

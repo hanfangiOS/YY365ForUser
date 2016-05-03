@@ -1,4 +1,4 @@
-//
+ //
 //  HomeSubViewController_Search.m
 //  FindDoctor
 //
@@ -86,7 +86,7 @@
     EqualSpaceFlowLayout *collectionLayout = [[EqualSpaceFlowLayout alloc] init];
     collectionLayout.delegate = self;
     
-    CGRect collectionFrame = CGRectMake(0, 0, kScreenWidth, self.contentView.frameHeight - 60 - 49);
+    CGRect collectionFrame = CGRectMake(0, 0, kScreenWidth, self.contentView.frameHeight - 60);
     
     UICollectionView *collectionview = [[UICollectionView alloc] initWithFrame:collectionFrame collectionViewLayout:collectionLayout];
     collectionview.backgroundColor = [UIColor clearColor];
@@ -239,6 +239,12 @@
     }
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
+
+#pragma mark - scrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.delegate HomeSubViewController_SearchEndEdit];
+}
+
 #pragma mark - Search History
 
 - (void)loadHistory

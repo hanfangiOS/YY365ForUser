@@ -15,8 +15,8 @@
 #import "SubObject.h"
 #import "SubObjectCell.h"
 #import "HomeSubViewMainBannerCell.h"
-#import "DoctorListModel.h"
-#import "DoctorListController.h"
+#import "SearchResultListModel.h"
+#import "SearchResultViewController.h"
 #import "HomeSubViewMainTableCell.h"
 #import "CommonManager.h"
 #import "CUDoctorManager.h"
@@ -310,10 +310,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DoctorListModel * listModel = [[DoctorListModel alloc] initWithSortType:DoctorSortTypeNone];
+    SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SubObjectSortTypeNone];
     SubObject *subobject = (SubObject *)[self.homeModel.subjectList objectAtIndex:indexPath.row];
-    listModel.filter.typeId = subobject.type_id;
-    DoctorListController *listVC = [[DoctorListController alloc] initWithPageName:@"DoctorListController" listModel:listModel];
+//    listModel.filter.typeId = subobject.type_id;
+    SearchResultViewController *listVC = [[SearchResultViewController alloc] initWithPageName:self.pageName listModel:listModel];
     [self.slideNavigationController pushViewController:listVC animated:YES];
 
 }

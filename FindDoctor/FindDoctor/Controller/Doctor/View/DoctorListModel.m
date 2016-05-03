@@ -11,15 +11,15 @@
 
 @implementation DoctorListModel
 
-- (instancetype)initWithSortType:(DoctorSortType)type
+- (instancetype)initWithSortType:(SubObjectSortType)type
 {
-    DoctorFilter *filter = [[DoctorFilter alloc] init];
+    SubObjectFilter *filter = [[SubObjectFilter alloc] init];
     filter.sortType = type;
     
     return [self initWithFilter:filter];
 }
 
-- (instancetype)initWithFilter:(DoctorFilter *)filter
+- (instancetype)initWithFilter:(SubObjectFilter *)filter
 {
     self = [super init];
     

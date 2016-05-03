@@ -103,7 +103,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     
     NSLog(@"%@",param);
 
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/hotSearchClinic.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_hotSearchClinic parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
@@ -135,7 +135,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/hotSearchSymptom.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_hotSearchSymptom parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
@@ -167,7 +167,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/hotSearchDoctor.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_hotSearchDoctor parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
@@ -178,7 +178,8 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                     doctor.name = [obj valueForKey:@"name"];
                     doctor.doctorId = [obj integerForKeySafely:@"doctorid"];
                     doctor.avatar = [obj valueForKey:@"icon"];
-                    doctor.skillTreat = [obj valueForKey:@"goodatdisease"];
+                    doctor.skillTreat = [obj valueForKey:@"skilltreat"];
+                    doctor.levelDesc = [obj valueForKey:@"title"];
                     [dataList addObject:doctor];
                 }];
                 result.parsedModelObject = dataList;

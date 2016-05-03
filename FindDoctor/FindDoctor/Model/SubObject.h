@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "HFFilter.h"
 
+typedef NS_ENUM(NSInteger, SubObjectSortType) {
+    SubObjectSortTypeRate      = 1,  // 按评分
+    SubObjectSortTypeDistance  = 2,  // 按距离
+    SubObjectSortTypeAvailable = 3,  // 按可预约
+    SubObjectSortTypeNone      = 0
+};
+
 @interface SubObject : NSObject
 
 @property long long type_id;
@@ -19,5 +26,7 @@
 @end
 
 @interface SubObjectFilter : HFFilter
+
+@property SubObjectSortType sortType;
 
 @end

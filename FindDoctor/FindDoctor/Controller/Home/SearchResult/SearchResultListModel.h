@@ -9,7 +9,7 @@
 #import "SNBaseListModel.h"
 #import "SubObject.h"
 
-@interface DoctorListModel : SNBaseListModel
+@interface SearchResultListModel : SNBaseListModel
 
 @property (nonatomic, strong) SubObjectFilter *filter;
 
