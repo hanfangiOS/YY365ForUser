@@ -184,7 +184,6 @@
             _homeSubViewController_Main.view.alpha = 0.f;
             AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
             appDelegate.tabController.customTabBar.hidden = YES;
-//            _homeSubViewController_Search.contentView
         } completion:^(BOOL finished) {
             _searchCancelButton.hidden = NO;
             _cityButton.hidden = YES;

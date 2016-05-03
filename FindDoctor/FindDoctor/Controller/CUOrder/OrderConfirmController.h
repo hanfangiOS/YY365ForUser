@@ -11,7 +11,7 @@
 
 @interface OrderConfirmController : CUViewController
 
-@property (nonatomic, strong) CUOrder *order;
+@property (nonatomic, strong) CUOrder * order;
 
 @property(nonatomic, retain)NSString *channel;
 

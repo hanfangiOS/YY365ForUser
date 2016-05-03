@@ -858,7 +858,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 NSMutableArray * dataList = [NSMutableArray array];
                 
                 NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
-                NSArray * tempList1 = [data arrayForKeySafely:@"orderList"];
+                NSArray * tempList1 = [data arrayForKeySafely:@"order"];
                 [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     CUOrder * order = [[CUOrder alloc] init];
                     order.service.patience.userId = (NSInteger)[obj longlongForKeySafely:@"accID"];
@@ -894,7 +894,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 //没付钱订单详情
 - (void)getOrderNotPayDetailWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetList"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderNotPayDetail"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
@@ -916,21 +916,23 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 CUOrder * order = [[CUOrder alloc] init];
                 order.service.patience.userId = (NSInteger)[orderDict longlongForKeySafely:@"accID"];
                 order.diagnosisID = [orderDict longlongForKeySafely:@"orderno"];
-                order.dealPrice = [orderDict longlongForKeySafely:@"amount"];
+                order.dealPrice = [orderDict longlongForKeySafely:@"currency"];
+                order.service.doctor.price = [orderDict integerForKeySafely:@"amount"];
                 order.service.doctor.name = [orderDict stringForKeySafely:@"doctorName"];
                 order.service.doctor.levelDesc = [orderDict stringForKeySafely:@"title"];
                 order.service.doctor.grade = [orderDict stringForKeySafely:@"gradeas"];
+                order.service.doctor.clinicName = [orderDict stringForKeySafely:@"clinicName"];
+                order.service.doctor.skillTreat = [orderDict stringForKeySafely:@"skilltreat"];
                 order.submitTimeString = [orderDict stringForKeySafely:@"verid"];
                 order.service.doctor.avatar = [orderDict stringForKeySafely:@"icon"];
                 order.service.patience.name = [orderDict stringForKeySafely:@"userName"];
                 order.service.doctor.diagnosisTime = [[orderDict stringForKeySafely:@"ordertime"] integerValue];
                 order.service.doctor.address = [orderDict stringForKeySafely:@"address"];
-                order.service.patience.age = [orderDict integerForKeySafely:@"userAge"];
+                order.service.patience.age = [[orderDict valueForKeySafely:@"userAge"] integerValue];
                 order.service.patience.cellPhone = [orderDict stringForKeySafely:@"userPhone"];
                 order.service.doctor.price = [orderDict integerForKeySafely:@"amount"];
                 order.dealPrice = [orderDict integerForKeySafely:@"currency"];
                 order.coupon = [orderDict integerForKeySafely:@"coupon"];
-                order.service.doctor.address = [orderDict stringForKeySafely:@"clinicAddress"];
                 NSString * str = [orderDict stringForKeySafely:@"channel"];
                 if ([str isEqualToString:@"wx"]) {
                     order.payment = ORDERPAYMENT_WeiXin;
@@ -951,14 +953,14 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         
         resultBlock(request, result);
         
-    }forKey:@"orderHasPayHasMeetList" forPageNameGroup:pageName];
+    }forKey:@"orderNotPayDetail" forPageNameGroup:pageName];
     
 }
 
 //付钱还没看病订单详情
 - (void)getOrderHasPayNotMeetDetailWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetList"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetDetail"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
@@ -989,13 +991,13 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.service.doctor.avatar = [orderDict stringForKeySafely:@"icon"];
                 order.service.patience.name = [orderDict stringForKeySafely:@"userName"];
                 order.service.doctor.diagnosisTime = [[orderDict stringForKeySafely:@"ordertime"] integerValue];
+                order.service.doctor.clinicName = [orderDict stringForKeySafely:@"clinicName"];
                 order.service.doctor.address = [orderDict stringForKeySafely:@"address"];
                 order.service.patience.age = [orderDict integerForKeySafely:@"userAge"];
                 order.service.patience.cellPhone = [orderDict stringForKeySafely:@"userPhone"];
                 order.service.doctor.price = [orderDict integerForKeySafely:@"amount"];
                 order.dealPrice = [orderDict integerForKeySafely:@"currency"];
                 order.coupon = [orderDict integerForKeySafely:@"coupon"];
-                order.service.doctor.address = [orderDict stringForKeySafely:@"clinicAddress"];
                 NSString * str = [orderDict stringForKeySafely:@"channel"];
                 if ([str isEqualToString:@"wx"]) {
                     order.payment = ORDERPAYMENT_WeiXin;
@@ -1016,14 +1018,14 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         
         resultBlock(request, result);
         
-    }forKey:@"orderHasPayHasMeetList" forPageNameGroup:pageName];
+    }forKey:@"orderHasPayNotMeetDetail" forPageNameGroup:pageName];
     
 }
 
 //付钱看病了订单详情
 - (void)getOrderHasPayHasMeetDetailWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetList"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetDetail"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
@@ -1044,6 +1046,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 NSDictionary * orderDict = [data objectForKeySafely:@"order"];
                 CUOrder * order = [[CUOrder alloc] init];
                 order.service.patience.userId = (NSInteger)[orderDict longlongForKeySafely:@"accID"];
+                order.service.doctor.clinicName = [orderDict stringForKeySafely:@"clinicName"];
                 order.diagnosisID = [orderDict longlongForKeySafely:@"orderno"];
                 order.dealPrice = [orderDict longlongForKeySafely:@"amount"];
                 order.service.doctor.name = [orderDict stringForKeySafely:@"doctorName"];
@@ -1060,7 +1063,6 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.service.doctor.price = [orderDict integerForKeySafely:@"amount"];
                 order.dealPrice = [orderDict integerForKeySafely:@"currency"];
                 order.coupon = [orderDict integerForKeySafely:@"coupon"];
-                order.service.doctor.address = [orderDict stringForKeySafely:@"clinicAddress"];
                 NSString * str = [orderDict stringForKeySafely:@"channel"];
                 if ([str isEqualToString:@"wx"]) {
                     order.payment = ORDERPAYMENT_WeiXin;
@@ -1081,7 +1083,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         
         resultBlock(request, result);
         
-    }forKey:@"orderHasPayHasMeetList" forPageNameGroup:pageName];
+    }forKey:@"orderHasPayHasMeetDetail" forPageNameGroup:pageName];
     
 }
 

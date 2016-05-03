@@ -73,7 +73,7 @@
                    range:NSMakeRange(0, length)];
     self.name.attributedText = AtrStr;
     
-    self.brief.text = [NSString stringWithFormat:@"%@",_data.briefIntro];
+    self.brief.text = [NSString stringWithFormat:@"%@",_data.skillTreat];
 }
 
 
