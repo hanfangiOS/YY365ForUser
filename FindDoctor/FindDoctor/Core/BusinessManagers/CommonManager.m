@@ -123,7 +123,69 @@ SINGLETON_IMPLENTATION(CommonManager);
         resultBlock(request, result);
         
     }forKey:@"ActivityBanner" forPageNameGroup:pageName];
+}
+
+
+- (void)getOptionListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:11101 require:@"OptionList"];
     
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObject:@( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.userId : 0 )  forKey:@"accID"];
+    [dataParam setObject:@(510000) forKey:@"regionID"];
+    [dataParam setObject:kCurrentLng forKey:@"longitude"];
+    [dataParam setObject:kCurrentLat forKey:@"latitude"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_OptionList parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                NSMutableDictionary * dataDict = [NSMutableDictionary dictionary];
+                NSMutableArray * mainList = [NSMutableArray array];
+                NSMutableArray * secondList = [NSMutableArray array];
+                
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
+                NSArray * tempList1 = [data arrayForKeySafely:@"main"];
+                [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    Banner * banner = [[Banner alloc] init];
+                    banner.activityId = [obj longlongForKeySafely:@"activityId"];
+                    banner.imagePath = [obj stringForKeySafely:@"imagePath"];
+                    banner.type = [obj stringForKeySafely:@"type"];
+                    banner.redirectId = [obj integerForKeySafely:@"redirectId"];
+                    [mainList addObjectSafely:banner];
+                }];
+                
+                NSArray * tempList2 = [data arrayForKeySafely:@"second"];
+                [tempList2 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    Banner * banner = [[Banner alloc] init];
+                    banner.activityId = [obj longlongForKeySafely:@"activityId"];
+                    banner.imagePath = [obj stringForKeySafely:@"imagePath"];
+                    banner.type = [obj stringForKeySafely:@"type"];
+                    banner.redirectId = [obj integerForKeySafely:@"redirectId"];
+                    [secondList addObjectSafely:banner];
+                }];
+                
+                [dataDict setObjectSafely:mainList forKey:@"main"];
+                [dataDict setObjectSafely:secondList forKey:@"second"];
+                
+                result.parsedModelObject = dataDict;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"ActivityBanner" forPageNameGroup:pageName];
 }
 
 @end

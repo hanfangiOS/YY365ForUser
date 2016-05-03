@@ -59,7 +59,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[CommonManager sharedInstance] getSubjectListWithFilter:self.listModel.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CommonManager sharedInstance] getOptionListWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if(!result.hasError){
             
         }

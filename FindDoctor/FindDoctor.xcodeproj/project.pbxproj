@@ -382,6 +382,8 @@
 		BCAA4ACD1C8597F70085A165 /* MyAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4ACC1C8597F70085A165 /* MyAccount.m */; };
 		BCAA4AD11C8686750085A165 /* Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA4AD01C8686750085A165 /* Diagnosis.m */; };
 		BCACDC8F1CD8463600C5DDC1 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACDC8E1CD8463600C5DDC1 /* SearchResultViewController.m */; };
+		BCACDC921CD853AC00C5DDC1 /* SearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACDC911CD853AC00C5DDC1 /* SearchResultListModel.m */; };
+		BCACDC951CD859D400C5DDC1 /* OptionList.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACDC941CD859D400C5DDC1 /* OptionList.m */; };
 		BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0506B1C15982500F988B1 /* TipMessageData.m */; };
 		BCB0506E1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */; };
 		BCB51CF41CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB51CF31CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m */; };
@@ -1344,6 +1346,10 @@
 		BCAA4AD01C8686750085A165 /* Diagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Diagnosis.m; sourceTree = "<group>"; };
 		BCACDC8D1CD8463600C5DDC1 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchResultViewController.h; path = SearchResult/SearchResultViewController.h; sourceTree = "<group>"; };
 		BCACDC8E1CD8463600C5DDC1 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchResultViewController.m; path = SearchResult/SearchResultViewController.m; sourceTree = "<group>"; };
+		BCACDC901CD853AC00C5DDC1 /* SearchResultListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchResultListModel.h; path = SearchResult/SearchResultListModel.h; sourceTree = "<group>"; };
+		BCACDC911CD853AC00C5DDC1 /* SearchResultListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchResultListModel.m; path = SearchResult/SearchResultListModel.m; sourceTree = "<group>"; };
+		BCACDC931CD859D400C5DDC1 /* OptionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionList.h; sourceTree = "<group>"; };
+		BCACDC941CD859D400C5DDC1 /* OptionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionList.m; sourceTree = "<group>"; };
 		BCB0506A1C15982500F988B1 /* TipMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipMessageData.h; sourceTree = "<group>"; };
 		BCB0506B1C15982500F988B1 /* TipMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipMessageData.m; sourceTree = "<group>"; };
 		BCB0506D1C1599DB00F988B1 /* tipTableViewCellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipTableViewCellBackground@2x.png"; sourceTree = "<group>"; };
@@ -3455,6 +3461,8 @@
 		BCACDC8C1CD8460600C5DDC1 /* SearchResult */ = {
 			isa = PBXGroup;
 			children = (
+				BCACDC901CD853AC00C5DDC1 /* SearchResultListModel.h */,
+				BCACDC911CD853AC00C5DDC1 /* SearchResultListModel.m */,
 				BCACDC8D1CD8463600C5DDC1 /* SearchResultViewController.h */,
 				BCACDC8E1CD8463600C5DDC1 /* SearchResultViewController.m */,
 			);
@@ -4227,6 +4235,8 @@
 				7FFB94911C967051003523B4 /* Comment.m */,
 				7FB3FB381CB245A500A99C97 /* Banner.h */,
 				7FB3FB391CB245A500A99C97 /* Banner.m */,
+				BCACDC931CD859D400C5DDC1 /* OptionList.h */,
+				BCACDC941CD859D400C5DDC1 /* OptionList.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5423,6 +5433,7 @@
 				E1AD6F381B7CDF6100FB3C55 /* DoctorListContainerController.m in Sources */,
 				7F49BC381CB3577F00EAA34A /* HFBannerViewCell.m in Sources */,
 				BC1859C11C84394C0050251B /* YYZhenDanLineView.m in Sources */,
+				BCACDC921CD853AC00C5DDC1 /* SearchResultListModel.m in Sources */,
 				3EDEBA8C1A961C4800E72809 /* SNNetworkClient.m in Sources */,
 				BC1859C01C84394C0050251B /* YYPhotoView.m in Sources */,
 				E10EDCA11B8B60930035B6E7 /* CUOrderListViewController.m in Sources */,
@@ -5506,6 +5517,7 @@
 				3EDEBA841A961C4800E72809 /* UIImageView+WebCache.m in Sources */,
 				7FF0C03D1CC634D40055FF88 /* MyInfoPickerCell.m in Sources */,
 				3EFB22361AB5B43F000872F3 /* SNTopTabViewController.m in Sources */,
+				BCACDC951CD859D400C5DDC1 /* OptionList.m in Sources */,
 				E10EDC751B8B5D570035B6E7 /* Disease.m in Sources */,
 				E1EB1D811B70A43B0048B8EB /* CUUserParser.m in Sources */,
 				3EDEBA721A961C4800E72809 /* SNNetWorkReachability.m in Sources */,

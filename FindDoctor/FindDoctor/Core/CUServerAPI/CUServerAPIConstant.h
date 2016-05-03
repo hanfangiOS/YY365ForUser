@@ -84,6 +84,8 @@
 #define URL_goodRemarkDoctorList @"/baseFrame/base/goodRemarkDoctorList.jmm"
 //优医馆
 #define URL_famousDoctorClinic @"/baseFrame/base/famousDoctorClinic.jmm"
+//获取筛选条件
+#define URL_OptionList @"/baseFrame/base/OptionList.jmm"
 #elif defined(CollegeUnion_Distribution)
 
 #define URL_AfterBase @"/baseFrame/base/server.jmw"
@@ -108,7 +110,8 @@
 #define URL_goodRemarkDoctorList @"/baseFrame/base/goodRemarkDoctorList.jmw"
 //优医馆
 #define URL_famousDoctorClinic @"/baseFrame/base/famousDoctorClinic.jmw"
-
+//获取筛选条件
+#define URL_OptionList @"/baseFrame/base/OptionList.jmw"
 #endif
 
 

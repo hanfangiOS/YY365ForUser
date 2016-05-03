@@ -20,5 +20,6 @@ SINGLETON_DECLARE(CommonManager);
 - (void)getSubjectListWithFilter:(SubObjectFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 //轮播图
 - (void)getActivityBannerWithFilter:(BannerFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
-
+//获取筛选条件
+- (void)getOptionListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 @end
