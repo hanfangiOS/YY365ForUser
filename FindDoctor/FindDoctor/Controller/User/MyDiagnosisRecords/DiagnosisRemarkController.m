@@ -30,16 +30,16 @@
     UILabel                     * _view1_label5;//2016-XXXX
     
     UIView                      * _view2;//第二块view
-    TitleView    * _view2_titleView;//就诊评分
+    TitleView                   * _view2_titleView;//就诊评分
     UIView                      * _view2_starView_containerView;//星星的背景View
     StarRatingView              * _view2_starView;//星星
     float                         _numStar;//星级
     
     UIView                      * _view3;//第三块view
-    TitleView    * _view3_titleView;//赠送锦旗
+    TitleView                   * _view3_titleView;//赠送锦旗
     FlagView                    * _view3_flagView;//一堆旗
     
-    TitleView    * _view4_titleView;//点评内容
+    TitleView                   * _view4_titleView;//点评内容
     UITextView                  * _view4_textView;//XXX(须五字以上)
     UILabel                     * _view4_textView_placeholderLabel;//不解释
     

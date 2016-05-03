@@ -94,19 +94,6 @@
     
 }
 
-
-//order.service.patience.userId = (NSInteger)[obj longlongForKeySafely:@"acid"];
-//order.diagnosisID = [obj longlongForKeySafely:@"orderno"];
-//order.dealPrice = [obj longlongForKeySafely:@"amount"];
-//order.service.doctor.name = [obj stringForKeySafely:@"doctorName"];
-//order.service.doctor.levelDesc = [obj stringForKeySafely:@"title"];
-//order.service.doctor.grade = [obj stringForKeySafely:@"grades"];
-//order.submitTimeString = [obj stringForKeySafely:@"verid"];
-//order.service.doctor.avatar = [obj stringForKeySafely:@"icon"];
-//order.service.patience.name = [obj stringForKeySafely:@"userName"];
-//order.service.doctor.diagnosisTime = [[obj stringForKeySafely:@"ordertime"] integerValue];
-//order.service.doctor.address = [obj stringForKeySafely:@"address"];
-
 - (void)setData:(CUOrder *)data{
     _data = data;
     

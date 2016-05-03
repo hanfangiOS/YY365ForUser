@@ -25,8 +25,6 @@
     [[CUOrderManager sharedInstance] getOrderHasPayHasMeetListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
-            if (!result.hasError)
-            {
                 SNBaseListModel * list = result.parsedModelObject;
                 NSArray *orderArray = list.items;
                 
@@ -37,8 +35,8 @@
                 self.pageInfo.pageSize = info.pageSize;
                 self.pageInfo.totalPage = info.totalPage;
                 self.pageInfo.currentPage = startPageNum;
-            }
         }
+        resultBlock(request, result);
     } pageName:@"MyTreatmentController"];
 }
 
@@ -48,8 +46,6 @@
     [[CUOrderManager sharedInstance] getOrderHasPayHasMeetListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
-            if (!result.hasError)
-            {
                 SNBaseListModel * list = result.parsedModelObject;
                 [self.items addObjectsFromArray:list.items];
                 
@@ -57,8 +53,8 @@
                 self.pageInfo.pageSize = info.pageSize;
                 self.pageInfo.totalPage = info.totalPage;
                 self.pageInfo.currentPage++;
-            }
         }
+        resultBlock(request, result);
     } pageName:@"MyTreatmentController"];
 
 }

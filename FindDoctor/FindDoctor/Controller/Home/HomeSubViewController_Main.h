@@ -15,13 +15,13 @@
 
 @property (strong, nonatomic) NSString * promotionInfo;//诊所活动推广信息
 @property (assign, nonatomic) NSTimeInterval * activityTime;//活动时间
-@property (nonatomic, strong) NSMutableArray * mainBannerList;//
-@property (nonatomic, strong) NSMutableArray * subjectList;//
-@property (nonatomic, strong) NSMutableArray * secondBannerList;//
+@property (nonatomic, strong) NSMutableArray * mainBannerList;//主轮播图
+@property (nonatomic, strong) NSMutableArray * subjectList;//科室列表
+@property (nonatomic, strong) NSMutableArray * secondBannerList;//副轮播图
 
-@property (nonatomic, strong) NSMutableArray * goodDoctorList;//
-@property (nonatomic, strong) NSMutableArray * goodClinicList;//
-@property (nonatomic, strong) NSMutableArray * famousDoctorList;//
+@property (nonatomic, strong) NSMutableArray * goodDoctorList;//好评医生
+@property (nonatomic, strong) NSMutableArray * goodClinicList;//好评诊所
+@property (nonatomic, strong) NSMutableArray * famousDoctorList;//优医馆
 
 @end
 

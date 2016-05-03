@@ -54,6 +54,7 @@ typedef enum OrderPayment : NSInteger
 @property NSInteger state;
 
 - (NSString *)orderStatusStr;
+- (NSString *)orderPaymentStr;
 - (BOOL)shouldRequireDetail;
 - (BOOL)hasDiseaseImage;
 

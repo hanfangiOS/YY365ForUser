@@ -48,33 +48,40 @@
     [self initsubViews];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self resetData];
+}
+
 - (void)initsubViews{
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.contentView.bounds];
     self.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.scrollView.scrollEnabled = YES;
     [self.contentView addSubview: self.scrollView];
     
-    
+    //headerView
     self.headerView = [[DetailsHeaderView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, [DetailsHeaderView defaultHeight])];
     self.headerView.data = self.order.service.doctor;
     [self.scrollView addSubview:self.headerView];
     self.headerView.backgroundColor = [UIColor whiteColor];
     
+    //约诊信息
     self.appointInfoView = [[DetailsAppointInfoView alloc] initWithFrame:CGRectMake(0, self.headerView.maxY + 10, kScreenWidth, [DetailsAppointInfoView defaultHeight])];
     self.appointInfoView.data = self.order;
     [self.scrollView addSubview:self.appointInfoView];
     self.appointInfoView.backgroundColor = [UIColor whiteColor];
-    
+    //支付信息
     self.paymentInfoView = [[DetailsPaymentInfoView alloc] initWithFrame:CGRectMake(0, self.appointInfoView.maxY + 10, kScreenWidth, [DetailsPaymentInfoView defaultHeight])];
     self.paymentInfoView.data = self.order;
     [self.scrollView addSubview:self.paymentInfoView];
     self.paymentInfoView.backgroundColor = [UIColor whiteColor];
-    
+    //订单信息
     self.orderInfoView = [[DetailsOrderInfoView alloc] initWithFrame:CGRectMake(0, self.paymentInfoView.maxY + 10, kScreenWidth, [DetailsOrderInfoView defaultHeight])];
     self.orderInfoView.data = self.order;
     [self.scrollView addSubview:self.orderInfoView];
     self.orderInfoView.backgroundColor = [UIColor whiteColor];
     
+    //支付按钮
     self.payBtn = [[UIButton alloc] initWithFrame:CGRectMake(25, self.orderInfoView.maxY + 18, kScreenWidth - 25 * 2, 40)];
     self.payBtn.backgroundColor = [UIColor orangeColor];
     [self.payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
@@ -83,6 +90,7 @@
     [self.payBtn addTarget:self action:@selector(payAction) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:self.payBtn];
     
+    //取消订单
     self.cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(25, self.payBtn.maxY + 10, kScreenWidth - 25 * 2, 40)];
     self.cancelBtn.backgroundColor = [UIColor orangeColor];
     [self.cancelBtn setTitle:@"取消订单" forState:UIControlStateNormal];
@@ -97,19 +105,20 @@
 
 - (void)resetData{
     switch (self.order.orderStatus) {
-        case 0:
+        case ORDERSTATUS_UNPAID:
         {
             
         }
             break;
-        case 1:
+        case ORDERSTATUS_PAID:
         {
             self.cancelBtn.frame = self.payBtn.frame;
+            self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.cancelBtn.maxY + 20);
             self.payBtn.hidden = YES;
             [self.scrollView setNeedsLayout];
         }
             break;
-        case 2:
+        case ORDERSTATUS_FINISHED:
         {
             
         }

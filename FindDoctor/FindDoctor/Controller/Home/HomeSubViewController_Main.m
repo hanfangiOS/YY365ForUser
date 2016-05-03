@@ -21,6 +21,8 @@
 #import "CommonManager.h"
 #import "CUDoctorManager.h"
 #import "CUClinicManager.h"
+#import "DoctorDetailController.h"
+#import "ClinicMainViewController.h"
 
 #define sectionHeaderViewHeight 30
 
@@ -158,6 +160,7 @@
     [self.headerView addSubview: self.goodDoctorCollectionView];
     
     self.goodDoctorVC = [[GoodDoctorViewController alloc] initWithCollectionView:self.goodDoctorCollectionView];
+    self.goodDoctorVC.fatherVC = self;
     self.goodDoctorCollectionView.delegate = self.goodDoctorVC;
     self.goodDoctorCollectionView.dataSource = self.goodDoctorVC;
 
@@ -176,6 +179,7 @@
         [self.headerView addSubview:self.goodclinicCollectionView];
     
     self.goodClinicVC = [[GoodClinicViewController alloc] initWithCollectionView:self.goodclinicCollectionView];
+    self.goodClinicVC.fatherVC = self;
     self.goodclinicCollectionView.delegate = self.goodClinicVC;
     self.goodclinicCollectionView.dataSource = self.goodClinicVC;
     
@@ -374,6 +378,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //跳转医生详情
+    DoctorDetailController * vc = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
+    vc.doctor =  [self.homeModel.famousDoctorList objectAtIndex:indexPath.row];
+    [self.slideNavigationController pushViewController:vc animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

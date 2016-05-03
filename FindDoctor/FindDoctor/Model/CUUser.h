@@ -11,8 +11,8 @@
 #import "HFFilter.h"
 
 typedef NS_ENUM(NSInteger, CUUserGender) {
+    CUUserGenderFemale = 0, // 女
     CUUserGenderMale   = 1, // 男
-    CUUserGenderFemale = 0  // 女
 };
 
 @interface CUUser : NSObject<NSCoding>

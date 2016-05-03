@@ -10,6 +10,7 @@
 #import "MyMemberCell.h"
 #import "ModifyMemberViewController.h"
 #import "AddMemberViewController.h"
+#import "CUUserManager.h"
 
 @interface MyMemberViewController ()
 
@@ -23,6 +24,7 @@
 {
     self = [super initWithPageName:pageName listModel:listModel];
     self.listModel = listModel;
+    self.hasFreshControl = NO;
     if (self) {
         
     }
@@ -40,6 +42,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"我的成员";
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self triggerRefresh];
+}
+
+- (void)loadContentView{
+    self.contentTableView.backgroundColor = kCommonBackgroundColor;
 }
 
 - (void)addMemberAction{

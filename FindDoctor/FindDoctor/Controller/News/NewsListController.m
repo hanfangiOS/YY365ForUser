@@ -9,6 +9,7 @@
 #import "NewsListController.h"
 #import "NewsListModel.h"
 #import "NewsListCell.h"
+#import "TipMessageData.h"
 
 @interface NewsListController (){
     NSInteger _cellHeight;
@@ -42,13 +43,19 @@
     self.title = @"消息列表";
 }
 
+- (void)loadContentView{
+    self.contentTableView.backgroundColor = kCommonBackgroundColor;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return self.listModel.items.count;
-    return 2;
+    return self.listModel.items.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return _cellHeight;
+    TipMessageData * data = [self.listModel.items objectAtIndexSafely:indexPath.row];
+    NSString * str = data.title;
+    CGSize size = [self sizeForString:str font:[UIFont systemFontOfSize:17] limitSize:CGSizeMake(kScreenWidth - (40 + 15 + 25), 0)];
+    return (size.height + 15 + 12);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -57,12 +64,26 @@
     if (!cell) {
         cell = [[NewsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    if (self.listModel.items.count > 0) {
-        cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
-        _cellHeight = cell.CellHeight;
-    }
-    cell.backgroundColor = [UIColor blueColor];
+    cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
     return cell;
+}
+
+- (CGSize)sizeForString:(NSString *)string font:(UIFont *)font limitSize:(CGSize)limitSize{
+    
+    CGFloat width = limitSize.width;
+    CGFloat height = limitSize.height;
+    if (!width) {
+        width = CGFLOAT_MAX;
+    }
+    if (!height) {
+        height = CGFLOAT_MAX;
+    }
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(width, height)
+                                       options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading  |NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:@{NSFontAttributeName: font}
+                                       context:nil];
+    
+    return rect.size;
 }
 
 - (void)didReceiveMemoryWarning {
