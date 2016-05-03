@@ -17,6 +17,7 @@
 #import "DiseaseSubject.h"
 
 #import "DoctorListModel.h"
+#import "CommonManager.h"
 
 @interface DoctorListController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate>
 
@@ -54,6 +55,13 @@
     [super viewDidLoad];
     
     self.title = @"找医生";
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[CommonManager sharedInstance] getSubjectListWithFilter:self.listModel.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+    } pageName:self.pageName];
 }
 
 - (void)loadContentView
@@ -231,28 +239,28 @@
             [blockSelf.freshControl refreshLastUpdatedTime:[NSDate date]];
             [blockSelf.contentTableView reloadData];
             
-            if(!result.hasError){
-                if (blockSelf.listModel.filter.classNumber == 0) {
-                    NSArray *recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"symptomOption"];
-                    NSMutableArray *listSubject = [[NSMutableArray alloc] init];
-                    [listSubject addObject:@"全部"];
-                    [recvList enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-                        NSString *string = [obj valueForKey:@"name"];
-                        [listSubject addObject:string];
-                    }];
-                    blockSelf.diseaseArray = listSubject;
-                    
-                    recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"dateOption"];
-                    listSubject = [[NSMutableArray alloc] init];
-                    [listSubject addObject:@"全部"];
-                    [recvList enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-                        NSString *string = [obj valueForKey:@"date"];
-                        [listSubject addObject:string];
-                    }];
-                    blockSelf.timeArray = listSubject;
-                    [blockSelf.dropdownMenu reloadData];
-                }
-            }
+//            if(!result.hasError){
+//                if (blockSelf.listModel.filter.classNumber == 0) {
+//                    NSArray *recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"symptomOption"];
+//                    NSMutableArray *listSubject = [[NSMutableArray alloc] init];
+//                    [listSubject addObject:@"全部"];
+//                    [recvList enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+//                        NSString *string = [obj valueForKey:@"name"];
+//                        [listSubject addObject:string];
+//                    }];
+//                    blockSelf.diseaseArray = listSubject;
+//                    
+//                    recvList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"dateOption"];
+//                    listSubject = [[NSMutableArray alloc] init];
+//                    [listSubject addObject:@"全部"];
+//                    [recvList enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+//                        NSString *string = [obj valueForKey:@"date"];
+//                        [listSubject addObject:string];
+//                    }];
+//                    blockSelf.timeArray = listSubject;
+//                    [blockSelf.dropdownMenu reloadData];
+//                }
+//            }
 
             
             // footer

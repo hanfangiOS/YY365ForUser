@@ -1,17 +1,18 @@
 //
-//  MyAppointmentCell.m
+//  MyAppointmentForTreatCell.m
 //  FindDoctor
 //
-//  Created by ZhuHaoRan on 16/4/18.
+//  Created by ZhuHaoRan on 16/4/29.
 //  Copyright © 2016年 li na. All rights reserved.
 //
-
-#define MyAppointmentCellHeight 170
-
-#import "MyAppointmentCell.h"
 #import "UIImageView+WebCache.h"
+#import "MyAppointmentForTreatCell.h"
 
-@interface MyAppointmentCell ()
+#define MyAppointmentForTreatCellHeight 135
+
+
+
+@interface MyAppointmentForTreatCell ()
 
 @property (strong,nonatomic)UIView  * headerView;
 @property (strong,nonatomic)UILabel * name;
@@ -23,12 +24,11 @@
 @property (strong,nonatomic)UILabel         * price;
 @property (strong,nonatomic)UILabel         * info;
 @property (strong,nonatomic)UILabel         * address;
-@property (strong,nonatomic)UIButton        * payBtn;
 @property (strong,nonatomic)UIImageView     * arrow;
 
 @end
 
-@implementation MyAppointmentCell
+@implementation MyAppointmentForTreatCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -41,7 +41,7 @@
 }
 
 + (float)defaultHeight{
-    return MyAppointmentCellHeight;
+    return MyAppointmentForTreatCellHeight;
 }
 
 - (void)initSubViews{
@@ -64,7 +64,7 @@
     self.line.backgroundColor = kLightLineColor;
     [self.headerView addSubview:self.line];
     
-    self.infoView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerView.maxY, kScreenWidth, MyAppointmentCellHeight - self.headerView.frameHeight)];
+    self.infoView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerView.maxY, kScreenWidth, MyAppointmentForTreatCellHeight - self.headerView.frameHeight)];
     [self addSubview:self.infoView];
     
     self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 72, 72)];
@@ -86,15 +86,6 @@
     self.address.textColor = kLightGrayColor;
     self.address.font = [UIFont systemFontOfSize:12];
     [self.infoView addSubview:self.address];
-    
-    self.payBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.address.frameX, self.address.maxY + 10, 80, 25)];
-    [self.payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
-    self.payBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    [self.payBtn addTarget:self action:@selector(payAction) forControlEvents:UIControlEventTouchUpInside];
-    self.payBtn.backgroundColor = [UIColor orangeColor];
-    [self.payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.payBtn.layer.cornerRadius = 2.0f;
-    [self.infoView addSubview:self.payBtn];
     
     self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 25 - 2, (self.infoView.frameHeight - 25)/2, 20, 25)];
     self.arrow.image = [UIImage imageNamed:@""];
@@ -118,7 +109,7 @@
 
 - (void)setData:(CUOrder *)data{
     _data = data;
-  
+    
     NSString * string = [NSString stringWithFormat:@"%@  %@  %@",_data.service.doctor.name,_data.service.doctor.levelDesc,_data.service.doctor.grade];
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
     NSInteger length = [_data.service.doctor.name length];
@@ -140,12 +131,6 @@
     self.info.text = [NSString stringWithFormat:@"%@  %@",_data.service.patience.name,diagnosisTimeStr];
     
     self.address.text = [NSString stringWithFormat:@"%@",_data.service.doctor.address];
-}
-
-- (void)payAction{
-    if (self.clickPayBtn) {
-        self.clickPayBtn();
-    }
 }
 
 

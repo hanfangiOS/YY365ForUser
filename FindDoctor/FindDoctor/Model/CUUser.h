@@ -48,6 +48,7 @@ typedef NS_ENUM(NSInteger, CUUserGender) {
 @interface UserFilter : HFFilter
 
 @property (nonatomic,strong) NSString * listType;//member-仅成员；all-包含我自己
+@property (nonatomic,assign) NSInteger  pageSrc;//0-约诊界面添加，1-成员列表添加
 @property (nonatomic,strong) CUUser   * user;
 
 @end

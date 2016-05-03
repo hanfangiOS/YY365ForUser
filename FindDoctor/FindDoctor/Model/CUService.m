@@ -14,11 +14,13 @@
 {
     if (self = [super init])
     {
-        
+        self.doctor = [[Doctor alloc] init];
+        self.patience = [[CUUser alloc] init];
+        self.disease = [[Disease alloc] init];
+        self.diagnosis = [[Diagnosis alloc] init];
     }
     return self;
 }
-
 @end
 
 @implementation MyDiagnosisRecordsFilter

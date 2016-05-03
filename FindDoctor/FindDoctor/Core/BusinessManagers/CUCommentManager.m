@@ -32,7 +32,8 @@ SINGLETON_IMPLENTATION(CUCommentManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(filter.order.diagnosisID) forKey:@"diagnosisID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -94,7 +95,8 @@ SINGLETON_IMPLENTATION(CUCommentManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(filter.order.diagnosisID) forKey:@"dataID"];
     [dataParam setObjectSafely:@(filter.remarkListInfo.numStar) forKey:@"numStar"];
     [dataParam setObjectSafely:@(filter.remarkListInfo.flagID) forKey:@"flagID"];
@@ -143,7 +145,8 @@ SINGLETON_IMPLENTATION(CUCommentManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(pageSize) forKey:@"num"];
     [dataParam setObjectSafely:@(filter.lastID) forKey:@"lastID"];
     

@@ -7,7 +7,10 @@
 //
 
 #import "CUViewController.h"
+#import "CUOrder.h"
 
 @interface TreatmentDetailsController : CUViewController
+
+@property (strong,nonatomic)CUOrder * order;
 
 @end

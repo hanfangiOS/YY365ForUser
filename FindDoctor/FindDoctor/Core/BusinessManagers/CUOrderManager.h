@@ -38,9 +38,6 @@ SINGLETON_DECLARE(CUOrderManager);
 // 获取订单列表
 - (void)getOrderListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize user:(CUUser *)user searchedWithOrderStatus:(OrderStatus)orderStatus resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
-// 获取待评价订单列表
-- (void)getUncommentOrderListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize user:(CUUser *)user searchedWithOrderStatus:(OrderStatus)orderStatus resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
-
 // 获取订单详情
 - (void)getOrderDetailWithOrderId:(long long *)orderId user:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
@@ -62,5 +59,24 @@ SINGLETON_DECLARE(CUOrderManager);
 
 //成功支付后获取订单状态
 - (void)getOrderStateWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//没付款记录
+- (void)getOrderNotPayListWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//付款没看病记录
+- (void)getOrderHasPayNotMeetListWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//看病了的记录
+- (void)getOrderHasPayHasMeetListWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//没付钱订单详情
+- (void)getOrderNotPayDetailWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//付钱还没看病订单详情
+- (void)getOrderHasPayNotMeetDetailWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//付钱看病了订单详情
+- (void)getOrderHasPayHasMeetDetailWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
 
 @end

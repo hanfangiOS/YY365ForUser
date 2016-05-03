@@ -39,7 +39,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(releaseID) forKey:@"releaseID"];
     [dataParam setObjectSafely:@(diagnosisID) forKey:@"diagnosisID"];
     [dataParam setObjectSafely:@(orderID) forKey:@"orderID"];
@@ -70,10 +71,10 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     [listSubject addObjectSafely:user];
                 }];
                 result.parsedModelObject = listSubject;
-
+                
             }
             else {
-//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                //                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
             }
         }
         else {
@@ -95,7 +96,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(diagnosisID) forKey:@"diagnosisID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -106,24 +108,24 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-//                NSMutableArray *recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"orderTimeSegment"];
-//                NSMutableArray *listSubject = [[NSMutableArray alloc] init];
-//                
-//                [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-//                    SelectOrderTime *selectOrderTime = [[SelectOrderTime alloc] init];
-//                    
-//                    selectOrderTime.house       = [obj valueForKeySafely:@"house"];
-//                    selectOrderTime.isOrdered   = [[obj valueForKeySafely:@"isOrdered"] integerValue];
-//                    selectOrderTime.orderID     = [[obj valueForKeySafely:@"orderID"] integerValue];
-//                    selectOrderTime.orderTime   = [obj valueForKeySafely:@"orderTime"];
-//                    
-//                    [listSubject addObject:selectOrderTime];
-//                }];
-//                result.parsedModelObject = listSubject;
+                //                NSMutableArray *recvList = [[result.responseObject valueForKeySafely:@"data"] valueForKeySafely:@"orderTimeSegment"];
+                //                NSMutableArray *listSubject = [[NSMutableArray alloc] init];
+                //
+                //                [recvList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+                //                    SelectOrderTime *selectOrderTime = [[SelectOrderTime alloc] init];
+                //
+                //                    selectOrderTime.house       = [obj valueForKeySafely:@"house"];
+                //                    selectOrderTime.isOrdered   = [[obj valueForKeySafely:@"isOrdered"] integerValue];
+                //                    selectOrderTime.orderID     = [[obj valueForKeySafely:@"orderID"] integerValue];
+                //                    selectOrderTime.orderTime   = [obj valueForKeySafely:@"orderTime"];
+                //
+                //                    [listSubject addObject:selectOrderTime];
+                //                }];
+                //                result.parsedModelObject = listSubject;
                 
             }
             else {
-//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                //                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
             }
         }
         else {
@@ -147,8 +149,9 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(order.service.patience.userId) forKey:@"userID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:@(order.service.patience.memberId) forKey:@"userID"];
     [dataParam setObjectSafely:order.service.patience.name forKey:@"userName"];
     [dataParam setObjectSafely:@(order.service.patience.age) forKey:@"userAge"];
     [dataParam setObjectSafely:@(order.service.patience.gender) forKey:@"userSex"];
@@ -159,9 +162,9 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     if (order.service.disease.imageURLArray.count) {
         str = [order.service.disease.imageURLArray componentsJoinedByString:@","];
     }
-    [dataParam setObjectSafely:str forKey:@"picDisease"];  
+    [dataParam setObjectSafely:str forKey:@"picDisease"];
     [dataParam setObjectSafely:order.service.disease.desc forKey:@"description"];
-
+    
     
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -176,8 +179,14 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 CUOrder *parsedModelObject = [[CUOrder alloc] init];
                 parsedModelObject = order;
                 NSDictionary *dic = [result.responseObject dictionaryForKeySafely:@"data"];
+                
+                order.coupon = [[dic stringForKeySafely:@"couponFee"] integerValue];
+                order.service.doctor.phoneNumber = [dic stringForKeySafely:@"doctorPhone"];
+                order.service.doctor.name = [dic stringForKeySafely:@"doctorName"];
                 order.dealPrice = [[dic valueForKey:@"payMoney"] integerValue];
+                order.service.doctor.price = [dic integerForKeySafely:@"fee"];
                 order.diagnosisTime = [dic valueForKey:@"orderTime"];
+                order.diagnosisID = [dic longlongForKeySafely:@"diagnosisID"];
                 result.parsedModelObject = parsedModelObject;
             }
             else {
@@ -220,26 +229,26 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 - (void)getOrderListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize user:(CUUser *)user searchedWithOrderStatus:(OrderStatus)orderStatus resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
     /*
-    // param
-    NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:user.token forKey:Key_Token];
-    [param setObjectSafely:[NSNumber numberWithInteger:pageNum] forKey:Key_PageNum];
-    [param setObjectSafely:[NSNumber numberWithInteger:pageSize] forKey:Key_PageSize];
-    if (orderStatus != ORDERSTATUS_NONE)
-    {
-        [param setObjectSafely:@(orderStatus) forKey:@"status"];
-    }
-    
-    CUOrderParser * parser = [[CUOrderParser alloc] init];
-    
-    if (orderStatus == ORDERSTATUS_NONE)
-    {
-        [[AppCore sharedInstance].apiManager POST:URL_GetOrderListReady parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseGetOrderListWithDict:) resultBlock:resultBlock forKey:URL_GetOrderListReady forPageNameGroup:pageName];
-    }
-    else
-    {
-        [[AppCore sharedInstance].apiManager POST:URL_GetOrderList parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseGetOrderListWithDict:) resultBlock:resultBlock forKey:URL_GetOrderList forPageNameGroup:pageName];
-    }*/
+     // param
+     NSMutableDictionary * param = [NSMutableDictionary dictionary];
+     [param setObjectSafely:user.token forKey:Key_Token];
+     [param setObjectSafely:[NSNumber numberWithInteger:pageNum] forKey:Key_PageNum];
+     [param setObjectSafely:[NSNumber numberWithInteger:pageSize] forKey:Key_PageSize];
+     if (orderStatus != ORDERSTATUS_NONE)
+     {
+     [param setObjectSafely:@(orderStatus) forKey:@"status"];
+     }
+     
+     CUOrderParser * parser = [[CUOrderParser alloc] init];
+     
+     if (orderStatus == ORDERSTATUS_NONE)
+     {
+     [[AppCore sharedInstance].apiManager POST:URL_GetOrderListReady parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseGetOrderListWithDict:) resultBlock:resultBlock forKey:URL_GetOrderListReady forPageNameGroup:pageName];
+     }
+     else
+     {
+     [[AppCore sharedInstance].apiManager POST:URL_GetOrderList parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseGetOrderListWithDict:) resultBlock:resultBlock forKey:URL_GetOrderList forPageNameGroup:pageName];
+     }*/
     
     if (resultBlock) {
         SNBaseListModel *listModel  =[[SNBaseListModel alloc] init];
@@ -263,7 +272,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:@(filter.accID) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -361,30 +371,30 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableArray *dataArray = [NSMutableArray array];
     
     for (NSInteger i = 0; i < 10; i ++) {
-//        Doctor *doctor = [[Doctor alloc] init];
-//        doctor.doctorId = [NSString stringWithFormat:@"%@", @(i + 100)];
-//        doctor.name = @"华佗";
-//        doctor.avatar = @"http://www.91danji.com/attachments/201406/25/13/28lp1eh2g.jpg";
-//        doctor.desc = @"华佗被后人称为“外科圣手”[5]  、“外科鼻祖”。被后人多用神医华佗称呼他，又以“华佗再世”、“元化重生”称誉有杰出医术的医师。";
-//        doctor.levelDesc = @"主任医师";
-//        doctor.subject = @"内科 皮肤科 慢性支气管炎 儿科 头疼";
-//        doctor.availableTime = @"2015-8-18";
-//        doctor.isAvailable = i % 2;
-//        doctor.rate = 4.5;
-//        doctor.area = @"青羊区";
-//        doctor.city = @"成都";
-//        doctor.address = @"华西医院";
-//        doctor.price = 200;
-//        doctor.background = @"华佗[1]  （约公元145年－公元208年），字元化，一名旉，沛国谯县人，东汉末年著名的医学家。华佗与董奉、张仲景并称为“建安三神医”。少时曾在外游学，行医足迹遍及安徽、河南、山东、江苏等地，钻研医术而不求仕途。他医术全面，尤其擅长外科，精于手术。并精通内、妇、儿、针灸各科。[2-4]  晚年因遭曹操怀疑，下狱被拷问致死。";
-//        doctor.skilledDisease = @"疑难杂症";
-//        doctor.skilledSubject = @"外科、内、妇、儿、针灸各科";
+        //        Doctor *doctor = [[Doctor alloc] init];
+        //        doctor.doctorId = [NSString stringWithFormat:@"%@", @(i + 100)];
+        //        doctor.name = @"华佗";
+        //        doctor.avatar = @"http://www.91danji.com/attachments/201406/25/13/28lp1eh2g.jpg";
+        //        doctor.desc = @"华佗被后人称为“外科圣手”[5]  、“外科鼻祖”。被后人多用神医华佗称呼他，又以“华佗再世”、“元化重生”称誉有杰出医术的医师。";
+        //        doctor.levelDesc = @"主任医师";
+        //        doctor.subject = @"内科 皮肤科 慢性支气管炎 儿科 头疼";
+        //        doctor.availableTime = @"2015-8-18";
+        //        doctor.isAvailable = i % 2;
+        //        doctor.rate = 4.5;
+        //        doctor.area = @"青羊区";
+        //        doctor.city = @"成都";
+        //        doctor.address = @"华西医院";
+        //        doctor.price = 200;
+        //        doctor.background = @"华佗[1]  （约公元145年－公元208年），字元化，一名旉，沛国谯县人，东汉末年著名的医学家。华佗与董奉、张仲景并称为“建安三神医”。少时曾在外游学，行医足迹遍及安徽、河南、山东、江苏等地，钻研医术而不求仕途。他医术全面，尤其擅长外科，精于手术。并精通内、妇、儿、针灸各科。[2-4]  晚年因遭曹操怀疑，下狱被拷问致死。";
+        //        doctor.skilledDisease = @"疑难杂症";
+        //        doctor.skilledSubject = @"外科、内、妇、儿、针灸各科";
         
         CUOrder *order = [[CUOrder alloc] init];
         order.orderId = @"u90989087";
         order.orderNumber = @"888888";
         order.orderStatus = i % 3 + 1;
         
-//        order.service.doctor = doctor;
+        //        order.service.doctor = doctor;
         order.service.serviceTime = @"2015-9-1";
         
         order.service.patience = [[CUUser alloc] init];
@@ -399,35 +409,18 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     return dataArray;
 }
 
-- (void)getUncommentOrderListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize user:(CUUser *)user searchedWithOrderStatus:(OrderStatus)orderStatus resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
-{
-    // param
-    NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:user.token forKey:Key_Token];
-    [param setObjectSafely:[NSNumber numberWithInteger:pageNum] forKey:Key_PageNum];
-    [param setObjectSafely:[NSNumber numberWithInteger:pageSize] forKey:Key_PageSize];
-    if (orderStatus != ORDERSTATUS_NONE)
-    {
-        [param setObjectSafely:@(orderStatus) forKey:@"status"];
-    }
-    
-    CUOrderParser * parser = [[CUOrderParser alloc] init];
-    
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseGetOrderListWithDict:) resultBlock:resultBlock forKey:URL_AfterBase forPageNameGroup:pageName];
-}
-
-- (void)getOrderDetailWithOrderId:(NSString *)orderId user:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
-{
-    // param
-    NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:user.token forKey:Key_Token];
-    [param setObjectSafely:orderId forKey:@"orderId"];
-    
-    CUOrderParser * parser = [[CUOrderParser alloc] init];
-    
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseGetOrderDetailWithDict:) resultBlock:resultBlock forKey:URL_AfterBase forPageNameGroup:pageName];
-
-}
+//- (void)getOrderDetailWithOrderId:(NSString *)orderId user:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
+//{
+//    // param
+//    NSMutableDictionary * param = [NSMutableDictionary dictionary];
+//    [param setObjectSafely:user.token forKey:Key_Token];
+//    [param setObjectSafely:orderId forKey:@"orderId"];
+//
+//    CUOrderParser * parser = [[CUOrderParser alloc] init];
+//
+//    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseGetOrderDetailWithDict:) resultBlock:resultBlock forKey:URL_AfterBase forPageNameGroup:pageName];
+//
+//}
 
 
 
@@ -486,7 +479,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     //                    NSInteger pageid = [[dic valueForKeySafely:@"type"] integerValue];
                     [resultArray addObjectSafely:data];
                 }
-
+                
                 result.parsedModelObject = resultArray;
             }
         }
@@ -505,7 +498,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     resultBlock(nil,result);
     
 #endif
-  
+    
 }
 
 - (void)getMyAccountWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
@@ -592,7 +585,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(diagnosisID) forKey:@"diagnosisID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -622,7 +616,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 - (void)CheckOrderHasPaidWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
-//    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+    //    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
     [param setObjectSafely:@"OrderHashPaid" forKey:@"require"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
@@ -633,24 +627,24 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSLog(@"%@",param);
     
     
-//    SNServerAPIManager *apiMr = [[SNServerAPIManager alloc] initWithServer:@"http://192.168.1.101:8889"];
-//    [apiMr POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-//    [[AppCore sharedInstance].apiManager POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-//        if (!result.hasError) {
-//            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
-//                
-//            }
-//            else {
-//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
-//            }
-//        }
-//        else {
-//            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
-//        }
-//        
-//        resultBlock(request, result);
-//        
-//    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+    //    SNServerAPIManager *apiMr = [[SNServerAPIManager alloc] initWithServer:@"http://192.168.1.101:8889"];
+    //    [apiMr POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    //    [[AppCore sharedInstance].apiManager POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    //        if (!result.hasError) {
+    //            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
+    //
+    //            }
+    //            else {
+    //                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
+    //            }
+    //        }
+    //        else {
+    //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+    //        }
+    //
+    //        resultBlock(request, result);
+    //
+    //    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
     
 }
 
@@ -663,23 +657,26 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                NSDictionary *obj = [[result.responseObject dictionaryForKeySafely:@"data"] dictionaryForKeySafely:@"diagnosisRecords"];
+                NSDictionary *obj = [result.responseObject dictionaryForKeySafely:@"data"];
                 Doctor *doctor = [[Doctor alloc]init];
-                doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clincName"],[obj valueForKey:@"clincAddr"]];
-                doctor.avatar = [obj valueForKey:@"doctorIcon"];
+                doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clincAddr"]];
+                doctor.avatar = [obj valueForKey:@"icon"];//
                 doctor.name = [obj valueForKey:@"doctorName"];
                 doctor.levelDesc = [obj valueForKey:@"doctorTitle"];
+                doctor.price = [[obj valueForKey:@"payMoney"] integerValue];
                 
-                Disease *disease = [[Disease alloc]init];
+                Disease * disease = [[Disease alloc]init];
                 disease.desc = [NSString stringWithFormat:@"%@",[obj valueForKey:@"illnessDescription"]];
                 disease.imageURLArray = [[obj valueForKey:@"illnessPic"] componentsSeparatedByString:@","];
                 
                 CUUser *patience = [[CUUser alloc]init];
                 patience.name = [obj valueForKey:@"userName"];
                 patience.age = [[obj valueForKey:@"userAge"] integerValue];
-                patience.userId = [[obj valueForKey:@"userID"] integerValue];
                 patience.cellPhone = [obj valueForKey:@"userPhone"];
-                patience.gender = [[obj valueForKey:@"userSex"] integerValue];
+                
+                if ([[obj stringForKeySafely:@"userSex"] isEqualToString:@"男"]) {
+                    patience.gender = CUUserGenderMale;
+                }
                 
                 CUService *service = [[CUService alloc]init];
                 service.doctor = doctor;
@@ -688,8 +685,9 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 
                 CUOrder *order = [[CUOrder alloc]init];
                 order.service = service;
-                order.state = [[obj valueForKey:@"state"] integerValue];
-                order.dealPrice = [[obj valueForKey:@"payMoney"] integerValue];
+                order.orderStatus = [[obj valueForKey:@"state"] integerValue];
+                order.dealPrice = [[obj valueForKey:@"currency"] integerValue];//
+                order.coupon = [[obj valueForKeySafely:@"payCouponMoney"] integerValue];
                 order.submitTime = [[obj valueForKey:@"orderSumitTime"] integerValue];
                 order.submitTimeString = [[NSDate dateWithTimeIntervalSince1970:order.submitTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
                 order.diagnosisID = [[obj valueForKey:@"diagnosisID"] longLongValue];
@@ -702,7 +700,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 
             }
             else {
-//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+                //                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
             }
         }
         else {
@@ -713,6 +711,377 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         resultBlock(request, result);
         
     }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+    
+}
+
+//没付款记录
+- (void)getOrderNotPayListWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderNotPayList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+//    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
+    [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                NSMutableArray * dataList = [NSMutableArray array];
+                
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
+                NSArray * tempList1 = [data arrayForKeySafely:@"orderList"];
+                [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    CUOrder * order = [[CUOrder alloc] init];
+
+                    order.diagnosisID = [obj longlongForKeySafely:@"orderno"];
+                    
+                    order.dealPrice = [obj longlongForKeySafely:@"currency"];
+                    order.submitTimeString = [obj stringForKeySafely:@"verid"];
+                    
+                    order.service.patience.userId = (NSInteger)[obj longlongForKeySafely:@"accID"];
+                    order.service.patience.name = [obj stringForKeySafely:@"userName"];
+                    
+                    order.service.doctor.name = [obj stringForKeySafely:@"doctorName"];
+                    order.service.doctor.levelDesc = [obj stringForKeySafely:@"title"];
+                    order.service.doctor.grade = [obj stringForKeySafely:@"gradeas"];
+                    order.service.doctor.price = [obj integerForKeySafely:@"amount"];
+                    order.service.doctor.avatar = [obj stringForKeySafely:@"icon"];
+
+                    order.service.doctor.diagnosisTime = [[obj stringForKeySafely:@"ordertime"] integerValue];
+                    order.service.doctor.address = [obj stringForKeySafely:@"clinicAddress"];
+                    [dataList addObjectSafely:order];
+                }];
+                SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
+                listModel.items = dataList;
+                result.parsedModelObject = listModel;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"orderNotPayList" forPageNameGroup:pageName];
+    
+}
+
+//付款没看病记录
+- (void)getOrderHasPayNotMeetListWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayNotMeetList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
+    [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                NSMutableArray * dataList = [NSMutableArray array];
+                
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
+                NSArray * tempList1 = [data arrayForKeySafely:@"orderList"];
+                [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    CUOrder * order = [[CUOrder alloc] init];
+                    order.service.patience.userId = (NSInteger)[obj longlongForKeySafely:@"accID"];
+                    order.diagnosisID = [obj longlongForKeySafely:@"orderno"];
+                    order.dealPrice = [obj longlongForKeySafely:@"amount"];
+                    order.service.doctor.name = [obj stringForKeySafely:@"doctorName"];
+                    order.service.doctor.levelDesc = [obj stringForKeySafely:@"title"];
+                    order.service.doctor.grade = [obj stringForKeySafely:@"gradeas"];
+                    order.submitTimeString = [obj stringForKeySafely:@"verid"];
+                    order.service.doctor.avatar = [obj stringForKeySafely:@"icon"];
+                    order.service.patience.name = [obj stringForKeySafely:@"userName"];
+                    order.service.doctor.diagnosisTime = [[obj stringForKeySafely:@"ordertime"] integerValue];
+                    order.service.doctor.address = [obj stringForKeySafely:@"clinicAddress"];
+                    [dataList addObjectSafely:order];
+                }];
+                SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
+                listModel.items = dataList;
+                result.parsedModelObject = listModel;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"orderHasPayNotMeetList" forPageNameGroup:pageName];
+    
+}
+
+//看病了的记录
+- (void)getOrderHasPayHasMeetListWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
+    [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                NSMutableArray * dataList = [NSMutableArray array];
+                
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
+                NSArray * tempList1 = [data arrayForKeySafely:@"orderList"];
+                [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    CUOrder * order = [[CUOrder alloc] init];
+                    order.service.patience.userId = (NSInteger)[obj longlongForKeySafely:@"accID"];
+                    order.diagnosisID = [obj longlongForKeySafely:@"orderno"];
+                    order.dealPrice = [obj longlongForKeySafely:@"amount"];
+                    order.service.doctor.name = [obj stringForKeySafely:@"doctorName"];
+                    order.service.doctor.levelDesc = [obj stringForKeySafely:@"title"];
+                    order.service.doctor.grade = [obj stringForKeySafely:@"gradeas"];
+                    order.submitTimeString = [obj stringForKeySafely:@"verid"];
+                    order.service.doctor.avatar = [obj stringForKeySafely:@"icon"];
+                    order.service.patience.name = [obj stringForKeySafely:@"userName"];
+                    order.service.doctor.diagnosisTime = [[obj stringForKeySafely:@"ordertime"] integerValue];
+                    order.service.doctor.address = [obj stringForKeySafely:@"clinicAddress"];
+                    [dataList addObjectSafely:order];
+                }];
+                SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
+                listModel.items = dataList;
+                result.parsedModelObject = listModel;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"orderHasPayNotMeetList" forPageNameGroup:pageName];}
+
+//没付钱订单详情
+- (void)getOrderNotPayDetailWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:@(filter.diagnosisID) forKey:@"orderNo"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
+                NSDictionary * orderDict = [data objectForKeySafely:@"order"];
+                
+                CUOrder * order = [[CUOrder alloc] init];
+                order.service.patience.userId = (NSInteger)[orderDict longlongForKeySafely:@"accID"];
+                order.diagnosisID = [orderDict longlongForKeySafely:@"orderno"];
+                order.dealPrice = [orderDict longlongForKeySafely:@"amount"];
+                order.service.doctor.name = [orderDict stringForKeySafely:@"doctorName"];
+                order.service.doctor.levelDesc = [orderDict stringForKeySafely:@"title"];
+                order.service.doctor.grade = [orderDict stringForKeySafely:@"gradeas"];
+                order.submitTimeString = [orderDict stringForKeySafely:@"verid"];
+                order.service.doctor.avatar = [orderDict stringForKeySafely:@"icon"];
+                order.service.patience.name = [orderDict stringForKeySafely:@"userName"];
+                order.service.doctor.diagnosisTime = [[orderDict stringForKeySafely:@"ordertime"] integerValue];
+                order.service.doctor.address = [orderDict stringForKeySafely:@"address"];
+                order.service.patience.age = [orderDict integerForKeySafely:@"userAge"];
+                order.service.patience.cellPhone = [orderDict stringForKeySafely:@"userPhone"];
+                order.service.doctor.price = [orderDict integerForKeySafely:@"amount"];
+                order.dealPrice = [orderDict integerForKeySafely:@"currency"];
+                order.coupon = [orderDict integerForKeySafely:@"coupon"];
+                order.service.doctor.address = [orderDict stringForKeySafely:@"clinicAddress"];
+                NSString * str = [orderDict stringForKeySafely:@"channel"];
+                if ([str isEqualToString:@"wx"]) {
+                    order.payment = ORDERPAYMENT_WeiXin;
+                }
+                if ([str isEqualToString:@"alipay"]) {
+                    order.payment = ORDERPAYMENT_ZhiFuBao;
+                }
+                result.parsedModelObject = order;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"orderHasPayHasMeetList" forPageNameGroup:pageName];
+    
+}
+
+//付钱还没看病订单详情
+- (void)getOrderHasPayNotMeetDetailWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:@(filter.diagnosisID) forKey:@"orderNo"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
+                
+                NSDictionary * orderDict = [data objectForKeySafely:@"order"];
+                
+                CUOrder * order = [[CUOrder alloc] init];
+                order.service.patience.userId = (NSInteger)[data longlongForKeySafely:@"accID"];
+                order.diagnosisID = [orderDict longlongForKeySafely:@"orderno"];
+                order.dealPrice = [orderDict longlongForKeySafely:@"amount"];
+                order.service.doctor.name = [orderDict stringForKeySafely:@"doctorName"];
+                order.service.doctor.levelDesc = [orderDict stringForKeySafely:@"title"];
+                order.service.doctor.grade = [orderDict stringForKeySafely:@"gradeas"];
+                order.submitTimeString = [orderDict stringForKeySafely:@"verid"];
+                order.service.doctor.avatar = [orderDict stringForKeySafely:@"icon"];
+                order.service.patience.name = [orderDict stringForKeySafely:@"userName"];
+                order.service.doctor.diagnosisTime = [[orderDict stringForKeySafely:@"ordertime"] integerValue];
+                order.service.doctor.address = [orderDict stringForKeySafely:@"address"];
+                order.service.patience.age = [orderDict integerForKeySafely:@"userAge"];
+                order.service.patience.cellPhone = [orderDict stringForKeySafely:@"userPhone"];
+                order.service.doctor.price = [orderDict integerForKeySafely:@"amount"];
+                order.dealPrice = [orderDict integerForKeySafely:@"currency"];
+                order.coupon = [orderDict integerForKeySafely:@"coupon"];
+                order.service.doctor.address = [orderDict stringForKeySafely:@"clinicAddress"];
+                NSString * str = [orderDict stringForKeySafely:@"channel"];
+                if ([str isEqualToString:@"wx"]) {
+                    order.payment = ORDERPAYMENT_WeiXin;
+                }
+                if ([str isEqualToString:@"alipay"]) {
+                    order.payment = ORDERPAYMENT_ZhiFuBao;
+                }
+                result.parsedModelObject = order;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"orderHasPayHasMeetList" forPageNameGroup:pageName];
+    
+}
+
+//付钱看病了订单详情
+- (void)getOrderHasPayHasMeetDetailWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetList"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:@(filter.diagnosisID) forKey:@"orderNo"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
+                
+                NSDictionary * orderDict = [data objectForKeySafely:@"order"];
+                CUOrder * order = [[CUOrder alloc] init];
+                order.service.patience.userId = (NSInteger)[orderDict longlongForKeySafely:@"accID"];
+                order.diagnosisID = [orderDict longlongForKeySafely:@"orderno"];
+                order.dealPrice = [orderDict longlongForKeySafely:@"amount"];
+                order.service.doctor.name = [orderDict stringForKeySafely:@"doctorName"];
+                order.service.doctor.levelDesc = [orderDict stringForKeySafely:@"title"];
+                order.service.doctor.grade = [orderDict stringForKeySafely:@"gradeas"];
+                order.submitTimeString = [orderDict stringForKeySafely:@"verid"];
+                order.service.doctor.avatar = [orderDict stringForKeySafely:@"icon"];
+                order.service.patience.name = [orderDict stringForKeySafely:@"userName"];
+                order.service.doctor.diagnosisTime = [[orderDict stringForKeySafely:@"ordertime"] integerValue];
+                order.finishedTimeStamp = [[orderDict stringForKeySafely:@"endtime"] integerValue];
+                order.service.doctor.address = [orderDict stringForKeySafely:@"address"];
+                order.service.patience.age = [orderDict integerForKeySafely:@"userAge"];
+                order.service.patience.cellPhone = [orderDict stringForKeySafely:@"userPhone"];
+                order.service.doctor.price = [orderDict integerForKeySafely:@"amount"];
+                order.dealPrice = [orderDict integerForKeySafely:@"currency"];
+                order.coupon = [orderDict integerForKeySafely:@"coupon"];
+                order.service.doctor.address = [orderDict stringForKeySafely:@"clinicAddress"];
+                NSString * str = [orderDict stringForKeySafely:@"channel"];
+                if ([str isEqualToString:@"wx"]) {
+                    order.payment = ORDERPAYMENT_WeiXin;
+                }
+                if ([str isEqualToString:@"alipay"]) {
+                    order.payment = ORDERPAYMENT_ZhiFuBao;
+                }
+                result.parsedModelObject = order;
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            //            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"orderHasPayHasMeetList" forPageNameGroup:pageName];
     
 }
 

@@ -50,7 +50,7 @@
 
 - (void)initControllers
 {
-    CUOrderListModel * listModel1 = [[CUOrderListModel alloc] initWithOrderStatus:ORDERSTATUS_ALL];
+    CUOrderListModel * listModel1 = [[CUOrderListModel alloc] initWithOrderStatus:ORDERSTATUS_PAID];
     CUOrderListViewController * controller1 = [[CUOrderListViewController alloc] initWithPageName:@"OrderListController_All" listModel:listModel1];
     controller1.customTabBarItem = [self orderTabBarItemAtIndex:0];
     

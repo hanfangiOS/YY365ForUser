@@ -182,33 +182,33 @@
     
 }
 
-- (void)cancelOrder
-{
-    [self showProgressView];
-    __weak CUOrderDetailViewController * blockSelf = self;
-    [[CUOrderManager sharedInstance] updateOrder:self.order status:ORDERSTATUS_CANCELED user:[CUUserManager sharedInstance].user resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-
-        [blockSelf hideProgressView];
-        if (!result.hasError)
-        {
-            // 修改订单状态
-            self.order.orderStatus = ORDERSTATUS_CANCELED;
-            [self loadNavigationBar];
-            
-            [TipHandler showHUDText:@"取消成功" state:TipStateSuccess inView:blockSelf.contentView];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_OrderCancelSuccess object:self.order];
-            [self performSelector:@selector(popControllerByCancelOrder) withObject:nil afterDelay:0.7];
-        }
-        else
-        {
-            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] state:TipStateFail inView:blockSelf.contentView];
-        }
-        
-    } pageName:@"CUOrderDetailViewController"];
-    
-    [MobClick event:Event_Order_Cancel_Click];
-}
+//- (void)cancelOrder
+//{
+//    [self showProgressView];
+//    __weak CUOrderDetailViewController * blockSelf = self;
+//    [[CUOrderManager sharedInstance] updateOrder:self.order status:ORDERSTATUS_CANCELED user:[CUUserManager sharedInstance].user resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+//
+//        [blockSelf hideProgressView];
+//        if (!result.hasError)
+//        {
+//            // 修改订单状态
+//            self.order.orderStatus = ORDERSTATUS_CANCELED;
+//            [self loadNavigationBar];
+//            
+//            [TipHandler showHUDText:@"取消成功" state:TipStateSuccess inView:blockSelf.contentView];
+//            
+//            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_OrderCancelSuccess object:self.order];
+//            [self performSelector:@selector(popControllerByCancelOrder) withObject:nil afterDelay:0.7];
+//        }
+//        else
+//        {
+//            [TipHandler showHUDText:[result.error.userInfo valueForKey:NSLocalizedDescriptionKey] state:TipStateFail inView:blockSelf.contentView];
+//        }
+//        
+//    } pageName:@"CUOrderDetailViewController"];
+//    
+//    [MobClick event:Event_Order_Cancel_Click];
+//}
 
 - (void)confirmOrder
 {

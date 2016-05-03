@@ -22,7 +22,7 @@
 #import "CULoginViewController.h"
 #import "FamilyMemberDetailController.h"
 #import "CUPickerView.h"
-#import "AddFamilyMemberViewController.h"
+#import "AddMemberViewController.h"
 
 #define kButtonViewHeight   ([CreateOrderButtonView defaultHeight])
 
@@ -35,7 +35,7 @@
 @property NSInteger selectedMemberIndex;
 
 @property (nonatomic, strong) CUPickerView *pickerView;
-@property (nonatomic, strong) UserDropdownMenuView *menuView;
+@property (nonatomic, strong) UserDropdownMenuView * menuView;
 
 @end
 
@@ -53,18 +53,6 @@
     
     self.title = [NSString stringWithFormat:@"约诊 %@医生", self.order.service.doctor.name];
     self.contentView.backgroundColor = kLightBlueColor;
-    
-//    self.order = [[CUOrder alloc] init];
-//    self.order.service.doctor = self.doctor;
-//    
-//#warning 测试代码
-//    self.memberArray = [NSMutableArray array];
-//    for (NSInteger i = 0; i < 4; i ++) {
-//        CUUser *user = [[CUUser alloc] init];
-//        user.name = [NSString stringWithFormat:@"测试用户 %lu", i];
-//        user.profile = @"http://www.91danji.com/attachments/201406/25/13/28lp1eh2g.jpg";
-//        [self.memberArray addObjectSafely:user];
-//    }
     
     [self initSubviews];
 }
@@ -244,21 +232,6 @@
 
 - (void)commitOrder
 {
-#if LOCAL
-#warning 测试代码
-    srand((unsigned)time(NULL));
-    self.order.orderId = [NSString stringWithFormat:@"%d", rand()];
-    self.order.orderNumber = [NSString stringWithFormat:@"%d", rand()];
-#else
-    
-#endif
-//    if (self.order.diagnosisID != 0 && self.order.orderNumber) {
-//        // 已创建订单，未支付
-//        [self didCommitOrder];
-//    }
-//    else {
-//        // 未创建订单
-    
     self.order.service.patience = [self.memberArray objectAtIndex:self.selectedMemberIndex];
     Disease *disease = [[Disease alloc] init];
     disease.desc = _textView.text;
@@ -274,6 +247,7 @@
             CUOrder *order = result.parsedModelObject;
             blockSelf.order.dealPrice = order.dealPrice;
             blockSelf.order.diagnosisTime = order.diagnosisTime;
+            
             confirmVC.order = blockSelf.order;
             [blockSelf.slideNavigationController pushViewController:confirmVC animated:YES];
         }
@@ -363,17 +337,16 @@
 
 - (void)addMemberAction
 {
-    AddFamilyMemberViewController *memberVC = [[AddFamilyMemberViewController  alloc]init];
-    memberVC.diagnosisID = self.order.diagnosisID;
+    AddMemberViewController * VC = [[AddMemberViewController alloc] initWithPageName:@"AddMemberViewController"];
     __weak __block OrderCreateController *blockSelf = self;
-    memberVC.backBlock = ^(CUUser *user){
+    VC.backWithUserBlock = ^(CUUser * user){
         [blockSelf.memberArray addObjectSafely:user];
         if (blockSelf.menuView.user == nil) {
             blockSelf.menuView.user = user;
             [blockSelf.menuView update];
         }
     };
-    [self.slideNavigationController pushViewController:memberVC animated:YES];
+    [self.slideNavigationController pushViewController:VC animated:YES];
 }
 
 #pragma mark - UIActionSheetDelegate

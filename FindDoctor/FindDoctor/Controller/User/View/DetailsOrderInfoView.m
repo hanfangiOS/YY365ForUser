@@ -17,11 +17,11 @@
 @property (strong,nonatomic)UIView      * line;
 @property (strong,nonatomic)UILabel     * orderNumLabel;
 @property (strong,nonatomic)UILabel     * orderTimeLabel;
-@property (strong,nonatomic)UILabel     * orderStatusLabel;
+@property (strong,nonatomic)UILabel     * orderStateLabel;
 @property (strong,nonatomic)UILabel     * paymentLabel;
 @property (strong,nonatomic)UILabel     * orderNum;
 @property (strong,nonatomic)UILabel     * orderTime;
-@property (strong,nonatomic)UILabel     * orderStatus;
+@property (strong,nonatomic)UILabel     * orderState;
 @property (strong,nonatomic)UILabel     * payment;
 
 @end
@@ -67,14 +67,14 @@
     [self addSubview:self.orderTimeLabel];
     self.orderTimeLabel.backgroundColor = [UIColor brownColor];
     
-    self.orderStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.orderTimeLabel.maxY + 10, 80, 18)];
-    self.orderStatusLabel.text = @"订单状态:";
-    self.orderStatusLabel.textAlignment = NSTextAlignmentLeft;
-    self.orderStatusLabel.font = [UIFont systemFontOfSize:15];
-    [self addSubview:self.orderStatusLabel];
-    self.orderStatusLabel.backgroundColor = [UIColor brownColor];
+    self.orderStateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.orderTimeLabel.maxY + 10, 80, 18)];
+    self.orderStateLabel.text = @"订单状态:";
+    self.orderStateLabel.textAlignment = NSTextAlignmentLeft;
+    self.orderStateLabel.font = [UIFont systemFontOfSize:15];
+    [self addSubview:self.orderStateLabel];
+    self.orderStateLabel.backgroundColor = [UIColor brownColor];
     
-    self.paymentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.orderStatusLabel.maxY + 10, 80, 18)];
+    self.paymentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.orderStateLabel.maxY + 10, 80, 18)];
     self.paymentLabel.text = @"支付方式:";
     self.paymentLabel.textAlignment = NSTextAlignmentLeft;
     self.paymentLabel.font = [UIFont systemFontOfSize:15];
@@ -89,10 +89,10 @@
     self.orderTime.textAlignment = NSTextAlignmentLeft;
     [self addSubview:self.orderTime];
     
-    self.orderStatus = [[UILabel alloc] initWithFrame:CGRectMake(self.orderStatusLabel.maxX + 10, self.orderStatusLabel.frameY, kScreenWidth - self.orderStatusLabel.maxX - 20, 18)];
-    self.orderStatus.textAlignment = NSTextAlignmentLeft;
-    [self addSubview:self.orderStatus];
-    self.orderStatus.textColor = [UIColor orangeColor];
+    self.orderState = [[UILabel alloc] initWithFrame:CGRectMake(self.orderStateLabel.maxX + 10, self.orderStateLabel.frameY, kScreenWidth - self.orderStateLabel.maxX - 20, 18)];
+    self.orderState.textAlignment = NSTextAlignmentLeft;
+    [self addSubview:self.orderState];
+    self.orderState.textColor = [UIColor orangeColor];
     
     self.payment = [[UILabel alloc] initWithFrame:CGRectMake(self.paymentLabel.maxX + 10, self.paymentLabel.frameY, kScreenWidth - self.paymentLabel.maxX - 20, 18)];
     self.payment.textAlignment = NSTextAlignmentLeft;
@@ -111,28 +111,19 @@
     switch (_data.orderStatus) {
         case ORDERSTATUS_UNPAID:
         {
-            self.orderStatus.text = @"未支付";
+            self.orderState.text = @"未支付";
         }
             break;
         case ORDERSTATUS_PAID:
         {
-            self.orderStatus.text = @"已支付";
+            self.orderState.text = @"已支付";
         }
             break;
         case ORDERSTATUS_FINISHED:
         {
-            self.orderStatus.text = @"已开方";
+            self.orderState.text = @"已诊疗";
         }
             break;
-        case ORDERSTATUS_CANCELED:
-        {
-            self.orderStatus.text = @"已打印";
-        }
-            break;
-        case ORDERSTATUS_REFUNDED:
-        {
-            self.orderStatus.text = @"已评论";
-        }
             break;
         default:
             break;

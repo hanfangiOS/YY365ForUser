@@ -68,6 +68,7 @@
     
     if (self) {
         _hasNavigationBar = NO;
+        _hasToolbar = NO;
         
         [self postRequestFamousDoctorClinic];
     }

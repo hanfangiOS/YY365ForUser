@@ -78,7 +78,6 @@
     if (alertView.tag == 2000) {
         
         [self clearCache];
-        self.cacheCell.textLabel.text = @"XX";
         [self.tableView reloadData];
     }
 }

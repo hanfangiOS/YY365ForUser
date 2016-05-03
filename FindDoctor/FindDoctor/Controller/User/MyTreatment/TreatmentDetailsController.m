@@ -12,6 +12,8 @@
 #import "DetailsPaymentInfoView.h"
 #import "DetailsOrderInfoView.h"
 #import "TreatmentTimeView.h"
+#import "CUOrderManager.h"
+
 
 @interface TreatmentDetailsController ()<UIAlertViewDelegate>
 
@@ -123,5 +125,25 @@
     
 }
 
+#pragma mark postRequest
+
+//已付款已看病详情
+- (void)postRequestGetOrderHasPayHasMeetDetail{
+    OrderFilter * filter = [[OrderFilter alloc] init];
+    filter.diagnosisID = self.order.diagnosisID;
+    
+    [[CUOrderManager sharedInstance] getOrderHasPayHasMeetDetailWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                self.order = result.parsedModelObject;
+                [self resetData];
+            }
+        }
+        
+    } pageName:@"TreatmentDetailsController"];
+}
 
 @end

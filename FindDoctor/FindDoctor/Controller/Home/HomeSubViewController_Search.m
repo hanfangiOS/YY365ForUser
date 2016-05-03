@@ -31,6 +31,7 @@
 {
     self = [super initWithPageName:pageName];
     if (self) {
+        _hasToolbar = NO;
         _hasNavigationBar = NO;
     }
     return self;
@@ -43,6 +44,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     __weak __block HomeSubViewController_Search *blockSelf = self;
     
     //热搜诊所
@@ -84,7 +86,7 @@
     EqualSpaceFlowLayout *collectionLayout = [[EqualSpaceFlowLayout alloc] init];
     collectionLayout.delegate = self;
     
-    CGRect collectionFrame = CGRectMake(0, 0, kScreenWidth, self.contentView.frameHeight - 60 - 49);
+    CGRect collectionFrame = CGRectMake(0, 0, kScreenWidth, self.contentView.frameHeight - 60);
     
     UICollectionView *collectionview = [[UICollectionView alloc] initWithFrame:collectionFrame collectionViewLayout:collectionLayout];
     collectionview.backgroundColor = [UIColor clearColor];

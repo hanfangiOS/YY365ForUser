@@ -31,7 +31,7 @@ SINGLETON_IMPLENTATION(CommonManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/subjectList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_subjectList parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -75,7 +75,7 @@ SINGLETON_IMPLENTATION(CommonManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/ActivityBanner.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_ActivityBanner parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];

@@ -11,13 +11,11 @@
 
 typedef enum OrderStatus: NSInteger
 {
-    ORDERSTATUS_NONE     = -1,
-    ORDERSTATUS_ALL      = 0,
-    ORDERSTATUS_UNPAID   = 1, // 未支付
-    ORDERSTATUS_PAID     = 2, // 待服务、已支付
-    ORDERSTATUS_FINISHED = 3, // 已开方
-    ORDERSTATUS_CANCELED = 4, // 已打印
-    ORDERSTATUS_REFUNDED = 5, // 已评论
+    ORDERSTATUS_UNPAID   = 0, // 未支付
+    ORDERSTATUS_PAID     = 1, // 已支付,没看病
+    ORDERSTATUS_FINISHED = 2, // 已诊疗
+//    ORDERSTATUS_CANCELED = 4, // 已取消
+//    ORDERSTATUS_REFUNDED = 5, // 已评论
 }OrderStatus;
 
 typedef enum OrderPayment : NSInteger
@@ -36,7 +34,8 @@ typedef enum OrderPayment : NSInteger
 @property (nonatomic,assign) OrderStatus orderStatus;
 @property (nonatomic,assign) OrderPayment payment;
 //@property (nonatomic,strong) NSString * showDealPrice;// 价格展示使用
-@property long long dealPrice;
+@property long long dealPrice;//最后交易的价格（考虑了诊金券等）
+@property long long coupon;//诊金券
 @property (nonatomic,strong) CUService *service;
 //@property (nonatomic,strong) NSString * remark;//备注
 //@property (nonatomic,assign) NSInteger serviceCount;
@@ -73,5 +72,6 @@ typedef enum OrderPayment : NSInteger
 @property (strong,nonatomic)CUUser          * user;
 @property (assign,nonatomic)OrderStatus       orderStatus;
 @property (assign,nonatomic)NSInteger         pageNum;
+@property long long diagnosisID;
 
 @end

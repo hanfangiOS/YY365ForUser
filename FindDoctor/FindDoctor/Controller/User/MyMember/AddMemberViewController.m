@@ -13,7 +13,9 @@
 #import "AddMemberBtnCell.h"
 #import "AddMemberLabelCell.h"
 #import "CUUsermanager.h"
-#import "CUUser.h"
+#import "MyMemberViewController.h"
+#import "OrderCreateController.h"
+
 
 
 @interface AddMemberViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
@@ -108,12 +110,16 @@
                 switch (cell.textField.tag) {
                     case 20000:
                     {
+                        cell.textField.text = self.user.name;
                         cell.Label.text = @"姓名";
                         cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
                     }
                         break;
                     case 20002:
                     {
+                        if (self.user.age != 0) {
+                            cell.textField.text = [NSString stringWithFormat:@"%d",self.user.age];
+                        }
                         cell.Label.text = @"年龄";
                         cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
                         cell.textField.keyboardType = UIKeyboardTypeNumberPad;
@@ -121,6 +127,7 @@
                         break;
                     case 20003:
                     {
+                        cell.textField.text = self.user.cellPhone;
                         cell.Label.text = @"电话";
                         cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
                         cell.textField.keyboardType = UIKeyboardTypePhonePad;
@@ -177,6 +184,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self textFieldChange:textField];
+    [self.contentView endEditing:YES];
     return YES;
 }
 
@@ -252,12 +260,26 @@
     
     [self progressView];
     UserFilter * filter = [[UserFilter alloc] init];
+    for (UIViewController * vc in self.slideNavigationController.viewControllers) {
+        if ([vc isKindOfClass:[OrderCreateController class]]) {
+            filter.pageSrc = 0;
+        }
+        if ([vc isKindOfClass:[MyMemberViewController class]]) {
+            filter.pageSrc = 1;
+        }
+    }
     filter.user = self.user;
     [[CUUserManager sharedInstance] InsertMemberWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [self hideProgressView];
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
+                NSDictionary * data = [result.responseObject objectForKeySafely:@"data"];
+                self.user.memberId = [data integerForKeySafely:@"memberId"];
+                if (self.backWithUserBlock) {
+                    self.backWithUserBlock(self.user);
+                }
+                
                 [self.slideNavigationController popViewControllerAnimated:YES];
             }
         }

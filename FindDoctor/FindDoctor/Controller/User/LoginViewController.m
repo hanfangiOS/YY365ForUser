@@ -94,7 +94,7 @@
     _codeLabel.textColor = [UIColor whiteColor];
     _codeLabel.text = @"获取验证码";
     [_contentScrollView addSubview:_codeLabel];
-   
+    
     passwordTextFeildView = [[LoginTextFeildView alloc]initWithFrame:CGRectMake((kScreenWidth - textFeildWidth)/2, CGRectGetMaxY(userTextFeildView.frame) + intervalY, textFeildWidth, textFeildHeight) image:[UIImage imageNamed:@"login_icon_code"]];
     passwordTextFeildView.contentTextFeild.placeholder = @"请输入验证码";
     [self.contentView addSubview:passwordTextFeildView];
@@ -233,7 +233,11 @@
         [[CUUserManager sharedInstance] loginWithCellPhone:userTextFeildView.contentTextFeild.text code:passwordTextFeildView.contentTextFeild.text codetoken:codetoken resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
             [self hideHUD];
             if (!result.hasError) {
-                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
+                if (![errorCode integerValue]) {
+                    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                }
+                
             }
             
         } pageName:@"LoginViewController"];
@@ -242,8 +246,8 @@
 
 - (void)endEdit{
     [self.contentView endEditing:YES];
-//    [userTextFeildView.contentTextFeild resignFirstResponder];
-//    [passwordTextFeildView.contentTextFeild resignFirstResponder];
+    //    [userTextFeildView.contentTextFeild resignFirstResponder];
+    //    [passwordTextFeildView.contentTextFeild resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -252,13 +256,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

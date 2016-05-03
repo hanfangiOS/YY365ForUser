@@ -41,6 +41,7 @@
 - (void)loadContentView{
     self.contentTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.contentTableView.tableFooterView = [UIView new];
+    self.contentTableView.backgroundColor = kCommonBackgroundColor;
 }
 
 #pragma mark tableViewDelegate
@@ -50,8 +51,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    //    return self.listModel.items.count;
-    return 3;
+        return self.listModel.items.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -74,16 +74,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
-}
-
-#pragma mark Action
-
-- (void)forPayMentAction{
-
-}
-
-- (void)forTreatMentAction{
-
 }
 
 /*

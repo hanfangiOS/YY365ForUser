@@ -33,7 +33,8 @@ SINGLETON_IMPLENTATION(CUClinicManager);
     //    NSArray *types = @[@"subject", @"symptom", @"disease"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(filter.regionID) forKey:@"regionID"];
     [dataParam setObjectSafely:@(filter.longitude) forKey:@"longitude"];
     [dataParam setObjectSafely:@(filter.latitude) forKey:@"latitude"];
@@ -103,7 +104,8 @@ SINGLETON_IMPLENTATION(CUClinicManager);
     //    NSArray *types = @[@"subject", @"symptom", @"disease"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(clinic.ID) forKey:@"clinicID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -193,7 +195,8 @@ SINGLETON_IMPLENTATION(CUClinicManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     [dataParam setObjectSafely:@(clinic.ID) forKey:@"clinicID"];
     [dataParam setObjectSafely:@(clinic.isConcern ? 0 : 1) forKey:@"isConcern"];
     
@@ -235,7 +238,8 @@ SINGLETON_IMPLENTATION(CUClinicManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -297,7 +301,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/goodRemarkClinicList.jmm" parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_goodRemarkClinicList parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
