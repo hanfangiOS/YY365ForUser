@@ -60,7 +60,7 @@
     _data = data;
     [_imageView setImageWithURL:[NSURL URLWithString:_data.avatar]];
     _titleLabel.text = _data.name;
-    _detailLabel.text = [NSString stringWithFormat:@"终于从伏虎寺爬到了金顶，可惜今天都是大雾美景看不到了，先在农家乐住下，明早再去。一路上遇到了讨要吃的小松鼠 三步一拜虔诚的拜佛者 背着很重货物比我们走得都快的挑山工……还有很多传说和美丽的故事。"];
+    _detailLabel.text = _data.skillTreat;
 }
 
 - (void)setHasLine:(BOOL)hasLine{

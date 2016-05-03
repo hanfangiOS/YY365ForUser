@@ -13,7 +13,7 @@
 #import "NewsListController.h"
 #import "NewsListModel.h"
 
-@interface HomeViewController ()<UITextFieldDelegate>{
+@interface HomeViewController ()<UITextFieldDelegate,HomeSubViewController_SearchDelegate>{
     CityChooseButton    *_cityButton;
     UITextField *_searchTextField;
     UIButton    *_searchCancelButton;
@@ -45,6 +45,7 @@
 - (void)loadContentView{
     _homeSubViewController_Main = [[HomeSubViewController_Main alloc]initWithPageName:@"HomeSubViewController_Main"];
     _homeSubViewController_Search = [[HomeSubViewController_Search alloc]initWithPageName:@"HomeSubViewController_Search"];
+    _homeSubViewController_Search.delegate = self;
     [self addChildViewController:_homeSubViewController_Search];
     [self addChildViewController:_homeSubViewController_Main];
     _homeSubViewController_Search.view.frame = CGRectMake(0, 60, kScreenWidth, self.contentView.frameHeight - 60);
@@ -144,6 +145,7 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [_homeSubViewController_Search loadHistory];
     if(_homeSubViewController_Search.view.hidden == YES){
         _homeSubViewController_Search.view.hidden = NO;
         float timeDuration = 0.25f;
@@ -191,6 +193,10 @@
         [_homeSubViewController_Search searchClickWithString:textField.text];
     }
     return YES;
+}
+
+- (void)HomeSubViewController_SearchEndEdit{
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {

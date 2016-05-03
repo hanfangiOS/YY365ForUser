@@ -1,4 +1,4 @@
-//
+ //
 //  HomeSubViewController_Search.m
 //  FindDoctor
 //
@@ -237,6 +237,12 @@
     }
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
+
+#pragma mark - scrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.delegate HomeSubViewController_SearchEndEdit];
+}
+
 #pragma mark - Search History
 
 - (void)loadHistory
