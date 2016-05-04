@@ -13,6 +13,9 @@
 #import "EqualSpaceFlowLayout.h"
 #import "SubObjectHeaderView.h"
 #import "CUSearchManager.h"
+#import "SearchResultViewController.h"
+#import "SearchResultListModel.h"
+#import "DoctorDetailController.h"
 
 @interface HomeSubViewController_Search ()<EqualSpaceFlowLayoutDelegate>
 
@@ -196,7 +199,52 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    switch (indexPath.section) {
+        //搜索记录
+        case 0:
+        {
+//            self.currSearchStr = self.
+//            SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
+//            listModel.filter.keyword = self.currSearchStr;
+//            SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
+//            [self.slideNavigationController pushViewController:vc animated:YES];
+        }
+         //热搜医生
+        case 1:
+        {
+            DoctorDetailController * vc = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
+            vc.doctor = [self.hotSearchDoctorArray objectAtIndexSafely:indexPath.row];
+            [self.slideNavigationController pushViewController:vc animated:YES];
+        }
+            break;
+        //热搜病症
+        case 2:
+        {
+            //TODO 病症可能有1级可能有2级，此处进行判断
+            self.currSearchStr = [self.hotSearchSymptomArray objectAtIndexSafely:indexPath.row];
+            SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
+            listModel.filter.keyword = self.currSearchStr;
+                SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
+            [self.slideNavigationController pushViewController:vc animated:YES];
+        }
+            break;
+        //热搜诊所
+        case 3:
+        {
+            self.currSearchStr = [self.hotSearchClinicArray objectAtIndexSafely:indexPath.row];
+            SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
+            listModel.filter.keyword = self.currSearchStr;
+            SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
+            [self.slideNavigationController pushViewController:vc animated:YES];
+        }
+            break;
+        default:{
+
+        }
+            break;
+    }
+
+
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{

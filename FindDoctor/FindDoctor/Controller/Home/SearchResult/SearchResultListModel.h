@@ -15,6 +15,4 @@
 
 - (instancetype)initWithSortType:(SearchSortType)type;
 
-- (instancetype)initWithFilter:(SearchFilter *)filter;
-
 @end
