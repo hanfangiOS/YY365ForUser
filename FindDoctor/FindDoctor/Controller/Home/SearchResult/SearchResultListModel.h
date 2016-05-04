@@ -7,14 +7,14 @@
 //
 
 #import "SNBaseListModel.h"
-#import "SubObject.h"
+#import "Search.h"
 
 @interface SearchResultListModel : SNBaseListModel
 
-@property (nonatomic, strong) SubObjectFilter *filter;
+@property (nonatomic, strong) SearchFilter *filter;
 
-- (instancetype)initWithSortType:(SubObjectSortType)type;
+- (instancetype)initWithSortType:(SearchSortType)type;
 
-- (instancetype)initWithFilter:(SubObjectFilter *)filter;
+- (instancetype)initWithFilter:(SearchFilter *)filter;
 
 @end

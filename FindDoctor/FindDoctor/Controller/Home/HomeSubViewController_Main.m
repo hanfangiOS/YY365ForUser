@@ -310,9 +310,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SubObjectSortTypeNone];
+    SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
     SubObject *subobject = (SubObject *)[self.homeModel.subjectList objectAtIndex:indexPath.row];
-//    listModel.filter.typeId = subobject.type_id;
+    listModel.filter.subjectID = subobject.type_id;
     SearchResultViewController *listVC = [[SearchResultViewController alloc] initWithPageName:self.pageName listModel:listModel];
     [self.slideNavigationController pushViewController:listVC animated:YES];
 

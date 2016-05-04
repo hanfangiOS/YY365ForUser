@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) SubObjectFilter *filter;
 
-- (instancetype)initWithSortType:(SubObjectSortType)type;
+//- (instancetype)initWithSortType:(SubObjectSortType)type;
 
 - (instancetype)initWithFilter:(SubObjectFilter *)filter;
 

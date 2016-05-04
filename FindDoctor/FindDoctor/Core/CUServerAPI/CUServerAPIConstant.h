@@ -86,6 +86,8 @@
 #define URL_famousDoctorClinic @"/baseFrame/base/famousDoctorClinic.jmm"
 //获取筛选条件
 #define URL_OptionList @"/baseFrame/base/OptionList.jmm"
+//获取搜索结果
+#define URL_SearchResult @"/baseFrame/base/SearchDoctorBySubject.jmm"
 #elif defined(CollegeUnion_Distribution)
 
 #define URL_AfterBase @"/baseFrame/base/server.jmw"
@@ -112,6 +114,8 @@
 #define URL_famousDoctorClinic @"/baseFrame/base/famousDoctorClinic.jmw"
 //获取筛选条件
 #define URL_OptionList @"/baseFrame/base/OptionList.jmw"
+//获取搜索结果
+#define URL_SearchResult @"/baseFrame/base/SearchDoctorBySubject.jmw"
 #endif
 
 // }

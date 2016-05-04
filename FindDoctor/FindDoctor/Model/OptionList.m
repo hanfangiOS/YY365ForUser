@@ -11,3 +11,19 @@
 @implementation OptionList
 
 @end
+
+@implementation DateOption
+
+@end
+
+@implementation RegionOption
+
+@end
+
+@implementation SymptomSubOption
+
+@end
+
+@implementation SymptomOption
+
+@end
