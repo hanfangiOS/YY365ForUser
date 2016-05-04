@@ -405,6 +405,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             }
         }
         else {
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
             NSLog(@"连接服务器失败，请检查网络");
         }
         resultBlock(request, result);

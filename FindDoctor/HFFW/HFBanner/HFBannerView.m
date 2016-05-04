@@ -54,7 +54,6 @@
 @end
 
 @implementation HFBannerView
-@dynamic hasPageControl;
 
 - (instancetype)init{
     self = [super init];
@@ -62,7 +61,6 @@
         self.hasPageControl = YES;
         self.autoScroll = YES;
         self.scrollTime = 2.5;
-        self.switchTimeInterval = 2.5;
         [self initSubView];
     }
     return self;
@@ -74,7 +72,6 @@
         self.hasPageControl = YES;
         self.autoScroll = YES;
         self.scrollTime = 2.5;
-        self.switchTimeInterval = 2.5;
         [self initSubView];
     }
     return self;
@@ -92,6 +89,13 @@
     [_contentScrollView addGestureRecognizer:singleRecognizer];
     [self addSubview:_contentScrollView];
     
+    [self addPageControlToSuperView];
+}
+
+- (void)addPageControlToSuperView{
+    if (_pageControl) {
+        return;
+    }
     _pageControl = [[HFPageControl alloc]initWithFrame:CGRectMake(0, self.frame.size.height - 20, self.frame.size.width, 30)];
     _pageControl.userInteractionEnabled = NO;
     [self addSubview:_pageControl];
@@ -100,6 +104,16 @@
 - (void)handleSingleTapFrom:(UISwipeGestureRecognizer*)recognizer{
     if ([self.delegate respondsToSelector:@selector(HFBannerView:didSelectAtIndex:)]) {
         [self.delegate HFBannerView:self didSelectAtIndex:self.currentPage];
+    }
+}
+
+- (void)setAutoScroll:(BOOL)autoScroll{
+    _autoScroll = autoScroll;
+    if (autoScroll) {
+        [self startTimer];
+    }
+    else{
+        [self stopTimer];
     }
 }
 
@@ -114,18 +128,26 @@
     [self resetData];
 }
 
+- (void)reloadData{
+    self.currentPage = 0;
+    for (UIView * v in [self subviews]){
+        if ([v isKindOfClass:[HFBannerViewCell class]]){
+            [v removeFromSuperview];
+        }
+    }
+    _itemsSubviewsCacheIsValid = NO;
+    _itemSubviewsCache = nil;
+    [self reloadScrollView];
+    [self resetData];
+}
+
 - (void)didMoveToSuperview{
     [self reloadScrollView];
     [self resetData];
 }
 
-- (void)reloadData{
-    self.currentPage = 0;
-    [self reloadScrollView];
-    [self resetData];
-}
+#pragma mark - Data
 
-#pragma mark - animation
 - (NSInteger)preIndex{
     NSInteger index = self.currentPage - 1;
     if (index < 0) {
@@ -175,9 +197,17 @@
     }
     else{
         if (numberOfCell) {
-            _curView = [self.dataSource HFBannerView:self cellForIndex:0];
+            if([self cellForItemAtIndex:[self curIndex]]){
+                [_preView addSubview:[self cellForItemAtIndex:[self curIndex]]];
+                [_contentScrollView bringSubviewToFront:[self cellForItemAtIndex:[self curIndex]]];
+            }
+            else{
+                [_preView addSubview:[self.dataSource HFBannerView:self cellForIndex:[self curIndex]]];
+                _itemsSubviewsCacheIsValid = NO;
+            }
         }
     }
+    _pageControl.currentPage = _currentPage;
 }
 
 - (void)goForNextPage{
@@ -270,7 +300,7 @@
         [_contentScrollView addSubview:_preView];
         [_contentScrollView addSubview:_curView];
         [_contentScrollView addSubview:_posView];
-        self.hasPageControl = YES;
+        [self addPageControlToSuperView];
         [self startTimer];
     }
     else{
@@ -279,27 +309,31 @@
         _preView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         _preView.clipsToBounds = YES;
         [_contentScrollView addSubview:_preView];
-        self.hasPageControl = NO;
-        _contentScrollView.bounces = NO;
+        [_pageControl removeFromSuperview];
+        _pageControl = nil;
     }
     _pageControl.numberOfPages = numberOfCell;
+    self.pageControl.hidden = !_hasPageControl;
 }
 
 #pragma mark - pageControl
 
 - (void)setHasPageControl:(BOOL)hasPageControl{
-    self.pageControl.hidden = !hasPageControl;
+    _hasPageControl = hasPageControl;
+    self.pageControl.hidden = !_hasPageControl;
 }
 
 
-#pragma mark - HFScrollView
+#pragma mark - HFScrollViewDelegate
 
 - (void)touchesBegan{
     [self stopTimer];
 }
 
 - (void)touchesEnded{
-    [self startTimer];
+    if (numberOfCell > 1) {
+        [self startTimer];
+    }
 }
 
 - (void)stopTimer{
@@ -310,11 +344,13 @@
 }
 
 - (void)startTimer{
-    if (_timer) {
-        return;
+    if (self.autoScroll) {
+        if (_timer) {
+            return;
+        }
+        _timer = [NSTimer scheduledTimerWithTimeInterval:self.scrollTime target:self selector:@selector(goForNextPage) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     }
-    _timer = [NSTimer scheduledTimerWithTimeInterval:self.scrollTime target:self selector:@selector(goForNextPage) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
 
 @end

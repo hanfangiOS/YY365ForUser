@@ -13,6 +13,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self initSubView];
     }
     return self;
@@ -25,14 +26,6 @@
 - (void)setURL:(NSString *)URL{
     _URL = URL;
     [self setImageWithURL:[NSURL URLWithString:_URL]];
-//    [self sd_setImageWithURL:[NSURL URLWithString:_URL] placeholderImage:nil options:SDWebImageAvoidAutoSetImage progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-//        
-//    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        if(error == nil){
-//            self.image = image;
-//        }
-//
-//    }];
 }
 
 @end

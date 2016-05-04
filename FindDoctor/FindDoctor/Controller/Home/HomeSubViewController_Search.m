@@ -16,6 +16,7 @@
 #import "SearchResultViewController.h"
 #import "SearchResultListModel.h"
 #import "DoctorDetailController.h"
+#import "CUDoctorManager.h"
 
 @interface HomeSubViewController_Search ()<EqualSpaceFlowLayoutDelegate>
 
@@ -203,18 +204,24 @@
         //搜索记录
         case 0:
         {
-//            self.currSearchStr = self.
-//            SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
-//            listModel.filter.keyword = self.currSearchStr;
-//            SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
-//            [self.slideNavigationController pushViewController:vc animated:YES];
+            self.currSearchStr = [self.dataArray objectAtIndexSafely:indexPath.row];
+            SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
+            listModel.filter.keyword = self.currSearchStr;
+            SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
+            [self.slideNavigationController pushViewController:vc animated:YES];
         }
          //热搜医生
         case 1:
         {
-            DoctorDetailController * vc = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
-            vc.doctor = [self.hotSearchDoctorArray objectAtIndexSafely:indexPath.row];
-            [self.slideNavigationController pushViewController:vc animated:YES];
+            DoctorDetailController *detailVC = [[DoctorDetailController alloc] initWithPageName:self.pageName];
+            detailVC.doctor = [self.hotSearchDoctorArray objectAtIndexSafely:indexPath.row];
+            [[CUDoctorManager sharedInstance] updateDoctorInfo:detailVC.doctor date:[[[NSDate date] dateAtStartOfDay] timeIntervalSince1970] resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+                
+                if (!result.hasError) {
+                    [self.slideNavigationController pushViewController:detailVC animated:YES];
+                }
+
+            }];
         }
             break;
         //热搜病症

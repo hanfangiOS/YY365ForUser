@@ -152,6 +152,10 @@ SINGLETON_IMPLENTATION(CommonManager);
                 NSArray *recListSymptom= [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"symptomOption"];
                 
                 NSMutableArray *resultListDate= [NSMutableArray array];
+                DateOption *dateoption = [[DateOption alloc]init];
+                dateoption.ID = -1;
+                dateoption.date = @"全部时间";
+                [resultListDate addObject:dateoption];
                 [recListDate enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     DateOption *dateoption = [[DateOption alloc]init];
                     dateoption.ID = [obj integerForKeySafely:@"ID"];
@@ -161,6 +165,10 @@ SINGLETON_IMPLENTATION(CommonManager);
                 [dataDict setObject:resultListDate forKey:@"dateOption"];
                 
                 NSMutableArray *resultListRegion= [NSMutableArray array];
+                RegionOption *regionOption = [[RegionOption alloc]init];
+                regionOption.ID = -1;
+                regionOption.name = @"全部地区";
+                [resultListRegion addObject:regionOption];
                 [recListRegion enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     RegionOption *regionOption = [[RegionOption alloc]init];
                     regionOption.ID = [[[obj dictionaryForKeySafely:@"regionOption"]valueForKey:@"id"] integerValue];
@@ -170,6 +178,10 @@ SINGLETON_IMPLENTATION(CommonManager);
                 [dataDict setObject:resultListRegion forKey:@"regionOption"];
                 
                 NSMutableArray *resultListSymptom= [NSMutableArray array];
+                SymptomOption *symptomOption = [[SymptomOption alloc]init];
+                symptomOption.ID = -1;
+                symptomOption.name = @"全部病症";
+                [resultListSymptom addObject:symptomOption];
                 [recListSymptom enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     SymptomOption *symptomOption = [[SymptomOption alloc]init];
                     symptomOption.ID = [[[obj dictionaryForKeySafely:@"symptomOption"]valueForKey:@"id"] integerValue];

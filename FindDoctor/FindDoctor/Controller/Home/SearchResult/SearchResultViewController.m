@@ -42,11 +42,7 @@
     self = [super initWithPageName:pageName listModel:listModel];
     self.listModel = listModel;
     if (self) {
-        self.titleArray = @[@"病症", @"距离", @"时间"];
-        //            self.diseaseArray = [NSArray arrayWithArray:[DiseaseSubject contentsWithName:listModel.filter.keyword]];
-        //        self.diseaseArray = listModel.filter.symptomOptionArray;
-//        self.regionArray = @[@"全部", @"距离从近到远"];
-        self.timeArray = @[];
+        self.titleArray = @[@"病症", @"地区", @"时间"];
     }
     
     return self;
@@ -123,20 +119,17 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    DoctorDetailController *detailVC = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
+    DoctorDetailController *detailVC = [[DoctorDetailController alloc] initWithPageName:self.pageName];
     detailVC.doctor = [self.listModel.items objectAtIndexSafely:indexPath.row];
 #if !LOCAL
-    
-    //    NSDateFormatter* formatter = [NSDateFormatter dateFormatterWithFormat:[NSDateFormatter dateFormatString]];
-    
     [[CUDoctorManager sharedInstance] updateDoctorInfo:detailVC.doctor date:[[[NSDate date] dateAtStartOfDay] timeIntervalSince1970] resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             [self.slideNavigationController pushViewController:detailVC animated:YES];
         }
-        else {
-            [TipHandler showTipOnlyTextWithNsstring:[result.error.userInfo objectForKey:NSLocalizedDescriptionKey]];
-        }
+//        else {
+//            [TipHandler showTipOnlyTextWithNsstring:[result.error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+//        }
     }];
 #else
     [self.slideNavigationController pushViewController:detailVC animated:YES];
@@ -207,7 +200,7 @@
 - (NSInteger)menu:(DOPDropDownMenu *)menu numberOfItemsInRow:(NSInteger)row column:(NSInteger)column{
     if (column == 0) {
         SymptomOption *item = [self.diseaseArray objectAtIndexSafely:row];
-        return item.symptomSubOptionArray.count;
+        return item.symptomSubOptionArray.count == 0 ? -1:item.symptomSubOptionArray.count;
     }
     else{
         return 0;
@@ -225,13 +218,11 @@
 
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
 {
-    //    self.listModel.filter.classNumber = 1;
-    // 点击第一个，即‘全部’
-    //    if (indexPath.row == 0)
-    //    {
-    ////        [self.dropdownMenu updateMenuTitle:self.titleArray[indexPath.column] inColumn:indexPath.column];
-    //        [self.dropdownMenu reloadData];
-    //    }
+        if (indexPath.row == 0)
+        {
+//            [self.dropdownMenu updateMenuTitle:self.titleArray[indexPath.column] inColumn:indexPath.column];
+            [self.dropdownMenu reloadData];
+        }
     //    switch (indexPath.column) {
     //        case 0:{
     //            self.listModel.filter.subTypeId = indexPath.row;
