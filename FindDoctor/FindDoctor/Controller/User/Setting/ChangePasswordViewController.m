@@ -68,7 +68,7 @@
     self.beforePwdBackgroundView.backgroundColor = [UIColor whiteColor];
     
     //旧密码
-    self.beforePwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22, (90 - [SettingTextFeildView defaultHeight]/2), kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"旧密码"];
+    self.beforePwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22, (self.beforePwdBackgroundView.frameHeight - [SettingTextFeildView defaultHeight])/2, kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"旧密码"];
     [self.beforePwdBackgroundView addSubview:self.beforePwdView];
     //第二块View
     self.nowPwdBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0,self.beforePwdBackgroundView.maxY + 10, kScreenWidth, 150)];

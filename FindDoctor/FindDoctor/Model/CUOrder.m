@@ -26,7 +26,7 @@
 //{
 //    return [NSString stringWithFormat:@"orderId=%lu,orderNumber=%@,createTime=%@,finishedTime=%@,orderStatus=%d,contacters=%@,payment=%d,dealPrice=%f,service=%@,remark=%@,serviceCount=%lu",self.orderId,self.orderNumber,self.createTime,self.finishedTime,self.orderStatus,self.contacter,self.payment,self.dealPrice,self.service,self.remark,self.serviceCount];
 //}
-
+//根据订单状态返回相应字段
 - (NSString *)orderStatusStr//:(OrderStatus)status
 {
     NSString * statusStr = nil;
@@ -35,16 +35,37 @@
         case ORDERSTATUS_UNPAID:
             statusStr = @"未支付";
             break;
-        case ORDERSTATUS_FINISHED:
-            statusStr = @"已诊疗";
-            break;
         case ORDERSTATUS_PAID:
-            statusStr = @"待服务";
+            statusStr = @"已支付";
+            break;
+        case ORDERSTATUS_FINISHED:
+            statusStr = @"已完成";
             break;
         default:
             break;
     }
     return statusStr;
+}
+
+//根据支付类型返回相应字段
+- (NSString *)orderPaymentStr//:(OrderStatus)status
+{
+    NSString * payment = nil;
+    switch (self.payment)
+    {
+        case ORDERPAYMENT_ZhiFuBao:
+            payment = @"支付宝";
+            break;
+        case ORDERPAYMENT_WeiXin:
+            payment = @"微信";
+            break;
+        case ORDERPAYMENT_YinLian:
+            payment = @"银联";
+            break;
+        default:
+            break;
+    }
+    return payment;
 }
 
 - (BOOL)shouldRequireDetail

@@ -34,10 +34,9 @@
     [self addSubview:self.icon];
     
     UILabel * label = [[UILabel alloc] init];
-    label.backgroundColor = [UIColor yellowColor];
     label.textAlignment = NSTextAlignmentLeft;
     label.numberOfLines = 0;
-    label.font = [UIFont systemFontOfSize:15];
+    label.font = [UIFont systemFontOfSize:17];
     self.label = label;
     [self addSubview:self.label];
 }
@@ -53,8 +52,6 @@
 - (void)setData:(TipMessageData *)data{
     _data = data;
     
-    [self clearCache];
-    
     self.label.text = _data.title;
     if (_data.type == 0) {
         self.icon.image = [UIImage imageNamed:@""];
@@ -67,16 +64,6 @@
     
     [self setNeedsLayout];
     [self layoutIfNeeded];
-}
-
-- (void)clearCache{
-    self.icon.image = nil;
-    self.label.text = nil;
-}
-
-- (NSInteger)CellHeight{
-        CGSize size = [self sizeForString:self.label.text font:self.label.font limitSize:CGSizeMake(self.frameWidth - (40 + 15 + 25), 0)];
-    return (size.height + 15 + 12);
 }
 
 - (CGSize)sizeForString:(NSString *)string font:(UIFont *)font limitSize:(CGSize)limitSize{

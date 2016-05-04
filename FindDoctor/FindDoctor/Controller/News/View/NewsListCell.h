@@ -13,8 +13,6 @@
 
 @property (strong,nonatomic) TipMessageData * data;
 
-- (NSInteger)CellHeight;
-
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

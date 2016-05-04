@@ -11,6 +11,7 @@
 #import "GoodClinicCell.h"
 #import "ClinicAdverCell.h"
 #import "HFTitleView.h"
+#import "ClinicMainViewController.h"
 
 #define sectionHeaderViewHeight 30 
 
@@ -99,7 +100,9 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    ClinicMainViewController * vc = [[ClinicMainViewController alloc] initWithPageName:@"ClinicMainViewController"];
+    vc.clinic =  [self.data.goodClinicList objectAtIndex:indexPath.row];
+    [self.fatherVC.slideNavigationController pushViewController:vc animated:YES];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{

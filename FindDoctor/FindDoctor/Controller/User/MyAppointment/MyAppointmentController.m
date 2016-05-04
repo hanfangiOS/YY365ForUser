@@ -232,6 +232,7 @@ typedef NS_ENUM(NSInteger,ListType){
     [self triggerRefresh];
 }
 
+#pragma mark scrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat sectionHeaderHeight = 10;

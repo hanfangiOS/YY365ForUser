@@ -21,19 +21,6 @@
     
 }
 
-//- (instancetype)initWithFilter:(CommentFilter *)filter
-//{
-//    self = [super init];
-//    
-//    if (self) {
-//
-//    }
-//    
-//    return self;
-//}
-
-
-
 - (void)gotoFirstPage:(SNServerAPIResultBlock)resultBlock
 {
     [[CUOrderManager sharedInstance] getHomeTipListWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {

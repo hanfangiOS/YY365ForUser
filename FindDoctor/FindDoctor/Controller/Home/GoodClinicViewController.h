@@ -12,6 +12,7 @@
 @interface GoodClinicViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (strong,nonatomic)HomeModel * data;
+@property (strong,nonatomic)HomeSubViewController_Main * fatherVC;
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;//一定要使用本方法进行初始化
 

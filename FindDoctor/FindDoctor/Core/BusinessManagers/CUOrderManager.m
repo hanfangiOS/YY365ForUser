@@ -448,35 +448,18 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_getHomeTipList parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError){
             NSInteger err_code = [[result.responseObject valueForKeySafely:@"errorCode"] integerValue];
             if (err_code == 0) {
-                NSArray *dataArray = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"msgCompany"];
-                NSMutableArray *resultArray = [NSMutableArray new];
-                for (int i = 0; i < dataArray.count; i++) {
-                    NSMutableDictionary *dic = [dataArray objectAtIndex:i];
-                    TipMessageData *data = [[TipMessageData alloc]init];
-                    data.title = [dic valueForKeySafely:@"title"];
-                    //                    NSInteger pageid = [[dic valueForKeySafely:@"type"] integerValue];
-                    [resultArray addObjectSafely:data];
-                }
-                
-                NSArray *dataArray2 = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"msgDiagnosis"];
-                for (int i = 0; i < dataArray2.count; i++) {
-                    NSMutableDictionary *dic = [dataArray2 objectAtIndex:i];
-                    TipMessageData *data = [[TipMessageData alloc]init];
-                    data.title = [dic valueForKeySafely:@"title"];
-                    //                    NSInteger pageid = [[dic valueForKeySafely:@"type"] integerValue];
-                    [resultArray addObjectSafely:data];
-                }
+                 NSMutableArray *resultArray = [NSMutableArray new];
                 
                 NSArray *dataArray3 = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"msgPaper"];
                 for (int i = 0; i < dataArray3.count; i++) {
                     NSMutableDictionary *dic = [dataArray3 objectAtIndex:i];
                     TipMessageData *data = [[TipMessageData alloc]init];
                     data.title = [dic valueForKeySafely:@"title"];
-                    //                    NSInteger pageid = [[dic valueForKeySafely:@"type"] integerValue];
+
                     [resultArray addObjectSafely:data];
                 }
                 
@@ -756,7 +739,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     order.service.doctor.avatar = [obj stringForKeySafely:@"icon"];
 
                     order.service.doctor.diagnosisTime = [[obj stringForKeySafely:@"ordertime"] integerValue];
-                    order.service.doctor.address = [obj stringForKeySafely:@"clinicAddress"];
+                    order.service.doctor.address = [obj stringForKeySafely:@"address"];
                     [dataList addObjectSafely:order];
                 }];
                 SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
@@ -814,7 +797,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     order.service.doctor.avatar = [obj stringForKeySafely:@"icon"];
                     order.service.patience.name = [obj stringForKeySafely:@"userName"];
                     order.service.doctor.diagnosisTime = [[obj stringForKeySafely:@"ordertime"] integerValue];
-                    order.service.doctor.address = [obj stringForKeySafely:@"clinicAddress"];
+                    order.service.doctor.address = [obj stringForKeySafely:@"address"];
                     [dataList addObjectSafely:order];
                 }];
                 SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
@@ -858,12 +841,12 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 NSMutableArray * dataList = [NSMutableArray array];
                 
                 NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
-                NSArray * tempList1 = [data arrayForKeySafely:@"order"];
+                NSArray * tempList1 = [data arrayForKeySafely:@"orderList"];
                 [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     CUOrder * order = [[CUOrder alloc] init];
                     order.service.patience.userId = (NSInteger)[obj longlongForKeySafely:@"accID"];
                     order.diagnosisID = [obj longlongForKeySafely:@"orderno"];
-                    order.dealPrice = [obj longlongForKeySafely:@"amount"];
+                    order.service.doctor.price = [obj integerForKeySafely:@"amount"];
                     order.service.doctor.name = [obj stringForKeySafely:@"doctorName"];
                     order.service.doctor.levelDesc = [obj stringForKeySafely:@"title"];
                     order.service.doctor.grade = [obj stringForKeySafely:@"gradeas"];
@@ -871,7 +854,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     order.service.doctor.avatar = [obj stringForKeySafely:@"icon"];
                     order.service.patience.name = [obj stringForKeySafely:@"userName"];
                     order.service.doctor.diagnosisTime = [[obj stringForKeySafely:@"ordertime"] integerValue];
-                    order.service.doctor.address = [obj stringForKeySafely:@"clinicAddress"];
+                    order.service.doctor.address = [obj stringForKeySafely:@"address"];
                     [dataList addObjectSafely:order];
                 }];
                 SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
@@ -987,6 +970,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.service.doctor.name = [orderDict stringForKeySafely:@"doctorName"];
                 order.service.doctor.levelDesc = [orderDict stringForKeySafely:@"title"];
                 order.service.doctor.grade = [orderDict stringForKeySafely:@"gradeas"];
+                order.service.doctor.skillTreat = [orderDict stringForKeySafely:@"skilltreat"];
                 order.submitTimeString = [orderDict stringForKeySafely:@"verid"];
                 order.service.doctor.avatar = [orderDict stringForKeySafely:@"icon"];
                 order.service.patience.name = [orderDict stringForKeySafely:@"userName"];
@@ -1052,6 +1036,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.service.doctor.name = [orderDict stringForKeySafely:@"doctorName"];
                 order.service.doctor.levelDesc = [orderDict stringForKeySafely:@"title"];
                 order.service.doctor.grade = [orderDict stringForKeySafely:@"gradeas"];
+                order.service.doctor.skillTreat = [orderDict stringForKeySafely:@"skilltreat"];
                 order.submitTimeString = [orderDict stringForKeySafely:@"verid"];
                 order.service.doctor.avatar = [orderDict stringForKeySafely:@"icon"];
                 order.service.patience.name = [orderDict stringForKeySafely:@"userName"];

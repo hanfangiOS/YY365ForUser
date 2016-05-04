@@ -10,6 +10,7 @@
 #import "GoodDoctorCell.h"
 #import "Doctor.h"
 #import "HFTitleView.h"
+#import "DoctorDetailController.h"
 
 #define sectionHeaderViewHeight 30
 
@@ -108,7 +109,9 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    DoctorDetailController * vc = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
+    vc.doctor =  [self.data objectAtIndex:indexPath.row];
+    [self.fatherVC.slideNavigationController pushViewController:vc animated:YES];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{

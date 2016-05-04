@@ -113,36 +113,9 @@
     
     self.orderTime.text = [[NSDate dateWithTimeIntervalSince1970: _data.submitTime]stringWithDateFormat:@"yyyy-MM-dd  HH:mm"];
     
-    switch (_data.orderStatus) {
-        case ORDERSTATUS_UNPAID:
-        {
-            self.orderState.text = @"未支付";
-        }
-            break;
-        case ORDERSTATUS_PAID:
-        {
-            self.orderState.text = @"已支付";
-        }
-            break;
-        case ORDERSTATUS_FINISHED:
-        {
-            self.orderState.text = @"已诊疗";
-        }
-            break;
-            break;
-        default:
-            break;
-    }
-    
-    if (_data.payment == ORDERPAYMENT_ZhiFuBao) {
-        self.payment.text = @"支付宝";
-    }else if (_data.payment == ORDERPAYMENT_WeiXin){
-        self.payment.text = @"微信";
-    }else if (_data.payment == ORDERPAYMENT_YinLian){
-        self.payment.text = @"银联";
-    }else if (!_data.payment){
-        self.payment.text = @"未支付";
-    }
+    self.orderState.text = [_data orderStatusStr];
+
+    self.payment.text = [_data orderPaymentStr];
     
 }
 

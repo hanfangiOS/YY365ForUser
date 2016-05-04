@@ -121,6 +121,7 @@
                     {
                         cell.Label.text = @"姓名";
                         cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+                        cell.textField.text = self.user.name;
                     }
                         break;
                     case 20002:
@@ -128,6 +129,7 @@
                         cell.Label.text = @"年龄";
                         cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
                         cell.textField.keyboardType = UIKeyboardTypeNumberPad;
+                        cell.textField.text = [NSString stringWithFormat:@"%ld",(long)self.user.age];
                     }
                         break;
                     case 20003:
@@ -135,6 +137,7 @@
                         cell.Label.text = @"电话";
                         cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
                         cell.textField.keyboardType = UIKeyboardTypePhonePad;
+                        cell.textField.text = self.user.cellPhone;
                     }
                         break;
                     default:
@@ -280,6 +283,7 @@
     [self progressView];
     UserFilter * filter = [[UserFilter alloc] init];
     filter.user = self.user;
+    filter.pageSrc = 1;
     [[CUUserManager sharedInstance] ModifyMemberWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [self hideProgressView];
         if (!result.hasError) {

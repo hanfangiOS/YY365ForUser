@@ -672,7 +672,14 @@ SINGLETON_IMPLENTATION(CUUserManager);
                     user.memberId = [obj integerForKeySafely:@"memberId"];
                     user.name = [obj stringForKeySafely:@"name"];
                     user.cellPhone = [obj stringForKeySafely:@"phone"];
-                    user.gender = [obj integerForKeySafely:@"sex"];
+                    NSString * str = [obj stringForKeySafely:@"sex"];
+                    if ([str isEqualToString:@"女"]) {
+                        user.gender = CUUserGenderFemale;
+                    }
+                    if ([str isEqualToString:@"男"]) {
+                        user.gender = CUUserGenderMale;
+                    }
+
                     [dataList addObjectSafely:user];
                 }];
                 
@@ -707,7 +714,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [dataParam setObjectSafely:filter.user.cellPhone forKey:@"phone"];
     [dataParam setObjectSafely:(filter.user.gender == CUUserGenderMale?@"男":@"女") forKey:@"sex"];
     [dataParam setObjectSafely:@(filter.user.age) forKey:@"age"];
-        [dataParam setObjectSafely:@(filter.pageSrc) forKey:@"pageSrc"];
+    [dataParam setObjectSafely:@(filter.pageSrc) forKey:@"pageSrc"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
@@ -772,7 +779,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
 //14203 修改我的成员
 - (void)ModifyMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:142003 require:@"ModifyMember"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14201 require:@"InsertMember"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
@@ -781,6 +788,8 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [dataParam setObjectSafely:filter.user.cellPhone forKey:@"phone"];
     [dataParam setObjectSafely:(filter.user.gender == CUUserGenderMale?@"男":@"女") forKey:@"sex"];
     [dataParam setObjectSafely:@(filter.user.age) forKey:@"age"];
+    [dataParam setObjectSafely:@(filter.pageSrc) forKey:@"pageSrc"];
+    [dataParam setObjectSafely:@(filter.user.memberId) forKey:@"memberId"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);

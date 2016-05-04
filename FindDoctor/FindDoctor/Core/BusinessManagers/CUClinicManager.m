@@ -47,8 +47,8 @@ SINGLETON_IMPLENTATION(CUClinicManager);
         
         if (!result.hasError) {
             //服务器内部正常
-            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 
                 NSArray *recvList = [result.responseObject arrayForKeySafely:@"data"];
