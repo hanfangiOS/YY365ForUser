@@ -10,4 +10,12 @@
 
 @implementation HFFilter
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.rows = 20;
+    }
+    return self;
+}
+
 @end

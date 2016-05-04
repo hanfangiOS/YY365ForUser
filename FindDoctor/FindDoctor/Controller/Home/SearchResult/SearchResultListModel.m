@@ -7,19 +7,19 @@
 //
 
 #import "SearchResultListModel.h"
-#import "CUDoctorManager.h"
+#import "CUSearchManager.h"
 
 @implementation SearchResultListModel
 
-- (instancetype)initWithSortType:(SubObjectSortType)type
+- (instancetype)initWithSortType:(SearchSortType)type
 {
-    SubObjectFilter *filter = [[SubObjectFilter alloc] init];
+    SearchFilter *filter = [[SearchFilter alloc] init];
     filter.sortType = type;
     
     return [self initWithFilter:filter];
 }
 
-- (instancetype)initWithFilter:(SubObjectFilter *)filter
+- (instancetype)initWithFilter:(SearchFilter *)filter
 {
     self = [super init];
     
@@ -32,42 +32,42 @@
 
 - (void)gotoFirstPage:(SNServerAPIResultBlock)resultBlock
 {
-//    [[CUDoctorManager sharedInstance] getDoctorListWithPageNum:startPageNum pageSize:pageSize filter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-//        if (!result.hasError)
-//        {
-//            SNBaseListModel * list = result.parsedModelObject;
-//            NSArray *orderArray = list.items;
-//            
-//            [self.items removeAllObjects];
-//            [self.items addObjectsFromArray:orderArray];
-//            
-//            SNPageInfo * info = list.pageInfo;
-//            self.pageInfo.pageSize = info.pageSize;
-//            self.pageInfo.totalPage = info.totalPage;
-//            self.pageInfo.currentPage = startPageNum;
-//        }
-//        else {
-//            NSLog(@"连接服务器失败，请检查网络");
-//        }
-//        resultBlock(request,result);
-//    } pageName:@"getDoctorList"];
+    [[CUSearchManager sharedInstance] getSearchResultListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError)
+        {
+            SNBaseListModel * list = result.parsedModelObject;
+            NSArray *orderArray = list.items;
+            
+            [self.items removeAllObjects];
+            [self.items addObjectsFromArray:orderArray];
+            
+            SNPageInfo * info = list.pageInfo;
+            self.pageInfo.pageSize = info.pageSize;
+            self.pageInfo.totalPage = info.totalPage;
+            self.pageInfo.currentPage = startPageNum;
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+        }
+        resultBlock(request,result);
+    } pageName:@"SearchResultViewController"];
 }
 
 - (void)gotoNextPage:(SNServerAPIResultBlock)resultBlock
 {
-//    [[CUDoctorManager sharedInstance] getDoctorListWithPageNum:self.pageInfo.currentPage + 1 pageSize:pageSize filter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-//        if (!result.hasError)
-//        {
-//            SNBaseListModel * list = result.parsedModelObject;
-//            [self.items addObjectsFromArray:list.items];
-//            
-//            SNPageInfo * info = list.pageInfo;
-//            self.pageInfo.pageSize = info.pageSize;
-//            self.pageInfo.totalPage = info.totalPage;
-//            self.pageInfo.currentPage++;
-//        }
-//        resultBlock(request,result);
-//    } pageName:@"getDoctorList"];
+    [[CUSearchManager sharedInstance] getSearchResultListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError)
+        {
+            SNBaseListModel * list = result.parsedModelObject;
+            [self.items addObjectsFromArray:list.items];
+            
+            SNPageInfo * info = list.pageInfo;
+            self.pageInfo.pageSize = info.pageSize;
+            self.pageInfo.totalPage = info.totalPage;
+            self.pageInfo.currentPage++;
+        }
+        resultBlock(request,result);
+    } pageName:@"SearchResultViewController"];
 }
 
 @end

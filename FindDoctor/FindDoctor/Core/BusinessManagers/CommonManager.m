@@ -16,6 +16,7 @@
 #import "Clinic.h"
 #import "Doctor.h"
 #import "HFRequestHeaderDict.h"
+#import "OptionList.h"
 
 @implementation CommonManager
 
@@ -130,7 +131,7 @@ SINGLETON_IMPLENTATION(CommonManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:11101 require:@"OptionList"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObject:@( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.userId : 0 )  forKey:@"accID"];
+//    [dataParam setObject:@( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.userId : 0 )  forKey:@"accID"];
     [dataParam setObject:@(510000) forKey:@"regionID"];
     [dataParam setObject:kCurrentLng forKey:@"longitude"];
     [dataParam setObject:kCurrentLat forKey:@"latitude"];
@@ -145,32 +146,49 @@ SINGLETON_IMPLENTATION(CommonManager);
             if (![errorCode integerValue]) {
                 
                 NSMutableDictionary * dataDict = [NSMutableDictionary dictionary];
-                NSMutableArray * mainList = [NSMutableArray array];
-                NSMutableArray * secondList = [NSMutableArray array];
                 
-                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
-                NSArray * tempList1 = [data arrayForKeySafely:@"main"];
-                [tempList1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    Banner * banner = [[Banner alloc] init];
-                    banner.activityId = [obj longlongForKeySafely:@"activityId"];
-                    banner.imagePath = [obj stringForKeySafely:@"imagePath"];
-                    banner.type = [obj stringForKeySafely:@"type"];
-                    banner.redirectId = [obj integerForKeySafely:@"redirectId"];
-                    [mainList addObjectSafely:banner];
+                NSArray *recListDate = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"dateOption"];
+                NSArray *recListRegion = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"regionOption"];
+                NSArray *recListSymptom= [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"symptomOption"];
+                
+                NSMutableArray *resultListDate= [NSMutableArray array];
+                [recListDate enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    DateOption *dateoption = [[DateOption alloc]init];
+                    dateoption.ID = [obj integerForKeySafely:@"ID"];
+                    dateoption.date = [obj valueForKeySafely:@"date"];
+                    [resultListDate addObject:dateoption];
                 }];
+                [dataDict setObject:resultListDate forKey:@"dateOption"];
                 
-                NSArray * tempList2 = [data arrayForKeySafely:@"second"];
-                [tempList2 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    Banner * banner = [[Banner alloc] init];
-                    banner.activityId = [obj longlongForKeySafely:@"activityId"];
-                    banner.imagePath = [obj stringForKeySafely:@"imagePath"];
-                    banner.type = [obj stringForKeySafely:@"type"];
-                    banner.redirectId = [obj integerForKeySafely:@"redirectId"];
-                    [secondList addObjectSafely:banner];
+                NSMutableArray *resultListRegion= [NSMutableArray array];
+                [recListRegion enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    RegionOption *regionOption = [[RegionOption alloc]init];
+                    regionOption.ID = [[[obj dictionaryForKeySafely:@"regionOption"]valueForKey:@"id"] integerValue];
+                    regionOption.name = [[obj dictionaryForKeySafely:@"regionOption"]valueForKeySafely:@"name"];
+                    [resultListRegion addObject:regionOption];
                 }];
+                [dataDict setObject:resultListRegion forKey:@"regionOption"];
                 
-                [dataDict setObjectSafely:mainList forKey:@"main"];
-                [dataDict setObjectSafely:secondList forKey:@"second"];
+                NSMutableArray *resultListSymptom= [NSMutableArray array];
+                [recListSymptom enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    SymptomOption *symptomOption = [[SymptomOption alloc]init];
+                    symptomOption.ID = [[[obj dictionaryForKeySafely:@"symptomOption"]valueForKey:@"id"] integerValue];
+                    symptomOption.name = [[obj dictionaryForKeySafely:@"symptomOption"]valueForKeySafely:@"name"];
+                    
+                    NSArray *sub = [[obj dictionaryForKeySafely:@"symptomOption"]valueForKeySafely:@"child"];
+                    NSMutableArray *subResultArr = [NSMutableArray array];
+                    if (sub) {
+                        for(NSDictionary *dic in sub){
+                            SymptomSubOption *subOption = [[SymptomSubOption alloc]init];
+                            subOption.ID = [[dic valueForKey:@"id"] integerValue];
+                            subOption.name = [dic stringForKeySafely:@"name"];
+                            [subResultArr addObject:subOption];
+                        }
+                    }
+                    symptomOption.symptomSubOptionArray = subResultArr;
+                    [resultListSymptom addObject:symptomOption];
+                }];
+                [dataDict setObject:resultListSymptom forKey:@"symptomOption"];
                 
                 result.parsedModelObject = dataDict;
             }

@@ -11,13 +11,13 @@
 
 @implementation DoctorListModel
 
-- (instancetype)initWithSortType:(SubObjectSortType)type
-{
-    SubObjectFilter *filter = [[SubObjectFilter alloc] init];
-    filter.sortType = type;
-    
-    return [self initWithFilter:filter];
-}
+//- (instancetype)initWithSortType:(SubObjectSortType)type
+//{
+//    SubObjectFilter *filter = [[SubObjectFilter alloc] init];
+////    filter.sortType = type;
+//    
+//    return [self initWithFilter:filter];
+//}
 
 - (instancetype)initWithFilter:(SubObjectFilter *)filter
 {

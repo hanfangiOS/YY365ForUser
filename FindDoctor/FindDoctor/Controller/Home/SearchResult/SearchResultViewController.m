@@ -16,18 +16,19 @@
 #import "NSDateFormatter+SNExtension.h"
 #import "DiseaseSubject.h"
 
-#import "DoctorListModel.h"
+#import "SearchResultListModel.h"
 #import "CommonManager.h"
+#import "OptionList.h"
 
 @interface SearchResultViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate>
 
 @property (nonatomic,strong) DOPDropDownMenu *dropdownMenu;
 
-@property (nonatomic,strong) DoctorListModel *listModel;
+@property (nonatomic,strong) SearchResultListModel *listModel;
 
 @property (nonatomic,strong) NSArray *titleArray;
 @property (nonatomic,strong) NSMutableArray *diseaseArray;
-@property (nonatomic,strong) NSArray *distanseArray;
+@property (nonatomic,strong) NSArray *regionArray;
 @property (nonatomic,strong) NSArray *timeArray;
 
 //@property NSInteger classNumber;
@@ -36,7 +37,7 @@
 
 @implementation SearchResultViewController
 
-- (id)initWithPageName:(NSString *)pageName listModel:(DoctorListModel *)listModel
+- (id)initWithPageName:(NSString *)pageName listModel:(SearchResultListModel *)listModel
 {
     self = [super initWithPageName:pageName listModel:listModel];
     self.listModel = listModel;
@@ -44,7 +45,7 @@
         self.titleArray = @[@"病症", @"距离", @"时间"];
         //            self.diseaseArray = [NSArray arrayWithArray:[DiseaseSubject contentsWithName:listModel.filter.keyword]];
         //        self.diseaseArray = listModel.filter.symptomOptionArray;
-        self.distanseArray = @[@"全部", @"距离从近到远"];
+//        self.regionArray = @[@"全部", @"距离从近到远"];
         self.timeArray = @[];
     }
     
@@ -59,9 +60,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self resetDropDownMenuData];
+}
+
+- (void)resetDropDownMenuData{
+    __weak __block SearchResultViewController *blockSelf = self;
     [[CommonManager sharedInstance] getOptionListWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if(!result.hasError){
-            
+            NSDictionary *dic = result.parsedModelObject;
+            blockSelf.diseaseArray = [dic objectForKey:@"symptomOption"];
+            blockSelf.regionArray = [dic objectForKey:@"regionOption"];
+            blockSelf.timeArray = [dic objectForKey:@"dateOption"];
+            [blockSelf.dropdownMenu reloadData];
         }
         else{
             
@@ -154,7 +164,7 @@
     {
         case 0: rows = [self.diseaseArray count];
             break;
-        case 1: rows = [self.distanseArray count];
+        case 1: rows = [self.regionArray count];
             break;
         case 2: rows = [self.timeArray count];
             break;
@@ -172,23 +182,45 @@
     {
         case 0:
         {
-            title = [self.diseaseArray objectAtIndexSafely:indexPath.row];
+            SymptomOption *item = [self.diseaseArray objectAtIndexSafely:indexPath.row];
+            title = [item name];
         }
             break;
         case 1:
         {
-            title = [self.distanseArray objectAtIndexSafely:indexPath.row];
+            RegionOption *item = [self.regionArray objectAtIndexSafely:indexPath.row];
+            title = [item name];
         }
             break;
         case 2:
         {
-            title = [self.timeArray objectAtIndexSafely:indexPath.row];
+            DateOption *item = [self.timeArray objectAtIndexSafely:indexPath.row];
+            title = [item date];
         }
             break;
         default:
             break;
     }
     return title;
+}
+
+- (NSInteger)menu:(DOPDropDownMenu *)menu numberOfItemsInRow:(NSInteger)row column:(NSInteger)column{
+    if (column == 0) {
+        SymptomOption *item = [self.diseaseArray objectAtIndexSafely:row];
+        return item.symptomSubOptionArray.count;
+    }
+    else{
+        return 0;
+    }
+}
+
+- (NSString *)menu:(DOPDropDownMenu *)menu titleForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath{
+    if (indexPath.column == 0) {
+        SymptomOption *item = [self.diseaseArray objectAtIndexSafely:indexPath.row];
+        SymptomSubOption *SubItem = [item.symptomSubOptionArray objectAtIndex:indexPath.item];
+        return SubItem.name;
+    }
+    return nil;
 }
 
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath

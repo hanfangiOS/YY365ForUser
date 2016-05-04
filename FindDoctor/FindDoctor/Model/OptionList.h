@@ -12,14 +12,36 @@
 
 @end
 
-@interface dateOption : NSObject
+//时间筛选条件
+@interface DateOption : NSObject
+
+@property (nonatomic) NSInteger ID;
+@property (nonatomic, strong) NSString  *date;
 
 @end
 
-@interface regionOption : NSObject
+//地区筛选条件
+@interface RegionOption : NSObject
+
+@property (nonatomic) NSInteger ID;
+@property (nonatomic, strong) NSString  *name;
 
 @end
 
-@interface symptomOption : NSObject
+//病症子筛选条件
+@interface SymptomSubOption : NSObject
+
+@property (nonatomic) NSInteger ID;
+@property (nonatomic, strong) NSString  *name;
+
+@end
+
+
+//病症筛选条件
+@interface SymptomOption : NSObject
+
+@property (nonatomic) NSInteger ID;
+@property (nonatomic, strong) NSString  *name;
+@property (nonatomic, strong) NSMutableArray *symptomSubOptionArray;  //内部对象为SymptomSubOption
 
 @end
