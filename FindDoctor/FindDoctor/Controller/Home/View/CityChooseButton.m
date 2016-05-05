@@ -20,7 +20,7 @@
 
 - (void)initSubView{
     UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(0, self.frameHeight/2.f - 39/4.f, 14, 39/2.f)];
-    leftView.layer.contents = (id)[UIImage imageNamed:@"home_iconCity"].CGImage;
+    leftView.layer.contents = (id)[UIImage imageNamed:@"main_icon_city@2x"].CGImage;
     [self addSubview:leftView];
     
     _cityLabel = [[UILabel alloc]initWithFrame:CGRectMake(16,(self.frameHeight-14)/2.f, self.frameWidth - 18, 14)];
