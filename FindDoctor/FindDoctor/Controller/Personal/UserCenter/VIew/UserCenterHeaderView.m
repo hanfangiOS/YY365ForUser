@@ -104,9 +104,9 @@
         blankLabel.hidden = YES;
         
         [imageView setImageWithURL:[NSURL URLWithString:self.user.profile] placeholderImage:[AvatarHelper defaultAvatar]];
-        nickLabel.text = [NSString stringWithFormat:@"昵称：%@", self.user.nickName];
+        nickLabel.text = [NSString stringWithFormat:@"昵称：%@", self.user.nickname];
         levelLabel.text = [NSString stringWithFormat:@"等级：%@级", @(self.user.level)];
-        accountLabel.text = [NSString stringWithFormat:@"账号：%@", self.user.accountNum];
+        accountLabel.text = [NSString stringWithFormat:@"账号：%d", self.user.userId];
     }
     else {
         nickLabel.hidden = YES;

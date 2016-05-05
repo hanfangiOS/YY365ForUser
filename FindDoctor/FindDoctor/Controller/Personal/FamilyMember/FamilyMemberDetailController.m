@@ -293,7 +293,7 @@
     self.tempMember = [[CUUser alloc] init];
     
     self.tempMember.name = self.user.name;
-    self.tempMember.nickName = self.user.nickName;
+    self.tempMember.nickname = self.user.nickname;
     self.tempMember.profile = self.user.profile;
     self.tempMember.cellPhone = self.user.cellPhone;
     self.tempMember.gender = self.user.gender;
@@ -308,7 +308,6 @@
     _nameField.text = self.user.name;
     //_nameField.placeholder = @"收货人姓名";
     
-    _relationField.text = self.user.relation;
     
     //_nameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入姓名" attributes:@{NSForegroundColorAttributeName: kTextGrayColor}];
     
@@ -439,9 +438,6 @@
     if (textField == _nameField) {
         self.tempMember.name = newString;
     }
-    else if (textField == _relationField) {
-        self.tempMember.relation = newString;
-    }
     else if (textField == _phoneField) {
         self.tempMember.cellPhone = newString;
     }
@@ -560,7 +556,6 @@
     }
      
     self.tempMember.name = _nameField.text;
-    self.tempMember.relation = _relationField.text;
     self.tempMember.cellPhone = _phoneField.text;
     
     self.tempMember.age = [_ageField.text integerValue];

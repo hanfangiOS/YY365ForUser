@@ -43,7 +43,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
     
     NSLog(@"%@",param);
 #if !LOCAL
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_DituNearClinic parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             //服务器内部正常
@@ -112,7 +112,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
     
     NSLog(@"%@",param);
 #if !LOCAL
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:URL_ClinicMain parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             //服务器内部正常
@@ -139,9 +139,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
                 clinic.numDiag   = [[data valueForKeySafely:@"numDiag"] integerValue];
                 clinic.numConcern   = [[data valueForKeySafely:@"numConcern"] integerValue];
                 clinic.skillTreat   = [data valueForKeySafely:@"skillTreat"];
-                
-                NSArray *recvList   = [data valueForKeySafely:@"isConcern"];
-//                NSMutableArray *recvList = [data objectForKey:@"doctorList"];
+                NSMutableArray *recvList = [data objectForKey:@"DoctorList"];
                 NSMutableArray *subjectList = [NSMutableArray new];
                 
 //                [ParserTools enumerateObjects:recvList UsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

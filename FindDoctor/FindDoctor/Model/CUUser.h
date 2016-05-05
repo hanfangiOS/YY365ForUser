@@ -22,12 +22,8 @@ typedef NS_ENUM(NSInteger, CUUserGender) {
 @property (nonatomic,assign) NSInteger userId;
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *profile;
-@property (nonatomic,strong) NSString *nickName;
+@property (nonatomic,strong) NSString *nickname;
 @property (nonatomic,strong) NSString *cellPhone;
-@property (nonatomic,strong) NSString *hiddenCellPhone;
-@property (nonatomic,strong) NSString *accountNum;
-@property (nonatomic,strong) NSString *email;
-@property (nonatomic,strong) NSString *relation;
 @property (nonatomic,strong) NSString *icon;
 
 

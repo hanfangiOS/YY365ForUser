@@ -195,10 +195,9 @@
         [imageView setImageWithURL:[NSURL URLWithString:self.user.profile] placeholderImage:[AvatarHelper defaultAvatar]];
         nameLabel.text = [NSString stringWithFormat:@"ID：%@", @(self.user.userId)];
         pointsLabel.text = [NSString stringWithFormat:@"积分：%@", @(self.user.points)];
-        accountLabel.text = [NSString stringWithFormat:@"优医账号：%@", self.user.accountNum];
+        accountLabel.text = [NSString stringWithFormat:@"优医账号：%d", self.user.userId];
         
-        _nickField.text = self.user.nickName;
-        _emailField.text = self.user.email;
+        _nickField.text = self.user.nickname;
     }
     else {
         nameLabel.hidden = YES;

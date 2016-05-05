@@ -268,6 +268,7 @@
 		7FE327AD1CB4B65900032376 /* HomeSubViewMainBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */; };
 		7FE327B01CB51A4200032376 /* HomeSubViewMainTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */; };
 		7FE327BB1CB525E600032376 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327BA1CB525E600032376 /* ScoreLabel.m */; };
+		7FED1FE41CDAF211004639DE /* PersonalAvatarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED1FE31CDAF211004639DE /* PersonalAvatarVC.m */; };
 		7FF0C02E1CC5C0A10055FF88 /* MyTreatmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C02D1CC5C0A10055FF88 /* MyTreatmentController.m */; };
 		7FF0C0311CC5C0CE0055FF88 /* MyTreatmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C0301CC5C0CE0055FF88 /* MyTreatmentCell.m */; };
 		7FF0C0341CC5C0FB0055FF88 /* MyTreatmentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0C0331CC5C0FB0055FF88 /* MyTreatmentListModel.m */; };
@@ -1169,6 +1170,8 @@
 		7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainTableCell.m; sourceTree = "<group>"; };
 		7FE327B91CB525E600032376 /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
 		7FE327BA1CB525E600032376 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
+		7FED1FE21CDAF211004639DE /* PersonalAvatarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAvatarVC.h; sourceTree = "<group>"; };
+		7FED1FE31CDAF211004639DE /* PersonalAvatarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalAvatarVC.m; sourceTree = "<group>"; };
 		7FF0C02C1CC5C0A10055FF88 /* MyTreatmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTreatmentController.h; sourceTree = "<group>"; };
 		7FF0C02D1CC5C0A10055FF88 /* MyTreatmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTreatmentController.m; sourceTree = "<group>"; };
 		7FF0C02F1CC5C0CE0055FF88 /* MyTreatmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTreatmentCell.h; sourceTree = "<group>"; };
@@ -2761,6 +2764,8 @@
 				7F31510C1CC250F3002A11C3 /* View */,
 				7F3151051CC24BC5002A11C3 /* MyInfoViewController.h */,
 				7F3151061CC24BC5002A11C3 /* MyInfoViewController.m */,
+				7FED1FE21CDAF211004639DE /* PersonalAvatarVC.h */,
+				7FED1FE31CDAF211004639DE /* PersonalAvatarVC.m */,
 			);
 			name = MyInfo;
 			path = User/MyInfo;
@@ -5440,6 +5445,7 @@
 				3ED0A7541AA603C50040E529 /* SNNavigationBar.m in Sources */,
 				E18CF5B81B3E673100E40DB4 /* SNListEmptyView.m in Sources */,
 				3ED0A75D1AA603C50040E529 /* SNSlideNavigationController+SNSlideStatus.m in Sources */,
+				7FED1FE41CDAF211004639DE /* PersonalAvatarVC.m in Sources */,
 				E10EDCCC1B8B84D40035B6E7 /* WXUtil.mm in Sources */,
 				3EDEBA8D1A961C4800E72809 /* SNNetworkImageCache.m in Sources */,
 				3ED0A76E1AA608F40040E529 /* UIViewController+ViewControllerContainerment.m in Sources */,

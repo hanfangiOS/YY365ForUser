@@ -35,9 +35,9 @@
 
 
 
-#define URL_Base @"http://192.168.1.101:8888"//
+//#define URL_Base @"http://192.168.1.101:8888"//庆
 //#define URL_Base @"http://192.168.1.123:8080"//威
-//#define URL_Base @"http://192.168.1.118:8080"//银
+#define URL_Base @"http://192.168.1.123:8080"//银
 //#define URL_Base @"http://192.168.0.210:8080"//军
 
 #elif defined(CollegeUnion_Distribution)
@@ -88,6 +88,16 @@
 #define URL_OptionList @"/baseFrame/base/OptionList.jmm"
 //获取搜索结果
 #define URL_SearchResult @"/baseFrame/base/SearchDoctorBySubject.jmm"
+//获取诊所详情
+#define URL_ClinicMain @"/baseFrame/base/ClinicMain.jmm"
+//获取地图信息
+#define URL_DituNearClinic @"/baseFrame/base/DituNearClinic.jmm"
+//获取验证码
+#define URL_PhoneVerify @"/baseFrame/base/PhoneVerify.jmm"
+//手机＋验证码登录
+#define URL_UserLogin @"/baseFrame/base/UserLogin.jmm"
+
+
 #elif defined(CollegeUnion_Distribution)
 
 #define URL_AfterBase @"/baseFrame/base/server.jmw"
@@ -116,6 +126,10 @@
 #define URL_OptionList @"/baseFrame/base/OptionList.jmw"
 //获取搜索结果
 #define URL_SearchResult @"/baseFrame/base/SearchDoctorBySubject.jmw"
+//获取诊所详情
+#define URL_ClinicMain @"/baseFrame/base/ClinicMain.jmw"
+//获取地图信息
+#define URL_DituNearClinic @"/baseFrame/base/DituNearClinic.jmw"
 #endif
 
 // }

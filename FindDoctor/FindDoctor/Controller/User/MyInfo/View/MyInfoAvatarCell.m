@@ -26,21 +26,33 @@
 }
 
 - (void)initSubViews{
+    
+    self.containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, MyInfoAvatarCellHeight)];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(BackgroundAction)];
+    [self.containerView addGestureRecognizer:tap];
+    [self addSubview:self.containerView];
+    
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(10, (MyInfoAvatarCellHeight - 20)/2, 100, 20)];
     self.label.textAlignment = NSTextAlignmentLeft;
-    [self addSubview:self.label];
+    [self.containerView addSubview:self.label];
     
     self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 4 - 28, (MyInfoAvatarCellHeight - 28)/2, 28, 28)];
     self.arrow.image = [UIImage imageNamed:@""];
-    [self addSubview:self.arrow];
+    [self.containerView addSubview:self.arrow];
     self.arrow.backgroundColor = [UIColor redColor];
     
     self.avatar = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 4 - 28 - 64 - 4, (MyInfoAvatarCellHeight - 64)/2, 64, 64)];
     self.avatar.layer.cornerRadius = 64 / 2.f;
     self.avatar.clipsToBounds = YES;
-    [self addSubview:self.avatar];
+    [self.containerView addSubview:self.avatar];
     self.avatar.backgroundColor = [UIColor yellowColor];
 
+}
+
+- (void)BackgroundAction{
+    if (self.clickMyInfoAvatarCellBlock) {
+        self.clickMyInfoAvatarCellBlock();
+    }
 }
 
 @end

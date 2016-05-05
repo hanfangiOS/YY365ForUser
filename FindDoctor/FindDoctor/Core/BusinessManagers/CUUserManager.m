@@ -53,18 +53,15 @@ SINGLETON_IMPLENTATION(CUUserManager);
 - (void)clear
 {
     self.user.token = nil;
-    self.user.codetoken = nil;
     self.user.profile = nil;
-    self.user.nickName = nil;
+    self.user.nickname = nil;
     self.user.cellPhone = nil;
     self.user.userId = -1;
-    self.user.hiddenCellPhone = nil;
     self.user.points = 0;
     self.user.gender = 0;
     self.user.age = 0;
     self.user.level = 0;
     self.user.name = nil;
-    self.user.email = nil;
     [[AppCore sharedInstance].fileAccessManager removeObjectForKey:Plist_User error:nil];
 }
 
@@ -96,7 +93,9 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:resultBlock forKey:URL_AfterBase forPageNameGroup:pageName];
+    
+    [[AppCore sharedInstance].apiManager POST:URL_PhoneVerify parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:resultBlock
+      forKey:@"PhoneVerify" forPageNameGroup:pageName];
 }
 
 // 注册
@@ -132,7 +131,6 @@ SINGLETON_IMPLENTATION(CUUserManager);
             // 赋值user数据
             blockSelf.user.token = [result.responseObject stringForKeySafely:@"token"];
             blockSelf.user.cellPhone = [[result.responseObject dictionaryForKeySafely:@"data"] stringForKeySafely:@"phone"];
-            blockSelf.user.accountNum = [[result.responseObject dictionaryForKeySafely:@"data"] stringForKeySafely:@"accountid"];
             blockSelf.user.userId = [[result.responseObject dictionaryForKeySafely:@"data"] integerForKeySafely:@"iduser"];
             [blockSelf save];
         }
@@ -146,7 +144,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     // param
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
-    [param setObjectSafely:@"0" forKey:@"token"];
+    [param setObjectSafely:codetoken forKey:@"token"];
     [param setObjectSafely:@"UserLogin" forKey:@"require"];
     [param setObjectSafely:@(13002) forKey:@"interfaceID"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
@@ -154,6 +152,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:@(0) forKey:@"accID"];
     [dataParam setObjectSafely:@([cellPhone longLongValue]) forKey:@"phone"];
+    [dataParam setObjectSafely:codetoken forKey:@"token"];
     [dataParam setObjectSafely:code forKey:@"phoneCode"];
     [dataParam setObjectSafely:[SNPlatformManager deviceString] forKey:@"clientType"];
     [dataParam setObjectSafely:@"1.0.1" forKey:@"clientVer"];
@@ -169,7 +168,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     __block CUUserManager * blockSelf = self;
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:URL_UserLogin parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
             // 赋值user数据
@@ -181,10 +180,21 @@ SINGLETON_IMPLENTATION(CUUserManager);
                     NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
                     
                     blockSelf.user.userId = [data integerForKeySafely:@"accID"];
-//                    blockSelf.user.userId = 19;
-                    blockSelf.user.nickName = [data stringForKeySafely:@"name"];
+                    blockSelf.user.nickname = [data stringForKeySafely:@"nickname"];
+                    blockSelf.user.name = [data stringForKeySafely:@"name"];
                     blockSelf.user.icon = [data stringForKeySafely:@"icon"];
+                    blockSelf.user.cellPhone =  [data stringForKeySafely:@"phone"];
                     blockSelf.user.token =  [data stringForKeySafely:@"token"];
+                    blockSelf.user.age =  [[data objectForKeySafely:@"age"] integerValue];
+                    NSString * sexStr = [data stringForKeySafely:@"sex"];
+                    if([sexStr isEqualToString:@"女"]) {
+                        blockSelf.user.gender = CUUserGenderFemale;
+                    }
+                        
+                    if ([sexStr isEqualToString:@"男"]) {
+                        blockSelf.user.gender = CUUserGenderMale;
+                    }
+                    
                     NSLog(@"cellPhone:%@",blockSelf.user.cellPhone);
                     NSLog(@"userId:%d",blockSelf.user.userId );
                     [blockSelf save];
@@ -240,10 +250,8 @@ SINGLETON_IMPLENTATION(CUUserManager);
             
             blockSelf.user.cellPhone = [data stringForKeySafely:@"phone"];
             if ((NSNumber *)[data stringForKeySafely:@"ismail"]) {
-                blockSelf.user.email = [data stringForKeySafely:@"mail"];
             }
             blockSelf.user.userId = [data integerForKeySafely:@"no"];
-            blockSelf.user.accountNum = [data stringForKeySafely:@"accountid"];
             [blockSelf save];
         }
         resultBlock(request,result);
@@ -330,12 +338,12 @@ SINGLETON_IMPLENTATION(CUUserManager);
 
     //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:@(19) forKey:@"accID"];
-    [dataParam setObjectSafely:user.nickName forKey:@"nickname"];
+    [dataParam setObjectSafely:user.nickname forKey:@"nickname"];
     [dataParam setObjectSafely:user.name forKey:@"name"];
     [dataParam setObjectSafely:@(user.gender) forKey:@"sex"];
     [dataParam setObjectSafely:@(user.age) forKey:@"age"];
     [dataParam setObjectSafely:user.cellPhone forKey:@"phone"];
-    [dataParam setObjectSafely:user.nickName forKey:@"nickname"];
+    [dataParam setObjectSafely:user.nickname forKey:@"nickname"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -346,15 +354,15 @@ SINGLETON_IMPLENTATION(CUUserManager);
 
             // 赋值user数据
 //            NSString * profile = user.profile;
-//            NSString * nickName = user.nickName;
+//            NSString * nickname = user.nickname;
 //            
 //            if (profile != nil)
 //            {
 //                blockSelf.user.profile = profile;
 //            }
-//            if (nickName != nil)
+//            if (nickname != nil)
 //            {
-//                blockSelf.user.nickName = nickName;
+//                blockSelf.user.nickname = nickname;
 //            }
 //            [blockSelf save];
  
@@ -529,7 +537,6 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [dataParam setObjectSafely:user.cellPhone forKey:@"phone"];
     [dataParam setObjectSafely:password forKey:@"code"];
     [dataParam setObjectSafely:user.codetoken forKey:@"codetoken"];
-    [dataParam setObjectSafely:user.accountNum forKey:@"accountid"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     

@@ -17,7 +17,7 @@
     user.userId = [[data objectForKeySafely:@"id"] integerValue];
     user.token = [data objectForKeySafely:Key_Token];
     user.profile = [URL_ImageBase stringByAppendingPathComponent:[data objectForKeySafely:@"avatar"]];;
-    user.nickName = [data objectForKeySafely:@"nickname"];
+    user.nickname = [data objectForKeySafely:@"nickname"];
     user.points = [[data objectForKeySafely:@"points"] integerValue];
     user.cellPhone = [data objectForKeySafely:@"cellPhone"];
 //    user.hiddenCellPhone = [data objectForKeySafely:@"pass_phone"];

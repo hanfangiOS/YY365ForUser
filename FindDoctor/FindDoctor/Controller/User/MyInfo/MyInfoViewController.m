@@ -15,14 +15,10 @@
 #import "UIImageView+WebCache.h"
 #import "CUPickerView.h"
 #import "MyInfoPickerCell.h"
+#import "PersonalAvatarVC.h"
 
 
-
-@interface MyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,CUPickerViewDelegate>
-{
-    UIActionSheet *myActionSheet;
-    MyInfoAvatarCell * myInfoAvatarCell;
-}
+@interface MyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate,UINavigationControllerDelegate,CUPickerViewDelegate>
 @property (strong,nonatomic)UITableView     * tableView;
 
 @property (assign,nonatomic)BOOL              isEditing;
@@ -56,6 +52,11 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self postRequestGetUserInfo];
+}
+
 - (void)initData{
     
     self.sexArray = @[@"女",@"男"];
@@ -71,11 +72,11 @@
     CUUser * user = [[CUUser alloc] init];
     
     user.userId = [CUUserManager sharedInstance].user.userId;
-    user.nickName = [CUUserManager sharedInstance].user.nickName.copy;
+    user.nickname = [CUUserManager sharedInstance].user.nickname.copy;
     user.name = [CUUserManager sharedInstance].user.name.copy;
     user.gender = [CUUserManager sharedInstance].user.gender;
     user.age = [CUUserManager sharedInstance].user.age;
-    user.cellPhone = [CUUserManager sharedInstance].user.token.copy;
+    user.cellPhone = [CUUserManager sharedInstance].user.cellPhone.copy;
     
     return user;
 }
@@ -132,15 +133,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        myInfoAvatarCell = [[MyInfoAvatarCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyInfoAvatarCell"];
-        myInfoAvatarCell.label.text = @"头像";
-        [myInfoAvatarCell.avatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon]];
-        
-        return myInfoAvatarCell;
-    }else if (indexPath.section == 2 && indexPath.row == 1){
-        MyInfoPickerCell * cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoPickerCell%d%d",indexPath.section,indexPath.row]];
+        MyInfoAvatarCell * cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoAvatarCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
         if (!cell) {
-            cell = [[MyInfoPickerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"MyInfoPickerCell%d%d",indexPath.section,indexPath.row]];
+            cell = [[MyInfoAvatarCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"MyInfoAvatarCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
+        }
+        cell.label.text = @"头像";
+        cell.clickMyInfoAvatarCellBlock = ^{
+            PersonalAvatarVC * vc = [[PersonalAvatarVC alloc] initWithPageName:@"PersonalAvatarVC"];
+            [self.slideNavigationController pushViewController:vc animated:YES];
+        };
+        [cell.avatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon]];
+        
+        return cell;
+    }else if (indexPath.section == 2 && indexPath.row == 1){
+        MyInfoPickerCell * cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoPickerCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
+        if (!cell) {
+            cell = [[MyInfoPickerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"MyInfoPickerCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
         }
         cell.label.text = @"性别";
         
@@ -149,45 +157,45 @@
         [cell.btn setTitle:[self.sexArray objectAtIndexSafely:self.selectedIndex] forState:UIControlStateNormal];
         cell.btn.contentHorizontalAlignment = NSTextAlignmentRight;
         
-        if (self.isEditing == YES) {
-            cell.btn.backgroundColor = [UIColor redColor];
-            cell.btn.userInteractionEnabled = YES;
-        }else{
-            cell.btn.backgroundColor = [UIColor clearColor];
-            cell.btn.userInteractionEnabled = NO;
-        }
+//        if (self.isEditing == YES) {
+//            cell.btn.backgroundColor = [UIColor redColor];
+//            cell.btn.userInteractionEnabled = YES;
+//        }else{
+//            cell.btn.backgroundColor = [UIColor clearColor];
+//            cell.btn.userInteractionEnabled = NO;
+//        }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     else{
-        MyInfoCell * cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoAvatarCell%d%d",indexPath.section,indexPath.row]];
+        MyInfoCell * cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
         if (!cell) {
-            cell = [[MyInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"MyInfoCell%d%d",indexPath.section,indexPath.row]];
+            cell = [[MyInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"MyInfoCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
         }
         //10010 10011
         //10020 10022 10023
-        cell.textField.tag = [[NSString stringWithFormat:@"100%d%d",indexPath.section,indexPath.row] integerValue];
+        cell.textField.tag = [[NSString stringWithFormat:@"100%ld%ld",(long)indexPath.section,(long)indexPath.row] integerValue];
         cell.textField.delegate = self;
-        if (self.isEditing == YES) {
-            cell.textField.backgroundColor = [UIColor redColor];
-            cell.textField.userInteractionEnabled = YES;
-        }else{
-            cell.textField.backgroundColor = [UIColor clearColor];
-            cell.textField.userInteractionEnabled = NO;
-        }
+//        if (self.isEditing == YES) {
+//            cell.textField.backgroundColor = [UIColor redColor];
+//            cell.textField.userInteractionEnabled = YES;
+//        }else{
+//            cell.textField.backgroundColor = [UIColor clearColor];
+//            cell.textField.userInteractionEnabled = NO;
+//        }
         
         switch (cell.textField.tag) {
             case 10010:
             {
                 cell.label.text = @"优医ID";
-                cell.textField.text = [NSString stringWithFormat:@"%d",self.tempData.userId];
+                cell.textField.text = [NSString stringWithFormat:@"%ld",(long)self.tempData.userId];
             }
                 break;
             case 10011:
             {
                 cell.label.text = @"昵称";
-                cell.textField.text = [NSString stringWithFormat:@"%@",self.tempData.nickName];
+                cell.textField.text = [NSString stringWithFormat:@"%@",self.tempData.nickname];
             }
                 break;
             case 10020:
@@ -196,20 +204,10 @@
                 cell.textField.text = [NSString stringWithFormat:@"%@",self.tempData.name];
             }
                 break;
-//            case 10021:
-//            {
-//                cell.label.text = @"性别";
-//                if (self.tempData.gender == CUUserGenderMale) {
-//                    cell.textField.text = @"男";
-//                }else{
-//                    cell.textField.text = @"女";
-//                }
-//            }
-                break;
             case 10022:
             {
                 cell.label.text = @"年龄";
-                cell.textField.text = [NSString stringWithFormat:@"%d",self.tempData.age];
+                cell.textField.text = [NSString stringWithFormat:@"%ld",(long)self.tempData.age];
             }
                 break;
             case 10023:
@@ -236,11 +234,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.isEditing) {
         if (indexPath.section == 0) {
-            [self openMenu];
+            PersonalAvatarVC * vc = [[PersonalAvatarVC alloc] initWithPageName:@"PersonalAvatarVC"];
+            [self.slideNavigationController pushViewController:vc animated:YES];
         }
-    }
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    
 }
 
 #pragma mark textFieldDelegate
@@ -265,7 +266,7 @@
             break;
         case 10011:
         {
-            self.tempData.nickName = textField.text;
+            self.tempData.nickname = textField.text;
         }
             break;
         case 10020:
@@ -294,115 +295,6 @@
     }
 }
 
-#pragma mark avatarEdit
--(void)openMenu
-{
-    //在这里呼出下方菜单按钮项
-    //    NSLog(@"sender.tag = %d",sender.tag);
-    myActionSheet = [[UIActionSheet alloc]
-                     initWithTitle:nil
-                     delegate:self
-                     cancelButtonTitle:@"取消"
-                     destructiveButtonTitle:nil
-                     otherButtonTitles: @"打开照相机", @"从手机相册获取",nil];
-    //    myActionSheet.tag = sender.tag;
-    
-    [myActionSheet showInView:self.view];
-}
-
-
-
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    //呼出的菜单按钮点击后的响应
-    if (buttonIndex == myActionSheet.cancelButtonIndex)
-    {
-        NSLog(@"取消");
-    }
-    
-    switch (buttonIndex)
-    {
-        case 0:  //打开照相机拍照
-            [self takePhoto:actionSheet];
-            break;
-            
-        case 1:  //打开本地相册
-            [self LocalPhoto:actionSheet];
-            break;
-    }
-}
-
-
-//开始拍照
--(void)takePhoto:(UIActionSheet *)sender
-{
-    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        //设置拍照后的图片可被编辑
-        picker.allowsEditing = YES;
-        picker.sourceType = sourceType;
-        picker.view.tag = sender.tag;
-        [self presentViewController:picker animated:YES completion:nil];
-    }else
-    {
-        NSLog(@"模拟其中无法打开照相机,请在真机中使用");
-    }
-}
-
-//打开本地相册
--(void)LocalPhoto:(UIActionSheet *)sender
-{
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picker.delegate = self;
-    //设置选择后的图片可被编辑
-    picker.allowsEditing = YES;
-    [self presentViewController:picker animated:YES completion:nil];
-}
-
-//当选择一张图片后进入这里
--(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-
-{
-    
-    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
-    
-    //    NSLog(@"info:%@\ntag = %d",info,picker.view.tag);
-    
-    //当选择的类型是图片
-    if ([type isEqualToString:@"public.image"])
-    {
-        //先把图片转成NSData
-        UIImage* image = [info objectForKey:UIImagePickerControllerEditedImage];
-        NSData *data;
-        if (UIImagePNGRepresentation(image) == nil)
-        {
-            data = UIImageJPEGRepresentation(image, 0.3);
-        }
-        else
-        {
-            data = UIImagePNGRepresentation(image);
-        }
-        
-        [picker dismissViewControllerAnimated:YES completion:nil];
-        [picker removeFromParentViewController];
-        
-        UIImage *compressedImage = [UIImage imageWithData:data];
-        myInfoAvatarCell.avatar.image = compressedImage;
-    }
-    
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    NSLog(@"您取消了选择图片");
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
 #pragma mark - postRequest
 
 //获取个人信息

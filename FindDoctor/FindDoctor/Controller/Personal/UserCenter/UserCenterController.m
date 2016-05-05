@@ -144,11 +144,10 @@
     if ([[CUUserManager sharedInstance] isLogin]) {
         CUUser *user = [[CUUser alloc] init];
         
-        user.nickName = @"我叫MT";
+        user.nickname = @"我叫MT";
         user.userId = 123;
         user.name = @"测试";
         user.profile = @"http://cdn.duitang.com/uploads/item/201504/21/20150421H4327_3eRXN.thumb.224_0.jpeg";
-        user.accountNum = @"13001963945";
         
         self.header.user = user;
     }
@@ -241,11 +240,10 @@
 {
     CUUser *user = [[CUUser alloc] init];
     
-    user.nickName = @"我叫MT";
+    user.nickname = @"我叫MT";
     user.userId = 123;
     user.name = @"测试";
     user.profile = @"http://cdn.duitang.com/uploads/item/201504/21/20150421H4327_3eRXN.thumb.224_0.jpeg";
-    user.accountNum = @"13001963945";
     
     UserDetailController *detailVC = [[UserDetailController alloc] initWithPageName:@"UserDetailController"];
     detailVC.user = user;

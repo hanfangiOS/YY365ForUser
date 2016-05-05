@@ -29,12 +29,9 @@
     [aCoder encodeObject:self.token forKey:Key_CUUser_Token];
     [aCoder encodeInteger:self.userId forKey:Key_CUUser_UserId];
     [aCoder encodeObject:self.profile forKey:Key_CUUser_profile];
-    [aCoder encodeObject:self.nickName forKey:Key_CUUser_nickName];
+    [aCoder encodeObject:self.nickname forKey:Key_CUUser_nickName];
     [aCoder encodeObject:self.name forKey:Key_CUUser_Name];
     [aCoder encodeObject:self.cellPhone forKey:Key_CUUser_cellPhone];
-    [aCoder encodeObject:self.hiddenCellPhone forKey:Key_CUUser_hiddenCellPhone];
-    [aCoder encodeObject:self.accountNum forKey:Key_CUUser_AccountNum];
-    [aCoder encodeObject:self.email forKey:Key_CUUser_Email];
 
     [aCoder encodeInteger:self.points forKey:Key_CUUser_points];
     [aCoder encodeInteger:self.age forKey:Key_CUUser_Age];
@@ -49,13 +46,10 @@
         self.token = [aDecoder decodeObjectForKey:Key_CUUser_Token];
         self.userId = [aDecoder decodeIntegerForKey:Key_CUUser_UserId];
         self.profile = [aDecoder decodeObjectForKey:Key_CUUser_profile];
-        self.nickName = [aDecoder decodeObjectForKey:Key_CUUser_nickName];
+        self.nickname = [aDecoder decodeObjectForKey:Key_CUUser_nickName];
         self.name = [aDecoder decodeObjectForKey:Key_CUUser_Name];
         self.points = [aDecoder decodeIntegerForKey:Key_CUUser_points];
         self.cellPhone = [aDecoder decodeObjectForKey:Key_CUUser_cellPhone];
-        self.hiddenCellPhone = [aDecoder decodeObjectForKey:Key_CUUser_hiddenCellPhone];
-        self.accountNum = [aDecoder decodeObjectForKey:Key_CUUser_AccountNum];
-        self.email = [aDecoder decodeObjectForKey:Key_CUUser_Email];
         self.age = [aDecoder decodeIntegerForKey:Key_CUUser_Age];
         self.gender = [aDecoder decodeIntegerForKey:Key_CUUser_Gender];
         self.level = [aDecoder decodeIntegerForKey:Key_CUUser_Level];
@@ -65,7 +59,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"userId=%d,token=%@,ponint=%d,profile=%@,nickName=%@,,cellPhone=%@",self.userId,self.token,self.points,self.profile,self.nickName,self.cellPhone];
+    return [NSString stringWithFormat:@"userId=%d,token=%@,ponint=%d,profile=%@,nickName=%@,,cellPhone=%@",self.userId,self.token,self.points,self.profile,self.nickname,self.cellPhone];
 }
 
 - (BOOL)isEqual:(CUUser *)object
