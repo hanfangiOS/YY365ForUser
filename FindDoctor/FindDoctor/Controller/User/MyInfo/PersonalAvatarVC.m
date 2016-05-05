@@ -7,12 +7,14 @@
 //
 
 #import "PersonalAvatarVC.h"
+#import "UIImageView+WebCache.h"
+#import "CUUserManager.h"
+#import "TipHandler+HUD.h"
 
 @interface PersonalAvatarVC ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
-@property (strong,nonatomic)UIActionSheet  * myActionSheet;
-
-
+@property (strong,nonatomic)UIActionSheet   * myActionSheet;
+@property (strong,nonatomic)UIImageView     * avatar;
 
 @end
 
@@ -30,8 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"个人头像";
-    
-//    self.
+    self.contentView.backgroundColor = [UIColor blackColor];
     [self initSubviews];
 }
 
@@ -41,7 +42,9 @@
 }
 
 - (void)initSubviews{
-    
+    self.avatar = [[UIImageView alloc] initWithFrame:CGRectMake(0, 67, kScreenWidth, self.contentView.frameHeight - 67)];
+    [self.avatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon]];
+    [self.contentView addSubview:self.avatar];
 }
 
 #pragma mark UIActionSheetDelegate
@@ -69,14 +72,13 @@
     }
 }
 
-
 //开始拍照
 -(void)takePhoto:(UIActionSheet *)sender
 {
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+    if ([UIImagePickerController isSourceTypeAvailable: sourceType])
     {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        UIImagePickerController * picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         //设置拍照后的图片可被编辑
         picker.allowsEditing = YES;
@@ -106,16 +108,14 @@
 
 {
     
-    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
-    
-    //    NSLog(@"info:%@\ntag = %d",info,picker.view.tag);
+    NSString * type = [info objectForKey:UIImagePickerControllerMediaType];
     
     //当选择的类型是图片
     if ([type isEqualToString:@"public.image"])
     {
         //先把图片转成NSData
-        UIImage* image = [info objectForKey:UIImagePickerControllerEditedImage];
-        NSData *data;
+        UIImage * image = [info objectForKey:UIImagePickerControllerEditedImage];
+        NSData * data;
         if (UIImagePNGRepresentation(image) == nil)
         {
             data = UIImageJPEGRepresentation(image, 0.3);
@@ -128,7 +128,8 @@
         [picker dismissViewControllerAnimated:YES completion:nil];
         [picker removeFromParentViewController];
         
-        UIImage *compressedImage = [UIImage imageWithData:data];
+        UIImage * compressedImage = [UIImage imageWithData:data];
+        [self postRequestUploadAvatarWithImage:compressedImage];
     }
     
 }
@@ -155,7 +156,28 @@
     [self.myActionSheet showInView:self.view];
 }
 
+#pragma mark - postRequest
 
+//上传图片
+- (void)postRequestUploadAvatarWithImage:(UIImage *)image{
+    [self showProgressView];
+    __weak __block typeof(self)weakSelf = self;
+    [[CUUserManager sharedInstance]uploadAvatar:image resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        [weakSelf hideProgressView];
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
+            
+            if (![errorCode integerValue]) {
+                
+            }else{
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }else{
+            [TipHandler showTipOnlyTextWithNsstring:@"网络连接错误"];
+        }
+
+    } pageName:@""];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

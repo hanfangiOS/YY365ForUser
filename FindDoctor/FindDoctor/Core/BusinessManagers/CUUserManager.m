@@ -374,9 +374,9 @@ SINGLETON_IMPLENTATION(CUUserManager);
 {
     CUUserParser * parser = [[CUUserParser alloc] init];
     
-    SNNetworkClient *httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:URL_Base]];
+    SNNetworkClient * httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:URL_Base]];
     
-    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/Api/V1/upload" parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+    NSMutableURLRequest * request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/Api/V1/upload" parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
         [formData appendPartWithFileData:UIImagePNGRepresentation(image) name:@"file" fileName:@"upload.png" mimeType:@"image/png"];
     }];
     
@@ -410,7 +410,6 @@ SINGLETON_IMPLENTATION(CUUserManager);
     }];
     [operation start];
     
-//    [[AppCore sharedInstance].apiManager GET:URL_ImageUpload parameters:nil callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUploadAvatarWithDict:) resultBlock:resultBlock forKey:URL_ImageUpload forPageNameGroup:pageName];
 }
 
 - (void)uploadImageArray:(NSMutableArray *)imageArray resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName progressBlock:(SNServerAPIProgressBlock)progressBlock
@@ -420,7 +419,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [param setObjectSafely:@"pud" forKey:@"imgtype"];
     [param setObjectSafely:[CUUserManager sharedInstance].user.cellPhone forKey:@"phone"];
     
-    SNNetworkClient *httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://101.201.152.191:8080"]];
+    SNNetworkClient * httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://101.201.152.191:8080"]];
     
     NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:URL_ImageUpload parameters:param constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
         for (int i = 0; i < imageArray.count; ++i) {
@@ -443,10 +442,6 @@ SINGLETON_IMPLENTATION(CUUserManager);
     };
     
     AFHTTPRequestOperation *operation = [[SNNetworkClient alloc] HTTPRequestOperationWithRequest:request wrapper:wrapper];
-    
-    //    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    //    __ weak CurrentTreatmentDetailsManager * blockSelf = self;
-    
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSDictionary *dic = [string objectFromJSONString];
@@ -462,8 +457,6 @@ SINGLETON_IMPLENTATION(CUUserManager);
         NSLog(@"传图片失败 %@",error);
     }];
     [operation start];
-    
-    //    [[AppCore sharedInstance].apiManager POST:URL_ImageUpload parameters:nil callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUploadAvatarWithDict:) resultBlock:resultBlock forKey:URL_ImageUpload forPageNameGroup:pageName];
 }
 
 - (void)checkIfHasOldPasswordWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
