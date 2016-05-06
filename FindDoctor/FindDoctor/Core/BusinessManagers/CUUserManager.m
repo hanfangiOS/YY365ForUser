@@ -469,13 +469,12 @@ SINGLETON_IMPLENTATION(CUUserManager);
 - (void)checkIfHasOldPasswordWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14000 require:@"CheckExistPwd"];
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/CheckExistPwd.jmm" parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         resultBlock(request,result);
     } forKey:@"CheckExistPwd" forPageNameGroup:pageName];
 }

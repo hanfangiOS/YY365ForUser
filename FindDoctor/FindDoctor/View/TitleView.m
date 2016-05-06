@@ -25,8 +25,8 @@
         _headerLabel.frame = CGRectMake((kScreenWidth-size.width)/2,self.frameHeight/2 - size.height/2,size.width,size.height);
         [self addSubview:_headerLabel];
         
-        UIImage *image1 = [UIImage imageNamed:@"titleLine1"];
-        UIImage *image2 = [UIImage imageNamed:@"titleLine2"];
+        UIImage *image1 = [UIImage imageNamed:@"common_titleLine1"];
+        UIImage *image2 = [UIImage imageNamed:@"common_titleLine2"];
         UIImageView *headerlionView1 = [[UIImageView alloc]init];
         headerlionView1.image = image1;
         UIImageView *headerlionView2 = [[UIImageView alloc]init];

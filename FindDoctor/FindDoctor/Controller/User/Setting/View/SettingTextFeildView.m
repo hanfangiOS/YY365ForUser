@@ -36,7 +36,6 @@
     self.imageView.contentMode = 1;
     self.imageView.layer.cornerRadius = imageViewWidth/2.f;
     self.imageView.clipsToBounds = YES;
-    self.imageView.backgroundColor = [UIColor redColor];
     [self addSubview:self.imageView];
     
     _titleLabel = [[UILabel alloc]init];
@@ -56,9 +55,18 @@
 //    _contentTextFeild.textColor = [UIColor whiteColor];
     [self addSubview:_contentTextFeild];
     
-    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(imageViewWidth + 10, [self frameHeight], [self frameWidth], 2)];
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(imageViewWidth + 10, [self frameHeight], [self frameWidth] - (imageViewWidth + 10), 2)];
     lineView.layer.backgroundColor = UIColorFromHex(0xeeeeee).CGColor;
     [self addSubview:lineView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(ClickAction)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    [self addGestureRecognizer:tap];
+}
+
+- (void)ClickAction{
+    [_contentTextFeild becomeFirstResponder];
 }
 
 @end
