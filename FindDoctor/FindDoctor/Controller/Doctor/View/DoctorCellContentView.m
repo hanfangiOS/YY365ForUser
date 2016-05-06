@@ -104,7 +104,7 @@
     label5.textColor = kDarkGrayColor;
     [self addSubview:label5];
     
-    zhenLiaoAmountImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"zhenLiaoAmount"]];
+    zhenLiaoAmountImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"doctor_treatmentNum"]];
     zhenLiaoAmountImageView.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame) + 15, 13, 13);
     [self addSubview:zhenLiaoAmountImageView];
     
