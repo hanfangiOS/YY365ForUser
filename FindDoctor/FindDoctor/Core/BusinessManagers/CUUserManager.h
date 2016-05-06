@@ -47,7 +47,7 @@ SINGLETON_DECLARE(CUUserManager);
 - (void)updateUserInfo:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 // 上传头像
-- (void)uploadAvatar:(UIImage *)image resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+- (void)uploadAvatar:(UIImage *)image resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName progressBlock:(SNServerAPIProgressBlock)progressBlock;
 
 // 上传图片
 - (void)uploadImageArray:(NSMutableArray *)imageArray resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName progressBlock:(SNServerAPIProgressBlock)progressBlock;
@@ -80,5 +80,8 @@ SINGLETON_DECLARE(CUUserManager);
 
 //14203 修改我的成员
 - (void)ModifyMemberWithFilter:(UserFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+
+//上传图片后已获取图片地址， 提交图片地址
+- (void)ModifyAvatorWithPath:(NSString *)path resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 @end

@@ -42,7 +42,10 @@
 }
 
 - (void)initSubviews{
-    self.avatar = [[UIImageView alloc] initWithFrame:CGRectMake(0, 67, kScreenWidth, self.contentView.frameHeight - 67)];
+    self.avatar = [[UIImageView alloc] initWithFrame:CGRectMake(0, (self.contentView.frameHeight - self.contentView.frameWidth)/3, kScreenWidth, kScreenWidth)];
+    self.avatar.clipsToBounds = YES;
+    self.avatar.contentMode = 1;
+    self.avatar.backgroundColor = [UIColor whiteColor];
     [self.avatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon]];
     [self.contentView addSubview:self.avatar];
 }
@@ -105,9 +108,7 @@
 
 //当选择一张图片后进入这里
 -(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-
 {
-    
     NSString * type = [info objectForKey:UIImagePickerControllerMediaType];
     
     //当选择的类型是图片
@@ -161,22 +162,37 @@
 //上传图片
 - (void)postRequestUploadAvatarWithImage:(UIImage *)image{
     [self showProgressView];
-    __weak __block typeof(self)weakSelf = self;
+    __weak __block PersonalAvatarVC *blockSelf = self;
     [[CUUserManager sharedInstance]uploadAvatar:image resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        [weakSelf hideProgressView];
+        [blockSelf hideProgressView];
         if (!result.hasError) {
-            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
-            
-            if (![errorCode integerValue]) {
-                
-            }else{
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            NSString *ftpPath;
+            NSArray * data = [result.responseObject objectForKeySafely:@"data"];
+            if (data) {
+                NSDictionary *dic = [data objectAtIndexSafely:0];
+                if (dic) {
+                    ftpPath = [dic objectForKey:@"ftppath"];
+                }
+            }
+            if (ftpPath) {
+                [blockSelf requestCommitImageURL:ftpPath];
             }
         }else{
             [TipHandler showTipOnlyTextWithNsstring:@"网络连接错误"];
         }
 
-    } pageName:@""];
+    } pageName:self.pageName progressBlock:^(float progress) {
+        
+    }];
+}
+
+- (void)requestCommitImageURL:(NSString *)ftppath{
+    __weak __block PersonalAvatarVC *blockSelf = self;
+    [[CUUserManager sharedInstance] ModifyAvatorWithPath:ftppath resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+           [blockSelf.avatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon]];
+        }
+    } pageName:self.pageName];
 }
 
 - (void)didReceiveMemoryWarning {

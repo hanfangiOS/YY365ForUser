@@ -179,21 +179,21 @@
 {
     self.isUploadingArvartar = YES;
     
-    [[CUUserManager sharedInstance] uploadAvatar:image resultBlock:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
-        if (!result.hasError) {
-            NSString *imageURL = result.parsedModelObject;
-            if (imageURL.length) {
-                [[SDImageCache sharedImageCache] storeImage:image forKey:imageURL];
-            }
-            
-            //self.tempMember.profile = imageURL;
-            
-            [self uploadAccountImageSuccess:image];
-        }
-        else {
-            [self uploadAccountImageFailed];
-        }
-    } pageName:@"UploadAvatar"];
+//    [[CUUserManager sharedInstance] uploadAvatar:image resultBlock:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
+//        if (!result.hasError) {
+//            NSString *imageURL = result.parsedModelObject;
+//            if (imageURL.length) {
+//                [[SDImageCache sharedImageCache] storeImage:image forKey:imageURL];
+//            }
+//            
+//            //self.tempMember.profile = imageURL;
+//            
+//            [self uploadAccountImageSuccess:image];
+//        }
+//        else {
+//            [self uploadAccountImageFailed];
+//        }
+//    } pageName:@"UploadAvatar"];
 }
 
 #pragma mark - Notification Handle

@@ -370,43 +370,50 @@ SINGLETON_IMPLENTATION(CUUserManager);
     } forKey:URL_AfterBase forPageNameGroup:pageName];
 }
 
-- (void)uploadAvatar:(UIImage *)image resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
+
+
+- (void)uploadAvatar:(UIImage *)image resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName progressBlock:(SNServerAPIProgressBlock)progressBlock
 {
-    CUUserParser * parser = [[CUUserParser alloc] init];
+    NSMutableDictionary * param = [NSMutableDictionary dictionary];
+    [param setObjectSafely:[NSString stringWithFormat:@"%ld",(long)[CUUserManager sharedInstance].user.userId] forKey:@"imgofwho"];
+    [param setObjectSafely:@"pud" forKey:@"imgtype"];
+    [param setObjectSafely:[CUUserManager sharedInstance].user.cellPhone forKey:@"phone"];
     
-    SNNetworkClient * httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:URL_Base]];
+    SNNetworkClient * httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://123.56.251.146:8080"]];
     
-    NSMutableURLRequest * request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/Api/V1/upload" parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+    NSMutableURLRequest * request = [httpClient multipartFormRequestWithMethod:@"POST" path:URL_ImageUpload parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
         [formData appendPartWithFileData:UIImagePNGRepresentation(image) name:@"file" fileName:@"upload.png" mimeType:@"image/png"];
     }];
     
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    SNHTTPRequestOperationWrapper *wrapper = [[SNHTTPRequestOperationWrapper alloc] initWithRequest:request successBlock:^(SNHTTPRequestOperationWrapper *operationWrapper, id responseObject) {
+        
+    }
+    failureBlock:^(SNHTTPRequestOperationWrapper *operationWrapper, NSError *error) {
+                                                                                           
+                                                                                       }];
+    wrapper.uploadProgressBlock = ^(double progress, long long totalBytes, long long uploadedBytes){
+        NSLog(@"%0.1f", progress);
+        if (progressBlock) {
+            progressBlock(progress);
+        }
+    };
     
-    __weak CUUserManager * blockSelf = self;
-
+    AFHTTPRequestOperation *operation = [[SNNetworkClient alloc] HTTPRequestOperationWithRequest:request wrapper:wrapper];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSDictionary *dic = [string objectFromJSONString];
         
         SNServerAPIResultData * result = [[SNServerAPIResultData alloc] init];
         
-        result.parsedModelObject = [parser performSelector:@selector(parseUploadAvatarWithDict:) withObject:dic];
-        
-        result.hasError = parser.hasError;
-        
-        if (!result.hasError && result.parsedModelObject) {
-            blockSelf.user.profile = result.parsedModelObject;
-            
-            [blockSelf updateUserInfo:blockSelf.user resultBlock:^(SNHTTPRequestOperation * request,SNServerAPIResultData * result) {
-                
-            } pageName:@"ESJ_UpdateUserInfo"];
-        }
-        
+        result.responseObject = dic;
+        result.hasError = NO;
         resultBlock(nil, result);
         
         NSLog(@"传图片成功 %@",dic);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        NSLog(@"传图片失败 %@",error);
+        SNServerAPIResultData * result = [[SNServerAPIResultData alloc] init];
+        result.hasError = YES;
+        resultBlock(nil, result);
     }];
     [operation start];
     
@@ -419,7 +426,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [param setObjectSafely:@"pud" forKey:@"imgtype"];
     [param setObjectSafely:[CUUserManager sharedInstance].user.cellPhone forKey:@"phone"];
     
-    SNNetworkClient * httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://101.201.152.191:8080"]];
+    SNNetworkClient * httpClient = [[SNNetworkClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://123.56.251.146:8080"]];
     
     NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:URL_ImageUpload parameters:param constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
         for (int i = 0; i < imageArray.count; ++i) {
@@ -814,6 +821,40 @@ SINGLETON_IMPLENTATION(CUUserManager);
         
     }forKey:@"UserMemberList" forPageNameGroup:pageName];
     
+}
+
+- (void)ModifyAvatorWithPath:(NSString *)path resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14101 require:@"AvatarPath"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:path forKey:@"avatarPath"];
+
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
+    
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        __weak __block CUUserManager * blockSelf = self;
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                blockSelf.user.icon = path;
+                [blockSelf save];
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"UserMemberList" forPageNameGroup:pageName];
 }
 
 @end
