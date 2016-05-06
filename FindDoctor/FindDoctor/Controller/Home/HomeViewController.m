@@ -63,11 +63,11 @@
     headerView.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
     [self.contentView addSubview:headerView];
     
-    _cityButton = [[CityChooseButton alloc]initWithFrame:CGRectMake(10, 28, 48, 24)];
+    _cityButton = [[CityChooseButton alloc]initWithFrame:CGRectMake(10, 28, 46, 24)];
     _cityButton.cityLabel.text = @"成都";
     [headerView addSubview:_cityButton];
     
-    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(_cityButton.maxX + 14, 27, kScreenWidth - 120, 28)];
+    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(68, 27, kScreenWidth - 120, 24)];
     _searchTextField.placeholder = @"搜索病症/医师/症状/诊所";
     [_searchTextField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
     _searchTextField.font = [UIFont systemFontOfSize:13];
@@ -80,20 +80,20 @@
     _searchTextField.returnKeyType = UIReturnKeySearch;
     [headerView addSubview:_searchTextField];
     
-    _searchCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 36 - 8, 28 ,48, 24)];
+    _searchCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 32 - 6, 26.2 ,32, 24)];
     [_searchCancelButton setTitle:@"取消" forState:UIControlStateNormal];
     _searchCancelButton.titleLabel.font = [UIFont systemFontOfSize:13];
     _searchCancelButton.titleLabel.textColor = [UIColor whiteColor];
-    _searchCancelButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _searchCancelButton.titleLabel.textAlignment = NSTextAlignmentRight;
     _searchCancelButton.hidden = YES;
     [_searchCancelButton addTarget:self action:@selector(searchCancel) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:_searchCancelButton];
     
-    _messageButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 36 - 8, 28 ,36, 24)];
+    _messageButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 32 - 6, 26.2 ,32, 24)];
     [_messageButton setTitle:@"消息" forState:UIControlStateNormal];
     _messageButton.titleLabel.font = [UIFont systemFontOfSize:13];
     _messageButton.titleLabel.textColor = [UIColor whiteColor];
-    _messageButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _messageButton.titleLabel.textAlignment = NSTextAlignmentRight;
     _messageButton.hidden = NO;
     [_messageButton addTarget:self action:@selector(messageAction) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:_messageButton];
@@ -134,7 +134,7 @@
     _cityButton.hidden = NO;
     _cityButton.alpha = 0;
     [UIView animateWithDuration:timeDuration delay:0 usingSpringWithDamping:1 initialSpringVelocity:5 options:UIViewAnimationOptionLayoutSubviews animations:^{
-        _searchTextField.frame = CGRectMake(70, 28, kScreenWidth - 120, 24);
+        _searchTextField.frame = CGRectMake(68, 27, kScreenWidth - 120, 24);
         _searchCancelButton.alpha = 0;
         _cityButton.alpha = 1;
         _messageButton.alpha = 1;
@@ -177,7 +177,7 @@
         
         __weak __block typeof(self)weakSelf = self;
         [UIView animateWithDuration:timeDuration delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:3 options:UIViewAnimationOptionLayoutSubviews animations:^{
-            _searchTextField.frame = CGRectMake(10, 28, kScreenWidth - 60 , 24);
+            _searchTextField.frame = CGRectMake(8, 27, kScreenWidth - 60 , 24);
             _searchCancelButton.alpha = 1;
             _cityButton.alpha = 0;
             _messageButton.alpha = 0;

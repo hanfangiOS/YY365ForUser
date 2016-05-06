@@ -64,18 +64,18 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
     }
     
     if (indexPath.row == 0) {
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, 85 - 0.5, kScreenWidth/2 - 0.5, 0.5)];
-        bottomLine.backgroundColor = [UIColor blackColor];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, 85 - 1, kScreenWidth/2 - 0.5, 1)];
+        bottomLine.backgroundColor = kblueLineColor;
         bottomLine.tag = 1000;
         [cell addSubview:bottomLine];
     }else if (indexPath.row == 1) {
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85  - 0.5, kScreenWidth/2 - 10 , 0.5)];
-        bottomLine.backgroundColor = [UIColor blackColor];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85  - 1, kScreenWidth/2 - 10 , 1)];
+        bottomLine.backgroundColor = kblueLineColor;
         bottomLine.tag = 1001;
         [cell addSubview:bottomLine];
     }else{
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85 - 0.5, kScreenWidth/2, 0.5)];
-        bottomLine.backgroundColor = [UIColor blackColor];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 85 - 1, kScreenWidth/2, 1)];
+        bottomLine.backgroundColor = kblueLineColor;
         bottomLine.tag = 1002;
         [cell addSubview:bottomLine];
     }
@@ -131,22 +131,23 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
     
     if (kind == UICollectionElementKindSectionHeader){
         
-        HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight) titleText:@"好评医生" Style:HFTitleViewStyleLoadMore];
-        titleView.pic.backgroundColor = [UIColor blueColor];
-        [titleView.loadMoreBtn setTitle:@"更多医生" forState:UIControlStateNormal];
-        [titleView.loadMoreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight) titleText:@"好评医师" Style:HFTitleViewStyleLoadMore];
+        titleView.title.font = [UIFont systemFontOfSize:14];
+        titleView.pic.backgroundColor = kBlueTextColor;
+        [titleView.loadMoreBtn setTitle:@"更多医师" forState:UIControlStateNormal];
+        [titleView.loadMoreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
+        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
         [titleView.loadMoreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
         titleView.tag = 3000;
         [reuseHeaderView addSubview:titleView];
         
-        UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
-        topLine.backgroundColor = [UIColor blackColor];
+        UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+        topLine.backgroundColor = kblueLineColor;
         topLine.tag = 3001;
         [reuseHeaderView addSubview:topLine];
         
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, sectionHeaderViewHeight - 0.5, kScreenWidth - 10 * 2, 0.5)];
-        bottomLine.backgroundColor = [UIColor blackColor];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, sectionHeaderViewHeight - 1, kScreenWidth - 10 * 2, 1)];
+        bottomLine.backgroundColor = kblueLineColor;
         bottomLine.tag = 3002;
         [reuseHeaderView addSubview:bottomLine];
     }

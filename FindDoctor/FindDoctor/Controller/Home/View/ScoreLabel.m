@@ -8,7 +8,7 @@
 
 #import "ScoreLabel.h"
 
-#define ViewDefaultWidth 60
+#define ViewDefaultWidth 52
 #define ViewDefaultHeight 15
 
 @implementation ScoreLabel{
@@ -20,11 +20,11 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        self.layer.contents = [UIImage imageNamed:@""];
-        self.layer.contents = (id)[UIImage imageNamed:@"login_code_bg@2x"].CGImage;
+        self.layer.contents = (id)[UIImage imageNamed:@"main_doctorScore@3x"].CGImage;
         score = [[UILabel alloc] init];
         score.textAlignment = NSTextAlignmentLeft;
         score.textColor = [UIColor whiteColor];
-        score.font = [UIFont systemFontOfSize:12];
+        score.font = [UIFont systemFontOfSize:11];
         [self addSubview:score];
         return self;
     }
@@ -47,7 +47,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     CGSize size = [self sizeForString:score.text font:score.font limitSize:CGSizeMake(0, self.frameHeight)];
-    score.frame = CGRectMake(self.frameWidth - size.width - 5, 0, size.width, size.height);
+    score.frame = CGRectMake(self.frameWidth - size.width - 5, (self.frameHeight - size.height)/2, size.width, size.height);
 }
 
 - (CGSize)sizeForString:(NSString *)string font:(UIFont *)font limitSize:(CGSize)limitSize{

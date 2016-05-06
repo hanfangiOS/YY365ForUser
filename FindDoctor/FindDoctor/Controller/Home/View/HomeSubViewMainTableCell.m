@@ -52,7 +52,7 @@
     [self addSubview:score];
     //刘渊 教授
     name = [[UILabel alloc] init];
-    name.font = [UIFont systemFontOfSize:14];
+    name.font = [UIFont systemFontOfSize:13];
     name.textAlignment = NSTextAlignmentLeft;
     name.textColor = UIColorFromHex(Color_Hex_NavBackground);
     name.frame = CGRectMake(icon.maxX + 12, icon.frameY, 160, 15 );
@@ -101,12 +101,16 @@
     
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
     NSInteger length = [_data.name length];
-    [AtrStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:18] range:NSMakeRange(0, length)];
-    [AtrStr addAttribute:NSForegroundColorAttributeName
-                   value:[UIColor blackColor]
+    if (length) {
+        [AtrStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:18] range:NSMakeRange(0, length)];
+        [AtrStr addAttribute:NSForegroundColorAttributeName
+                       value:[UIColor blackColor]
                        range:NSMakeRange(0, length)];
+        
+        name.attributedText = AtrStr;
+    }
     
-    name.attributedText = AtrStr;
+
     
     score.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
     

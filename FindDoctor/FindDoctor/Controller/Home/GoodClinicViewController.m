@@ -64,12 +64,14 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
         ClinicAdverCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseAdverCellID forIndexPath:indexPath];
         cell.data = self.data.promotionInfo;
         cell.backgroundColor = [UIColor yellowColor];
-        cell.layer.borderWidth = 0.5f;
+        cell.layer.borderColor = kblueLineColor.CGColor;
+        cell.layer.borderWidth = 1.0f;
         return cell;
     }else{
         GoodClinicCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseCellID forIndexPath:indexPath];
         cell.data = [self.data.goodClinicList objectAtIndexSafely:indexPath.row];
-        cell.layer.borderWidth = 0.5f;
+        cell.layer.borderWidth = 1.0f;
+        cell.layer.borderColor = kblueLineColor.CGColor;
         return cell;
     }
 }
@@ -128,21 +130,23 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
         }
         
         HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight) titleText:@"好评诊所" Style:HFTitleViewStyleLoadMore];
-        titleView.pic.backgroundColor = [UIColor blueColor];
+        titleView.pic.backgroundColor = kBlueTextColor;
+        titleView.title.font = [UIFont systemFontOfSize:14];
         [titleView.loadMoreBtn setTitle:@"更多诊所" forState:UIControlStateNormal];
-        [titleView.loadMoreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        
+        [titleView.loadMoreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
+        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
         [titleView.loadMoreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
         titleView.tag = 4000;
         [reuseHeaderView addSubview:titleView];
         
-        UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
-        topLine.backgroundColor = [UIColor blackColor];
+        UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+        topLine.backgroundColor = kblueLineColor;
         topLine.tag = 4001;
         [reuseHeaderView addSubview:topLine];
         
-        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 , sectionHeaderViewHeight - 0.5, kScreenWidth - 10 * 2, 0.5)];
-        bottomLine.backgroundColor = [UIColor blackColor];
+        UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10 , sectionHeaderViewHeight - 1, kScreenWidth - 10 * 2, 1)];
+        bottomLine.backgroundColor = kblueLineColor;
         bottomLine.tag = 4002;
         [reuseHeaderView addSubview:bottomLine];
         return reuseHeaderView;
@@ -155,8 +159,8 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
             }
         }
         
-        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
-        line.backgroundColor = [UIColor blackColor];
+        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+        line.backgroundColor = kblueLineColor;
         line.tag = 5000;
         [reuseFooterrView addSubview:line];
         return reuseFooterrView;

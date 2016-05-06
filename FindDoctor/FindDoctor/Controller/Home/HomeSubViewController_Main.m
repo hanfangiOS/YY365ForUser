@@ -145,7 +145,7 @@
     self.subjectCollectionView.dataSource = self;
     self.subjectCollectionView.delegate = self;
     self.subjectCollectionView.scrollEnabled = NO;
-    self.subjectCollectionView.backgroundColor = [UIColor blackColor];
+    self.subjectCollectionView.backgroundColor = kblueLineColor;
 
     [self.subjectCollectionView registerClass:[SubObjectCell class] forCellWithReuseIdentifier:@"SubObjectCell"];
     [self.headerView addSubview:self.subjectCollectionView];
@@ -169,6 +169,14 @@
     self.secondBannerView.backgroundColor = [UIColor greenColor];
     [self.headerView addSubview:self.secondBannerView];
     
+    UIView * lineTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+    lineTop.backgroundColor = kblueLineColor;
+    [self.secondBannerView addSubview:lineTop];
+    
+    UIView * lineBottom = [[UIView alloc] initWithFrame:CGRectMake(0, self.secondBannerView.frameHeight - 1, kScreenWidth, 1)];
+    lineBottom.backgroundColor = kblueLineColor;
+    [self.secondBannerView addSubview:lineBottom];
+    
     //好评诊所
     UICollectionViewFlowLayout * clinicLayout = [[UICollectionViewFlowLayout alloc] init];
     [clinicLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
@@ -181,6 +189,10 @@
     self.goodclinicCollectionView.delegate = self.goodClinicVC;
     self.goodclinicCollectionView.dataSource = self.goodClinicVC;
     
+    UIView * downLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.goodclinicCollectionView.frameHeight - 1, kScreenWidth, 1)];
+    downLine.backgroundColor = kblueLineColor;
+    [self.goodclinicCollectionView addSubview:downLine];
+    
     //好评诊所到名医馆之间的间隔View
     UIView * paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, self.goodclinicCollectionView.maxY,kScreenWidth, 10)];
     paddingView.backgroundColor = [UIColor clearColor];
@@ -190,21 +202,17 @@
     [self.tableView setTableHeaderView:self.headerView];
     
     //查看更多按钮背景
-    self.loadMoreContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+    self.loadMoreContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 32)];
     self.loadMoreContainerView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = self.loadMoreContainerView;
     
-    UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
-    topLine.backgroundColor = [UIColor grayColor];
-    [self.loadMoreContainerView addSubview:topLine];
-    
-    UIButton * moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(36, 6, kScreenWidth - 36 * 2, 40 - 6 * 2)];\
+    UIButton * moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(36, 5, kScreenWidth - 36 * 2, 32 - 5 * 2)];\
     [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
-    [moreBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [moreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
     [moreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
-    moreBtn.layer.borderColor = [UIColor grayColor].CGColor;
-    moreBtn.layer.borderWidth = 1;
-    moreBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    moreBtn.layer.borderColor = kLightGrayColor.CGColor;
+    moreBtn.layer.borderWidth = 0.5;
+    moreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
     moreBtn.tag = 12345;
     [self.loadMoreContainerView addSubview:moreBtn];
     
@@ -216,8 +224,8 @@
     [self.loadMoreContainerView addSubview:indicator];
     
     
-    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 40 - 0.5, kScreenWidth, 0.5)];
-    bottomLine.backgroundColor = [UIColor grayColor];
+    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 32 - 1, kScreenWidth, 1)];
+    bottomLine.backgroundColor = kblueLineColor;
     [self.loadMoreContainerView addSubview:bottomLine];
     
 }
@@ -349,20 +357,21 @@
         }
     }
     
-    HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:sectionHeaderView.bounds titleText:@"名医馆" Style:HFTitleViewStyleLoadMore];
+    HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:sectionHeaderView.bounds titleText:@"优医馆" Style:HFTitleViewStyleLoadMore];
+    titleView.title.font = [UIFont systemFontOfSize:14];
     titleView.loadMoreBtn.hidden = YES;
-    titleView.pic.backgroundColor = [UIColor blueColor];
+    titleView.pic.backgroundColor = kBlueTextColor;
     [titleView resetData];
     titleView.tag = 2000;
     [sectionHeaderView addSubview:titleView];
     
-    UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
-    topLine.backgroundColor = [UIColor blackColor];
+    UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+    topLine.backgroundColor = kblueLineColor;
     topLine.tag = 2001;
     [sectionHeaderView addSubview:topLine];
     
-    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, sectionHeaderViewHeight - 0.5, kScreenWidth - 10 * 2, 0.5)];
-    bottomLine.backgroundColor = [UIColor blackColor];
+    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, sectionHeaderViewHeight - 1, kScreenWidth - 10 * 2, 1)];
+    bottomLine.backgroundColor = kblueLineColor;
     bottomLine.tag = 2002;
     [sectionHeaderView addSubview:bottomLine];
     
@@ -440,7 +449,7 @@
     } pageName:@"HomeSubViewController_Main"];
 }
 
-//优医管
+//优医馆
 - (void)postRequestFamousDoctorClinic{
     
     UIButton * btn = [self.loadMoreContainerView viewWithTag:12345];

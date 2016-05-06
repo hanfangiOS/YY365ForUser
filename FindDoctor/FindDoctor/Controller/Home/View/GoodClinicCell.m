@@ -47,25 +47,26 @@
 //    clinicIcon.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:clinicIcon];
     //诊所名字背景
-    nameContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, CelldefaultHeight - 24 * 2, CelldefaultWidth, 24)];
-    nameContainerView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.2f];
+    nameContainerView = [[UIView alloc] initWithFrame:CGRectMake(1, CelldefaultHeight - 24 * 2, CelldefaultWidth - 1, 24)];
+    nameContainerView.backgroundColor = [UIColor colorWithRed:138/255 green:138/255 blue:138/255 alpha:0.54];
     [clinicIcon addSubview:nameContainerView];
     //诊所名
     name = [[UILabel alloc] initWithFrame:CGRectMake(6, 0, nameContainerView.frameWidth, nameContainerView.frameHeight)];
     name.textColor = [UIColor whiteColor];
     name.textAlignment = NSTextAlignmentLeft;
-    name.font = [UIFont systemFontOfSize:14];
+    name.font = [UIFont systemFontOfSize:11];
     [nameContainerView addSubview:name];
     //小图标
-    smallIcon = [[UIImageView alloc] initWithFrame:CGRectMake(4, clinicIcon.maxY + 6, 12, 12)];
-    smallIcon.image = [UIImage imageNamed:@""];
+    smallIcon = [[UIImageView alloc] initWithFrame:CGRectMake(8, clinicIcon.maxY + 7, 10, 10)];
+    smallIcon.image = [UIImage imageNamed:@"main_icon_clinicGoodAt@2x"];
     [self addSubview:smallIcon];
     //100分
-    goodComment = [[ScoreLabel alloc] initWithFrame:CGRectMake(CelldefaultWidth - [ScoreLabel defaultWidth] - 2,clinicIcon.maxY + 5, [ScoreLabel defaultWidth], [ScoreLabel defaultHeight])];
+    goodComment = [[ScoreLabel alloc] initWithFrame:CGRectMake(CelldefaultWidth - [ScoreLabel defaultWidth] - 2,clinicIcon.maxY + 4, [ScoreLabel defaultWidth], [ScoreLabel defaultHeight])];
     [self addSubview:goodComment];
     //内科、外科
     subject = [[UILabel alloc] initWithFrame:CGRectMake(smallIcon.maxX + 2, smallIcon.frameY, CelldefaultWidth - (smallIcon.maxX + 2 + [ScoreLabel defaultWidth] + 4), smallIcon.frameHeight)];
-    subject.font = [UIFont systemFontOfSize:11];
+    subject.font = [UIFont systemFontOfSize:10];
+    subject.textColor = kGrayTextColor;
     [self addSubview:subject];
     
     
@@ -83,8 +84,6 @@
     subject.text = _data.skillTreat;
     
     goodComment.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
-    
-    smallIcon.backgroundColor = [UIColor greenColor];
     
 }
 

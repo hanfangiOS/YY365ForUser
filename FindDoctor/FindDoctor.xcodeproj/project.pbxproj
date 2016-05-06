@@ -171,9 +171,7 @@
 		3EFB223C1AB5B5A4000872F3 /* SNTopTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB223A1AB5B5A4000872F3 /* SNTopTabBarItem.m */; };
 		7F0469FC1CB65C9F00C9C054 /* GoodDoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */; };
 		7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */; };
-		7F1209CC1CDC4C53007E5E6A /* setting_changePwd1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F1209C91CDC4C53007E5E6A /* setting_changePwd1.png */; };
-		7F1209CD1CDC4C53007E5E6A /* setting_changePwd2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F1209CA1CDC4C53007E5E6A /* setting_changePwd2.png */; };
-		7F1209CE1CDC4C53007E5E6A /* setting_changePwd3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F1209CB1CDC4C53007E5E6A /* setting_changePwd3.png */; };
+		7F1209D01CDC7415007E5E6A /* main_icon_clinicGoodAt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F1209CF1CDC7415007E5E6A /* main_icon_clinicGoodAt@2x.png */; };
 		7F1DE01E1CCF149B00C3CDC7 /* UserProtocolController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE01D1CCF149B00C3CDC7 /* UserProtocolController.m */; };
 		7F229E841C97F57C009C19E8 /* DoctorFameListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E831C97F57C009C19E8 /* DoctorFameListController.m */; };
 		7F229E871C97F59E009C19E8 /* DoctorFameListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F229E861C97F59E009C19E8 /* DoctorFameListModel.m */; };
@@ -945,9 +943,7 @@
 		7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorCell.m; sourceTree = "<group>"; };
 		7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicCell.h; sourceTree = "<group>"; };
 		7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicCell.m; sourceTree = "<group>"; };
-		7F1209C91CDC4C53007E5E6A /* setting_changePwd1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_changePwd1.png; sourceTree = "<group>"; };
-		7F1209CA1CDC4C53007E5E6A /* setting_changePwd2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_changePwd2.png; sourceTree = "<group>"; };
-		7F1209CB1CDC4C53007E5E6A /* setting_changePwd3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_changePwd3.png; sourceTree = "<group>"; };
+		7F1209CF1CDC7415007E5E6A /* main_icon_clinicGoodAt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_icon_clinicGoodAt@2x.png"; sourceTree = "<group>"; };
 		7F1DE01C1CCF149B00C3CDC7 /* UserProtocolController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProtocolController.h; sourceTree = "<group>"; };
 		7F1DE01D1CCF149B00C3CDC7 /* UserProtocolController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProtocolController.m; sourceTree = "<group>"; };
 		7F229E821C97F57C009C19E8 /* DoctorFameListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorFameListController.h; sourceTree = "<group>"; };
@@ -2668,16 +2664,6 @@
 			path = SNTopTab;
 			sourceTree = "<group>";
 		};
-		7F1209C81CDC4C53007E5E6A /* setting */ = {
-			isa = PBXGroup;
-			children = (
-				7F1209C91CDC4C53007E5E6A /* setting_changePwd1.png */,
-				7F1209CA1CDC4C53007E5E6A /* setting_changePwd2.png */,
-				7F1209CB1CDC4C53007E5E6A /* setting_changePwd3.png */,
-			);
-			path = setting;
-			sourceTree = "<group>";
-		};
 		7F3151041CC24B68002A11C3 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -3069,7 +3055,6 @@
 				7FED20491CDB4F6A004639DE /* Order */,
 				7FED20531CDB4F6A004639DE /* PlaceHolder */,
 				7FED20541CDB4F6A004639DE /* Tabbar */,
-				7FED205E1CDB4F6A004639DE /* User */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -3184,6 +3169,7 @@
 		7FED202B1CDB4F6A004639DE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7F1209CF1CDC7415007E5E6A /* main_icon_clinicGoodAt@2x.png */,
 				7FED202C1CDB4F6A004639DE /* main_doctorScore@3x.png */,
 				7FED202D1CDB4F6A004639DE /* main_icon_city@2x.png */,
 				7FED202E1CDB4F6A004639DE /* main_icon_erke@3x.png */,
@@ -3272,14 +3258,6 @@
 				7FED205D1CDB4F6A004639DE /* tabbar_vip_sel@2x.png */,
 			);
 			path = Tabbar;
-			sourceTree = "<group>";
-		};
-		7FED205E1CDB4F6A004639DE /* User */ = {
-			isa = PBXGroup;
-			children = (
-				7F1209C81CDC4C53007E5E6A /* setting */,
-			);
-			path = User;
 			sourceTree = "<group>";
 		};
 		7FED20C91CDB50AF004639DE /* SearchResult */ = {
@@ -4806,7 +4784,6 @@
 				7FED207F1CDB4F6A004639DE /* doctor_menu_btn_add_sel@2x.png in Resources */,
 				7FED20971CDB4F6A004639DE /* login_icon_hook.png in Resources */,
 				7FED20741CDB4F6A004639DE /* menu_arrow_down@2x.png in Resources */,
-				7F1209CD1CDC4C53007E5E6A /* setting_changePwd2.png in Resources */,
 				7FED20601CDB4F6A004639DE /* clever.png in Resources */,
 				3ED1711D1AAF0A9A00E5B630 /* tip_sad@2x.png in Resources */,
 				7FED209B1CDB4F6A004639DE /* login_icon_user@2x.png in Resources */,
@@ -4853,7 +4830,6 @@
 				7FED20931CDB4F6A004639DE /* login_header_image@2x.png in Resources */,
 				7FED20BD1CDB4F6A004639DE /* order_littleTrumpet@2x.png in Resources */,
 				E1EB1ECB1B70A4D70048B8EB /* AlipaySDK.bundle in Resources */,
-				7F1209CC1CDC4C53007E5E6A /* setting_changePwd1.png in Resources */,
 				3ED1711B1AAF0A9A00E5B630 /* TextTipView.xib in Resources */,
 				7FED20731CDB4F6A004639DE /* common_whiteButton_nor@2x.png in Resources */,
 				7FED20911CDB4F6A004639DE /* login_code_bg@2x.png in Resources */,
@@ -4874,7 +4850,6 @@
 				7FED20C21CDB4F6A004639DE /* tabbar_home_sel@2x.png in Resources */,
 				D405D8181B7DF0300043FD76 /* stars.png in Resources */,
 				7FED20AE1CDB4F6A004639DE /* navbar_back_button@2x.png in Resources */,
-				7F1209CE1CDC4C53007E5E6A /* setting_changePwd3.png in Resources */,
 				3ED171181AAF0A9A00E5B630 /* FXTipView.bundle in Resources */,
 				7FED20C11CDB4F6A004639DE /* tabbar_home_nor@2x.png in Resources */,
 				7FED20871CDB4F6A004639DE /* Icon-152.png in Resources */,
@@ -4899,6 +4874,7 @@
 				7FED209C1CDB4F6A004639DE /* login_image_success@2x.png in Resources */,
 				7FED20921CDB4F6A004639DE /* login_header_circle_green@2x.png in Resources */,
 				E1EB1E231B70A43B0048B8EB /* Introduce_Images.plist in Resources */,
+				7F1209D01CDC7415007E5E6A /* main_icon_clinicGoodAt@2x.png in Resources */,
 				E1F98CA11BA5D179008D3CEA /* build_ota_process.sh in Resources */,
 				7FED20BB1CDB4F6A004639DE /* order_icon_weixin@2x.png in Resources */,
 				E1EB1E451B70A43B0048B8EB /* UMSCommentDetailController.xib in Resources */,

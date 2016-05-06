@@ -35,19 +35,18 @@
     
     _iconView = [[UIImageView alloc] init];
     _iconView.contentMode = UIViewContentModeScaleAspectFit;
-    CGFloat side = 49.5;
-    _iconView.frame = CGRectMake((content_width - side)/2,(content_width - side)/2 - 7, side, side);
-//    _iconView.layer.borderColor = UIColorFromRGB(239, 239, 239).CGColor;
-//    _iconView.layer.borderWidth = 1.f;
+    CGFloat side = 50;
+    _iconView.frame = CGRectMake((content_width - side)/2,(content_width - side)/2 - 8, side, side);
+
     [self.contentView addSubview:_iconView];
     
-    CGFloat padding = -1;
+    CGFloat padding = 8;
     
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.font = kCommonDescFont;
-    _titleLabel.frame = CGRectMake(0, _iconView.maxY + padding, self.frameWidth, self.frameHeight-(_iconView.maxY + padding));
-    _titleLabel.textColor = UIColorFromHex(Color_Hex_NavBackground);
+    _titleLabel.font = [UIFont systemFontOfSize:12];
+    _titleLabel.frame = CGRectMake(0, _iconView.maxY + padding, self.frameWidth, 12);
+    _titleLabel.textColor = kGrayTextColor;
     [self.contentView addSubview:_titleLabel];
 }
 

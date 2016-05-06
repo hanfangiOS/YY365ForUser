@@ -23,7 +23,7 @@
     leftView.layer.contents = (id)[UIImage imageNamed:@"main_icon_city@2x"].CGImage;
     [self addSubview:leftView];
     
-    _cityLabel = [[UILabel alloc]initWithFrame:CGRectMake(leftView.maxX + 6,(self.frameHeight-13.5)/2.f, self.frameWidth - (leftView.maxX), 13.5)];
+    _cityLabel = [[UILabel alloc]initWithFrame:CGRectMake(leftView.maxX + 3,(self.frameHeight-13.5)/2.f, self.frameWidth - (leftView.maxX), 13.5)];
     _cityLabel.font = [UIFont systemFontOfSize:13];
     _cityLabel.textAlignment = NSTextAlignmentCenter;
     _cityLabel.adjustsFontSizeToFitWidth = YES;
