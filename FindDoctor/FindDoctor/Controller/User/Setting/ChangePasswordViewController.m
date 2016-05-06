@@ -54,7 +54,6 @@
             }
         }
     } pageName:@"ChangePasswordViewController"];
-
 }
 
 - (void)loadContentView{

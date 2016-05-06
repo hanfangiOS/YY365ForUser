@@ -8,6 +8,7 @@
 
 #import "ChangePhoneViewController1.h"
 #import "ChangePhoneViewController2.h"
+#import "CUUserManager.h"
 
 @interface ChangePhoneViewController1 ()
 
@@ -24,11 +25,19 @@
 - (void)loadContentView{
     self.contentView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
     
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 100)];
-    imageView.backgroundColor = [UIColor blueColor];
+    UIImage *image = [UIImage imageNamed:@"setting_changePwd1"];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, image.size.height/image.size.width*kScreenWidth)];
+    imageView.image = image;
     [self.contentView addSubview:imageView];
     
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(22, imageView.maxY + 10, kScreenWidth - 50, 37)];
+    UILabel *labelTop = [[UILabel alloc]initWithFrame:CGRectMake(0, image.size.height/5, kScreenWidth, 20)];
+    labelTop.textColor = [UIColor whiteColor];
+    labelTop.font = [UIFont systemFontOfSize:17];
+    labelTop.textAlignment = NSTextAlignmentCenter;
+    labelTop.text = [NSString stringWithFormat:@"当前手机号：%@",[CUUserManager sharedInstance].user.cellPhone];
+    [imageView addSubview:labelTop];
+    
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(22, imageView.maxY + 23, kScreenWidth - 50, 37)];
     button.layer.backgroundColor = UIColorFromHex(0xf1a80b).CGColor;
     button.layer.cornerRadius = 3;
     [button setTitle:@"更换手机号" forState:UIControlStateNormal];
@@ -37,11 +46,11 @@
     [self.contentView addSubview:button];
     
     NSString * str = @"手机号是您登录优医365的唯一帐号，用于接收帐号通知，获取验证码等。您可以在这里更换当前账户的手机号。";
-    CGSize size = [self sizeForString:str font:[UIFont systemFontOfSize:17] limitSize:CGSizeMake(kScreenWidth - 24 * 2, 0)];
-    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(24, button.maxY + 40, size.width, size.height)];
+    CGSize size = [self sizeForString:str font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(kScreenWidth - 24 * 2, 0)];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(24, button.maxY + 42, size.width, size.height)];
     label.text = str;
     label.numberOfLines = 0;
-    label.font = [UIFont systemFontOfSize:17];
+    label.font = [UIFont systemFontOfSize:12];
     label.textColor = kLightGrayColor;
     [label sizeToFit];
     [self.contentView addSubview:label];

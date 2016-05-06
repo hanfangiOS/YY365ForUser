@@ -37,7 +37,7 @@
 
 //#define URL_Base @"http://192.168.1.101:8888"//庆
 //#define URL_Base @"http://192.168.1.123:8080"//威
-#define URL_Base @"http://192.168.1.123:8080"//银
+#define URL_Base @"http://192.168.3.104:8080"//银
 //#define URL_Base @"http://192.168.0.210:8080"//军
 
 #elif defined(CollegeUnion_Distribution)
