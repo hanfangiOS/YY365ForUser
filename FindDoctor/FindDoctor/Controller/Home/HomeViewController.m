@@ -63,14 +63,14 @@
     headerView.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
     [self.contentView addSubview:headerView];
     
-    _cityButton = [[CityChooseButton alloc]initWithFrame:CGRectMake(7, 28, 60, 24)];
+    _cityButton = [[CityChooseButton alloc]initWithFrame:CGRectMake(10, 28, 48, 24)];
     _cityButton.cityLabel.text = @"成都";
     [headerView addSubview:_cityButton];
     
-    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(70, 28, kScreenWidth - 120, 24)];
+    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(_cityButton.maxX + 14, 27, kScreenWidth - 120, 28)];
     _searchTextField.placeholder = @"搜索病症/医师/症状/诊所";
     [_searchTextField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
-    _searchTextField.font = [UIFont systemFontOfSize:12];
+    _searchTextField.font = [UIFont systemFontOfSize:13];
     _searchTextField.textColor = [UIColor whiteColor];
     _searchTextField.delegate = self;
     _searchTextField.layer.backgroundColor = UIColorFromHex(0x1957ae).CGColor;
@@ -80,18 +80,18 @@
     _searchTextField.returnKeyType = UIReturnKeySearch;
     [headerView addSubview:_searchTextField];
     
-    _searchCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 55, 28 ,60, 24)];
+    _searchCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 36 - 8, 28 ,48, 24)];
     [_searchCancelButton setTitle:@"取消" forState:UIControlStateNormal];
-    _searchCancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    _searchCancelButton.titleLabel.font = [UIFont systemFontOfSize:13];
     _searchCancelButton.titleLabel.textColor = [UIColor whiteColor];
     _searchCancelButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     _searchCancelButton.hidden = YES;
     [_searchCancelButton addTarget:self action:@selector(searchCancel) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:_searchCancelButton];
     
-    _messageButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 55, 28 ,60, 24)];
+    _messageButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 36 - 8, 28 ,36, 24)];
     [_messageButton setTitle:@"消息" forState:UIControlStateNormal];
-    _messageButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    _messageButton.titleLabel.font = [UIFont systemFontOfSize:13];
     _messageButton.titleLabel.textColor = [UIColor whiteColor];
     _messageButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     _messageButton.hidden = NO;

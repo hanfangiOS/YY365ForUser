@@ -19,12 +19,12 @@
 }
 
 - (void)initSubView{
-    UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(0, self.frameHeight/2.f - 39/4.f, 14, 39/2.f)];
+    UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(0, (self.frameHeight - 14.5)/2 + 1, 11.5, 14.5)];
     leftView.layer.contents = (id)[UIImage imageNamed:@"main_icon_city@2x"].CGImage;
     [self addSubview:leftView];
     
-    _cityLabel = [[UILabel alloc]initWithFrame:CGRectMake(16,(self.frameHeight-14)/2.f, self.frameWidth - 18, 14)];
-    _cityLabel.font = [UIFont systemFontOfSize:14];
+    _cityLabel = [[UILabel alloc]initWithFrame:CGRectMake(leftView.maxX + 6,(self.frameHeight-13.5)/2.f, self.frameWidth - (leftView.maxX), 13.5)];
+    _cityLabel.font = [UIFont systemFontOfSize:13];
     _cityLabel.textAlignment = NSTextAlignmentCenter;
     _cityLabel.adjustsFontSizeToFitWidth = YES;
     _cityLabel.textColor = [UIColor whiteColor];

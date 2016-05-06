@@ -35,7 +35,7 @@
     
     _iconView = [[UIImageView alloc] init];
     _iconView.contentMode = UIViewContentModeScaleAspectFit;
-    CGFloat side = 52;
+    CGFloat side = 49.5;
     _iconView.frame = CGRectMake((content_width - side)/2,(content_width - side)/2 - 7, side, side);
 //    _iconView.layer.borderColor = UIColorFromRGB(239, 239, 239).CGColor;
 //    _iconView.layer.borderWidth = 1.f;

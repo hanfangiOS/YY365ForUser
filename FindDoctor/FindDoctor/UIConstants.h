@@ -7,7 +7,7 @@
 #define kTableViewSeparatorColor [UIColor colorWithWhite:230.0/255.0 alpha:1.0f]
 
 #define kTableViewGrayColor      UIColorFromHex(0xf6f6f6)
-#define kCommonBackgroundColor   UIColorFromRGB(248,248,248)
+#define kCommonBackgroundColor   UIColorFromRGB(242,244,250)
 #define kTableViewCellGrayColor  UIColorFromRGB(239,239,239)
 
 #define kControllerGrayColor     UIColorFromHex(0xf6f6f6)
@@ -16,18 +16,24 @@
 #define kDarkGreenColor    UIColorFromRGB(75, 166, 169) //UIColorFromRGB(78, 163, 25)
 #define kYellowColor       UIColorFromRGB(242, 138, 49)
 #define kBlackColor        UIColorFromHex(0x333333)
-#define kDarkGrayColor     UIColorFromRGB(107, 107, 107)
 #define kLightGrayColor    UIColorFromHex(0x999999)
+#define kDarkGrayColor     UIColorFromRGB(107, 107, 107)
 #define kBlueColor         UIColorFromHex(0x6f8ad3)
 #define kDarkBlueColor     UIColorFromHex(0x3f63c4)
 #define kDarRedColor       UIColorFromHex(0xff6868)
 #define kLightGreenColor   UIColorFromRGB(242, 252, 240)
 #define kLightBlueColor    UIColorFromRGB(240, 251, 252)
 
-#define kDarkLineColor     UIColorFromHex(0xcccccc)
-#define kLightLineColor    UIColorFromHex(0xdddddd)
+#define kLightLineColor    UIColorFromHex(0xdddddd)//灰
+#define kDarkLineColor     UIColorFromHex(0xcccccc)//灰
+#define kblueLineColor     UIColorFromHex(0xdee6ef)//蓝
 
-#define kHomeBackColor UIColorFromRGB(41,155,157)
+
+#define kGrayTextColor     kLightGrayColor //灰
+#define kBlueTextColor     UIColorFromHex(0x3170c8) //0x429EA2;//0x57B526;
+
+
+#define kHomeBackColor UIColorFromRGB(41,155,157)//绿
 
 #define kOrangeColor UIColorFromRGB(244,193,130)
 
