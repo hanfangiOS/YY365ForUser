@@ -47,7 +47,7 @@
 @implementation UserViewController
 
 - (void)loadNavigationBar{
-    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myDoctorBigButtonImage"] action:@selector(messageAction)];
+    [self addRightButtonItemWithImage:[UIImage imageNamed:@"mySpace_msg@2x"] action:@selector(messageAction)];
     
 }
 
@@ -83,9 +83,8 @@
     self.tableView.bounces = NO;
     [self.contentView addSubview:self.tableView];
     
-    self.headerView = [[UserHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 223)];
-    self.headerView.layer.contents = [UIImage imageNamed:@""];
-    self.headerView.backgroundColor = [UIColor blueColor];
+    self.headerView = [[UserHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 224)];
+    self.headerView.layer.contents = (id)[UIImage imageNamed:@"mySpace_topBackground@3x"].CGImage;
     
     self.tableView.tableHeaderView = self.headerView;
     

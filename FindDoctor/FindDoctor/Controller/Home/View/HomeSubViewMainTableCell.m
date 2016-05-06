@@ -52,42 +52,42 @@
     [self addSubview:score];
     //刘渊 教授
     name = [[UILabel alloc] init];
-    name.font = [UIFont systemFontOfSize:13];
+    name.font = [UIFont systemFontOfSize:11];
     name.textAlignment = NSTextAlignmentLeft;
-    name.textColor = UIColorFromHex(Color_Hex_NavBackground);
+    name.textColor = kBlueTextColor;
     name.frame = CGRectMake(icon.maxX + 12, icon.frameY, 160, 15 );
     [self addSubview:name];
     //简介
-    briefLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxY + 10, 40, 15)];
+    briefLabel = [[UILabel alloc] initWithFrame:CGRectMake(name.frameX, name.maxY + 9, 40, 15)];
     briefLabel.text = @"简介:";
     briefLabel.textAlignment = NSTextAlignmentLeft;
-    briefLabel.font = [UIFont systemFontOfSize:14];
-    briefLabel.textColor = kLightGrayColor;
+    briefLabel.font = [UIFont systemFontOfSize:11];
+    briefLabel.textColor = kGrayTextColor;
     [self addSubview:briefLabel];
     //中西医结合XXXXX
-    brief = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.maxX + 2, briefLabel.frameY - 2, kScreenWidth - briefLabel.maxX - 10, 35)];
+    brief = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.maxX + 2, briefLabel.frameY - 0.5, kScreenWidth - briefLabel.maxX - 10, 28)];
     brief.numberOfLines = 2;
-    brief.textColor = kLightGrayColor;
+    brief.textColor = kGrayTextColor;
     brief.textAlignment = NSTextAlignmentLeft;
-    brief.font = [UIFont systemFontOfSize:14];
+    brief.font = [UIFont systemFontOfSize:11];
     [self addSubview:brief];
     //擅长
-    goodAtLabel = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.frameX, briefLabel.maxY + 25, briefLabel.frameWidth, briefLabel.frameHeight)];
+    goodAtLabel = [[UILabel alloc] initWithFrame:CGRectMake(briefLabel.frameX, briefLabel.maxY + 22, briefLabel.frameWidth, briefLabel.frameHeight)];
     goodAtLabel.text = @"擅长:";
     goodAtLabel.textAlignment = NSTextAlignmentLeft;
-    goodAtLabel.font = [UIFont systemFontOfSize:14];
-    goodAtLabel.textColor = kLightGrayColor;
+    goodAtLabel.font = [UIFont systemFontOfSize:11];
+    goodAtLabel.textColor = kGrayTextColor;
     [self addSubview:goodAtLabel];
     //擅长内儿科治疗XXXX
-    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 2, goodAtLabel.frameY - 2, kScreenWidth - goodAtLabel.maxX - 10, 35)];
+    goodAt = [[UILabel alloc] initWithFrame:CGRectMake(goodAtLabel.maxX + 2, goodAtLabel.frameY - 0.5, kScreenWidth - goodAtLabel.maxX - 10, 28)];
     goodAt.numberOfLines = 2;
-    goodAt.textColor = kLightGrayColor;
+    goodAt.textColor = kGrayTextColor;
     goodAt.textAlignment = NSTextAlignmentLeft;
-    goodAt.font = [UIFont systemFontOfSize:14];
+    goodAt.font = [UIFont systemFontOfSize:11];
     [self addSubview:goodAt];
     
-    bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, kCellHeight - 0.5, kScreenWidth - 2 * 5, 0.5)];
-    bottomLine.backgroundColor = kLightLineColor;
+    bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, kCellHeight - 1, kScreenWidth - 2 * 5, 1)];
+    bottomLine.backgroundColor = kblueLineColor;
     [self addSubview:bottomLine];
 }
 
@@ -102,15 +102,13 @@
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
     NSInteger length = [_data.name length];
     if (length) {
-        [AtrStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:18] range:NSMakeRange(0, length)];
+        [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, length)];
         [AtrStr addAttribute:NSForegroundColorAttributeName
                        value:[UIColor blackColor]
                        range:NSMakeRange(0, length)];
         
         name.attributedText = AtrStr;
     }
-    
-
     
     score.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
     
