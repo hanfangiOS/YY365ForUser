@@ -139,30 +139,44 @@
 
 
 - (UIButton *)addRightButtonItemWithTitle:(NSString *)title  action:(SEL)selector{
-    CGFloat height = 30;
-    CGFloat width = 40;
-    UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth - width, 0, width, height)];
+
+    UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, 48, 44)];
     UIButton * rightBtn = [[UIButton alloc] initWithFrame:rightBtnView.bounds];
     [rightBtn setTitle:title forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     rightBtn.tintColor = UIColorFromHex(Color_Hex_NavItem_Normal);
-    rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 0);
     [rightBtn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     [rightBtnView addSubview:rightBtn];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtnView];
+    
+    UIBarButtonItem * rightBtnItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtnView];
+    self.navigationItem.rightBarButtonItem = rightBtnItem;
+    
+    UIBarButtonItem * negativeSeperator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSeperator.width = -2;
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSeperator,rightBtnItem,nil];
+    
     return rightBtn;
 }
 
 - (UIButton *)addRightButtonItemWithImage:(UIImage *)image action:(SEL)selector{
-    CGFloat height = 30;
-    CGFloat width = 40;
-    UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth - width, 0, width, height)];
+
+    UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 48, 44)];
     UIButton * rightBtn = [[UIButton alloc] initWithFrame:rightBtnView.bounds];
     [rightBtn setImage:image forState:UIControlStateNormal];
     rightBtn.tintColor = UIColorFromHex(Color_Hex_NavItem_Normal);
-    rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 0);
+    rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [rightBtn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     [rightBtnView addSubview:rightBtn];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtnView];
+    
+    UIBarButtonItem * rightBtnItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtnView];
+    self.navigationItem.rightBarButtonItem = rightBtnItem;
+    
+    UIBarButtonItem * negativeSeperator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSeperator.width = - 2;
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSeperator,rightBtnItem,nil];
+    
+    
     return rightBtn;
 }
 

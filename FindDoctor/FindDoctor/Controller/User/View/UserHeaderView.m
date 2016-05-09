@@ -23,7 +23,7 @@
 
 - (void)initSubViews{
     //上半块背景View
-    self.userInfoBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 80)];
+    self.userInfoBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 76)];
     [self addSubview:self.userInfoBackgroundView];
     //用户头像
     self.icon = [[UIImageView alloc]initWithFrame:CGRectMake(28, 6, 64, 64)];
@@ -33,12 +33,11 @@
     [self.userInfoBackgroundView addSubview:self.icon];
     self.icon.backgroundColor = [UIColor redColor];
     //箭头
-    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 28 - 4, 16, 9, 16)];
+    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 16, self.icon.frameY + 10, 9, 16)];
     self.arrow.image = [UIImage imageNamed:@"mySpace_icon_arrow@2x"];
-    self.arrow.backgroundColor = [UIColor redColor];
     [self.userInfoBackgroundView addSubview:self.arrow];
     //用户名
-    self.name = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 12, self.icon.frameY + 12, kScreenWidth - (self.icon.maxX + 16 + self.arrow.frameWidth + 4 + 8), 24)];
+    self.name = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 20, self.icon.frameY + 10, kScreenWidth - (self.icon.maxX + 16 + self.arrow.frameWidth + 4 + 8), 24)];
     self.name.font = [UIFont systemFontOfSize:17];
     self.name.textColor = [UIColor whiteColor];
     [self.userInfoBackgroundView addSubview:self.name];
@@ -48,7 +47,7 @@
     self.userID.textColor = [UIColor whiteColor];
     [self.userInfoBackgroundView addSubview:self.userID];
     //下半块背景view 放了3个btn
-    self.btnBackgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 144, kScreenWidth, 83)];
+    self.btnBackgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 148, kScreenWidth, 88)];
     self.btnBackgroundView.userInteractionEnabled = YES;
     [self addSubview:self.btnBackgroundView];
     
@@ -58,14 +57,14 @@
     self.myDoctorBtn = [[BigButtonsInUser alloc] initWithFrame:CGRectMake(padding, 0, btnWidth, self.btnBackgroundView.frameHeight) image:[UIImage imageNamed:@"mySpace_myDoctor@2x"] title:@"我的医生"];
     [self.btnBackgroundView addSubview:self.myDoctorBtn];
     //白线1
-    UIView * lineView1 = [[UIView alloc] initWithFrame:CGRectMake(self.myDoctorBtn.maxX, self.myDoctorBtn.frameY, 2, self.myDoctorBtn.frameHeight - 8)];
+    UIView * lineView1 = [[UIView alloc] initWithFrame:CGRectMake(self.myDoctorBtn.maxX, self.myDoctorBtn.frameY, 2, self.myDoctorBtn.frameHeight - 22)];
     lineView1.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
     [self.btnBackgroundView addSubview:lineView1];
     //我的诊所
     self.myClinicBtn = [[BigButtonsInUser alloc] initWithFrame:CGRectMake(self.myDoctorBtn.maxX + padding, 0, btnWidth, self.btnBackgroundView.frameHeight) image:[UIImage imageNamed:@"mySpace_myClinic@2x"] title:@"我的诊所"];
     [self.btnBackgroundView addSubview:self.myClinicBtn];
     //白线2
-    UIView * lineView2 = [[UIView alloc] initWithFrame:CGRectMake(self.myClinicBtn.maxX, self.myClinicBtn.frameY, 2, self.myClinicBtn.frameHeight - 8)];
+    UIView * lineView2 = [[UIView alloc] initWithFrame:CGRectMake(self.myClinicBtn.maxX, self.myClinicBtn.frameY, 2, self.myClinicBtn.frameHeight - 22)];
     lineView2.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
     [self.btnBackgroundView addSubview:lineView2];
     //我的点评

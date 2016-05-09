@@ -76,7 +76,8 @@
     self.contentView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kDefaultToolbarHeight) style:UITableViewStyleGrouped];
-    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.tableView.backgroundColor = kCommonBackgroundColor;
+    self.tableView.separatorColor = kblueLineColor;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -130,21 +131,21 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:{
-                cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+                cell.imageView.image = [UIImage imageNamed:@"mySpace_icon_myAppointment@2x"];
                 cell.textLabel.text = @"我的约诊";
             }
                 break;
             case 1:{
-                cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+                cell.imageView.image = [UIImage imageNamed:@"mySpace_icon_myTreatment@2x"];
                 cell.textLabel.text = @"就诊记录";
             }
                 break;
             case 2:{
-                cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+                cell.imageView.image = [UIImage imageNamed:@"mySpace_icon_myAccount@2x"];
                 cell.textLabel.text = @"消费记录";
             }
                 break;
@@ -153,11 +154,11 @@
         }
     }
     if (indexPath.section == 1) {
-        cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+        cell.imageView.image = [UIImage imageNamed:@"mySpace_icon_myMember@2x"];
         cell.textLabel.text = @"我的成员";
     }
     if (indexPath.section == 2) {
-        cell.imageView.image = [UIImage imageNamed:@"myDoctorBigButtonImage"];
+        cell.imageView.image = [UIImage imageNamed:@"mySpace_icon_setting@2x"];
         cell.textLabel.text = @"设置";
     }
     
@@ -233,22 +234,22 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offSetY = scrollView.contentOffset.y;
 
-    if (offSetY < 4) {
-        [UIView animateWithDuration:0.3 animations:^{
+    if (offSetY < 12) {
+        [UIView animateWithDuration:0.5 animations:^{
             [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.01]]];
             [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
         }];
     }
-    
-    if (offSetY > 4 && offSetY < self.headerView.frameHeight - 85) {
-        [UIView animateWithDuration:0.3 animations:^{
-            [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:[UIColor darkGrayColor]]];
+    //TODO 尚未实现实时截图＋高斯模糊 暂时用导航栏替代
+    if (offSetY > 12 && offSetY < self.headerView.frameHeight - 85) {
+        [UIView animateWithDuration:0.5 animations:^{
+            [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:UIColorFromHex(Color_Hex_NavBackground)]];
             [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
         }];
     }
-    
+
     if (offSetY > self.headerView.frameHeight - 85) {
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.5 animations:^{
             [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:UIColorFromHex(Color_Hex_NavBackground)]];
             [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
         }];

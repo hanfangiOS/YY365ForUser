@@ -181,6 +181,11 @@
 		7F0331CD1CDC9FAF00A96F47 /* setting_changePwd3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331C81CDC9FAF00A96F47 /* setting_changePwd3@3x.png */; };
 		7F0331CE1CDC9FAF00A96F47 /* setting_icon_checkTransparent@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331C91CDC9FAF00A96F47 /* setting_icon_checkTransparent@3x.png */; };
 		7F0331CF1CDC9FAF00A96F47 /* setting_icon_phone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331CA1CDC9FAF00A96F47 /* setting_icon_phone@3x.png */; };
+		7F0331D41CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D01CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png */; };
+		7F0331D51CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D11CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png */; };
+		7F0331D61CDCA72000A96F47 /* mySpace_icon_myMember@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D21CDCA72000A96F47 /* mySpace_icon_myMember@2x.png */; };
+		7F0331D71CDCA72000A96F47 /* mySpace_icon_myTreatment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D31CDCA72000A96F47 /* mySpace_icon_myTreatment@2x.png */; };
+		7F0331D91CDCA7D700A96F47 /* mySpace_icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D81CDCA7D700A96F47 /* mySpace_icon_setting@2x.png */; };
 		7F0469FC1CB65C9F00C9C054 /* GoodDoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */; };
 		7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */; };
 		7F1209D01CDC7415007E5E6A /* main_icon_clinicGoodAt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F1209CF1CDC7415007E5E6A /* main_icon_clinicGoodAt@2x.png */; };
@@ -963,6 +968,11 @@
 		7F0331C81CDC9FAF00A96F47 /* setting_changePwd3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd3@3x.png"; sourceTree = "<group>"; };
 		7F0331C91CDC9FAF00A96F47 /* setting_icon_checkTransparent@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_checkTransparent@3x.png"; sourceTree = "<group>"; };
 		7F0331CA1CDC9FAF00A96F47 /* setting_icon_phone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_phone@3x.png"; sourceTree = "<group>"; };
+		7F0331D01CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myAccount@2x.png"; sourceTree = "<group>"; };
+		7F0331D11CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myAppointment@2x.png"; sourceTree = "<group>"; };
+		7F0331D21CDCA72000A96F47 /* mySpace_icon_myMember@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myMember@2x.png"; sourceTree = "<group>"; };
+		7F0331D31CDCA72000A96F47 /* mySpace_icon_myTreatment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myTreatment@2x.png"; sourceTree = "<group>"; };
+		7F0331D81CDCA7D700A96F47 /* mySpace_icon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_setting@2x.png"; sourceTree = "<group>"; };
 		7F0469FA1CB65C9F00C9C054 /* GoodDoctorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodDoctorCell.h; sourceTree = "<group>"; };
 		7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorCell.m; sourceTree = "<group>"; };
 		7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicCell.h; sourceTree = "<group>"; };
@@ -2691,6 +2701,11 @@
 		7F0331AC1CDC9F4300A96F47 /* MySpace */ = {
 			isa = PBXGroup;
 			children = (
+				7F0331D81CDCA7D700A96F47 /* mySpace_icon_setting@2x.png */,
+				7F0331D01CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png */,
+				7F0331D11CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png */,
+				7F0331D21CDCA72000A96F47 /* mySpace_icon_myMember@2x.png */,
+				7F0331D31CDCA72000A96F47 /* mySpace_icon_myTreatment@2x.png */,
 				7F0331AD1CDC9F4300A96F47 /* mySpace_icon_arrow@2x.png */,
 				7F0331AE1CDC9F4300A96F47 /* mySpace_msg@2x.png */,
 				7F0331AF1CDC9F4300A96F47 /* mySpace_myClinic@2x.png */,
@@ -4830,6 +4845,7 @@
 				7FED208B1CDB4F6A004639DE /* introduce_2.jpg in Resources */,
 				E1EB1E4C1B70A43B0048B8EB /* UMSShareListController.xib in Resources */,
 				7F0331BB1CDC9F4300A96F47 /* mySpace_msg@2x.png in Resources */,
+				7F0331D51CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png in Resources */,
 				7F0331CC1CDC9FAF00A96F47 /* setting_changePwd2@3x.png in Resources */,
 				7FED207A1CDB4F6A004639DE /* doctor_detail_collect_btn_sel@2x.png in Resources */,
 				7FED208A1CDB4F6A004639DE /* introduce_1.jpg in Resources */,
@@ -4864,6 +4880,7 @@
 				E1EB1E541B70A43B0048B8EB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				7FED20A51CDB4F6A004639DE /* main_icon_waike@3x.png in Resources */,
 				7FED20891CDB4F6A004639DE /* Icon@2x.png in Resources */,
+				7F0331D41CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png in Resources */,
 				7FED20A21CDB4F6A004639DE /* main_icon_more@3x.png in Resources */,
 				7FED20AD1CDB4F6A004639DE /* msg_trumpet@3x.png in Resources */,
 				7F0331BA1CDC9F4300A96F47 /* mySpace_icon_arrow@2x.png in Resources */,
@@ -4919,6 +4936,7 @@
 				7FED20A81CDB4F6A004639DE /* map_icon_location@3x.png in Resources */,
 				3ED1711C1AAF0A9A00E5B630 /* tip_sad.png in Resources */,
 				7FED207D1CDB4F6A004639DE /* doctor_HasConcen@2x.png in Resources */,
+				7F0331D71CDCA72000A96F47 /* mySpace_icon_myTreatment@2x.png in Resources */,
 				BC0E84D71C7C46DB00082AA9 /* AlipaySDK.bundle in Resources */,
 				7FED20831CDB4F6A004639DE /* doctor_tip_yellow@2x.png in Resources */,
 				3ED1711A1AAF0A9A00E5B630 /* LongTextTipView.xib in Resources */,
@@ -4927,6 +4945,7 @@
 				E1EB1E2A1B70A43B0048B8EB /* share_icon@2x.png in Resources */,
 				E17B69201B837AA00079DDB5 /* fontHeight.plist in Resources */,
 				7FED20821CDB4F6A004639DE /* doctor_tip_red@2x.png in Resources */,
+				7F0331D91CDCA7D700A96F47 /* mySpace_icon_setting@2x.png in Resources */,
 				7FED20B91CDB4F6A004639DE /* order_icon_check@2x.png in Resources */,
 				7FED20901CDB4F6A004639DE /* login_bg@2x.png in Resources */,
 				7FED209A1CDB4F6A004639DE /* login_icon_smallHook.png in Resources */,
@@ -4952,6 +4971,7 @@
 				7FED20C01CDB4F6A004639DE /* tabbar_background@2x.png in Resources */,
 				7F0331BF1CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png in Resources */,
 				7FED20691CDB4F6A004639DE /* praise_grade_normal@2x.png in Resources */,
+				7F0331D61CDCA72000A96F47 /* mySpace_icon_myMember@2x.png in Resources */,
 				7FED208F1CDB4F6A004639DE /* Launch.jpg in Resources */,
 				3E239E731AB33BC1001F0B3F /* checkmark_fail@2x.png in Resources */,
 				7FED20761CDB4F6A004639DE /* doctor_appointmentUnavailable .png in Resources */,
