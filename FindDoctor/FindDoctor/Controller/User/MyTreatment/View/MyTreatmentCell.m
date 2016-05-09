@@ -40,7 +40,7 @@
     return nil;
 }
 
-+ (float)defaultHeight{
++ (float)kDefaultHeight{
     return MyTreatmentCellHeight;
 }
 

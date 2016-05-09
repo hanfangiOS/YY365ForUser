@@ -1,3 +1,4 @@
+
 //
 //  CommonManager.m
 //  FindDoctor
@@ -32,7 +33,9 @@ SINGLETON_IMPLENTATION(CommonManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_subjectList parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+
+    
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]]  parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -76,7 +79,7 @@ SINGLETON_IMPLENTATION(CommonManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_ActivityBanner parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]]  parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -126,7 +129,7 @@ SINGLETON_IMPLENTATION(CommonManager);
     }forKey:@"ActivityBanner" forPageNameGroup:pageName];
 }
 
-
+//获取筛选条件
 - (void)getOptionListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:11101 require:@"OptionList"];
     
@@ -139,7 +142,7 @@ SINGLETON_IMPLENTATION(CommonManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_OptionList parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];

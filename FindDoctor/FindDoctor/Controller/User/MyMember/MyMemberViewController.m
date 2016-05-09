@@ -35,7 +35,7 @@
 - (void)loadNavigationBar{
     [self addLeftBackButtonItemWithImage];
     
-    [self addRightButtonItemWithImage:[UIImage imageNamed:@"myAccountBigButtonImage"] action:@selector(addMemberAction)];
+    [self addRightButtonItemWithImage:[UIImage imageNamed:@"common_icon_trash@2x"] action:@selector(addMemberAction)];
 }
 
 - (void)viewDidLoad {

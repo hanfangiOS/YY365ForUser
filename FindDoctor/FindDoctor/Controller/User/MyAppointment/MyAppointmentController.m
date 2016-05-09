@@ -85,10 +85,10 @@ typedef NS_ENUM(NSInteger,ListType){
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.listType == ListTypeForPay) {
-        return [MyAppointmentCell defaultHeight];
+        return [MyAppointmentCell kDefaultHeight];
     }
     if (self.listType == ListTypeForTreat) {
-       return [MyAppointmentForTreatCell defaultHeight];
+       return [MyAppointmentForTreatCell kDefaultHeight];
     }
     return 0;
 }

@@ -39,7 +39,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_SearchResult parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
@@ -138,7 +138,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     
     NSLog(@"%@",param);
 
-    [[AppCore sharedInstance].apiManager POST:URL_hotSearchClinic parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
@@ -170,7 +170,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_hotSearchSymptom parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
@@ -202,7 +202,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_hotSearchDoctor parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {

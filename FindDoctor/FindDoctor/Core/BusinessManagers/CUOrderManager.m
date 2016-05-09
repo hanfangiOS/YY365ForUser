@@ -50,7 +50,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
@@ -104,7 +104,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
@@ -173,7 +173,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 CUOrder *parsedModelObject = [[CUOrder alloc] init];
@@ -211,19 +211,24 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     CUOrderParser * parser = [[CUOrderParser alloc] init];
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateOrderWithDict:) resultBlock:resultBlock forKey:URL_AfterBase forPageNameGroup:pageName];
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateOrderWithDict:) resultBlock:resultBlock forKey:URL_AfterBase forPageNameGroup:pageName];
 }
 
 - (void)cancelOrder:(CUOrder *)order user:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
     // param
-    NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:user.token forKey:Key_Token];
-    [param setObjectSafely:order.orderId forKey:@"orderId"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:13105 require:@"CancelOrderDiagnosis"];
+    [param setObjectSafely:[CUUserManager sharedInstance].user.token forKey:@"token"];
+    
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:order.orderId forKey:@"orderId"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     CUOrderParser * parser = [[CUOrderParser alloc] init];
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseCancelOrderWithDict:) resultBlock:resultBlock forKey:URL_AfterBase forPageNameGroup:pageName];
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseCancelOrderWithDict:) resultBlock:resultBlock forKey:URL_AfterBase forPageNameGroup:pageName];
 }
 
 - (void)getOrderListWithPageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize user:(CUUser *)user searchedWithOrderStatus:(OrderStatus)orderStatus resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
@@ -279,7 +284,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
             // 赋值user数据
@@ -448,7 +453,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         if (!result.hasError){
             NSInteger err_code = [[result.responseObject valueForKeySafely:@"errorCode"] integerValue];
             if (err_code == 0) {
@@ -500,7 +505,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSLog(@"%@",param);
     
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
 #if !LOCAL
         if (!result.hasError){
             NSInteger err_code = [[result.responseObject valueForKeySafely:@"errorCode"] integerValue];
@@ -576,7 +581,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
@@ -636,7 +641,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:@(diagnosisID) forKey:@"order_no"];
     NSLog(@"%@",param);
-    [[AppCore sharedInstance].apiManager POST:kVerifyOrderStateUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
@@ -711,7 +716,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -775,7 +780,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -832,7 +837,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -887,7 +892,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -953,7 +958,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -1019,7 +1024,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];

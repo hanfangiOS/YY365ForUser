@@ -348,7 +348,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView * sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth,sectionHeaderViewHeight )];
+    UIView * sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth,sectionHeaderViewHeight)];
     sectionHeaderView.backgroundColor = [UIColor whiteColor];
     
     for (UIView * view in sectionHeaderView.subviews) {

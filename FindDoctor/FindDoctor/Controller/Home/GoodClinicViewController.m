@@ -13,7 +13,7 @@
 #import "HFTitleView.h"
 #import "ClinicMainViewController.h"
 
-#define sectionHeaderViewHeight 30 
+#define sectionHeaderViewHeight 30
 
 @interface GoodClinicViewController ()
 
@@ -113,7 +113,7 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    CGSize size = CGSizeMake(kScreenWidth, 30 );
+    CGSize size = CGSizeMake(kScreenWidth, sectionHeaderViewHeight);
     return size;
 }
 

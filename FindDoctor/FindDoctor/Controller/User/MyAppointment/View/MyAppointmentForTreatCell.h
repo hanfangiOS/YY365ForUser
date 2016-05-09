@@ -13,6 +13,6 @@
 
 @property (strong,nonatomic)CUOrder       * data;
 
-+ (CGFloat)defaultHeight;
++ (float)kDefaultHeight;
 
 @end
