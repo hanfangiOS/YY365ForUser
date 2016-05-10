@@ -20,15 +20,12 @@
 @interface LoginViewController (){
     UIButton *_codeButton;
     UILabel *_codeLabel;
-    UIButton * cancelBtn;
     
     LoginTextFeildView *userTextFeildView;
     LoginTextFeildView *passwordTextFeildView;
     NSString *codetoken;
     int timerCount;
 }
-
-@property (nonatomic, strong) UIScrollView *contentScrollView;
 
 @property (nonatomic,strong) MBProgressHUD *hud;
 @property (nonatomic,strong) NSTimer *timer;
@@ -55,12 +52,24 @@
 }
 
 - (void)loadContentScrollView{
-    _contentScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, [self.view frameWidth], [self.view frameHeight])];
-    [self.view addSubview:_contentScrollView];
+    UIView *navView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kDefaultNavigationBarHeight)];
+    navView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
+    [self.contentView addSubview:navView];
     
-    self.contentView.frame = _contentScrollView.frame;
+    UIButton *cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(25, 30, 20, 20)];
+    cancelBtn.layer.contents = (id)[UIImage imageNamed:@"login_icon_close"].CGImage;
+    [cancelBtn addTarget:self action:@selector(cancelLogin) forControlEvents:UIControlEventTouchUpInside];
+    [navView addSubview:cancelBtn];
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, navView.frameHeight - 42 , kScreenWidth, 40)];
+    label.text = @"登陆";
+    label.textColor = UIColorFromHex(0xffffff);
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:17];
+    [navView addSubview:label];
+
+    self.contentView.frame = CGRectMake(0, 0, [self.view frameWidth], [self.view frameHeight]);
     self.contentView.layer.contents = (id)[UIImage imageNamed:@"login_bg"].CGImage;
-    [_contentScrollView addSubview:self.contentView];
     
     UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(endEdit)];
     [self.contentView addGestureRecognizer:tap];
@@ -71,7 +80,7 @@
     int textFeildWidth = 280 , textFeildHeight = 30;
     
     UIImage *logoImage = [UIImage imageNamed:@"login_header_image"];
-    UIView *logoImageView = [[UIView alloc]initWithFrame:CGRectMake((kScreenWidth - logoImage.size.width)/2, 1.2*intervalY , logoImage.size.width, logoImage.size.height)];
+    UIView *logoImageView = [[UIView alloc]initWithFrame:CGRectMake((kScreenWidth - logoImage.size.width)/2,kDefaultNavigationBarHeight+ 1.2*intervalY , logoImage.size.width, logoImage.size.height)];
     logoImageView.layer.contents = (id)logoImage.CGImage;
     [self.contentView addSubview:logoImageView];
     
@@ -85,7 +94,7 @@
     [_codeButton setBackgroundImage:[UIImage imageNamed:@"login_code_bg"] forState:UIControlStateDisabled];
     _codeButton.adjustsImageWhenHighlighted = NO;
     [_codeButton addTarget:self action:@selector(codeLableAction) forControlEvents:UIControlEventTouchUpInside];
-    [_contentScrollView addSubview:_codeButton];
+    [self.contentView addSubview:_codeButton];
     
     _codeLabel = [[UILabel alloc] initWithFrame:_codeButton.frame];
     _codeLabel.backgroundColor = [UIColor clearColor];
@@ -93,7 +102,7 @@
     _codeLabel.textAlignment = NSTextAlignmentCenter;
     _codeLabel.textColor = [UIColor whiteColor];
     _codeLabel.text = @"获取验证码";
-    [_contentScrollView addSubview:_codeLabel];
+    [self.contentView addSubview:_codeLabel];
     
     passwordTextFeildView = [[LoginTextFeildView alloc]initWithFrame:CGRectMake((kScreenWidth - textFeildWidth)/2, CGRectGetMaxY(userTextFeildView.frame) + intervalY, textFeildWidth, textFeildHeight) image:[UIImage imageNamed:@"login_icon_code"]];
     passwordTextFeildView.contentTextFeild.placeholder = @"请输入验证码";
@@ -108,10 +117,7 @@
     [loginButton addTarget:self action:@selector(loginButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:loginButton];
     
-    cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(25, 20, 20 , 20)];
-    cancelBtn.backgroundColor = [UIColor redColor];
-    [cancelBtn addTarget:self action:@selector(cancelLogin) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:cancelBtn];
+
     
 }
 

@@ -37,7 +37,9 @@
 #import "MyTreatmentController.h"
 #import "MyTreatmentListModel.h"
 
-@interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>{
+    UIView *_navViewBG;
+}
 
 @property (nonatomic, strong) UserHeaderView    * headerView;
 @property (nonatomic, strong) UITableView       * tableView;
@@ -45,11 +47,6 @@
 @end
 
 @implementation UserViewController
-
-- (void)loadNavigationBar{
-    [self addRightButtonItemWithImage:[UIImage imageNamed:@"mySpace_msg@2x"] action:@selector(messageAction)];
-    
-}
 
 - (void)messageAction{
     NewsListModel * listMiodel = [[NewsListModel alloc] init];
@@ -66,8 +63,25 @@
     [super viewDidLoad];
     
     self.title = @"我的空间";
-    [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.01]]];
-    [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
+//    [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.01]]];
+//    [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
+    self.navigationBar.hidden = YES;
+    
+    UIView *navView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kDefaultNavigationBarHeight)];
+    [self.view addSubview:navView];
+    _navViewBG = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kDefaultNavigationBarHeight)];
+    _navViewBG.backgroundColor = UIColorFromHex(Color_Hex_NavBackground);
+    _navViewBG.alpha = 0;
+    [navView addSubview:_navViewBG];
+    UIButton *btn = [self addRightButtonItemWithImage:[UIImage imageNamed:@"mySpace_msg@2x"] action:@selector(messageAction)];
+    btn.frame = CGRectMake(kScreenWidth - btn.frameWidth - 12, _navViewBG.frameHeight - btn.frameHeight, btn.frameWidth, btn.frameHeight);
+    [navView addSubview:btn];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, _navViewBG.frameHeight - btn.frameHeight + 2, kScreenWidth, 40)];
+    label.text = @"我的空间";
+    label.textColor = UIColorFromHex(0xffffff);
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:17];
+    [navView addSubview:label];
     
     [self initSubView];
 }
@@ -234,26 +248,13 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offSetY = scrollView.contentOffset.y;
 
-    if (offSetY < 12) {
-        [UIView animateWithDuration:0.5 animations:^{
-            [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.01]]];
-            [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
-        }];
+    if (offSetY < 45) {
+        _navViewBG.alpha = offSetY/45.f;
     }
-    //TODO 尚未实现实时截图＋高斯模糊 暂时用导航栏替代
-    if (offSetY > 12 && offSetY < self.headerView.frameHeight - 85) {
-        [UIView animateWithDuration:0.5 animations:^{
-            [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:UIColorFromHex(Color_Hex_NavBackground)]];
-            [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
-        }];
+    else{
+        _navViewBG.alpha = 1;
     }
-
-    if (offSetY > self.headerView.frameHeight - 85) {
-        [UIView animateWithDuration:0.5 animations:^{
-            [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:UIColorFromHex(Color_Hex_NavBackground)]];
-            [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
-        }];
-    }
+    
 }
 
 #pragma mark Action
@@ -278,12 +279,12 @@
 }
 
 - (void)userInfoBackgroundAction{
-    if([CUUserManager sharedInstance].isLogin == YES){
+    if([CUUserManager sharedInstance].isLogin){
         MyInfoViewController * VC = [[MyInfoViewController alloc] initWithPageName:@"MyInfoViewController"];
         [self.slideNavigationController pushViewController:VC animated:YES];
     }else{
         LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
-        [VC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
     }
 }

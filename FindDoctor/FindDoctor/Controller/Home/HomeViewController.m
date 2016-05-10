@@ -73,7 +73,7 @@
     _searchTextField.font = [UIFont systemFontOfSize:13];
     _searchTextField.textColor = [UIColor whiteColor];
     _searchTextField.delegate = self;
-    _searchTextField.layer.backgroundColor = UIColorFromHex(0x1957ae).CGColor;
+    _searchTextField.layer.backgroundColor = UIColorFromHex(0x0068dd).CGColor;
     _searchTextField.layer.cornerRadius = 3.f;
     _searchTextField.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 5, _searchTextField.frameHeight)];;
     _searchTextField.leftViewMode = UITextFieldViewModeAlways;

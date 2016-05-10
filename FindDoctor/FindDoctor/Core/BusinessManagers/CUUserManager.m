@@ -270,17 +270,17 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     CUUserParser * parser = [[CUUserParser alloc] init];
     __block CUUserManager * blockSelf = self;
-    
+    [blockSelf clear];
+    [blockSelf save];
     [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseLogoutWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        if (!result.hasError)
-        {
-            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorcode"];
-            if ([errorCode integerValue] != -1) {
-                // 赋值user数据
-                [blockSelf clear];
-                [blockSelf save];
-            }
-        }
+//        if (!result.hasError)
+//        {
+//            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorcode"];
+//            if ([errorCode integerValue] != -1) {
+//                // 赋值user数据
+//
+//            }
+//        }
         resultBlock(request,result);
     }  forKey:URL_AfterBase forPageNameGroup:pageName];
 }

@@ -507,27 +507,5 @@
     }
     return NO;
 }
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 0) {
-        [self exitApp];
-    }
-    if (buttonIndex == 1) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1091982091"]];
-    }
-}
-
-//退出APP
-- (void)exitApp{
-    [UIView animateWithDuration:0.4f animations:^{
-        self.window.alpha = 0;
-        CGFloat y = self.window.bounds.size.height;
-        CGFloat x = self.window.bounds.size.width / 2;
-        self.window.frame = CGRectMake(x, y, 0, 0);
-    } completion:^(BOOL finished) {
-        exit(0);
-    }];
-}
-
-
+    
 @end
