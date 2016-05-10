@@ -461,7 +461,7 @@
     DoctorFilter * filter = [[DoctorFilter alloc] init];
     filter.rows = 3;
     filter.total = self.homeModel.famousDoctorList.count;
-    [[CUDoctorManager sharedInstance] getfamousDoctorClinicWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUDoctorManager sharedInstance] getFamousDoctorClinicWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         
         btn.hidden = NO;
         [indicator stopAnimating];

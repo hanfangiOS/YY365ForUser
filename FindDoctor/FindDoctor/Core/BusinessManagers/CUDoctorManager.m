@@ -694,9 +694,9 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
 }
 
-- (void)getfamousDoctorClinicWithFilter:(DoctorFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+- (void)getFamousDoctorClinicWithFilter:(DoctorFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"famousDoctorClinicList"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"FamousDoctorClinicList"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];

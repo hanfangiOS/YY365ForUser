@@ -36,7 +36,7 @@ SINGLETON_DECLARE(CUDoctorManager);
 - (void)getGoodRemarkDoctorListWithFilter:(DoctorFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 //优医馆
-- (void)getfamousDoctorClinicWithFilter:(DoctorFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+- (void)getFamousDoctorClinicWithFilter:(DoctorFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 //#warning 测试数据
 - (NSMutableArray *)fakeDoctorList;

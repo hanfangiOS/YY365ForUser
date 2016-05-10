@@ -57,23 +57,23 @@ typedef NS_ENUM(NSInteger,ListType){
 }
 
 - (void)loadContentView{
-    self.headerView = [[MyAppointMentHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+    self.headerView = [[MyAppointMentHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
     self.headerView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:self.headerView];
     
     [self.headerView.leftBtn addTarget:self action:@selector(forPayMentAction) forControlEvents:UIControlEventTouchUpInside];
     [self.headerView.leftBtn setTitle:@"待付款" forState:UIControlStateNormal];
-    self.headerView.leftBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [self.headerView.leftBtn setTitleColor:kLightGrayColor forState:UIControlStateNormal];
+    self.headerView.leftBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [self.headerView.leftBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
     [self.headerView.leftBtn sendActionsForControlEvents: UIControlEventTouchUpInside];
     
     [self.headerView.rightBtn addTarget:self action:@selector(forTreatMentAction) forControlEvents:UIControlEventTouchUpInside];
-    self.headerView.rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    self.headerView.rightBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [self.headerView.rightBtn setTitle:@"待就诊" forState:UIControlStateNormal];
-        [self.headerView.rightBtn setTitleColor:kLightGrayColor forState:UIControlStateNormal];
+        [self.headerView.rightBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
     
     UIView * headerViewBottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerView.frameHeight - 0.75, kScreenWidth, 0.75)];
-    headerViewBottomLine.backgroundColor = kLightLineColor;
+    headerViewBottomLine.backgroundColor = kblueLineColor;
     [self.headerView addSubview:headerViewBottomLine];
     
     
@@ -142,7 +142,7 @@ typedef NS_ENUM(NSInteger,ListType){
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
+    return 8;
 }
 
 #pragma mark postRequest
@@ -198,9 +198,9 @@ typedef NS_ENUM(NSInteger,ListType){
 
     self.listType = ListTypeForPay;
     
-    [self.headerView.leftBtn setTitleColor:kBlueColor forState:UIControlStateNormal];
+    [self.headerView.leftBtn setTitleColor:kBlueTextColor forState:UIControlStateNormal];
     self.headerView.leftBottomLine.hidden = NO;
-    [self.headerView.rightBtn setTitleColor:kLightGrayColor forState:UIControlStateNormal];
+    [self.headerView.rightBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
     self.headerView.rightBottomLine.hidden = YES;
     
     self.listModel.filter.orderStatus = ORDERSTATUS_UNPAID;
@@ -218,9 +218,9 @@ typedef NS_ENUM(NSInteger,ListType){
 - (void)forTreatMentAction{
     self.listType = ListTypeForTreat;
     
-    [self.headerView.rightBtn setTitleColor:kBlueColor forState:UIControlStateNormal];
+    [self.headerView.rightBtn setTitleColor:kBlueTextColor forState:UIControlStateNormal];
     self.headerView.rightBottomLine.hidden = NO;
-    [self.headerView.leftBtn setTitleColor:kLightGrayColor forState:UIControlStateNormal];
+    [self.headerView.leftBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
     self.headerView.leftBottomLine.hidden = YES;
     
     self.listModel.filter.orderStatus = ORDERSTATUS_PAID;
