@@ -31,6 +31,10 @@
 @property (strong,nonatomic)NSArray         * sexArray;
 @property (assign,nonatomic)NSInteger         selectedIndex;
 
+
+@property (strong,nonatomic)MyInfoAvatarCell* myInfoAvatarCell;
+@property (strong,nonatomic)UIImageView     * myAvatar;
+
 @end
 
 @implementation MyInfoViewController
@@ -66,6 +70,8 @@
     
    self.tempData = [[CUUser alloc] init];
    self.tempData = [self copyForUser];
+    
+    [self.myAvatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon]];
 }
 
 - (CUUser *)copyForUser{
@@ -89,6 +95,8 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.contentView.bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.separatorColor = kblueLineColor;
+    self.tableView.backgroundColor = kCommonBackgroundColor;
     [self.contentView addSubview:self.tableView];
 }
 
@@ -133,18 +141,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        MyInfoAvatarCell * cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoAvatarCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
-        if (!cell) {
-            cell = [[MyInfoAvatarCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"MyInfoAvatarCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
+        self.myInfoAvatarCell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoAvatarCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
+        if (!self.myInfoAvatarCell) {
+            self.myInfoAvatarCell = [[MyInfoAvatarCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"MyInfoAvatarCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
         }
-        cell.label.text = @"头像";
-        cell.clickMyInfoAvatarCellBlock = ^{
-            PersonalAvatarVC * vc = [[PersonalAvatarVC alloc] initWithPageName:@"PersonalAvatarVC"];
-            [self.slideNavigationController pushViewController:vc animated:YES];
-        };
-        [cell.avatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon]];
+        self.myInfoAvatarCell.label.text = @"头像";
         
-        return cell;
+        __weak __block typeof(self)weakSelf = self;
+        self.myInfoAvatarCell.clickMyInfoAvatarCellBlock = ^{
+            
+            PersonalAvatarVC * vc = [[PersonalAvatarVC alloc] initWithPageName:@"PersonalAvatarVC"];
+            
+            __strong typeof(weakSelf)strongSelf = weakSelf;
+            __weak __block typeof(strongSelf)subWeakSelf = strongSelf;
+            vc.uploadAvatarSuccessBlock = ^(UIImage * image){
+                subWeakSelf.myAvatar.image = image;
+                [subWeakSelf.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:NO];
+            };
+            [subWeakSelf.slideNavigationController pushViewController:vc animated:YES];
+        };
+        self.myInfoAvatarCell.avatar = self.myAvatar;
+        
+        self.myInfoAvatarCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return self.myInfoAvatarCell;
     }else if (indexPath.section == 2 && indexPath.row == 1){
         MyInfoPickerCell * cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoPickerCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
         if (!cell) {
@@ -157,13 +177,13 @@
         [cell.btn setTitle:[self.sexArray objectAtIndexSafely:self.selectedIndex] forState:UIControlStateNormal];
         cell.btn.contentHorizontalAlignment = NSTextAlignmentRight;
         
-//        if (self.isEditing == YES) {
-//            cell.btn.backgroundColor = [UIColor redColor];
-//            cell.btn.userInteractionEnabled = YES;
-//        }else{
-//            cell.btn.backgroundColor = [UIColor clearColor];
-//            cell.btn.userInteractionEnabled = NO;
-//        }
+        if (self.isEditing == YES) {
+            [cell.btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            cell.btn.userInteractionEnabled = YES;
+        }else{
+            [cell.btn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
+            cell.btn.userInteractionEnabled = NO;
+        }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -177,13 +197,13 @@
         //10020 10022 10023
         cell.textField.tag = [[NSString stringWithFormat:@"100%ld%ld",(long)indexPath.section,(long)indexPath.row] integerValue];
         cell.textField.delegate = self;
-//        if (self.isEditing == YES) {
-//            cell.textField.backgroundColor = [UIColor redColor];
-//            cell.textField.userInteractionEnabled = YES;
-//        }else{
-//            cell.textField.backgroundColor = [UIColor clearColor];
-//            cell.textField.userInteractionEnabled = NO;
-//        }
+        if (self.isEditing == YES) {
+            cell.textField.textColor = [UIColor blackColor];
+            cell.textField.userInteractionEnabled = YES;
+        }else{
+            cell.textField.textColor = kGrayTextColor;
+            cell.textField.userInteractionEnabled = NO;
+        }
         
         switch (cell.textField.tag) {
             case 10010:
@@ -226,22 +246,23 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
+    return 9;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 10;
+    return 0.1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
         if (indexPath.section == 0) {
             PersonalAvatarVC * vc = [[PersonalAvatarVC alloc] initWithPageName:@"PersonalAvatarVC"];
+            __weak __block typeof(self)weakSelf = self;
+            vc.uploadAvatarSuccessBlock = ^(UIImage * image){
+                weakSelf.myAvatar.image = image;
+                [weakSelf.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:NO];
+            };
             [self.slideNavigationController pushViewController:vc animated:YES];
         }
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated{
-    
 }
 
 #pragma mark textFieldDelegate
@@ -303,9 +324,9 @@
     [[CUUserManager sharedInstance] getUserInfo:[CUUserManager sharedInstance].user.token resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [weakSelf hideProgressView];
         if (!result.hasError) {
-            NSInteger errorCode = (NSInteger)[result.responseObject objectForKeySafely:@"errorCode"];
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
             
-            if (errorCode != -1) {
+            if (![errorCode integerValue]) {
                 self.tempData = [self copyForUser];
                 [self.tableView reloadData];
             }else{
@@ -326,7 +347,7 @@
         if (!result.hasError) {
             NSNumber * errorCode = (NSNumber *)[result.responseObject objectForKeySafely:@"errorCode"];
             
-            if ([errorCode integerValue] != -1) {
+            if (![errorCode integerValue]) {
                 [weakSelf postRequestGetUserInfo];
             }else{
                 [weakSelf hideProgressView];

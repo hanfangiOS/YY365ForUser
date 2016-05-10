@@ -27,12 +27,15 @@
 - (void)initSubViews{
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(10, (MyInfoPickerCellHeight - 20)/2, 100, 20)];
     self.label.textAlignment = NSTextAlignmentLeft;
+    self.label.font = [UIFont systemFontOfSize:12];
     [self addSubview:self.label];
     
-    self.btn = [[UIButton alloc] initWithFrame:CGRectMake(self.label.maxX + 10, (MyInfoPickerCellHeight - 24)/2, kScreenWidth - (self.label.maxX + 10 + 10), 24)];
+    self.btn = [[UIButton alloc] initWithFrame:CGRectMake(self.label.maxX + 12, (MyInfoPickerCellHeight - 24)/2, kScreenWidth - (self.label.maxX + 12 + 12), 24)];
     self.btn.titleLabel.textAlignment = NSTextAlignmentRight;
     self.btn.layer.borderColor = [UIColor clearColor].CGColor;
     self.btn.layer.borderWidth = 1.0f;
+    [self.btn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
+    self.btn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:self.btn];
     
     

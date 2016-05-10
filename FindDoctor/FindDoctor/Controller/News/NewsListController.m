@@ -45,17 +45,24 @@
 
 - (void)loadContentView{
     self.contentTableView.backgroundColor = kCommonBackgroundColor;
+    self.contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+#pragma mark tableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.listModel.items.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.listModel.items.count;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     TipMessageData * data = [self.listModel.items objectAtIndexSafely:indexPath.row];
     NSString * str = data.title;
-    CGSize size = [self sizeForString:str font:[UIFont systemFontOfSize:17] limitSize:CGSizeMake(kScreenWidth - (40 + 15 + 25), 0)];
-    return (size.height + 15 + 12);
+    CGSize size = [self sizeForString:str font:[UIFont systemFontOfSize:16] limitSize:CGSizeMake(kScreenWidth - (15 + 15 + 16 + 24), 0)];
+    return (size.height + 15 + 15);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -64,8 +71,31 @@
     if (!cell) {
         cell = [[NewsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
+    cell.data = [self.listModel.items objectAtIndexSafely:indexPath.section];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 8.5;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 8.5)];
+    headerView.backgroundColor = kCommonBackgroundColor;
+    return headerView;
+}
+
+#pragma mark scrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat sectionHeaderHeight = 8.5;
+    if (scrollView.contentOffset.y <= sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+    }
+    else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
+        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+    }
 }
 
 - (CGSize)sizeForString:(NSString *)string font:(UIFont *)font limitSize:(CGSize)limitSize{

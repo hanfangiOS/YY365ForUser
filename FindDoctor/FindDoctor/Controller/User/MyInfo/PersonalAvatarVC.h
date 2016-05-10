@@ -8,6 +8,10 @@
 
 #import "CUViewController.h"
 
+typedef void(^UploadAvatarSuccessBlock)(UIImage * image);
+
 @interface PersonalAvatarVC : CUViewController
+
+@property (copy,nonatomic)UploadAvatarSuccessBlock uploadAvatarSuccessBlock;
 
 @end

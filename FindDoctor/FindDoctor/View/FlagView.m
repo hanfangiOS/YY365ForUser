@@ -27,7 +27,7 @@
         imageArray  = [NSMutableArray new];
         imageViewArray   = [NSMutableArray new];
         markViewArray = [NSMutableArray new];
-        selectImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"flag_selected"]];
+        selectImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"comment_flag_selected@2x"]];
         [self initSubView];
     }
     return self;

@@ -55,64 +55,75 @@
     self.name.textColor = kLightGrayColor;
     self.name.textAlignment = NSTextAlignmentLeft;
     [self.headerView addSubview:self.name];
-    //就诊完成
-    self.finishLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 70 - 20, (self.headerView.frameHeight - 22)/2, 70, 22)];
-    self.finishLabel.font = [UIFont systemFontOfSize:12];
-    self.finishLabel.textColor = [UIColor whiteColor];
-    self.finishLabel.text = @"就诊完成";
-    self.finishLabel.textAlignment = NSTextAlignmentCenter;
-    self.finishLabel.backgroundColor = [UIColor blueColor];
-    [self.headerView addSubview:self.finishLabel];
 
     //线
-    self.line = [[UIView alloc] initWithFrame:CGRectMake(10, self.headerView.frameHeight - 0.5, kScreenWidth - 10, 0.5)];
-    self.line.backgroundColor = [UIColor grayColor];
+    self.line = [[UIView alloc] initWithFrame:CGRectMake(8, self.headerView.frameHeight - 1, kScreenWidth - 8, 1)];
+    self.line.backgroundColor = kblueLineColor;
     [self.headerView addSubview:self.line];
     //下面一块View 约诊人各种信息
     self.infoView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerView.maxY, kScreenWidth, MyTreatmentCellHeight - self.headerView.frameHeight)];
     [self addSubview:self.infoView];
     //头像
-    self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 72, 72)];
+    self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 58, 58)];
     self.icon.layer.cornerRadius = 5.0f;
     [self.infoView addSubview:self.icon];
     self.icon.backgroundColor = [UIColor blueColor];
     //¥100
-    self.price = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 15, 14, kScreenWidth - self.icon.maxX - 15 - 30, 22)];
+    self.price = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 15, 14, kScreenWidth - self.icon.maxX - 15 - 30, 15)];
     self.price.textColor = [UIColor orangeColor];
-    self.price.font = [UIFont systemFontOfSize:20];
+    self.price.font = [UIFont systemFontOfSize:18];
     [self.infoView addSubview:self.price];
     //罗威 1111-11-11 11:11
-    self.info = [[UILabel alloc] initWithFrame:CGRectMake(self.price.frameX, self.price.maxY + 4, kScreenWidth - self.price.frameX - 30, 20)];
-    self.info.textColor = kLightGrayColor;
+    self.info = [[UILabel alloc] initWithFrame:CGRectMake(self.price.frameX, self.price.maxY + 9, kScreenWidth - self.price.frameX - 30, 12)];
+    self.info.textColor = kGrayTextColor;
     self.info.font = [UIFont systemFontOfSize:12];
     [self.infoView addSubview:self.info];
     //成都市青羊区金阳路358号
-    self.address = [[UILabel alloc] initWithFrame:CGRectMake(self.info.frameX, self.info.maxY + 2, self.info.frameWidth, self.info.frameHeight)];
-    self.address.textColor = kLightGrayColor;
+    self.address = [[UILabel alloc] initWithFrame:CGRectMake(self.info.frameX, self.info.maxY + 6, self.info.frameWidth, self.info.frameHeight)];
+    self.address.textColor = kGrayTextColor;
     self.address.font = [UIFont systemFontOfSize:12];
     [self.infoView addSubview:self.address];
+    
+    
+    //就诊完成
+    self.finishLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.address.frameX, self.address.maxY + 12, 64, 20)];
+    self.finishLabel.font = [UIFont systemFontOfSize:12];
+    self.finishLabel.textColor = [UIColor whiteColor];
+    self.finishLabel.text = @"就诊完成";
+    self.finishLabel.textAlignment = NSTextAlignmentCenter;
+    self.finishLabel.backgroundColor = kBlueTextColor;
+    [self.infoView addSubview:self.finishLabel];
+    
     //评价
-    self.commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.address.frameX, self.address.maxY + 10, 80, 25)];
-    [self.commentBtn setTitle:@"评  价" forState:UIControlStateNormal];
+    self.commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.finishLabel.maxX + 12,self.finishLabel.frameY , 64, 20)];
+    [self.commentBtn setTitle:@"评价" forState:UIControlStateNormal];
     [self.commentBtn addTarget:self action:@selector(commentAction) forControlEvents:UIControlEventTouchUpInside];
     self.commentBtn.backgroundColor = [UIColor whiteColor];
-    [self.commentBtn setTitleColor:kLightGrayColor forState:UIControlStateNormal];
+    [self.commentBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
     self.commentBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    self.commentBtn.layer.borderColor = [UIColor grayColor].CGColor;
+    self.commentBtn.layer.borderColor = kLightLineColor.CGColor;
     self.commentBtn.layer.borderWidth = 1.0f;
     self.commentBtn.layer.cornerRadius = 2.0f;
-    [self.commentBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
+    [self.commentBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
     [self.infoView addSubview:self.commentBtn];
     //评价按钮里的那张小图片
-    UIImageView * commentIcon = [[UIImageView alloc] initWithFrame:CGRectMake((self.commentBtn.frameWidth - 15)/2 - 25, (self.commentBtn.frameHeight - 15)/2, 15, 15)];
-    commentIcon.image = [UIImage imageNamed:@""];
-    commentIcon.backgroundColor = [UIColor grayColor];
+    UIImageView * commentIcon = [[UIImageView alloc] initWithFrame:CGRectMake((self.commentBtn.frameWidth - 10.5)/2 - 16, (self.commentBtn.frameHeight - 10.5)/2, 10.5, 10.5)];
+    commentIcon.image = [UIImage imageNamed:@"comment_icon_comment_gray@2x"];
     [self.commentBtn addSubview:commentIcon];
+    
     //箭头
-    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 25 - 2, (self.infoView.frameHeight - 25)/2, 20, 25)];
-    self.arrow.image = [UIImage imageNamed:@""];
+    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, (self.infoView.frameHeight - 15)/2, 9, 15)];
+    self.arrow.image = [UIImage imageNamed:@"common_icon_grayArrow@2x"];
     [self.infoView addSubview:self.arrow];
-    self.arrow.backgroundColor = [UIColor greenColor];
+    
+    //上线
+    UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
+    topLine.backgroundColor = kblueLineColor;
+    [self addSubview: topLine];
+    //下线
+    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
+    bottomLine.backgroundColor = kblueLineColor;
+    [self addSubview: bottomLine];
     
 }
 

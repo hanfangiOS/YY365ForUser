@@ -130,7 +130,7 @@
         [picker removeFromParentViewController];
         
         UIImage * compressedImage = [UIImage imageWithData:data];
-        [self postRequestUploadAvatarWithImage:compressedImage];
+        [self requestUploadImage:compressedImage];
     }
     
 }
@@ -159,8 +159,8 @@
 
 #pragma mark - postRequest
 
-//上传图片
-- (void)postRequestUploadAvatarWithImage:(UIImage *)image{
+//上传图片到图片服务器
+- (void)requestUploadImage:(UIImage *)image{
     [self showProgressView];
     __weak __block PersonalAvatarVC *blockSelf = self;
     [[CUUserManager sharedInstance]uploadAvatar:image resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
@@ -175,7 +175,7 @@
                 }
             }
             if (ftpPath) {
-                [blockSelf requestCommitImageURL:ftpPath];
+                [blockSelf requestModifyAvatorWithPath:ftpPath andImage:image];
             }
         }else{
             [TipHandler showTipOnlyTextWithNsstring:@"网络连接错误"];
@@ -186,11 +186,15 @@
     }];
 }
 
-- (void)requestCommitImageURL:(NSString *)ftppath{
+//上传头像
+- (void)requestModifyAvatorWithPath:(NSString *)ftppath andImage:(UIImage *)image{
     __weak __block PersonalAvatarVC *blockSelf = self;
     [[CUUserManager sharedInstance] ModifyAvatorWithPath:ftppath resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
-           [blockSelf.avatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon]];
+           blockSelf.avatar.image = image;
+        if (blockSelf.uploadAvatarSuccessBlock) {
+            blockSelf.uploadAvatarSuccessBlock(image);
+            }
         }
     } pageName:self.pageName];
 }
