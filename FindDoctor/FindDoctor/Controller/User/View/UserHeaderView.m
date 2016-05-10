@@ -23,6 +23,11 @@
 
 - (void)initSubViews{
     //上半块背景View
+    UIImage *image = [UIImage imageNamed:@"mySpace_topBackground"];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, self.frameHeight -  kScreenWidth * image.size.height/image.size.width, kScreenWidth, kScreenWidth * image.size.height/image.size.width)];
+    view.layer.contents = (id)image.CGImage;
+    [self addSubview:view];
+    
     self.userInfoBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 76)];
     [self addSubview:self.userInfoBackgroundView];
     //用户头像

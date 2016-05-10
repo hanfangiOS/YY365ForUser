@@ -82,6 +82,7 @@
     self.dropdownMenu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0, 0) andHeight:40*Width_AdaptedFactor];
     self.dropdownMenu.dataSource = self;
     self.dropdownMenu.delegate = self;
+    self.dropdownMenu.isClickHaveItemValid = NO;
     [self.contentView addSubview:self.dropdownMenu];
     
     self.contentTableView.frame = CGRectMake(0, self.dropdownMenu.frameHeight, self.contentTableView.frameWidth, self.contentTableView.frameHeight-self.dropdownMenu.frameHeight);
@@ -218,33 +219,56 @@
 
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
 {
-        if (indexPath.row == 0)
-        {
-//            [self.dropdownMenu updateMenuTitle:self.titleArray[indexPath.column] inColumn:indexPath.column];
-            [self.dropdownMenu reloadData];
+    switch (indexPath.column) {
+        case 0:{
+            if(indexPath.item == -1){
+                if(indexPath.row == 0){
+                    self.listModel.filter.subjectID = -1;
+                    self.listModel.filter.SymptomID = -1;
+                }
+                else{
+                    return;
+                }
+            }
+            else{
+                SymptomOption *item = [self.diseaseArray objectAtIndexSafely:indexPath.row];
+                SymptomSubOption *SubItem = [item.symptomSubOptionArray objectAtIndexSafely:indexPath.item];
+                self.listModel.filter.SymptomID = SubItem.ID;
+                self.listModel.filter.subjectID = item.ID;
+            }
         }
-    //    switch (indexPath.column) {
-    //        case 0:{
-    //            self.listModel.filter.subTypeId = indexPath.row;
-    //        }
-    //            break;
-    //        case 1:{
-    //        }
-    //            break;
-    //        case 2:{
-    //            self.listModel.filter.orderDate = [self.timeArray objectAtIndex:indexPath.row];
-    //            if (indexPath.row == 0) {
-    //                self.listModel.filter.orderDate = @"0";
-    //            }
-    //        }
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //
-    // TODO:filter设置
+            break;
+        case 1:{
+            if (indexPath.row == 0) {
+                self.listModel.filter.Region.ID = 510000;
+                self.listModel.filter.Region.name = @"-1";
+            }
+            else{
+                RegionOption *item = [self.regionArray  objectAtIndex:indexPath.row];
+                self.listModel.filter.Region.ID = item.ID;
+                self.listModel.filter.Region.name = item.name;
+            }
+        }
+            break;
+        case 2:{
+            if (indexPath.row == 0) {
+                self.listModel.filter.date = @"-1";
+            }
+            else{
+                DateOption *item = [self.timeArray  objectAtIndex:indexPath.row];
+                self.listModel.filter.date = item.date;
+            }
+        }
+            break;
+        default:
+            break;
+    }
     [self triggerRefresh];
 }
+- (void)didClickBackgroundWithMenu:(DOPDropDownMenu *)menu{
+    
+}
+
 - (void)menu:(DOPDropDownMenu *)menu didTappedColumn:(NSInteger)column
 {
 }

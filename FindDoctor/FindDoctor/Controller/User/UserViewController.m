@@ -95,11 +95,11 @@
     self.tableView.tableFooterView = [UIView new];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.bounces = NO;
+//    self.tableView.bounces = NO;
     [self.contentView addSubview:self.tableView];
     
     self.headerView = [[UserHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 224)];
-    self.headerView.layer.contents = (id)[UIImage imageNamed:@"mySpace_topBackground@3x"].CGImage;
+//    self.headerView.layer.contents = (id)[UIImage imageNamed:@"mySpace_topBackground@3x"].CGImage;
     
     self.tableView.tableHeaderView = self.headerView;
     
