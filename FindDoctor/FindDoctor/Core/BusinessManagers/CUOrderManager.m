@@ -223,7 +223,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:@(19) forKey:@"accID"];
-    [dataParam setObjectSafely:order.orderId forKey:@"orderId"];
+    [dataParam setObjectSafely:@(order.diagnosisID) forKey:@"diagnosisID"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     CUOrderParser * parser = [[CUOrderParser alloc] init];
@@ -705,7 +705,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 //没付款记录
 - (void)getOrderNotPayListWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderNotPayList"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderNotPayListtrack"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
 //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
@@ -747,6 +747,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     order.service.doctor.address = [obj stringForKeySafely:@"address"];
                     [dataList addObjectSafely:order];
                 }];
+    
+                
                 SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
                 listModel.items = dataList;
                 result.parsedModelObject = listModel;
