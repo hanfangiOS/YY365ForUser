@@ -15,7 +15,7 @@ NSInteger Color_Hex_NavText = 0xffffff;
 NSInteger Color_Hex_ContentViewBackground = 0xffffff;
 
 //NSInteger Color_Hex_NavBackground = 0x2f76cb;//0x429EA2;//0x57B526;
-NSInteger Color_Hex_NavBackground = 0x3170c8;//0x429EA2;//0x57B526;
+NSInteger Color_Hex_NavBackground = 0x217ce5;//0x429EA2;//0x57B526;
 NSInteger Color_Hex_NavShadow = 0x2f76cb;
 
 NSInteger Color_Hex_Text_Normal = 0x444444;

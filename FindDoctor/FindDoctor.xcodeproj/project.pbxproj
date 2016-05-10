@@ -176,11 +176,6 @@
 		7F0331BE1CDC9F4300A96F47 /* mySpace_myDoctor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331B11CDC9F4300A96F47 /* mySpace_myDoctor@2x.png */; };
 		7F0331BF1CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331B21CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png */; };
 		7F0331C01CDC9F4300A96F47 /* mySpace_topBackground@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331B31CDC9F4300A96F47 /* mySpace_topBackground@3x.png */; };
-		7F0331CB1CDC9FAF00A96F47 /* setting_changePwd1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331C61CDC9FAF00A96F47 /* setting_changePwd1@3x.png */; };
-		7F0331CC1CDC9FAF00A96F47 /* setting_changePwd2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331C71CDC9FAF00A96F47 /* setting_changePwd2@3x.png */; };
-		7F0331CD1CDC9FAF00A96F47 /* setting_changePwd3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331C81CDC9FAF00A96F47 /* setting_changePwd3@3x.png */; };
-		7F0331CE1CDC9FAF00A96F47 /* setting_icon_checkTransparent@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331C91CDC9FAF00A96F47 /* setting_icon_checkTransparent@3x.png */; };
-		7F0331CF1CDC9FAF00A96F47 /* setting_icon_phone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331CA1CDC9FAF00A96F47 /* setting_icon_phone@3x.png */; };
 		7F0331D41CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D01CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png */; };
 		7F0331D51CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D11CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png */; };
 		7F0331D61CDCA72000A96F47 /* mySpace_icon_myMember@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D21CDCA72000A96F47 /* mySpace_icon_myMember@2x.png */; };
@@ -396,6 +391,11 @@
 		7FFD7AA71CB7B1E9000C45E3 /* GoodClinicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA61CB7B1E9000C45E3 /* GoodClinicViewController.m */; };
 		7FFD7AAA1CB7B574000C45E3 /* ClinicAdverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD7AA91CB7B574000C45E3 /* ClinicAdverCell.m */; };
 		7FFFB6201CD33C43006AB8CB /* MyAppointmentForTreatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFB61F1CD33C43006AB8CB /* MyAppointmentForTreatCell.m */; };
+		BC0886331CE05A7F00CFFA60 /* setting_changePwd1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC08862E1CE05A7F00CFFA60 /* setting_changePwd1@3x.png */; };
+		BC0886341CE05A7F00CFFA60 /* setting_changePwd2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC08862F1CE05A7F00CFFA60 /* setting_changePwd2@3x.png */; };
+		BC0886351CE05A7F00CFFA60 /* setting_changePwd3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0886301CE05A7F00CFFA60 /* setting_changePwd3@3x.png */; };
+		BC0886361CE05A7F00CFFA60 /* setting_icon_checkTransparent@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0886311CE05A7F00CFFA60 /* setting_icon_checkTransparent@3x.png */; };
+		BC0886371CE05A7F00CFFA60 /* setting_icon_phone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0886321CE05A7F00CFFA60 /* setting_icon_phone@3x.png */; };
 		BC0E84B31C7857E700082AA9 /* AddFamilyMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */; };
 		BC0E84D71C7C46DB00082AA9 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC0E84BD1C7C46DB00082AA9 /* AlipaySDK.bundle */; };
 		BC0E84D81C7C46DB00082AA9 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC0E84BE1C7C46DB00082AA9 /* AlipaySDK.framework */; };
@@ -963,11 +963,6 @@
 		7F0331B11CDC9F4300A96F47 /* mySpace_myDoctor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_myDoctor@2x.png"; sourceTree = "<group>"; };
 		7F0331B21CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_rightTopNumBackground@3x.png"; sourceTree = "<group>"; };
 		7F0331B31CDC9F4300A96F47 /* mySpace_topBackground@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_topBackground@3x.png"; sourceTree = "<group>"; };
-		7F0331C61CDC9FAF00A96F47 /* setting_changePwd1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd1@3x.png"; sourceTree = "<group>"; };
-		7F0331C71CDC9FAF00A96F47 /* setting_changePwd2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd2@3x.png"; sourceTree = "<group>"; };
-		7F0331C81CDC9FAF00A96F47 /* setting_changePwd3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd3@3x.png"; sourceTree = "<group>"; };
-		7F0331C91CDC9FAF00A96F47 /* setting_icon_checkTransparent@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_checkTransparent@3x.png"; sourceTree = "<group>"; };
-		7F0331CA1CDC9FAF00A96F47 /* setting_icon_phone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_phone@3x.png"; sourceTree = "<group>"; };
 		7F0331D01CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myAccount@2x.png"; sourceTree = "<group>"; };
 		7F0331D11CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myAppointment@2x.png"; sourceTree = "<group>"; };
 		7F0331D21CDCA72000A96F47 /* mySpace_icon_myMember@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myMember@2x.png"; sourceTree = "<group>"; };
@@ -1288,6 +1283,11 @@
 		7FFD7AA91CB7B574000C45E3 /* ClinicAdverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClinicAdverCell.m; sourceTree = "<group>"; };
 		7FFFB61E1CD33C43006AB8CB /* MyAppointmentForTreatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentForTreatCell.h; sourceTree = "<group>"; };
 		7FFFB61F1CD33C43006AB8CB /* MyAppointmentForTreatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentForTreatCell.m; sourceTree = "<group>"; };
+		BC08862E1CE05A7F00CFFA60 /* setting_changePwd1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd1@3x.png"; sourceTree = "<group>"; };
+		BC08862F1CE05A7F00CFFA60 /* setting_changePwd2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd2@3x.png"; sourceTree = "<group>"; };
+		BC0886301CE05A7F00CFFA60 /* setting_changePwd3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd3@3x.png"; sourceTree = "<group>"; };
+		BC0886311CE05A7F00CFFA60 /* setting_icon_checkTransparent@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_checkTransparent@3x.png"; sourceTree = "<group>"; };
+		BC0886321CE05A7F00CFFA60 /* setting_icon_phone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_phone@3x.png"; sourceTree = "<group>"; };
 		BC0E84B11C7857E700082AA9 /* AddFamilyMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFamilyMemberViewController.h; path = AddFamiliMember/AddFamilyMemberViewController.h; sourceTree = "<group>"; };
 		BC0E84B21C7857E700082AA9 /* AddFamilyMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddFamilyMemberViewController.m; path = AddFamiliMember/AddFamilyMemberViewController.m; sourceTree = "<group>"; };
 		BC0E84BD1C7C46DB00082AA9 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
@@ -2713,21 +2713,9 @@
 				7F0331B11CDC9F4300A96F47 /* mySpace_myDoctor@2x.png */,
 				7F0331B21CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png */,
 				7F0331B31CDC9F4300A96F47 /* mySpace_topBackground@3x.png */,
-				7F0331B41CDC9F4300A96F47 /* setting */,
+				BC08862D1CE05A7F00CFFA60 /* setting */,
 			);
 			path = MySpace;
-			sourceTree = "<group>";
-		};
-		7F0331B41CDC9F4300A96F47 /* setting */ = {
-			isa = PBXGroup;
-			children = (
-				7F0331C61CDC9FAF00A96F47 /* setting_changePwd1@3x.png */,
-				7F0331C71CDC9FAF00A96F47 /* setting_changePwd2@3x.png */,
-				7F0331C81CDC9FAF00A96F47 /* setting_changePwd3@3x.png */,
-				7F0331C91CDC9FAF00A96F47 /* setting_icon_checkTransparent@3x.png */,
-				7F0331CA1CDC9FAF00A96F47 /* setting_icon_phone@3x.png */,
-			);
-			path = setting;
 			sourceTree = "<group>";
 		};
 		7F3151041CC24B68002A11C3 /* MyInfo */ = {
@@ -3344,6 +3332,18 @@
 			);
 			name = MyIntegral;
 			path = User/MyIntegral;
+			sourceTree = "<group>";
+		};
+		BC08862D1CE05A7F00CFFA60 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				BC08862E1CE05A7F00CFFA60 /* setting_changePwd1@3x.png */,
+				BC08862F1CE05A7F00CFFA60 /* setting_changePwd2@3x.png */,
+				BC0886301CE05A7F00CFFA60 /* setting_changePwd3@3x.png */,
+				BC0886311CE05A7F00CFFA60 /* setting_icon_checkTransparent@3x.png */,
+				BC0886321CE05A7F00CFFA60 /* setting_icon_phone@3x.png */,
+			);
+			path = setting;
 			sourceTree = "<group>";
 		};
 		BC0E84B01C7857A300082AA9 /* AddFamilyMember */ = {
@@ -4844,12 +4844,13 @@
 				7FED20861CDB4F6A004639DE /* Icon-120.png in Resources */,
 				7FED208B1CDB4F6A004639DE /* introduce_2.jpg in Resources */,
 				E1EB1E4C1B70A43B0048B8EB /* UMSShareListController.xib in Resources */,
+				BC0886371CE05A7F00CFFA60 /* setting_icon_phone@3x.png in Resources */,
 				7F0331BB1CDC9F4300A96F47 /* mySpace_msg@2x.png in Resources */,
 				7F0331D51CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png in Resources */,
-				7F0331CC1CDC9FAF00A96F47 /* setting_changePwd2@3x.png in Resources */,
 				7FED207A1CDB4F6A004639DE /* doctor_detail_collect_btn_sel@2x.png in Resources */,
 				7FED208A1CDB4F6A004639DE /* introduce_1.jpg in Resources */,
 				BC0E84E41C7C46DB00082AA9 /* Pingpp.bundle in Resources */,
+				BC0886341CE05A7F00CFFA60 /* setting_changePwd2@3x.png in Resources */,
 				7FED20B21CDB4F6A004639DE /* navbar_close_button@3x.png in Resources */,
 				7FED207F1CDB4F6A004639DE /* doctor_menu_btn_add_sel@2x.png in Resources */,
 				7FED20971CDB4F6A004639DE /* login_icon_hook.png in Resources */,
@@ -4860,6 +4861,7 @@
 				7FED20811CDB4F6A004639DE /* doctor_tip_green@2x.png in Resources */,
 				7FED20951CDB4F6A004639DE /* login_icon_code@2x.png in Resources */,
 				7FED20841CDB4F6A004639DE /* doctor_treatmentNum.png in Resources */,
+				BC0886351CE05A7F00CFFA60 /* setting_changePwd3@3x.png in Resources */,
 				7FED20981CDB4F6A004639DE /* login_icon_lock@2x.png in Resources */,
 				7FED20AA1CDB4F6A004639DE /* map_icon_location_highlighted@3x.png in Resources */,
 				E1EB1E471B70A43B0048B8EB /* UMSCommentInputControlleriPad.xib in Resources */,
@@ -4872,13 +4874,12 @@
 				7FED20B01CDB4F6A004639DE /* navbar_background@2x.png in Resources */,
 				7FED20851CDB4F6A004639DE /* doctor_waitForConcen@2x.png in Resources */,
 				7FED20791CDB4F6A004639DE /* doctor_detail_collect_btn_nor@2x.png in Resources */,
-				7F0331CE1CDC9FAF00A96F47 /* setting_icon_checkTransparent@3x.png in Resources */,
 				3EDF9E161AAAD0F400F85C44 /* common_refresh_arrow@2x.png in Resources */,
 				3ED1711E1AAF0A9A00E5B630 /* TipView.xib in Resources */,
 				7FED20781CDB4F6A004639DE /* doctor_btn_add_sel@2x.png in Resources */,
-				7F0331CF1CDC9FAF00A96F47 /* setting_icon_phone@3x.png in Resources */,
 				E1EB1E541B70A43B0048B8EB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				7FED20A51CDB4F6A004639DE /* main_icon_waike@3x.png in Resources */,
+				BC0886331CE05A7F00CFFA60 /* setting_changePwd1@3x.png in Resources */,
 				7FED20891CDB4F6A004639DE /* Icon@2x.png in Resources */,
 				7F0331D41CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png in Resources */,
 				7FED20A21CDB4F6A004639DE /* main_icon_more@3x.png in Resources */,
@@ -4907,6 +4908,7 @@
 				7FED20BD1CDB4F6A004639DE /* order_littleTrumpet@2x.png in Resources */,
 				E1EB1ECB1B70A4D70048B8EB /* AlipaySDK.bundle in Resources */,
 				3ED1711B1AAF0A9A00E5B630 /* TextTipView.xib in Resources */,
+				BC0886361CE05A7F00CFFA60 /* setting_icon_checkTransparent@3x.png in Resources */,
 				7FED20731CDB4F6A004639DE /* common_whiteButton_nor@2x.png in Resources */,
 				7FED20911CDB4F6A004639DE /* login_code_bg@2x.png in Resources */,
 				7FD0BBD71C9A58C9004D2E02 /* IQKeyboardManager.bundle in Resources */,
@@ -4916,12 +4918,10 @@
 				BC0E84DC1C7C46DB00082AA9 /* PingppCnp.bundle in Resources */,
 				7FED20A61CDB4F6A004639DE /* main_icon_yaojike@3x.png in Resources */,
 				7FED20941CDB4F6A004639DE /* login_icon_check@2x.png in Resources */,
-				7F0331CB1CDC9FAF00A96F47 /* setting_changePwd1@3x.png in Resources */,
 				7FED20B51CDB4F6A004639DE /* navbar_titlelogo@2x.png in Resources */,
 				7FED207B1CDB4F6A004639DE /* doctor_detail_map_btn_nor@2x.png in Resources */,
 				7FED206E1CDB4F6A004639DE /* common_inactivePoint@2x.png in Resources */,
 				7F0331C01CDC9F4300A96F47 /* mySpace_topBackground@3x.png in Resources */,
-				7F0331CD1CDC9FAF00A96F47 /* setting_changePwd3@3x.png in Resources */,
 				7FA561FF1CBDE3020092D978 /* MJRefresh.bundle in Resources */,
 				7FED207C1CDB4F6A004639DE /* doctor_detail_map_btn_sel@2x.png in Resources */,
 				D405D8171B7DF0300043FD76 /* DoctorPortrait@2x.png in Resources */,

@@ -144,32 +144,34 @@
 - (void)setData:(Doctor *)data
 {
     _data = data;
-    
-    [imageView setImageWithURL:[NSURL URLWithString:self.data.avatar] placeholderImage:nil];
-    
-    NSString *str = [NSString stringWithFormat:@"%@      %@",self.data.name,self.data.levelDesc];
-    NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc]initWithString:str];
-    [atrStr addAttributes:@{NSFontAttributeName:SystemFont_14,NSForegroundColorAttributeName:kBlackColor} range:[str rangeOfString:self.data.name]];
-    nameLabel.attributedText = atrStr;
-    [nameLabel sizeToFit];
-    
-    rateView.rate = _data.rate;
-    rateLabel.text = [NSString stringWithFormat:@"%.1f",_data.rate];
-    NSString *desc = _data.briefIntro;
-    
-    [zhenLiaoNumberLabel setTitle:@"诊疗" contents:[NSString stringWithFormat:@"%d",_data.numDiag] unit:@"次"];
-    [guanZhuNumberLabel setTitle:@"关注" contents:[NSString stringWithFormat:@"%d",_data.numConcern] unit:@"次"];
-    [haoPingNumberLabel setTitle:@"好评率" contents:[NSString stringWithFormat:@"%d",_data.goodRemark] unit:@"%"];
-    
-    introLabel.text = desc;
-    [introLabel sizeToFit];
-    self.frame = CGRectMake([self frameX], [self frameY], [self frameWidth], CGRectGetMaxY(introLabel.frame)+5);
-    
-    if (self.data.didConcern) {
-        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"haveguanzhu"].CGImage;
-    }
-    else{
-        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"guanzhu"].CGImage;
+    if(_data){
+        [imageView setImageWithURL:[NSURL URLWithString:self.data.avatar] placeholderImage:nil];
+        
+        NSString *str = [NSString stringWithFormat:@"%@      %@",self.data.name,self.data.levelDesc];
+        NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc]initWithString:str];
+        
+        [atrStr addAttributes:@{NSFontAttributeName:SystemFont_14,NSForegroundColorAttributeName:kBlackColor} range:[str rangeOfString:self.data.name]];
+        nameLabel.attributedText = atrStr;
+        [nameLabel sizeToFit];
+        
+        rateView.rate = _data.rate;
+        rateLabel.text = [NSString stringWithFormat:@"%.1f",_data.rate];
+        NSString *desc = _data.briefIntro;
+        
+        [zhenLiaoNumberLabel setTitle:@"诊疗" contents:[NSString stringWithFormat:@"%d",_data.numDiag] unit:@"次"];
+        [guanZhuNumberLabel setTitle:@"关注" contents:[NSString stringWithFormat:@"%d",_data.numConcern] unit:@"次"];
+        [haoPingNumberLabel setTitle:@"好评率" contents:[NSString stringWithFormat:@"%d",_data.goodRemark] unit:@"%"];
+        
+        introLabel.text = desc;
+        [introLabel sizeToFit];
+        self.frame = CGRectMake([self frameX], [self frameY], [self frameWidth], CGRectGetMaxY(introLabel.frame)+5);
+        
+        if (self.data.didConcern) {
+            guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"haveguanzhu"].CGImage;
+        }
+        else{
+            guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"guanzhu"].CGImage;
+        }
     }
 }
 
