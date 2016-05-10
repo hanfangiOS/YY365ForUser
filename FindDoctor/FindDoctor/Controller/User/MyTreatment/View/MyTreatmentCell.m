@@ -5,7 +5,7 @@
 //  Created by ZhuHaoRan on 16/4/19.
 //  Copyright © 2016年 li na. All rights reserved.
 //
-#define MyTreatmentCellHeight 170
+#define MyTreatmentCellHeight 148
 
 #import "MyTreatmentCell.h"
 #import "UIImageView+WebCache.h"
