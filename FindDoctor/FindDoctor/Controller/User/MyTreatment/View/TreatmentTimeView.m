@@ -6,7 +6,7 @@
 //  Copyright © 2016年 li na. All rights reserved.
 //
 
-#define TreatmentTimeViewHeight 75
+#define TreatmentTimeViewHeight 63
 
 #import "TreatmentTimeView.h"
 
@@ -38,31 +38,34 @@
 }
 
 - (void)initSubViews{
-    self.line = [[UIView alloc] initWithFrame:CGRectMake(10, 0, kScreenWidth - 10, 0.5)];
-    [self addSubview:self.line];
-    self.line.backgroundColor = kLightLineColor;
     
-    self.beginTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 12, 60, 18)];
-    self.beginTimeLabel.text = @"接诊时间:";
-    self.beginTimeLabel.textColor = kLightGrayColor;
+    self.line = [[UIView alloc] initWithFrame:CGRectMake(8, 0, kScreenWidth - 10, 1)];
+    [self addSubview:self.line];
+    self.line.backgroundColor = kblueLineColor;
+    
+    self.beginTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 12, 60, 12)];
+    self.beginTimeLabel.text = @"接诊时间 :";
     self.beginTimeLabel.font = [UIFont systemFontOfSize:12];
     [self addSubview:self.beginTimeLabel];
     
-    self.finishTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,self.beginTimeLabel.maxY + 12, 60, 18)];
-    self.finishTimeLabel.text = @"完诊时间:";
-    self.finishTimeLabel.textColor = kLightGrayColor;
+    self.finishTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,self.beginTimeLabel.maxY + 12, 60, 12)];
+    self.finishTimeLabel.text = @"完诊时间 :";
     self.finishTimeLabel.font = [UIFont systemFontOfSize:12];
     [self addSubview:self.finishTimeLabel];
     
-    self.beiginTime = [[UILabel alloc] initWithFrame:CGRectMake(self.beginTimeLabel.maxX + 10, self.beginTimeLabel.frameY, kScreenWidth - self.beginTimeLabel.maxX - 10 - 12, 18)];
+    self.beiginTime = [[UILabel alloc] initWithFrame:CGRectMake(self.beginTimeLabel.maxX + 2, self.beginTimeLabel.frameY, kScreenWidth - self.beginTimeLabel.maxX - 2 - 12, 12)];
     self.beiginTime.font = [UIFont systemFontOfSize:12];
-    self.beiginTime.textColor = kLightGrayColor;
+    self.beiginTime.textColor = kBlueTextColor;
     [self addSubview:self.beiginTime];
     
-    self.finishTime = [[UILabel alloc] initWithFrame:CGRectMake(self.finishTimeLabel.maxX + 10, self.finishTimeLabel.frameY, kScreenWidth - self.finishTimeLabel.maxX - 10 - 12, 18)];
+    self.finishTime = [[UILabel alloc] initWithFrame:CGRectMake(self.finishTimeLabel.maxX + 2, self.finishTimeLabel.frameY, kScreenWidth - self.finishTimeLabel.maxX - 2 - 12, 12)];
     self.finishTime.font = [UIFont systemFontOfSize:12];
-    self.finishTime.textColor = kLightGrayColor;
+    self.finishTime.textColor = kBlueTextColor;
     [self addSubview:self.finishTime];
+    
+    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, TreatmentTimeViewHeight - 1, kScreenWidth, 1)];
+    bottomLine.backgroundColor = kblueLineColor;
+    [self addSubview:bottomLine];
 }
 
 - (void)setData:(CUOrder *)data{

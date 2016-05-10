@@ -13,6 +13,7 @@
 #import "DetailsOrderInfoView.h"
 #import "CUOrderManager.h"
 #import "OrderConfirmController.h"
+#import "TipHandler+HUD.h"
 
 @interface AppointmentDetailsController ()<UIAlertViewDelegate>
 
@@ -82,8 +83,8 @@
     self.orderInfoView.backgroundColor = [UIColor whiteColor];
     
     //支付按钮
-    self.payBtn = [[UIButton alloc] initWithFrame:CGRectMake(25, self.orderInfoView.maxY + 18, kScreenWidth - 25 * 2, 40)];
-    self.payBtn.backgroundColor = [UIColor orangeColor];
+    self.payBtn = [[UIButton alloc] initWithFrame:CGRectMake(24, self.orderInfoView.maxY + 15, kScreenWidth - 25 * 2, 36)];
+    self.payBtn.backgroundColor = kBlueTextColor;
     [self.payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
     [self.payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.payBtn.layer.cornerRadius = 5.0f;
@@ -91,7 +92,7 @@
     [self.scrollView addSubview:self.payBtn];
     
     //取消订单
-    self.cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(25, self.payBtn.maxY + 10, kScreenWidth - 25 * 2, 40)];
+    self.cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(24, self.payBtn.maxY + 8, kScreenWidth - 25 * 2, 36)];
     self.cancelBtn.backgroundColor = [UIColor orangeColor];
     [self.cancelBtn setTitle:@"取消订单" forState:UIControlStateNormal];
     [self.cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -99,7 +100,7 @@
     [self.cancelBtn addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:self.cancelBtn];
     
-    self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.cancelBtn.maxY + 20);
+    self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.cancelBtn.maxY + 15);
     
 }
 
@@ -113,7 +114,7 @@
         case ORDERSTATUS_PAID:
         {
             self.cancelBtn.frame = self.payBtn.frame;
-            self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.cancelBtn.maxY + 20);
+            self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.cancelBtn.maxY + 15);
             self.payBtn.hidden = YES;
             [self.scrollView setNeedsLayout];
         }
@@ -157,11 +158,32 @@
     
     if (alertView.tag == 20000) {
         if (buttonIndex == 1) {
-//            [self postRequest2];
-            [self.slideNavigationController popViewControllerAnimated:YES];
+            [self requestCancelOrder];
         }
     }
-    
+}
+
+#pragma mark request
+
+- (void)requestCancelOrder{
+    [[CUOrderManager sharedInstance] cancelOrder:self.order user:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"取消成功"]];
+                [self.slideNavigationController popViewControllerAnimated:YES];
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+    } pageName:self.pageName];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -170,13 +192,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

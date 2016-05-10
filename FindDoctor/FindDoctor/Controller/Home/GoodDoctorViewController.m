@@ -115,7 +115,7 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    CGSize size = CGSizeMake(kScreenWidth, 30);
+    CGSize size = CGSizeMake(kScreenWidth, sectionHeaderViewHeight);
     return size;
 }
 

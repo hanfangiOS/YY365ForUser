@@ -68,12 +68,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Controller/User/MyInfo/PersonalAvatarVC.m"
-                  timestampString = "484480434.873721"
+                  timestampString = "484541539.625077"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "195"
                   endingLineNumber = "195"
-                  offsetFromSymbolStart = "304">
+                  offsetFromSymbolStart = "231">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -83,12 +83,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Controller/User/MyInfo/PersonalAvatarVC.m"
-                  timestampString = "484480434.874066"
+                  timestampString = "484541539.625301"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "195"
                   endingLineNumber = "195"
-                  offsetFromSymbolStart = "430">
+                  offsetFromSymbolStart = "409">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -98,27 +98,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Controller/User/MyInfo/PersonalAvatarVC.m"
-                  timestampString = "484480434.874266"
+                  timestampString = "484541539.625502"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "195"
                   endingLineNumber = "195"
-                  offsetFromSymbolStart = "30">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.152"
-                  moduleName = "FindDoctor"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Controller/User/MyInfo/PersonalAvatarVC.m"
-                  timestampString = "484480434.874452"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "195"
-                  endingLineNumber = "195"
-                  offsetFromSymbolStart = "18">
+                  offsetFromSymbolStart = "42">
                </Location>
             </Locations>
          </BreakpointContent>

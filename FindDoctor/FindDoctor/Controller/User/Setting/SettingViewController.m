@@ -261,24 +261,24 @@
 #pragma mark postRequest
 
 - (void)postRequestExitAccount{
-    [self showProgressView];
+
     [[CUUserManager sharedInstance] logoutWithUser:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        [self hideProgressView];
-        if (!result.hasError)
-        {
-            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorcode"];
-            if (![errorCode integerValue]) {
-                
-                [[CUUserManager sharedInstance] clear];
-                [self.slideNavigationController popViewControllerAnimated:NO];
-            }else{
-                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
-            }
-        }else{
-             [TipHandler showTipOnlyTextWithNsstring:@"网络连接失败"];
-        }
+//        [self hideProgressView];
+//        if (!result.hasError)
+//        {
+//            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorcode"];
+//            if (![errorCode integerValue]) {
+//                
+//                [[CUUserManager sharedInstance] clear];
+//                [self.slideNavigationController popViewControllerAnimated:NO];
+//            }else{
+//                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+//            }
+//        }else{
+//             [TipHandler showTipOnlyTextWithNsstring:@"网络连接失败"];
+//        }
         
-    } pageName:@"SettingViewController"];
+    } pageName:@"SettingViewController"];    
 }
 
 - (void)didReceiveMemoryWarning {

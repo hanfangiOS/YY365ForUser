@@ -13,6 +13,8 @@
 #import "DetailsOrderInfoView.h"
 #import "TreatmentTimeView.h"
 #import "DiagnosisRemarkController.h"
+#import "CUOrderManager.h"
+#import "TipHandler+HUD.h"
 
 
 @interface TreatmentDetailsController ()<UIAlertViewDelegate>
@@ -76,36 +78,32 @@
     self.orderInfoView.data = self.order;
     //评价按钮
     self.commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.orderInfoView.maxY + 10, kScreenWidth/2, 40)];
-    self.commentBtn.backgroundColor = [UIColor orangeColor];
+    self.commentBtn.backgroundColor = kBlueTextColor;
     [self.commentBtn setTitle:@"评价" forState:UIControlStateNormal];
     [self.commentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.commentBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
-    self.commentBtn.layer.cornerRadius = 5.0f;
+    [self.commentBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
     self.commentBtn.titleLabel.font = [UIFont systemFontOfSize:17];
     [self.commentBtn addTarget:self action:@selector(CommentAction) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:self.commentBtn];
     //评价按钮里的小图标
-    UIImageView * commentIcon = [[UIImageView alloc] initWithFrame:CGRectMake(self.commentBtn.centerX - 40, (self.commentBtn.frameHeight - 24)/2, 24, 24)];
-    commentIcon.image = [UIImage imageNamed:@""];
-    commentIcon.backgroundColor = [UIColor redColor];
+    UIImageView * commentIcon = [[UIImageView alloc] initWithFrame:CGRectMake(self.commentBtn.frameWidth/2 - 36, (self.commentBtn.frameHeight - 16)/2, 16, 16)];
+    commentIcon.image = [UIImage imageNamed:@"comment_icon_comment@2x"];
     [self.commentBtn addSubview:commentIcon];
     //删除按钮
     self.deleteBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.commentBtn.maxX, self.commentBtn.frameY, kScreenWidth/2, 40)];
-    self.deleteBtn.backgroundColor = [UIColor blueColor];
+    self.deleteBtn.backgroundColor = UIColorFromHex(0x5793e9);
     [self.deleteBtn setTitle:@"删除订单" forState:UIControlStateNormal];
-    [self.deleteBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 40, 0, 0)];
+    [self.deleteBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 16, 0, 0)];
     [self.deleteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.deleteBtn.layer.cornerRadius = 5.0f;
     self.deleteBtn.titleLabel.font = [UIFont systemFontOfSize:17];
     [self.deleteBtn addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:self.deleteBtn];
     //删除按钮里的小图标
-    UIImageView * deleteIcon = [[UIImageView alloc] initWithFrame:CGRectMake(commentIcon.frameX, (self.deleteBtn.frameHeight - 24)/2, 24, 24)];
-    deleteIcon.image = [UIImage imageNamed:@""];
-    deleteIcon.backgroundColor = [UIColor grayColor];
+    UIImageView * deleteIcon = [[UIImageView alloc] initWithFrame:CGRectMake(self.deleteBtn.frameWidth/2 - 48, (self.deleteBtn.frameHeight - 16)/2, 14.5, 16)];
+    deleteIcon.image = [UIImage imageNamed:@"common_icon_trash@2x"];
     [self.deleteBtn addSubview:deleteIcon];
     
-    self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.deleteBtn.maxY + 20);
+    self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.deleteBtn.maxY);
     
 }
 
@@ -128,7 +126,35 @@
 #pragma mark UIAlertDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    [self.slideNavigationController popViewControllerAnimated:YES];
+    if (buttonIndex == 0) {
+        return;
+    }
+    if (buttonIndex == 1) {
+        [self requestCancelOrder];
+    }
+}
+
+#pragma mark request
+
+- (void)requestCancelOrder{
+    [[CUOrderManager sharedInstance] cancelOrder:self.order user:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"取消成功"]];
+                [self.slideNavigationController popViewControllerAnimated:YES];
+            }
+            else {
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
+            }
+        }
+        else {
+            
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+    } pageName:self.pageName];
 }
 
 

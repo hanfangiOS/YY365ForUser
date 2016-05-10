@@ -94,7 +94,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     NSLog(@"%@",param);
     
     
-    [[AppCore sharedInstance].apiManager POST:URL_PhoneVerify parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:resultBlock
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:resultBlock
       forKey:@"PhoneVerify" forPageNameGroup:pageName];
 }
 
@@ -123,7 +123,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
 //    CUUserParser * parser = [[CUUserParser alloc] init];
     __block CUUserManager * blockSelf = self;
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         
 //        if (!result.hasError && ![(NSNumber *)[result.responseObject valueForKey:@"err_code"] integerValue])
         if (!result.hasError)
@@ -168,7 +168,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     __block CUUserManager * blockSelf = self;
     
-    [[AppCore sharedInstance].apiManager POST:URL_UserLogin parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
             // 赋值user数据
@@ -239,7 +239,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     CUUserParser * parser = [[CUUserParser alloc] init];
     __block CUUserManager * blockSelf = self;
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseLoginWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseLoginWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError && ![(NSNumber *)[result.responseObject valueForKey:@"err_code"] integerValue])
         {
             // 赋值user数据
@@ -270,17 +270,17 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     CUUserParser * parser = [[CUUserParser alloc] init];
     __block CUUserManager * blockSelf = self;
-    
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseLogoutWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        if (!result.hasError)
-        {
-            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorcode"];
-            if ([errorCode integerValue] != -1) {
-                // 赋值user数据
-                [blockSelf clear];
-                [blockSelf save];
-            }
-        }
+    [blockSelf clear];
+    [blockSelf save];
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseLogoutWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+//        if (!result.hasError)
+//        {
+//            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorcode"];
+//            if ([errorCode integerValue] != -1) {
+//                // 赋值user数据
+//
+//            }
+//        }
         resultBlock(request,result);
     }  forKey:URL_AfterBase forPageNameGroup:pageName];
 }
@@ -307,7 +307,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     __block CUUserManager * blockSelf = self;
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError && ![(NSNumber *)[result.responseObject valueForKey:@"err_code"] integerValue])
         {
             // 赋值user数据
@@ -350,7 +350,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     CUUserParser * parser = [[CUUserParser alloc] init];
     __block CUUserManager * blockSelf = self;
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData * result) {
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData * result) {
 
             // 赋值user数据
 //            NSString * profile = user.profile;
@@ -474,7 +474,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:@"/baseFrame/base/CheckExistPwd.jmm" parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         resultBlock(request,result);
     } forKey:@"CheckExistPwd" forPageNameGroup:pageName];
 }
@@ -540,7 +540,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
 //    __block __weak CUUserManager *blockSelf = self;
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:resultBlock forKey:@"first_set_password" forPageNameGroup:pageName];
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:resultBlock forKey:@"first_set_password" forPageNameGroup:pageName];
 }
 
 - (void)updateUser:(CUUser *)user emailAddress:(NSString *)emailAddress resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
@@ -566,7 +566,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     //    __block __weak CUUserManager *blockSelf = self;
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:resultBlock forKey:@"account_mail" forPageNameGroup:pageName];
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:resultBlock forKey:@"account_mail" forPageNameGroup:pageName];
 }
 
 - (void)getMyDiagnosisRecordsWithUser:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
@@ -586,7 +586,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
             // 赋值user数据
@@ -618,8 +618,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:@(diagnosisID) forKey:@"diagnosisID"];
     [dataParam setObjectSafely:name forKey:@"name"];
     [dataParam setObjectSafely:@(age) forKey:@"age"];
@@ -630,7 +629,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
             // 赋值user数据
@@ -656,14 +655,13 @@ SINGLETON_IMPLENTATION(CUUserManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14200 require:@"UserMemberList"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:filter.listType forKey:@"listType"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -714,8 +712,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:142001 require:@"InsertMember"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:filter.user.name forKey:@"name"];
     [dataParam setObjectSafely:filter.user.cellPhone forKey:@"phone"];
     [dataParam setObjectSafely:(filter.user.gender == CUUserGenderMale?@"男":@"女") forKey:@"sex"];
@@ -725,7 +722,9 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    NSString * s = [NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]];
+    
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -753,14 +752,13 @@ SINGLETON_IMPLENTATION(CUUserManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14202 require:@"DeleteMember"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:@(filter.user.memberId) forKey:@"memberId"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -788,8 +786,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14201 require:@"InsertMember"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:filter.user.name forKey:@"name"];
     [dataParam setObjectSafely:filter.user.cellPhone forKey:@"phone"];
     [dataParam setObjectSafely:(filter.user.gender == CUUserGenderMale?@"男":@"女") forKey:@"sex"];
@@ -800,7 +797,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -826,15 +823,14 @@ SINGLETON_IMPLENTATION(CUUserManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14101 require:@"AvatarPath"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:path forKey:@"avatarPath"];
 
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
     
-    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:NO parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         __weak __block CUUserManager * blockSelf = self;
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];

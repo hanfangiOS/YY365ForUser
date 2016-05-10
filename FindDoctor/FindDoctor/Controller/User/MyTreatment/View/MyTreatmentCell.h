@@ -17,6 +17,6 @@ typedef void(^ClickCommentBtn)(void);
 
 @property (copy,nonatomic)ClickCommentBtn    clickCommentBtn;
 
-+ (CGFloat)defaultHeight;
++ (float)kDefaultHeight;
 
 @end

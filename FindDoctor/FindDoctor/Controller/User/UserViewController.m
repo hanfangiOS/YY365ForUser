@@ -279,12 +279,12 @@
 }
 
 - (void)userInfoBackgroundAction{
-    if([CUUserManager sharedInstance].isLogin == YES){
+    if([CUUserManager sharedInstance].isLogin){
         MyInfoViewController * VC = [[MyInfoViewController alloc] initWithPageName:@"MyInfoViewController"];
         [self.slideNavigationController pushViewController:VC animated:YES];
     }else{
         LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
-        [VC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
     }
 }

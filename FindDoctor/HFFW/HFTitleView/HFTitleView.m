@@ -64,7 +64,7 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    
+
     //是否重绘
     if (self.ifRedraw == YES) {
         //手动重绘

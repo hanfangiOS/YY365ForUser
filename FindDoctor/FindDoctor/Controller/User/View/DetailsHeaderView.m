@@ -6,7 +6,7 @@
 //  Copyright © 2016年 li na. All rights reserved.
 //
 
-#define DetailsHeaderViewHeight 92
+#define DetailsHeaderViewHeight 88
 
 #import "DetailsHeaderView.h"
 #import "UIImageView+WebCache.h"
@@ -37,26 +37,36 @@
 }
 
 - (void)initSubViews{
-    self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, (DetailsHeaderViewHeight - 70)/2, 70, 70)];
+    //头像
+    self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(9, (DetailsHeaderViewHeight - 60)/2, 60, 60)];
     self.icon.layer.cornerRadius = 5.0f;
     [self addSubview:self.icon];
     self.icon.backgroundColor = [UIColor brownColor];
-    
-    self.name = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 6, self.icon.frameX + 2, kScreenWidth - self.icon.maxX - 6 - 50, 25)];
+    //朱军 教授 主治医师
+    self.name = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 8, self.icon.frameX + 10, kScreenWidth - self.icon.maxX - 8 - 50, 16)];
     self.name.font = [UIFont systemFontOfSize:12];
-    self.name.textColor = kBlueColor;
+    self.name.textColor = kBlueTextColor;
     [self addSubview:self.name];
-    
-    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 20, (DetailsHeaderViewHeight - 25)/2, 20, 25)];
-    self.arrow.image = [UIImage imageNamed:@""];
-    self.arrow.backgroundColor = [UIColor redColor];
+    //箭头
+    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, (DetailsHeaderViewHeight - 15)/2, 9, 15)];
+    self.arrow.image = [UIImage imageNamed:@"common_icon_grayArrow@2x"];
     [self addSubview:self.arrow];
-    
-    self.brief = [[UILabel alloc] initWithFrame:CGRectMake(self.name.frameX, self.name.maxY + 4, kScreenWidth - self.name.frameX - self.arrow.frameWidth - 30, 40)];
+    //
+    self.brief = [[UILabel alloc] initWithFrame:CGRectMake(self.name.frameX, self.name.maxY + 6, kScreenWidth - self.name.frameX - self.arrow.frameWidth - 30, 30)];
     self.brief.font = [UIFont systemFontOfSize:10];
-    self.brief.textColor = kLightGrayColor;
+    self.brief.textColor = kGrayTextColor;
     self.brief.numberOfLines = 2;
     [self addSubview:self.brief];
+    
+    //上线
+    UIView * topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+    topLine.backgroundColor = kblueLineColor;
+    [self addSubview:topLine];
+    
+    //下线
+    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.frameHeight - 1, kScreenWidth, 1)];
+    topLine.backgroundColor = kblueLineColor;
+    [self addSubview:bottomLine];
 }
 
 - (void)setData:(Doctor *)data{
@@ -64,7 +74,7 @@
     
     [self.icon setImageWithURL:[NSURL URLWithString:_data.avatar]];
     
-    NSString * string = [NSString stringWithFormat:@"%@  %@  %@",_data.name,_data.levelDesc,_data.grade];
+    NSString * string = [NSString stringWithFormat:@"%@ %@ %@",_data.name,_data.levelDesc,_data.grade];
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
     NSInteger length = [_data.name length];
     [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, length)];
@@ -74,6 +84,14 @@
     self.name.attributedText = AtrStr;
     
     self.brief.text = [NSString stringWithFormat:@"%@",_data.skillTreat];
+    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:self.brief.text];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    paragraphStyle.firstLineHeadIndent = 0;
+    paragraphStyle.lineSpacing = 6;
+    
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [attributedString length])];
+    self.brief.attributedText = attributedString;
 }
 
 

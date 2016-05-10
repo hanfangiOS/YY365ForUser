@@ -17,6 +17,6 @@ typedef void(^ClickPayBtn)(void);
 
 @property (copy,nonatomic)ClickPayBtn       clickPayBtn;
 
-+ (CGFloat)defaultHeight;
++ (float)kDefaultHeight;
 
 @end

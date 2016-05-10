@@ -43,15 +43,13 @@
 }
 
 - (void)loadContentView{
-    self.contentTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    self.contentTableView.tableFooterView = [UIView new];
     self.contentTableView.backgroundColor = kCommonBackgroundColor;
 }
 
 #pragma mark tableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [MyTreatmentCell defaultHeight];
+    return [MyTreatmentCell kDefaultHeight];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
