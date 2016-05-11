@@ -41,7 +41,7 @@
     [self initData];
     [super viewDidLoad];
     
-    self.title = @"添加成员";
+    self.title = @"新增成员";
     
     [self initSubViews];
 }
@@ -61,6 +61,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = kCommonBackgroundColor;
     [self.contentView addSubview:self.tableView];
 }
 
@@ -84,22 +85,28 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
+        //姓名～电话
         if (indexPath.row != 4) {
-            return 65;
+            return 54;
         }
-        return 25;
+        //那点白色块
+        return 22;
     }
     if (indexPath.section == 1) {
+        //按钮
         return 85;
     }
     if (indexPath.section == 2) {
-        return 60;
+        //添加新的成员，可以使用XXXXXX
+        return 54;
     }
+    //从未用到
     return 44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
+        //姓名～电话
         case 0:
         {
             if (indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 3) {
@@ -108,28 +115,31 @@
                 cell.textField.tag = [[NSString stringWithFormat:@"200%ld%ld",(long)indexPath.section,(long)indexPath.row] integerValue];
                 cell.textField.delegate = self;
                 switch (cell.textField.tag) {
+                    //姓名
                     case 20000:
                     {
                         cell.textField.text = self.user.name;
                         cell.Label.text = @"姓名";
-                        cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+                        cell.icon.image = [UIImage imageNamed:@"member_icon_name"];
                     }
                         break;
+                    //年龄
                     case 20002:
                     {
                         if (self.user.age != 0) {
-                            cell.textField.text = [NSString stringWithFormat:@"%d",self.user.age];
+                            cell.textField.text = [NSString stringWithFormat:@"%ld",(long)self.user.age];
                         }
                         cell.Label.text = @"年龄";
-                        cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+                        cell.icon.image = [UIImage imageNamed:@"member_icon_age"];
                         cell.textField.keyboardType = UIKeyboardTypeNumberPad;
                     }
                         break;
+                    //电话
                     case 20003:
                     {
                         cell.textField.text = self.user.cellPhone;
                         cell.Label.text = @"电话";
-                        cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+                        cell.icon.image = [UIImage imageNamed:@"member_icon_phone"];
                         cell.textField.keyboardType = UIKeyboardTypePhonePad;
                     }
                         break;
@@ -138,34 +148,45 @@
                 }
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
+            //性别
             }else if (indexPath.row == 1){
                 AddMemberPickerCell * cell = [[AddMemberPickerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddMemberPickerCell"];
                 cell.Label.text = @"性别";
-                cell.icon.image = [UIImage imageNamed:@"myAccountBigButtonImage"];
+                cell.icon.image = [UIImage imageNamed:@"member_icon_sex"];
                 [cell.btn addTarget:self action:@selector(chooseSexAction) forControlEvents:UIControlEventTouchUpInside];
                 [cell.btn setTitle:[self.sexArray objectAtIndexSafely:self.selectedIndex] forState:UIControlStateNormal];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
             }else{
+                //最下面那点空白
                 UITableViewCell * cell = [[UITableViewCell alloc] init];
+                UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 22 - 1, kScreenWidth, 1)];
+                bottomLine.backgroundColor = kblueLineColor;
+                [cell addSubview:bottomLine];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
             }
         }
             break;
+        //按钮
         case 1:
         {
+
             AddMemberBtnCell * cell = [[AddMemberBtnCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddMemberBtnCell"];
             [cell.btn addTarget:self action:@selector(saveAction) forControlEvents:UIControlEventTouchUpInside];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = kCommonBackgroundColor;
             return cell;
         }
             break;
+        //添加新的成员，可以使用XXXXXX
         case 2:
         {
             AddMemberLabelCell * cell = [[AddMemberLabelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddMemberLabelCell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = kCommonBackgroundColor;
             return cell;
+            
         }
             break;
         default:{
@@ -188,22 +209,32 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    // 电话
+    if (textField.tag == 20003) {
+        if ([textField.text length] > 10) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (void)textFieldChange:(UITextField *)textField{
     textField.text = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     switch (textField.tag) {
-            //姓名
+        //姓名
         case 20000:
         {
             self.user.name = textField.text;
         }
             break;
-            //年龄
+        //年龄
         case 20002:
         {
              self.user.age = [textField.text integerValue];
         }
             break;
-            //电话
+        //电话
         case 20003:
         {
              self.user.cellPhone = textField.text;

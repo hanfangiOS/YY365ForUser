@@ -20,10 +20,11 @@
 }
 
 - (void)initSubViews{
-    self.btn = [[UIButton alloc] initWithFrame:CGRectMake(24, 20, kScreenWidth - 24 * 2, 40)];
+    self.btn = [[UIButton alloc] initWithFrame:CGRectMake(24, 15, kScreenWidth - 24 * 2, 36)];
     [self.btn setTitle:@"保存" forState:UIControlStateNormal];
     [self.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.btn.backgroundColor = [UIColor orangeColor];
+    self.btn.backgroundColor = UIColorFromHex(0xf1a80b);
+    self.btn.titleLabel.font = [UIFont systemFontOfSize:15];
     self.btn.layer.cornerRadius = 5.0f;
     [self addSubview:self.btn];
 }

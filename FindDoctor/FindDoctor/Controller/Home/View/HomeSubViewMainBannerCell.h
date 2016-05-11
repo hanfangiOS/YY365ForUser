@@ -13,6 +13,4 @@
 
 @property (nonatomic, strong) Banner * data;
 
-+ (CGFloat)defaultHeight;
-
 @end

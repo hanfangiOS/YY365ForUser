@@ -280,31 +280,37 @@
 - (void)textFieldChange:(UITextField *)textField{
     textField.text = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     switch (textField.tag) {
+        //优医ID
         case 10010:
         {
             self.tempData.userId = [textField.text integerValue];
         }
             break;
+        //昵称
         case 10011:
         {
             self.tempData.nickname = textField.text;
         }
             break;
+        //姓名
         case 10020:
         {
             self.tempData.name = textField.text;
         }
             break;
+        //性别
         case 10021:
         {
             self.tempData.gender = [textField.text integerValue];
         }
             break;
+        //年龄
         case 10022:
         {
             self.tempData.age = [textField.text integerValue];
         }
             break;
+        //电话
         case 10023:
         {
             self.tempData.cellPhone = textField.text;
