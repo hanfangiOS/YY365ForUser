@@ -123,19 +123,20 @@
     
     //名医馆
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, self.contentView.frameHeight - 60) style:UITableViewStylePlain];
+    self.tableView.backgroundColor = kCommonBackgroundColor;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.contentView addSubview:self.tableView];
 
+    //headerView 除优医馆之外的view都在里面
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
-    
+    self.headerView.backgroundColor = kCommonBackgroundColor;
     //主轮播图
     self.mainBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth/2)];
     self.mainBannerView.delegate = self;
     self.mainBannerView.dataSource = self;
-    self.mainBannerView.backgroundColor = [UIColor blueColor];
     [self.headerView addSubview:self.mainBannerView];
     
     //科室
@@ -166,7 +167,6 @@
     self.secondBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, self.self.goodDoctorCollectionView.maxY + 10 * VFixRatio6, kScreenWidth, 85)];
     self.secondBannerView.delegate = self;
     self.secondBannerView.dataSource = self;
-    self.secondBannerView.backgroundColor = [UIColor greenColor];
     [self.headerView addSubview:self.secondBannerView];
     
     UIView * lineTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
@@ -227,6 +227,9 @@
     UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 32 - 1, kScreenWidth, 1)];
     bottomLine.backgroundColor = kblueLineColor;
     [self.loadMoreContainerView addSubview:bottomLine];
+    
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, - 100, 0);
     
 }
 
@@ -478,7 +481,7 @@
     
 }
 
-//好评诊所
+//轮播图
 - (void)postRequestActivityBanner{
    [[CommonManager sharedInstance] getActivityBannerWithFilter:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
        

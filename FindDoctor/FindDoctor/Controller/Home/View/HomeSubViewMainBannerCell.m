@@ -12,11 +12,6 @@
 
 @implementation HomeSubViewMainBannerCell
 
-//+ (CGFloat)defaultHeight
-//{
-//    return kMyDiagnosisRecordsCellHeight ;
-//}
-
 - (void)setData:(Banner *)data{
     _data = data;
     self.URL = _data.imagePath;
