@@ -444,6 +444,8 @@
 		BC3ED4B21CC614D700495025 /* AccountSecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3ED4AE1CC614D700495025 /* AccountSecurityViewController.m */; };
 		BC3ED4B31CC614D700495025 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3ED4B01CC614D700495025 /* SettingViewController.m */; };
 		BC4DE6BE1CB4F94C00D223B0 /* CityChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4DE6BD1CB4F94C00D223B0 /* CityChooseButton.m */; };
+		BC602C9D1CE2DC6D00899E4E /* member_icon_gender_f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC602C9B1CE2DC6D00899E4E /* member_icon_gender_f@2x.png */; };
+		BC602C9E1CE2DC6D00899E4E /* member_icon_gender_m@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC602C9C1CE2DC6D00899E4E /* member_icon_gender_m@2x.png */; };
 		BC80B20B1C40C76C00A7445A /* LoginTextFeildView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC80B20A1C40C76C00A7445A /* LoginTextFeildView.m */; };
 		BC883BD81C74430000333B47 /* DoctorSelectOrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC883BD71C74430000333B47 /* DoctorSelectOrderTimeController.m */; };
 		BC8E36C61C27C69400304637 /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8E36C51C27C69400304637 /* TitleView.m */; };
@@ -1375,6 +1377,8 @@
 		BC3ED4B01CC614D700495025 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		BC4DE6BC1CB4F94B00D223B0 /* CityChooseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityChooseButton.h; sourceTree = "<group>"; };
 		BC4DE6BD1CB4F94C00D223B0 /* CityChooseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityChooseButton.m; sourceTree = "<group>"; };
+		BC602C9B1CE2DC6D00899E4E /* member_icon_gender_f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "member_icon_gender_f@2x.png"; sourceTree = "<group>"; };
+		BC602C9C1CE2DC6D00899E4E /* member_icon_gender_m@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "member_icon_gender_m@2x.png"; sourceTree = "<group>"; };
 		BC80B2091C40C76C00A7445A /* LoginTextFeildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTextFeildView.h; sourceTree = "<group>"; };
 		BC80B20A1C40C76C00A7445A /* LoginTextFeildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextFeildView.m; sourceTree = "<group>"; };
 		BC883BD61C74430000333B47 /* DoctorSelectOrderTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSelectOrderTimeController.h; sourceTree = "<group>"; };
@@ -2742,6 +2746,8 @@
 		7F0E92A91CE2C968001D5FA3 /* member */ = {
 			isa = PBXGroup;
 			children = (
+				BC602C9B1CE2DC6D00899E4E /* member_icon_gender_f@2x.png */,
+				BC602C9C1CE2DC6D00899E4E /* member_icon_gender_m@2x.png */,
 				7F0E92AA1CE2C968001D5FA3 /* member_icon_age@2x.png */,
 				7F0E92AB1CE2C968001D5FA3 /* member_icon_deleteMember@2x.png */,
 				7F0E92AC1CE2C968001D5FA3 /* member_icon_name@2x.png */,
@@ -4871,6 +4877,7 @@
 				7FED20621CDB4F6A004639DE /* comment_star_yellow@2x.png in Resources */,
 				7FED206D1CDB4F6A004639DE /* common_deleteButton_red_nor@2x.png in Resources */,
 				7FED20751CDB4F6A004639DE /* doctor_appointmentAvailable .png in Resources */,
+				BC602C9E1CE2DC6D00899E4E /* member_icon_gender_m@2x.png in Resources */,
 				7FED20B31CDB4F6A004639DE /* navbar_search_icon_search@2x.png in Resources */,
 				7FED20651CDB4F6A004639DE /* comment_good@2x.png in Resources */,
 				7FED20C81CDB4F6A004639DE /* tabbar_vip_sel@2x.png in Resources */,
@@ -4928,6 +4935,7 @@
 				7F0331BC1CDC9F4300A96F47 /* mySpace_myClinic@2x.png in Resources */,
 				7FED20771CDB4F6A004639DE /* doctor_btn_add_nor@2x.png in Resources */,
 				7FED20B11CDB4F6A004639DE /* navbar_close_button@2x.png in Resources */,
+				BC602C9D1CE2DC6D00899E4E /* member_icon_gender_f@2x.png in Resources */,
 				7FED20C51CDB4F6A004639DE /* tabbar_nearby_nor@2x.png in Resources */,
 				7FED20A11CDB4F6A004639DE /* main_icon_guke@3x.png in Resources */,
 				7FED20641CDB4F6A004639DE /* comment_flag_selected@2x.png in Resources */,

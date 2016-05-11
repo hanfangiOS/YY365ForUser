@@ -48,11 +48,7 @@
     _contentTextFeild = [[UITextField alloc]initWithFrame:CGRectMake(_titleLabel.maxX+10,(self.frameHeight - textSize)/2, [self frameWidth] - _titleLabel.maxX -10, textSize)];
     _contentTextFeild.font = [UIFont systemFontOfSize:15];
     _contentTextFeild.textAlignment = NSTextAlignmentRight;
-//    _contentTextFeild.placeholder = @"0";
-//    [_contentTextFeild setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
     _contentTextFeild.keyboardType = UIKeyboardTypeNumberPad;
-//    _contentTextFeild.tintColor = [UIColor whiteColor];
-//    _contentTextFeild.textColor = [UIColor whiteColor];
     [self addSubview:_contentTextFeild];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(imageViewWidth + 10, [self frameHeight], [self frameWidth] - (imageViewWidth + 10), 2)];
