@@ -13,6 +13,8 @@
 #import "NewsListController.h"
 #import "NewsListModel.h"
 #import "AppDelegate.h"
+#import "SearchResultListModel.h"
+#import "SearchResultViewController.h"
 
 @interface HomeViewController ()<UITextFieldDelegate,HomeSubViewController_SearchDelegate>{
     CityChooseButton    *_cityButton;
@@ -196,7 +198,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

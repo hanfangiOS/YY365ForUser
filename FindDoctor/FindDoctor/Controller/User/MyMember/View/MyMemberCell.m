@@ -6,7 +6,7 @@
 //  Copyright © 2016年 li na. All rights reserved.
 //
 
-#define MyMemberCellHeight 50
+#define MyMemberCellHeight 44
 
 #import "MyMemberCell.h"
 

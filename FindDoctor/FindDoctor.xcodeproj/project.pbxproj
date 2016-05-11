@@ -175,7 +175,7 @@
 		7F0331BD1CDC9F4300A96F47 /* mySpace_myComment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331B01CDC9F4300A96F47 /* mySpace_myComment@2x.png */; };
 		7F0331BE1CDC9F4300A96F47 /* mySpace_myDoctor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331B11CDC9F4300A96F47 /* mySpace_myDoctor@2x.png */; };
 		7F0331BF1CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331B21CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png */; };
-		7F0331C01CDC9F4300A96F47 /* mySpace_topBackground@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331B31CDC9F4300A96F47 /* mySpace_topBackground@3x.png */; };
+		7F0331C01CDC9F4300A96F47 /* mySpace_topBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331B31CDC9F4300A96F47 /* mySpace_topBackground@2x.png */; };
 		7F0331D41CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D01CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png */; };
 		7F0331D51CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D11CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png */; };
 		7F0331D61CDCA72000A96F47 /* mySpace_icon_myMember@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D21CDCA72000A96F47 /* mySpace_icon_myMember@2x.png */; };
@@ -972,7 +972,7 @@
 		7F0331B01CDC9F4300A96F47 /* mySpace_myComment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_myComment@2x.png"; sourceTree = "<group>"; };
 		7F0331B11CDC9F4300A96F47 /* mySpace_myDoctor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_myDoctor@2x.png"; sourceTree = "<group>"; };
 		7F0331B21CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_rightTopNumBackground@3x.png"; sourceTree = "<group>"; };
-		7F0331B31CDC9F4300A96F47 /* mySpace_topBackground@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_topBackground@3x.png"; sourceTree = "<group>"; };
+		7F0331B31CDC9F4300A96F47 /* mySpace_topBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_topBackground@2x.png"; sourceTree = "<group>"; };
 		7F0331D01CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myAccount@2x.png"; sourceTree = "<group>"; };
 		7F0331D11CDCA72000A96F47 /* mySpace_icon_myAppointment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myAppointment@2x.png"; sourceTree = "<group>"; };
 		7F0331D21CDCA72000A96F47 /* mySpace_icon_myMember@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySpace_icon_myMember@2x.png"; sourceTree = "<group>"; };
@@ -2733,7 +2733,7 @@
 				7F0331B01CDC9F4300A96F47 /* mySpace_myComment@2x.png */,
 				7F0331B11CDC9F4300A96F47 /* mySpace_myDoctor@2x.png */,
 				7F0331B21CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png */,
-				7F0331B31CDC9F4300A96F47 /* mySpace_topBackground@3x.png */,
+				7F0331B31CDC9F4300A96F47 /* mySpace_topBackground@2x.png */,
 				BC08862D1CE05A7F00CFFA60 /* setting */,
 			);
 			path = MySpace;
@@ -4955,7 +4955,7 @@
 				7FED20B51CDB4F6A004639DE /* navbar_titlelogo@2x.png in Resources */,
 				7FED207B1CDB4F6A004639DE /* doctor_detail_map_btn_nor@2x.png in Resources */,
 				7FED206E1CDB4F6A004639DE /* common_inactivePoint@2x.png in Resources */,
-				7F0331C01CDC9F4300A96F47 /* mySpace_topBackground@3x.png in Resources */,
+				7F0331C01CDC9F4300A96F47 /* mySpace_topBackground@2x.png in Resources */,
 				7FA561FF1CBDE3020092D978 /* MJRefresh.bundle in Resources */,
 				7FED207C1CDB4F6A004639DE /* doctor_detail_map_btn_sel@2x.png in Resources */,
 				D405D8171B7DF0300043FD76 /* DoctorPortrait@2x.png in Resources */,

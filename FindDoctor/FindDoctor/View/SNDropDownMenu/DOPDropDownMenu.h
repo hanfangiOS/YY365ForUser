@@ -86,6 +86,8 @@
  */
 - (NSIndexPath *)menu:(DOPDropDownMenu *)menu willSelectRowAtIndexPath:(DOPIndexPath *)indexPath;
 
+- (void)didClickBackgroundWithMenu:(DOPDropDownMenu *)menu;
+
 @end
 
 #pragma mark - interface

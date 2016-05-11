@@ -205,11 +205,8 @@
         case 0:
         {
             self.currSearchStr = [self.dataArray objectAtIndexSafely:indexPath.row];
-            SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
-            listModel.filter.keyword = self.currSearchStr;
-            SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
-            [self.slideNavigationController pushViewController:vc animated:YES];
-        }
+            [self searchClickWithString:self.currSearchStr];
+        }break;
          //热搜医生
         case 1:
         {
@@ -317,6 +314,11 @@
     
     self.currSearchStr = searchStr;
     [SearchHistoryHelper saveSearchHistory:searchStr];
+    
+    SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
+    listModel.filter.keyword = self.currSearchStr;
+    SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
+    [self.slideNavigationController pushViewController:vc animated:YES];
     
     [self loadHistory];
 }

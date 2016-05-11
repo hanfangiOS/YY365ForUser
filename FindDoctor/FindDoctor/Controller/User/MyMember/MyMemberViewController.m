@@ -50,7 +50,9 @@
 }
 
 - (void)loadContentView{
-    self.contentTableView.backgroundColor = kCommonBackgroundColor;
+//    self.contentTableView.backgroundColor = kCommonBackgroundColor;
+    self.contentTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.contentTableView.tableFooterView = [[UIView alloc]init];
 }
 
 - (void)addMemberAction{
@@ -60,8 +62,23 @@
         [weakSelf triggerRefresh];
     };
     [self.slideNavigationController pushViewController:VC animated:YES];
-    
+}
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc]init];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

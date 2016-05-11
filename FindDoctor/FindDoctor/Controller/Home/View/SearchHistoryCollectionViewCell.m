@@ -28,10 +28,10 @@
 - (void)createContentView
 {
     _label = [[UILabel alloc]init];
-    _label.layer.borderColor = UIColorFromHex(0x666666).CGColor;
-    _label.textColor = UIColorFromHex(0x666666);
-    _label.layer.borderWidth = 0.5f;
-    _label.font = [UIFont systemFontOfSize:12];
+//    _label.layer.borderColor = UIColorFromHex(0x666666).CGColor;
+    _label.textColor = UIColorFromHex(Color_Hex_NavBackground);
+//    _label.layer.borderWidth = 0.5f;
+    _label.font = [UIFont systemFontOfSize:14];
     _label.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_label];
 }

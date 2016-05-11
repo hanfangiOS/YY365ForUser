@@ -470,6 +470,9 @@
 
 - (void)backgroundTapped:(UITapGestureRecognizer *)paramSender
 {
+    if (self.delegate && [_delegate respondsToSelector:@selector(didClickBackgroundWithMenu:)]) {
+        [self.delegate didClickBackgroundWithMenu:self];
+    }
     [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_leftTableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
         _show = NO;
     }];
@@ -744,8 +747,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
     if (_leftTableView == tableView) {
         BOOL haveItem = [self confiMenuWithSelectRow:indexPath.row];
         BOOL isClickHaveItemValid = self.isClickHaveItemValid ? YES : haveItem;

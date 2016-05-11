@@ -181,10 +181,10 @@ SINGLETON_IMPLENTATION(CommonManager);
                 [dataDict setObject:resultListRegion forKey:@"regionOption"];
                 
                 NSMutableArray *resultListSymptom= [NSMutableArray array];
-                SymptomOption *symptomOption = [[SymptomOption alloc]init];
-                symptomOption.ID = -1;
-                symptomOption.name = @"全部病症";
-                [resultListSymptom addObject:symptomOption];
+//                SymptomOption *symptomOption = [[SymptomOption alloc]init];
+//                symptomOption.ID = -1;
+//                symptomOption.name = @"全部病症";
+//                [resultListSymptom addObject:symptomOption];
                 [recListSymptom enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     SymptomOption *symptomOption = [[SymptomOption alloc]init];
                     symptomOption.ID = [[[obj dictionaryForKeySafely:@"symptomOption"]valueForKey:@"id"] integerValue];
@@ -199,6 +199,12 @@ SINGLETON_IMPLENTATION(CommonManager);
                             subOption.name = [dic stringForKeySafely:@"name"];
                             [subResultArr addObject:subOption];
                         }
+                    }
+                    if(subResultArr.count){
+                        SymptomSubOption *subOption = [[SymptomSubOption alloc]init];
+                        subOption.ID = -1;
+                        subOption.name = @"全部";
+                        [subResultArr insertObject:subOption atIndex:0];
                     }
                     symptomOption.symptomSubOptionArray = subResultArr;
                     [resultListSymptom addObject:symptomOption];
