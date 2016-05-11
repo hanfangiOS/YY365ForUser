@@ -90,14 +90,16 @@
     self.address.font = [UIFont systemFontOfSize:12];
     [self.infoView addSubview:self.address];
     //立即支付
-    self.payBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.address.frameX, self.address.maxY + 12, 60, 20)];
-    [self.payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
+    self.payBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, MyAppointmentCellHeight - 25 ,kScreenWidth, 25)];
+    [self.payBtn setTitle:@">> 支 付" forState:UIControlStateNormal];
     self.payBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     [self.payBtn addTarget:self action:@selector(payAction) forControlEvents:UIControlEventTouchUpInside];
-    self.payBtn.backgroundColor = UIColorFromHex(0xf1a90e);
-    [self.payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.payBtn setTitleColor:UIColorFromHex(0xf1a90e) forState:UIControlStateNormal];
     self.payBtn.layer.cornerRadius = 2.0f;
-    [self.infoView addSubview:self.payBtn];
+    [self addSubview:self.payBtn];
+    UIView * topLineForBtn = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
+    topLineForBtn.backgroundColor = kblueLineColor;
+    [self.payBtn addSubview: topLineForBtn];
     //箭头
     self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, (self.infoView.frameHeight - 15)/2, 9, 15)];
     self.arrow.image = [UIImage imageNamed:@"common_icon_grayArrow@2x"];
@@ -108,7 +110,7 @@
     topLine.backgroundColor = kblueLineColor;
     [self addSubview: topLine];
     //下线
-    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
+    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, MyAppointmentCellHeight - 0.5, kScreenWidth, 0.5)];
     bottomLine.backgroundColor = kblueLineColor;
     [self addSubview: bottomLine];
     
