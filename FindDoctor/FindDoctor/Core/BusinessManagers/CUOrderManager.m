@@ -39,8 +39,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+
     [dataParam setObjectSafely:@(releaseID) forKey:@"releaseID"];
     [dataParam setObjectSafely:@(diagnosisID) forKey:@"diagnosisID"];
     [dataParam setObjectSafely:@(orderID) forKey:@"orderID"];
@@ -96,8 +96,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:@(diagnosisID) forKey:@"diagnosisID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -149,8 +148,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+
     [dataParam setObjectSafely:@(order.service.patience.memberId) forKey:@"userID"];
     [dataParam setObjectSafely:order.service.patience.name forKey:@"userName"];
     [dataParam setObjectSafely:@(order.service.patience.age) forKey:@"userAge"];
@@ -221,8 +220,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:[CUUserManager sharedInstance].user.token forKey:@"token"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+
     [dataParam setObjectSafely:@(order.diagnosisID) forKey:@"diagnosisID"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -277,8 +276,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -573,8 +571,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:@(diagnosisID) forKey:@"diagnosisID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -708,8 +705,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderNotPayListtrack"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-//    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+
     [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
     [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -774,8 +771,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayNotMeetList"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+
     [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
     [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -831,8 +828,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetList"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+
     [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
     [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
@@ -887,8 +884,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderNotPayDetail"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+
     [dataParam setObjectSafely:@(filter.diagnosisID) forKey:@"orderNo"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -953,8 +950,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetDetail"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+
     [dataParam setObjectSafely:@(filter.diagnosisID) forKey:@"orderNo"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -1019,8 +1016,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:0 require:@"orderHasPayHasMeetDetail"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+
     [dataParam setObjectSafely:@(filter.diagnosisID) forKey:@"orderNo"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     

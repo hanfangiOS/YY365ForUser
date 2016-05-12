@@ -71,6 +71,7 @@
         }
         else {
             [self postRequestExitAccount];
+            [self.slideNavigationController popViewControllerAnimated:YES];
         }
     }
     

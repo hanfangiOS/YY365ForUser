@@ -23,6 +23,7 @@
 #import "CUClinicManager.h"
 #import "DoctorDetailController.h"
 #import "ClinicMainViewController.h"
+#import "MJRefresh.h"
 
 #define sectionHeaderViewHeight 30
 
@@ -126,7 +127,6 @@
     self.tableView.backgroundColor = kCommonBackgroundColor;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.contentView addSubview:self.tableView];
 
@@ -201,36 +201,42 @@
     self.headerView.frame = CGRectMake(0, 0, kScreenWidth, paddingView.maxY);
     [self.tableView setTableHeaderView:self.headerView];
     
+    
+    
     //查看更多按钮背景
-    self.loadMoreContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 32)];
-    self.loadMoreContainerView.backgroundColor = [UIColor whiteColor];
-    self.tableView.tableFooterView = self.loadMoreContainerView;
-    
-    UIButton * moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(36, 5, kScreenWidth - 36 * 2, 32 - 5 * 2)];\
-    [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
-    [moreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
-    [moreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
-    moreBtn.layer.borderColor = kLightGrayColor.CGColor;
-    moreBtn.layer.borderWidth = 0.5;
-    moreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-    moreBtn.tag = 12345;
-    [self.loadMoreContainerView addSubview:moreBtn];
-    
-    UIActivityIndicatorView * indicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake((self.loadMoreContainerView.frameWidth - 10)/2, (self.loadMoreContainerView.frameHeight - 10)/2, 10, 10)];
-    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    indicator.tag = 67890;
-    [indicator setHidesWhenStopped:YES];
-    [indicator stopAnimating];
-    [self.loadMoreContainerView addSubview:indicator];
-    
-    
-    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 32 - 1, kScreenWidth, 1)];
-    bottomLine.backgroundColor = kblueLineColor;
-    [self.loadMoreContainerView addSubview:bottomLine];
-    
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, - 100, 0);
-    
+    MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreAction)];
+    [footer setTitle:@"正在加载" forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"没有更多数据了" forState:MJRefreshStateNoMoreData];
+    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+    footer.stateLabel.textColor = kGrayTextColor;
+    self.tableView.mj_footer = footer;
+    //这是加载更多那个按钮 ，可能被弃用
+//    self.loadMoreContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 32)];
+//    self.loadMoreContainerView.backgroundColor = [UIColor whiteColor];
+//    self.tableView.tableFooterView = self.loadMoreContainerView;
+//    
+//    UIButton * moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(36, 5, kScreenWidth - 36 * 2, 32 - 5 * 2)];
+//    [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
+//    [moreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
+//    [moreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
+//    moreBtn.layer.borderColor = kLightGrayColor.CGColor;
+//    moreBtn.layer.borderWidth = 0.5;
+//    moreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
+//    moreBtn.tag = 12345;
+//    [self.loadMoreContainerView addSubview:moreBtn];
+//    
+//    UIActivityIndicatorView * indicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake((self.loadMoreContainerView.frameWidth - 10)/2, (self.loadMoreContainerView.frameHeight - 10)/2, 10, 10)];
+//    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+//    indicator.tag = 67890;
+//    [indicator setHidesWhenStopped:YES];
+//    [indicator stopAnimating];
+//    [self.loadMoreContainerView addSubview:indicator];
+//    
+//    
+//    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 32 - 1, kScreenWidth, 1)];
+//    bottomLine.backgroundColor = kblueLineColor;
+//    [self.loadMoreContainerView addSubview:bottomLine];
+
 }
 
 - (void)loadMoreAction{
@@ -455,25 +461,26 @@
 //优医馆
 - (void)postRequestFamousDoctorClinic{
     
-    UIButton * btn = [self.loadMoreContainerView viewWithTag:12345];
-    btn.hidden = YES;
+//    UIButton * btn = [self.loadMoreContainerView viewWithTag:12345];
+//    btn.hidden = YES;
     
-    UIActivityIndicatorView * indicator = [self.loadMoreContainerView viewWithTag:67890];
-    [indicator startAnimating];
+//    UIActivityIndicatorView * indicator = [self.loadMoreContainerView viewWithTag:67890];
+//    [indicator startAnimating];
     
     DoctorFilter * filter = [[DoctorFilter alloc] init];
     filter.rows = 3;
     filter.total = self.homeModel.famousDoctorList.count;
     [[CUDoctorManager sharedInstance] getFamousDoctorClinicWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         
-        btn.hidden = NO;
-        [indicator stopAnimating];
+//        btn.hidden = NO;
+//        [indicator stopAnimating];
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
                 [self.homeModel.famousDoctorList addObjectsFromArray:result.parsedModelObject];
                 [self.tableView reloadData];
+                [self.tableView.mj_footer endRefreshing];
             }
         }
         

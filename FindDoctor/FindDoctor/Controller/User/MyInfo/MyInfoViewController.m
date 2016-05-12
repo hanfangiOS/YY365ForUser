@@ -58,7 +58,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self postRequestGetUserInfo];
 }
 
 - (void)initData{
@@ -324,39 +323,18 @@
 
 #pragma mark - postRequest
 
-//获取个人信息
-- (void)postRequestGetUserInfo{
-    __weak __block typeof(self)weakSelf = self;
-    [[CUUserManager sharedInstance] getUserInfo:[CUUserManager sharedInstance].user.token resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        [weakSelf hideProgressView];
-        if (!result.hasError) {
-            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
-            
-            if (![errorCode integerValue]) {
-                self.tempData = [self copyForUser];
-                [self.tableView reloadData];
-            }else{
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
-            }
-        }else{
-            [TipHandler showTipOnlyTextWithNsstring:@"网络连接错误"];
-        }
-    }];
-}
-
 //14100 修改个人资料
 - (void)postRequestUpdateyUserInfo{
     [self showProgressView];
     __weak __block typeof(self)weakSelf = self;
     [[CUUserManager sharedInstance] updateUserInfo:self.tempData resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        
+        [weakSelf hideProgressView];
         if (!result.hasError) {
             NSNumber * errorCode = (NSNumber *)[result.responseObject objectForKeySafely:@"errorCode"];
             
             if (![errorCode integerValue]) {
-                [weakSelf postRequestGetUserInfo];
+                [TipHandler showTipOnlyTextWithNsstring:@"修改成功"];
             }else{
-                [weakSelf hideProgressView];
                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
             }
         }else{

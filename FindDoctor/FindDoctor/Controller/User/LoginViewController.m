@@ -185,7 +185,6 @@
 {
     _codeLabel.text = @"获取验证码";
     _codeButton.enabled = YES;
-    //    _codeField.text = @"";
 }
 
 - (void)startTimer {
@@ -252,8 +251,6 @@
 
 - (void)endEdit{
     [self.contentView endEditing:YES];
-    //    [userTextFeildView.contentTextFeild resignFirstResponder];
-    //    [passwordTextFeildView.contentTextFeild resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

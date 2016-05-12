@@ -264,8 +264,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:99999 require:@"ExitAccount"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     CUUserParser * parser = [[CUUserParser alloc] init];
@@ -301,8 +300,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:[CUUserManager sharedInstance].user.cellPhone forKey:@"phone"];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -332,18 +330,16 @@ SINGLETON_IMPLENTATION(CUUserManager);
 - (void)updateUserInfo:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
     // param
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14100 require:@"PersonalProfile"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14100 require:@"UpdateUserProfile"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
 
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:user.nickname forKey:@"nickname"];
     [dataParam setObjectSafely:user.name forKey:@"name"];
     [dataParam setObjectSafely:@(user.gender) forKey:@"sex"];
     [dataParam setObjectSafely:@(user.age) forKey:@"age"];
     [dataParam setObjectSafely:user.cellPhone forKey:@"phone"];
-    [dataParam setObjectSafely:user.nickname forKey:@"nickname"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -560,8 +556,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [dataParam setObjectSafely:user.cellPhone forKey:@"phone"];
     [dataParam setObjectSafely:user.codetoken forKey:@"codetoken"];
     [dataParam setObjectSafely:emailAddress forKey:@"newemail"];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -579,8 +574,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
-    //    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(19) forKey:@"accID"];
+        [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     

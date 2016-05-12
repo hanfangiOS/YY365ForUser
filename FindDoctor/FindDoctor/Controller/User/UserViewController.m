@@ -62,9 +62,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"我的空间";
-//    [self setNavigationBarBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.01]]];
-//    [self.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
     self.navigationBar.hidden = YES;
     
     UIView *navView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kDefaultNavigationBarHeight)];
@@ -73,7 +70,7 @@
     _navViewBG.backgroundColor = UIColorFromHex(Color_Hex_NavBackground);
     _navViewBG.alpha = 0;
     [navView addSubview:_navViewBG];
-    UIButton *btn = [self addRightButtonItemWithImage:[UIImage imageNamed:@"mySpace_msg@2x"] action:@selector(messageAction)];
+    UIButton *btn = [self addRightButtonItemWithImage:[UIImage imageNamed:@"mySpace_msg"] action:@selector(messageAction)];
     btn.frame = CGRectMake(kScreenWidth - btn.frameWidth - 12, _navViewBG.frameHeight - btn.frameHeight, btn.frameWidth, btn.frameHeight);
     [navView addSubview:btn];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, _navViewBG.frameHeight - btn.frameHeight + 2, kScreenWidth, 40)];
@@ -95,11 +92,9 @@
     self.tableView.tableFooterView = [UIView new];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-//    self.tableView.bounces = NO;
     [self.contentView addSubview:self.tableView];
     
     self.headerView = [[UserHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 224)];
-//    self.headerView.layer.contents = (id)[UIImage imageNamed:@"mySpace_topBackground@3x"].CGImage;
     
     self.tableView.tableHeaderView = self.headerView;
     
@@ -181,34 +176,67 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    //我的约诊 ～消费记录
     if (indexPath.section == 0) {
         switch (indexPath.row) {
+            //我的约诊
             case 0:{
-                OrderFilter * filter = [[OrderFilter alloc] init];
-                filter.user = [CUUserManager sharedInstance].user;
-                filter.orderStatus = ORDERSTATUS_UNPAID;
-                filter.total = 0;
-                filter.rows = 20;
-                MyAppointmentListModel * listModel = [[MyAppointmentListModel alloc] initWithFilter:filter];
-                MyAppointmentController * VC = [[MyAppointmentController alloc] initWithPageName:@"MyAppointmentController" listModel:listModel];
-                [self.slideNavigationController pushViewController:VC animated:YES];
+                
+                if([CUUserManager sharedInstance].user.token != nil && ![[CUUserManager sharedInstance].user.token isEqualToString:@""]){
+                    //已登录
+                    OrderFilter * filter = [[OrderFilter alloc] init];
+                    filter.user = [CUUserManager sharedInstance].user;
+                    filter.orderStatus = ORDERSTATUS_UNPAID;
+                    filter.total = 0;
+                    filter.rows = 20;
+                    MyAppointmentListModel * listModel = [[MyAppointmentListModel alloc] initWithFilter:filter];
+                    MyAppointmentController * VC = [[MyAppointmentController alloc] initWithPageName:@"MyAppointmentController" listModel:listModel];
+                    [self.slideNavigationController pushViewController:VC animated:YES];
+                }else{
+                    //未登录
+                    LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+                    [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+                    [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
+                }
             }
                 break;
+            //就诊记录
             case 1:{
-                OrderFilter * filter = [[OrderFilter alloc] init];
-                filter.user = [CUUserManager sharedInstance].user;
-                filter.orderStatus = ORDERSTATUS_FINISHED;
-                filter.total = 0;
-                filter.rows = 20;
-                MyTreatmentListModel * listModel = [[MyTreatmentListModel alloc]initWithFilter:filter];
-                MyTreatmentController * VC = [[MyTreatmentController alloc]initWithPageName:@"MyTreatmentController" listModel:listModel];
-                [self.slideNavigationController  pushViewController:VC animated:YES];
+                
+                if([CUUserManager sharedInstance].user.token != nil && ![[CUUserManager sharedInstance].user.token isEqualToString:@""]){
+                    //已登录
+                    OrderFilter * filter = [[OrderFilter alloc] init];
+                    filter.user = [CUUserManager sharedInstance].user;
+                    filter.orderStatus = ORDERSTATUS_FINISHED;
+                    filter.total = 0;
+                    filter.rows = 20;
+                    MyTreatmentListModel * listModel = [[MyTreatmentListModel alloc]initWithFilter:filter];
+                    MyTreatmentController * VC = [[MyTreatmentController alloc]initWithPageName:@"MyTreatmentController" listModel:listModel];
+                    [self.slideNavigationController  pushViewController:VC animated:YES];
+                }else{
+                    //未登录
+                    LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+                    [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+                    [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
+                }
             }
                 break;
+            //消费记录
             case 2:{
-                MyAccountMainViewController * myAccountVC = [[MyAccountMainViewController alloc]initWithPageName:@"MyAccountMainViewController"];
-                [self.slideNavigationController pushViewController:myAccountVC animated:YES];
+                
+                
+                if([CUUserManager sharedInstance].user.token != nil && ![[CUUserManager sharedInstance].user.token isEqualToString:@""]){
+                    //已登录
+                    MyAccountMainViewController * myAccountVC = [[MyAccountMainViewController alloc]initWithPageName:@"MyAccountMainViewController"];
+                    [self.slideNavigationController pushViewController:myAccountVC animated:YES];
+                }else{
+                    //未登录
+                    LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+                    [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+                    [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
+                }
+                
+
             }
                 break;
                 
@@ -216,19 +244,31 @@
                 break;
         }
     }
-    
+    //我的成员
     if (indexPath.section == 1) {
-        UserFilter * filter = [[UserFilter alloc] init];
-        filter.listType = @"member";
         
-        MyMemberListModel * listModel = [[MyMemberListModel alloc] initWithFilter:filter];
+        if([CUUserManager sharedInstance].user.token != nil && ![[CUUserManager sharedInstance].user.token isEqualToString:@""]){
+            //已登录
+            UserFilter * filter = [[UserFilter alloc] init];
+            filter.listType = @"member";
+            
+            MyMemberListModel * listModel = [[MyMemberListModel alloc] initWithFilter:filter];
+            
+            MyMemberViewController * VC = [[MyMemberViewController alloc] initWithPageName:@"MyMemberViewController" listModel:listModel];
+            
+            [self.slideNavigationController pushViewController:VC animated:YES];
+        }else{
+            //未登录
+            LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+            [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+            [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
+        }
         
-        MyMemberViewController * VC = [[MyMemberViewController alloc] initWithPageName:@"MyMemberViewController" listModel:listModel];
-        
-        [self.slideNavigationController pushViewController:VC animated:YES];
+
     }
-    
+    //设置
     if (indexPath.section == 2) {
+    
         SettingViewController *VC = [[SettingViewController alloc]initWithPageName:@"SettingViewController"];
         [self.slideNavigationController pushViewController:VC  animated:YES];
     }
@@ -258,24 +298,44 @@
 }
 
 #pragma mark Action
-
+//我的医生
 - (void)myDoctorAction{
-    MyDoctorListModel *listModel = [[MyDoctorListModel alloc]initWithSortType:1];
-    MyDoctorListViewController *myDoctorVC = [[MyDoctorListViewController alloc]initWithPageName:@"MyDoctorListViewController" listModel:listModel];
-    [self.slideNavigationController  pushViewController:myDoctorVC animated:YES];
-}
+    if([CUUserManager sharedInstance].user.token != nil && ![[CUUserManager sharedInstance].user.token isEqualToString:@""]){
+        MyDoctorListModel *listModel = [[MyDoctorListModel alloc]initWithSortType:1];
+        MyDoctorListViewController *myDoctorVC = [[MyDoctorListViewController alloc]initWithPageName:@"MyDoctorListViewController" listModel:listModel];
+        [self.slideNavigationController  pushViewController:myDoctorVC animated:YES];
+    }else{
+        LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+        [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
+    }
 
+}
+//我的诊所
 - (void)myClinicAction{
-    MyClinicListModel * listModel = [[MyClinicListModel alloc]initWithSortType:1];
-    MyClinicListViewController * myClinicVC = [[MyClinicListViewController alloc]initWithPageName:@"MyClinicListViewController" listModel:listModel];
-    [self.slideNavigationController  pushViewController:myClinicVC animated:YES];
+    
+    if([CUUserManager sharedInstance].user.token != nil && ![[CUUserManager sharedInstance].user.token isEqualToString:@""]){
+        MyClinicListModel * listModel = [[MyClinicListModel alloc]initWithSortType:1];
+        MyClinicListViewController * myClinicVC = [[MyClinicListViewController alloc]initWithPageName:@"MyClinicListViewController" listModel:listModel];
+        [self.slideNavigationController  pushViewController:myClinicVC animated:YES];
+    }else{
+        LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+        [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
+    }
 }
-
+//我的评价
 - (void)myCommentAction{
-    MyCommentListModel * listModel = [[MyCommentListModel alloc] init];
-    listModel.filter.lastID = 0;
-    MyCommentViewController * VC = [[MyCommentViewController alloc]initWithPageName:@"MyCommentViewController" listModel:listModel];
-    [self.slideNavigationController  pushViewController:VC animated:YES];
+    if([CUUserManager sharedInstance].user.token != nil && ![[CUUserManager sharedInstance].user.token isEqualToString:@""]){
+        MyCommentListModel * listModel = [[MyCommentListModel alloc] init];
+        listModel.filter.lastID = 0;
+        MyCommentViewController * VC = [[MyCommentViewController alloc]initWithPageName:@"MyCommentViewController" listModel:listModel];
+        [self.slideNavigationController  pushViewController:VC animated:YES];
+    }else{
+        LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+        [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
+    }
 }
 
 - (void)userInfoBackgroundAction{
