@@ -68,6 +68,8 @@
     
     //旧密码
     self.beforePwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22, (self.beforePwdBackgroundView.frameHeight - [SettingTextFeildView defaultHeight])/2, kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"旧密码"];
+    self.
+    self.beforePwdView.imageView.image = [UIImage imageNamed:@"setting_icon_password"];
     [self.beforePwdBackgroundView addSubview:self.beforePwdView];
     //第二块View
     self.nowPwdBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0,self.beforePwdBackgroundView.maxY + 10, kScreenWidth, 150)];
@@ -75,9 +77,11 @@
     
     //新密码
     self.nowPwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22, 25, kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"新密码"];
+    self.nowPwdView.imageView.image = [UIImage imageNamed:@"setting_icon_password"];
     [self.nowPwdBackgroundView addSubview:self.nowPwdView];
     //确认密码
     self.confirmPwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22,self.nowPwdView.maxY + 25, kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"确认密码"];
+    self.confirmPwdView.imageView.image = [UIImage imageNamed:@"setting_icon_password"];
     [self.nowPwdBackgroundView addSubview:self.confirmPwdView];
 }
 
