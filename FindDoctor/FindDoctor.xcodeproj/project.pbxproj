@@ -447,6 +447,16 @@
 		BC602C9D1CE2DC6D00899E4E /* member_icon_gender_f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC602C9B1CE2DC6D00899E4E /* member_icon_gender_f@2x.png */; };
 		BC602C9E1CE2DC6D00899E4E /* member_icon_gender_m@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC602C9C1CE2DC6D00899E4E /* member_icon_gender_m@2x.png */; };
 		BC80B20B1C40C76C00A7445A /* LoginTextFeildView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC80B20A1C40C76C00A7445A /* LoginTextFeildView.m */; };
+		BC8665801CE573D80001445A /* setting_changePwd1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8665761CE573D80001445A /* setting_changePwd1@2x.png */; };
+		BC8665811CE573D80001445A /* setting_changePwd2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8665771CE573D80001445A /* setting_changePwd2@2x.png */; };
+		BC8665821CE573D80001445A /* setting_changePwd3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8665781CE573D80001445A /* setting_changePwd3@2x.png */; };
+		BC8665831CE573D80001445A /* setting_icon_aboutUyi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8665791CE573D80001445A /* setting_icon_aboutUyi@2x.png */; };
+		BC8665841CE573D80001445A /* setting_icon_AccountSafety@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC86657A1CE573D80001445A /* setting_icon_AccountSafety@2x.png */; };
+		BC8665851CE573D80001445A /* setting_icon_checkTransparent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC86657B1CE573D80001445A /* setting_icon_checkTransparent@2x.png */; };
+		BC8665861CE573D80001445A /* setting_icon_messageAlert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC86657C1CE573D80001445A /* setting_icon_messageAlert@2x.png */; };
+		BC8665871CE573D80001445A /* setting_icon_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC86657D1CE573D80001445A /* setting_icon_phone@2x.png */; };
+		BC8665881CE573D80001445A /* setting_icon_removeLocalData@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC86657E1CE573D80001445A /* setting_icon_removeLocalData@2x.png */; };
+		BC8665891CE573D80001445A /* setting_icon_SettingDefaultCity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC86657F1CE573D80001445A /* setting_icon_SettingDefaultCity@2x.png */; };
 		BC883BD81C74430000333B47 /* DoctorSelectOrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC883BD71C74430000333B47 /* DoctorSelectOrderTimeController.m */; };
 		BC8E36C61C27C69400304637 /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8E36C51C27C69400304637 /* TitleView.m */; };
 		BC8E36CD1C27D95900304637 /* CUPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8E36CC1C27D95900304637 /* CUPageControl.m */; };
@@ -1381,6 +1391,16 @@
 		BC602C9C1CE2DC6D00899E4E /* member_icon_gender_m@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "member_icon_gender_m@2x.png"; sourceTree = "<group>"; };
 		BC80B2091C40C76C00A7445A /* LoginTextFeildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTextFeildView.h; sourceTree = "<group>"; };
 		BC80B20A1C40C76C00A7445A /* LoginTextFeildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextFeildView.m; sourceTree = "<group>"; };
+		BC8665761CE573D80001445A /* setting_changePwd1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd1@2x.png"; sourceTree = "<group>"; };
+		BC8665771CE573D80001445A /* setting_changePwd2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd2@2x.png"; sourceTree = "<group>"; };
+		BC8665781CE573D80001445A /* setting_changePwd3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_changePwd3@2x.png"; sourceTree = "<group>"; };
+		BC8665791CE573D80001445A /* setting_icon_aboutUyi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_aboutUyi@2x.png"; sourceTree = "<group>"; };
+		BC86657A1CE573D80001445A /* setting_icon_AccountSafety@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_AccountSafety@2x.png"; sourceTree = "<group>"; };
+		BC86657B1CE573D80001445A /* setting_icon_checkTransparent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_checkTransparent@2x.png"; sourceTree = "<group>"; };
+		BC86657C1CE573D80001445A /* setting_icon_messageAlert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_messageAlert@2x.png"; sourceTree = "<group>"; };
+		BC86657D1CE573D80001445A /* setting_icon_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_phone@2x.png"; sourceTree = "<group>"; };
+		BC86657E1CE573D80001445A /* setting_icon_removeLocalData@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_removeLocalData@2x.png"; sourceTree = "<group>"; };
+		BC86657F1CE573D80001445A /* setting_icon_SettingDefaultCity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon_SettingDefaultCity@2x.png"; sourceTree = "<group>"; };
 		BC883BD61C74430000333B47 /* DoctorSelectOrderTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSelectOrderTimeController.h; sourceTree = "<group>"; };
 		BC883BD71C74430000333B47 /* DoctorSelectOrderTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSelectOrderTimeController.m; sourceTree = "<group>"; };
 		BC8E36C41C27C69400304637 /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
@@ -2726,6 +2746,7 @@
 			isa = PBXGroup;
 			children = (
 				7FB6EEA91CE42EE200FEC3E2 /* avatar_icon_menu@2x.png */,
+				BC8665751CE573D80001445A /* setting */,
 				7F0E92A91CE2C968001D5FA3 /* member */,
 				7F0331D81CDCA7D700A96F47 /* mySpace_icon_setting@2x.png */,
 				7F0331D01CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png */,
@@ -3576,6 +3597,23 @@
 			);
 			name = Setting;
 			path = User/Setting;
+			sourceTree = "<group>";
+		};
+		BC8665751CE573D80001445A /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				BC8665761CE573D80001445A /* setting_changePwd1@2x.png */,
+				BC8665771CE573D80001445A /* setting_changePwd2@2x.png */,
+				BC8665781CE573D80001445A /* setting_changePwd3@2x.png */,
+				BC8665791CE573D80001445A /* setting_icon_aboutUyi@2x.png */,
+				BC86657A1CE573D80001445A /* setting_icon_AccountSafety@2x.png */,
+				BC86657B1CE573D80001445A /* setting_icon_checkTransparent@2x.png */,
+				BC86657C1CE573D80001445A /* setting_icon_messageAlert@2x.png */,
+				BC86657D1CE573D80001445A /* setting_icon_phone@2x.png */,
+				BC86657E1CE573D80001445A /* setting_icon_removeLocalData@2x.png */,
+				BC86657F1CE573D80001445A /* setting_icon_SettingDefaultCity@2x.png */,
+			);
+			path = setting;
 			sourceTree = "<group>";
 		};
 		BC8E36D61C27EB4D00304637 /* User */ = {
@@ -4870,6 +4908,8 @@
 				7FED20C31CDB4F6A004639DE /* tabbar_mine_nor@2x.png in Resources */,
 				7FED20BF1CDB4F6A004639DE /* order_waitForComment@2x.png in Resources */,
 				7FED209F1CDB4F6A004639DE /* main_icon_erke@3x.png in Resources */,
+				BC8665881CE573D80001445A /* setting_icon_removeLocalData@2x.png in Resources */,
+				BC8665851CE573D80001445A /* setting_icon_checkTransparent@2x.png in Resources */,
 				7FED20BC1CDB4F6A004639DE /* order_icon_zhifubao@2x.png in Resources */,
 				BC0E84DB1C7C46DB00082AA9 /* PassGuardCtrlBundle.bundle in Resources */,
 				7FED206B1CDB4F6A004639DE /* common_btn_green_nor@2x.png in Resources */,
@@ -4913,13 +4953,16 @@
 				E1EB1E471B70A43B0048B8EB /* UMSCommentInputControlleriPad.xib in Resources */,
 				7FED20681CDB4F6A004639DE /* comment_star_grade_highlighted@2x.png in Resources */,
 				7FED20B61CDB4F6A004639DE /* navbar_titlelogo@3x.png in Resources */,
+				BC8665861CE573D80001445A /* setting_icon_messageAlert@2x.png in Resources */,
 				E1EB1E511B70A43B0048B8EB /* WeiboSDK.bundle in Resources */,
 				7FED20A71CDB4F6A004639DE /* map_icon_location@2x.png in Resources */,
+				BC8665871CE573D80001445A /* setting_icon_phone@2x.png in Resources */,
 				7F0331BD1CDC9F4300A96F47 /* mySpace_myComment@2x.png in Resources */,
 				3EDEBAA41A961C4800E72809 /* LICENSE_PLDATABASE in Resources */,
 				7FED20B01CDB4F6A004639DE /* navbar_background@2x.png in Resources */,
 				7FED20851CDB4F6A004639DE /* doctor_waitForConcen@2x.png in Resources */,
 				7FED20791CDB4F6A004639DE /* doctor_detail_collect_btn_nor@2x.png in Resources */,
+				BC8665841CE573D80001445A /* setting_icon_AccountSafety@2x.png in Resources */,
 				3EDF9E161AAAD0F400F85C44 /* common_refresh_arrow@2x.png in Resources */,
 				3ED1711E1AAF0A9A00E5B630 /* TipView.xib in Resources */,
 				7FED20781CDB4F6A004639DE /* doctor_btn_add_sel@2x.png in Resources */,
@@ -4929,6 +4972,7 @@
 				7F0331D41CDCA72000A96F47 /* mySpace_icon_myAccount@2x.png in Resources */,
 				7FED20A21CDB4F6A004639DE /* main_icon_more@3x.png in Resources */,
 				7F0331BA1CDC9F4300A96F47 /* mySpace_icon_arrow@2x.png in Resources */,
+				BC8665801CE573D80001445A /* setting_changePwd1@2x.png in Resources */,
 				7FED20C61CDB4F6A004639DE /* tabbar_nearby_sel@2x.png in Resources */,
 				7F0331BC1CDC9F4300A96F47 /* mySpace_myClinic@2x.png in Resources */,
 				7FED20771CDB4F6A004639DE /* doctor_btn_add_nor@2x.png in Resources */,
@@ -4943,6 +4987,7 @@
 				7F0E92AF1CE2C968001D5FA3 /* member_icon_age@2x.png in Resources */,
 				7FED20AF1CDB4F6A004639DE /* navbar_back_button@3x.png in Resources */,
 				7FED20BA1CDB4F6A004639DE /* order_icon_uncheck@2x.png in Resources */,
+				BC8665891CE573D80001445A /* setting_icon_SettingDefaultCity@2x.png in Resources */,
 				E1EB1E481B70A43B0048B8EB /* UMShareEditViewController.xib in Resources */,
 				E1EB1E491B70A43B0048B8EB /* UMShareEditViewControlleriPad.xib in Resources */,
 				3E6F0DA11AB67CAC00D6742A /* flotageBackgroud@2x.png in Resources */,
@@ -4968,6 +5013,7 @@
 				7FED20941CDB4F6A004639DE /* login_icon_check@2x.png in Resources */,
 				7FED20B51CDB4F6A004639DE /* navbar_titlelogo@2x.png in Resources */,
 				7FED207B1CDB4F6A004639DE /* doctor_detail_map_btn_nor@2x.png in Resources */,
+				BC8665821CE573D80001445A /* setting_changePwd3@2x.png in Resources */,
 				7FED206E1CDB4F6A004639DE /* common_inactivePoint@2x.png in Resources */,
 				7F0331C01CDC9F4300A96F47 /* mySpace_topBackground@2x.png in Resources */,
 				7FA561FF1CBDE3020092D978 /* MJRefresh.bundle in Resources */,
@@ -4990,6 +5036,7 @@
 				7F0331D71CDCA72000A96F47 /* mySpace_icon_myTreatment@2x.png in Resources */,
 				BC0E84D71C7C46DB00082AA9 /* AlipaySDK.bundle in Resources */,
 				7FED20831CDB4F6A004639DE /* doctor_tip_yellow@2x.png in Resources */,
+				BC8665831CE573D80001445A /* setting_icon_aboutUyi@2x.png in Resources */,
 				3ED1711A1AAF0A9A00E5B630 /* LongTextTipView.xib in Resources */,
 				7FED20B71CDB4F6A004639DE /* order_finish@2x.png in Resources */,
 				7F0331BE1CDC9F4300A96F47 /* mySpace_myDoctor@2x.png in Resources */,
@@ -5002,6 +5049,7 @@
 				7FED20901CDB4F6A004639DE /* login_bg@2x.png in Resources */,
 				7F0E92B31CE2C968001D5FA3 /* member_icon_sex@2x.png in Resources */,
 				7FED209A1CDB4F6A004639DE /* login_icon_smallHook.png in Resources */,
+				BC8665811CE573D80001445A /* setting_changePwd2@2x.png in Resources */,
 				7FED20B41CDB4F6A004639DE /* navbar_search_icon_search@3x.png in Resources */,
 				7FED20881CDB4F6A004639DE /* Icon-76.png in Resources */,
 				7F0E92A81CE2C8D5001D5FA3 /* login_icon_close@2x.png in Resources */,

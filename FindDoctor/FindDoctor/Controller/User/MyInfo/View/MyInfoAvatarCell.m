@@ -45,7 +45,6 @@
     self.avatar.layer.cornerRadius = 64 / 2.f;
     self.avatar.clipsToBounds = YES;
     [self.containerView addSubview:self.avatar];
-    self.avatar.backgroundColor = [UIColor yellowColor];
 
 }
 
