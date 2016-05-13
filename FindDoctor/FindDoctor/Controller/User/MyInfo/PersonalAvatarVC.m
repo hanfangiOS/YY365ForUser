@@ -45,8 +45,7 @@
     self.avatar = [[UIImageView alloc] initWithFrame:CGRectMake(0, (self.contentView.frameHeight - self.contentView.frameWidth)/3, kScreenWidth, kScreenWidth)];
     self.avatar.clipsToBounds = YES;
     self.avatar.contentMode = 1;
-    self.avatar.backgroundColor = [UIColor whiteColor];
-    [self.avatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon]];
+    [self.avatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
     [self.contentView addSubview:self.avatar];
 }
 

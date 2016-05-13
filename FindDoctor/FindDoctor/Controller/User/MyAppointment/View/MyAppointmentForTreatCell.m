@@ -44,6 +44,13 @@
     return MyAppointmentForTreatCellHeight;
 }
 
+- (void)setDefaultValue{
+    self.name.text = @"－－";
+    self.price.text = @"－－";
+    self.info.text = @"－－";
+    self.address.text = @"－－";
+}
+
 - (void)initSubViews{
     //上面一块view
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 33)];
@@ -54,13 +61,6 @@
     self.name.font = [UIFont systemFontOfSize:12];
     self.name.textAlignment = NSTextAlignmentLeft;
     [self.headerView addSubview:self.name];
-    //03:22
-    self.time = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 40 - 60, 0, 40, self.headerView.frameHeight)];
-    self.time.centerX = kScreenWidth - 70;
-    self.time.font = [UIFont systemFontOfSize:12];
-    self.time.textAlignment = NSTextAlignmentRight;
-    self.time.textColor = kLightGrayColor;
-    [self.headerView addSubview:self.time];
     //线
     self.line = [[UIView alloc] initWithFrame:CGRectMake(8, self.headerView.frameHeight - 1, kScreenWidth - 8, 1)];
     self.line.backgroundColor = kLightLineColor;
@@ -72,7 +72,6 @@
     self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 58, 58)];
     self.icon.layer.cornerRadius = 5.0f;
     [self.infoView addSubview:self.icon];
-    self.icon.backgroundColor = [UIColor blueColor];
     //¥100
     self.price = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 15, self.icon.frameY + 4, kScreenWidth - self.icon.maxX - 15 - 30, 15)];
     self.price.textColor = UIColorFromHex(0xf1a90e);
@@ -103,32 +102,45 @@
     bottomLine.backgroundColor = kblueLineColor;
     [self addSubview: bottomLine];
     
+    [self setDefaultValue];
 }
 
 - (void)setData:(CUOrder *)data{
     _data = data;
     
-    NSString * string = [NSString stringWithFormat:@"%@  %@  %@",_data.service.doctor.name,_data.service.doctor.levelDesc,_data.service.doctor.grade];
-    NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
-    NSInteger length = [_data.service.doctor.name length];
-    [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, length)];
-    [AtrStr addAttribute:NSForegroundColorAttributeName
-                   value:[UIColor blackColor]
-                   range:NSMakeRange(0, length)];
-    self.name.attributedText = AtrStr;
+    if (_data.service.doctor.name && _data.service.doctor.levelDesc && _data.service.doctor.grade) {
+        NSString * string = [NSString stringWithFormat:@"%@  %@  %@",_data.service.doctor.name,_data.service.doctor.levelDesc,_data.service.doctor.grade];
+        NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
+        NSInteger length = [_data.service.doctor.name length];
+        [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, length)];
+        [AtrStr addAttribute:NSForegroundColorAttributeName
+                       value:[UIColor blackColor]
+                       range:NSMakeRange(0, length)];
+        self.name.attributedText = AtrStr;
+    }
     
-    self.time.text = _data.submitTimeString;
+    if (_data.submitTimeString) {
+        self.time.text = _data.submitTimeString;
+    }
     
-    [self.icon setImageWithURL:[NSURL URLWithString:_data.service.doctor.avatar]];
+    [self.icon setImageWithURL:[NSURL URLWithString:_data.service.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
     
     NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     NSString * strSymbol = [locale objectForKey:NSLocaleCurrencySymbol];
-    self.price.text = [NSString stringWithFormat:@"%@%lld",strSymbol,_data.dealPrice];
     
-    NSString * diagnosisTimeStr = [[NSDate dateWithTimeIntervalSince1970:_data.service.doctor.diagnosisTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
-    self.info.text = [NSString stringWithFormat:@"%@  %@",_data.service.patience.name,diagnosisTimeStr];
+    if (_data.dealPrice) {
+        self.price.text = [NSString stringWithFormat:@"%@%lld",strSymbol,_data.dealPrice];
+    }
     
-    self.address.text = [NSString stringWithFormat:@"%@",_data.service.doctor.address];
+    if (_data.service.doctor.diagnosisTime) {
+        NSString * diagnosisTimeStr = [[NSDate dateWithTimeIntervalSince1970:_data.service.doctor.diagnosisTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+        self.info.text = [NSString stringWithFormat:@"%@  %@",_data.service.patience.name,diagnosisTimeStr];
+    }
+    
+    if (_data.service.doctor.address) {
+        self.address.text = [NSString stringWithFormat:@"%@",_data.service.doctor.address];
+    }
+    
 }
 
 

@@ -183,6 +183,9 @@
 		7F0331D91CDCA7D700A96F47 /* mySpace_icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0331D81CDCA7D700A96F47 /* mySpace_icon_setting@2x.png */; };
 		7F0469FC1CB65C9F00C9C054 /* GoodDoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */; };
 		7F0469FF1CB65D2D00C9C054 /* GoodClinicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */; };
+		7F0C33611CE5844500B42BBB /* temp_secondBanner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F0C335E1CE5844500B42BBB /* temp_secondBanner.jpg */; };
+		7F0C33631CE585A200B42BBB /* temp_mainBanner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F0C33621CE585A200B42BBB /* temp_mainBanner.jpg */; };
+		7F0C33651CE5A97500B42BBB /* member_icon_addMember@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0C33641CE5A97500B42BBB /* member_icon_addMember@2x.png */; };
 		7F0E92981CE1B325001D5FA3 /* comment_icon_comment_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E92971CE1B325001D5FA3 /* comment_icon_comment_gray@2x.png */; };
 		7F0E929B1CE1C1E6001D5FA3 /* msg_icon_bell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E92991CE1C1E6001D5FA3 /* msg_icon_bell@2x.png */; };
 		7F0E929C1CE1C1E6001D5FA3 /* msg_icon_trumpet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E929A1CE1C1E6001D5FA3 /* msg_icon_trumpet@2x.png */; };
@@ -994,6 +997,9 @@
 		7F0469FB1CB65C9F00C9C054 /* GoodDoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDoctorCell.m; sourceTree = "<group>"; };
 		7F0469FD1CB65D2D00C9C054 /* GoodClinicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodClinicCell.h; sourceTree = "<group>"; };
 		7F0469FE1CB65D2D00C9C054 /* GoodClinicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodClinicCell.m; sourceTree = "<group>"; };
+		7F0C335E1CE5844500B42BBB /* temp_secondBanner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = temp_secondBanner.jpg; sourceTree = "<group>"; };
+		7F0C33621CE585A200B42BBB /* temp_mainBanner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = temp_mainBanner.jpg; sourceTree = "<group>"; };
+		7F0C33641CE5A97500B42BBB /* member_icon_addMember@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "member_icon_addMember@2x.png"; sourceTree = "<group>"; };
 		7F0E92971CE1B325001D5FA3 /* comment_icon_comment_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment_icon_comment_gray@2x.png"; sourceTree = "<group>"; };
 		7F0E92991CE1C1E6001D5FA3 /* msg_icon_bell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg_icon_bell@2x.png"; sourceTree = "<group>"; };
 		7F0E929A1CE1C1E6001D5FA3 /* msg_icon_trumpet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg_icon_trumpet@2x.png"; sourceTree = "<group>"; };
@@ -2767,6 +2773,7 @@
 		7F0E92A91CE2C968001D5FA3 /* member */ = {
 			isa = PBXGroup;
 			children = (
+				7F0C33641CE5A97500B42BBB /* member_icon_addMember@2x.png */,
 				BC602C9B1CE2DC6D00899E4E /* member_icon_gender_f@2x.png */,
 				BC602C9C1CE2DC6D00899E4E /* member_icon_gender_m@2x.png */,
 				7F0E92AA1CE2C968001D5FA3 /* member_icon_age@2x.png */,
@@ -3045,6 +3052,8 @@
 		7FB6EEAD1CE46D9900FEC3E2 /* temp */ = {
 			isa = PBXGroup;
 			children = (
+				7F0C33621CE585A200B42BBB /* temp_mainBanner.jpg */,
+				7F0C335E1CE5844500B42BBB /* temp_secondBanner.jpg */,
 				7FB791EA1CE56B800031B265 /* temp_clinicAdver@2x.png */,
 				7FB791EB1CE56B800031B265 /* temp_goodClinic@2x.png */,
 				7FB6EEAE1CE46D9900FEC3E2 /* temp_icon_doctor.jpg */,
@@ -4993,6 +5002,7 @@
 				3E6F0DA11AB67CAC00D6742A /* flotageBackgroud@2x.png in Resources */,
 				7F29484B1CE0407B006768D0 /* common_icon_grayArrow@2x.png in Resources */,
 				7FED20711CDB4F6A004639DE /* common_titleLine1@2x.png in Resources */,
+				7F0C33611CE5844500B42BBB /* temp_secondBanner.jpg in Resources */,
 				7FED206A1CDB4F6A004639DE /* common_activePoint@2x.png in Resources */,
 				E1EB1E4B1B70A43B0048B8EB /* UMSnsAccountViewController.xib in Resources */,
 				7FED208C1CDB4F6A004639DE /* introduce_3.jpg in Resources */,
@@ -5009,6 +5019,7 @@
 				7FED20A01CDB4F6A004639DE /* main_icon_fuke@3x.png in Resources */,
 				7FED20701CDB4F6A004639DE /* common_radioButtonDisActivated@2x.png in Resources */,
 				BC0E84DC1C7C46DB00082AA9 /* PingppCnp.bundle in Resources */,
+				7F0C33631CE585A200B42BBB /* temp_mainBanner.jpg in Resources */,
 				7FED20A61CDB4F6A004639DE /* main_icon_yaojike@3x.png in Resources */,
 				7FED20941CDB4F6A004639DE /* login_icon_check@2x.png in Resources */,
 				7FED20B51CDB4F6A004639DE /* navbar_titlelogo@2x.png in Resources */,
@@ -5059,6 +5070,7 @@
 				7FED20921CDB4F6A004639DE /* login_header_circle_green@2x.png in Resources */,
 				E1EB1E231B70A43B0048B8EB /* Introduce_Images.plist in Resources */,
 				7F1209D01CDC7415007E5E6A /* main_icon_clinicGoodAt@2x.png in Resources */,
+				7F0C33651CE5A97500B42BBB /* member_icon_addMember@2x.png in Resources */,
 				E1F98CA11BA5D179008D3CEA /* build_ota_process.sh in Resources */,
 				7FED20BB1CDB4F6A004639DE /* order_icon_weixin@2x.png in Resources */,
 				E1EB1E451B70A43B0048B8EB /* UMSCommentDetailController.xib in Resources */,

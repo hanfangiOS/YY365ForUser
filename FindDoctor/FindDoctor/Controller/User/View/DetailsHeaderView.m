@@ -78,7 +78,7 @@
 - (void)setData:(Doctor *)data{
     _data = data;
     
-    [self.icon setImageWithURL:[NSURL URLWithString:_data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor"]];
+    [self.icon setImageWithURL:[NSURL URLWithString:_data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
     
     if (_data.name && _data.levelDesc && _data.grade) {
         NSString * string = [NSString stringWithFormat:@"%@ %@ %@",_data.name,_data.levelDesc,_data.grade];
