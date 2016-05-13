@@ -15,7 +15,7 @@
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
-    UIView *_logoutView;
+//    UIView *_logoutView;
     UISwitch *_messageNotificationSwitch;
 }
 
@@ -34,20 +34,20 @@
 }
 
 - (void)initSubViews{
-    _logoutView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 44)];
-    button.center = _logoutView.center;
-    [button addTarget:self action:@selector(loginOutAction) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"退出登录" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor redColor];
-    [_logoutView addSubview:button];
+//    _logoutView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
+//    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 44)];
+//    button.center = _logoutView.center;
+//    [button addTarget:self action:@selector(loginOutAction) forControlEvents:UIControlEventTouchUpInside];
+//    [button setTitle:@"退出登录" forState:UIControlStateNormal];
+//    button.backgroundColor = [UIColor redColor];
+//    [_logoutView addSubview:button];
     
-    self.tableView = [[UITableView alloc]init];
-    self.tableView.frame = self.contentView.bounds;
+    self.tableView = [[UITableView alloc]initWithFrame:self.contentView.bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.tableFooterView = _logoutView;
-    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.tableView.tableFooterView = [UIView new]; 
+    self.tableView.backgroundColor = kCommonBackgroundColor;
+    self.tableView.separatorColor = kblueLineColor;
     [self.contentView addSubview:self.tableView];
 }
 
@@ -94,7 +94,7 @@
 #pragma mark tableViewDelegata&dataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -108,6 +108,9 @@
         case 2:
             return 2;
             break;
+        case 3:
+            return 1;
+            break;
         default:
             return 0;
             break;
@@ -115,7 +118,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
+    return 20;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -133,11 +136,26 @@
             _messageNotificationSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
             [_messageNotificationSwitch addTarget:self action:@selector(updateSwitch:) forControlEvents:UIControlEventValueChanged];
             cell.accessoryView = _messageNotificationSwitch;
-            cell.imageView.backgroundColor = [UIColor redColor];
+            cell.imageView.image = [UIImage imageNamed:@"setting_icon_messageAlert"];
             cell.textLabel.text = @"消息通知";
             cell.detailTextLabel.text = nil;
             cell.accessoryType=UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        return cell;
+    }
+    
+    if (indexPath.section == 3 && indexPath.row == 0) {
+        static NSString *cellIdentifier = @"LogoutCell";
+        
+        UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        
+        if (cell == nil) {
+            cell =  [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell.textLabel.text = @"退出登录";
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.textLabel.frame = CGRectMake(0, cell.textLabel.frameY, cell.frameWidth, cell.textLabel.frameHeight);
+            cell.accessoryType=UITableViewCellAccessoryNone;
         }
         return cell;
     }
@@ -152,13 +170,13 @@
     switch (indexPath.section) {
         case 0:
             if (indexPath.row == 0) {
-                cell.imageView.backgroundColor = [UIColor redColor];
+                cell.imageView.image = [UIImage imageNamed:@"setting_icon_SettingDefaultCity"];
                 cell.textLabel.text = @"设置常用城市";
                 cell.detailTextLabel.text = @"成都";
                 cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
             }
             if (indexPath.row == 1) {
-                cell.imageView.backgroundColor = [UIColor redColor];
+                cell.imageView.image = [UIImage imageNamed:@"setting_icon_AccountSafety"];
                 cell.textLabel.text = @"账号安全";
                 cell.detailTextLabel.text = nil;
                 cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
@@ -167,14 +185,14 @@
         case 2:
             if (indexPath.row == 0) {
                 self.cacheCell = cell;
-                cell.imageView.backgroundColor = [UIColor redColor];
+                cell.imageView.image = [UIImage imageNamed:@"setting_icon_removeLocalData"];
                 cell.textLabel.text = @"清除本地缓存";
-                cell.textLabel.textColor = UIColorFromHex(Color_Hex_NavBackground);
+                cell.textLabel.textColor = UIColorFromHex(0X007AFF);
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2fM",[self sizeForCache]];
                 cell.accessoryType=UITableViewCellAccessoryNone;
             }
             if (indexPath.row == 1) {
-                cell.imageView.backgroundColor = [UIColor redColor];
+                cell.imageView.image = [UIImage imageNamed:@"setting_icon_aboutUyi"];
                 cell.textLabel.text = @"关于优医";
                 cell.detailTextLabel.text = nil;
                 cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
@@ -209,6 +227,9 @@
                 [self.slideNavigationController pushViewController:VC animated:YES];
             }
             break;
+        case 3:{
+            [self loginOutAction];
+        }
             
         default:
             break;

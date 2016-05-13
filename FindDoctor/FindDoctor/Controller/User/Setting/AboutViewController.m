@@ -43,11 +43,12 @@
     [headerView addSubview:imageView];
     [headerView addSubview:_versionLabel];
     
-    self.tableView = [[UITableView alloc]init];
-    self.tableView.frame = self.contentView.bounds;
+    self.tableView = [[UITableView alloc]initWithFrame:self.contentView.bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.tableView.backgroundColor = kCommonBackgroundColor;
+    self.tableView.separatorColor = kblueLineColor;
     self.tableView.tableHeaderView = headerView;
     self.tableView.tableFooterView = [UIView new];
     [self.contentView addSubview:self.tableView];
