@@ -235,7 +235,7 @@ typedef NS_ENUM(NSInteger,ListType){
 #pragma mark scrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat sectionHeaderHeight = 10;
+    CGFloat sectionHeaderHeight = 8;
     if (scrollView.contentOffset.y <= sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
         scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
     }

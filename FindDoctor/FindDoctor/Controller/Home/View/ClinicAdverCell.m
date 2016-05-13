@@ -42,7 +42,7 @@
 
 - (void)setData:(NSString *)data{
     _data = data;
-    [icon setImageWithURL:[NSURL URLWithString:_data]];
+    [icon setImageWithURL:[NSURL URLWithString:_data] placeholderImage:[UIImage imageNamed:@"temp_clinicAdver"]];
 }
 
 @end

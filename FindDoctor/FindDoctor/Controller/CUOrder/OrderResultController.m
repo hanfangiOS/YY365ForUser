@@ -18,6 +18,8 @@
 #import "TipHandler+HUD.h"
 #import "OrderResultView.h"
 #import "MyDiagnosisRecordsDetailViewController.h"
+#import "OrderConfirmController.h"
+#import "AppointmentDetailsController.h"
 
 //#import "CUUserManager+Share.h"
 //#import "PointRuleManager.h"
@@ -54,11 +56,23 @@
     
     self.title = (self.orderResult == OrderResultSuccess) ? @"约诊成功" : @"约诊失败";
     
+
+    
+    
 //    if (self.orderResult == OrderResultSuccess) {
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_OrderSubmitSuccess object:self.order];
 //        
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_OrderCountChange object:[NSNumber numberWithInt:1]];
 //    }
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    for (CUViewController * vc in self.slideNavigationController.viewControllers) {
+        if ([vc isKindOfClass:[OrderConfirmController class]]) {
+            [vc.slideNavigationController popToRootViewControllerAnimated:YES];
+        }
+    }
 }
 
 - (void)loadNavigationBar
@@ -104,7 +118,7 @@
     [statusView addSubview:statusImage];
     
     if (self.orderResult == OrderResultSuccess) {
-        statusImage.image = [UIImage imageNamed:@"pay_icon_success"];
+        statusImage.image = [UIImage imageNamed:@"order_icon_success"];
     }
     
     UILabel *statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(statusViewWidth - statusTextWidth, 0, statusTextWidth, statusViewHeight)];
@@ -165,7 +179,7 @@
     tipLabel.numberOfLines = 0;
     [footerView addSubview:tipLabel];
     
-    NSString *tipString = @"如在约诊时间前2小时内取消订单，将扣除诊金20%的违约金。";
+    NSString *tipString = @"如在约诊时间前4小时内取消订单，将扣除诊金20%的违约金。";
     tipLabel.text = tipString;
     
     return footerView;
@@ -194,7 +208,7 @@
     
     if (indexPath.row == 0) {
         cell.textLabel.text = @"获得积分";
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",self.order.obtainScore];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld",(long)self.order.obtainScore];
     }
     else {
         cell.textLabel.text = @"赠送诊金券";
@@ -208,9 +222,9 @@
 
 - (void)checkOrder
 {
-    MyDiagnosisRecordsDetailViewController *orderDetailVC = [[MyDiagnosisRecordsDetailViewController alloc] initWithPageName:@"CUOrderDetailViewController"];
-    orderDetailVC.data = self.order;
-    [self.slideNavigationController pushViewController:orderDetailVC animated:YES];
+    AppointmentDetailsController * vc = [[AppointmentDetailsController alloc] initWithPageName:@"AppointmentDetailsController"];
+    vc.order = self.order;
+    [self.slideNavigationController pushViewController:vc animated:YES];
 }
 
 - (void)shareAction

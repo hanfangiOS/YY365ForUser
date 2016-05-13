@@ -638,7 +638,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:@(diagnosisID) forKey:@"order_no"];
     NSLog(@"%@",param);
-    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/verify_order_state.jmm"] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
@@ -730,6 +730,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     
                     order.dealPrice = [obj longlongForKeySafely:@"currency"];
                     order.submitTimeString = [obj stringForKeySafely:@"verid"];
+                    order.lefttime = [obj stringForKeySafely:@"lefttime"];
                     
                     order.service.patience.userId = (NSInteger)[obj longlongForKeySafely:@"accID"];
                     order.service.patience.name = [obj stringForKeySafely:@"userName"];

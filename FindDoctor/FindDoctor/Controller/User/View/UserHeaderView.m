@@ -36,7 +36,6 @@
     self.icon.clipsToBounds = YES;
     [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@""]];
     [self.userInfoBackgroundView addSubview:self.icon];
-    self.icon.backgroundColor = [UIColor redColor];
     //箭头
     self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 16, self.icon.frameY + 10, 9, 16)];
     self.arrow.image = [UIImage imageNamed:@"mySpace_icon_arrow@2x"];
@@ -78,14 +77,16 @@
 }
 
 - (void)resetUserInfo{
-    [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@""]];
+    [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
     
     
     if ([CUUserManager sharedInstance].isLogin == YES) {
-        self.name.text = [[CUUserManager sharedInstance].user.name length] > 0?[CUUserManager sharedInstance].user.name:@"优医用户";
+        self.name.text = [[CUUserManager sharedInstance].user.nickname length] > 0?[CUUserManager sharedInstance].user.nickname:@"优医用户";
         self.userID.text = [NSString stringWithFormat:@"优医号：%ld",(long)[CUUserManager sharedInstance].user.userId];
     }else{
         self.name.text = @"未登录";
+        self.userID.text = [NSString stringWithFormat:@"优医号：%ld",(long)[CUUserManager sharedInstance].user.userId];
+        self.userID.hidden = YES;
     }
 }
 

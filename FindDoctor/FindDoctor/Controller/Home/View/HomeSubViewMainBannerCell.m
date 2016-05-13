@@ -14,8 +14,8 @@
 
 - (void)setData:(Banner *)data{
     _data = data;
-//    self.URL = _data.imagePath;
-    self.URL = @"https://o1wjx1evz.qnssl.com/app/qrcode/AVQK";
+    self.URL = _data.imagePath;
+//    self.URL = @"https://o1wjx1evz.qnssl.com/app/qrcode/AVQK";
 }
 
 /*

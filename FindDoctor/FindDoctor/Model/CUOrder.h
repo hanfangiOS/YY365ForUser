@@ -49,6 +49,7 @@ typedef enum OrderPayment : NSInteger
 
 @property NSInteger obtainScore; //获得积分
 @property NSInteger obtainCouponMoney; //获得诊金券金额
+@property (nonatomic,strong) NSString * lefttime;//订单倒计时
 
 
 @property NSInteger state;

@@ -134,7 +134,7 @@
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
     self.headerView.backgroundColor = kCommonBackgroundColor;
     //主轮播图
-    self.mainBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth/2)];
+    self.mainBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth * 320 / 750.f)];
     self.mainBannerView.delegate = self;
     self.mainBannerView.dataSource = self;
     [self.headerView addSubview:self.mainBannerView];
@@ -266,9 +266,11 @@
 - (HFBannerViewCell *)HFBannerView:(HFBannerView *)view cellForIndex:(NSInteger)index{
     HomeSubViewMainBannerCell * cell = [[HomeSubViewMainBannerCell alloc] init];
     if (view == self.mainBannerView) {
+        cell.frame = CGRectMake(0 , 0 , [UIScreen mainScreen].bounds.size.width, kScreenWidth * 320 / 750.f);
         cell.data = [self.homeModel.mainBannerList objectAtIndexSafely:index];
     }
     if (view == self.secondBannerView) {
+        cell.frame = CGRectMake(0 , 0 , [UIScreen mainScreen].bounds.size.width, kScreenWidth * 164 / 750.f);
         cell.data = [self.homeModel.secondBannerList objectAtIndexSafely:index];
     }
     return cell;
@@ -286,7 +288,7 @@
 #pragma mark - UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.homeModel.subjectList.count;
+    return 8;
 }
 
 
@@ -337,7 +339,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.homeModel.famousDoctorList.count;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

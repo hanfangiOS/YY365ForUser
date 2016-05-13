@@ -92,7 +92,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MyMemberCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyMemberCell"];
     if (!cell) {
-        cell = [[MyMemberCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyMemberCell"];
+        cell = [[MyMemberCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"MyMemberCell"];
     }
     cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
     return cell;

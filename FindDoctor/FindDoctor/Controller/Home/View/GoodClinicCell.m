@@ -32,6 +32,12 @@
     
 }
 
+- (void)setDefaultValue{
+    goodComment.text = @"100分";
+    name.text = @"－－";
+    subject.text = @"－－";
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -44,7 +50,6 @@
 - (void)initSubViews{
     //诊所照片
     clinicIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CelldefaultWidth, CelldefaultHeight - 24)];
-//    clinicIcon.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:clinicIcon];
     //诊所名字背景
     nameContainerView = [[UIView alloc] initWithFrame:CGRectMake(1, CelldefaultHeight - 24 * 2, CelldefaultWidth - 1, 24)];
@@ -69,28 +74,25 @@
     subject.textColor = kGrayTextColor;
     [self addSubview:subject];
     
-    
+    [self setDefaultValue];
 }
 
 - (void)setData:(Clinic *)data{
     _data = data;
     
-    [self clearCach];
+    [clinicIcon setImageWithURL:[NSURL URLWithString: _data.icon] placeholderImage:[UIImage imageNamed:@"temp_goodClinic"]];
     
-    [clinicIcon setImageWithURL:[NSURL URLWithString: _data.icon]];
+    if (_data.name) {
+        name.text = _data.name;
+    }
     
-    name.text = _data.name;
+    if (_data.skillTreat) {
+        subject.text = _data.skillTreat;
+    }
     
-    subject.text = _data.skillTreat;
-    
-    goodComment.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
-    
-}
-
-- (void)clearCach{
-    name.text = nil;
-    subject.text = nil;
-    goodComment.text = nil;
+    if (_data.goodRemark) {
+        goodComment.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
+    }
 }
 
 

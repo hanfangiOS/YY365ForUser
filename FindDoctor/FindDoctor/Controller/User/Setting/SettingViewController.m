@@ -71,6 +71,7 @@
         }
         else {
             [self postRequestExitAccount];
+            [[CUUserManager sharedInstance] clear];
             [self.slideNavigationController popViewControllerAnimated:YES];
         }
     }

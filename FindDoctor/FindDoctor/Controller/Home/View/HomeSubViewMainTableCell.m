@@ -28,6 +28,13 @@
     return kCellHeight;
 }
 
+- (void)setDefaultValue{
+    score.text = @"100分";
+    name.text = @"－－";
+    brief.text = @"－－";
+    goodAt.text = @"－－";
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -89,34 +96,44 @@
     bottomLine = [[UIView alloc] initWithFrame:CGRectMake(10, kCellHeight - 1, kScreenWidth - 2 * 5, 1)];
     bottomLine.backgroundColor = kblueLineColor;
     [self addSubview:bottomLine];
+    
+    [self setDefaultValue];
 }
 
 - (void)setData:(Doctor *)data{
     
     _data = data;
     
-    [icon setImageWithURL:[NSURL URLWithString:_data.avatar]];
+    [icon setImageWithURL:[NSURL URLWithString:_data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
     
-    NSString * string = [NSString stringWithFormat:@"%@ %@ %@",_data.name,_data.levelDesc,_data.grade];
-    
-    NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
-    NSInteger length = [_data.name length];
-    if (length) {
-        [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, length)];
-        [AtrStr addAttribute:NSForegroundColorAttributeName
-                       value:[UIColor blackColor]
-                       range:NSMakeRange(0, length)];
+    if (_data.name && _data.levelDesc && _data.grade) {
+        NSString * string = [NSString stringWithFormat:@"%@ %@ %@",_data.name,_data.levelDesc,_data.grade];
         
-        name.attributedText = AtrStr;
+        NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
+        NSInteger length = [_data.name length];
+        if (length) {
+            [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, length)];
+            [AtrStr addAttribute:NSForegroundColorAttributeName
+                           value:[UIColor blackColor]
+                           range:NSMakeRange(0, length)];
+            
+            name.attributedText = AtrStr;
+        }
     }
     
-    score.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
-    
-    brief.text = _data.briefIntro;
-    
-    goodAt.text = _data.skillTreat;
-    
-    icon.backgroundColor = [UIColor yellowColor];
+
+    if (_data.goodRemark) {
+            score.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
+    }
+
+    if (_data.briefIntro) {
+            brief.text = _data.briefIntro;
+    }
+
+    if (_data.skillTreat) {
+            goodAt.text = _data.skillTreat;
+    }
+
 
 }
 

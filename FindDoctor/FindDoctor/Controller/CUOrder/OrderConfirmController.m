@@ -37,7 +37,7 @@
 #define kWaiting          @"正在获取支付凭据,请稍后..."
 #define kNote             @"提示"
 #define kConfirm          @"确定"
-#define kErrorNet         @"网络错误"
+#define kErrorNet         @"网络连接错误"
 #define kResult           @"支付结果：%@"
 
 #define kPlaceHolder      @"支付金额"
@@ -45,7 +45,7 @@
 
 #define kUrlScheme      @"wx584ad6cae2973f02" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
 
-@interface OrderConfirmController (){
+@interface OrderConfirmController ()<UIAlertViewDelegate>{
     UIAlertView     * mAlert;
 }
 
@@ -261,7 +261,7 @@
 //            }
 //        }
 //    } pageName:@"OrderConfirmController"];
-//    
+//
 //}
 
 //获取charge对象
@@ -313,8 +313,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
             [weakSelf hideProgressView];
-            //            [weakSelf hideAlert];
-            //NSURLConnection正确返回码200
+
             if (httpResponse.statusCode == 200) {
                 
                 NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
@@ -334,7 +333,7 @@
                 [weakSelf showAlertWithMessage:kErrorNet];
                 return;
             }
-
+            
         });
     }];
     
@@ -344,11 +343,17 @@
 - (void)postRequestCheckOrderStatusAfter{
     [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
-            if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
-               [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"message"]];
-            }else {
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
+            
+            if (![errorCode integerValue]) {
+                OrderResultController * vc = [[OrderResultController alloc]initWithPageName:@"OrderResultController"];
+                vc.orderResult = OrderResultSuccess;
                 self.order = result.parsedModelObject;
-                [self handleOrderResult];
+                vc.order = self.order;
+                [self.slideNavigationController pushViewController:vc animated:YES];
+            }else {
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[result.responseObject valueForKey:@"message"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
             }
         }
     } pageName:@"OrderConfirmController"];
@@ -400,15 +405,14 @@
     
 }
 
-//根据结果处理订单
-- (void)handleOrderResult{
-    
+#pragma mark alertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     AppointmentDetailsController * VC = [[AppointmentDetailsController alloc] initWithPageName:@"AppointmentDetailsController"];
     VC.order = self.order;
     VC.from = @"支付";
     
     [self.slideNavigationController pushViewController:VC animated:YES];
-    
 }
 
 - (void)didReceiveMemoryWarning {

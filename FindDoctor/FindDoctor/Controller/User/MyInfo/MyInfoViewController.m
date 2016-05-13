@@ -18,7 +18,7 @@
 #import "PersonalAvatarVC.h"
 
 
-@interface MyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate,UINavigationControllerDelegate,CUPickerViewDelegate>
+@interface MyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UINavigationControllerDelegate,CUPickerViewDelegate>
 @property (strong,nonatomic)UITableView     * tableView;
 
 @property (assign,nonatomic)BOOL              isEditing;
@@ -209,6 +209,10 @@
             {
                 cell.label.text = @"优医ID";
                 cell.textField.text = [NSString stringWithFormat:@"%ld",(long)self.tempData.userId];
+                cell.textField.textColor = kGrayTextColor;
+                cell.textField.tintColor = [UIColor clearColor];
+                UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(uyiIDAction)];
+                [cell.textField addGestureRecognizer:tap];
             }
                 break;
             case 10011:
@@ -262,9 +266,20 @@
             };
             [self.slideNavigationController pushViewController:vc animated:YES];
         }
+    
 }
 
 #pragma mark textFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    //优医ID
+    if (textField.tag == 10010) {
+        return NO;
+    }
+    return YES;
+
+
+}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     [self textFieldChange:textField];
@@ -279,12 +294,6 @@
 - (void)textFieldChange:(UITextField *)textField{
     textField.text = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     switch (textField.tag) {
-        //优医ID
-        case 10010:
-        {
-            self.tempData.userId = [textField.text integerValue];
-        }
-            break;
         //昵称
         case 10011:
         {
@@ -321,6 +330,18 @@
     }
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    //电话
+    if (textField.tag == 10023) {
+        if ([textField.text length] > 10) {
+            return NO;
+        }
+    }else if (textField.tag == 10010){
+        return NO;
+    }
+    return YES;
+}
+
 #pragma mark - postRequest
 
 //14100 修改个人资料
@@ -333,6 +354,9 @@
             NSNumber * errorCode = (NSNumber *)[result.responseObject objectForKeySafely:@"errorCode"];
             
             if (![errorCode integerValue]) {
+                [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+                self.isEditing = !self.isEditing;
+                [self.tableView reloadData];
                 [TipHandler showTipOnlyTextWithNsstring:@"修改成功"];
             }else{
                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
@@ -398,15 +422,19 @@
 - (void)editAndSaveAction{
     
     if (self.isEditing == YES) {
-        [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+
         [self postRequestUpdateyUserInfo];
         
     }else{
         [self.editBtn setTitle:@"保存" forState:UIControlStateNormal];
-        
+        self.isEditing = !self.isEditing;
+        [self.tableView reloadData];
     }
-    self.isEditing = !self.isEditing;
-    [self.tableView reloadData];
+
+}
+
+- (void)uyiIDAction{
+    [TipHandler showTipOnlyTextWithNsstring:@"优医ID是系统给您自动分配的ID号，无法更改"];
 }
 
 - (void)didReceiveMemoryWarning {

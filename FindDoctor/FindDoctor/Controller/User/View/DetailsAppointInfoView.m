@@ -42,6 +42,12 @@
     return DetailsAppointInfoViewHeight;
 }
 
+- (void)setDefaultValue{
+    self.clinic.text = @"－－";
+    self.time.text = @"－－";
+    self.person.text = @"－－";
+    self.address.text = @"－－";
+}
 
 - (void)initSubViews{
     self.titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 27) titleText:@"约诊信息" Style:HFTitleViewStyleLoadMore];
@@ -100,18 +106,28 @@
     self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, self.clinic.frameY - 1, 9, 15)];
     self.arrow.image = [UIImage imageNamed:@"common_icon_grayArrow@2x"];
     [self addSubview:self.arrow];
+    
+    [self setDefaultValue];
 }
 
 - (void)setData:(CUOrder *)data{
     _data = data;
     
-    self.clinic.text = _data.service.doctor.clinicName;
+    if (_data.service.doctor.clinicName) {
+        self.clinic.text = _data.service.doctor.clinicName;
+    }
     
-    self.time.text = [[NSDate dateWithTimeIntervalSince1970:_data.service.doctor.diagnosisTime] stringWithDateFormat:@"yyyy-mm-dd hh:mm"];
+    if (_data.service.doctor.diagnosisTime) {
+        self.time.text = [[NSDate dateWithTimeIntervalSince1970:_data.service.doctor.diagnosisTime] stringWithDateFormat:@"yyyy-mm-dd hh:mm"];
+    }
     
-    self.person.text = [NSString stringWithFormat:@"%@  %ld岁  %@",_data.service.patience.name,(long)_data.service.patience.age,_data.service.patience.cellPhone];
+    if (_data.service.patience.age && _data.service.patience.cellPhone) {
+        self.person.text = [NSString stringWithFormat:@"%@  %ld岁  %@",_data.service.patience.name,(long)_data.service.patience.age,_data.service.patience.cellPhone];
+    }
     
-    self.address.text = [NSString stringWithFormat:@"%@",_data.service.doctor.address];
+    if (_data.service.doctor.address) {
+        self.address.text = [NSString stringWithFormat:@"%@",_data.service.doctor.address];
+    }
     
 }
 

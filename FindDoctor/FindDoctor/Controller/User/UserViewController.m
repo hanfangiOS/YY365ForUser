@@ -86,7 +86,7 @@
 - (void)initSubView{
     self.contentView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kDefaultToolbarHeight) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kDefaultToolbarHeight) style:UITableViewStylePlain];
     self.tableView.backgroundColor = kCommonBackgroundColor;
     self.tableView.separatorColor = kblueLineColor;
     self.tableView.tableFooterView = [UIView new];

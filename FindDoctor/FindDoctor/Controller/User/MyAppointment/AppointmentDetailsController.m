@@ -38,20 +38,24 @@
     [super viewDidLoad];
     self.title = @"约诊详情";
     
-    if ([self.from isEqualToString:@"支付"]) {
-        for (CUViewController * vc in self.slideNavigationController.viewControllers) {
-            if ([vc isKindOfClass:[OrderConfirmController class]]) {
-                [vc.slideNavigationController popToRootViewControllerAnimated:NO];
-            }
-        }
-    }
-    
     [self initsubViews];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self resetData];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if ([self.from isEqualToString:@"支付"]) {
+        
+        for (CUViewController * vc in self.slideNavigationController.viewControllers) {
+            if ([vc isKindOfClass:[OrderConfirmController class]]) {
+                [vc.slideNavigationController popToRootViewControllerAnimated:YES];
+            }
+        }
+    }
 }
 
 - (void)initsubViews{
@@ -82,25 +86,26 @@
     [self.scrollView addSubview:self.orderInfoView];
     self.orderInfoView.backgroundColor = [UIColor whiteColor];
     
+    //取消订单
+    self.cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.orderInfoView.maxY + 10, kScreenWidth/3, 40)];
+    self.cancelBtn.backgroundColor = kBlueTextColor;
+    [self.cancelBtn setTitle:@"取消订单" forState:UIControlStateNormal];
+    [self.cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.cancelBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [self.cancelBtn addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:self.cancelBtn];
+
+    
     //支付按钮
-    self.payBtn = [[UIButton alloc] initWithFrame:CGRectMake(24, self.orderInfoView.maxY + 15, kScreenWidth - 25 * 2, 36)];
-    self.payBtn.backgroundColor = kBlueTextColor;
+    self.payBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.cancelBtn.maxX, self.cancelBtn.frameY, (kScreenWidth * 2)/3, 40)];
+    self.payBtn.backgroundColor = UIColorFromHex(0x5793e9);
     [self.payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
     [self.payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.payBtn.layer.cornerRadius = 5.0f;
+    self.payBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [self.payBtn addTarget:self action:@selector(payAction) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:self.payBtn];
     
-    //取消订单
-    self.cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(24, self.payBtn.maxY + 8, kScreenWidth - 25 * 2, 36)];
-    self.cancelBtn.backgroundColor = [UIColor orangeColor];
-    [self.cancelBtn setTitle:@"取消订单" forState:UIControlStateNormal];
-    [self.cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.cancelBtn.layer.cornerRadius = 5.0f;
-    [self.cancelBtn addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.scrollView addSubview:self.cancelBtn];
-    
-    self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.cancelBtn.maxY + 15);
+    self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.cancelBtn.maxY);
     
 }
 
@@ -113,8 +118,7 @@
             break;
         case ORDERSTATUS_PAID:
         {
-            self.cancelBtn.frame = self.payBtn.frame;
-            self.scrollView.contentSize = CGSizeMake(kScreenWidth, self.cancelBtn.maxY + 15);
+            self.cancelBtn.frameWidth = kScreenWidth;
             self.payBtn.hidden = YES;
             [self.scrollView setNeedsLayout];
         }

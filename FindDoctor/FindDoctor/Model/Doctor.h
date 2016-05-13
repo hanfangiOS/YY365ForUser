@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, DoctorSortType) {
 //@property BOOL isAvailable;
 @property NSInteger doctorState; //0无人约诊 //1有人约诊 2约诊满 // -1为不可约诊
 
-@property NSInteger price; // 诊疗价格，以分为单位
+@property long long price; // 诊疗价格，以分为单位
 @property BOOL didConcern; //是否被关注
 
 //@property NSInteger queueNumber;  // 已预约数量

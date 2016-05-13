@@ -38,7 +38,7 @@
 
 - (void)loadNavigationBar{
     [self addLeftBackButtonItemWithImage];
-    [self addRightButtonItemWithImage:[UIImage imageNamed:@""] action:@selector(openMenuAction)];
+    [self addRightButtonItemWithImage:[UIImage imageNamed:@"avatar_icon_menu"] action:@selector(openMenuAction)];
 }
 
 - (void)initSubviews{
@@ -157,12 +157,12 @@
     [self.myActionSheet showInView:self.view];
 }
 
-#pragma mark - postRequest
+#pragma mark - Request
 
 //上传图片到图片服务器
 - (void)requestUploadImage:(UIImage *)image{
     [self showProgressView];
-    __weak __block PersonalAvatarVC *blockSelf = self;
+    __weak __block PersonalAvatarVC * blockSelf = self;
     [[CUUserManager sharedInstance]uploadAvatar:image resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [blockSelf hideProgressView];
         if (!result.hasError) {
@@ -175,7 +175,7 @@
                 }
             }
             if (ftpPath) {
-                [blockSelf requestModifyAvatorWithPath:ftpPath andImage:image];
+                [blockSelf requestModifyAvatarWithPath:ftpPath andImage:image];
             }
         }else{
             [TipHandler showTipOnlyTextWithNsstring:@"网络连接错误"];
@@ -187,7 +187,7 @@
 }
 
 //上传头像
-- (void)requestModifyAvatorWithPath:(NSString *)ftppath andImage:(UIImage *)image{
+- (void)requestModifyAvatarWithPath:(NSString *)ftppath andImage:(UIImage *)image{
     __weak __block PersonalAvatarVC *blockSelf = self;
     [[CUUserManager sharedInstance] ModifyAvatorWithPath:ftppath resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
@@ -198,6 +198,9 @@
         }
     } pageName:self.pageName];
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

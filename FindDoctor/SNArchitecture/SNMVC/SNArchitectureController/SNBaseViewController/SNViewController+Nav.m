@@ -164,6 +164,7 @@
     UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 48, 44)];
     UIButton * rightBtn = [[UIButton alloc] initWithFrame:rightBtnView.bounds];
     [rightBtn setImage:image forState:UIControlStateNormal];
+    rightBtn.contentMode = UIViewContentModeScaleAspectFill;
     rightBtn.tintColor = UIColorFromHex(Color_Hex_NavItem_Normal);
     rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [rightBtn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];

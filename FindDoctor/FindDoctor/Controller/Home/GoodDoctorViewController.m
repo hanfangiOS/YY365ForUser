@@ -49,7 +49,6 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
 #pragma mark - UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-//    return _data.count;
     return 4;
 }
 

@@ -40,6 +40,12 @@
     return DetailsPaymentInfoViewHeight;
 }
 
+- (void)setDefaultValue{
+    self.orderAmount.text = @"－－";
+    self.orderDiscount.text = @"－－";
+    self.cash.text = @"－－";
+}
+
 - (void)initSubViews{
     
     self.titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 27) titleText:@"支付信息" Style:HFTitleViewStyleLoadMore];
@@ -91,6 +97,7 @@
     self.cash.textColor = UIColorFromHex(0xf1a80b);
     [self addSubview:self.cash];
     
+    [self setDefaultValue];
 }
 
 - (void)setData:(CUOrder *)data{
@@ -100,11 +107,16 @@
     NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     NSString * strSymbol = [locale objectForKey:NSLocaleCurrencySymbol];
     
-    self.orderAmount.text = [NSString stringWithFormat:@"%@%ld",strSymbol,(long)_data.service.doctor.price];
-    
-    self.orderDiscount.text = [NSString stringWithFormat:@"-%@%lld",strSymbol,_data.coupon];
-    
-    self.cash.text = [NSString stringWithFormat:@"%@%lld",strSymbol,_data.dealPrice];
+    if (_data.service.doctor.price) {
+            self.orderAmount.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.service.doctor.price];
+    }
+
+    if (_data.coupon) {
+            self.orderDiscount.text = [NSString stringWithFormat:@"-%@%.2f",strSymbol,(float)_data.coupon];
+    }
+    if (_data.dealPrice) {
+            self.cash.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.dealPrice];
+    }
     
 }
 

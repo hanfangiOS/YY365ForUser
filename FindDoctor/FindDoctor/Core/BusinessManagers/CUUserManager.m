@@ -268,9 +268,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     CUUserParser * parser = [[CUUserParser alloc] init];
-    __block CUUserManager * blockSelf = self;
-    [blockSelf clear];
-    [blockSelf save];
+    
     [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseLogoutWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
 //        if (!result.hasError)
 //        {
@@ -343,11 +341,36 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
-    
-    CUUserParser * parser = [[CUUserParser alloc] init];
-    __block CUUserManager * blockSelf = self;
-    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData * result) {
+    __block __weak CUUserManager * blockSelf = self;
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData * result) {
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
+                
+                blockSelf.user.nickname = [data stringForKeySafely:@"nickname"];
+                blockSelf.user.name = [data stringForKeySafely:@"name"];
+                blockSelf.user.icon = [data stringForKeySafely:@"icon"];
+                blockSelf.user.cellPhone =  [data stringForKeySafely:@"phone"];
+                blockSelf.user.age =  [[data objectForKeySafely:@"age"] integerValue];
+                NSString * sexStr = [data stringForKeySafely:@"sex"];
+                if([sexStr isEqualToString:@"女"]) {
+                    blockSelf.user.gender = CUUserGenderFemale;
+                }
+                
+                if ([sexStr isEqualToString:@"男"]) {
+                    blockSelf.user.gender = CUUserGenderMale;
+                }
+                [blockSelf save];
+            }else{
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject objectForKeySafely:@"message"]];
+            }
+        }else{
+            [TipHandler showTipOnlyTextWithNsstring:@"网络连接失败"];
+        }
 
+        
             // 赋值user数据
 //            NSString * profile = user.profile;
 //            NSString * nickname = user.nickname;

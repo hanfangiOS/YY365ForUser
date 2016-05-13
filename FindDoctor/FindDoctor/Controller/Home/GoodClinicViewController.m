@@ -63,7 +63,6 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
     if (indexPath.row == 0) {
         ClinicAdverCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseAdverCellID forIndexPath:indexPath];
         cell.data = self.data.promotionInfo;
-        cell.backgroundColor = [UIColor yellowColor];
         cell.layer.borderColor = kblueLineColor.CGColor;
         cell.layer.borderWidth = 1.0f;
         return cell;

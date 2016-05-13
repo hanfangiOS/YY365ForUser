@@ -42,6 +42,13 @@
     return DetailsOrderInfoViewHeight;
 }
 
+- (void)setDefaultValue{
+    self.orderNum.text = @"－－";
+    self.orderTime.text = @"－－";
+    self.orderState.text = @"－－";
+    self.payment.text = @"－－";
+}
+
 - (void)initSubViews{
     self.titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 27) titleText:@"订单信息" Style:HFTitleViewStyleLoadMore];
     self.titleView.pic.backgroundColor = UIColorFromHex(Color_Hex_NavBackground);
@@ -78,42 +85,52 @@
     self.paymentLabel.font = [UIFont systemFontOfSize:12];
     [self addSubview:self.paymentLabel];
     
-    self.orderNum = [[UILabel alloc] initWithFrame:CGRectMake(self.orderNumLabel.maxX + 2, self.orderNumLabel.frameY, kScreenWidth - self.orderNumLabel.maxX - 2 - 12, 18)];
+    self.orderNum = [[UILabel alloc] initWithFrame:CGRectMake(self.orderNumLabel.maxX + 2, self.orderNumLabel.frameY - 2, kScreenWidth - self.orderNumLabel.maxX - 2 - 12, 18)];
     self.orderNum.textAlignment = NSTextAlignmentLeft;
-        self.orderNum.font = [UIFont systemFontOfSize:12];
+    self.orderNum.font = [UIFont systemFontOfSize:12];
     self.orderNum.textColor = kGrayTextColor;
     [self addSubview:self.orderNum];
     
-    self.orderTime = [[UILabel alloc] initWithFrame:CGRectMake(self.orderTimeLabel.maxX + 2, self.orderTimeLabel.frameY, kScreenWidth - self.orderTimeLabel.maxX - 2 -12, 18)];
-        self.orderTime.font = [UIFont systemFontOfSize:12];
+    self.orderTime = [[UILabel alloc] initWithFrame:CGRectMake(self.orderTimeLabel.maxX + 2, self.orderTimeLabel.frameY - 2, kScreenWidth - self.orderTimeLabel.maxX - 2 -12, 18)];
+    self.orderTime.font = [UIFont systemFontOfSize:12];
     self.orderTime.textColor = kGrayTextColor;
     self.orderTime.textAlignment = NSTextAlignmentLeft;
     [self addSubview:self.orderTime];
     
-    self.orderState = [[UILabel alloc] initWithFrame:CGRectMake(self.orderStateLabel.maxX + 2, self.orderStateLabel.frameY, kScreenWidth - self.orderStateLabel.maxX - 2 - 12, 18)];
-        self.orderState.font = [UIFont systemFontOfSize:12];
+    self.orderState = [[UILabel alloc] initWithFrame:CGRectMake(self.orderStateLabel.maxX + 2, self.orderStateLabel.frameY - 2, kScreenWidth - self.orderStateLabel.maxX - 2 - 12, 18)];
+    self.orderState.font = [UIFont systemFontOfSize:12];
     self.orderState.textAlignment = NSTextAlignmentLeft;
     [self addSubview:self.orderState];
     self.orderState.textColor = UIColorFromHex(0xf1a80b);
     
-    self.payment = [[UILabel alloc] initWithFrame:CGRectMake(self.paymentLabel.maxX + 2, self.paymentLabel.frameY, kScreenWidth - self.paymentLabel.maxX - 2 - 12, 18)];
+    self.payment = [[UILabel alloc] initWithFrame:CGRectMake(self.paymentLabel.maxX + 2, self.paymentLabel.frameY - 2, kScreenWidth - self.paymentLabel.maxX - 2 - 12, 18)];
     self.payment.textAlignment = NSTextAlignmentLeft;
-        self.payment.font = [UIFont systemFontOfSize:12];
+    self.payment.font = [UIFont systemFontOfSize:12];
     [self addSubview:self.payment];
     self.payment.textColor = UIColorFromHex(0xf1a80b);
+    
+    [self setDefaultValue];
 }
 
 - (void)setData:(CUOrder *)data{
     
     _data = data;
     
-    self.orderNum.text = [NSString stringWithFormat:@"%lld",_data.diagnosisID];
+    if (_data.diagnosisID) {
+        self.orderNum.text = [NSString stringWithFormat:@"%lld",_data.diagnosisID];
+    }
     
-    self.orderTime.text = [[NSDate dateWithTimeIntervalSince1970: _data.submitTime]stringWithDateFormat:@"yyyy-MM-dd  HH:mm"];
+    if (_data.submitTime) {
+        self.orderTime.text = [[NSDate dateWithTimeIntervalSince1970: _data.submitTime]stringWithDateFormat:@"yyyy-MM-dd  HH:mm"];
+    }
     
-    self.orderState.text = [_data orderStatusStr];
-
-    self.payment.text = [_data orderPaymentStr];
+    if ([_data orderStatusStr]) {
+        self.orderState.text = [_data orderStatusStr];
+    }
+    
+    if ([_data orderPaymentStr]) {
+        self.payment.text = [_data orderPaymentStr];
+    }
     
 }
 

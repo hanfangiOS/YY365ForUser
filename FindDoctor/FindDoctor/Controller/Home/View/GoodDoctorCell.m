@@ -46,10 +46,15 @@
     return self;
 }
 
+- (void)setDefaultValue{
+    name.text = @"－－";
+    goodAt.text = @"－－";
+    goodComment.text = @"100分";
+}
+
 - (void)initSubViews{
     //头像
     icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, (CelldefaultHeight - 52)/2, 52, 52)];
-    icon.backgroundColor = [UIColor redColor];
     [self addSubview:icon];
      //刘渊 教授
     name = [[UILabel alloc] initWithFrame:CGRectMake(icon.maxX + 7, icon.frameY, CelldefaultWidth - (icon.maxX + 10), 15)];
@@ -76,38 +81,38 @@
     //100分
     goodComment = [[ScoreLabel alloc] initWithFrame:CGRectMake(goodCommentLabel.maxX + 2, goodCommentLabel.frameY, [ScoreLabel defaultWidth], [ScoreLabel defaultHeight])];
     [self addSubview:goodComment];
+    
+    [self setDefaultValue];
 
 }
 
 - (void)setData:(Doctor *)data{
     _data = data;
     
-    [self clearCach];
+    [icon setImageWithURL:[NSURL URLWithString:_data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
     
-    [icon setImageWithURL:[NSURL URLWithString:_data.avatar]];
-    
-    NSString * string = [NSString stringWithFormat:@"%@ %@",_data.name,_data.levelDesc];
-    NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
-    NSInteger length = [_data.name length];
-    
-    if (length) {
-        [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, length)];
-        [AtrStr addAttribute:NSForegroundColorAttributeName
-                       value:kBlueTextColor
-                       range:NSMakeRange(0, length)];
-        name.attributedText = AtrStr;
+    if (_data.name && _data.levelDesc) {
+        NSString * string = [NSString stringWithFormat:@"%@ %@",_data.name,_data.levelDesc];
+        NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
+        NSInteger length = [_data.name length];
+        
+        if (length) {
+            [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, length)];
+            [AtrStr addAttribute:NSForegroundColorAttributeName
+                           value:kBlueTextColor
+                           range:NSMakeRange(0, length)];
+            name.attributedText = AtrStr;
+        }
     }
     
-    goodAt.text = [NSString stringWithFormat:@"%@",_data.skillTreat];
-    
-    goodComment.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
+    if (_data.skillTreat) {
+         goodAt.text = [NSString stringWithFormat:@"%@",_data.skillTreat];
+    }
+   
+    if (_data.goodRemark) {
+            goodComment.text = [NSString stringWithFormat:@"%ld分",(long)_data.goodRemark];
+    }
 
-}
-
-- (void)clearCach{
-    name.text = nil;
-    goodAt.text = nil;
-    goodComment.text = nil;
 }
 
 @end
