@@ -29,7 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSURL* url = [NSURL URLWithString:@"http://www.baidu.com"];
+    NSURL* url = [NSURL URLWithString:@"http://123.56.251.146:8080/screen/license.html"];
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
 }

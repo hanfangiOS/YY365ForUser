@@ -10,7 +10,7 @@
 #import "CUUserManager.h"
 #import "SettingTextFeildView.h"
 
-@interface ChangePasswordViewController ()
+@interface ChangePasswordViewController ()<UITextFieldDelegate>
 
 @property (strong,nonatomic)UIScrollView            * scrollViiew;
 
@@ -70,6 +70,7 @@
     self.beforePwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22, (self.beforePwdBackgroundView.frameHeight - [SettingTextFeildView defaultHeight])/2, kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"旧密码"];
     self.
     self.beforePwdView.imageView.image = [UIImage imageNamed:@"setting_icon_password"];
+    self.beforePwdView.contentTextFeild.delegate = self;
     [self.beforePwdBackgroundView addSubview:self.beforePwdView];
     //第二块View
     self.nowPwdBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0,self.beforePwdBackgroundView.maxY + 10, kScreenWidth, 150)];
@@ -78,15 +79,35 @@
     //新密码
     self.nowPwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22, 25, kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"新密码"];
     self.nowPwdView.imageView.image = [UIImage imageNamed:@"setting_icon_password"];
+    self.nowPwdView.contentTextFeild.delegate = self;
     [self.nowPwdBackgroundView addSubview:self.nowPwdView];
     //确认密码
     self.confirmPwdView = [[SettingTextFeildView alloc] initWithFrame:CGRectMake(22,self.nowPwdView.maxY + 25, kScreenWidth - 22 * 2 , [SettingTextFeildView defaultHeight]) Title:@"确认密码"];
     self.confirmPwdView.imageView.image = [UIImage imageNamed:@"setting_icon_password"];
+    self.confirmPwdView.contentTextFeild.delegate = self;
     [self.nowPwdBackgroundView addSubview:self.confirmPwdView];
 }
 
 - (void)loadNavigationBar{
     [self addLeftBackButtonItemWithImage];
+}
+
+#pragma mark textFeildDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([self checkPassword:string]) {
+        return YES;
+    }
+    else{
+        return NO;
+    }
+}
+
+- (BOOL)checkPassword:(NSString *) password
+{
+    NSString *pattern = @"^(?![0-9]*$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,20}";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
+    BOOL isMatch = [pred evaluateWithObject:password];
+    return isMatch;
 }
 
 - (void)didReceiveMemoryWarning {

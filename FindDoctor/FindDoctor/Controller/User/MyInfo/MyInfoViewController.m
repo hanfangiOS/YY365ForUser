@@ -70,6 +70,7 @@
    self.tempData = [[CUUser alloc] init];
    self.tempData = [self copyForUser];
     
+    self.myAvatar = [[UIImageView alloc] init];
     [self.myAvatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
 }
 
@@ -150,7 +151,6 @@
         self.myInfoAvatarCell.clickMyInfoAvatarCellBlock = ^{
             
             PersonalAvatarVC * vc = [[PersonalAvatarVC alloc] initWithPageName:@"PersonalAvatarVC"];
-            
             __strong typeof(weakSelf)strongSelf = weakSelf;
             __weak __block typeof(strongSelf)subWeakSelf = strongSelf;
             vc.uploadAvatarSuccessBlock = ^(UIImage * image){
@@ -159,7 +159,7 @@
             };
             [subWeakSelf.slideNavigationController pushViewController:vc animated:YES];
         };
-        self.myInfoAvatarCell.avatar = self.myAvatar;
+        self.myInfoAvatarCell.avatar.image = self.myAvatar.image;
         
         self.myInfoAvatarCell.selectionStyle = UITableViewCellSelectionStyleNone;
         

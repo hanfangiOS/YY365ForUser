@@ -85,7 +85,7 @@
     [_headerView addSubview:view1];
     //头像
     UIImageView * view1_imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(30,view1.centerY - 24 , 48, 48)];
-    [view1_imageView1 setImageWithURL:[NSURL URLWithString:self.listModel.doctor.avatar] placeholderImage:nil];
+    [view1_imageView1 setImageWithURL:[NSURL URLWithString:self.listModel.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
     view1_imageView1.layer.cornerRadius = 48/2;
     view1_imageView1.clipsToBounds = YES;
     view1_imageView1.contentMode = UIViewContentModeScaleAspectFill;
@@ -132,18 +132,11 @@
     self.emptyView.textLabel.frameY = self.contentTableView.frameHeight*0.5 + self.contentTableView.frameY;
     self.emptyView.userInteractionEnabled = NO;
     
-//    //暂无评论
-//    _emptyLabelForList = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.contentTableView.frameHeight)];
-//    _emptyLabelForList.text = @"暂无评论";
-//    _emptyLabelForList.font = [UIFont systemFontOfSize:12];
-//    _emptyLabelForList.textColor = UIColorFromHex(0x999999);
-//    _emptyLabelForList.textAlignment = NSTextAlignmentCenter;
-//    _emptyLabelForList.hidden = YES;
 }
 
 - (void)resetData{
     if (self.listModel.doctor){
-        [_view1_label1 setTitle:@"关注" contents:[NSString stringWithFormat:@"%d",self.listModel.doctor.numConcern] unit:@"人"];
+        [_view1_label1 setTitle:@"关注" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.numConcern] unit:@"人"];
         
         [_view1_label2 setTitle:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)self.listModel.doctor.numDiag] unit:@"次"];
         
@@ -170,8 +163,7 @@
         
         if (!self.listModel.doctor.remarkList.count) {
            [self.contentTableView addSubview:_emptyLabelForList];
-//            _emptyLabelForList.frameHeight = self.contentTableView.frameHeight;
-//            _emptyLabelForList.hidden = NO;
+
         }
     }
 }

@@ -114,6 +114,8 @@
         [_subjectArray addObject:subject];
     }
     
+    
+    
     self.homeModel = [[HomeModel alloc] init];
     [self.homeModel.subjectList addObjectsFromArray:_subjectArray];
 }
@@ -129,7 +131,7 @@
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.contentView addSubview:self.tableView];
-
+    
     //headerView 除优医馆之外的view都在里面
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
     self.headerView.backgroundColor = kCommonBackgroundColor;
@@ -147,7 +149,7 @@
     self.subjectCollectionView.delegate = self;
     self.subjectCollectionView.scrollEnabled = NO;
     self.subjectCollectionView.backgroundColor = kblueLineColor;
-
+    
     [self.subjectCollectionView registerClass:[SubObjectCell class] forCellWithReuseIdentifier:@"SubObjectCell"];
     [self.headerView addSubview:self.subjectCollectionView];
     
@@ -162,7 +164,7 @@
     self.goodDoctorVC.fatherVC = self;
     self.goodDoctorCollectionView.delegate = self.goodDoctorVC;
     self.goodDoctorCollectionView.dataSource = self.goodDoctorVC;
-
+    
     //广告轮播图
     self.secondBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, self.self.goodDoctorCollectionView.maxY + 10 * VFixRatio6, kScreenWidth, 85)];
     self.secondBannerView.delegate = self;
@@ -182,7 +184,7 @@
     [clinicLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self.goodclinicCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.secondBannerView.maxY + 10 * VFixRatio6, kScreenWidth, 283) collectionViewLayout:clinicLayout];
     self.goodclinicCollectionView.backgroundColor = [UIColor whiteColor];
-        [self.headerView addSubview:self.goodclinicCollectionView];
+    [self.headerView addSubview:self.goodclinicCollectionView];
     
     self.goodClinicVC = [[GoodClinicViewController alloc] initWithCollectionView:self.goodclinicCollectionView];
     self.goodClinicVC.fatherVC = self;
@@ -211,32 +213,32 @@
     footer.stateLabel.textColor = kGrayTextColor;
     self.tableView.mj_footer = footer;
     //这是加载更多那个按钮 ，可能被弃用
-//    self.loadMoreContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 32)];
-//    self.loadMoreContainerView.backgroundColor = [UIColor whiteColor];
-//    self.tableView.tableFooterView = self.loadMoreContainerView;
-//    
-//    UIButton * moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(36, 5, kScreenWidth - 36 * 2, 32 - 5 * 2)];
-//    [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
-//    [moreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
-//    [moreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
-//    moreBtn.layer.borderColor = kLightGrayColor.CGColor;
-//    moreBtn.layer.borderWidth = 0.5;
-//    moreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-//    moreBtn.tag = 12345;
-//    [self.loadMoreContainerView addSubview:moreBtn];
-//    
-//    UIActivityIndicatorView * indicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake((self.loadMoreContainerView.frameWidth - 10)/2, (self.loadMoreContainerView.frameHeight - 10)/2, 10, 10)];
-//    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-//    indicator.tag = 67890;
-//    [indicator setHidesWhenStopped:YES];
-//    [indicator stopAnimating];
-//    [self.loadMoreContainerView addSubview:indicator];
-//    
-//    
-//    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 32 - 1, kScreenWidth, 1)];
-//    bottomLine.backgroundColor = kblueLineColor;
-//    [self.loadMoreContainerView addSubview:bottomLine];
-
+    //    self.loadMoreContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 32)];
+    //    self.loadMoreContainerView.backgroundColor = [UIColor whiteColor];
+    //    self.tableView.tableFooterView = self.loadMoreContainerView;
+    //
+    //    UIButton * moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(36, 5, kScreenWidth - 36 * 2, 32 - 5 * 2)];
+    //    [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
+    //    [moreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
+    //    [moreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
+    //    moreBtn.layer.borderColor = kLightGrayColor.CGColor;
+    //    moreBtn.layer.borderWidth = 0.5;
+    //    moreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
+    //    moreBtn.tag = 12345;
+    //    [self.loadMoreContainerView addSubview:moreBtn];
+    //
+    //    UIActivityIndicatorView * indicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake((self.loadMoreContainerView.frameWidth - 10)/2, (self.loadMoreContainerView.frameHeight - 10)/2, 10, 10)];
+    //    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    //    indicator.tag = 67890;
+    //    [indicator setHidesWhenStopped:YES];
+    //    [indicator stopAnimating];
+    //    [self.loadMoreContainerView addSubview:indicator];
+    //
+    //
+    //    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 32 - 1, kScreenWidth, 1)];
+    //    bottomLine.backgroundColor = kblueLineColor;
+    //    [self.loadMoreContainerView addSubview:bottomLine];
+    
 }
 
 - (void)loadMoreAction{
@@ -255,10 +257,20 @@
 #pragma mark - HFBannerViewDelegate
 - (NSInteger)numberOfCellInView:(HFBannerView *)view{
     if (view == self.mainBannerView) {
-        return  self.homeModel.mainBannerList.count;
+        if (self.homeModel.mainBannerList.count > 0) {
+            return  self.homeModel.mainBannerList.count;
+        }else{
+            return 2;
+        }
+        
     }
     if (view == self.secondBannerView) {
-        return self.homeModel.secondBannerList.count;
+        if (self.homeModel.secondBannerList.count > 0) {
+            return self.homeModel.secondBannerList.count;
+        }else{
+            return 2;
+        }
+        
     }
     return 0;
 }
@@ -267,11 +279,21 @@
     HomeSubViewMainBannerCell * cell = [[HomeSubViewMainBannerCell alloc] init];
     if (view == self.mainBannerView) {
         cell.frame = CGRectMake(0 , 0 , [UIScreen mainScreen].bounds.size.width, kScreenWidth * 320 / 750.f);
-        cell.data = [self.homeModel.mainBannerList objectAtIndexSafely:index];
+        if ([self.homeModel.mainBannerList count] > 0) {
+            cell.data = [self.homeModel.mainBannerList objectAtIndexSafely:index];
+        }else{
+            cell.image = [UIImage imageNamed:@"temp_mainBanner.jpg"];
+        }
+        
     }
     if (view == self.secondBannerView) {
         cell.frame = CGRectMake(0 , 0 , [UIScreen mainScreen].bounds.size.width, kScreenWidth * 164 / 750.f);
-        cell.data = [self.homeModel.secondBannerList objectAtIndexSafely:index];
+        if (self.homeModel.secondBannerList.count > 0) {
+            cell.data = [self.homeModel.secondBannerList objectAtIndexSafely:index];
+        }else{
+            cell.image = [UIImage imageNamed:@"temp_secondBanner.jpg"];
+            
+        }
     }
     return cell;
 }
@@ -332,21 +354,21 @@
     listModel.filter.subjectID = subobject.type_id;
     SearchResultViewController *listVC = [[SearchResultViewController alloc] initWithPageName:self.pageName listModel:listModel];
     [self.slideNavigationController pushViewController:listVC animated:YES];
-
+    
 }
 
 #pragma mark - tableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return self.homeModel.famousDoctorList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeSubViewMainTableCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HomeSubViewMainTableCell"];
     if (!cell) {
-         cell = [[HomeSubViewMainTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSubViewMainTableCell"];
+        cell = [[HomeSubViewMainTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSubViewMainTableCell"];
     }
     cell.data = [self.homeModel.famousDoctorList objectAtIndexSafely:indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
@@ -463,19 +485,19 @@
 //优医馆
 - (void)postRequestFamousDoctorClinic{
     
-//    UIButton * btn = [self.loadMoreContainerView viewWithTag:12345];
-//    btn.hidden = YES;
+    //    UIButton * btn = [self.loadMoreContainerView viewWithTag:12345];
+    //    btn.hidden = YES;
     
-//    UIActivityIndicatorView * indicator = [self.loadMoreContainerView viewWithTag:67890];
-//    [indicator startAnimating];
+    //    UIActivityIndicatorView * indicator = [self.loadMoreContainerView viewWithTag:67890];
+    //    [indicator startAnimating];
     
     DoctorFilter * filter = [[DoctorFilter alloc] init];
     filter.rows = 3;
     filter.total = self.homeModel.famousDoctorList.count;
     [[CUDoctorManager sharedInstance] getFamousDoctorClinicWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         
-//        btn.hidden = NO;
-//        [indicator stopAnimating];
+        //        btn.hidden = NO;
+        //        [indicator stopAnimating];
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
@@ -492,22 +514,22 @@
 
 //轮播图
 - (void)postRequestActivityBanner{
-   [[CommonManager sharedInstance] getActivityBannerWithFilter:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-       
-       if (!result.hasError) {
-           NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-           if (![errorCode integerValue]) {
-               [self.homeModel.mainBannerList removeAllObjects];
-               [self.homeModel.mainBannerList addObjectsFromArray:[result.parsedModelObject arrayForKeySafely:@"main"]];
-               [self.mainBannerView reloadData];
-               
-               [self.homeModel.secondBannerList removeAllObjects];
-               [self.homeModel.secondBannerList addObjectsFromArray:[result.parsedModelObject arrayForKeySafely:@"second"]];
-               [self.secondBannerView reloadData];
-           }
-       }
-       
-   } pageName:@"HomeSubViewController_Main"];
+    [[CommonManager sharedInstance] getActivityBannerWithFilter:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                [self.homeModel.mainBannerList removeAllObjects];
+                [self.homeModel.mainBannerList addObjectsFromArray:[result.parsedModelObject arrayForKeySafely:@"main"]];
+                [self.mainBannerView reloadData];
+                
+                [self.homeModel.secondBannerList removeAllObjects];
+                [self.homeModel.secondBannerList addObjectsFromArray:[result.parsedModelObject arrayForKeySafely:@"second"]];
+                [self.secondBannerView reloadData];
+            }
+        }
+        
+    } pageName:@"HomeSubViewController_Main"];
 }
 
 

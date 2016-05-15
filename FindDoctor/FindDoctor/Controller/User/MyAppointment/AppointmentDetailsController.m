@@ -155,9 +155,11 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if (alertView.tag == 10000) {
-        OrderConfirmController * vc = [[OrderConfirmController alloc] initWithPageName:@"OrderConfirmController"];
-        vc.order = self.order;
-        [self.slideNavigationController pushViewController:vc animated:YES];
+        if (buttonIndex == 1) {
+            OrderConfirmController * vc = [[OrderConfirmController alloc] initWithPageName:@"OrderConfirmController"];
+            vc.order = self.order;
+            [self.slideNavigationController pushViewController:vc animated:YES];
+        }
     }
     
     if (alertView.tag == 20000) {
