@@ -495,6 +495,8 @@
 		BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC054AF1C4397F200017202 /* DiseaseSubject.m */; };
 		BCC8AA671CE957FD0094A3FB /* SelectCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8AA661CE957FD0094A3FB /* SelectCityVC.m */; };
 		BCC8AA6A1CE95C560094A3FB /* SelectCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8AA691CE95C560094A3FB /* SelectCityCollectionViewCell.m */; };
+		BCC8AA6C1CE9ACCA0094A3FB /* common_clinic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC8AA6B1CE9ACCA0094A3FB /* common_clinic@2x.png */; };
+		BCC8AA6E1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC8AA6D1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png */; };
 		BCE331F61C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */; };
 		BCE465C31C06BAAF008DE355 /* DoctorAppointmentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE465C21C06BAAF008DE355 /* DoctorAppointmentListView.m */; };
 		BCEC31D11CB3AC0C0003851A /* HomeSubViewController_Search.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC31D01CB3AC0C0003851A /* HomeSubViewController_Search.m */; };
@@ -1479,6 +1481,8 @@
 		BCC8AA661CE957FD0094A3FB /* SelectCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCityVC.m; sourceTree = "<group>"; };
 		BCC8AA681CE95C560094A3FB /* SelectCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCityCollectionViewCell.h; path = View/SelectCityCollectionViewCell.h; sourceTree = "<group>"; };
 		BCC8AA691CE95C560094A3FB /* SelectCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCityCollectionViewCell.m; path = View/SelectCityCollectionViewCell.m; sourceTree = "<group>"; };
+		BCC8AA6B1CE9ACCA0094A3FB /* common_clinic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_clinic@2x.png"; sourceTree = "<group>"; };
+		BCC8AA6D1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_userDefaultAvatar@2x.png"; sourceTree = "<group>"; };
 		BCE331F41C25341D00F03AAA /* DoctorApoointmentForHourScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorApoointmentForHourScrollView.h; sourceTree = "<group>"; };
 		BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorApoointmentForHourScrollView.m; sourceTree = "<group>"; };
 		BCE465C11C06BAAF008DE355 /* DoctorAppointmentListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorAppointmentListView.h; sourceTree = "<group>"; };
@@ -3258,6 +3262,8 @@
 		7FED1FF31CDB4F6A004639DE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BCC8AA6D1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png */,
+				BCC8AA6B1CE9ACCA0094A3FB /* common_clinic@2x.png */,
 				7F29484A1CE0407B006768D0 /* common_icon_grayArrow@2x.png */,
 				7FED1FF41CDB4F6A004639DE /* common_activePoint@2x.png */,
 				7FED1FF51CDB4F6A004639DE /* common_btn_green_nor@2x.png */,
@@ -5016,6 +5022,7 @@
 				3EDEBAA41A961C4800E72809 /* LICENSE_PLDATABASE in Resources */,
 				BC86658E1CE5B4580001445A /* setting_icon_NO@2x.png in Resources */,
 				7FED20B01CDB4F6A004639DE /* navbar_background@2x.png in Resources */,
+				BCC8AA6E1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png in Resources */,
 				7FED20851CDB4F6A004639DE /* doctor_waitForConcen@2x.png in Resources */,
 				7F0C336D1CE5B8A900B42BBB /* about_icon_checkUpdate@2x.png in Resources */,
 				7FED20791CDB4F6A004639DE /* doctor_detail_collect_btn_nor@2x.png in Resources */,
@@ -5106,6 +5113,7 @@
 				E17B69201B837AA00079DDB5 /* fontHeight.plist in Resources */,
 				7FED20821CDB4F6A004639DE /* doctor_tip_red@2x.png in Resources */,
 				7F0331D91CDCA7D700A96F47 /* mySpace_icon_setting@2x.png in Resources */,
+				BCC8AA6C1CE9ACCA0094A3FB /* common_clinic@2x.png in Resources */,
 				7F29484D1CE075E4006768D0 /* common_icon_trash@2x.png in Resources */,
 				7FED20B91CDB4F6A004639DE /* order_icon_check@2x.png in Resources */,
 				7FED20901CDB4F6A004639DE /* login_bg@2x.png in Resources */,
