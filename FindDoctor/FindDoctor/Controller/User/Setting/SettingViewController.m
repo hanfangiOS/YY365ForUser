@@ -12,6 +12,7 @@
 #import "CUUserManager.h"
 #import "TipHandler+HUD.h"
 #import "AppDelegate.h"
+#import "SelectCityVC.h"
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
@@ -211,6 +212,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
         case 0:
+            if (indexPath.row == 0) {
+                SelectCityVC *VC = [[SelectCityVC alloc]initWithPageName:@"SelectCityVC"];
+                [self.slideNavigationController pushViewController:VC animated:YES];
+            }
             if (indexPath.row == 1) {
                 AccountSecurityViewController *VC = [[AccountSecurityViewController alloc]initWithPageName:@"AccountSecurityViewController"];
                 [self.slideNavigationController pushViewController:VC animated:YES];

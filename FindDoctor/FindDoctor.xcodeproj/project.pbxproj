@@ -488,6 +488,8 @@
 		BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0506B1C15982500F988B1 /* TipMessageData.m */; };
 		BCB51CF41CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB51CF31CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m */; };
 		BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC054AF1C4397F200017202 /* DiseaseSubject.m */; };
+		BCC8AA671CE957FD0094A3FB /* SelectCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8AA661CE957FD0094A3FB /* SelectCityVC.m */; };
+		BCC8AA6A1CE95C560094A3FB /* SelectCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8AA691CE95C560094A3FB /* SelectCityCollectionViewCell.m */; };
 		BCE331F61C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */; };
 		BCE465C31C06BAAF008DE355 /* DoctorAppointmentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE465C21C06BAAF008DE355 /* DoctorAppointmentListView.m */; };
 		BCEC31D11CB3AC0C0003851A /* HomeSubViewController_Search.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC31D01CB3AC0C0003851A /* HomeSubViewController_Search.m */; };
@@ -1463,6 +1465,10 @@
 		BCB51CF31CBF61560020EC89 /* HotSearchDoctorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSearchDoctorCollectionViewCell.m; sourceTree = "<group>"; };
 		BCC054AE1C4397F200017202 /* DiseaseSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiseaseSubject.h; sourceTree = "<group>"; };
 		BCC054AF1C4397F200017202 /* DiseaseSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiseaseSubject.m; sourceTree = "<group>"; };
+		BCC8AA651CE957FD0094A3FB /* SelectCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCityVC.h; sourceTree = "<group>"; };
+		BCC8AA661CE957FD0094A3FB /* SelectCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCityVC.m; sourceTree = "<group>"; };
+		BCC8AA681CE95C560094A3FB /* SelectCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCityCollectionViewCell.h; path = View/SelectCityCollectionViewCell.h; sourceTree = "<group>"; };
+		BCC8AA691CE95C560094A3FB /* SelectCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCityCollectionViewCell.m; path = View/SelectCityCollectionViewCell.m; sourceTree = "<group>"; };
 		BCE331F41C25341D00F03AAA /* DoctorApoointmentForHourScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorApoointmentForHourScrollView.h; sourceTree = "<group>"; };
 		BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorApoointmentForHourScrollView.m; sourceTree = "<group>"; };
 		BCE465C11C06BAAF008DE355 /* DoctorAppointmentListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorAppointmentListView.h; sourceTree = "<group>"; };
@@ -3609,6 +3615,8 @@
 				BCA6ED491CC781B900D85E0D /* ChangePasswordViewController.m */,
 				7F1DE01C1CCF149B00C3CDC7 /* UserProtocolController.h */,
 				7F1DE01D1CCF149B00C3CDC7 /* UserProtocolController.m */,
+				BCC8AA651CE957FD0094A3FB /* SelectCityVC.h */,
+				BCC8AA661CE957FD0094A3FB /* SelectCityVC.m */,
 			);
 			name = Setting;
 			path = User/Setting;
@@ -3662,6 +3670,8 @@
 			children = (
 				BCA6ED451CC7780F00D85E0D /* SettingTextFeildView.h */,
 				BCA6ED461CC7780F00D85E0D /* SettingTextFeildView.m */,
+				BCC8AA681CE95C560094A3FB /* SelectCityCollectionViewCell.h */,
+				BCC8AA691CE95C560094A3FB /* SelectCityCollectionViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -5272,6 +5282,7 @@
 				E6ECE1611BA1C49600A3F998 /* ReplyHeader.m in Sources */,
 				7FD0BBCF1C9A58C9004D2E02 /* IQKeyboardManager.m in Sources */,
 				E1EB1E611B70A43B0048B8EB /* SNFocusImageItem.m in Sources */,
+				BCC8AA671CE957FD0094A3FB /* SelectCityVC.m in Sources */,
 				E61DDABD1B8E221B00120365 /* CUServiceManager.m in Sources */,
 				BCAA4ABB1C8578480085A165 /* MyClinicCell.m in Sources */,
 				E1EB1D7A1B70A43B0048B8EB /* HomeSubController.m in Sources */,
@@ -5320,6 +5331,7 @@
 				7FD0BBCE1C9A58C9004D2E02 /* IQUIWindow+Hierarchy.m in Sources */,
 				7FD0BBD01C9A58C9004D2E02 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				E1A6B90F1BAE9DFF001A458D /* PasswordSettingController.m in Sources */,
+				BCC8AA6A1CE95C560094A3FB /* SelectCityCollectionViewCell.m in Sources */,
 				3EDEBAAE1A961C4800E72809 /* NSArray+SNExtension.m in Sources */,
 				7FABC5881CC75A03006C47BB /* CommonManager.m in Sources */,
 				BC8E36C61C27C69400304637 /* TitleView.m in Sources */,
