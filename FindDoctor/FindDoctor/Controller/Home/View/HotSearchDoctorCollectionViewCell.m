@@ -58,7 +58,7 @@
 
 - (void)setData:(Doctor *)data{
     _data = data;
-    [_imageView setImageWithURL:[NSURL URLWithString:_data.avatar]];
+    [_imageView setImageWithURL:[NSURL URLWithString:_data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
     _titleLabel.text = _data.name;
     _detailLabel.text = _data.skillTreat;
 }

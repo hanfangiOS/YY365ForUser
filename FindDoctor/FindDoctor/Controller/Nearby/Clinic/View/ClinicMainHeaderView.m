@@ -64,7 +64,7 @@
     descLabel.font = [UIFont systemFontOfSize:13];
     [self addSubview:descLabel];
     
-    UIImage *guanzhuImage = [UIImage imageNamed:@"guanzhu"];
+    UIImage *guanzhuImage = [UIImage imageNamed:@"doctor_waitForConcen"];
     guanzhuButton = [[UIButton alloc]initWithFrame:CGRectMake([self frameWidth]-guanzhuImage.size.width, 0, guanzhuImage.size.width, guanzhuImage.size.height)];
     guanzhuButton.layer.contents = (id)guanzhuImage.CGImage;
     [guanzhuButton addTarget:self action:@selector(guanZhuButtonAction) forControlEvents:UIControlEventTouchUpInside    ];
@@ -95,13 +95,13 @@
     [phoneImageView addGestureRecognizer:tap];
     
     CGFloat padding = 15.0;
-    zhenLiaoNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding, CGRectGetMaxY(zhenSuoFengCaiButton.frame) + 10, 150, 12) title:@"诊疗" contents:[NSString stringWithFormat:@"%d",_data.numDiag] unit:@"次" hasDot:YES];
+    zhenLiaoNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding, CGRectGetMaxY(zhenSuoFengCaiButton.frame) + 10, 150, 12) title:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)_data.numDiag] unit:@"次" hasDot:YES];
     [self addSubview:zhenLiaoNumberLabel];
     
-    guanZhuNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding + (kScreenWidth - padding * 2)/3.f, CGRectGetMaxY(zhenSuoFengCaiButton.frame) + 10, 150, 12) title:@"关注" contents:[NSString stringWithFormat:@"%d",_data.numConcern] unit:@"次" hasDot:YES];
+    guanZhuNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding + (kScreenWidth - padding * 2)/3.f, CGRectGetMaxY(zhenSuoFengCaiButton.frame) + 10, 150, 12) title:@"关注" contents:[NSString stringWithFormat:@"%ld",(long)_data.numConcern] unit:@"次" hasDot:YES];
     [self addSubview:guanZhuNumberLabel];
     
-    haoPingNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding + (kScreenWidth - padding * 2)/3.f*2, CGRectGetMaxY(zhenSuoFengCaiButton.frame) + 10, 150, 12) title:@"好评率" contents:[NSString stringWithFormat:@"%d%",_data.goodRemark] unit:@"" hasDot:YES];
+    haoPingNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding + (kScreenWidth - padding * 2)/3.f*2, CGRectGetMaxY(zhenSuoFengCaiButton.frame) + 10, 150, 12) title:@"好评率" contents:[NSString stringWithFormat:@"%ld",(long)_data.goodRemark] unit:@"" hasDot:YES];
     [self addSubview:haoPingNumberLabel];
 }
 
@@ -126,9 +126,9 @@
     
     [self resetguanzhuButton];
     
-    [zhenLiaoNumberLabel setTitle:@"诊疗" contents:[NSString stringWithFormat:@"%d",_data.numDiag] unit:@"次"];
-    [guanZhuNumberLabel setTitle:@"关注" contents:[NSString stringWithFormat:@"%d",_data.numConcern] unit:@"次"];
-    [haoPingNumberLabel setTitle:@"好评率" contents:[NSString stringWithFormat:@"%d",_data.goodRemark] unit:@"%"];
+    [zhenLiaoNumberLabel setTitle:@"诊疗" contents:[NSString stringWithFormat:@"%ld",(long)_data.numDiag] unit:@"次"];
+    [guanZhuNumberLabel setTitle:@"关注" contents:[NSString stringWithFormat:@"%ld",(long)_data.numConcern] unit:@"次"];
+    [haoPingNumberLabel setTitle:@"好评率" contents:[NSString stringWithFormat:@"%ld",(long)_data.goodRemark] unit:@"%"];
     
     int intervalY = 7;
     
@@ -163,10 +163,10 @@
 
 - (void)resetguanzhuButton{
     if (self.data.isConcern) {
-        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"haveguanzhu"].CGImage;
+        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_HasConcen"].CGImage;
     }
     else{
-        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"guanzhu"].CGImage;
+        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_waitForConcen"].CGImage;
     }
 }
 @end

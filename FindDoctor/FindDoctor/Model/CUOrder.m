@@ -41,6 +41,8 @@
         case ORDERSTATUS_FINISHED:
             statusStr = @"已完成";
             break;
+        case ORDERSTATUS_COMMENT:
+            statusStr = @"已评价";
         default:
             break;
     }

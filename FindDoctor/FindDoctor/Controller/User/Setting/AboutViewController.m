@@ -29,24 +29,28 @@
 }
 
 - (void)loadContentView {
-    int imageViewWidth = 100;
     
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake((kScreenWidth - imageViewWidth)/2, 20, imageViewWidth, imageViewWidth)];
-    imageView.image = [UIImage imageNamed:@"Icon"];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake((kScreenWidth - 87)/2, 20, 101, 87)];
+    imageView.image = [UIImage imageNamed:@"about_uyi365@2x"];
     imageView.contentMode = 1;
     
-    _versionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, imageView.maxY + 10, kScreenWidth, 14)];
+    _versionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, imageView.maxY, kScreenWidth, 18)];
     _versionLabel.textAlignment = NSTextAlignmentCenter;
-    _versionLabel.text = [NSString stringWithFormat:@"优医365 V2.0.1"];
+    _versionLabel.font = [UIFont systemFontOfSize:17];
+    _versionLabel.textColor = kBlueTextColor;
+    
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *ver = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    _versionLabel.text = [NSString stringWithFormat:@" V %@",ver];
     
     headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, _versionLabel.maxY +20)];
+    headerView.layer.contents = (id)[UIImage imageNamed:@"about_background"].CGImage;
     [headerView addSubview:imageView];
     [headerView addSubview:_versionLabel];
     
     self.tableView = [[UITableView alloc]initWithFrame:self.contentView.bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-//    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableView.backgroundColor = kCommonBackgroundColor;
     self.tableView.separatorColor = kblueLineColor;
     self.tableView.tableHeaderView = headerView;
@@ -73,15 +77,18 @@
     }
     
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-
+    
     switch (indexPath.row) {
         case 0:
+            cell.imageView.image = [UIImage imageNamed:@"about_icon_checkUpdate"];
             cell.textLabel.text = @"检查更新";
             break;
         case 1:
+            cell.imageView.image = [UIImage imageNamed:@"about_icon_userProtocol"];
             cell.textLabel.text = @"用户协议";
             break;
         case 2:
+            cell.imageView.image = [UIImage imageNamed:@"about_icon_goodRemark"];
             cell.textLabel.text = @"为我的方便点赞";
             break;
         default:
@@ -193,13 +200,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

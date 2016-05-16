@@ -104,19 +104,24 @@
     [self.scrollView addSubview:self.commentBtn];
     //评价按钮里的小图标
     UIImageView * commentIcon = [[UIImageView alloc] initWithFrame:CGRectMake(self.commentBtn.frameWidth/2 - 36, (self.commentBtn.frameHeight - 16)/2, 16, 16)];
-    commentIcon.image = [UIImage imageNamed:@"comment_icon_comment@2x"];
+    commentIcon.image = [UIImage imageNamed:@"comment_icon_comment_white"];
     [self.commentBtn addSubview:commentIcon];
 
     
+}
+
+- (void)resetDdata{
+    if (self.order.orderStatus == ORDERSTATUS_COMMENT) {
+        self.deleteBtn.frameWidth = kScreenWidth;
+        self.commentBtn.hidden = YES;
+    }
 }
 
 #pragma mark Action
 
 - (void)CommentAction{
     DiagnosisRemarkController * vc = [[DiagnosisRemarkController alloc] initWithPageName:@"DiagnosisRemarkController"];
-    
-    Doctor * doctor = self.order.service.doctor;
-    vc.data = doctor;
+    vc.order = self.order;
     [self.slideNavigationController pushViewController:vc animated:YES];
 }
 

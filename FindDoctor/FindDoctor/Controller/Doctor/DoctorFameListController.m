@@ -46,32 +46,33 @@
     self = [super initWithPageName:pageName listModel:listModel];
     if (self) {
         self.listModel = listModel;
-        self.hasFreshControl = NO;
+        return self;
     }
-    return self;
+    return nil;
+}
+
+- (void)setShouldFreshControl{
+    self.hasFreshControl = NO;
 }
 
 - (void)viewDidLoad {
     self.title = [NSString stringWithFormat:@"%@ 教授口碑",self.listModel.doctor.name];
-//    self.contentTableView.backgroundColor = UIColorFromHex(Color_Hex_ImageDefault);
-    self.hasFreshControl = NO;
+
     [super viewDidLoad];
-    self.hasFreshControl = NO;
     _cellHeight = 0;
 }
 
 - (void)loadContentView{
     
     self.contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    self.contentTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     CGFloat heightForHeader = 0.4 * 640;
-    self.contentTableView.frame = CGRectMake(0, heightForHeader, self.contentTableView.frame.size.width, self.contentView.frameHeight - heightForHeader);
     
-//    
-//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, heightForHeader - 0.5, kScreenWidth, 0.5)];
-//    view.layer.backgroundColor = UIColorFromHex(0xcccccc).CGColor;
-//    [self.contentView addSubview:view];
+    //评论
+    TitleView * commentTitle = [[TitleView alloc]initWithFrame:CGRectMake(0, heightForHeader, kScreenWidth, 14) title:@"评论"];
+    self.contentTableView.tableHeaderView = commentTitle;
+    
+    self.contentTableView.frame = CGRectMake(0, heightForHeader, self.contentTableView.frame.size.width, self.contentView.frameHeight - heightForHeader);
     
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, heightForHeader)];
     

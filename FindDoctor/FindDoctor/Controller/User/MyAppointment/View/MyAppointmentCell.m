@@ -112,7 +112,7 @@
     topLineForBtn.backgroundColor = kblueLineColor;
     [self.payBtn addSubview: topLineForBtn];
     //箭头
-    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, (self.infoView.frameHeight - 15)/2, 9, 15)];
+    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, (self.infoView.frameHeight - self.payBtn.frameHeight - 15)/2, 9, 15)];
     self.arrow.image = [UIImage imageNamed:@"common_icon_grayArrow@2x"];
     [self.infoView addSubview:self.arrow];
     

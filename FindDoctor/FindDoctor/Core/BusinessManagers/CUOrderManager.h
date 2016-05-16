@@ -58,7 +58,7 @@ SINGLETON_DECLARE(CUOrderManager);
 - (void)CheckOrderHasPaidWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 //成功支付后获取订单状态
-- (void)getOrderStateWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+- (void)getOrderStateWithDiagnosisID:(long long)diagnosisID andChargeid:(NSString *)chargeid andDynamicno:(long long)dynamicno resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 //没付款记录
 - (void)getOrderNotPayListWithFilter:(OrderFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;

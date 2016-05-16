@@ -45,6 +45,7 @@
     
     CommentFilter               * _filter;
     
+    NSMutableArray              * _defaultFlags;
 }
 
 @end
@@ -60,6 +61,13 @@
 }
 
 #pragma mark - 加载视图
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self requestGetDiagnosisComment];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isPanValid = NO;
@@ -67,10 +75,11 @@
     _numStar = 5;
     [self loadContentScrollView];
     [self loadContent];
-    [self resetData];
     self.title = @"就诊点评";
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEidtor)];
     [self.view addGestureRecognizer:tap];
+    [self resetData];
+    
 }
 
 - (void)loadContentScrollView{
@@ -93,14 +102,11 @@
     [_view1 addSubview:_view1_imageView1];
     
     //郭晓炜
-    _view1_label1 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, 20, 70, 20)];
-    _view1_label1.font = [UIFont systemFontOfSize:16];
+    _view1_label1 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, 20, 200, 20)];
+    _view1_label1.font = [UIFont systemFontOfSize:12];
+    _view1_label1.textColor = kBlueTextColor;
+    _view1_label1.text = @"－－";
     [_view1 addSubview:_view1_label1];
-    
-    //主任医师
-    _view1_label2 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_label1.maxX, 24, 80, 15)];
-    _view1_label2.font = [UIFont systemFontOfSize:12];
-    [_view1 addSubview:_view1_label2];
     
     //地址：
     _view1_label3 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, _view1_label1.maxY + 5, 40, 20)];
@@ -112,12 +118,14 @@
     //三仙堂XXX
     _view1_label4 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_label3.maxX, _view1_label1.maxY + 5, kScreenWidth - _view1_label3.maxX -20, 20)];
     _view1_label4.font = [UIFont systemFontOfSize:12];
+    _view1_label4.text = @"－－";
     [_view1 addSubview:_view1_label4];
     
     //2016-XXXX
     _view1_label5 = [[UILabel alloc] initWithFrame:CGRectMake(_view1_imageView1.maxX + 25, _view1_label3.maxY + 5, kScreenWidth - (_view1_imageView1.maxX + 25) - 20, 10)];
     _view1_label5.font = [UIFont systemFontOfSize:10];
     _view1_label5.textColor = [UIColor grayColor];
+    _view1_label5.text = @"－－";
     [_view1 addSubview:_view1_label5];
     
     //第二块view
@@ -173,7 +181,7 @@
     [_view4_textView setAutocorrectionType:UITextAutocorrectionTypeNo];
     
     _view4_textView_placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 4, 160, 20)];
-    _view4_textView_placeholderLabel.text = @"好医生（需5个字以上）";
+    _view4_textView_placeholderLabel.text = @"评价内容（需5字以上）";
     _view4_textView_placeholderLabel.font = [UIFont systemFontOfSize:14];
     _view4_textView_placeholderLabel.enabled = NO;
     
@@ -204,34 +212,67 @@
 
 //刷新数据
 - (void)resetData{
-    [_view1_imageView1 setImageWithURL:[NSURL URLWithString:self.data.avatar]];
-    _view1_label1.text = self.data.name;
-    _view1_label2.text = self.data.levelDesc;
-    _view1_label4.text = self.data.address;
-    _view1_label5.text = [[NSDate dateWithTimeIntervalSince1970:self.data.diagnosisTime ] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
-    _view3_flagView.data = self.data;
+    [_view1_imageView1 setImageWithURL:[NSURL URLWithString:self.order.service.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
+    
+    if (self.order.service.doctor.name && self.order.service.doctor.levelDesc) {
+        NSString * string = [NSString stringWithFormat:@"%@  %@",self.order.service.doctor.name,self.order.service.doctor.levelDesc];
+        NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
+        NSInteger length = [self.order.service.doctor.name length];
+        [AtrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, length)];
+        [AtrStr addAttribute:NSForegroundColorAttributeName
+                       value:[UIColor blackColor]
+                       range:NSMakeRange(0, length)];
+        _view1_label1.attributedText = AtrStr;
+    }
+    
+    _view1_label4.text = self.order.service.doctor.address;
+    if (self.order.createTimeStampStr) {
+     _view1_label5.text = self.order.createTimeStampStr;
+    }
+    
+    
+    _view3_flagView.data = self.order.service.doctor;
 }
 
 #pragma mark - 网络请求
 //11902用户提交点评
+
 - (void)postRequestCommit{
     [self showProgressView];
-    _filter.order.diagnosisID = self.diagnosisID;
+    _filter.order.diagnosisID = self.order.diagnosisID;
     _filter.remarkListInfo.numStar =  _numStar;
     
     _filter.remarkListInfo.flagID =  _view3_flagView.selectedFlag.ID;
-    
+    __weak __block typeof(self)weakSelf = self;
     [[CUCommentManager sharedInstance] getCommitComment:_filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        [self hideProgressView];
+        [weakSelf hideProgressView];
         if (!result.hasError) {
-            NSInteger errorCode = [[result.responseObject valueForKey:@"errorCode"] integerValue];
-            if(errorCode == 0){
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
+            if([errorCode integerValue] == 0){
                 [TipHandler showHUDText:@"提交成功" inView:self.view];
                 [self performSelector:@selector(commitSuccess) withObject:nil afterDelay:1];
                 
             }
         }
     } pageName:@"DiagnosisRemarkController"];
+}
+
+//11901点评按钮接口
+- (void)requestGetDiagnosisComment{
+    _filter.order.diagnosisID = self.order.diagnosisID;
+     [self showProgressView];
+    __weak __block typeof(self)weakSelf = self;
+     [[CUCommentManager sharedInstance] getDiagnosisComment:_filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+         [weakSelf hideProgressView];
+         if (!result.hasError) {
+             NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
+             if([errorCode integerValue] == 0){
+                 self.order = result.parsedModelObject;
+                 [self resetData];
+             }
+         }
+
+     } pageName:@"DiagnosisRemarkController"];
 }
 
 #pragma mark UITextViewDelegate

@@ -74,8 +74,8 @@
             NSInteger errorCode = [[result.responseObject valueForKey:@"errorCode"] integerValue];
             if(errorCode == 0){
                 DiagnosisRemarkController * vc = [[DiagnosisRemarkController alloc] init];
-                vc.data = result.parsedModelObject;
-                vc.diagnosisID = self.data.diagnosisID;
+                vc.order = result.parsedModelObject;
+                vc.order.diagnosisID = self.data.diagnosisID;
                 [self.slideNavigationController pushViewController:vc animated:YES];
             }
         }

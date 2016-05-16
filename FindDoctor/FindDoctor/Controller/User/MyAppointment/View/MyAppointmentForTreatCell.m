@@ -129,7 +129,7 @@
     NSString * strSymbol = [locale objectForKey:NSLocaleCurrencySymbol];
     
     if (_data.dealPrice) {
-        self.price.text = [NSString stringWithFormat:@"%@%lld",strSymbol,_data.dealPrice];
+        self.price.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.dealPrice];
     }
     
     if (_data.service.doctor.diagnosisTime) {
