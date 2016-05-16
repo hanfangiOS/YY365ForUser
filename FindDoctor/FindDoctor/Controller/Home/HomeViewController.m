@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "SearchResultListModel.h"
 #import "SearchResultViewController.h"
+#import "SelectCityVC.h"
 
 @interface HomeViewController ()<UITextFieldDelegate,HomeSubViewController_SearchDelegate>{
     CityChooseButton    *_cityButton;
@@ -67,6 +68,7 @@
     
     _cityButton = [[CityChooseButton alloc]initWithFrame:CGRectMake(10, 28, 46, 24)];
     _cityButton.cityLabel.text = @"成都";
+    [_cityButton addTarget:self action:@selector(selectCityAction) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:_cityButton];
     
     _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(68, 27, kScreenWidth - 120, 24)];
@@ -110,6 +112,11 @@
 - (void)messageAction{
     NewsListModel * listMiodel = [[NewsListModel alloc] init];
     NewsListController * VC = [[NewsListController alloc] initWithPageName:@"NewsListController" listModel:listMiodel];
+    [self.slideNavigationController pushViewController:VC animated:YES];
+}
+
+- (void)selectCityAction{
+    SelectCityVC *VC = [[SelectCityVC alloc]initWithPageName:@"SelectCityVC"];
     [self.slideNavigationController pushViewController:VC animated:YES];
 }
 

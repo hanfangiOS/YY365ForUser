@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     self.dataArray = [NSMutableArray arrayWithObject:@"成都市"];
     [super viewDidLoad];
+    self.title = @"选择地区";
 }
 
 - (void)loadContentView{
