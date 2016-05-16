@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/CUOrder/OrderResultController.m"
-            timestampString = "485057868.207903"
+            filePath = "FindDoctor/Controller/User/View/DetailsAppointInfoView.m"
+            timestampString = "485077981.659279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
-            landmarkName = "-postRequestGetOrderHasPayNotMeetDetailWithOrder:"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-setData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-            timestampString = "485060275.605754"
+            timestampString = "485078902.401532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "970"
-            endingLineNumber = "970"
-            landmarkName = "-getOrderHasPayNotMeetDetailWithFilter:resultBlock:pageName:"
+            startingLineNumber = "1066"
+            endingLineNumber = "1066"
+            landmarkName = "-getOrderHasPayHasMeetDetailWithFilter:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,76 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-            timestampString = "485060275.605754"
+            timestampString = "485078272.484342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "972"
-            endingLineNumber = "972"
-            landmarkName = "-getOrderHasPayNotMeetDetailWithFilter:resultBlock:pageName:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/User/MyDiagnosisRecords/DiagnosisRemarkController.m"
-            timestampString = "485066714.645523"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "-requestGetDiagnosisComment"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUCommentManager.m"
-            timestampString = "485062819.745914"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-getDiagnosisComment:resultBlock:pageName:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUCommentManager.m"
-            timestampString = "485071718.80278"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-getDiagnosisComment:resultBlock:pageName:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/User/MyDiagnosisRecords/DiagnosisRemarkController.m"
-            timestampString = "485071999.676179"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "-requestGetDiagnosisComment"
+            startingLineNumber = "1045"
+            endingLineNumber = "1045"
+            landmarkName = "-getOrderHasPayHasMeetDetailWithFilter:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

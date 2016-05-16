@@ -72,7 +72,6 @@
         DiagnosisRemarkController * vc = [[DiagnosisRemarkController alloc] initWithPageName:@"DiagnosisRemarkController"];
         
         CUOrder * order = [self.listModel.items objectAtIndexSafely:indexPath.section];
-        Doctor * doctor = order.service.doctor;
         vc.order = order;
         [self.slideNavigationController pushViewController:vc animated:YES];
     };

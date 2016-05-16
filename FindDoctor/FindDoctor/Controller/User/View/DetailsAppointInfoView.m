@@ -119,10 +119,10 @@
     }
     
     if (_data.service.doctor.diagnosisTime) {
-        self.time.text = [[NSDate dateWithTimeIntervalSince1970:_data.service.doctor.diagnosisTime] stringWithDateFormat:@"yyyy-mm-dd hh:mm"];
+        self.time.text = [[NSDate dateWithTimeIntervalSince1970:(_data.service.doctor.diagnosisTime/1000)] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
     }
     
-    if (_data.service.patience.age && _data.service.patience.cellPhone) {
+    if (_data.service.patience.name && _data.service.patience.age && _data.service.patience.cellPhone) {
         self.person.text = [NSString stringWithFormat:@"%@  %ld岁  %@",_data.service.patience.name,(long)_data.service.patience.age,_data.service.patience.cellPhone];
     }
     

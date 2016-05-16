@@ -122,7 +122,7 @@
     
 //    ratingView.rate = self.data.rate;
     
-    [imageView setImageWithURL:[NSURL URLWithString:self.data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
+    [imageView setImageWithURL:[NSURL URLWithString:self.data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor"]];
     
     NSString *str = [NSString stringWithFormat:@"%@      %@",self.data.name,self.data.levelDesc];
     NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc]initWithString:str];

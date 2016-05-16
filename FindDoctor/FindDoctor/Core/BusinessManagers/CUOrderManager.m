@@ -1056,6 +1056,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.service.patience.name = [orderDict stringForKeySafely:@"userName"];
                 order.service.doctor.diagnosisTime = [[orderDict stringForKeySafely:@"ordertime"] integerValue];
                 order.finishedTimeStamp = [[orderDict stringForKeySafely:@"endtime"] integerValue];
+                order.submitTimeStr = [orderDict stringForKeySafely:@"starttime"];
                 order.service.doctor.address = [orderDict stringForKeySafely:@"address"];
                 order.service.patience.age = [orderDict integerForKeySafely:@"userAge"];
                 order.service.patience.cellPhone = [orderDict stringForKeySafely:@"userPhone"];

@@ -85,13 +85,13 @@
     self.icon.layer.cornerRadius = 5.0f;
     [self.infoView addSubview:self.icon];
     //¥100
-    self.price = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 15, self.icon.frameY + 4, kScreenWidth - self.icon.maxX - 15 - 30, 15)];
+    self.price = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 15, self.icon.frameY + 4, kScreenWidth - self.icon.maxX - 15 - 30, 18)];
     self.price.textColor = UIColorFromHex(0xf1a90e);
-    self.price.font = [UIFont systemFontOfSize:18];
+    self.price.font = [UIFont systemFontOfSize:20];
     [self.infoView addSubview:self.price];
     
     //罗威 1111-11-11 11:11
-    self.info = [[UILabel alloc] initWithFrame:CGRectMake(self.price.frameX, self.price.maxY + 9, kScreenWidth - self.price.frameX - 30, 12)];
+    self.info = [[UILabel alloc] initWithFrame:CGRectMake(self.price.frameX, self.price.maxY + 6, kScreenWidth - self.price.frameX - 30, 12)];
     self.info.textColor = kGrayTextColor;
     self.info.font = [UIFont systemFontOfSize:12];
     [self.infoView addSubview:self.info];
@@ -152,7 +152,7 @@
         [self.timer fire];
     }
     
-    [self.icon setImageWithURL:[NSURL URLWithString:_data.service.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
+    [self.icon setImageWithURL:[NSURL URLWithString:_data.service.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor"]];
     
     NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     NSString * strSymbol = [locale objectForKey:NSLocaleCurrencySymbol];
@@ -162,7 +162,8 @@
     }
     
     if (_data.service.doctor.diagnosisTime && _data.service.patience.name) {
-        NSString * diagnosisTimeStr = [[NSDate dateWithTimeIntervalSince1970:_data.service.doctor.diagnosisTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+        
+        NSString * diagnosisTimeStr = [[NSDate dateWithTimeIntervalSince1970:(_data.service.doctor.diagnosisTime/1000)] stringWithDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         self.info.text = [NSString stringWithFormat:@"%@  %@",_data.service.patience.name,diagnosisTimeStr];
     }
     

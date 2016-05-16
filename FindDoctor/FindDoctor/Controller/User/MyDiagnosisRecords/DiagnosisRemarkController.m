@@ -212,7 +212,7 @@
 
 //刷新数据
 - (void)resetData{
-    [_view1_imageView1 setImageWithURL:[NSURL URLWithString:self.order.service.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
+    [_view1_imageView1 setImageWithURL:[NSURL URLWithString:self.order.service.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor"]];
     
     if (self.order.service.doctor.name && self.order.service.doctor.levelDesc) {
         NSString * string = [NSString stringWithFormat:@"%@  %@",self.order.service.doctor.name,self.order.service.doctor.levelDesc];

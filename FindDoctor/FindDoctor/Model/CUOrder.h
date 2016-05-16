@@ -46,6 +46,7 @@ typedef enum OrderPayment : NSInteger
 @property (nonatomic,strong) NSString *diagnosisTime;  //就诊时间区间，支付成功回调用到,createTimeStamp转换为字符串
 @property NSTimeInterval finishedTimeStamp;
 @property NSTimeInterval submitTime;  //提交时间的时间戳
+@property (nonatomic,strong)NSString * submitTimeStr;
 @property (nonatomic,strong) NSString *submitTimeString;   //提交时间的时间戳转换为的字符串
 
 @property NSInteger obtainScore; //获得积分
