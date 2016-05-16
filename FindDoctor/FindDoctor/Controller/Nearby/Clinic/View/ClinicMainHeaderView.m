@@ -83,7 +83,7 @@
     phoneLabel.userInteractionEnabled = YES;
     [self addSubview:phoneLabel];
     
-    phoneImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"clinicPhoneButton"]];
+    phoneImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"clinic_icon_phoneButton"]];
     phoneImageView.contentMode = 1;
     phoneImageView.userInteractionEnabled = YES;
     [self addSubview:phoneImageView];
@@ -107,7 +107,7 @@
 
 - (void)setData:(Clinic *)data{
     _data = data;
-    [imageView setImageWithURL:[NSURL URLWithString:_data.icon] placeholderImage:nil];
+    [imageView setImageWithURL:[NSURL URLWithString:_data.icon] placeholderImage:[UIImage imageNamed:@"temp_clinic"]];
     descLabel.text = _data.detailIntro;
     
     NSString *title = @"地址: ";

@@ -88,7 +88,7 @@
     detailLabel.text = self.merchant.breifInfo;
 //    ratingView.rate = self.merchant.rate;
     
-    [imageView setImageWithURL:[NSURL URLWithString:self.merchant.icon] placeholderImage:[UIImage imageNamed:@"image_default_merchantlist"]];
+    [imageView setImageWithURL:[NSURL URLWithString:self.merchant.icon] placeholderImage:[UIImage imageNamed:@"temp_goodClinic"]];
 }
 
 @end
