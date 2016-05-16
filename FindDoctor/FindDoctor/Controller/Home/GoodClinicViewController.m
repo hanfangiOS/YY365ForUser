@@ -102,8 +102,10 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ClinicMainViewController * vc = [[ClinicMainViewController alloc] initWithPageName:@"ClinicMainViewController"];
-    vc.clinic =  [self.data.goodClinicList objectAtIndex:indexPath.row];
-    [self.fatherVC.slideNavigationController pushViewController:vc animated:YES];
+    vc.clinic =  [self.data.goodClinicList objectAtIndexSafely:indexPath.row];
+    if ([self.data.goodClinicList objectAtIndexSafely:indexPath.row]) {
+            [self.fatherVC.slideNavigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
@@ -131,11 +133,11 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
         HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight) titleText:@"好评诊所" Style:HFTitleViewStyleLoadMore];
         titleView.pic.backgroundColor = kBlueTextColor;
         titleView.title.font = [UIFont systemFontOfSize:14];
-        [titleView.loadMoreBtn setTitle:@"更多诊所" forState:UIControlStateNormal];
-        
-        [titleView.loadMoreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
-        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-        [titleView.loadMoreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
+//        [titleView.loadMoreBtn setTitle:@"更多诊所" forState:UIControlStateNormal];
+//        
+//        [titleView.loadMoreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
+//        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
+//        [titleView.loadMoreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
         titleView.tag = 4000;
         [reuseHeaderView addSubview:titleView];
         

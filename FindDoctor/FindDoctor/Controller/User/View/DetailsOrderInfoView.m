@@ -120,8 +120,8 @@
         self.orderNum.text = [NSString stringWithFormat:@"%lld",_data.diagnosisID];
     }
     
-    if (_data.submitTime) {
-        self.orderTime.text = [[NSDate dateWithTimeIntervalSince1970: (_data.submitTime/1000)]stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+    if (_data.submitTimeStr) {
+        self.orderTime.text = _data.submitTimeStr;
     }
     
     if ([_data orderStatusStr]) {

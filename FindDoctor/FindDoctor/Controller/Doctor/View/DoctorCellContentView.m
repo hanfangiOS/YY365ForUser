@@ -131,10 +131,10 @@
     
     if (_data.doctorState != -1) {
         if (_data.doctorState == 0 || _data.doctorState == 1) {
-            tipImageView.image = [UIImage imageNamed:@"keYueZhen"];
+            tipImageView.image = [UIImage imageNamed:@"doctor_appointmentAvailable"];
         }
         else {
-            tipImageView.image = [UIImage imageNamed:@"yueZhenMan"];
+            tipImageView.image = [UIImage imageNamed:@"doctor_appointmentUnavailable"];
         }
         jianJieLabel.text = nil;
         shanChangLabel.text = nil;
@@ -149,7 +149,7 @@
         [atrStr addAttributes:@{NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"就诊地点:"]];
         label3.attributedText = atrStr;
         
-        str = [NSString stringWithFormat:@"诊金: ￥%.2f",self.data.price/100.f];
+        str = [NSString stringWithFormat:@"诊金: ￥%.2f",(float)self.data.price];
         atrStr = [[NSMutableAttributedString alloc]initWithString:str];
         [atrStr addAttributes:@{NSFontAttributeName:SystemFont_12,NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"诊金: "]];
         label4.attributedText = atrStr;

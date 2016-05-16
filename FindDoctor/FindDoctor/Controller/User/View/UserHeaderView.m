@@ -77,7 +77,7 @@
 }
 
 - (void)resetUserInfo{
-    [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
+    [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_userDefaultAvatar"]];
     
     
     if ([CUUserManager sharedInstance].isLogin == YES) {

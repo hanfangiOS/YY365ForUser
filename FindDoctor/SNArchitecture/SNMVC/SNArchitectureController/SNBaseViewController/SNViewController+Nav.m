@@ -161,10 +161,10 @@
 
 - (UIButton *)addRightButtonItemWithImage:(UIImage *)image action:(SEL)selector{
 
-    UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 48, 44)];
+    UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
     UIButton * rightBtn = [[UIButton alloc] initWithFrame:rightBtnView.bounds];
     [rightBtn setImage:image forState:UIControlStateNormal];
-    rightBtn.contentMode = UIViewContentModeScaleAspectFill;
+    rightBtn.contentMode = UIViewContentModeScaleAspectFit;
     rightBtn.tintColor = UIColorFromHex(Color_Hex_NavItem_Normal);
     rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [rightBtn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];

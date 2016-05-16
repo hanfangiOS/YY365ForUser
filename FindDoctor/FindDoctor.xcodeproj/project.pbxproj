@@ -219,6 +219,8 @@
 		7F49BC3D1CB35D2500EAA34A /* HFTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC3C1CB35D2500EAA34A /* HFTitleView.m */; };
 		7F49BC401CB3635500EAA34A /* StarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F49BC3F1CB3635500EAA34A /* StarRatingView.m */; };
 		7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */; };
+		7F6797AC1CE9CE1B001D1024 /* temp_clinic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6797AA1CE9CE1B001D1024 /* temp_clinic@2x.png */; };
+		7F6797AF1CE9D335001D1024 /* temp_userDefaultAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6797AE1CE9D335001D1024 /* temp_userDefaultAvatar@2x.png */; };
 		7F71E8C51C993BC400656CAF /* DiagnosisRemarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F71E8C41C993BC400656CAF /* DiagnosisRemarkController.m */; };
 		7F71E8C81C9940F900656CAF /* DiagnosisRemarkTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F71E8C71C9940F900656CAF /* DiagnosisRemarkTitleView.m */; };
 		7FA42A1A1CC53E6200564182 /* TreatmentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA42A191CC53E6200564182 /* TreatmentDetailsController.m */; };
@@ -318,8 +320,8 @@
 		7FED20721CDB4F6A004639DE /* common_titleLine2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED1FFC1CDB4F6A004639DE /* common_titleLine2@2x.png */; };
 		7FED20731CDB4F6A004639DE /* common_whiteButton_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED1FFD1CDB4F6A004639DE /* common_whiteButton_nor@2x.png */; };
 		7FED20741CDB4F6A004639DE /* menu_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED1FFE1CDB4F6A004639DE /* menu_arrow_down@2x.png */; };
-		7FED20751CDB4F6A004639DE /* doctor_appointmentAvailable .png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20001CDB4F6A004639DE /* doctor_appointmentAvailable .png */; };
-		7FED20761CDB4F6A004639DE /* doctor_appointmentUnavailable .png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20011CDB4F6A004639DE /* doctor_appointmentUnavailable .png */; };
+		7FED20751CDB4F6A004639DE /* doctor_appointmentAvailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20001CDB4F6A004639DE /* doctor_appointmentAvailable.png */; };
+		7FED20761CDB4F6A004639DE /* doctor_appointmentUnavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20011CDB4F6A004639DE /* doctor_appointmentUnavailable.png */; };
 		7FED20771CDB4F6A004639DE /* doctor_btn_add_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20021CDB4F6A004639DE /* doctor_btn_add_nor@2x.png */; };
 		7FED20781CDB4F6A004639DE /* doctor_btn_add_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20031CDB4F6A004639DE /* doctor_btn_add_sel@2x.png */; };
 		7FED20791CDB4F6A004639DE /* doctor_detail_collect_btn_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20041CDB4F6A004639DE /* doctor_detail_collect_btn_nor@2x.png */; };
@@ -495,8 +497,6 @@
 		BCC054B01C4397F200017202 /* DiseaseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC054AF1C4397F200017202 /* DiseaseSubject.m */; };
 		BCC8AA671CE957FD0094A3FB /* SelectCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8AA661CE957FD0094A3FB /* SelectCityVC.m */; };
 		BCC8AA6A1CE95C560094A3FB /* SelectCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8AA691CE95C560094A3FB /* SelectCityCollectionViewCell.m */; };
-		BCC8AA6C1CE9ACCA0094A3FB /* common_clinic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC8AA6B1CE9ACCA0094A3FB /* common_clinic@2x.png */; };
-		BCC8AA6E1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC8AA6D1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png */; };
 		BCE331F61C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */; };
 		BCE465C31C06BAAF008DE355 /* DoctorAppointmentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE465C21C06BAAF008DE355 /* DoctorAppointmentListView.m */; };
 		BCEC31D11CB3AC0C0003851A /* HomeSubViewController_Search.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC31D01CB3AC0C0003851A /* HomeSubViewController_Search.m */; };
@@ -1060,6 +1060,8 @@
 		7F49BC3F1CB3635500EAA34A /* StarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarRatingView.m; sourceTree = "<group>"; };
 		7F5610E31C859871004DCCDF /* DoctorSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultViewController.h; sourceTree = "<group>"; };
 		7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultViewController.m; sourceTree = "<group>"; };
+		7F6797AA1CE9CE1B001D1024 /* temp_clinic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_clinic@2x.png"; sourceTree = "<group>"; };
+		7F6797AE1CE9D335001D1024 /* temp_userDefaultAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_userDefaultAvatar@2x.png"; sourceTree = "<group>"; };
 		7F71E8C31C993BC400656CAF /* DiagnosisRemarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosisRemarkController.h; sourceTree = "<group>"; };
 		7F71E8C41C993BC400656CAF /* DiagnosisRemarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisRemarkController.m; sourceTree = "<group>"; };
 		7F71E8C61C9940F900656CAF /* DiagnosisRemarkTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosisRemarkTitleView.h; sourceTree = "<group>"; };
@@ -1234,8 +1236,8 @@
 		7FED1FFC1CDB4F6A004639DE /* common_titleLine2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_titleLine2@2x.png"; sourceTree = "<group>"; };
 		7FED1FFD1CDB4F6A004639DE /* common_whiteButton_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_whiteButton_nor@2x.png"; sourceTree = "<group>"; };
 		7FED1FFE1CDB4F6A004639DE /* menu_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_arrow_down@2x.png"; sourceTree = "<group>"; };
-		7FED20001CDB4F6A004639DE /* doctor_appointmentAvailable .png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doctor_appointmentAvailable .png"; sourceTree = "<group>"; };
-		7FED20011CDB4F6A004639DE /* doctor_appointmentUnavailable .png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doctor_appointmentUnavailable .png"; sourceTree = "<group>"; };
+		7FED20001CDB4F6A004639DE /* doctor_appointmentAvailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doctor_appointmentAvailable.png; sourceTree = "<group>"; };
+		7FED20011CDB4F6A004639DE /* doctor_appointmentUnavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doctor_appointmentUnavailable.png; sourceTree = "<group>"; };
 		7FED20021CDB4F6A004639DE /* doctor_btn_add_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doctor_btn_add_nor@2x.png"; sourceTree = "<group>"; };
 		7FED20031CDB4F6A004639DE /* doctor_btn_add_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doctor_btn_add_sel@2x.png"; sourceTree = "<group>"; };
 		7FED20041CDB4F6A004639DE /* doctor_detail_collect_btn_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doctor_detail_collect_btn_nor@2x.png"; sourceTree = "<group>"; };
@@ -1481,8 +1483,6 @@
 		BCC8AA661CE957FD0094A3FB /* SelectCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCityVC.m; sourceTree = "<group>"; };
 		BCC8AA681CE95C560094A3FB /* SelectCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCityCollectionViewCell.h; path = View/SelectCityCollectionViewCell.h; sourceTree = "<group>"; };
 		BCC8AA691CE95C560094A3FB /* SelectCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCityCollectionViewCell.m; path = View/SelectCityCollectionViewCell.m; sourceTree = "<group>"; };
-		BCC8AA6B1CE9ACCA0094A3FB /* common_clinic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_clinic@2x.png"; sourceTree = "<group>"; };
-		BCC8AA6D1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_userDefaultAvatar@2x.png"; sourceTree = "<group>"; };
 		BCE331F41C25341D00F03AAA /* DoctorApoointmentForHourScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorApoointmentForHourScrollView.h; sourceTree = "<group>"; };
 		BCE331F51C25341D00F03AAA /* DoctorApoointmentForHourScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorApoointmentForHourScrollView.m; sourceTree = "<group>"; };
 		BCE465C11C06BAAF008DE355 /* DoctorAppointmentListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorAppointmentListView.h; sourceTree = "<group>"; };
@@ -3090,6 +3090,8 @@
 		7FB6EEAD1CE46D9900FEC3E2 /* temp */ = {
 			isa = PBXGroup;
 			children = (
+				7F6797AE1CE9D335001D1024 /* temp_userDefaultAvatar@2x.png */,
+				7F6797AA1CE9CE1B001D1024 /* temp_clinic@2x.png */,
 				7F0C33621CE585A200B42BBB /* temp_mainBanner.jpg */,
 				7F0C335E1CE5844500B42BBB /* temp_secondBanner.jpg */,
 				7FB791EA1CE56B800031B265 /* temp_clinicAdver@2x.png */,
@@ -3262,8 +3264,6 @@
 		7FED1FF31CDB4F6A004639DE /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				BCC8AA6D1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png */,
-				BCC8AA6B1CE9ACCA0094A3FB /* common_clinic@2x.png */,
 				7F29484A1CE0407B006768D0 /* common_icon_grayArrow@2x.png */,
 				7FED1FF41CDB4F6A004639DE /* common_activePoint@2x.png */,
 				7FED1FF51CDB4F6A004639DE /* common_btn_green_nor@2x.png */,
@@ -3284,8 +3284,8 @@
 		7FED1FFF1CDB4F6A004639DE /* Doctor */ = {
 			isa = PBXGroup;
 			children = (
-				7FED20001CDB4F6A004639DE /* doctor_appointmentAvailable .png */,
-				7FED20011CDB4F6A004639DE /* doctor_appointmentUnavailable .png */,
+				7FED20001CDB4F6A004639DE /* doctor_appointmentAvailable.png */,
+				7FED20011CDB4F6A004639DE /* doctor_appointmentUnavailable.png */,
 				7FED20021CDB4F6A004639DE /* doctor_btn_add_nor@2x.png */,
 				7FED20031CDB4F6A004639DE /* doctor_btn_add_sel@2x.png */,
 				7FED20041CDB4F6A004639DE /* doctor_detail_collect_btn_nor@2x.png */,
@@ -3653,11 +3653,9 @@
 		BC8665751CE573D80001445A /* setting */ = {
 			isa = PBXGroup;
 			children = (
-
 				7F0C33661CE5B8A900B42BBB /* about */,
 				BC86658C1CE5B4580001445A /* setting_icon_NO@2x.png */,
 				BC86658D1CE5B4580001445A /* setting_icon_YES@2x.png */,
-
 				BC8665761CE573D80001445A /* setting_changePwd1@2x.png */,
 				BC8665771CE573D80001445A /* setting_changePwd2@2x.png */,
 				BC8665781CE573D80001445A /* setting_changePwd3@2x.png */,
@@ -3684,7 +3682,6 @@
 				7F3151041CC24B68002A11C3 /* MyInfo */,
 				BC1859C21C8440060050251B /* MyDiagnosisRecords */,
 				7FFB94881C966AD2003523B4 /* MyIntegral */,
-				BCAA4ABD1C85964D0085A165 /* MyAccount */,
 				BCAA4AB01C856D610085A165 /* MyClinic */,
 				BCAA4AA81C8548440085A165 /* MyDoctor */,
 				BC313D221C3A147500C9469D /* View */,
@@ -3722,6 +3719,7 @@
 		BCAA4AB01C856D610085A165 /* MyClinic */ = {
 			isa = PBXGroup;
 			children = (
+				BCAA4ABD1C85964D0085A165 /* MyAccount */,
 				BCAA4AB71C8578480085A165 /* MyClinicCell.h */,
 				BCAA4AB81C8578480085A165 /* MyClinicCell.m */,
 				BCAA4AB91C8578480085A165 /* MyClinicCellContentView.h */,
@@ -3743,7 +3741,7 @@
 				BCAA4AC01C85964D0085A165 /* View */,
 			);
 			name = MyAccount;
-			path = User/MyAccount;
+			path = ../MyAccount;
 			sourceTree = "<group>";
 		};
 		BCAA4AC01C85964D0085A165 /* View */ = {
@@ -4976,7 +4974,7 @@
 				7FED20671CDB4F6A004639DE /* comment_huaTuo@2x.png in Resources */,
 				7FED20621CDB4F6A004639DE /* comment_star_yellow@2x.png in Resources */,
 				7FED206D1CDB4F6A004639DE /* common_deleteButton_red_nor@2x.png in Resources */,
-				7FED20751CDB4F6A004639DE /* doctor_appointmentAvailable .png in Resources */,
+				7FED20751CDB4F6A004639DE /* doctor_appointmentAvailable.png in Resources */,
 				7FB791ED1CE56B800031B265 /* temp_goodClinic@2x.png in Resources */,
 				BC602C9E1CE2DC6D00899E4E /* member_icon_gender_m@2x.png in Resources */,
 				7FED20B31CDB4F6A004639DE /* navbar_search_icon_search@2x.png in Resources */,
@@ -4989,6 +4987,7 @@
 				7FED20C41CDB4F6A004639DE /* tabbar_mine_sel@2x.png in Resources */,
 				7FED20C71CDB4F6A004639DE /* tabbar_vip_nor@2x.png in Resources */,
 				7FED20861CDB4F6A004639DE /* Icon-120.png in Resources */,
+				7F6797AC1CE9CE1B001D1024 /* temp_clinic@2x.png in Resources */,
 				7FED208B1CDB4F6A004639DE /* introduce_2.jpg in Resources */,
 				E1EB1E4C1B70A43B0048B8EB /* UMSShareListController.xib in Resources */,
 				7F0331BB1CDC9F4300A96F47 /* mySpace_msg@2x.png in Resources */,
@@ -5022,7 +5021,6 @@
 				3EDEBAA41A961C4800E72809 /* LICENSE_PLDATABASE in Resources */,
 				BC86658E1CE5B4580001445A /* setting_icon_NO@2x.png in Resources */,
 				7FED20B01CDB4F6A004639DE /* navbar_background@2x.png in Resources */,
-				BCC8AA6E1CE9ACD30094A3FB /* common_userDefaultAvatar@2x.png in Resources */,
 				7FED20851CDB4F6A004639DE /* doctor_waitForConcen@2x.png in Resources */,
 				7F0C336D1CE5B8A900B42BBB /* about_icon_checkUpdate@2x.png in Resources */,
 				7FED20791CDB4F6A004639DE /* doctor_detail_collect_btn_nor@2x.png in Resources */,
@@ -5113,7 +5111,6 @@
 				E17B69201B837AA00079DDB5 /* fontHeight.plist in Resources */,
 				7FED20821CDB4F6A004639DE /* doctor_tip_red@2x.png in Resources */,
 				7F0331D91CDCA7D700A96F47 /* mySpace_icon_setting@2x.png in Resources */,
-				BCC8AA6C1CE9ACCA0094A3FB /* common_clinic@2x.png in Resources */,
 				7F29484D1CE075E4006768D0 /* common_icon_trash@2x.png in Resources */,
 				7FED20B91CDB4F6A004639DE /* order_icon_check@2x.png in Resources */,
 				7FED20901CDB4F6A004639DE /* login_bg@2x.png in Resources */,
@@ -5145,12 +5142,13 @@
 				7FB6EEAA1CE42EE200FEC3E2 /* avatar_icon_menu@2x.png in Resources */,
 				7FED20C01CDB4F6A004639DE /* tabbar_background@2x.png in Resources */,
 				7F0331BF1CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png in Resources */,
+				7F6797AF1CE9D335001D1024 /* temp_userDefaultAvatar@2x.png in Resources */,
 				7F0E92B11CE2C968001D5FA3 /* member_icon_name@2x.png in Resources */,
 				7FED20691CDB4F6A004639DE /* comment_star_normal@2x.png in Resources */,
 				7F0331D61CDCA72000A96F47 /* mySpace_icon_myMember@2x.png in Resources */,
 				7FED208F1CDB4F6A004639DE /* Launch.jpg in Resources */,
 				3E239E731AB33BC1001F0B3F /* checkmark_fail@2x.png in Resources */,
-				7FED20761CDB4F6A004639DE /* doctor_appointmentUnavailable .png in Resources */,
+				7FED20761CDB4F6A004639DE /* doctor_appointmentUnavailable.png in Resources */,
 				7FED206C1CDB4F6A004639DE /* common_btn_green_sel@2x.png in Resources */,
 				3E239E751AB33BCB001F0B3F /* checkmark_success@2x.png in Resources */,
 				7FED208D1CDB4F6A004639DE /* introduce_4.jpg in Resources */,

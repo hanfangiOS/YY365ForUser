@@ -224,7 +224,7 @@
             if(indexPath.item == -1){
                 if(indexPath.row == 0){
                     self.listModel.filter.subjectID = -1;
-                    self.listModel.filter.SymptomID = -1;
+                    self.listModel.filter.symptomID = -1;
                 }
                 else{
                     return;
@@ -233,20 +233,20 @@
             else{
                 SymptomOption *item = [self.diseaseArray objectAtIndexSafely:indexPath.row];
                 SymptomSubOption *SubItem = [item.symptomSubOptionArray objectAtIndexSafely:indexPath.item];
-                self.listModel.filter.SymptomID = SubItem.ID;
+                self.listModel.filter.symptomID = SubItem.ID;
                 self.listModel.filter.subjectID = item.ID;
             }
         }
             break;
         case 1:{
             if (indexPath.row == 0) {
-                self.listModel.filter.Region.ID = 510000;
-                self.listModel.filter.Region.name = @"-1";
+                self.listModel.filter.region.ID = 510000;
+                self.listModel.filter.region.name = @"-1";
             }
             else{
                 RegionOption *item = [self.regionArray  objectAtIndex:indexPath.row];
-                self.listModel.filter.Region.ID = item.ID;
-                self.listModel.filter.Region.name = item.name;
+                self.listModel.filter.region.ID = item.ID;
+                self.listModel.filter.region.name = item.name;
             }
         }
             break;

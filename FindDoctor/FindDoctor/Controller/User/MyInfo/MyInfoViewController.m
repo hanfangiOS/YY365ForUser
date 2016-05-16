@@ -71,7 +71,7 @@
    self.tempData = [self copyForUser];
     
     self.myAvatar = [[UIImageView alloc] init];
-    [self.myAvatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
+    [self.myAvatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_userDefaultAvatar"]];
 }
 
 - (CUUser *)copyForUser{

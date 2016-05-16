@@ -74,7 +74,7 @@
     
     self.beiginTime.text = [[NSDate dateWithTimeIntervalSince1970:(_data.service.doctor.diagnosisTime/1000)] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
     
-    self.finishTime.text = [[NSDate dateWithTimeIntervalSince1970:(_data.finishedTimeStamp/1000)] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+    self.finishTime.text = _data.finishedTimeStampStr;
 }
 
 @end

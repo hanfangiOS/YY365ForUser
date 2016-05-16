@@ -42,7 +42,8 @@
     [self.containerView addSubview:self.arrow];
     //右1
     self.avatar = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 4 - 9 - 60 - 12, (MyInfoAvatarCellHeight - 60)/2, 60, 60)];
-    self.avatar.layer.cornerRadius = 64 / 2.f;
+    self.avatar.layer.cornerRadius = 60 / 2.f;
+    self.avatar.contentMode = UIViewContentModeScaleAspectFill;
     self.avatar.clipsToBounds = YES;
     [self.containerView addSubview:self.avatar];
 

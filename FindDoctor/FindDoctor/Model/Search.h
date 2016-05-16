@@ -24,8 +24,8 @@ typedef NS_OPTIONS(NSInteger, SearchSortType) {
 @property SearchSortType sortType;
 @property (nonatomic, strong) NSString * keyword;//搜索内容
 @property NSString      *date;//日期
-@property RegionOption  *Region;//地区
+@property RegionOption  *region;//地区
 @property NSInteger     subjectID;//病症第一级
-@property NSInteger     SymptomID;//病症第二级
+@property NSInteger     symptomID;//病症第二级
 
 @end
