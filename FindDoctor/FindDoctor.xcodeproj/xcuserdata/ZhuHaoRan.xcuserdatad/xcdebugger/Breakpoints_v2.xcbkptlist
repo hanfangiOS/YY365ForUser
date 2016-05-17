@@ -20,22 +20,6 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/User/MyMember/MyMemberViewController.m"
-            timestampString = "485164723.472971"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -52,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Controller/User/MyMember/AddMemberViewController.m"
-            timestampString = "485167971.608618"
+            timestampString = "485178554.7016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "-postRequestInsertMember"
             landmarkType = "5">
          </BreakpointContent>
@@ -100,7 +84,7 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-                  timestampString = "485169300.287664"
+                  timestampString = "485178570.450947"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "581"
@@ -115,7 +99,7 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-                  timestampString = "485169300.287852"
+                  timestampString = "485178570.451066"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "583"
@@ -154,6 +138,54 @@
             startingLineNumber = "178"
             endingLineNumber = "178"
             landmarkName = "-requestCancelOrder"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/User/MyMember/AddMemberViewController.m"
+            timestampString = "485178578.257267"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
+            landmarkName = "-saveAction"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/User/MyMember/ModifyMemberViewController.m"
+            timestampString = "485178604.328639"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
+            landmarkName = "-saveAction"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/User/MyMember/ModifyMemberViewController.m"
+            timestampString = "485178686.407143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
