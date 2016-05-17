@@ -68,6 +68,25 @@
             blockSelf.regionArray = [dic objectForKey:@"regionOption"];
             blockSelf.timeArray = [dic objectForKey:@"dateOption"];
             [blockSelf.dropdownMenu reloadData];
+            
+            if (self.listModel.filter.subjectID > 0) {
+                for(int i = 0 ; i < blockSelf.diseaseArray.count ; i++){
+                    SymptomOption *item = [blockSelf.diseaseArray objectAtIndex:i];
+                    if(item.ID == self.listModel.filter.subjectID){
+                        [self.dropdownMenu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:i] triggerDelegate:NO];
+                        if (self.listModel.filter.symptomID > 0) {
+                            for (int j = 0; j < item.symptomSubOptionArray.count ; j++) {
+                                SymptomSubOption *subItem = [item.symptomSubOptionArray objectAtIndex:j];
+                                if(subItem.ID == self.listModel.filter.symptomID){
+                                    [self.dropdownMenu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:i item:j] triggerDelegate:NO];
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
         }
         else{
             
@@ -204,15 +223,17 @@
         return item.symptomSubOptionArray.count == 0 ? -1:item.symptomSubOptionArray.count;
     }
     else{
-        return 0;
+        return -1;
     }
 }
 
 - (NSString *)menu:(DOPDropDownMenu *)menu titleForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath{
     if (indexPath.column == 0) {
         SymptomOption *item = [self.diseaseArray objectAtIndexSafely:indexPath.row];
-        SymptomSubOption *SubItem = [item.symptomSubOptionArray objectAtIndex:indexPath.item];
-        return SubItem.name;
+        if(item.symptomSubOptionArray.count){
+            SymptomSubOption *SubItem = [item.symptomSubOptionArray objectAtIndex:indexPath.item];
+            return SubItem.name;
+        }
     }
     return nil;
 }
