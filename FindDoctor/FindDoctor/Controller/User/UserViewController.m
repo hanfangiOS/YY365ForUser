@@ -85,6 +85,8 @@
 
 - (void)initSubView{
     self.contentView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    self.contentView.backgroundColor = kCommonBackgroundColor;
+    self.view.backgroundColor = kCommonBackgroundColor;
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kDefaultToolbarHeight) style:UITableViewStylePlain];
     self.tableView.backgroundColor = kCommonBackgroundColor;
@@ -130,7 +132,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     return 52;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -250,7 +251,7 @@
         if([CUUserManager sharedInstance].user.token != nil && ![[CUUserManager sharedInstance].user.token isEqualToString:@""]){
             //已登录
             UserFilter * filter = [[UserFilter alloc] init];
-            filter.listType = @"member";
+            filter.listType = @"all";
             
             MyMemberListModel * listModel = [[MyMemberListModel alloc] initWithFilter:filter];
             
@@ -275,12 +276,25 @@
     
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [UIView new];
+    return view;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *view = [UIView new];
+    return view;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 12;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.1;
+    if (section==2) {
+        return 20;
+    }
+    return 0;
 }
 
 #pragma mark - scrollViewDelegate

@@ -67,14 +67,13 @@
     self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 58, 58)];
     self.icon.layer.cornerRadius = 5.0f;
     [self.infoView addSubview:self.icon];
-    self.icon.backgroundColor = [UIColor blueColor];
     //¥100
-    self.price = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 15, 14, kScreenWidth - self.icon.maxX - 15 - 30, 15)];
-    self.price.textColor = [UIColor orangeColor];
-    self.price.font = [UIFont systemFontOfSize:18];
+    self.price = [[UILabel alloc] initWithFrame:CGRectMake(self.icon.maxX + 15, 14, kScreenWidth - self.icon.maxX - 15 - 30, 18)];
+    self.price.textColor = UIColorFromHex(0xf1a90e);
+    self.price.font = [UIFont systemFontOfSize:20];
     [self.infoView addSubview:self.price];
     //罗威 1111-11-11 11:11
-    self.info = [[UILabel alloc] initWithFrame:CGRectMake(self.price.frameX, self.price.maxY + 9, kScreenWidth - self.price.frameX - 30, 12)];
+    self.info = [[UILabel alloc] initWithFrame:CGRectMake(self.price.frameX, self.price.maxY + 6, kScreenWidth - self.price.frameX - 30, 12)];
     self.info.textColor = kGrayTextColor;
     self.info.font = [UIFont systemFontOfSize:12];
     [self.infoView addSubview:self.info];
@@ -84,35 +83,26 @@
     self.address.font = [UIFont systemFontOfSize:12];
     [self.infoView addSubview:self.address];
     
-    
-    //就诊完成
-    self.finishLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.address.frameX, self.address.maxY + 12, 64, 20)];
-    self.finishLabel.font = [UIFont systemFontOfSize:12];
-    self.finishLabel.textColor = [UIColor whiteColor];
-    self.finishLabel.text = @"就诊完成";
-    self.finishLabel.textAlignment = NSTextAlignmentCenter;
-    self.finishLabel.backgroundColor = kBlueTextColor;
-    [self.infoView addSubview:self.finishLabel];
-    
     //评价
-    self.commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.finishLabel.maxX + 12,self.finishLabel.frameY , 64, 20)];
-    [self.commentBtn setTitle:@"评价" forState:UIControlStateNormal];
+    self.commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, MyTreatmentCellHeight - 25 ,kScreenWidth, 25)];
+    [self.commentBtn setTitle:@">> 评 价" forState:UIControlStateNormal];
     [self.commentBtn addTarget:self action:@selector(commentAction) forControlEvents:UIControlEventTouchUpInside];
     self.commentBtn.backgroundColor = [UIColor whiteColor];
-    [self.commentBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
+    [self.commentBtn setTitleColor:UIColorFromHex(0xf1a90e) forState:UIControlStateNormal];
     self.commentBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    self.commentBtn.layer.borderColor = kLightLineColor.CGColor;
-    self.commentBtn.layer.borderWidth = 1.0f;
     self.commentBtn.layer.cornerRadius = 2.0f;
-    [self.commentBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
-    [self.infoView addSubview:self.commentBtn];
-    //评价按钮里的那张小图片
-    UIImageView * commentIcon = [[UIImageView alloc] initWithFrame:CGRectMake((self.commentBtn.frameWidth - 10.5)/2 - 16, (self.commentBtn.frameHeight - 10.5)/2, 10.5, 10.5)];
-    commentIcon.image = [UIImage imageNamed:@"comment_icon_comment_gray@2x"];
-    [self.commentBtn addSubview:commentIcon];
+    [self addSubview:self.commentBtn];
+//    //评价按钮里的那张小图片
+//    UIImageView * commentIcon = [[UIImageView alloc] initWithFrame:CGRectMake((self.commentBtn.frameWidth - 10.5)/2 - 16, (self.commentBtn.frameHeight - 10.5)/2, 10.5, 10.5)];
+//    commentIcon.image = [UIImage imageNamed:@"comment_icon_comment_gray@2x"];
+//    [self.commentBtn addSubview:commentIcon];
     
+    UIView * topLineForBtn = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
+    topLineForBtn.backgroundColor = kblueLineColor;
+    [self.commentBtn addSubview: topLineForBtn];
+
     //箭头
-    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, (self.infoView.frameHeight - 15)/2, 9, 15)];
+    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, (self.infoView.frameHeight - self.commentBtn.frameHeight - 15)/2, 9, 15)];
     self.arrow.image = [UIImage imageNamed:@"common_icon_grayArrow@2x"];
     [self.infoView addSubview:self.arrow];
     
@@ -130,6 +120,13 @@
 - (void)setData:(CUOrder *)data{
     _data = data;
     
+    if (_data.orderStatus == ORDERSTATUS_COMMENT) {
+        self.commentBtn.hidden = YES;
+        self.arrow.frame = CGRectMake(kScreenWidth - 9 - 4, (self.infoView.frameHeight - 15)/2, 9, 15);
+    }else{
+        
+    }
+    
     NSString * string = [NSString stringWithFormat:@"%@  %@  %@",_data.service.doctor.name,_data.service.doctor.levelDesc,_data.service.doctor.grade];
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
     NSInteger length = [_data.service.doctor.name length];
@@ -139,13 +136,13 @@
                    range:NSMakeRange(0, length)];
     self.name.attributedText = AtrStr;
     
-    [self.icon setImageWithURL:[NSURL URLWithString:_data.service.doctor.avatar]];
+    [self.icon setImageWithURL:[NSURL URLWithString:_data.service.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor"]];
     
     NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     NSString * strSymbol = [locale objectForKey:NSLocaleCurrencySymbol];
-    self.price.text = [NSString stringWithFormat:@"%@%d",strSymbol,_data.service.doctor.price];
+    self.price.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.service.doctor.price];
     
-    NSString * diagnosisTimeStr = [[NSDate dateWithTimeIntervalSince1970:_data.service.doctor.diagnosisTime] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString * diagnosisTimeStr = [[NSDate dateWithTimeIntervalSince1970:(_data.service.doctor.diagnosisTime/1000)] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
     self.info.text = [NSString stringWithFormat:@"%@  %@",_data.service.patience.name,diagnosisTimeStr];
     
     self.address.text = [NSString stringWithFormat:@"%@",_data.service.doctor.address];

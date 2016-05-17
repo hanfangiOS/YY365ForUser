@@ -13,6 +13,7 @@
 #import "TipHandler+HUD.h"
 #import "AppDelegate.h"
 #import "SelectCityVC.h"
+#import "LoginViewController.h"
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
@@ -217,8 +218,15 @@
                 [self.slideNavigationController pushViewController:VC animated:YES];
             }
             if (indexPath.row == 1) {
-                AccountSecurityViewController *VC = [[AccountSecurityViewController alloc]initWithPageName:@"AccountSecurityViewController"];
-                [self.slideNavigationController pushViewController:VC animated:YES];
+                if ([[CUUserManager sharedInstance] isLogin]) {
+                    AccountSecurityViewController *VC = [[AccountSecurityViewController alloc]initWithPageName:@"AccountSecurityViewController"];
+                    [self.slideNavigationController pushViewController:VC animated:YES];
+                }
+                else{
+                    LoginViewController * VC = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+                    [VC setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+                    [self.slideNavigationController presentViewController:VC animated:YES completion:nil];
+                }
             }
             break;
         case 2:

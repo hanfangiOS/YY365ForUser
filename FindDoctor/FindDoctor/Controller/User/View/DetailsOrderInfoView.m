@@ -121,7 +121,7 @@
     }
     
     if (_data.submitTime) {
-        self.orderTime.text = [[NSDate dateWithTimeIntervalSince1970: _data.submitTime]stringWithDateFormat:@"yyyy-MM-dd  HH:mm"];
+        self.orderTime.text = [[NSDate dateWithTimeIntervalSince1970: (_data.submitTime/1000)]stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
     }
     
     if ([_data orderStatusStr]) {

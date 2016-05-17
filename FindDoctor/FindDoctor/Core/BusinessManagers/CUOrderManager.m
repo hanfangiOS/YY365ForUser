@@ -492,7 +492,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:[CUUserManager sharedInstance].user.token forKey:@"token"];
-    [param setObjectSafely:@"MyConsumeRecords" forKey:@"require"];
+    [param setObjectSafely:@"MyConsumeRecord" forKey:@"require"];
     [param setObjectSafely:@(23004) forKey:@"interfaceID"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
@@ -634,9 +634,11 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 }
 
 
-- (void)getOrderStateWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+- (void)getOrderStateWithDiagnosisID:(long long)diagnosisID andChargeid:(NSString *)chargeid andDynamicno:(long long)dynamicno resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:@(diagnosisID) forKey:@"order_no"];
+    [param setObjectSafely:chargeid forKey:@"chargeid"];
+    [param setObjectSafely:@(dynamicno) forKey:@"dynamicno"];
     NSLog(@"%@",param);
     [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/verify_order_state.jmm"] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
@@ -860,6 +862,13 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     order.service.patience.name = [obj stringForKeySafely:@"userName"];
                     order.service.doctor.diagnosisTime = [[obj stringForKeySafely:@"ordertime"] integerValue];
                     order.service.doctor.address = [obj stringForKeySafely:@"address"];
+                    
+                    NSInteger remarked = [[obj objectForKeySafely:@"remarked"] integerValue];
+                    if (remarked == 1) {
+                        order.orderStatus = ORDERSTATUS_COMMENT;
+                    }else{
+                        order.orderStatus = ORDERSTATUS_FINISHED;
+                    }
                     [dataList addObjectSafely:order];
                 }];
                 SNBaseListModel * listModel = [[SNBaseListModel alloc] init];
@@ -1047,6 +1056,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.service.patience.name = [orderDict stringForKeySafely:@"userName"];
                 order.service.doctor.diagnosisTime = [[orderDict stringForKeySafely:@"ordertime"] integerValue];
                 order.finishedTimeStamp = [[orderDict stringForKeySafely:@"endtime"] integerValue];
+                order.submitTimeStr = [orderDict stringForKeySafely:@"starttime"];
                 order.service.doctor.address = [orderDict stringForKeySafely:@"address"];
                 order.service.patience.age = [orderDict integerForKeySafely:@"userAge"];
                 order.service.patience.cellPhone = [orderDict stringForKeySafely:@"userPhone"];

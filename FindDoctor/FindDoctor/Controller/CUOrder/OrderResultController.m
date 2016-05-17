@@ -20,6 +20,7 @@
 #import "MyDiagnosisRecordsDetailViewController.h"
 #import "OrderConfirmController.h"
 #import "AppointmentDetailsController.h"
+#import "CUOrderManager.h"
 
 //#import "CUUserManager+Share.h"
 //#import "PointRuleManager.h"
@@ -222,9 +223,7 @@
 
 - (void)checkOrder
 {
-    AppointmentDetailsController * vc = [[AppointmentDetailsController alloc] initWithPageName:@"AppointmentDetailsController"];
-    vc.order = self.order;
-    [self.slideNavigationController pushViewController:vc animated:YES];
+    [self postRequestGetOrderHasPayNotMeetDetailWithOrder:self.order];
 }
 
 - (void)shareAction
@@ -250,6 +249,32 @@
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession,UMShareToQQ,nil]
                                        delegate:(id)self];
 }
+
+#pragma mark postRequest
+
+//已付款未看病详情
+- (void)postRequestGetOrderHasPayNotMeetDetailWithOrder:(CUOrder *)order{
+    OrderFilter * filter = [[OrderFilter alloc] init];
+    filter.diagnosisID = order.diagnosisID;
+    
+    [[CUOrderManager sharedInstance] getOrderHasPayNotMeetDetailWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                CUOrder * order1 = [[CUOrder alloc] init];
+                order1 = result.parsedModelObject;
+                order1.orderStatus = ORDERSTATUS_PAID;
+                AppointmentDetailsController * VC = [[AppointmentDetailsController alloc] initWithPageName:@"AppointmentDetailsController"];
+                VC.order = order1;
+                [self.slideNavigationController pushViewController:VC animated:YES];
+                
+            }
+        }
+        
+    } pageName:@"MyAppointmentController"];
+}
+
 
 - (void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {

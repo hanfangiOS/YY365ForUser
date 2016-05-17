@@ -39,8 +39,6 @@ SINGLETON_IMPLENTATION(CUCommentManager);
     
     NSLog(@"%@",param);
     
-
-    
     [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
         
         if (!result.hasError) {
@@ -48,13 +46,13 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                 
                 NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
                 
-                Doctor * doctor = [[Doctor alloc] init];
-                doctor.address = [data objectForKeySafely:@"clinicAddress"];
-                doctor.clinicName = [data objectForKeySafely:@"clinicName"];
-                doctor.diagnosisTime = [[data objectForKeySafely:@"diagnosisTime"] integerValue];
-                doctor.avatar = [data objectForKeySafely:@"doctorIcon"];
-                doctor.name = [data objectForKeySafely:@"doctorName"];
-                doctor.levelDesc = [data objectForKeySafely:@"doctorTitle"];
+                CUOrder * order = [[CUOrder alloc] init];
+                order.service.doctor.address = [data objectForKeySafely:@"clinicAddress"];
+                order.service.doctor.clinicName = [data objectForKeySafely:@"clinicName"];
+                order.createTimeStampStr = [data objectForKeySafely:@"starttime"];
+                order.service.doctor.avatar = [data objectForKeySafely:@"doctorIcon"];
+                order.service.doctor.name = [data objectForKeySafely:@"doctorName"];
+                order.service.doctor.levelDesc = [data objectForKeySafely:@"doctorTitle"];
                 NSArray * flagList = [NSArray new];
                 flagList = [data arrayForKeySafely:@"flagList"];
                 [flagList enumerateObjectsUsingBlockSafety:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -64,14 +62,14 @@ SINGLETON_IMPLENTATION(CUCommentManager);
                     flagListInfo.money = [[obj valueForKeySafely:@"money"] integerValue];
                     flagListInfo.name = [obj valueForKeySafely:@"name"] ;
                     flagListInfo.score = [[obj valueForKeySafely:@"score"] integerValue];
-                    [doctor.flagList addObject:flagListInfo];
+                    [order.service.doctor.flagList addObject:flagListInfo];
                 }];
                 
-                result.parsedModelObject = doctor;
+                result.parsedModelObject = order;
 //
             }
             else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
             }
         }
         else {

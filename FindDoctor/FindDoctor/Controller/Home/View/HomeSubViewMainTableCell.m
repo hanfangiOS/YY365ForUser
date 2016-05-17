@@ -104,7 +104,7 @@
     
     _data = data;
     
-    [icon setImageWithURL:[NSURL URLWithString:_data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
+    [icon setImageWithURL:[NSURL URLWithString:_data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor"]];
     
     if (_data.name && _data.levelDesc && _data.grade) {
         NSString * string = [NSString stringWithFormat:@"%@ %@ %@",_data.name,_data.levelDesc,_data.grade];

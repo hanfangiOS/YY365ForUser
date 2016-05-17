@@ -301,7 +301,6 @@
 
 - (void)loadHistory
 {
-//    NSArray *arr = @[@"历史记录",@"历史记录历史记录",@"历史记录",@"历史记录历史记录",@"历史记录",@"历史记录历史记录"];
     self.dataArray = [NSMutableArray arrayWithArray:[SearchHistoryHelper searchHistoryArray]];
     [self.searchHistoryCollectionView reloadData];
 }

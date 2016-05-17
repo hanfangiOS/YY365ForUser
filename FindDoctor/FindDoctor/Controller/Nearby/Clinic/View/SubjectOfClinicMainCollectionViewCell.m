@@ -57,7 +57,7 @@
 
 - (void)setData:(Doctor *)data{
     _data = data;
-    [_iconView setImageWithURL:[NSURL URLWithString:_data.avatar]];
+    [_iconView setImageWithURL:[NSURL URLWithString:_data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor"]];
     _nameLabel.text = _data.name;
     _titleLabel.text = _data.levelDesc;
 

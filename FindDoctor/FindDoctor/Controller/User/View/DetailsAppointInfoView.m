@@ -101,6 +101,7 @@
     self.address.font = [UIFont systemFontOfSize:12];
     self.address.textColor = kGrayTextColor;
     self.address.textAlignment = NSTextAlignmentLeft;
+    self.address.numberOfLines = 0;
     [self addSubview:self.address];
     //箭头
     self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, self.clinic.frameY - 1, 9, 15)];
@@ -118,17 +119,42 @@
     }
     
     if (_data.service.doctor.diagnosisTime) {
-        self.time.text = [[NSDate dateWithTimeIntervalSince1970:_data.service.doctor.diagnosisTime] stringWithDateFormat:@"yyyy-mm-dd hh:mm"];
+        self.time.text = [[NSDate dateWithTimeIntervalSince1970:(_data.service.doctor.diagnosisTime/1000)] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
     }
     
-    if (_data.service.patience.age && _data.service.patience.cellPhone) {
+    if (_data.service.patience.name && _data.service.patience.age && _data.service.patience.cellPhone) {
         self.person.text = [NSString stringWithFormat:@"%@  %ld岁  %@",_data.service.patience.name,(long)_data.service.patience.age,_data.service.patience.cellPhone];
     }
     
     if (_data.service.doctor.address) {
+        CGSize size = [self sizeForString:_data.service.doctor.address font:self.address.font limitSize:CGSizeMake( kScreenWidth - self.addressLabel.maxX - 2 - 20, 0)];
+        
+        self.frameHeight = self.frameHeight + size.height - self.address.frameHeight;
+        self.address.frameHeight = size.height;
+        
+        [self setNeedsLayout];
+        
         self.address.text = [NSString stringWithFormat:@"%@",_data.service.doctor.address];
     }
     
+}
+
+- (CGSize)sizeForString:(NSString *)string font:(UIFont *)font limitSize:(CGSize)limitSize{
+    
+    CGFloat width = limitSize.width;
+    CGFloat height = limitSize.height;
+    if (!width) {
+        width = CGFLOAT_MAX;
+    }
+    if (!height) {
+        height = CGFLOAT_MAX;
+    }
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(width, height)
+                                       options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading  |NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:@{NSFontAttributeName: font}
+                                       context:nil];
+    
+    return rect.size;
 }
 
 @end

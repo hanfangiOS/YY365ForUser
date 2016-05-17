@@ -59,7 +59,7 @@
     DoctorFameListModel * listModel = [[DoctorFameListModel alloc] init];
     listModel.doctor = self.doctor;
     listModel.filter.doctor = self.doctor;
-    DoctorFameListController * vc= [[DoctorFameListController alloc] initWithPageName:@"" listModel:listModel];
+    DoctorFameListController * vc = [[DoctorFameListController alloc] initWithPageName:@"DoctorFameListController" listModel:listModel];
     
     [self.slideNavigationController pushViewController:vc animated:YES];
 }

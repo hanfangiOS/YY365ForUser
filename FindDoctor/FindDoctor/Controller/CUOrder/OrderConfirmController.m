@@ -321,10 +321,13 @@
                 
                 if (![errorCode integerValue]) {
                     NSDictionary * dict1 = [dic dictionaryForKeySafely:@"data"];
+                    
                     NSDictionary * dic2 = [dict1 objectForKey:@"charge"];
                     NSString* charge = [dic2 JSONString];
                     NSLog(@"charge = %@", charge);
-                    [weakSelf postRequestCreatePayMent:charge];
+                    NSString * chargeid = [dict1 objectForKeySafely:@"chargeid"];
+                    long long dynamicno = [[dict1 objectForKeySafely:@"dynamicno"] longLongValue];
+                    [weakSelf postRequestCreatePayMent:charge chargeid:chargeid dynamicno:dynamicno];
                 }else{
                     [TipHandler showTipOnlyTextWithNsstring:[dic stringForKeySafely:@"message"]];
                 }
@@ -340,8 +343,8 @@
 }
 
 //11601 获取订单状态 （支付后）
-- (void)postRequestCheckOrderStatusAfter{
-    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+- (void)postRequestCheckOrderStatusAfterWithChargeid:(NSString *)chargeid andDynamicno:(long long)dynamicno{
+    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID andChargeid:chargeid andDynamicno:dynamicno resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
             
@@ -356,12 +359,13 @@
                 [alert show];
             }
         }
+
     } pageName:@"OrderConfirmController"];
     
 }
 
 //发送请求，调起支付控件
-- (void)postRequestCreatePayMent:(NSString *)charge{
+- (void)postRequestCreatePayMent:(NSString *)charge chargeid:(NSString *)chargeid dynamicno:(long long)dynamicno{
     __weak __block OrderConfirmController *blockSelf = self;
     [Pingpp createPayment:charge viewController:blockSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
         
@@ -371,7 +375,7 @@
         } else {
             NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
         }
-        [blockSelf postRequestCheckOrderStatusAfter];
+        [blockSelf postRequestCheckOrderStatusAfterWithChargeid:chargeid andDynamicno:dynamicno];
     }];
 }
 

@@ -14,8 +14,8 @@ typedef enum OrderStatus: NSInteger
     ORDERSTATUS_UNPAID   = 0, // 未支付
     ORDERSTATUS_PAID     = 1, // 已支付,没看病
     ORDERSTATUS_FINISHED = 2, // 已诊疗
-//    ORDERSTATUS_CANCELED = 4, // 已取消
-//    ORDERSTATUS_REFUNDED = 5, // 已评论
+    ORDERSTATUS_COMMENT  = 3, // 已评论
+//    ORDERSTATUS_REFUNDED = 5, // 已
 }OrderStatus;
 
 typedef enum OrderPayment : NSInteger
@@ -42,9 +42,11 @@ typedef enum OrderPayment : NSInteger
 @property (nonatomic,assign) BOOL isComment;
 
 @property NSTimeInterval createTimeStamp;
+@property (nonatomic,strong)NSString * createTimeStampStr;
 @property (nonatomic,strong) NSString *diagnosisTime;  //就诊时间区间，支付成功回调用到,createTimeStamp转换为字符串
 @property NSTimeInterval finishedTimeStamp;
 @property NSTimeInterval submitTime;  //提交时间的时间戳
+@property (nonatomic,strong)NSString * submitTimeStr;
 @property (nonatomic,strong) NSString *submitTimeString;   //提交时间的时间戳转换为的字符串
 
 @property NSInteger obtainScore; //获得积分
