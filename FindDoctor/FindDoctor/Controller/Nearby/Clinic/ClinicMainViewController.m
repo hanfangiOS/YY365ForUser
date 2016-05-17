@@ -110,7 +110,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSLog(@"医生一共有%d个",_clinic.doctorsArray.count);
+    NSLog(@"医生一共有%lu个",(unsigned long)_clinic.doctorsArray.count);
     return _clinic.doctorsArray.count;
 }
 

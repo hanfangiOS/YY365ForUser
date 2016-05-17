@@ -11,6 +11,9 @@
 #import "Doctor.h"
 #import "HFTitleView.h"
 #import "DoctorDetailController.h"
+#import "CUDoctorManager.h"
+#import "SearchResultListModel.h"
+#import "SearchResultViewController.h"
 
 #define sectionHeaderViewHeight 30
 
@@ -36,7 +39,7 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
 }
 
 - (void)registerCell{
-
+    
     [self.collectionView registerClass:[GoodDoctorCell class] forCellWithReuseIdentifier:reuseCellID];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseHeaderID];
 }
@@ -157,9 +160,34 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
     
 }
 
+#pragma mark Action
+
 - (void)loadMoreAction{
-    
+    SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
+    SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
+    [self.fatherVC.slideNavigationController pushViewController:vc animated:YES];
+
 }
+
+#pragma mark request
+
+- (void)requestUpdateDoctorInfoWithDoctor:(Doctor *)doctor{
+    DoctorDetailController * vc = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
+    
+    [[CUDoctorManager sharedInstance] updateDoctorInfo:doctor date:[[[NSDate date] dateAtStartOfDay] timeIntervalSince1970] resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                
+                vc.doctor = doctor;
+                [self.fatherVC.slideNavigationController pushViewController:vc animated:YES];
+            }
+        }
+        
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

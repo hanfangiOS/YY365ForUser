@@ -228,7 +228,7 @@ SINGLETON_IMPLENTATION(CUClinicManager);
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
-    [param setObjectSafely:@"MyFavorite" forKey:@"require"];
+    [param setObjectSafely:@"MyFavourite" forKey:@"require"];
     [param setObjectSafely:@(13102) forKey:@"interfaceID"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     

@@ -166,7 +166,7 @@
     self.goodDoctorCollectionView.dataSource = self.goodDoctorVC;
     
     //广告轮播图
-    self.secondBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, self.self.goodDoctorCollectionView.maxY + 10 * VFixRatio6, kScreenWidth, 85)];
+    self.secondBannerView = [[HFBannerView alloc] initWithFrame:CGRectMake(0, self.self.goodDoctorCollectionView.maxY + 10, kScreenWidth, kScreenWidth * 164 / 750.f)];
     self.secondBannerView.delegate = self;
     self.secondBannerView.dataSource = self;
     [self.headerView addSubview:self.secondBannerView];
@@ -182,7 +182,7 @@
     //好评诊所
     UICollectionViewFlowLayout * clinicLayout = [[UICollectionViewFlowLayout alloc] init];
     [clinicLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    self.goodclinicCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.secondBannerView.maxY + 10 * VFixRatio6, kScreenWidth, 283) collectionViewLayout:clinicLayout];
+    self.goodclinicCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.secondBannerView.maxY + 10 , kScreenWidth, 283) collectionViewLayout:clinicLayout];
     self.goodclinicCollectionView.backgroundColor = [UIColor whiteColor];
     [self.headerView addSubview:self.goodclinicCollectionView];
     
@@ -203,41 +203,13 @@
     self.headerView.frame = CGRectMake(0, 0, kScreenWidth, paddingView.maxY);
     [self.tableView setTableHeaderView:self.headerView];
     
-    
-    
-    //查看更多按钮背景
+    //查看更多按钮
     MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreAction)];
     [footer setTitle:@"正在加载" forState:MJRefreshStateRefreshing];
     [footer setTitle:@"没有更多数据了" forState:MJRefreshStateNoMoreData];
     footer.stateLabel.font = [UIFont systemFontOfSize:12];
     footer.stateLabel.textColor = kGrayTextColor;
     self.tableView.mj_footer = footer;
-    //这是加载更多那个按钮 ，可能被弃用
-    //    self.loadMoreContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 32)];
-    //    self.loadMoreContainerView.backgroundColor = [UIColor whiteColor];
-    //    self.tableView.tableFooterView = self.loadMoreContainerView;
-    //
-    //    UIButton * moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(36, 5, kScreenWidth - 36 * 2, 32 - 5 * 2)];
-    //    [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
-    //    [moreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
-    //    [moreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
-    //    moreBtn.layer.borderColor = kLightGrayColor.CGColor;
-    //    moreBtn.layer.borderWidth = 0.5;
-    //    moreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-    //    moreBtn.tag = 12345;
-    //    [self.loadMoreContainerView addSubview:moreBtn];
-    //
-    //    UIActivityIndicatorView * indicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake((self.loadMoreContainerView.frameWidth - 10)/2, (self.loadMoreContainerView.frameHeight - 10)/2, 10, 10)];
-    //    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    //    indicator.tag = 67890;
-    //    [indicator setHidesWhenStopped:YES];
-    //    [indicator stopAnimating];
-    //    [self.loadMoreContainerView addSubview:indicator];
-    //
-    //
-    //    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 32 - 1, kScreenWidth, 1)];
-    //    bottomLine.backgroundColor = kblueLineColor;
-    //    [self.loadMoreContainerView addSubview:bottomLine];
     
 }
 

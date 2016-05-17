@@ -104,7 +104,7 @@
 //    label5.textColor = kDarkGrayColor;
 //    [self addSubview:label5];
     
-    zhenLiaoAmountImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"zhenLiaoAmount"]];
+    zhenLiaoAmountImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"doctor_treatmentNum"]];
     zhenLiaoAmountImageView.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame) + 15, 13, 13);
     [self addSubview:zhenLiaoAmountImageView];
     
@@ -120,7 +120,7 @@
 {
     _data = data;
     
-    [imageView setImageWithURL:self.data.icon placeholderImage:nil];
+    [imageView setImageWithURL:[NSURL URLWithString:self.data.icon] placeholderImage:[UIImage imageNamed:@"temp_clinic"]];
     
     NSString *str = [NSString stringWithFormat:@"%@",self.data.name];
     NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc]initWithString:str];

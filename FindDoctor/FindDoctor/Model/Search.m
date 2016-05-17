@@ -19,10 +19,10 @@
     if (self) {
         self.keyword = @"-1";
         self.date = @"-1";
-        self.Region = [[RegionOption alloc]init];
-        self.Region.ID = 510000;
-        self.Region.name = @"-1";
-        self.SymptomID = -1;
+        self.region = [[RegionOption alloc]init];
+        self.region.ID = 510000;
+        self.region.name = @"-1";
+        self.symptomID = -1;
     }
     return self;
 }

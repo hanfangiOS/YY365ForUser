@@ -42,7 +42,11 @@
 
 - (void)setDefaultValue{
     self.orderAmount.text = @"－－";
-    self.orderDiscount.text = @"－－";
+    
+    NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    NSString * strSymbol = [locale objectForKey:NSLocaleCurrencySymbol];
+    self.orderDiscount.text = [NSString stringWithFormat:@"-%@%.2f",strSymbol,(float)0];
+    
     self.cash.text = @"－－";
 }
 

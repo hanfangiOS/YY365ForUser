@@ -89,7 +89,7 @@
     _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.contentView.bounds), CGRectGetHeight(self.contentView.bounds) - Height_Tabbar)];
     [_mapView setZoomLevel:14];
     _mapView.isSelectedAnnotationViewFront = YES;
-    //_mapView.showsUserLocation = YES;
+    _mapView.showsUserLocation = YES;
     //_mapView.userTrackingMode = BMKUserTrackingModeNone;
     [self.contentView addSubview:_mapView];
     
