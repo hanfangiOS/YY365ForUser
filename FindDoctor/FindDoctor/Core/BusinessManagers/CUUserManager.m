@@ -196,7 +196,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
                     }
                     
                     NSLog(@"cellPhone:%@",blockSelf.user.cellPhone);
-                    NSLog(@"userId:%d",blockSelf.user.userId );
+                    NSLog(@"userId:%ld",(long)blockSelf.user.userId );
                     [blockSelf save];
                 }
                     break;
@@ -347,14 +347,15 @@ SINGLETON_IMPLENTATION(CUUserManager);
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
-                NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
+                NSDictionary * data = [result.responseObject dictionaryForKeySafely:@"data"];
                 
-                blockSelf.user.nickname = [data stringForKeySafely:@"nickname"];
-                blockSelf.user.name = [data stringForKeySafely:@"name"];
-                blockSelf.user.icon = [data stringForKeySafely:@"icon"];
-                blockSelf.user.cellPhone =  [data stringForKeySafely:@"phone"];
-                blockSelf.user.age =  [[data objectForKeySafely:@"age"] integerValue];
-                NSString * sexStr = [data stringForKeySafely:@"sex"];
+                NSDictionary * userInfo = [data objectForKeySafely:@"userInfo"];
+                
+                blockSelf.user.nickname = [userInfo stringForKeySafely:@"nickname"];
+                blockSelf.user.name = [userInfo stringForKeySafely:@"name"];
+                blockSelf.user.cellPhone =  [userInfo stringForKeySafely:@"phone"];
+                blockSelf.user.age =  [[userInfo objectForKeySafely:@"age"] integerValue];
+                NSString * sexStr = [userInfo stringForKeySafely:@"sex"];
                 if([sexStr isEqualToString:@"女"]) {
                     blockSelf.user.gender = CUUserGenderFemale;
                 }

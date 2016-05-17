@@ -275,6 +275,7 @@
 		7FB6EEAC1CE465F900FEC3E2 /* order_icon_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FB6EEAB1CE465F900FEC3E2 /* order_icon_success@2x.png */; };
 		7FB791EC1CE56B800031B265 /* temp_clinicAdver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FB791EA1CE56B800031B265 /* temp_clinicAdver@2x.png */; };
 		7FB791ED1CE56B800031B265 /* temp_goodClinic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FB791EB1CE56B800031B265 /* temp_goodClinic@2x.png */; };
+		7FC1572A1CEAF40F00A07085 /* NSString+NullReplacement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC157291CEAF40F00A07085 /* NSString+NullReplacement.m */; };
 		7FC36A451C85D69500650F75 /* DoctorSearchResultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */; };
 		7FC7DF5E1CD89EAB0006B396 /* NewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7DF581CD89EAB0006B396 /* NewsListController.m */; };
 		7FC7DF5F1CD89EAB0006B396 /* NewsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7DF5B1CD89EAB0006B396 /* NewsListCell.m */; };
@@ -1165,6 +1166,8 @@
 		7FB6EEAB1CE465F900FEC3E2 /* order_icon_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order_icon_success@2x.png"; sourceTree = "<group>"; };
 		7FB791EA1CE56B800031B265 /* temp_clinicAdver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_clinicAdver@2x.png"; sourceTree = "<group>"; };
 		7FB791EB1CE56B800031B265 /* temp_goodClinic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_goodClinic@2x.png"; sourceTree = "<group>"; };
+		7FC157281CEAF40F00A07085 /* NSString+NullReplacement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NullReplacement.h"; sourceTree = "<group>"; };
+		7FC157291CEAF40F00A07085 /* NSString+NullReplacement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NullReplacement.m"; sourceTree = "<group>"; };
 		7FC36A431C85D69500650F75 /* DoctorSearchResultListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorSearchResultListModel.h; sourceTree = "<group>"; };
 		7FC36A441C85D69500650F75 /* DoctorSearchResultListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultListModel.m; sourceTree = "<group>"; };
 		7FC7DF571CD89EAB0006B396 /* NewsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListController.h; sourceTree = "<group>"; };
@@ -2890,6 +2893,8 @@
 				7FF0C0391CC6112B0055FF88 /* HFRequestHeaderDict.m */,
 				7FABC58C1CC79ED5006C47BB /* HFFilter.h */,
 				7FABC58D1CC79ED5006C47BB /* HFFilter.m */,
+				7FC157281CEAF40F00A07085 /* NSString+NullReplacement.h */,
+				7FC157291CEAF40F00A07085 /* NSString+NullReplacement.m */,
 			);
 			path = HFFW;
 			sourceTree = "<group>";
@@ -3454,7 +3459,7 @@
 			children = (
 			);
 			name = MyIntegral;
-			path = User/MyIntegral;
+			path = ../MyIntegral;
 			sourceTree = "<group>";
 		};
 		BC0E84B01C7857A300082AA9 /* AddFamilyMember */ = {
@@ -3581,6 +3586,7 @@
 		BC1859C21C8440060050251B /* MyDiagnosisRecords */ = {
 			isa = PBXGroup;
 			children = (
+				7FFB94881C966AD2003523B4 /* MyIntegral */,
 				BC1859C31C8440060050251B /* MyDiagnosisRecordsCell.h */,
 				BC1859C41C8440060050251B /* MyDiagnosisRecordsCell.m */,
 				BC1859C51C8440060050251B /* MyDiagnosisRecordsDetailViewController.h */,
@@ -3678,7 +3684,6 @@
 				7F3151081CC24CCC002A11C3 /* MyMember */,
 				7F3151041CC24B68002A11C3 /* MyInfo */,
 				BC1859C21C8440060050251B /* MyDiagnosisRecords */,
-				7FFB94881C966AD2003523B4 /* MyIntegral */,
 				BCAA4AB01C856D610085A165 /* MyClinic */,
 				BCAA4AA81C8548440085A165 /* MyDoctor */,
 				BC313D221C3A147500C9469D /* View */,
@@ -5458,6 +5463,7 @@
 				E1EB1E3B1B70A43B0048B8EB /* AvatarHelper.m in Sources */,
 				E689E99D1BA7480800A3ED3C /* QuestionCell.m in Sources */,
 				E1A6B8FB1BAD5ACA001A458D /* UserDetailController.m in Sources */,
+				7FC1572A1CEAF40F00A07085 /* NSString+NullReplacement.m in Sources */,
 				E1A6B90C1BAE9AA0001A458D /* PasswordModifyController.m in Sources */,
 				3EDEBAA71A961C4800E72809 /* PLSqliteConnectionProvider.m in Sources */,
 				3ED0A74F1AA603C50040E529 /* SNSlideController+SNGeometry.m in Sources */,

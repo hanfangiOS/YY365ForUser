@@ -13,6 +13,8 @@
 
 @property (strong,nonatomic)Doctor * data;
 
+
+
 + (float)defaultHeight;
 
 @end

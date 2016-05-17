@@ -86,7 +86,7 @@
     [_headerView addSubview:view1];
     //头像
     UIImageView * view1_imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(30,view1.centerY - 24 , 48, 48)];
-    [view1_imageView1 setImageWithURL:[NSURL URLWithString:self.listModel.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor.jpg"]];
+    [view1_imageView1 setImageWithURL:[NSURL URLWithString:self.listModel.doctor.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor"]];
     view1_imageView1.layer.cornerRadius = 48/2;
     view1_imageView1.clipsToBounds = YES;
     view1_imageView1.contentMode = UIViewContentModeScaleAspectFill;

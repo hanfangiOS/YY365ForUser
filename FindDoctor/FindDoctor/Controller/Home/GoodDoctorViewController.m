@@ -111,11 +111,8 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DoctorDetailController * vc = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
-    vc.doctor =  [self.data objectAtIndexSafely:indexPath.row];
-    if ([self.data objectAtIndexSafely:indexPath.row]) {
-        [self.fatherVC.slideNavigationController pushViewController:vc animated:YES];
-    }
+    Doctor * doctor = [self.data objectAtIndexSafely:indexPath.row];
+    [self requestUpdateDoctorInfoWithDoctor:doctor];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{

@@ -16,6 +16,7 @@
 #import "CUPickerView.h"
 #import "MyInfoPickerCell.h"
 #import "PersonalAvatarVC.h"
+#import "NSString+NullReplacement.h"
 
 
 @interface MyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UINavigationControllerDelegate,CUPickerViewDelegate>
@@ -62,13 +63,18 @@
 
 - (void)initData{
     
-    self.sexArray = @[@"女",@"男"];
-    self.selectedIndex = 0;
-    
     self.isEditing = NO;
     
    self.tempData = [[CUUser alloc] init];
    self.tempData = [self copyForUser];
+    
+    self.sexArray = @[@"女",@"男"];
+    if (self.tempData.gender == CUUserGenderFemale) {
+        self.selectedIndex = 0;
+    }else{
+        self.selectedIndex = 1;
+    }
+   
     
     self.myAvatar = [[UIImageView alloc] init];
     [self.myAvatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_userDefaultAvatar"]];
@@ -78,11 +84,11 @@
     CUUser * user = [[CUUser alloc] init];
     
     user.userId = [CUUserManager sharedInstance].user.userId;
-    user.nickname = [CUUserManager sharedInstance].user.nickname.copy;
-    user.name = [CUUserManager sharedInstance].user.name.copy;
+    user.nickname = [[CUUserManager sharedInstance].user.nickname.copy stringByReplacingNullWithBlank];
+    user.name = [[CUUserManager sharedInstance].user.name.copy stringByReplacingNullWithBlank];
     user.gender = [CUUserManager sharedInstance].user.gender;
     user.age = [CUUserManager sharedInstance].user.age;
-    user.cellPhone = [CUUserManager sharedInstance].user.cellPhone.copy;
+    user.cellPhone = [[CUUserManager sharedInstance].user.cellPhone.copy stringByReplacingNullWithBlank];
     
     return user;
 }
@@ -423,7 +429,7 @@
     
     if (self.isEditing == YES) {
 
-        [self postRequestUpdateyUserInfo];
+        [self checkData];
         
     }else{
         [self.editBtn setTitle:@"保存" forState:UIControlStateNormal];
@@ -433,9 +439,29 @@
 
 }
 
+//校验
+- (void)checkData{
+    if (!self.tempData.nickname || [self.tempData.nickname isEqualToString:@""]) {
+        [TipHandler showTipOnlyTextWithNsstring:@"昵称不能为空"];
+        return;
+    }
+    if (!self.tempData.cellPhone || [self.tempData.cellPhone isEqualToString:@""]) {
+        [TipHandler showTipOnlyTextWithNsstring:@"手机号不能为空"];
+        return;
+    }
+    if ([self.tempData.cellPhone length] != 11) {
+        [TipHandler showTipOnlyTextWithNsstring:@"请输入正确的手机号"];
+        return;
+    }
+    [self postRequestUpdateyUserInfo];
+}
+
+
 - (void)uyiIDAction{
     [TipHandler showTipOnlyTextWithNsstring:@"优医ID是系统给您自动分配的ID号，无法更改"];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
