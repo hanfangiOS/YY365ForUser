@@ -36,6 +36,7 @@
 #import "CUOrder.h"
 #import "MyTreatmentController.h"
 #import "MyTreatmentListModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIView *_navViewBG;
@@ -57,12 +58,25 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.headerView resetUserInfo];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.navigationBar.hidden = YES;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(avatarUpdate) name:@"avatarUpdate" object:nil];
+    
+    [self initSubView];
+}
+
+- (void)avatarUpdate{
+        [self.headerView.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_userDefaultAvatar"]];
+}
+
+- (void)initSubView{
     
     UIView *navView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kDefaultNavigationBarHeight)];
     [self.view addSubview:navView];
@@ -80,10 +94,7 @@
     label.font = [UIFont systemFontOfSize:17];
     [navView addSubview:label];
     
-    [self initSubView];
-}
-
-- (void)initSubView{
+    
     self.contentView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     self.contentView.backgroundColor = kCommonBackgroundColor;
     self.view.backgroundColor = kCommonBackgroundColor;

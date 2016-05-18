@@ -43,6 +43,15 @@
     self.bottomLine = [[UIView alloc] initWithFrame:CGRectMake(self.Label.frameX, AddMemberCellHeight - 1, kScreenWidth - self.Label.frameX - 24, 1)];
     self.bottomLine.backgroundColor = kLightLineColor;
     [self addSubview:self.bottomLine];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    [self addGestureRecognizer:tap];
+}
+
+- (void)tapAction{
+    [self.textField becomeFirstResponder];
 }
 
 @end

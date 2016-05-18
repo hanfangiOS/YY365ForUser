@@ -34,7 +34,7 @@
     self.icon = [[UIImageView alloc]initWithFrame:CGRectMake(28, 6, 64, 64)];
     self.icon.layer.cornerRadius = 64 / 2.f;
     self.icon.clipsToBounds = YES;
-    [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@""]];
+    [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_userDefaultAvatar"]];
     [self.userInfoBackgroundView addSubview:self.icon];
     //箭头
     self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 16, self.icon.frameY + 10, 9, 16)];
@@ -78,7 +78,6 @@
 
 - (void)resetUserInfo{
     [self.icon setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_userDefaultAvatar"]];
-    
     
     if ([CUUserManager sharedInstance].isLogin == YES) {
         self.name.text = [[CUUserManager sharedInstance].user.nickname length] > 0?[CUUserManager sharedInstance].user.nickname:@"优医用户";

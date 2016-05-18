@@ -195,6 +195,7 @@
             blockSelf.uploadAvatarSuccessBlock(image);
             }
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"avatarUpdate" object:nil];
     } pageName:self.pageName];
 }
 
