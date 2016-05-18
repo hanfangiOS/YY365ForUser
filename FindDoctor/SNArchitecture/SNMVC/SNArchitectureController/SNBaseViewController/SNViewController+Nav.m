@@ -167,6 +167,7 @@
     rightBtn.contentMode = UIViewContentModeScaleAspectFit;
     rightBtn.tintColor = UIColorFromHex(Color_Hex_NavItem_Normal);
     rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 12);
     [rightBtn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     [rightBtnView addSubview:rightBtn];
     
@@ -174,7 +175,7 @@
     self.navigationItem.rightBarButtonItem = rightBtnItem;
     
     UIBarButtonItem * negativeSeperator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    negativeSeperator.width = - 2;
+    negativeSeperator.width = - 20;
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSeperator,rightBtnItem,nil];
     
     
