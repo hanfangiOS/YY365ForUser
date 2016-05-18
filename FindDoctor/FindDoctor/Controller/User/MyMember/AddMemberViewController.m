@@ -212,7 +212,9 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     // 电话
     if (textField.tag == 20003) {
-        if ([textField.text length] > 10) {
+        NSMutableString * text = [textField.text mutableCopy];
+        [text replaceCharactersInRange:range withString:string];
+        if ([text length] >= 11) {
             return NO;
         }
     }
@@ -324,6 +326,8 @@
 }
 
 - (void)saveAction{
+    
+    [self.contentView endEditing:YES];
     
     if (self.user.name == nil || [self.user.name isEqualToString:@""]) {
             UIAlertView * alter = [[UIAlertView alloc] initWithTitle:nil message:@"请输入姓名" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];

@@ -463,7 +463,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                     TipMessageData *data = [[TipMessageData alloc]init];
                     data.title = [dic valueForKeySafely:@"title"];
 
-                    [resultArray addObjectSafely:data];
+//                    [resultArray addObjectSafely:data];
                 }
                 
                 result.parsedModelObject = resultArray;
