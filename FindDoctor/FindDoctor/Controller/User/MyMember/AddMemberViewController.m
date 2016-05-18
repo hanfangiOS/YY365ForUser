@@ -214,7 +214,7 @@
     if (textField.tag == 20003) {
         NSMutableString * text = [textField.text mutableCopy];
         [text replaceCharactersInRange:range withString:string];
-        if ([text length] >= 11) {
+        if ([text length] > 11) {
             return NO;
         }
     }

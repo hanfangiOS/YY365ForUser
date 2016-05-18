@@ -145,6 +145,11 @@ typedef NS_ENUM(NSInteger,ListType){
     return 8;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView * view = [UIView new];
+    return view;
+}
+
 #pragma mark postRequest
 
 //未付款详情

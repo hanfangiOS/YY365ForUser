@@ -271,10 +271,34 @@
 }
 
 - (void)HFBannerView:(HFBannerView *)view didSelectAtIndex:(NSInteger)index{
+    
     if (view == self.mainBannerView) {
         
+        Banner * banner = [self.homeModel.mainBannerList objectAtIndex:index];
+        [self BannerToNextPageWithBanner:banner];
+
     }
     if (view == self.secondBannerView) {
+        
+        Banner * banner = [self.homeModel.secondBannerList objectAtIndex:index];
+        [self BannerToNextPageWithBanner:banner];
+    }
+}
+
+- (void)BannerToNextPageWithBanner:(Banner *)banner{
+    if (banner.type == DoctorType) {
+        Doctor * doctor = [[Doctor alloc] init];
+        doctor.doctorId = banner.redirectId;
+        [self requestUpdateDoctorInfoWithDoctor:doctor];
+        
+    }else if (banner.type == ClinicType){
+        
+        ClinicMainViewController * vc = [[ClinicMainViewController alloc]initWithPageName:@"ClinicMainViewController"];
+        Clinic * clinic = [[Clinic alloc] init];
+        clinic.ID = (long long)banner.redirectId;;
+        vc.clinic = clinic;
+        [self.slideNavigationController pushViewController:vc animated:YES];
+    }else if (banner.type == WebType){
         
     }
 }
@@ -504,5 +528,22 @@
     } pageName:@"HomeSubViewController_Main"];
 }
 
+//医生详情
+- (void)requestUpdateDoctorInfoWithDoctor:(Doctor *)doctor{
+
+    
+    [[CUDoctorManager sharedInstance] updateDoctorInfo:doctor date:[[[NSDate date] dateAtStartOfDay] timeIntervalSince1970] resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                DoctorDetailController * vc = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
+                vc.doctor = doctor;
+                [self.slideNavigationController pushViewController:vc animated:YES];
+            }
+        }
+        
+    }];
+}
 
 @end

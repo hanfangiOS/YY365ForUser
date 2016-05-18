@@ -54,7 +54,7 @@
     self.title = @"我的信息";
     
     [self initSubViews];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -65,8 +65,8 @@
     
     self.isEditing = NO;
     
-   self.tempData = [[CUUser alloc] init];
-   self.tempData = [self copyForUser];
+    self.tempData = [[CUUser alloc] init];
+    self.tempData = [self copyForUser];
     
     self.sexArray = @[@"女",@"男"];
     if (self.tempData.gender == CUUserGenderFemale) {
@@ -74,7 +74,7 @@
     }else{
         self.selectedIndex = 1;
     }
-   
+    
     
     self.myAvatar = [[UIImageView alloc] init];
     [self.myAvatar setImageWithURL:[NSURL URLWithString:[CUUserManager sharedInstance].user.icon] placeholderImage:[UIImage imageNamed:@"temp_userDefaultAvatar"]];
@@ -146,6 +146,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //头像
     if (indexPath.section == 0) {
         self.myInfoAvatarCell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoAvatarCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
         if (!self.myInfoAvatarCell) {
@@ -171,6 +172,7 @@
         
         return self.myInfoAvatarCell;
     }else if (indexPath.section == 2 && indexPath.row == 1){
+        //性别
         MyInfoPickerCell * cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoPickerCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
         if (!cell) {
             cell = [[MyInfoPickerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"MyInfoPickerCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
@@ -194,6 +196,7 @@
         return cell;
     }
     else{
+        //除性别外所有cell
         MyInfoCell * cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"MyInfoCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
         if (!cell) {
             cell = [[MyInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"MyInfoCell%ld%ld",(long)indexPath.section,(long)indexPath.row]];
@@ -223,26 +226,31 @@
                 break;
             case 10011:
             {
+                cell.label.text = @"电话";
+                cell.textField.text = [NSString stringWithFormat:@"%@",self.tempData.cellPhone];
+                cell.textField.textColor = kGrayTextColor;
+                cell.textField.tintColor = [UIColor clearColor];
+                UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phoneAction)];
+                [cell.textField addGestureRecognizer:tap];
+            }
+                break;
+            case 10020:
+            {
                 cell.label.text = @"昵称";
                 cell.textField.text = [NSString stringWithFormat:@"%@",self.tempData.nickname];
             }
                 break;
-            case 10020:
+            case 10022:
             {
                 cell.label.text = @"姓名";
                 cell.textField.text = [NSString stringWithFormat:@"%@",self.tempData.name];
             }
                 break;
-            case 10022:
+            case 10023:
             {
                 cell.label.text = @"年龄";
                 cell.textField.text = [NSString stringWithFormat:@"%ld",(long)self.tempData.age];
-            }
-                break;
-            case 10023:
-            {
-                cell.label.text = @"电话";
-                cell.textField.text = [NSString stringWithFormat:@"%@",self.tempData.cellPhone];
+                cell.textField.keyboardType = UIKeyboardTypeNumberPad;
             }
                 break;
             default:
@@ -263,28 +271,28 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-        if (indexPath.section == 0) {
-            PersonalAvatarVC * vc = [[PersonalAvatarVC alloc] initWithPageName:@"PersonalAvatarVC"];
-            __weak __block typeof(self)weakSelf = self;
-            vc.uploadAvatarSuccessBlock = ^(UIImage * image){
-                weakSelf.myAvatar.image = image;
-                [weakSelf.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:NO];
-            };
-            [self.slideNavigationController pushViewController:vc animated:YES];
-        }
+    if (indexPath.section == 0) {
+        PersonalAvatarVC * vc = [[PersonalAvatarVC alloc] initWithPageName:@"PersonalAvatarVC"];
+        __weak __block typeof(self)weakSelf = self;
+        vc.uploadAvatarSuccessBlock = ^(UIImage * image){
+            weakSelf.myAvatar.image = image;
+            [weakSelf.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:NO];
+        };
+        [self.slideNavigationController pushViewController:vc animated:YES];
+    }
     
 }
 
 #pragma mark textFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    //优医ID
-    if (textField.tag == 10010) {
+    //优医ID 电话
+    if (textField.tag == 10010 || textField.tag == 10011) {
         return NO;
     }
     return YES;
-
-
+    
+    
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -300,34 +308,31 @@
 - (void)textFieldChange:(UITextField *)textField{
     textField.text = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     switch (textField.tag) {
-        //昵称
-        case 10011:
-        {
-            self.tempData.nickname = textField.text;
-        }
-            break;
-        //姓名
+            //昵称
         case 10020:
         {
-            self.tempData.name = textField.text;
+            self.tempData.nickname = textField.text;
+            
         }
             break;
-        //性别
+            //性别
         case 10021:
         {
             self.tempData.gender = [textField.text integerValue];
+            
         }
             break;
-        //年龄
+            //姓名
         case 10022:
         {
-            self.tempData.age = [textField.text integerValue];
+            self.tempData.name = textField.text;
+            
         }
             break;
-        //电话
+            //年龄
         case 10023:
         {
-            self.tempData.cellPhone = textField.text;
+            self.tempData.age = [textField.text integerValue];
         }
             break;
             
@@ -337,12 +342,9 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    //电话
-    if (textField.tag == 10023) {
-        if ([textField.text length] > 10) {
-            return NO;
-        }
-    }else if (textField.tag == 10010){
+    
+    //优医ID 电话
+    if (textField.tag == 10010 || textField.tag == 10011){
         return NO;
     }
     return YES;
@@ -428,7 +430,7 @@
 - (void)editAndSaveAction{
     
     if (self.isEditing == YES) {
-
+        
         [self checkData];
         
     }else{
@@ -436,7 +438,7 @@
         self.isEditing = !self.isEditing;
         [self.tableView reloadData];
     }
-
+    
 }
 
 //校验
@@ -461,7 +463,9 @@
     [TipHandler showTipOnlyTextWithNsstring:@"优医ID是系统给您自动分配的ID号，无法更改"];
 }
 
-
+- (void)phoneAction{
+    [TipHandler showTipOnlyTextWithNsstring:@"手机号与您的帐号绑定，请前往帐号安全进行更改"];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -60,19 +60,19 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 0) {
-        ClinicAdverCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseAdverCellID forIndexPath:indexPath];
-        cell.data = self.data.promotionInfo;
-        cell.layer.borderColor = kblueLineColor.CGColor;
-        cell.layer.borderWidth = 1.0f;
-        return cell;
-    }else{
+//    if (indexPath.row == 0) {
+//        ClinicAdverCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseAdverCellID forIndexPath:indexPath];
+//        cell.data = self.data.promotionInfo;
+//        cell.layer.borderColor = kblueLineColor.CGColor;
+//        cell.layer.borderWidth = 1.0f;
+//        return cell;
+//    }else{
         GoodClinicCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseCellID forIndexPath:indexPath];
         cell.data = [self.data.goodClinicList objectAtIndexSafely:indexPath.row];
         cell.layer.borderWidth = 1.0f;
         cell.layer.borderColor = kblueLineColor.CGColor;
         return cell;
-    }
+//    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath

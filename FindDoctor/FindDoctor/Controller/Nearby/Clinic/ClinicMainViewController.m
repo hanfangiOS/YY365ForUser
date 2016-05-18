@@ -27,7 +27,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = self.clinic.name;
+    if (self.clinic.name) {
+        self.title = self.clinic.name;
+    }else{
+        self.title = @"中医诊所";
+    }
+    
     [self loadContentScrollView];
     [self initSubView];
     // Do any additional setup after loading the view.
@@ -36,8 +41,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [self showProgressView];
     [[CUClinicManager sharedInstance] getClinicMainWithClinic:self.clinic resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        [self hideProgressView];
         if (!result.hasError) {
-            [self hideProgressView];
+            self.title = self.clinic.name;
             [self resetData];
         }
     } pageName:@"ClinicMainViewController"];
