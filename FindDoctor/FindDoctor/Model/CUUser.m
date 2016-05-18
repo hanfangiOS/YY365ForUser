@@ -21,6 +21,7 @@
 #define Key_CUUser_Gender @"User_Gender"
 #define Key_CUUser_Level @"User_Level"
 #define Key_CUUser_Name @"User_Name"
+#define Key_CUUser_icon @"User_icon"
 
 @implementation CUUser
 
@@ -37,6 +38,8 @@
     [aCoder encodeInteger:self.age forKey:Key_CUUser_Age];
     [aCoder encodeInteger:self.gender forKey:Key_CUUser_Gender];
     [aCoder encodeInteger:self.level forKey:Key_CUUser_Level];
+    
+    [aCoder encodeObject:self.icon forKey:Key_CUUser_icon];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -53,6 +56,7 @@
         self.age = [aDecoder decodeIntegerForKey:Key_CUUser_Age];
         self.gender = [aDecoder decodeIntegerForKey:Key_CUUser_Gender];
         self.level = [aDecoder decodeIntegerForKey:Key_CUUser_Level];
+        self.icon = [aDecoder decodeObjectForKey:Key_CUUser_icon];
     }
     return self;
 }
