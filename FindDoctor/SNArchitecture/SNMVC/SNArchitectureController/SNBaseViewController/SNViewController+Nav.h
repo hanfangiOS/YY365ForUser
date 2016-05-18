@@ -31,6 +31,13 @@
 /** 右上角图片 **/
 - (UIButton *)addRightButtonItemWithImage:(UIImage *)image action:(SEL)selector;
 
+/*
+ * 右上角图片
+ *
+ * rightSpace 图片偏移 正值往左偏，负值往右偏
+ */
+- (UIButton *)addRightButtonItemWithImage:(UIImage *)image imageOffSet:(int)offSet   action:(SEL)selector;
+
 //- (UIBarButtonItem *)newButtonItemWithTitleAndImage:(NSString *)imageName title:(NSString *)title target:(id)target action:(SEL)selector;
 
 @end

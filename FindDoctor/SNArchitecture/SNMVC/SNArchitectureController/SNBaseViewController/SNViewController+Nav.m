@@ -161,13 +161,35 @@
 
 - (UIButton *)addRightButtonItemWithImage:(UIImage *)image action:(SEL)selector{
 
-    UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     UIButton * rightBtn = [[UIButton alloc] initWithFrame:rightBtnView.bounds];
     [rightBtn setImage:image forState:UIControlStateNormal];
     rightBtn.contentMode = UIViewContentModeScaleAspectFit;
     rightBtn.tintColor = UIColorFromHex(Color_Hex_NavItem_Normal);
-    rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 12);
+    rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [rightBtn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
+    [rightBtnView addSubview:rightBtn];
+    
+    UIBarButtonItem * rightBtnItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtnView];
+    self.navigationItem.rightBarButtonItem = rightBtnItem;
+    
+    UIBarButtonItem * negativeSeperator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSeperator.width = - 20;
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSeperator,rightBtnItem,nil];
+    
+    
+    return rightBtn;
+}
+
+- (UIButton *)addRightButtonItemWithImage:(UIImage *)image imageOffSet:(int)offSet  action:(SEL)selector{
+    
+    UIView * rightBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    UIButton * rightBtn = [[UIButton alloc] initWithFrame:rightBtnView.bounds];
+    [rightBtn setImage:image forState:UIControlStateNormal];
+    rightBtn.contentMode = UIViewContentModeScaleAspectFit;
+    rightBtn.tintColor = UIColorFromHex(Color_Hex_NavItem_Normal);
+    rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, offSet);
     [rightBtn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     [rightBtnView addSubview:rightBtn];
     

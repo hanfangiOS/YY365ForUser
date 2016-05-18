@@ -84,7 +84,7 @@
     _navViewBG.backgroundColor = UIColorFromHex(Color_Hex_NavBackground);
     _navViewBG.alpha = 0;
     [navView addSubview:_navViewBG];
-    UIButton *btn = [self addRightButtonItemWithImage:[UIImage imageNamed:@"mySpace_msg"] action:@selector(messageAction)];
+    UIButton *btn = [self addRightButtonItemWithImage:[UIImage imageNamed:@"mySpace_msg"] imageOffSet: - 11 action:@selector(messageAction)];
     btn.frame = CGRectMake(kScreenWidth - btn.frameWidth, _navViewBG.frameHeight - btn.frameHeight, btn.frameWidth, btn.frameHeight);
     [navView addSubview:btn];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, _navViewBG.frameHeight - btn.frameHeight + 2, kScreenWidth, 40)];
