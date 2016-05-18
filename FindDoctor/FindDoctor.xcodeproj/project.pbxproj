@@ -221,6 +221,10 @@
 		7F5610E51C859871004DCCDF /* DoctorSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */; };
 		7F6797AC1CE9CE1B001D1024 /* temp_clinic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6797AA1CE9CE1B001D1024 /* temp_clinic@2x.png */; };
 		7F6797AF1CE9D335001D1024 /* temp_userDefaultAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6797AE1CE9D335001D1024 /* temp_userDefaultAvatar@2x.png */; };
+		7F6D578B1CEC64CA00C9A442 /* lanchImage_6 plus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6D57871CEC64CA00C9A442 /* lanchImage_6 plus@3x.png */; };
+		7F6D578D1CEC64CA00C9A442 /* lanchImage_iPhone 6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6D57891CEC64CA00C9A442 /* lanchImage_iPhone 6@2x.png */; };
+		7F6D578F1CEC675F00C9A442 /* lanchImage_iPhoen4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6D578E1CEC675F00C9A442 /* lanchImage_iPhoen4@2x.png */; };
+		7F6D57911CEC676900C9A442 /* lanchImage_ iPhoen5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6D57901CEC676900C9A442 /* lanchImage_ iPhoen5@2x.png */; };
 		7F71E8C51C993BC400656CAF /* DiagnosisRemarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F71E8C41C993BC400656CAF /* DiagnosisRemarkController.m */; };
 		7F71E8C81C9940F900656CAF /* DiagnosisRemarkTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F71E8C71C9940F900656CAF /* DiagnosisRemarkTitleView.m */; };
 		7FA42A1A1CC53E6200564182 /* TreatmentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA42A191CC53E6200564182 /* TreatmentDetailsController.m */; };
@@ -1062,6 +1066,10 @@
 		7F5610E41C859871004DCCDF /* DoctorSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorSearchResultViewController.m; sourceTree = "<group>"; };
 		7F6797AA1CE9CE1B001D1024 /* temp_clinic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_clinic@2x.png"; sourceTree = "<group>"; };
 		7F6797AE1CE9D335001D1024 /* temp_userDefaultAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_userDefaultAvatar@2x.png"; sourceTree = "<group>"; };
+		7F6D57871CEC64CA00C9A442 /* lanchImage_6 plus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanchImage_6 plus@3x.png"; sourceTree = "<group>"; };
+		7F6D57891CEC64CA00C9A442 /* lanchImage_iPhone 6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanchImage_iPhone 6@2x.png"; sourceTree = "<group>"; };
+		7F6D578E1CEC675F00C9A442 /* lanchImage_iPhoen4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanchImage_iPhoen4@2x.png"; sourceTree = "<group>"; };
+		7F6D57901CEC676900C9A442 /* lanchImage_ iPhoen5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanchImage_ iPhoen5@2x.png"; sourceTree = "<group>"; };
 		7F71E8C31C993BC400656CAF /* DiagnosisRemarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosisRemarkController.h; sourceTree = "<group>"; };
 		7F71E8C41C993BC400656CAF /* DiagnosisRemarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisRemarkController.m; sourceTree = "<group>"; };
 		7F71E8C61C9940F900656CAF /* DiagnosisRemarkTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosisRemarkTitleView.h; sourceTree = "<group>"; };
@@ -3322,6 +3330,10 @@
 		7FED201B1CDB4F6A004639DE /* Launch */ = {
 			isa = PBXGroup;
 			children = (
+				7F6D57901CEC676900C9A442 /* lanchImage_ iPhoen5@2x.png */,
+				7F6D578E1CEC675F00C9A442 /* lanchImage_iPhoen4@2x.png */,
+				7F6D57871CEC64CA00C9A442 /* lanchImage_6 plus@3x.png */,
+				7F6D57891CEC64CA00C9A442 /* lanchImage_iPhone 6@2x.png */,
 				7FED201C1CDB4F6A004639DE /* Launch.jpg */,
 			);
 			path = Launch;
@@ -5002,6 +5014,7 @@
 				7FED20B21CDB4F6A004639DE /* navbar_close_button@3x.png in Resources */,
 				7FED207F1CDB4F6A004639DE /* doctor_menu_btn_add_sel@2x.png in Resources */,
 				7FED20971CDB4F6A004639DE /* login_icon_hook.png in Resources */,
+				7F6D578D1CEC64CA00C9A442 /* lanchImage_iPhone 6@2x.png in Resources */,
 				7FED20741CDB4F6A004639DE /* menu_arrow_down@2x.png in Resources */,
 				7FED20601CDB4F6A004639DE /* comment_clever@2x.png in Resources */,
 				3ED1711D1AAF0A9A00E5B630 /* tip_sad@2x.png in Resources */,
@@ -5141,15 +5154,18 @@
 				7FED20AB1CDB4F6A004639DE /* map_location_pop_background@2x.png in Resources */,
 				3EDF9E181AAAD0F400F85C44 /* SNRefreshControl.strings in Resources */,
 				7FB6EEAA1CE42EE200FEC3E2 /* avatar_icon_menu@2x.png in Resources */,
+				7F6D57911CEC676900C9A442 /* lanchImage_ iPhoen5@2x.png in Resources */,
 				7FED20C01CDB4F6A004639DE /* tabbar_background@2x.png in Resources */,
 				7F0331BF1CDC9F4300A96F47 /* mySpace_rightTopNumBackground@3x.png in Resources */,
 				7F6797AF1CE9D335001D1024 /* temp_userDefaultAvatar@2x.png in Resources */,
 				7F0E92B11CE2C968001D5FA3 /* member_icon_name@2x.png in Resources */,
 				7FED20691CDB4F6A004639DE /* comment_star_normal@2x.png in Resources */,
+				7F6D578B1CEC64CA00C9A442 /* lanchImage_6 plus@3x.png in Resources */,
 				7F0331D61CDCA72000A96F47 /* mySpace_icon_myMember@2x.png in Resources */,
 				7FED208F1CDB4F6A004639DE /* Launch.jpg in Resources */,
 				3E239E731AB33BC1001F0B3F /* checkmark_fail@2x.png in Resources */,
 				7FED20761CDB4F6A004639DE /* doctor_appointmentUnavailable.png in Resources */,
+				7F6D578F1CEC675F00C9A442 /* lanchImage_iPhoen4@2x.png in Resources */,
 				7FED206C1CDB4F6A004639DE /* common_btn_green_sel@2x.png in Resources */,
 				3E239E751AB33BCB001F0B3F /* checkmark_success@2x.png in Resources */,
 				7FED208D1CDB4F6A004639DE /* introduce_4.jpg in Resources */,
