@@ -175,6 +175,7 @@
     
     UIBarButtonItem * negativeSeperator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSeperator.width = - 20;
+
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSeperator,rightBtnItem,nil];
     
     

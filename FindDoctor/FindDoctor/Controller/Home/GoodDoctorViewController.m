@@ -167,7 +167,7 @@ static NSString * const reuseHeaderID = @"ReuseHeaderView";
 }
 
 #pragma mark request
-
+//医生详情
 - (void)requestUpdateDoctorInfoWithDoctor:(Doctor *)doctor{
     DoctorDetailController * vc = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
     

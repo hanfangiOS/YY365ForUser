@@ -126,7 +126,7 @@
     _heightForLabel2 = size.height;
 //    _heightForLabel2 = [self handleLabel:_label2 andFontSize:15 andLineSpacing:0 width:self.frameWidth - 16 * 2 - 40 - leftPadding];
     
-    _label3.text = [[NSDate dateWithTimeIntervalSince1970:self.data.time] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
+    _label3.text = [[NSDate dateWithTimeIntervalSince1970:(self.data.time/1000)] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
     
     _label4.text = [NSString stringWithFormat:@"%@%@",self.data.doctorName,self.data.doctorTitle];
     

@@ -395,6 +395,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
                 doctor.numDiag = [[doctorInfo valueForKey:@"numDiag"] integerValue];
                 doctor.goodRemark = [[doctorInfo valueForKey:@"goodRemark"] integerValue];
                 doctor.didConcern = ([[doctorInfo valueForKey:@"isConcern"] integerValue] == 1) ? YES:NO;
+                doctor.rate = [[doctorInfo objectForKeySafely:@"stargrade"] floatValue];
                 
             }
             else {

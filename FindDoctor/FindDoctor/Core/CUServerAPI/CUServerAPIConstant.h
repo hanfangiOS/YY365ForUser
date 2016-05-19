@@ -36,7 +36,7 @@
 
 //#define URL_Base @"101.204.151.36"//delegate
 //#define URL_Base @"http://192.168.1.101:8889"//庆
-//#define URL_Base @"http://192.168.1.105:8080"//威
+//#define URL_Base @"http://192.168.1.119:8080"//威
 #define URL_Base @"http://192.168.1.106:8080"//银
 //#define URL_Base @"http://175.152.116.5"//军
 

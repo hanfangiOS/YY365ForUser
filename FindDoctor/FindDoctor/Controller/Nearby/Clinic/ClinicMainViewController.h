@@ -11,6 +11,6 @@
 
 @interface ClinicMainViewController : CUViewController
 
-@property (nonatomic, strong) Clinic *clinic;
+@property (nonatomic, strong) Clinic * clinic;
 
 @end

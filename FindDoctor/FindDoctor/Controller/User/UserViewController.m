@@ -260,7 +260,7 @@
         if([CUUserManager sharedInstance].user.token != nil && ![[CUUserManager sharedInstance].user.token isEqualToString:@""]){
             //已登录
             UserFilter * filter = [[UserFilter alloc] init];
-            filter.listType = @"all";
+            filter.listType = @"member";
             
             MyMemberListModel * listModel = [[MyMemberListModel alloc] initWithFilter:filter];
             
