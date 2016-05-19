@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUUserManager.m"
-            timestampString = "484215710.067018"
+            timestampString = "485251983.619442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "839"
-            endingLineNumber = "839"
+            startingLineNumber = "842"
+            endingLineNumber = "842"
             landmarkName = "-ModifyAvatorWithPath:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -67,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/View/SNDropDownMenu/DOPDropDownMenu.m"
-            timestampString = "485148503.023813"
+            filePath = "FindDoctor/Controller/User/Setting/ChangePasswordViewController.m"
+            timestampString = "485258308.738414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-selectIndexPath:triggerDelegate:"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-request"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

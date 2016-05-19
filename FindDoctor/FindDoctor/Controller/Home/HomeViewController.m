@@ -66,7 +66,7 @@
     headerView.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
     [self.contentView addSubview:headerView];
     
-    _cityButton = [[CityChooseButton alloc]initWithFrame:CGRectMake(10, 28, 46, 24)];
+    _cityButton = [[CityChooseButton alloc]initWithFrame:CGRectMake(10, 26.2, 46, 24)];
     _cityButton.cityLabel.text = @"成都";
     [_cityButton addTarget:self action:@selector(selectCityAction) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:_cityButton];
@@ -84,7 +84,7 @@
     _searchTextField.returnKeyType = UIReturnKeySearch;
     [headerView addSubview:_searchTextField];
     
-    _searchCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 32 - 6, 26.2 ,32, 24)];
+    _searchCancelButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 32 - 6, 26.2 ,36, 24)];
     [_searchCancelButton setTitle:@"取消" forState:UIControlStateNormal];
     _searchCancelButton.titleLabel.font = [UIFont systemFontOfSize:13];
     _searchCancelButton.titleLabel.textColor = [UIColor whiteColor];
@@ -93,7 +93,7 @@
     [_searchCancelButton addTarget:self action:@selector(searchCancel) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:_searchCancelButton];
     
-    _messageButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 32 - 6, 26.2 ,32, 24)];
+    _messageButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 32 - 6, 26.2 ,36, 24)];
     [_messageButton setTitle:@"消息" forState:UIControlStateNormal];
     _messageButton.titleLabel.font = [UIFont systemFontOfSize:13];
     _messageButton.titleLabel.textColor = [UIColor whiteColor];

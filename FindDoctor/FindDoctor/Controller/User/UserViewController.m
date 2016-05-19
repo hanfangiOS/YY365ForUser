@@ -77,7 +77,6 @@
 }
 
 - (void)initSubView{
-    
     UIView *navView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kDefaultNavigationBarHeight)];
     [self.view addSubview:navView];
     _navViewBG = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kDefaultNavigationBarHeight)];
@@ -85,15 +84,14 @@
     _navViewBG.alpha = 0;
     [navView addSubview:_navViewBG];
     UIButton *btn = [self addRightButtonItemWithImage:[UIImage imageNamed:@"mySpace_msg"] imageOffSet: - 11 action:@selector(messageAction)];
-    btn.frame = CGRectMake(kScreenWidth - btn.frameWidth, _navViewBG.frameHeight - btn.frameHeight, btn.frameWidth, btn.frameHeight);
+    btn.frame = CGRectMake(kScreenWidth - btn.frameWidth, _navViewBG.frameHeight - btn.frameHeight + 2, btn.frameWidth, btn.frameHeight);
     [navView addSubview:btn];
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, _navViewBG.frameHeight - btn.frameHeight + 2, kScreenWidth, 40)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, _navViewBG.frameHeight - btn.frameHeight + 7, kScreenWidth, 40)];
     label.text = @"我的空间";
     label.textColor = UIColorFromHex(0xffffff);
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:17];
     [navView addSubview:label];
-    
     
     self.contentView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     self.contentView.backgroundColor = kCommonBackgroundColor;
