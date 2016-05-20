@@ -19,4 +19,6 @@ typedef void(^ClickCommentBtn)(void);
 
 + (float)kDefaultHeight;
 
++ (float)kDefaultHasRemarckHeight;
+
 @end

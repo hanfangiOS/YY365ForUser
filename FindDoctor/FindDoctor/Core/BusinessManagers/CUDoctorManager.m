@@ -471,7 +471,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         
         resultBlock(request, result);
         
-    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+    }forKey:@"OrderTimeSegment" forPageNameGroup:pageName];
 }
 
 
@@ -509,7 +509,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         
         resultBlock(request, result);
         
-    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+    }forKey:@"DoctorConcern" forPageNameGroup:pageName];
     
 }
 
@@ -585,7 +585,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
         
         resultBlock(request, result);
         
-    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+    }forKey:@"MyDoctor" forPageNameGroup:pageName];
 }
 
 - (NSMutableArray *)fakeSubObjectList

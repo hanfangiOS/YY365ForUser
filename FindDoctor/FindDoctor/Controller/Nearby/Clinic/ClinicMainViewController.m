@@ -58,6 +58,7 @@
 
 - (void)initSubView{
     headerView = [[ClinicMainHeaderView alloc]initWithFrame:CGRectMake(0, 7.6,kScreenWidth , 200)];
+    headerView.fatherVC = self;
     [_contentScrollView addSubview:headerView];
     
     float item_interval_x = 15*kScreenRatio;

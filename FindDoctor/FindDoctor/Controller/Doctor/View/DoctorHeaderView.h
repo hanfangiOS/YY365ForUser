@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Doctor.h"
+#import "DoctorDetailController.h"
 
 typedef void(^CommentBlock)(void);
 
@@ -16,6 +17,8 @@ typedef void(^CommentBlock)(void);
 @property (nonatomic, strong) Doctor *data;
 @property (nonatomic, strong) UILabel *dateLable;
 @property (nonatomic, copy) CommentBlock commentBlock;
+
+@property (nonatomic, strong)DoctorDetailController * fatherVC;
 
 
 + (CGFloat)defaultHeight;

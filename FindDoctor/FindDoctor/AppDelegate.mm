@@ -222,6 +222,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(afterFirstView) name:@"AfterFirstView" object:nil];
     if ([CUPlatFormManager sharedInstance].isNewInstall)
     {
+        [CUUserManager sharedInstance].user.token = nil;
         [self launchIntroduceView];
     }
     else
@@ -231,6 +232,7 @@
 }
 
 - (void)afterFirstView{
+    
     [[CUPlatFormManager sharedInstance] save];
     [self launchMainView];
 }

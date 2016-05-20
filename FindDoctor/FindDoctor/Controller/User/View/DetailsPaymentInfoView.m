@@ -112,14 +112,14 @@
     NSString * strSymbol = [locale objectForKey:NSLocaleCurrencySymbol];
     
     if (_data.service.doctor.price) {
-            self.orderAmount.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.service.doctor.price];
+            self.orderAmount.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.service.doctor.price/100];
     }
 
     if (_data.coupon) {
             self.orderDiscount.text = [NSString stringWithFormat:@"-%@%.2f",strSymbol,(float)_data.coupon];
     }
     if (_data.dealPrice) {
-            self.cash.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.dealPrice];
+            self.cash.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.dealPrice/100];
     }
     
 }

@@ -65,7 +65,7 @@
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
-            if (![errorCode integerValue]) {
+            if (![errorCode integerValue] && errorCode != nil) {
                 
                 OrderCreateController * VC = [[OrderCreateController alloc] initWithPageName:@"DoctorSelectOrderTimeController"];
                 MyMemberListModel * listModel = result.parsedModelObject;

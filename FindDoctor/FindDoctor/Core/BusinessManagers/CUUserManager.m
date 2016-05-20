@@ -56,6 +56,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     self.user.profile = nil;
     self.user.nickname = nil;
     self.user.cellPhone = nil;
+    self.user.icon = nil;
     self.user.userId = -1;
     self.user.points = 0;
     self.user.gender = 0;

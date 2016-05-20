@@ -11,7 +11,8 @@
 #import "StarRatingView.h"
 #import "BlueDotLabelInDoctorHeaderView.h"
 #import "CUDoctorManager.h"
-
+#import "CUUserManager.h"
+#import "LoginViewController.h"
 
 
 #define kDoctorHeaderViewHeight   178.0
@@ -126,19 +127,30 @@
 }
 
 - (void)guanZhuButtonAction{
-    [[CUDoctorManager sharedInstance]doctorConcernWithDoctorID:self.data.doctorId isConcern:(self.data.didConcern ? 0:1) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        if (!result.hasError) {
-            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                self.data.didConcern = !self.data.didConcern;
-                if (self.data.didConcern) {
-                    guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_HasConcen"].CGImage;
-                }
-                else{
-                    guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_waitForConcen"].CGImage;
+    
+    
+    if ([CUUserManager sharedInstance].user) {
+        //登录
+        [[CUDoctorManager sharedInstance]doctorConcernWithDoctorID:self.data.doctorId isConcern:(self.data.didConcern ? 0:1) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+            if (!result.hasError) {
+                if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+                    self.data.didConcern = !self.data.didConcern;
+                    if (self.data.didConcern) {
+                        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_HasConcen"].CGImage;
+                    }
+                    else{
+                        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_waitForConcen"].CGImage;
+                    }
                 }
             }
-        }
-    } pageName:@""];
+        } pageName:@""];
+        //未登录
+        LoginViewController * vc = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+        [vc setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        [self.fatherVC.slideNavigationController presentViewController:vc animated:YES completion:nil];
+    }
+    
+
 }
 
 - (void)setData:(Doctor *)data

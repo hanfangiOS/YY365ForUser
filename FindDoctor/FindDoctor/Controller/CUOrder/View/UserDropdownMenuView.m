@@ -62,8 +62,8 @@
     CGFloat addBtnWidth = imageWith;
     addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     addButton.frame = CGRectMake(self.frameWidth - addBtnWidth - addBtnPadding, (self.frameHeight - addBtnWidth) / 2, addBtnWidth, addBtnWidth);
-    [addButton setImage:[UIImage imageNamed:@"menu_btn_add_nor"] forState:UIControlStateNormal];
-    [addButton setImage:[UIImage imageNamed:@"menu_btn_add_sel"] forState:UIControlStateHighlighted];
+    [addButton setImage:[UIImage imageNamed:@"order_icon_addMember"] forState:UIControlStateNormal];
+    [addButton setImage:[UIImage imageNamed:@"order_icon_addMember"] forState:UIControlStateHighlighted];
     [addButton addTarget:self action:@selector(addButtonPress) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:addButton];
 }

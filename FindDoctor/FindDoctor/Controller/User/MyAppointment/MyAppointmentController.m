@@ -56,6 +56,11 @@ typedef NS_ENUM(NSInteger,ListType){
 
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self triggerRefresh];
+}
+
 - (void)loadContentView{
     self.headerView = [[MyAppointMentHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 36)];
     self.headerView.backgroundColor = [UIColor whiteColor];

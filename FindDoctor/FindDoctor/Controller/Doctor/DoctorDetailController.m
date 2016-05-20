@@ -74,6 +74,7 @@
     __weak __block DoctorDetailController *blockSelf = self;
 
     headerView = [[DoctorHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), [DoctorHeaderView defaultHeight])];
+    headerView.fatherVC = self;
     NSDateFormatter* formatter = [NSDateFormatter dateFormatterWithFormat:[NSDateFormatter dateFormatString]];
     headerView.dateLable.text = [formatter stringFromDate:[NSDate date]];
     headerView.data = self.doctor;

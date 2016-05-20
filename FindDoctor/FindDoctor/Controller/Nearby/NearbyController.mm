@@ -89,7 +89,7 @@
     _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.contentView.bounds), CGRectGetHeight(self.contentView.bounds) - Height_Tabbar)];
     [_mapView setZoomLevel:14];
     _mapView.isSelectedAnnotationViewFront = YES;
-    _mapView.showsUserLocation = YES;
+    
     //_mapView.userTrackingMode = BMKUserTrackingModeNone;
     [self.contentView addSubview:_mapView];
     
@@ -105,6 +105,8 @@
     _locService = [[BMKLocationService alloc] init];
     _locService.delegate = (id)self;
     [_locService startUserLocationService];
+    
+    _mapView.showsUserLocation = YES;
     
     [_mapView setCenterCoordinate:{[kCurrentLat floatValue], [kCurrentLng floatValue]} animated:YES];
     
@@ -639,12 +641,12 @@
 
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
-    //[_mapView updateLocationData:userLocation];
+//    [_mapView updateLocationData:userLocation];
 }
 
 - (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
-    //[_mapView updateLocationData:userLocation];
+//    [_mapView updateLocationData:userLocation];
 }
 
 - (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView

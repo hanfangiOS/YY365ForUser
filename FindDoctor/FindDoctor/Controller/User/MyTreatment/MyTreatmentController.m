@@ -42,6 +42,11 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self triggerRefresh];
+}
+
 - (void)loadContentView{
     self.contentTableView.backgroundColor = kCommonBackgroundColor;
 }
@@ -49,6 +54,13 @@
 #pragma mark tableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    CUOrder * order = [self.listModel.items objectAtIndexSafely:indexPath.section];
+    if(order.orderStatus == ORDERSTATUS_FINISHED){
+        return [MyTreatmentCell kDefaultHeight];
+    }else if (order.orderStatus == ORDERSTATUS_COMMENT){
+        return [MyTreatmentCell kDefaultHasRemarckHeight];
+    }
     return [MyTreatmentCell kDefaultHeight];
 }
 

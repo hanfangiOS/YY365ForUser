@@ -149,7 +149,7 @@
         [atrStr addAttributes:@{NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"就诊地点:"]];
         label3.attributedText = atrStr;
         
-        str = [NSString stringWithFormat:@"诊金: ￥%.2f",(float)self.data.price];
+        str = [NSString stringWithFormat:@"诊金: ￥%.2f",(float)self.data.price/100];
         atrStr = [[NSMutableAttributedString alloc]initWithString:str];
         [atrStr addAttributes:@{NSFontAttributeName:SystemFont_12,NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"诊金: "]];
         label4.attributedText = atrStr;

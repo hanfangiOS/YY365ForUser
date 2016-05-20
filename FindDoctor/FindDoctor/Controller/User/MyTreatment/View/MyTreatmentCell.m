@@ -6,6 +6,7 @@
 //  Copyright © 2016年 li na. All rights reserved.
 //
 #define MyTreatmentCellHeight 148
+#define MyTreatmentCellHasRemarckHeight 120
 
 #import "MyTreatmentCell.h"
 #import "UIImageView+WebCache.h"
@@ -42,6 +43,10 @@
 
 + (float)kDefaultHeight{
     return MyTreatmentCellHeight;
+}
+
++ (float)kDefaultHasRemarckHeight{
+    return MyTreatmentCellHasRemarckHeight;
 }
 
 - (void)initSubViews{
@@ -120,13 +125,6 @@
 - (void)setData:(CUOrder *)data{
     _data = data;
     
-    if (_data.orderStatus == ORDERSTATUS_COMMENT) {
-        self.commentBtn.hidden = YES;
-        self.arrow.frame = CGRectMake(kScreenWidth - 9 - 4, (self.infoView.frameHeight - 15)/2, 9, 15);
-    }else{
-        
-    }
-    
     NSString * string = [NSString stringWithFormat:@"%@  %@  %@",_data.service.doctor.name,_data.service.doctor.levelDesc,_data.service.doctor.grade];
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
     NSInteger length = [_data.service.doctor.name length];
@@ -140,7 +138,7 @@
     
     NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     NSString * strSymbol = [locale objectForKey:NSLocaleCurrencySymbol];
-    self.price.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.service.doctor.price];
+    self.price.text = [NSString stringWithFormat:@"%@%.2f",strSymbol,(float)_data.service.doctor.price/100];
     
     NSString * diagnosisTimeStr = [[NSDate dateWithTimeIntervalSince1970:(_data.service.doctor.diagnosisTime/1000)] stringWithDateFormat:@"yyyy-MM-dd HH:mm"];
     self.info.text = [NSString stringWithFormat:@"%@  %@",_data.service.patience.name,diagnosisTimeStr];

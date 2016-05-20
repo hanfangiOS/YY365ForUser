@@ -84,7 +84,7 @@
     [self.deleteBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 16, 0, 0)];
     [self.deleteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.deleteBtn.titleLabel.font = [UIFont systemFontOfSize:17];
-    [self.deleteBtn addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.deleteBtn addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:self.deleteBtn];
     //删除按钮里的小图标
     UIImageView * deleteIcon = [[UIImageView alloc] initWithFrame:CGRectMake(self.deleteBtn.frameWidth/2 - 48, (self.deleteBtn.frameHeight - 16)/2, 14.5, 16)];
@@ -125,8 +125,8 @@
     [self.slideNavigationController pushViewController:vc animated:YES];
 }
 
-- (void)cancelAction{
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"确认要取消订单吗" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+- (void)deleteAction{
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"确认要删除订单吗" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
     alert.delegate = self;
     [alert show];
 }
@@ -138,31 +138,24 @@
         return;
     }
     if (buttonIndex == 1) {
-        [self requestCancelOrder];
+        [self requestDeleteOrder];
     }
 }
 
 #pragma mark request
 
-- (void)requestCancelOrder{
-    [[CUOrderManager sharedInstance] cancelOrder:self.order user:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        
-        
+- (void)requestDeleteOrder{
+    [[CUOrderManager sharedInstance] deleteOrderWithDiagnosisID:self.order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];
             if (![errorCode integerValue]) {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"取消成功"]];
+                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"删除成功"]];
                 [self.slideNavigationController popViewControllerAnimated:YES];
             }
-            else {
-                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
-            }
-        }
-        else {
-            
-            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
         }
     } pageName:self.pageName];
+    
+
 }
 
 

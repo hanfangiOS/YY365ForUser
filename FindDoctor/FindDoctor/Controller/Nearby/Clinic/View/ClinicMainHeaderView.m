@@ -10,6 +10,8 @@
 #import "UIImageView+WebCache.h"
 #import "BlueDotLabelInDoctorHeaderView.h"
 #import "CUClinicManager.h"
+#import "CUUserManager.h"
+#import "LoginViewController.h"
 
 @interface ClinicMainHeaderView(){
     UIImageView *imageView;
@@ -150,15 +152,24 @@
 }
 
 - (void)guanZhuButtonAction{
-    __weak __block ClinicMainHeaderView *blockSelf = self;
-    [[CUClinicManager sharedInstance] clinicConcernWithClinic:blockSelf.data resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        if (!result.hasError) {
-            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
-                blockSelf.data.isConcern = !blockSelf.data.isConcern;
-                [blockSelf resetguanzhuButton];
+    
+    if ([CUUserManager sharedInstance].user.token) {
+        __weak __block ClinicMainHeaderView *blockSelf = self;
+        [[CUClinicManager sharedInstance] clinicConcernWithClinic:blockSelf.data resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+            if (!result.hasError) {
+                if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+                    blockSelf.data.isConcern = !blockSelf.data.isConcern;
+                    [blockSelf resetguanzhuButton];
+                }
             }
-        }
-    } pageName:@"ClinicMainHeaderView"];
+        } pageName:@"ClinicMainHeaderView"];
+    }else{
+        //未登录
+        LoginViewController * vc = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
+        [vc setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        [self.fatherVC.slideNavigationController presentViewController:vc animated:YES completion:nil];
+    }
+
 }
 
 - (void)resetguanzhuButton{

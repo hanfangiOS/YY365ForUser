@@ -56,10 +56,15 @@
     navView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
     [self.contentView addSubview:navView];
     
-    UIButton *cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(25, 30, 20, 20)];
-    cancelBtn.layer.contents = (id)[UIImage imageNamed:@"login_icon_close"].CGImage;
+    UIButton * cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 50, 50)];
+    cancelBtn.contentMode = UIViewContentModeScaleAspectFit;
     [cancelBtn addTarget:self action:@selector(cancelLogin) forControlEvents:UIControlEventTouchUpInside];
     [navView addSubview:cancelBtn];
+    
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake((cancelBtn.frameWidth - 20)/2,(cancelBtn.frameHeight - 20)/2 , 20, 20)];
+    imageView.image = [UIImage imageNamed:@"login_icon_close"];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [cancelBtn addSubview:imageView];
     
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, navView.frameHeight - 42 , kScreenWidth, 40)];
     label.text = @"登陆";

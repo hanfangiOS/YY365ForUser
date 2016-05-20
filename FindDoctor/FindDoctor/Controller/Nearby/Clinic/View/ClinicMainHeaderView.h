@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Clinic.h"
+#import "ClinicMainViewController.h"
 
 @interface ClinicMainHeaderView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame;
 
 @property (nonatomic ,strong) Clinic *data;
+
+@property (nonatomic ,strong) ClinicMainViewController * fatherVC;
 
 @end
