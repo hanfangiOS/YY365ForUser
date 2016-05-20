@@ -501,21 +501,24 @@ SINGLETON_IMPLENTATION(CUUserManager);
 
 - (void)updateUser:(CUUser *)user oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
-    // param
-    NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:user.token forKey:Key_Token];
-    [param setObjectSafely:oldPassword forKey:@"password"];
-    [param setObjectSafely:newPassword forKey:@"password"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:14001 require:@"updatePwd"];
+    NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
+    [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:oldPassword forKey:@"oldPwd"];
+    if ([oldPassword isEmpty]) {
+        [dataParam setObjectSafely:@"" forKey:@"oldPwd"];
+    }
+    else{
+        [dataParam setObjectSafely:[[oldPassword MD5] uppercaseString] forKey:@"oldPwd"];
+    }
+    [dataParam setObjectSafely:[[newPassword MD5] uppercaseString] forKey:@"newPwd"];
+    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
-    CUUserParser * parser = [[CUUserParser alloc] init];
-    __block CUUserManager * blockSelf = self;
-    [[AppCore sharedInstance].apiManager GET:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        if (!result.hasError)
-        {
-            
-        }
+    NSLog(@"%@",param);
+    
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:@selector(parseUpdateUserInfoWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         resultBlock(request,result);
-    } forKey:URL_AfterBase forPageNameGroup:pageName];
+    } forKey:@"CheckExistPwd" forPageNameGroup:pageName];
 }
 
 - (void)updateUser:(CUUser *)user password:(NSString *)password verifyCode:(NSString *)code resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName

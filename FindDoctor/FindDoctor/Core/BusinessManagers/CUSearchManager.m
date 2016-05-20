@@ -73,8 +73,8 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                     //
                     doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
                     doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
-                    doctor.availableTime = [obj valueForKey:@"releaseTime"];
-                    doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
+                    doctor.availableTime = [obj valueForKey:@"date"];
+                    doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"address"]];
                     doctor.doctorState = [[obj valueForKey:@"state"] integerValue];
                     doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
                     

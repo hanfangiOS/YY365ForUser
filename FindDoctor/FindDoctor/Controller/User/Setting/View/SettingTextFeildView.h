@@ -17,4 +17,6 @@
 @property (nonatomic, strong) UILabel     *titleLabel;
 @property (nonatomic, strong) UITextField *contentTextFeild;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic) BOOL    clicked;
+
 @end
