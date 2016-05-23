@@ -37,8 +37,9 @@
 //#define URL_Base @"101.204.151.36"//delegate
 //#define URL_Base @"http://192.168.1.101:8889"//庆
 //#define URL_Base @"http://192.168.1.119:8080"//威
-#define URL_Base @"http://192.168.1.106:8080"//银
+//#define URL_Base @"http://192.168.1.106:8080"//银
 //#define URL_Base @"http://175.152.116.5"//军
+#define URL_Base @"http://www.uyi365.com"
 
 #elif defined(CollegeUnion_Distribution)
 
@@ -64,7 +65,7 @@
 #define URL_AfterBase @"/baseFrame/base/server.jmm"
 //#define kGetChargeUrl @"http://www.uyi365.com/baseFrame/base/getCharge.jmm" // 你的服务端创建并返回 charge 的 URL 地址
 
-#define kGetChargeUrl  @"http://192.168.1.106:8080/baseFrame/base/PayDiagnosisOK.jmm"
+#define kGetChargeUrl  @"http://www.uyi365.com/baseFrame/base/PayDiagnosisOK.jmm"
 #define kVerifyOrderStateUrl @"/baseFrame/base/verify_order_state.jmm"
 //首页推送信息
 #define URL_getHomeTipList @"/baseFrame/base/UserAppMainPush.jmm"

@@ -25,14 +25,13 @@ typedef NS_ENUM(NSInteger,ListType){
 
 @property (strong,nonatomic)MyAppointMentHeaderView * headerView;
 
-@property (nonatomic,strong)MyAppointmentListModel  * listModel;
+ @property (nonatomic,strong)MyAppointmentListModel  * listModel;
 
 @property (nonatomic,assign)ListType  listType;
 
 @end
 
 @implementation MyAppointmentController
-
 
 - (id)initWithPageName:(NSString *)pageName listModel:(MyAppointmentListModel *)listModel
 {

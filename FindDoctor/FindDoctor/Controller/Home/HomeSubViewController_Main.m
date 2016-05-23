@@ -272,16 +272,18 @@
 
 - (void)HFBannerView:(HFBannerView *)view didSelectAtIndex:(NSInteger)index{
     
-    if (view == self.mainBannerView) {
-        
-        Banner * banner = [self.homeModel.mainBannerList objectAtIndex:index];
-        [self BannerToNextPageWithBanner:banner];
-
-    }
-    if (view == self.secondBannerView) {
-        
-        Banner * banner = [self.homeModel.secondBannerList objectAtIndex:index];
-        [self BannerToNextPageWithBanner:banner];
+    if ([self.homeModel.mainBannerList count]) {
+        if (view == self.mainBannerView) {
+            
+            Banner * banner = [self.homeModel.mainBannerList objectAtIndex:index];
+            [self BannerToNextPageWithBanner:banner];
+            
+        }
+        if (view == self.secondBannerView) {
+            
+            Banner * banner = [self.homeModel.secondBannerList objectAtIndex:index];
+            [self BannerToNextPageWithBanner:banner];
+        }
     }
 }
 
