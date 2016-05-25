@@ -97,17 +97,13 @@
     self.commentBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     self.commentBtn.layer.cornerRadius = 2.0f;
     [self addSubview:self.commentBtn];
-//    //评价按钮里的那张小图片
-//    UIImageView * commentIcon = [[UIImageView alloc] initWithFrame:CGRectMake((self.commentBtn.frameWidth - 10.5)/2 - 16, (self.commentBtn.frameHeight - 10.5)/2, 10.5, 10.5)];
-//    commentIcon.image = [UIImage imageNamed:@"comment_icon_comment_gray@2x"];
-//    [self.commentBtn addSubview:commentIcon];
     
     UIView * topLineForBtn = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
     topLineForBtn.backgroundColor = kblueLineColor;
     [self.commentBtn addSubview: topLineForBtn];
 
     //箭头
-    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, (self.infoView.frameHeight - self.commentBtn.frameHeight - 15)/2, 9, 15)];
+    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 9 - 4, (MyTreatmentCellHeight - self.headerView.frameHeight)/2- 2, 9, 15)];
     self.arrow.image = [UIImage imageNamed:@"common_icon_grayArrow@2x"];
     [self.infoView addSubview:self.arrow];
     
@@ -124,6 +120,16 @@
 
 - (void)setData:(CUOrder *)data{
     _data = data;
+    
+    if (_data.orderStatus == ORDERSTATUS_COMMENT) {
+        self.commentBtn.hidden = YES;
+        self.arrow.frame = CGRectMake(kScreenWidth - 9 - 4, (MyTreatmentCellHasRemarckHeight - self.headerView.frameHeight)/2 - 2, 9, 15);
+    }else{
+        self.commentBtn.hidden = NO;
+        self.arrow.frame = CGRectMake(kScreenWidth - 9 - 4, (MyTreatmentCellHeight - self.headerView.frameHeight)/2 - 2, 9, 15);
+    }
+    
+    
     
     NSString * string = [NSString stringWithFormat:@"%@  %@  %@",_data.service.doctor.name,_data.service.doctor.levelDesc,_data.service.doctor.grade];
     NSMutableAttributedString * AtrStr = [[NSMutableAttributedString alloc] initWithString:string];
