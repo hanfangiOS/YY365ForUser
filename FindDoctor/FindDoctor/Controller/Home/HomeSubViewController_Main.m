@@ -483,19 +483,10 @@
 //优医馆
 - (void)postRequestFamousDoctorClinic{
     
-    //    UIButton * btn = [self.loadMoreContainerView viewWithTag:12345];
-    //    btn.hidden = YES;
-    
-    //    UIActivityIndicatorView * indicator = [self.loadMoreContainerView viewWithTag:67890];
-    //    [indicator startAnimating];
-    
     DoctorFilter * filter = [[DoctorFilter alloc] init];
     filter.rows = 3;
     filter.total = self.homeModel.famousDoctorList.count;
     [[CUDoctorManager sharedInstance] getFamousDoctorClinicWithFilter:filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        
-        //        btn.hidden = NO;
-        //        [indicator stopAnimating];
         
         if (!result.hasError) {
             NSNumber * errorCode = [result.responseObject valueForKeySafely:@"errorCode"];

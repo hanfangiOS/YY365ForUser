@@ -20,6 +20,7 @@
 #import "SNBaseListModel.h"
 #import "MBProgressHUD.h"
 #import "ClinicMainViewController.h"
+#import "HFAnnotationView.h"
 
 @interface NearbyController ()<MapMerchantViewDelegate>
 
@@ -86,6 +87,9 @@
     self.title = @"优医馆";
     self.view.backgroundColor = kTableViewGrayColor;
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAnnotationView:) name: @"update" object:nil];
+    
     _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.contentView.bounds), CGRectGetHeight(self.contentView.bounds) - Height_Tabbar)];
     [_mapView setZoomLevel:14];
     _mapView.isSelectedAnnotationViewFront = YES;
@@ -112,6 +116,17 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self requestDataAtPage:0];
+}
+
+- (void)updateAnnotationView:(id)sender{
+    
+    BMKAnnotationView * annotationView = [[sender userInfo] objectForKey:@"annotationView"];
+    annotationView.annotation = (BMKPointAnnotation *)annotationView.annotation;
+    [self mapView:_mapView didSelectAnnotationView:annotationView];
+    [_mapView selectAnnotation:annotationView.annotation animated:YES];
+    NSString * str = [NSString stringWithUTF8String:object_getClassName(annotationView.annotation)];
+    NSLog(@"%@",str);
+//    [self mapView:_mapView annotationViewForBubble:annotationView];
 }
 
 - (void)initButtonView
@@ -182,6 +197,7 @@
         [_mapView release];
         _mapView = nil;
     }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
@@ -303,11 +319,11 @@
         static NSString *AnnotationViewID = @"MpaListPointMark";
         
         // 检查是否有重用的缓存
-        BMKAnnotationView* annotationView = [view dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
+        HFAnnotationView * annotationView = (HFAnnotationView *)[view dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
         
         // 缓存没有命中，自己构造一个，一般首次添加annotation代码会运行到此处
         if (annotationView == nil) {
-            annotationView = [[[BMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID] autorelease];
+            annotationView = [[[HFAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID] autorelease];
             annotationView.canShowCallout = YES;
             annotationView.draggable = NO;
         }
@@ -321,10 +337,11 @@
         // 设置位置
         annotationView.centerOffset = CGPointMake(0, -(annotationView.frame.size.height * 0.5));
         annotationView.calloutOffset = CGPointMake(annotationView.calloutOffset.x, 15);
+        annotationView.contentMode = UIViewContentModeScaleAspectFill;
         
         annotationView.annotation = annotation;
         
-        int index = [self.pointAnnotations indexOfObject:annotation];
+        int index = (int)[self.pointAnnotations indexOfObject:annotation];
         if (annotationView.paopaoView.subviews.count) {
             MapMerchantView *paopaoView = (MapMerchantView *)[annotationView.paopaoView.subviews objectAtIndex:0];
             paopaoView.merchant = [self.dataArray objectAtIndex:index];
@@ -345,7 +362,6 @@
     
     return nil;
 }
-
 - (void)MapMerchantViewturnToClinicVCWithMerchant:(Clinic *)merchant{
     ClinicMainViewController *clinicMainViewController = [[ClinicMainViewController alloc]initWithPageName:@"NearbyController"];
     clinicMainViewController.clinic = merchant;
@@ -368,7 +384,7 @@
         [mapView bringSubviewToFront:view];
         [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
         
-        int index = [self.pointAnnotations indexOfObject:view.annotation];
+        int index = (int)[self.pointAnnotations indexOfObject:view.annotation];
         self.merchant = [self.dataArray objectAtIndex:index];
         [self updateButtonView];
     }
@@ -389,7 +405,7 @@
     
     if ([view.annotation isKindOfClass:[BMKPointAnnotation class]]) {
         if (self.clickAction) {
-            int index = [self.pointAnnotations indexOfObject:view.annotation];
+            int index = (int)[self.pointAnnotations indexOfObject:view.annotation];
             self.clickAction([NSNumber numberWithInt:index]);
         }
     }
@@ -414,7 +430,7 @@
     if (error == BMK_SEARCH_NO_ERROR) {
         BMKDrivingRouteLine* plan = (BMKDrivingRouteLine*)[result.routes objectAtIndex:0];
         // 计算路线方案中的路段数目
-        int size = [plan.steps count];
+        int size = (int)[plan.steps count];
         int planPointCounts = 0;
         for (int i = 0; i < size; i++) {
             BMKDrivingStep* transitStep = [plan.steps objectAtIndex:i];
@@ -641,12 +657,12 @@
 
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
-//    [_mapView updateLocationData:userLocation];
+    [_mapView updateLocationData:userLocation];
 }
 
 - (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
-//    [_mapView updateLocationData:userLocation];
+    [_mapView updateLocationData:userLocation];
 }
 
 - (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView

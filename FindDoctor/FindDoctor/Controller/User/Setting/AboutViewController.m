@@ -12,7 +12,7 @@
 #import "CUPlatFormManager.h"
 #import "UserProtocolController.h"
 
-@interface AboutViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface AboutViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>{
     UIView *headerView;
 }
 
@@ -135,22 +135,9 @@
 //版本检查
 - (void)postRequestVersionCheck{
     
-    NSURL* url = [NSURL URLWithString:@"http://uyi365.com/baseFrame/base/g_VersionCheck.jmw"];
+    NSURL* url = [NSURL URLWithString:@"http://www.uyi365.com/baseFrame/base/g_VersionCheck.jmm?from=APP_IOS_USER"];
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:kPlatForm forKey:@"from"];
-    //    [param setObjectSafely:@"VersionCheck" forKey:@"require"];
-    //    [param setObjectSafely:@(1111111111) forKey:@"interfaceID"];
-    //    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
-    NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
-    [dataParam setObjectSafely:[CUPlatFormManager currentAppVersion] forKey:@"appVersion"];
-    [dataParam setObjectSafely:[[[UIDevice currentDevice] identifierForVendor] UUIDString] forKey:@"deviceID"];
-    [dataParam setObjectSafely:[[UIDevice currentDevice] systemVersion] forKey:@"SystemVersion"];
-    [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
-    NSLog(@"%@",param);
-    NSString *bodyData = [param JSONString];
-    //[postRequest setHTTPBody:[NSData dataWithBytes:[bodyData UTF8String] length:strlen([bodyData UTF8String])]];
     [postRequest setHTTPMethod:@"GET"];
     [postRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
@@ -162,12 +149,25 @@
             if (!connectionError) {
                 NSDictionary *dict =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
                 NSDictionary * dataDict = [dict dictionaryForKeySafely:@"data"];
-                NSString * appVersion = [dataDict stringForKeySafely:@"APP_IOS_USER"];
-                if([weakSelf checkIfNeedUpdateWithAppVersion:appVersion]){
-                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"版本更新" message:[NSString stringWithFormat:@"重要更新版本%@,请前往App Store进行更新,否则将无法正常使用",appVersion] delegate:weakSelf cancelButtonTitle:@"退出" otherButtonTitles:@"下载", nil];
+                NSString * appVersion = [dataDict stringForKeySafely:@"name"];
+                NSInteger forceupdate = [[dataDict objectForKeySafely:@"forceupdate"] integerValue];
+                //必要更新
+                if (forceupdate == 1) {
+                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"重要更新版本%@,请前往App Store进行更新,否则将无法正常使用",appVersion] delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"下载", nil];
+                    alert.delegate = self;
                     [alert show];
-                }else{
-                    [TipHandler showTipOnlyTextWithNsstring:@"已经是最新版本"];
+                    
+                }
+                //非必要更新
+                else{
+                    if([weakSelf checkIfNeedUpdateWithAppVersion:appVersion]){
+                        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"最新版本为%@,是否前往App Store进行更新",appVersion] delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"下载", nil];
+                        alert.delegate = self;
+                        [alert show];
+                    }else{
+                        [TipHandler showTipOnlyTextWithNsstring:@"已经是最新版本"];
+                    }
+                    
                 }
             }else{
                 return ;
@@ -186,7 +186,10 @@
     return NO;
 }
 
+#pragma UIAlertViewDelegate
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
     if (buttonIndex == 0) {
     }
     if (buttonIndex == 1) {

@@ -299,6 +299,9 @@
 		7FD0BBD51C9A58C9004D2E02 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBC41C9A58C9004D2E02 /* IQToolbar.m */; };
 		7FD0BBD61C9A58C9004D2E02 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0BBC61C9A58C9004D2E02 /* IQUIView+IQKeyboardToolbar.m */; };
 		7FD0BBD71C9A58C9004D2E02 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7FD0BBC91C9A58C9004D2E02 /* IQKeyboardManager.bundle */; };
+		7FD8C8111CF44E0800069296 /* map_icon_location_highlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD8C80F1CF44E0800069296 /* map_icon_location_highlighted@3x.png */; };
+		7FD8C8121CF44E0800069296 /* map_icon_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD8C8101CF44E0800069296 /* map_icon_location@3x.png */; };
+		7FD8C8151CF450F700069296 /* HFAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8C8141CF450F700069296 /* HFAnnotationView.m */; };
 		7FE327AD1CB4B65900032376 /* HomeSubViewMainBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */; };
 		7FE327B01CB51A4200032376 /* HomeSubViewMainTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327AF1CB51A4200032376 /* HomeSubViewMainTableCell.m */; };
 		7FE327BB1CB525E600032376 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE327BA1CB525E600032376 /* ScoreLabel.m */; };
@@ -375,10 +378,6 @@
 		7FED20A41CDB4F6A004639DE /* main_icon_pifuke@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20331CDB4F6A004639DE /* main_icon_pifuke@3x.png */; };
 		7FED20A51CDB4F6A004639DE /* main_icon_waike@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20341CDB4F6A004639DE /* main_icon_waike@3x.png */; };
 		7FED20A61CDB4F6A004639DE /* main_icon_yaojike@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20351CDB4F6A004639DE /* main_icon_yaojike@3x.png */; };
-		7FED20A71CDB4F6A004639DE /* map_icon_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20371CDB4F6A004639DE /* map_icon_location@2x.png */; };
-		7FED20A81CDB4F6A004639DE /* map_icon_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20381CDB4F6A004639DE /* map_icon_location@3x.png */; };
-		7FED20A91CDB4F6A004639DE /* map_icon_location_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20391CDB4F6A004639DE /* map_icon_location_highlighted@2x.png */; };
-		7FED20AA1CDB4F6A004639DE /* map_icon_location_highlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED203A1CDB4F6A004639DE /* map_icon_location_highlighted@3x.png */; };
 		7FED20AB1CDB4F6A004639DE /* map_location_pop_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED203B1CDB4F6A004639DE /* map_location_pop_background@2x.png */; };
 		7FED20AE1CDB4F6A004639DE /* navbar_back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20401CDB4F6A004639DE /* navbar_back_button@2x.png */; };
 		7FED20AF1CDB4F6A004639DE /* navbar_back_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FED20411CDB4F6A004639DE /* navbar_back_button@3x.png */; };
@@ -1217,6 +1216,10 @@
 		7FD0BBC61C9A58C9004D2E02 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		7FD0BBC71C9A58C9004D2E02 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
 		7FD0BBC91C9A58C9004D2E02 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		7FD8C80F1CF44E0800069296 /* map_icon_location_highlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_icon_location_highlighted@3x.png"; sourceTree = "<group>"; };
+		7FD8C8101CF44E0800069296 /* map_icon_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_icon_location@3x.png"; sourceTree = "<group>"; };
+		7FD8C8131CF450F700069296 /* HFAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFAnnotationView.h; sourceTree = "<group>"; };
+		7FD8C8141CF450F700069296 /* HFAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFAnnotationView.m; sourceTree = "<group>"; };
 		7FE327AB1CB4B65900032376 /* HomeSubViewMainBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewMainBannerCell.h; sourceTree = "<group>"; };
 		7FE327AC1CB4B65900032376 /* HomeSubViewMainBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewMainBannerCell.m; sourceTree = "<group>"; };
 		7FE327AE1CB51A4200032376 /* HomeSubViewMainTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewMainTableCell.h; sourceTree = "<group>"; };
@@ -1297,10 +1300,6 @@
 		7FED20331CDB4F6A004639DE /* main_icon_pifuke@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_icon_pifuke@3x.png"; sourceTree = "<group>"; };
 		7FED20341CDB4F6A004639DE /* main_icon_waike@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_icon_waike@3x.png"; sourceTree = "<group>"; };
 		7FED20351CDB4F6A004639DE /* main_icon_yaojike@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_icon_yaojike@3x.png"; sourceTree = "<group>"; };
-		7FED20371CDB4F6A004639DE /* map_icon_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_icon_location@2x.png"; sourceTree = "<group>"; };
-		7FED20381CDB4F6A004639DE /* map_icon_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_icon_location@3x.png"; sourceTree = "<group>"; };
-		7FED20391CDB4F6A004639DE /* map_icon_location_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_icon_location_highlighted@2x.png"; sourceTree = "<group>"; };
-		7FED203A1CDB4F6A004639DE /* map_icon_location_highlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_icon_location_highlighted@3x.png"; sourceTree = "<group>"; };
 		7FED203B1CDB4F6A004639DE /* map_location_pop_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_location_pop_background@2x.png"; sourceTree = "<group>"; };
 		7FED20401CDB4F6A004639DE /* navbar_back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_back_button@2x.png"; sourceTree = "<group>"; };
 		7FED20411CDB4F6A004639DE /* navbar_back_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_back_button@3x.png"; sourceTree = "<group>"; };
@@ -2905,6 +2904,8 @@
 				7FABC58D1CC79ED5006C47BB /* HFFilter.m */,
 				7FC157281CEAF40F00A07085 /* NSString+NullReplacement.h */,
 				7FC157291CEAF40F00A07085 /* NSString+NullReplacement.m */,
+				7FD8C8131CF450F700069296 /* HFAnnotationView.h */,
+				7FD8C8141CF450F700069296 /* HFAnnotationView.m */,
 			);
 			path = HFFW;
 			sourceTree = "<group>";
@@ -3383,10 +3384,8 @@
 		7FED20361CDB4F6A004639DE /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				7FED20371CDB4F6A004639DE /* map_icon_location@2x.png */,
-				7FED20381CDB4F6A004639DE /* map_icon_location@3x.png */,
-				7FED20391CDB4F6A004639DE /* map_icon_location_highlighted@2x.png */,
-				7FED203A1CDB4F6A004639DE /* map_icon_location_highlighted@3x.png */,
+				7FD8C80F1CF44E0800069296 /* map_icon_location_highlighted@3x.png */,
+				7FD8C8101CF44E0800069296 /* map_icon_location@3x.png */,
 				7FED203B1CDB4F6A004639DE /* map_location_pop_background@2x.png */,
 			);
 			path = Map;
@@ -5000,7 +4999,6 @@
 				7FED20C81CDB4F6A004639DE /* tabbar_vip_sel@2x.png in Resources */,
 				7FED20991CDB4F6A004639DE /* login_icon_phone@2x.png in Resources */,
 				7FED209D1CDB4F6A004639DE /* main_doctorScore@3x.png in Resources */,
-				7FED20A91CDB4F6A004639DE /* map_icon_location_highlighted@2x.png in Resources */,
 				7FB6EEAC1CE465F900FEC3E2 /* order_icon_success@2x.png in Resources */,
 				7FED20C41CDB4F6A004639DE /* tabbar_mine_sel@2x.png in Resources */,
 				7FED20C71CDB4F6A004639DE /* tabbar_vip_nor@2x.png in Resources */,
@@ -5027,14 +5025,12 @@
 				7FED20951CDB4F6A004639DE /* login_icon_code@2x.png in Resources */,
 				7FED20841CDB4F6A004639DE /* doctor_treatmentNum.png in Resources */,
 				7FED20981CDB4F6A004639DE /* login_icon_lock@2x.png in Resources */,
-				7FED20AA1CDB4F6A004639DE /* map_icon_location_highlighted@3x.png in Resources */,
 				E1EB1E471B70A43B0048B8EB /* UMSCommentInputControlleriPad.xib in Resources */,
 				7FED20681CDB4F6A004639DE /* comment_star_grade_highlighted@2x.png in Resources */,
 				7FED20B61CDB4F6A004639DE /* navbar_titlelogo@3x.png in Resources */,
 				BC8665861CE573D80001445A /* setting_icon_messageAlert@2x.png in Resources */,
 				7F0C33701CE5B8A900B42BBB /* about_uyi365@2x.png in Resources */,
 				E1EB1E511B70A43B0048B8EB /* WeiboSDK.bundle in Resources */,
-				7FED20A71CDB4F6A004639DE /* map_icon_location@2x.png in Resources */,
 				BC8665871CE573D80001445A /* setting_icon_phone@2x.png in Resources */,
 				7F0331BD1CDC9F4300A96F47 /* mySpace_myComment@2x.png in Resources */,
 				3EDEBAA41A961C4800E72809 /* LICENSE_PLDATABASE in Resources */,
@@ -5115,7 +5111,6 @@
 				7FED20871CDB4F6A004639DE /* Icon-152.png in Resources */,
 				7FED20B81CDB4F6A004639DE /* order_hasPay@2x.png in Resources */,
 				7F0C336C1CE5B8A900B42BBB /* about_background@2x.png in Resources */,
-				7FED20A81CDB4F6A004639DE /* map_icon_location@3x.png in Resources */,
 				3ED1711C1AAF0A9A00E5B630 /* tip_sad.png in Resources */,
 				7FED207D1CDB4F6A004639DE /* doctor_HasConcen@2x.png in Resources */,
 				7F0331D71CDCA72000A96F47 /* mySpace_icon_myTreatment@2x.png in Resources */,
@@ -5149,6 +5144,7 @@
 				BC86658B1CE5B3F80001445A /* temp_icon_doctor.png in Resources */,
 				7FED20BB1CDB4F6A004639DE /* order_icon_weixin@2x.png in Resources */,
 				E1EB1E451B70A43B0048B8EB /* UMSCommentDetailController.xib in Resources */,
+				7FD8C8121CF44E0800069296 /* map_icon_location@3x.png in Resources */,
 				7FED205F1CDB4F6A004639DE /* clinic_icon_phoneButton@2x.png in Resources */,
 				7FED206F1CDB4F6A004639DE /* common_radioButtonActivated@2x.png in Resources */,
 				7FED207E1CDB4F6A004639DE /* doctor_menu_btn_add_nor@2x.png in Resources */,
@@ -5173,6 +5169,7 @@
 				7FED206C1CDB4F6A004639DE /* common_btn_green_sel@2x.png in Resources */,
 				3E239E751AB33BCB001F0B3F /* checkmark_success@2x.png in Resources */,
 				7FED208D1CDB4F6A004639DE /* introduce_4.jpg in Resources */,
+				7FD8C8111CF44E0800069296 /* map_icon_location_highlighted@3x.png in Resources */,
 				7FED20631CDB4F6A004639DE /* comment_star_yellow_half@2x.png in Resources */,
 				7FB791EC1CE56B800031B265 /* temp_clinicAdver@2x.png in Resources */,
 				7FED20961CDB4F6A004639DE /* login_icon_email@2x.png in Resources */,
@@ -5520,6 +5517,7 @@
 				3E239E561AB2A645001F0B3F /* SNPhoneHelper.m in Sources */,
 				BC3ED4B31CC614D700495025 /* SettingViewController.m in Sources */,
 				E1283B291B9F41D600FC26C5 /* FamilyMemberDetailController+UploadAvartar.m in Sources */,
+				7FD8C8151CF450F700069296 /* HFAnnotationView.m in Sources */,
 				3EDEBA751A961C4800E72809 /* AFImageRequestOperation.m in Sources */,
 				BCB0506C1C15982500F988B1 /* TipMessageData.m in Sources */,
 				3EDEBA701A961C4800E72809 /* SNHTTPRequestOperation.m in Sources */,
@@ -5700,7 +5698,6 @@
 					"-Objc",
 					"-all_loaded",
 				);
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5745,7 +5742,6 @@
 					"-Objc",
 					"-all_loaded",
 				);
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5756,8 +5752,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5809,7 +5805,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "345b2421-229c-4a8a-9760-fbee6c747843";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Debug;
@@ -5819,8 +5815,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5872,7 +5868,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "345b2421-229c-4a8a-9760-fbee6c747843";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Release;
