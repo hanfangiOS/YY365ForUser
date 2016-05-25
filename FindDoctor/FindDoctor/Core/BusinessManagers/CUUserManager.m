@@ -167,7 +167,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     
     NSLog(@"%@",param);
     
-    __block CUUserManager * blockSelf = self;
+    __weak __block CUUserManager * blockSelf = self;
     
     [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
@@ -202,7 +202,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
                 }
                     break;
                 case -1:{
-                    [TipHandler showTipOnlyTextWithNsstring:[NSString stringWithFormat:@"%@",[result.responseObject stringForKeySafely:@"data"]]];
+                    [TipHandler showTipOnlyTextWithNsstring:[NSString stringWithFormat:@"%@",[result.responseObject stringForKeySafely:@"message"]]];
                 }
                     break;
                 default:
@@ -212,51 +212,70 @@ SINGLETON_IMPLENTATION(CUUserManager);
             [TipHandler showTipOnlyTextWithNsstring:[NSString stringWithFormat:@"网络连接错误"]];
         }
         resultBlock(request,result);
-    } forKey:URL_AfterBase forPageNameGroup:pageName];
+    } forKey:@"UserLogin" forPageNameGroup:pageName];
 }
 - (void)loginWithCellPhone:(NSString *)name password:(NSString *)password resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
-    // param
-    NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    [param setObjectSafely:@"kPlatForm user" forKey:@"from"];
-    [param setObjectSafely:@"V1.0" forKey:@"version"];
-    [param setObjectSafely:[SNPlatformManager deviceId] forKey:@"deviceinfo"];
-    [param setObjectSafely:@"0" forKey:@"token"];
-    [param setObjectSafely:@"login_my" forKey:@"require"];
-    [param setObjectSafely:@"0" forKey:@"lantitude"];
-    [param setObjectSafely:@"0" forKey:@"lontitude"];
-    [param setObjectSafely:@"phonecode" forKey:@"logintype"];
-    [param setObjectSafely:@"true" forKey:kPlatForm];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:13003 require:@"UserLoginPass"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:name forKey:@"phone"];
-    [dataParam setObjectSafely:password forKey:@"code"];
-    [dataParam setObjectSafely:@"0" forKey:@"email"];
-    [dataParam setObjectSafely:@"0" forKey:@"account"];
-    [dataParam setObjectSafely:@"2" forKey:@"accountid"];
+    [dataParam setObjectSafely:[[password MD5] uppercaseString] forKey:@"password"];
+    [dataParam setObjectSafely:@([CUUserManager sharedInstance].user.userId) forKey:@"accID"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
-    CUUserParser * parser = [[CUUserParser alloc] init];
-    __block CUUserManager * blockSelf = self;
+//    CUUserParser * parser = [[CUUserParser alloc] init];
+//    __block CUUserManager * blockSelf = self;
+//    parseLoginWithDict
     
-    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:parser parseMethod:@selector(parseLoginWithDict:) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        if (!result.hasError && ![(NSNumber *)[result.responseObject valueForKey:@"err_code"] integerValue])
+    NSLog(@"%@",param);
+    __weak __block CUUserManager * blockSelf = self;
+    
+    [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError)
         {
             // 赋值user数据
-//            blockSelf.user.name = name;
-//            blockSelf.user.userId = ((CUUser *)result.parsedModelObject).userId;
-            blockSelf.user.token = [result.responseObject stringForKeySafely:@"token"];
-            NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
-            
-            blockSelf.user.cellPhone = [data stringForKeySafely:@"phone"];
-            if ((NSNumber *)[data stringForKeySafely:@"ismail"]) {
+            NSInteger err_code = [[result.responseObject valueForKey:@"errorCode"]integerValue];
+            switch (err_code) {
+                case 0:{
+                    
+                    
+                    NSDictionary *data = [result.responseObject dictionaryForKeySafely:@"data"];
+                    
+                    blockSelf.user.userId = [data integerForKeySafely:@"accID"];
+                    blockSelf.user.nickname = [data stringForKeySafely:@"nickname"];
+                    blockSelf.user.name = [data stringForKeySafely:@"name"];
+                    blockSelf.user.icon = [data stringForKeySafely:@"icon"];
+                    blockSelf.user.cellPhone =  [data stringForKeySafely:@"phone"];
+                    blockSelf.user.token =  [data stringForKeySafely:@"token"];
+                    blockSelf.user.age =  [[data objectForKeySafely:@"age"] integerValue];
+                    NSString * sexStr = [data stringForKeySafely:@"sex"];
+                    if([sexStr isEqualToString:@"女"]) {
+                        blockSelf.user.gender = CUUserGenderFemale;
+                    }
+                    
+                    if ([sexStr isEqualToString:@"男"]) {
+                        blockSelf.user.gender = CUUserGenderMale;
+                    }
+                    
+                    NSLog(@"cellPhone:%@",blockSelf.user.cellPhone);
+                    NSLog(@"userId:%ld",(long)blockSelf.user.userId );
+                    [blockSelf save];
+                }
+                    break;
+                case -1:{
+                    [TipHandler showTipOnlyTextWithNsstring:[NSString stringWithFormat:@"%@",[result.responseObject stringForKeySafely:@"message"]]];
+                }
+                    break;
+                default:
+                    break;
             }
-            blockSelf.user.userId = [data integerForKeySafely:@"no"];
-            [blockSelf save];
+        }else if(result.hasError){
+            [TipHandler showTipOnlyTextWithNsstring:[NSString stringWithFormat:@"网络连接错误"]];
         }
         resultBlock(request,result);
-    } forKey:URL_AfterBase forPageNameGroup:pageName];
+    } forKey:@"UserLoginPass" forPageNameGroup:pageName];
 }
 
 // 99999 登出

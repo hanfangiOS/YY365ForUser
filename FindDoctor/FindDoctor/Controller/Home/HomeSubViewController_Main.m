@@ -105,8 +105,8 @@
 
 - (void)initData{
     _subjectArray = [NSMutableArray new];
-    NSMutableArray * subjectTieleArray = [[NSMutableArray alloc] initWithArray:@[@"内科",@"妇科",@"儿科",@"皮肤科",@"外科",@"骨科",@"药剂科",@"更多"]];
-    NSMutableArray * subjectImageArray = [[NSMutableArray alloc] initWithArray:@[@"main_icon_neike@3x",@"main_icon_fuke@3x",@"main_icon_erke@3x",@"main_icon_pifuke@3x",@"main_icon_waike@3x",@"main_icon_guke@3x",@"main_icon_yaojike@3x",@"main_icon_more@3x"]];
+    NSMutableArray * subjectTieleArray = [[NSMutableArray alloc] initWithArray:@[@"儿科",@"妇科",@"骨伤科",@"内科",@"针灸科",@"皮肤科",@"五官科",@"更多"]];
+    NSMutableArray * subjectImageArray = [[NSMutableArray alloc] initWithArray:@[@"main_icon_erke@3x",@"main_icon_fuke@3x",@"main_icon_guke@3x",@"main_icon_neike@3x",@"main_icon_waike@3x",@"main_icon_pifuke@3x",@"main_icon_yaojike@3x",@"main_icon_more@3x"]];
     for (int i = 0; i < subjectTieleArray.count; i++) {
         SubObject * subject = [[SubObject alloc] init];
         subject.name = [subjectTieleArray objectAtIndex:i];
