@@ -145,8 +145,10 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                 NSArray *recList = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"hotSearchClinicList"];
                 NSMutableArray *dataList = [NSMutableArray new];
                 [recList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    NSString *str = [obj valueForKey:@"keys"];
-                    [dataList addObject:str];
+                    Clinic *clinic = [[Clinic alloc]init];
+                    clinic.name = [obj valueForKey:@"keys"];
+                    clinic.ID = [[obj valueForKey:@"clinicID"] integerValue];
+                    [dataList addObject:clinic];
                 }];
                 result.parsedModelObject = dataList;
             }
