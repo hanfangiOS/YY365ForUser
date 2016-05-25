@@ -15,6 +15,9 @@
 #import "AppDelegate.h"
 #import "UserViewController.h"
 
+#define codeLoginTag 10
+#define passwordLoginTag 20
+
 #define kCodeButtonWith         80
 
 @interface LoginViewController (){
@@ -25,6 +28,7 @@
     LoginTextFeildView *passwordTextFeildView;
     NSString *codetoken;
     int timerCount;
+    UIButton * _loginStyleBtn;
 }
 
 @property (nonatomic,strong) MBProgressHUD *hud;
@@ -80,6 +84,10 @@
     [self.contentView addGestureRecognizer:tap];
 }
 
+- (void)endEdit{
+    [self.contentView endEditing:YES];
+}
+
 - (void)loadContens{
     int intervalY = 30;
     int textFeildWidth = 280 , textFeildHeight = 30;
@@ -111,6 +119,7 @@
     
     passwordTextFeildView = [[LoginTextFeildView alloc]initWithFrame:CGRectMake((kScreenWidth - textFeildWidth)/2, CGRectGetMaxY(userTextFeildView.frame) + intervalY, textFeildWidth, textFeildHeight) image:[UIImage imageNamed:@"login_icon_code"]];
     passwordTextFeildView.contentTextFeild.placeholder = @"请输入验证码";
+    passwordTextFeildView.contentTextFeild.keyboardType = UIKeyboardTypeNumberPad;
     [self.contentView addSubview:passwordTextFeildView];
     
     UIButton *loginButton = [[UIButton alloc]initWithFrame:CGRectMake((kScreenWidth - textFeildWidth)/2, CGRectGetMaxY(passwordTextFeildView.frame) + intervalY, textFeildWidth, 42)];
@@ -122,6 +131,13 @@
     [loginButton addTarget:self action:@selector(loginButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:loginButton];
     
+    _loginStyleBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth - ((kScreenWidth - textFeildWidth)/2 + 80 - 10), loginButton.maxY + 24, 80, 20)];
+    [_loginStyleBtn setTitle:@"密码登陆" forState:UIControlStateNormal];
+    _loginStyleBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_loginStyleBtn addTarget:self action:@selector(switchLoginStyleAction) forControlEvents:UIControlEventTouchUpInside];
+    _loginStyleBtn.tag = passwordLoginTag;
+    _loginStyleBtn.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:_loginStyleBtn];
 
     
 }
@@ -130,6 +146,8 @@
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma Action
 
 - (void)codeLableAction
 {
@@ -234,28 +252,91 @@
     [_hud hide:NO];
 }
 - (void)loginButtonAction{
-    if ([passwordTextFeildView.contentTextFeild.text isEmpty]) {
-        [TipHandler showTipOnlyTextWithNsstring:@"请输入验证码"];
-        return;
-    }
-    else {
-        [self showHUD];
-        [[CUUserManager sharedInstance] loginWithCellPhone:userTextFeildView.contentTextFeild.text code:passwordTextFeildView.contentTextFeild.text codetoken:codetoken resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-            [self hideHUD];
-            if (!result.hasError) {
-                NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
-                if (![errorCode integerValue]) {
-                    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-                }
-                
-            }
+    if (_loginStyleBtn.tag == passwordLoginTag) {
+        if ([passwordTextFeildView.contentTextFeild.text isEmpty]) {
+            [TipHandler showTipOnlyTextWithNsstring:@"请输入验证码"];
+            return;
+        }
+        else {
+            [self requestWithCode];
             
-        } pageName:@"LoginViewController"];
+        }
+    }else if (_loginStyleBtn.tag == codeLoginTag){
+        if ([passwordTextFeildView.contentTextFeild.text isEmpty]) {
+            [TipHandler showTipOnlyTextWithNsstring:@"请输入密码"];
+            return;
+        }
+        else {
+            [self requestWithPassword];
+            
+        }
     }
+
 }
 
-- (void)endEdit{
-    [self.contentView endEditing:YES];
+//切换登陆方式
+- (void)switchLoginStyleAction{
+    if (_loginStyleBtn.tag == codeLoginTag) {
+        //切换为验证码登陆
+        _codeButton.hidden = NO;
+        _codeLabel.hidden = NO;
+        passwordTextFeildView.contentTextFeild.text = nil;
+        passwordTextFeildView.contentTextFeild.placeholder = @"请输入验证码";
+        passwordTextFeildView.contentTextFeild.secureTextEntry = NO;
+        passwordTextFeildView.contentTextFeild.keyboardType = UIKeyboardTypeNumberPad;
+        [_loginStyleBtn setTitle:@"密码登陆" forState:UIControlStateNormal];
+        _loginStyleBtn.tag = passwordLoginTag;
+        
+    }else{
+        //切换为密码登陆
+        _codeButton.hidden = YES;
+        _codeLabel.hidden = YES;
+        passwordTextFeildView.contentTextFeild.placeholder = @"请输入密码";
+        passwordTextFeildView.contentTextFeild.text = nil;
+        passwordTextFeildView.contentTextFeild.secureTextEntry = YES;
+        passwordTextFeildView.contentTextFeild.keyboardType = UIKeyboardTypeDefault;
+        [_loginStyleBtn setTitle:@"验证码登陆" forState:UIControlStateNormal];
+        _loginStyleBtn.tag = codeLoginTag;
+
+    }
+    
+}
+
+#pragma request
+
+//验证码登陆
+- (void)requestWithCode{
+    [self showHUD];
+    __weak __block typeof(self)weakSelf = self;
+    [[CUUserManager sharedInstance] loginWithCellPhone:userTextFeildView.contentTextFeild.text code:passwordTextFeildView.contentTextFeild.text codetoken:codetoken resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        [weakSelf hideHUD];
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                [weakSelf.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }
+            
+        }
+        
+    } pageName:@"LoginViewController"];
+}
+
+//密码登陆
+- (void)requestWithPassword{
+    [self showHUD];
+    __weak __block typeof(self)weakSelf = self;
+    
+    [[CUUserManager sharedInstance] loginWithCellPhone:userTextFeildView.contentTextFeild.text password:passwordTextFeildView.contentTextFeild.text resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        [weakSelf hideHUD];
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                [weakSelf.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }
+            
+        }
+    } pageName:@"LoginViewController"];
+
 }
 
 - (void)didReceiveMemoryWarning {

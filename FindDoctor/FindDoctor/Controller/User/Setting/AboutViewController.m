@@ -137,6 +137,7 @@
     
     NSURL* url = [NSURL URLWithString:@"http://www.uyi365.com/baseFrame/base/g_VersionCheck.jmm?from=APP_IOS_USER"];
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
+    postRequest.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
     
     [postRequest setHTTPMethod:@"GET"];
     [postRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
@@ -151,9 +152,10 @@
                 NSDictionary * dataDict = [dict dictionaryForKeySafely:@"data"];
                 NSString * appVersion = [dataDict stringForKeySafely:@"name"];
                 NSInteger forceupdate = [[dataDict objectForKeySafely:@"forceupdate"] integerValue];
+                NSString * message = [dataDict stringForKeySafely:@"message"];
                 //必要更新
                 if (forceupdate == 1) {
-                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"重要更新版本%@,请前往App Store进行更新,否则将无法正常使用",appVersion] delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"下载", nil];
+                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"下载", nil];
                     alert.delegate = self;
                     [alert show];
                     
@@ -161,7 +163,7 @@
                 //非必要更新
                 else{
                     if([weakSelf checkIfNeedUpdateWithAppVersion:appVersion]){
-                        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"最新版本为%@,是否前往App Store进行更新",appVersion] delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"下载", nil];
+                        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"下载", nil];
                         alert.delegate = self;
                         [alert show];
                     }else{

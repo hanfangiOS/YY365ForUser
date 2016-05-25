@@ -36,13 +36,6 @@
 }
 
 - (void)initSubViews{
-//    _logoutView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
-//    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 44)];
-//    button.center = _logoutView.center;
-//    [button addTarget:self action:@selector(loginOutAction) forControlEvents:UIControlEventTouchUpInside];
-//    [button setTitle:@"退出登录" forState:UIControlStateNormal];
-//    button.backgroundColor = [UIColor redColor];
-//    [_logoutView addSubview:button];
     
     self.tableView = [[UITableView alloc]initWithFrame:self.contentView.bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
@@ -98,7 +91,12 @@
 #pragma mark tableViewDelegata&dataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    if ([CUUserManager sharedInstance].user.token) {
+        return 4;
+    }else{
+        return 3;
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
