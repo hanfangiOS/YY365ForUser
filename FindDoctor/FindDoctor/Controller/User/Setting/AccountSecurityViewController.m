@@ -45,7 +45,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,11 +60,11 @@
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     
     switch (indexPath.row) {
+//        case 0:
+//            cell.textLabel.text = @"手机号";
+//            cell.detailTextLabel.text = [CUUserManager sharedInstance].user.cellPhone;
+//            break;
         case 0:
-            cell.textLabel.text = @"手机号";
-            cell.detailTextLabel.text = [CUUserManager sharedInstance].user.cellPhone;
-            break;
-        case 1:
             cell.textLabel.text = @"修改密码";
             break;
         default:
@@ -84,13 +84,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
+//        case 0:
+//        {
+//            ChangePhoneViewController1 *VC = [[ChangePhoneViewController1 alloc]initWithPageName:@"ChangePhoneViewController1"];
+//            [self.slideNavigationController pushViewController:VC  animated:YES];
+//        }
+//            break;
         case 0:
-        {
-            ChangePhoneViewController1 *VC = [[ChangePhoneViewController1 alloc]initWithPageName:@"ChangePhoneViewController1"];
-            [self.slideNavigationController pushViewController:VC  animated:YES];
-        }
-            break;
-        case 1:
         {
             ChangePasswordViewController *VC = [[ChangePasswordViewController alloc]initWithPageName:@"ChangePasswordViewController"];
             [self.slideNavigationController pushViewController:VC  animated:YES];

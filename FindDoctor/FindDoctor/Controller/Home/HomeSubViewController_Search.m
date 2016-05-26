@@ -17,6 +17,7 @@
 #import "SearchResultListModel.h"
 #import "DoctorDetailController.h"
 #import "CUDoctorManager.h"
+#import "ClinicMainViewController.h"
 
 @interface HomeSubViewController_Search ()<EqualSpaceFlowLayoutDelegate>
 
@@ -132,7 +133,7 @@
         return CGSizeMake(size.width+20, size.height+15);
     }
     if (indexPath.section == 3) {
-        CGSize size = [self sizeForString:(NSString *)[self.hotSearchClinicArray objectAtIndex:indexPath.row] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
+        CGSize size = [self sizeForString:[(Clinic *)[self.hotSearchClinicArray objectAtIndex:indexPath.row] name] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
         return CGSizeMake(size.width+20, size.height+15);
     }
     CGSize size = [self sizeForString:(NSString *)[self.dataArray objectAtIndex:indexPath.row] font:[UIFont systemFontOfSize:12] limitSize:CGSizeMake(0, 12)];
@@ -185,7 +186,7 @@
     if (indexPath.section == 3){
         NSString *collectionCellName = NSStringFromClass([SearchHistoryCollectionViewCell class]);
         SearchHistoryCollectionViewCell *collectionCell = (SearchHistoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellName forIndexPath:indexPath];
-        collectionCell.string = (NSString *)[self.hotSearchClinicArray objectAtIndex:indexPath.row];
+        collectionCell.string = [(Clinic *)[self.hotSearchClinicArray objectAtIndex:indexPath.row] name];
         collectionCell.backgroundColor = [UIColor clearColor];
         return collectionCell;
     }
@@ -235,11 +236,14 @@
         //热搜诊所
         case 3:
         {
-            self.currSearchStr = [self.hotSearchClinicArray objectAtIndexSafely:indexPath.row];
-            SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
-            listModel.filter.keyword = self.currSearchStr;
-            SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
-            [self.slideNavigationController pushViewController:vc animated:YES];
+//            self.currSearchStr = [self.hotSearchClinicArray objectAtIndexSafely:indexPath.row];
+//            SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
+//            listModel.filter.keyword = self.currSearchStr;
+//            SearchResultViewController * vc = [[SearchResultViewController alloc] initWithPageName:@"SearchResultViewController" listModel:listModel];
+//            [self.slideNavigationController pushViewController:vc animated:YES];
+            ClinicMainViewController *VC = [[ClinicMainViewController alloc]initWithPageName:@"ClinicMainViewController"];
+            VC.clinic = [self.hotSearchClinicArray objectAtIndex:indexPath.row];
+            [self.slideNavigationController pushViewController:VC animated:YES];
         }
             break;
         default:{
