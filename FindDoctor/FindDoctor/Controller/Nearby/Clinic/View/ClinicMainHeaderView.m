@@ -12,6 +12,7 @@
 #import "CUClinicManager.h"
 #import "CUUserManager.h"
 #import "LoginViewController.h"
+#import "TipHandler+HUD.h"
 
 @interface ClinicMainHeaderView(){
     UIImageView *imageView;
@@ -160,6 +161,8 @@
                 if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                     blockSelf.data.isConcern = !blockSelf.data.isConcern;
                     [blockSelf resetguanzhuButton];
+                    [TipHandler showTipOnlyTextWithNsstring:@"关注成功"];
+    
                 }
             }
         } pageName:@"ClinicMainHeaderView"];

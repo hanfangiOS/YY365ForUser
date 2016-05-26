@@ -106,8 +106,8 @@
     UIImageView * commentIcon = [[UIImageView alloc] initWithFrame:CGRectMake(self.commentBtn.frameWidth/2 - 36, (self.commentBtn.frameHeight - 16)/2, 16, 16)];
     commentIcon.image = [UIImage imageNamed:@"comment_icon_comment_white"];
     [self.commentBtn addSubview:commentIcon];
-
     
+    [self resetDdata];
 }
 
 - (void)resetDdata{

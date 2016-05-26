@@ -13,6 +13,7 @@
 #import "CUDoctorManager.h"
 #import "CUUserManager.h"
 #import "LoginViewController.h"
+#import "TipHandler+HUD.h"
 
 
 #define kDoctorHeaderViewHeight   178.0
@@ -135,22 +136,27 @@
             if (!result.hasError) {
                 if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                     self.data.didConcern = !self.data.didConcern;
-                    if (self.data.didConcern) {
-                        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_HasConcen"].CGImage;
-                    }
-                    else{
-                        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_waitForConcen"].CGImage;
-                    }
+                    [TipHandler showTipOnlyTextWithNsstring:@"关注成功"];
+                    [self resetguanzhuButton];
                 }
             }
         } pageName:@""];
+    }else{
         //未登录
         LoginViewController * vc = [[LoginViewController alloc] initWithPageName:@"LoginViewController"];
         [vc setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
         [self.fatherVC.slideNavigationController presentViewController:vc animated:YES completion:nil];
     }
-    
 
+}
+
+- (void)resetguanzhuButton{
+    if (self.data.didConcern) {
+        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_HasConcen"].CGImage;
+    }
+    else{
+        guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_waitForConcen"].CGImage;
+    }
 }
 
 - (void)setData:(Doctor *)data

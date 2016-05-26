@@ -131,7 +131,6 @@
             if (![errorCode integerValue]) {
                 CUOrder * order1 = [[CUOrder alloc] init];
                 order1 = result.parsedModelObject;
-                order1.orderStatus = ORDERSTATUS_FINISHED;
                 TreatmentDetailsController * vc = [[TreatmentDetailsController alloc] initWithPageName:@"TreatmentDetailsController"];
                 vc.order = order1;
                 [self.slideNavigationController pushViewController:vc animated:YES];

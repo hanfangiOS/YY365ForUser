@@ -968,6 +968,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.dealPrice = [orderDict integerForKeySafely:@"currency"];
                 order.coupon = [orderDict integerForKeySafely:@"coupon"];
                 NSString * str = [orderDict stringForKeySafely:@"channel"];
+                NSInteger remarked = [[orderDict objectForKeySafely:@"remarked"] integerValue];
+                
                 if ([str isEqualToString:@"wx"]) {
                     order.payment = ORDERPAYMENT_WeiXin;
                 }
@@ -1034,6 +1036,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.service.doctor.price = [orderDict integerForKeySafely:@"amount"];
                 order.dealPrice = [orderDict integerForKeySafely:@"currency"];
                 order.coupon = [orderDict integerForKeySafely:@"coupon"];
+                
                 NSString * str = [orderDict stringForKeySafely:@"channel"];
                 if ([str isEqualToString:@"wx"]) {
                     order.payment = ORDERPAYMENT_WeiXin;
@@ -1102,6 +1105,14 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 order.dealPrice = [orderDict integerForKeySafely:@"currency"];
                 order.coupon = [orderDict integerForKeySafely:@"coupon"];
                 NSString * str = [orderDict stringForKeySafely:@"channel"];
+                
+                NSInteger remarked = [[orderDict objectForKeySafely:@"remarked"] integerValue];
+                if (remarked == 1) {
+                    order.orderStatus = ORDERSTATUS_COMMENT;
+                }else{
+                    order.orderStatus = ORDERSTATUS_FINISHED;
+                }
+                
                 if ([str isEqualToString:@"wx"]) {
                     order.payment = ORDERPAYMENT_WeiXin;
                 }
