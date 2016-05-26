@@ -40,11 +40,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self showProgressView];
+    __weak __block typeof(self)weakSelf = self;
     [[CUClinicManager sharedInstance] getClinicMainWithClinic:self.clinic resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-        [self hideProgressView];
+        [weakSelf hideProgressView];
         if (!result.hasError) {
-            self.title = self.clinic.name;
-            [self resetData];
+            weakSelf.title = weakSelf.clinic.name;
+            [weakSelf resetData];
         }
     } pageName:@"ClinicMainViewController"];
     

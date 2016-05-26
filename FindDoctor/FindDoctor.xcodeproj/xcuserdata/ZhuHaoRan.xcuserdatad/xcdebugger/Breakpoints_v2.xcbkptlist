@@ -83,54 +83,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/User/LoginViewController.m"
-            timestampString = "485858689.826978"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
-            landmarkName = "-requestWithPassword"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LoginViewController requestWithPassword]"
-                  moduleName = "FindDoctor"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Controller/User/LoginViewController.m"
-                  timestampString = "485921668.322378"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "329"
-                  endingLineNumber = "329"
-                  offsetFromSymbolStart = "118">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__42-[LoginViewController requestWithPassword]_block_invoke"
-                  moduleName = "FindDoctor"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Controller/User/LoginViewController.m"
-                  timestampString = "485921668.322581"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "329"
-                  endingLineNumber = "329"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FindDoctor/Core/BusinessManagers/CUUserManager.m"
             timestampString = "485858790.980846"
             startingColumnNumber = "9223372036854775807"
@@ -148,12 +100,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUUserManager.m"
-                  timestampString = "485921668.323674"
+                  timestampString = "485940174.274268"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "235"
                   endingLineNumber = "235"
-                  offsetFromSymbolStart = "862">
+                  offsetFromSymbolStart = "764">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -163,30 +115,14 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUUserManager.m"
-                  timestampString = "485921668.323823"
+                  timestampString = "485940174.274379"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "236"
                   endingLineNumber = "236"
-                  offsetFromSymbolStart = "78">
+                  offsetFromSymbolStart = "92">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Controller/User/LoginViewController.m"
-            timestampString = "485858731.914288"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
-            landmarkName = "-loginButtonAction"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -212,12 +148,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Controller/Nearby/Clinic/View/ClinicMainHeaderView.m"
-                  timestampString = "485921668.325318"
+                  timestampString = "485940174.275172"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
                   endingLineNumber = "158"
-                  offsetFromSymbolStart = "188">
+                  offsetFromSymbolStart = "180">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -227,12 +163,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Controller/Nearby/Clinic/View/ClinicMainHeaderView.m"
-                  timestampString = "485921668.325463"
+                  timestampString = "485940174.275289"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
                   endingLineNumber = "158"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -242,30 +178,14 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Controller/Nearby/Clinic/View/ClinicMainHeaderView.m"
-                  timestampString = "485921668.325593"
+                  timestampString = "485940174.275393"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
                   endingLineNumber = "158"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FindDoctor/Core/BusinessManagers/CUDoctorManager.m"
-            timestampString = "485920714.252127"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "498"
-            endingLineNumber = "498"
-            landmarkName = "-doctorConcernWithDoctorID:isConcern:resultBlock:pageName:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -307,12 +227,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-                  timestampString = "485921668.3279"
+                  timestampString = "485940174.276959"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1077"
                   endingLineNumber = "1077"
-                  offsetFromSymbolStart = "912">
+                  offsetFromSymbolStart = "1072">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -322,12 +242,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-                  timestampString = "485921668.32804"
+                  timestampString = "485940174.277068"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1079"
                   endingLineNumber = "1079"
-                  offsetFromSymbolStart = "78">
+                  offsetFromSymbolStart = "92">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -371,12 +291,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-                  timestampString = "485921668.329638"
+                  timestampString = "485940174.27838"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1009"
                   endingLineNumber = "1009"
-                  offsetFromSymbolStart = "912">
+                  offsetFromSymbolStart = "1072">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -386,12 +306,12 @@
                   moduleName = "FindDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZhuHaoRan/Desktop/%E9%A1%B9%E7%9B%AE/%E6%B1%89%E6%96%B9/%E4%BC%98%E5%8C%BB365%E7%94%A8%E6%88%B7%E7%AB%AF/YY365ForUser/FindDoctor/FindDoctor/Core/BusinessManagers/CUOrderManager.m"
-                  timestampString = "485921668.329814"
+                  timestampString = "485940174.27849"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1011"
                   endingLineNumber = "1011"
-                  offsetFromSymbolStart = "78">
+                  offsetFromSymbolStart = "92">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -409,6 +329,54 @@
             startingLineNumber = "129"
             endingLineNumber = "129"
             landmarkName = "-postRequestGetOrderHasPayHasMeetDetailWithOrder:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Controller/Doctor/View/DoctorHeaderView.m"
+            timestampString = "485939033.761724"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-guanZhuButtonAction"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Core/BusinessManagers/CUClinicManager.m"
+            timestampString = "485939939.268361"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-getClinicMainWithClinic:resultBlock:pageName:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindDoctor/Core/BusinessManagers/CUClinicManager.m"
+            timestampString = "485940178.893233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-getClinicMainWithClinic:resultBlock:pageName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
