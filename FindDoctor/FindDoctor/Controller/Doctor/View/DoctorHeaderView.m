@@ -117,7 +117,7 @@
     guanZhuNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding + (kScreenWidth - padding * 2)/3.f, CGRectGetMaxY(imageView.frame) + 10, 150, 12) title:@"关注" contents:[NSString stringWithFormat:@"%ld",(long)_data.numConcern] unit:@"次" hasDot:YES];
     [self addSubview:guanZhuNumberLabel];
     
-    haoPingNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding + (kScreenWidth - padding * 2)/3.f*2, CGRectGetMaxY(imageView.frame) + 10, 150, 12) title:@"好评率" contents:[NSString stringWithFormat:@"%ld%",(long)_data.goodRemark] unit:@"" hasDot:YES];
+    haoPingNumberLabel = [[BlueDotLabelInDoctorHeaderView alloc]initWithFrame:CGRectMake(padding + (kScreenWidth - padding * 2)/3.f*2, CGRectGetMaxY(imageView.frame) + 10, 150, 12) title:@"好评率" contents:[NSString stringWithFormat:@"%ld%%",(long)_data.goodRemark] unit:@"" hasDot:YES];
     [self addSubview:haoPingNumberLabel];
     
     introLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, CGRectGetMaxY(zhenLiaoNumberLabel.frame) + 10, (kScreenWidth - 2*padding), 105)];
@@ -130,14 +130,19 @@
 - (void)guanZhuButtonAction{
     
     
-    if ([CUUserManager sharedInstance].user) {
+    if ([CUUserManager sharedInstance].user.token) {
         //登录
         [[CUDoctorManager sharedInstance]doctorConcernWithDoctorID:self.data.doctorId isConcern:(self.data.didConcern ? 0:1) resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
             if (!result.hasError) {
                 if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                     self.data.didConcern = !self.data.didConcern;
-                    
                     [self resetguanzhuButton];
+                    if (_data.didConcern) {
+                        [TipHandler showTipOnlyTextWithNsstring:@"关注成功"];
+                    }
+                    else{
+                        [TipHandler showTipOnlyTextWithNsstring:@"已取消关注"];
+                    }
                 }
             }
         } pageName:@""];
@@ -186,12 +191,7 @@
         [introLabel sizeToFit];
         self.frame = CGRectMake([self frameX], [self frameY], [self frameWidth], CGRectGetMaxY(introLabel.frame)+5);
         
-        if (self.data.didConcern) {
-            guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_HasConcen"].CGImage;
-        }
-        else{
-            guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_waitForConcen"].CGImage;
-        }
+        [self resetguanzhuButton];
     }
 }
 

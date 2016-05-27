@@ -38,7 +38,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
 
 - (void)load
 {
-    CUUser * user = [[AppCore sharedInstance].fileAccessManager loadObjectForKey:Plist_User error:nil];
+    CUUser * user = [[AppCore sharedInstance].fileAccessManager loadObjectForKey:[NSString stringWithFormat:@"%@/%ld",Plist_User,self.user.userId] error:nil];
     if (user != nil)
     {
         self.user = user;
@@ -47,7 +47,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
 
 - (void)save
 {
-    [[AppCore sharedInstance].fileAccessManager saveObject:self.user forKey:Plist_User error:nil];
+    [[AppCore sharedInstance].fileAccessManager saveObject:self.user forKey:[NSString stringWithFormat:@"%@/%ld",Plist_User,self.user.userId] error:nil];
 }
 
 - (void)clear
@@ -63,7 +63,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
     self.user.age = 0;
     self.user.level = 0;
     self.user.name = nil;
-    [[AppCore sharedInstance].fileAccessManager removeObjectForKey:Plist_User error:nil];
+    [[AppCore sharedInstance].fileAccessManager removeObjectForKey:[NSString stringWithFormat:@"%@/%ld",Plist_User,self.user.userId] error:nil];
 }
 
 @end
@@ -281,7 +281,7 @@ SINGLETON_IMPLENTATION(CUUserManager);
 // 99999 登出
 - (void)logoutWithUser:(CUUser *)user resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
 {
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:99999 require:@"ExitAccount"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:99999 require:@"logout"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
         [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];

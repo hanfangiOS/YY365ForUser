@@ -416,10 +416,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //跳转医生详情
-    DoctorDetailController * vc = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
-    vc.doctor =  [self.homeModel.famousDoctorList objectAtIndex:indexPath.row];
-    [self.slideNavigationController pushViewController:vc animated:YES];
+    
+    Doctor * doctor = [self.homeModel.famousDoctorList objectAtIndexSafely:indexPath.row];
+    [self requestUpdateDoctorInfoWithDoctor:doctor];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -538,5 +537,7 @@
         
     }];
 }
+
+
 
 @end

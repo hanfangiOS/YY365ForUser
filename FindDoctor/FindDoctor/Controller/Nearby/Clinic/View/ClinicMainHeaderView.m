@@ -161,7 +161,12 @@
                 if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                     blockSelf.data.isConcern = !blockSelf.data.isConcern;
                     [blockSelf resetguanzhuButton];
-                    [TipHandler showTipOnlyTextWithNsstring:@"关注成功"];
+                    if (self.data.isConcern) {
+                        [TipHandler showTipOnlyTextWithNsstring:@"关注成功"];
+                    }
+                    else{
+                        [TipHandler showTipOnlyTextWithNsstring:@"已取消关注"];
+                    }
     
                 }
             }
@@ -185,4 +190,5 @@
         [TipHandler showTipOnlyTextWithNsstring:@"已取消关注"];
     }
 }
+
 @end

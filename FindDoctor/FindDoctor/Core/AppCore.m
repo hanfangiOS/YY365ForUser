@@ -26,7 +26,7 @@ SINGLETON_IMPLENTATION(AppCore);
     if (self = [super init])
     {
         self.apiManager = [[SNServerAPIManager alloc] initWithServer:URL_Base];
-        self.fileAccessManager = [[SNFileAccessManager alloc] initWithNameSpace:@"AppCore"];
+        self.fileAccessManager = [[SNFileAccessManager alloc] initWithNameSpace:@"ForPatient"];
         self.managerArray = [NSMutableArray array];
         
         [self.apiManager setDefaultParameter:@"from" value:@"ios_user"];
