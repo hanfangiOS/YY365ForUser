@@ -448,6 +448,7 @@
 		BC1859CE1C8440060050251B /* MyDiagnosisRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1859CA1C8440060050251B /* MyDiagnosisRecordsViewController.m */; };
 		BC1A58A41CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1A58A31CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.m */; };
 		BC1A58A71CB7BC670054DDE6 /* EqualSpaceFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1A58A61CB7BC670054DDE6 /* EqualSpaceFlowLayout.m */; };
+		BC2DA1331CF6F177001CFFC6 /* HFModelVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2DA1321CF6F177001CFFC6 /* HFModelVerify.m */; };
 		BC313D211C3A143C00C9469D /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC313D201C3A143C00C9469D /* UserViewController.m */; };
 		BC313D271C3A147500C9469D /* BigButtonsInUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC313D241C3A147500C9469D /* BigButtonsInUser.m */; };
 		BC313D281C3A147500C9469D /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC313D261C3A147500C9469D /* UserHeaderView.m */; };
@@ -1403,6 +1404,8 @@
 		BC1A58A31CB7602C0054DDE6 /* SearchHistoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHistoryCollectionViewCell.m; sourceTree = "<group>"; };
 		BC1A58A51CB7BC670054DDE6 /* EqualSpaceFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EqualSpaceFlowLayout.h; sourceTree = "<group>"; };
 		BC1A58A61CB7BC670054DDE6 /* EqualSpaceFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EqualSpaceFlowLayout.m; sourceTree = "<group>"; };
+		BC2DA1311CF6F177001CFFC6 /* HFModelVerify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFModelVerify.h; sourceTree = "<group>"; };
+		BC2DA1321CF6F177001CFFC6 /* HFModelVerify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFModelVerify.m; sourceTree = "<group>"; };
 		BC313D1F1C3A143C00C9469D /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserViewController.h; path = User/UserViewController.h; sourceTree = "<group>"; };
 		BC313D201C3A143C00C9469D /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserViewController.m; path = User/UserViewController.m; sourceTree = "<group>"; };
 		BC313D231C3A147500C9469D /* BigButtonsInUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigButtonsInUser.h; sourceTree = "<group>"; };
@@ -2906,6 +2909,8 @@
 				7FC157291CEAF40F00A07085 /* NSString+NullReplacement.m */,
 				7FD8C8131CF450F700069296 /* HFAnnotationView.h */,
 				7FD8C8141CF450F700069296 /* HFAnnotationView.m */,
+				BC2DA1311CF6F177001CFFC6 /* HFModelVerify.h */,
+				BC2DA1321CF6F177001CFFC6 /* HFModelVerify.m */,
 			);
 			path = HFFW;
 			sourceTree = "<group>";
@@ -5580,6 +5585,7 @@
 				7FA561F21CBDE3020092D978 /* MJRefreshBackFooter.m in Sources */,
 				3EDEBAC11A961C4800E72809 /* UIImage+Color.m in Sources */,
 				7FA562031CBDE3020092D978 /* UIView+MJExtension.m in Sources */,
+				BC2DA1331CF6F177001CFFC6 /* HFModelVerify.m in Sources */,
 				3EDEBAB21A961C4800E72809 /* NSDateFormatter+SNExtension.m in Sources */,
 				E1EB1E651B70A43B0048B8EB /* SearchTooBar.m in Sources */,
 				3EDEBAB11A961C4800E72809 /* NSDate+SNExtension.m in Sources */,
@@ -5667,8 +5673,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -5698,6 +5704,7 @@
 					"-Objc",
 					"-all_loaded",
 				);
+				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5719,8 +5726,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5742,6 +5749,7 @@
 					"-Objc",
 					"-all_loaded",
 				);
+				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5752,8 +5760,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5803,9 +5811,9 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Debug;
@@ -5815,8 +5823,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5866,9 +5874,9 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Release;

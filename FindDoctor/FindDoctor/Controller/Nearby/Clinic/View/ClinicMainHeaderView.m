@@ -178,9 +178,11 @@
 - (void)resetguanzhuButton{
     if (self.data.isConcern) {
         guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_HasConcen"].CGImage;
+        [TipHandler showTipOnlyTextWithNsstring:@"关注成功"];
     }
     else{
         guanzhuButton.layer.contents = (id)[UIImage imageNamed:@"doctor_waitForConcen"].CGImage;
+        [TipHandler showTipOnlyTextWithNsstring:@"已取消关注"];
     }
 }
 @end

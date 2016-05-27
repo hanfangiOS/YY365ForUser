@@ -21,12 +21,15 @@
 SINGLETON_IMPLENTATION(CUSearchManager);
 
 - (void)getSearchResultListWithFilter:(SearchFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+
     
     NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:11101 require:@"SearchDoctorBySubject"];
-    
     NSMutableDictionary * dataParam = [NSMutableDictionary new];
     [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:filter.keyword forKey:@"search"];
+    if ([filter.keyword isEqualToString:@"-1"]){
+       [dataParam setObjectSafely:@(filter.subjectID) forKey:@"search"];
+    }
     [dataParam setObjectSafely:@([kCurrentLng doubleValue]) forKey:@"longtitude"];
     [dataParam setObjectSafely:@([kCurrentLat doubleValue]) forKey:@"latitude"];
     [dataParam setObjectSafely:@(filter.subjectID) forKey:@"subjectID"];
@@ -35,8 +38,9 @@ SINGLETON_IMPLENTATION(CUSearchManager);
     [dataParam setObjectSafely:@(filter.symptomID) forKey:@"symptomID"];
     [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
     [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
+    [dataParam setObjectSafely:filter.date forKey:@"orderDate"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
-    
+
     NSLog(@"%@",param);
     
     [[AppCore sharedInstance].apiManager POST:[NSString stringWithFormat:@"/baseFrame/base/%@.jmm",[param stringForKeySafely:@"require"]] parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){

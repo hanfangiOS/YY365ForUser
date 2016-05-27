@@ -32,6 +32,8 @@
 
 - (void)gotoFirstPage:(SNServerAPIResultBlock)resultBlock
 {
+    self.filter.total = 0;
+    self.filter.rows = 20;
     [[CUSearchManager sharedInstance] getSearchResultListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {
@@ -55,6 +57,7 @@
 
 - (void)gotoNextPage:(SNServerAPIResultBlock)resultBlock
 {
+    self.filter.total = self.items.count;
     [[CUSearchManager sharedInstance] getSearchResultListWithFilter:self.filter resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         if (!result.hasError)
         {

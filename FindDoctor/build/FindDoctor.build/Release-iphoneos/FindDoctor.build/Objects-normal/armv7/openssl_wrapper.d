@@ -1,0 +1,32 @@
+dependencies: \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/AliPay/Util/openssl_wrapper.m \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl_wrapper.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/AliPay/Util/openssl/rsa.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/asn1.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/e_os2.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/opensslconf.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/bio.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/crypto.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/stack.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/safestack.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/opensslv.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/ossl_typ.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/symhacks.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/bn.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/AliPay/Util/openssl/pem.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/evp.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/objects.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/obj_mac.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/x509.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/buffer.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/ec.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/ecdsa.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/ecdh.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/dsa.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/dh.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/sha.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/x509_vfy.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/lhash.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/pkcs7.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/Alipay/Util/openssl/pem2.h \
+  /Users/guo/Documents/YY365ForUser/FindDoctor/FindDoctor/Utitlity/AliPay/Util/openssl/md5.h
