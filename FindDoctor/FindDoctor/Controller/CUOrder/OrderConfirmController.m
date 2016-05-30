@@ -342,6 +342,21 @@
     
 }
 
+//发送请求，调起支付控件
+- (void)postRequestCreatePayMent:(NSString *)charge chargeid:(NSString *)chargeid dynamicno:(long long)dynamicno{
+    __weak __block OrderConfirmController *blockSelf = self;
+    [Pingpp createPayment:charge viewController:blockSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
+        
+        NSLog(@"completion block: %@", result);
+        if (error == nil) {
+            NSLog(@"PingppError is nil");
+        } else {
+            NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+        }
+        [blockSelf postRequestCheckOrderStatusAfterWithChargeid:chargeid andDynamicno:dynamicno];
+    }];
+}
+
 //11601 获取订单状态 （支付后）
 - (void)postRequestCheckOrderStatusAfterWithChargeid:(NSString *)chargeid andDynamicno:(long long)dynamicno{
     [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID andChargeid:chargeid andDynamicno:dynamicno resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
@@ -362,21 +377,6 @@
 
     } pageName:@"OrderConfirmController"];
     
-}
-
-//发送请求，调起支付控件
-- (void)postRequestCreatePayMent:(NSString *)charge chargeid:(NSString *)chargeid dynamicno:(long long)dynamicno{
-    __weak __block OrderConfirmController *blockSelf = self;
-    [Pingpp createPayment:charge viewController:blockSelf appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
-        
-        NSLog(@"completion block: %@", result);
-        if (error == nil) {
-            NSLog(@"PingppError is nil");
-        } else {
-            NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
-        }
-        [blockSelf postRequestCheckOrderStatusAfterWithChargeid:chargeid andDynamicno:dynamicno];
-    }];
 }
 
 #pragma mark - Action
