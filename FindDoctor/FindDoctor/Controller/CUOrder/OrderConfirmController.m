@@ -42,7 +42,7 @@
 #define kPlaceHolder      @"支付金额"
 #define kMaxAmount        9999999
 
-#define kUrlScheme      @"wx584ad6cae2973f02" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
+#define kUrlScheme      @"uyi365ForPatient100" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
 
 @interface OrderConfirmController (){
     UIAlertView     * mAlert;
@@ -272,10 +272,10 @@
     [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [self hideProgressView];
         if (!result.hasError) {
-            if ([result.responseObject integerForKeySafely:@"errorCode"] == -1) {
-                [self postRequestGetCharge];
-            }else{
+            if (![result.responseObject integerForKeySafely:@"errorCode"]) {
                 [self HandleOrdertWithResult:result orderResult:OrderResultSuccess];
+            }else{
+                [self postRequestGetCharge];
             }
         }
     } pageName:@"OrderConfirmController"];
