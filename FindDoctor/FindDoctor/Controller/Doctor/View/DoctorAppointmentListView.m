@@ -9,6 +9,8 @@
 #import "DoctorAppointmentListView.h"
 #import "NSDate+SNExtension.h"
 #import "NSDateFormatter+SNExtension.h"
+#import "MJRefresh.h"
+#import "CUDoctorManager.h"
 
 #define intervalLeft 15
 
@@ -20,14 +22,14 @@
 }
 
 
-- (id)initWithFrame:(CGRect)frame data:(DoctorAppointmentListItem *)data
+- (id)initWithFrame:(CGRect)frame data:(DoctorAppointmentListItem *)data releaseID:(long long)releaseID
 {
     self = [super initWithFrame:frame];
     
     if (self) {
         self.backgroundColor = [UIColor whiteColor];//UIColorFromRGB(246, 252, 245);
         _data = data;
-        
+        self.releaseID = releaseID;
         [self initSubviews];
     }
     
@@ -42,6 +44,7 @@
 
 
 - (void)initSubviews{
+    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(intervalLeft, 0, kScreenWidth, 60)];
     titleLabel.backgroundColor = self.backgroundColor;
     titleLabel.text = @"请选择约诊时间段";
@@ -58,9 +61,29 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
     _tableView.dataSource = self;
-//    _tableView.bounces = NO;
+
+    MJRefreshNormalHeader * header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    self.tableView.mj_header = header;
+    
     [self addSubview:_tableView];
 
+}
+
+- (void)loadNewData{
+    __block __weak typeof(self)weakSelf= self;
+    [[CUDoctorManager sharedInstance] getOrderTimeSegmentWithReleaseID:self.releaseID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        
+        if (!result.hasError) {
+            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorCode"];
+            if (![errorCode integerValue]) {
+                weakSelf.data.selectOrderTimeArray = result.parsedModelObject;
+                [weakSelf.tableView.mj_header endRefreshing];
+                [weakSelf.tableView reloadData];
+            }
+
+        }
+        
+    }pageName:@"DoctorSelectOrderTimeController"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

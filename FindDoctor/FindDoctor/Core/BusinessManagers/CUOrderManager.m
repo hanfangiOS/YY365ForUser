@@ -73,7 +73,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 
             }
             else {
-//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"data"]];
+//                
             }
         }
         else {

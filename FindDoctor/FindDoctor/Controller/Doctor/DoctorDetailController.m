@@ -158,6 +158,8 @@
                     doctorSelectOrderTimeController.doctorAppointmentListItem = appointmentSelected;
                     blockSelf.doctor.address = [NSString stringWithFormat:@"%@(%@)",appointmentSelected.clinicName,appointmentSelected.clinicAddr];
                     doctorSelectOrderTimeController.doctor = blockSelf.doctor;
+                    doctorSelectOrderTimeController.releaseID = appointmentSelected.releaseID;
+                    
                     [blockSelf.slideNavigationController pushViewController:doctorSelectOrderTimeController animated:YES];
                 }
                     break;

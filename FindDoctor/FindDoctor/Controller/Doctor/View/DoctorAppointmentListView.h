@@ -15,12 +15,16 @@ typedef void(^DoctorSectionActionTag)(SelectOrderTime *selectOrderTime);
 
 @interface DoctorAppointmentListView : UIView<UITableViewDelegate,UITableViewDataSource>
 
-- (id)initWithFrame:(CGRect)frame data:(DoctorAppointmentListItem *)data;
+- (id)initWithFrame:(CGRect)frame data:(DoctorAppointmentListItem *)data releaseID:(long long)releaseID;
+
+- (void)loadNewData;
 
 @property (nonatomic, strong) DoctorAppointmentListItem *data;
 @property (nonatomic, copy) DoctorSectionActionTag clickBlock;
 
 @property (nonatomic, strong) UITableView *tableView;
+
+@property long long releaseID;
 
 + (CGFloat)cellHeight;
 

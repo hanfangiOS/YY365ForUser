@@ -10,7 +10,8 @@
 #import "DoctorAppointmentListView.h"
 #import "OrderCreateController.h"
 #import "CUOrderManager.h"
-@interface DoctorSelectOrderTimeController (){
+
+@interface DoctorSelectOrderTimeController ()<UIAlertViewDelegate>{
     DoctorAppointmentListView *listView;
 }
 
@@ -20,7 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    listView = [[DoctorAppointmentListView alloc] initWithFrame:CGRectMake(0, 0,kScreenWidth,self.contentView.frameHeight) data:_doctorAppointmentListItem];
+    
+    self.title = @"选择约诊时段";
+    
+    listView = [[DoctorAppointmentListView alloc] initWithFrame:CGRectMake(0, 0,kScreenWidth,self.contentView.frameHeight) data:_doctorAppointmentListItem releaseID:self.releaseID];
     [self.contentView addSubview:listView];
     
     __weak __block DoctorSelectOrderTimeController *blockSelf = self;
@@ -39,12 +43,24 @@
                     [blockSelf.slideNavigationController pushViewController:createVC animated:YES];
                 }
                 else{
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[result.responseObject valueForKey:@"data"] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+                    NSDictionary * data = [result.responseObject objectForKeySafely:@"data"];
+                    NSString * message = [data objectForKeySafely:@"message"];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+                    alert.delegate = blockSelf;
                     [alert show];
                 }
             }
         } pageName:@"DoctorSelectOrderTimeController"];
     };
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [listView loadNewData];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    [listView loadNewData];
 }
 
 - (void)didReceiveMemoryWarning {

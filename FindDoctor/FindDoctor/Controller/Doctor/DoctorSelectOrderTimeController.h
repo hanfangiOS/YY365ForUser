@@ -14,5 +14,6 @@
 @property (nonatomic,strong)Doctor *doctor;
 @property (nonatomic,strong)DoctorAppointmentListItem *doctorAppointmentListItem;
 @property long long diagnosisID;
+@property long long releaseID;
 
 @end
