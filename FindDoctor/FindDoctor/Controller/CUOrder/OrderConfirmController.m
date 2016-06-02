@@ -43,7 +43,7 @@
 #define kPlaceHolder      @"支付金额"
 #define kMaxAmount        9999999
 
-#define kUrlScheme      @"wx584ad6cae2973f02" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
+#define kUrlScheme      @"uyi365ForPatient200" // 这个是你定义的 URL Scheme，支付宝、微信支付和测试模式需要。
 
 @interface OrderConfirmController ()<UIAlertViewDelegate>{
     UIAlertView     * mAlert;
