@@ -20,7 +20,7 @@
 #import "CommonManager.h"
 #import "OptionList.h"
 
-@interface SearchResultViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate>
+@interface SearchResultViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong) DOPDropDownMenu *dropdownMenu;
 
@@ -50,8 +50,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"";
     
-    self.title = @"找医生";
+    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(68, 27, kScreenWidth - 120, 24)];
+    _searchTextField.placeholder = @"搜索病症/医师/症状/诊所";
+    [_searchTextField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
+    _searchTextField.font = [UIFont systemFontOfSize:13];
+    _searchTextField.textColor = [UIColor whiteColor];
+    _searchTextField.delegate = self;
+    _searchTextField.layer.backgroundColor = UIColorFromHex(0x0068dd).CGColor;
+    _searchTextField.layer.cornerRadius = 3.f;
+    _searchTextField.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 5, _searchTextField.frameHeight)];;
+    _searchTextField.leftViewMode = UITextFieldViewModeAlways;
+    _searchTextField.returnKeyType = UIReturnKeySearch;
+    [self.navigationBar addSubview:_searchTextField];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

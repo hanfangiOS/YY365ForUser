@@ -12,5 +12,6 @@
 @interface SearchResultViewController : CUListViewController
 
 
+@property (strong, nonatomic) UITextField *searchTextField;
 
 @end
