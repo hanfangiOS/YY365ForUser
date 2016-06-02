@@ -620,38 +620,39 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
 }
 
-- (void)CheckOrderHasPaidWithDiagnosisID:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+
+- (void)getPayDiagnosisIsExisted:(long long)diagnosisID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+    NSMutableDictionary * param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
-//    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
-    [param setObjectSafely:@"OrderHashPaid" forKey:@"require"];
+    [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
+    [param setObjectSafely:@"PayDiagnosisIsExisted" forKey:@"require"];
+    [param setObjectSafely:@(11601) forKey:@"interfaceID"];
     [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
     
     NSMutableDictionary * dataParam = [NSMutableDictionary new];
-    [dataParam setObjectSafely:@(diagnosisID) forKey:@"order_no"];
+    [dataParam setObjectSafely:@(diagnosisID) forKey:@"diagnosisID"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
-    
+
     NSLog(@"%@",param);
-    
-    
-//    SNServerAPIManager *apiMr = [[SNServerAPIManager alloc] initWithServer:@"http://192.168.1.101:8889"];
-//    [apiMr POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-//    [[AppCore sharedInstance].apiManager POST:KCheckOrderHasPaidUrl parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-//        if (!result.hasError) {
-//            if ([(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue] == 0) {
-//                
-//            }
-//            else {
-//                [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"data"]];
-//            }
-//        }
-//        else {
-//            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
-//        }
-//        
-//        resultBlock(request, result);
-//        
-//    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
+    [[AppCore sharedInstance].apiManager POST:URL_AfterBase parameters:param callbackRunInGlobalQueue:YES parser:nil parseMethod:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+        
+        if (!result.hasError) {
+            if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
+        
+                
+            }
+            else {
+                    [TipHandler showTipOnlyTextWithNsstring:[result.responseObject valueForKey:@"messeage"]];
+            }
+        }
+        else {
+            NSLog(@"连接服务器失败，请检查网络");
+            [TipHandler showTipOnlyTextWithNsstring:@"连接服务器失败，请检查网络"];
+        }
+        
+        resultBlock(request, result);
+        
+    }forKey:@"get_subject_doctor_list" forPageNameGroup:pageName];
     
 }
 

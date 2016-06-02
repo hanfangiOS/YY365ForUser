@@ -267,15 +267,16 @@
 #pragma mark - Post Request
 
 //11601 获取订单状态 （支付前）
-- (void)postRequestCheckOrderStatusBefore{
+
+- (void)postRequestPayDiagnosisIsExisted{
     [self showProgressView];
-    [[CUOrderManager sharedInstance]getOrderStateWithDiagnosisID:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+    [[CUOrderManager sharedInstance]getPayDiagnosisIsExisted:_order.diagnosisID resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [self hideProgressView];
         if (!result.hasError) {
             if (![result.responseObject integerForKeySafely:@"errorCode"]) {
-                [self HandleOrdertWithResult:result orderResult:OrderResultSuccess];
-            }else{
                 [self postRequestGetCharge];
+            }else{
+
             }
         }
     } pageName:@"OrderConfirmController"];
@@ -538,11 +539,11 @@
             [alert show];
             return;
         }
-        [self postRequestCheckOrderStatusBefore];
+        [self postRequestPayDiagnosisIsExisted];
     }
     else if (self.order.payment == ORDERPAYMENT_ZhiFuBao) {
         self.channel = @"alipay";
-        [self postRequestCheckOrderStatusBefore];
+        [self postRequestPayDiagnosisIsExisted];
     }
     else{
         return;
