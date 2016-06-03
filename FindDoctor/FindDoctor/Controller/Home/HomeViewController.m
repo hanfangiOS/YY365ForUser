@@ -62,7 +62,7 @@
     [self.contentView addSubview:_homeSubViewController_Search.view];
     [self.contentView addSubview:_homeSubViewController_Main.view];
     
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kNavigationHeight)];
     headerView.layer.backgroundColor = UIColorFromHex(Color_Hex_NavBackground).CGColor;
     [self.contentView addSubview:headerView];
     

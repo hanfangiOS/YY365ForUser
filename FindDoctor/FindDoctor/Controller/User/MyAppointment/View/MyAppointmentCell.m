@@ -148,7 +148,7 @@
     if (self.timeInt > 0) {
         //计时器对象
         self.timer = [NSTimer scheduledTimerWithTimeInterval:60  target:self selector:@selector(startCounting) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+        [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
         [self.timer fire];
     }
     

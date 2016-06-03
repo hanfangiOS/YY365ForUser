@@ -124,10 +124,14 @@
     
     [imageView setImageWithURL:[NSURL URLWithString:self.data.avatar] placeholderImage:[UIImage imageNamed:@"temp_icon_doctor"]];
     
+
     NSString *str = [NSString stringWithFormat:@"%@      %@",self.data.name,self.data.levelDesc];
     NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc]initWithString:str];
-    [atrStr addAttributes:@{NSFontAttributeName:SystemFont_14,NSForegroundColorAttributeName:kBlackColor} range:[str rangeOfString:self.data.name]];
-    label1.attributedText = atrStr;
+    if (self.data.name && self.data.levelDesc) {
+       
+        [atrStr addAttributes:@{NSFontAttributeName:SystemFont_14,NSForegroundColorAttributeName:kBlackColor} range:[str rangeOfString:self.data.name]];
+        label1.attributedText = atrStr;
+    }
     
     if (_data.doctorState != -1) {
         if (_data.doctorState == 0 || _data.doctorState == 1) {
@@ -141,19 +145,25 @@
         
         str = [NSString stringWithFormat:@"就诊时间:%@",self.data.availableTime];
         atrStr = [[NSMutableAttributedString alloc]initWithString:str];
-        [atrStr addAttributes:@{NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"就诊时间:"]];
-        label2.attributedText = atrStr;
-        
+        if (self.data.availableTime) {
+            [atrStr addAttributes:@{NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"就诊时间:"]];
+            label2.attributedText = atrStr;
+        }
+
+
         str = [NSString stringWithFormat:@"就诊地点:%@",self.data.address];
         atrStr = [[NSMutableAttributedString alloc]initWithString:str];
-        [atrStr addAttributes:@{NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"就诊地点:"]];
-        label3.attributedText = atrStr;
+        if (self.data.address) {
+            [atrStr addAttributes:@{NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"就诊地点:"]];
+            label3.attributedText = atrStr;
+        }
         
         str = [NSString stringWithFormat:@"诊金: ￥%.2f",(float)self.data.price/100];
         atrStr = [[NSMutableAttributedString alloc]initWithString:str];
-        [atrStr addAttributes:@{NSFontAttributeName:SystemFont_12,NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"诊金: "]];
-        label4.attributedText = atrStr;
-
+        if (self.data.price) {
+            [atrStr addAttributes:@{NSFontAttributeName:SystemFont_12,NSForegroundColorAttributeName:UIColorFromHex(Color_Hex_NavBackground)} range:[str rangeOfString:@"诊金: "]];
+            label4.attributedText = atrStr;
+        }
     }
     else{
         jianJieLabel.text = [NSString stringWithFormat:@"简介: %@",self.data.briefIntro];

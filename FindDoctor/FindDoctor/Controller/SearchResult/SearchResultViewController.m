@@ -19,6 +19,7 @@
 #import "SearchResultListModel.h"
 #import "CommonManager.h"
 #import "OptionList.h"
+#import "SearchHistoryHelper.h"
 
 @interface SearchResultViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate,UITextFieldDelegate>
 
@@ -52,7 +53,7 @@
     [super viewDidLoad];
     self.title = @"";
     
-    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(68, 27, kScreenWidth - 120, 24)];
+    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(44, 27, kScreenWidth - 66, 24)];
     _searchTextField.placeholder = @"搜索病症/医师/症状/诊所";
     [_searchTextField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
     _searchTextField.font = [UIFont systemFontOfSize:13];
@@ -306,6 +307,24 @@
 {
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.view endEditing:YES];
+    if (![textField.text isEmpty]) {
+        [self searchClickWithString:textField.text];
+    }
+    return YES;
+}
+
+#pragma mark - Search History
+- (void)searchClickWithString:(NSString *)searchStr
+{
+    if (searchStr.length == 0) {
+        return;
+    }
+    [SearchHistoryHelper saveSearchHistory:searchStr];
+    self.listModel.filter.keyword = searchStr;
+    [self triggerRefresh];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
