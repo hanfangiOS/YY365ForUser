@@ -72,9 +72,14 @@
     }
     
     if (alertView.tag == 2000) {
+        [self showProgressView];
+        __block __weak typeof(self)weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf clearCache];
+            [weakSelf hideProgressView];
+            [weakSelf.tableView reloadData];
+        });
         
-        [self clearCache];
-        [self.tableView reloadData];
     }
 }
 
@@ -278,7 +283,7 @@
     NSString * path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)lastObject];
     NSFileManager * fileManager = [NSFileManager defaultManager];
     
-    float folderSize;
+    float folderSize = 0;
     
     if ([fileManager fileExistsAtPath:path]) {
         NSArray * subFiles = [fileManager subpathsAtPath:path];
@@ -310,20 +315,7 @@
 - (void)postRequestExitAccount{
 
     [[CUUserManager sharedInstance] logoutWithUser:nil resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
-//        [self hideProgressView];
-//        if (!result.hasError)
-//        {
-//            NSNumber * errorCode = [result.responseObject objectForKeySafely:@"errorcode"];
-//            if (![errorCode integerValue]) {
-//                
-//                [[CUUserManager sharedInstance] clear];
-//                [self.slideNavigationController popViewControllerAnimated:NO];
-//            }else{
-//                 [TipHandler showTipOnlyTextWithNsstring:[result.responseObject stringForKeySafely:@"message"]];
-//            }
-//        }else{
-//             [TipHandler showTipOnlyTextWithNsstring:@"网络连接失败"];
-//        }
+
         
     } pageName:@"SettingViewController"];    
 }
