@@ -87,9 +87,9 @@
     self.view.backgroundColor = kTableViewGrayColor;
     
     _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.contentView.bounds), CGRectGetHeight(self.contentView.bounds) - Height_Tabbar)];
-    [_mapView setZoomLevel:13];
+    [_mapView setZoomLevel:14];
     _mapView.isSelectedAnnotationViewFront = YES;
-    //_mapView.showsUserLocation = YES;
+    _mapView.showsUserLocation = YES;
     //_mapView.userTrackingMode = BMKUserTrackingModeNone;
     [self.contentView addSubview:_mapView];
     
@@ -515,20 +515,20 @@
     for (int i = 0; i < self.dataArray.count; i++) {
         Clinic *merchant = (Clinic *)[self.dataArray objectAtIndex:i];
         
-        if (i == 0) {
-            self.merchant = merchant;
-            [self updateButtonView];
-        }
+//        if (i == 0) {
+//            self.merchant = merchant;
+//            [self updateButtonView];
+//        }
         
         BMKPointAnnotation *item = [[BMKPointAnnotation alloc]init];
         item.coordinate = {merchant.latitude, merchant.longitude};
         item.title = merchant.name;
         [self.pointAnnotations addObject:item];
         
-        if(i == 0 && animated) {
-            //将第一个点的坐标移到屏幕中央
-            _mapView.centerCoordinate = item.coordinate;
-        }
+//        if(i == 0 && animated) {
+//            //将第一个点的坐标移到屏幕中央
+//            _mapView.centerCoordinate = item.coordinate;
+//        }
         
         [item release];
     }
@@ -639,12 +639,12 @@
 
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
-    //[_mapView updateLocationData:userLocation];
+    [_mapView updateLocationData:userLocation];
 }
 
 - (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
-    //[_mapView updateLocationData:userLocation];
+    [_mapView updateLocationData:userLocation];
 }
 
 - (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView
