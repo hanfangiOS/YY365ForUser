@@ -165,7 +165,9 @@
                     break;
                 default:
                 {
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[result.responseObject valueForKey:@"data"] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+                    NSDictionary * data = [result.responseObject objectForKeySafely:@"data"];
+                    NSString * message = [data objectForKeySafely:@"message"];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
                     [alert show];
                 }
                     break;
