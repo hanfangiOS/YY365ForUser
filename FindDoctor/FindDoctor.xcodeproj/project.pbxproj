@@ -5081,7 +5081,6 @@
 					"-Objc",
 					"-all_loaded",
 				);
-				PROVISIONING_PROFILE = "ab15fc78-8592-4617-b7fb-22a37a4526d7";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5126,7 +5125,6 @@
 					"-Objc",
 					"-all_loaded",
 				);
-				PROVISIONING_PROFILE = "ab15fc78-8592-4617-b7fb-22a37a4526d7";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5190,7 +5188,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "ab15fc78-8592-4617-b7fb-22a37a4526d7";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Debug;
@@ -5253,7 +5250,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "ab15fc78-8592-4617-b7fb-22a37a4526d7";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Release;
