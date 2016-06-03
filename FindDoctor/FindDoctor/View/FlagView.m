@@ -77,7 +77,22 @@
                     }
                     [blockImageArray addObject:image];
                 } failure:^(NSError *error) {
-                    UIImage *image = [UIImage imageNamed:@"flagMSHC@2x"];
+                    UIImage *image;
+                    switch (i) {
+                        case 0:
+                            image = [UIImage imageNamed:@"good"];
+                            break;
+                        case 1:
+                            image = [UIImage imageNamed:@"clever"];
+                            break;
+                        case 2:
+                            image = [UIImage imageNamed:@"nice"];
+                            break;
+                            
+                        default:
+                            image = [UIImage imageNamed:@"clever"];
+                            break;
+                    }
                     blockImageView.image = image;
                     blockImageView.frameHeight = image.size.height/image.size.width*freamWidth;
                     [blockImageArray addObject:image];
