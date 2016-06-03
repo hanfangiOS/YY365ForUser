@@ -461,7 +461,7 @@
     //7orlPDNBtllWuvnREmXSz3HNtYd206jV uqku.demo
     _mapManager = [[BMKMapManager alloc]init];
     //    BOOL ret = [_mapManager start:@"iECHAdtn1ql3FlkGKasXyGbs" generalDelegate:self];
-    BOOL ret = [_mapManager start:@"7orlPDNBtllWuvnREmXSz3HNtYd206jV" generalDelegate:self];
+    BOOL ret = [_mapManager start:@"AZkRPuUHS62q0zY9oPQqPNmZ" generalDelegate:self];
     if (!ret) {
         NSLog(@"manager start failed!");
     }

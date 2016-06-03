@@ -64,7 +64,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString * CellID = [NSString stringWithFormat:@"Cell%d",(NSInteger)indexPath.row];
+    NSString * CellID = [NSString stringWithFormat:@"Cell%ld",(NSInteger)indexPath.row];
     MyCommentCell * cell = [[MyCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 

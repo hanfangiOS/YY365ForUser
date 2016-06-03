@@ -5050,8 +5050,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sichuan Hanfang Fengxing Technology Co., Ltd. (M8XN28D3G2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sichuan Hanfang Fengxing Technology Co., Ltd. (M8XN28D3G2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -5081,7 +5081,7 @@
 					"-Objc",
 					"-all_loaded",
 				);
-				PROVISIONING_PROFILE = "06dfd5e2-2e96-4a9c-8a68-a03adb977a4e";
+				PROVISIONING_PROFILE = "ab15fc78-8592-4617-b7fb-22a37a4526d7";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5103,8 +5103,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sichuan Hanfang Fengxing Technology Co., Ltd. (M8XN28D3G2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sichuan Hanfang Fengxing Technology Co., Ltd. (M8XN28D3G2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5126,7 +5126,7 @@
 					"-Objc",
 					"-all_loaded",
 				);
-				PROVISIONING_PROFILE = "06dfd5e2-2e96-4a9c-8a68-a03adb977a4e";
+				PROVISIONING_PROFILE = "ab15fc78-8592-4617-b7fb-22a37a4526d7";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5137,8 +5137,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5188,9 +5188,9 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
+				PROVISIONING_PROFILE = "ab15fc78-8592-4617-b7fb-22a37a4526d7";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Debug;
@@ -5200,8 +5200,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chongqing Youqiku Iot Technology Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShengJian Lai (UC94U4573S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ShengJian Lai (UC94U4573S)";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5251,9 +5251,9 @@
 					"$(PROJECT_DIR)/FindDoctor/Utitlity/pingpplib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uqku.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uyi365.ForPatient;
 				PRODUCT_NAME = FindDoctor;
-				PROVISIONING_PROFILE = "9ca59782-cea6-49e4-a1c6-f09baf80827a";
+				PROVISIONING_PROFILE = "ab15fc78-8592-4617-b7fb-22a37a4526d7";
 				USER_HEADER_SEARCH_PATHS = "../SNArchitecture ../SNArchitecture/SNCore/SNUtility";
 			};
 			name = Release;
