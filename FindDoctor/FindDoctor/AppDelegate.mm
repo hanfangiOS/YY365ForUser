@@ -483,9 +483,7 @@
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
-    //    [param setObjectSafely:@"VersionCheck" forKey:@"require"];
-    //    [param setObjectSafely:@(1111111111) forKey:@"interfaceID"];
-    //    [param setObjectSafely:@((NSInteger)[NSDate timeIntervalSince1970]) forKey:@"timestamp"];
+
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:[CUPlatFormManager currentAppVersion] forKey:@"appVersion"];
     [dataParam setObjectSafely:[[[UIDevice currentDevice] identifierForVendor] UUIDString] forKey:@"deviceID"];

@@ -78,9 +78,9 @@
             self.title.frame = CGRectMake((self.frameWidth - titleSize.width)/2, 0, titleSize.width, titleSize.height);
             
             //线与边界距离
-            CGFloat padding = 5 * HFixRatio6;
+            CGFloat padding = 5 ;
             //线与title距离
-            CGFloat space = 8 * HFixRatio6;
+            CGFloat space = 8 ;
 
             self.leftLine.frame = CGRectMake(padding, (self.frameHeight - 1)/2, self.title.frameX - padding - space, 1);
             self.rightLine.frame = CGRectMake(self.title.maxX + space, (self.frameHeight - 1)/2, self.frameWidth - (self.title.maxX + space) - padding, 1);
