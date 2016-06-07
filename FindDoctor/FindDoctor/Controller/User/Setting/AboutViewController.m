@@ -117,7 +117,7 @@
             break;
         case 2:
         {
-            NSString * str = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1091982091"];
+            NSString * str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id1091982091"];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
         }
             break;
