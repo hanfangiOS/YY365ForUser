@@ -349,7 +349,8 @@
 {
     SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
     SubObject *subobject = (SubObject *)[self.homeModel.subjectList objectAtIndex:indexPath.row];
-    listModel.filter.subjectID = subobject.type_id;
+    listModel.filter.subject.name = subobject.name;
+    listModel.filter.subject.ID = subobject.type_id;
     SearchResultViewController *listVC = [[SearchResultViewController alloc] initWithPageName:self.pageName listModel:listModel];
     [self.slideNavigationController pushViewController:listVC animated:YES];
     

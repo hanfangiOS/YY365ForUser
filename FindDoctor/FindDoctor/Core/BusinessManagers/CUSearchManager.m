@@ -23,22 +23,24 @@ SINGLETON_IMPLENTATION(CUSearchManager);
 - (void)getSearchResultListWithFilter:(SearchFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
 
     
-    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:11101 require:@"SearchDoctorBySubject"];
+    NSMutableDictionary * param = [HFRequestHeaderDict initWithInterfaceID:11101 require:@"SearchEntry"];
     NSMutableDictionary * dataParam = [NSMutableDictionary new];
     [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
     [dataParam setObjectSafely:filter.keyword forKey:@"search"];
-    if ([filter.keyword isEqualToString:@"-1"]){
-       [dataParam setObjectSafely:@(filter.subjectID) forKey:@"search"];
-    }
+//    if ([filter.keyword isEqualToString:@"-1"]){
+//       [dataParam setObjectSafely:@(filter.subjectID) forKey:@"search"];
+//    }
     [dataParam setObjectSafely:@([kCurrentLng doubleValue]) forKey:@"longtitude"];
     [dataParam setObjectSafely:@([kCurrentLat doubleValue]) forKey:@"latitude"];
-    [dataParam setObjectSafely:@(filter.subjectID) forKey:@"subjectID"];
-    [dataParam setObjectSafely:@(filter.region.ID) forKey:@"regionID"];
+    [dataParam setObjectSafely:filter.subject.name forKey:@"subject"];
+//    [dataParam setObjectSafely:@(filter.region.ID) forKey:@"regionID"];
     [dataParam setObjectSafely:filter.region.name forKey:@"region"];
-    [dataParam setObjectSafely:@(filter.symptomID) forKey:@"symptomID"];
+    [dataParam setObjectSafely:filter.symptom.name forKey:@"symptom"];
     [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
     [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
     [dataParam setObjectSafely:filter.date forKey:@"orderDate"];
+//    [dataParam setObjectSafely:filter.searchListType == SearchListTypeDoctor ? @"doctorList":@"clinicList" forKey:@"listType"];
+    [dataParam setObjectSafely:@"clinicList" forKey:@"listType"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
 
     NSLog(@"%@",param);
@@ -50,7 +52,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                 
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 
-                NSArray *recvListDoctor = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"doctorReleaseList"];
+                NSArray *recvListDoctor = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"doctorList"];
                 NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                 
                 [recvListDoctor enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){

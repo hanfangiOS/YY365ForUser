@@ -22,7 +22,10 @@
         self.region = [[RegionOption alloc]init];
         self.region.ID = 510000;
         self.region.name = @"-1";
-        self.symptomID = -1;
+        self.symptom = [[SymptomSubOption alloc]init];
+        self.symptom.name = @"-1";
+        self.subject = [[SymptomOption alloc]init];
+        self.subject.name = @"-1";
     }
     return self;
 }

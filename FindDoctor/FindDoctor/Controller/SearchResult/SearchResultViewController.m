@@ -19,8 +19,9 @@
 #import "SearchResultListModel.h"
 #import "CommonManager.h"
 #import "OptionList.h"
+#import "SearchHistoryHelper.h"
 
-@interface SearchResultViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate>
+@interface SearchResultViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong) DOPDropDownMenu *dropdownMenu;
 
@@ -50,8 +51,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"";
     
-    self.title = @"找医生";
+    _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(44, 27, kScreenWidth - 66, 24)];
+    _searchTextField.placeholder = @"搜索病症/医师/症状/诊所";
+    [_searchTextField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
+    _searchTextField.font = [UIFont systemFontOfSize:13];
+    _searchTextField.textColor = [UIColor whiteColor];
+    _searchTextField.delegate = self;
+    _searchTextField.layer.backgroundColor = UIColorFromHex(0x0068dd).CGColor;
+    _searchTextField.layer.cornerRadius = 3.f;
+    _searchTextField.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 5, _searchTextField.frameHeight)];;
+    _searchTextField.leftViewMode = UITextFieldViewModeAlways;
+    _searchTextField.returnKeyType = UIReturnKeySearch;
+    [self.navigationBar addSubview:_searchTextField];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,15 +82,15 @@
             blockSelf.timeArray = [dic objectForKey:@"dateOption"];
             [blockSelf.dropdownMenu reloadData];
             
-            if (self.listModel.filter.subjectID > 0) {
+            if (self.listModel.filter.subject.ID > 0) {
                 for(int i = 0 ; i < blockSelf.diseaseArray.count ; i++){
                     SymptomOption *item = [blockSelf.diseaseArray objectAtIndex:i];
-                    if(item.ID == self.listModel.filter.subjectID){
+                    if(item.ID == self.listModel.filter.subject.ID){
                         [self.dropdownMenu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:i] triggerDelegate:NO];
-                        if (self.listModel.filter.symptomID > 0) {
+                        if (self.listModel.filter.symptom.ID > 0) {
                             for (int j = 0; j < item.symptomSubOptionArray.count ; j++) {
                                 SymptomSubOption *subItem = [item.symptomSubOptionArray objectAtIndex:j];
-                                if(subItem.ID == self.listModel.filter.symptomID){
+                                if(subItem.ID == self.listModel.filter.symptom.ID){
                                     [self.dropdownMenu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:i item:j] triggerDelegate:NO];
                                     break;
                                 }
@@ -244,8 +257,8 @@
         case 0:{
             if(indexPath.item == -1){
                 if(indexPath.row == 0){
-                    self.listModel.filter.subjectID = -1;
-                    self.listModel.filter.symptomID = -1;
+                    self.listModel.filter.subject.name = @"-1";
+                    self.listModel.filter.symptom.name= @"-1";
                 }
                 else{
                     return;
@@ -254,8 +267,8 @@
             else{
                 SymptomOption *item = [self.diseaseArray objectAtIndexSafely:indexPath.row];
                 SymptomSubOption *SubItem = [item.symptomSubOptionArray objectAtIndexSafely:indexPath.item];
-                self.listModel.filter.symptomID = SubItem.ID;
-                self.listModel.filter.subjectID = item.ID;
+                self.listModel.filter.symptom.name = SubItem.name;
+                self.listModel.filter.subject.name = item.name;
             }
         }
             break;
@@ -294,6 +307,24 @@
 {
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.view endEditing:YES];
+    if (![textField.text isEmpty]) {
+        [self searchClickWithString:textField.text];
+    }
+    return YES;
+}
+
+#pragma mark - Search History
+- (void)searchClickWithString:(NSString *)searchStr
+{
+    if (searchStr.length == 0) {
+        return;
+    }
+    [SearchHistoryHelper saveSearchHistory:searchStr];
+    self.listModel.filter.keyword = searchStr;
+    [self triggerRefresh];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
