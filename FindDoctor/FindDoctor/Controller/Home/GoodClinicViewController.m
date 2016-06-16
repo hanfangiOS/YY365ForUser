@@ -12,6 +12,9 @@
 #import "ClinicAdverCell.h"
 #import "HFTitleView.h"
 #import "ClinicMainViewController.h"
+#import "SearchResultViewController.h"
+
+#import "SearchResultListModel.h"
 
 #define sectionHeaderViewHeight 30
 
@@ -133,11 +136,11 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
         HFTitleView * titleView = [[HFTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight) titleText:@"好评诊所" Style:HFTitleViewStyleLoadMore];
         titleView.pic.backgroundColor = kBlueTextColor;
         titleView.title.font = [UIFont systemFontOfSize:14];
-//        [titleView.loadMoreBtn setTitle:@"更多诊所" forState:UIControlStateNormal];
-//        
-//        [titleView.loadMoreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
-//        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-//        [titleView.loadMoreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
+        [titleView.loadMoreBtn setTitle:@"更多诊所" forState:UIControlStateNormal];
+        
+        [titleView.loadMoreBtn setTitleColor:kGrayTextColor forState:UIControlStateNormal];
+        titleView.loadMoreBtn.titleLabel.font = [UIFont systemFontOfSize:11];
+        [titleView.loadMoreBtn addTarget:self action:@selector(loadMoreAction) forControlEvents:UIControlEventTouchUpInside];
         titleView.tag = 4000;
         [reuseHeaderView addSubview:titleView];
         
@@ -170,7 +173,12 @@ static NSString * const reuseFooterID = @"ReuseFooterView";
 }
 
 - (void)loadMoreAction{
-    
+    SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
+    listModel.filter.subject.name = @"-1";
+    listModel.filter.subject.ID = -1;
+    listModel.filter.searchListType = SearchListTypeClinic;
+    SearchResultViewController *listVC = [[SearchResultViewController alloc] initWithPageName:_fatherVC.pageName listModel:listModel];
+    [_fatherVC.slideNavigationController pushViewController:listVC animated:YES];
 }
 
 

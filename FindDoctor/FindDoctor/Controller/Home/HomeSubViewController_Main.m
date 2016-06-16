@@ -350,10 +350,10 @@
     SearchResultListModel * listModel = [[SearchResultListModel alloc] initWithSortType:SearchSortTypeNone];
     SubObject *subobject = (SubObject *)[self.homeModel.subjectList objectAtIndex:indexPath.row];
     listModel.filter.subject.name = subobject.name;
-    listModel.filter.subject.ID = subobject.type_id;
+    listModel.filter.subject.ID = (NSInteger)subobject.type_id;
+    listModel.filter.searchListType = SearchListTypeDoctor;
     SearchResultViewController *listVC = [[SearchResultViewController alloc] initWithPageName:self.pageName listModel:listModel];
     [self.slideNavigationController pushViewController:listVC animated:YES];
-    
 }
 
 #pragma mark - tableViewDelegate

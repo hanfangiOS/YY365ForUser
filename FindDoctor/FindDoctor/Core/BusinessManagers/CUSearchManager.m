@@ -32,15 +32,15 @@ SINGLETON_IMPLENTATION(CUSearchManager);
 //    }
     [dataParam setObjectSafely:@([kCurrentLng doubleValue]) forKey:@"longtitude"];
     [dataParam setObjectSafely:@([kCurrentLat doubleValue]) forKey:@"latitude"];
-    [dataParam setObjectSafely:filter.subject.name forKey:@"subject"];
+    [dataParam setObjectSafely:[filter.subject.name isEqualToString:@"全部"] ? @"-1":filter.subject.name forKey:@"subject"];
 //    [dataParam setObjectSafely:@(filter.region.ID) forKey:@"regionID"];
     [dataParam setObjectSafely:filter.region.name forKey:@"region"];
-    [dataParam setObjectSafely:filter.symptom.name forKey:@"symptom"];
+    [dataParam setObjectSafely:[filter.symptom.name isEqualToString:@"全部"] ? @"-1":filter.symptom.name forKey:@"symptom"];
     [dataParam setObjectSafely:@(filter.rows) forKey:@"rows"];
     [dataParam setObjectSafely:@(filter.total) forKey:@"total"];
     [dataParam setObjectSafely:filter.date forKey:@"orderDate"];
-//    [dataParam setObjectSafely:filter.searchListType == SearchListTypeDoctor ? @"doctorList":@"clinicList" forKey:@"listType"];
-    [dataParam setObjectSafely:@"clinicList" forKey:@"listType"];
+    [dataParam setObjectSafely:filter.searchListType == SearchListTypeDoctor ? @"doctorList":@"clinicList" forKey:@"listType"];
+//    [dataParam setObjectSafely:@"clinicList" forKey:@"listType"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
 
     NSLog(@"%@",param);
@@ -58,7 +58,7 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                 [recvListDoctor enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
                     Doctor *doctor = [[Doctor alloc] init];
                     
-                    doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
+                    doctor.doctorId = [(NSNumber *)[obj valueForKey:@"dataID"] integerValue];
                     doctor.briefIntro = [obj valueForKey:@"briefIntro"];
                     doctor.avatar = [obj valueForKey:@"icon"];
                     if ([doctor.avatar isEqualToString:@"0"]) {
@@ -83,41 +83,26 @@ SINGLETON_IMPLENTATION(CUSearchManager);
                     doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"address"]];
                     doctor.doctorState = [[obj valueForKey:@"state"] integerValue];
                     doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
+//                    doctor.doctorState = -1;
                     
                     [listSubjectDoctor addObject:doctor];
                 }];
                 
-                recvListDoctor = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"doctorList"];
+                recvListDoctor = [[result.responseObject dictionaryForKeySafely:@"data"] arrayForKeySafely:@"clinicList"];
                 
                 [recvListDoctor enumerateObjectsUsingBlockSafety:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-                    Doctor *doctor = [[Doctor alloc] init];
+                    Clinic *clinic = [[Clinic alloc] init];
                     
-                    doctor.doctorId = [(NSNumber *)[obj valueForKey:@"doctorID"] integerValue];
-                    doctor.briefIntro = [obj valueForKey:@"briefIntro"];
-                    doctor.avatar = [obj valueForKey:@"icon"];
-                    if ([doctor.avatar isEqualToString:@"0"]) {
-                        NSString *sex = [obj valueForKey:@"sex"];
-                        if ([sex isEqualToString:@"男"]) {
-                            doctor.avatar = [NSString stringWithFormat:@"http://uyi365.com/hanfang_nan.png"];
-                        }else{
-                            doctor.avatar = [NSString stringWithFormat:@"http://uyi365.com/hanfang_nv.png"];
-                        }
-                    }
-                    doctor.subject = [obj valueForKey:@"matchItemDisease"];
-                    doctor.name = [obj valueForKey:@"name"];
-                    doctor.skillTreat = [obj valueForKey:@"skillTreat"];
-                    doctor.levelDesc = [obj valueForKey:@"title"];
-                    //                        doctor.rate = [(NSNumber *)[obj valueForKey:@"star_grade"] doubleValue];
-                    doctor.price = [(NSNumber *)[obj valueForKey:@"fee"] doubleValue];
-                    doctor.availableTime = [obj valueForKey:@"releaseTime"];
-                    doctor.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
-                    doctor.briefIntro = [NSString stringWithFormat:@"%@",[obj valueForKey:@"briefIntro"]];
-                    doctor.skillTreat = [obj valueForKey:@"skillTreat"];
-                    doctor.doctorState = -1;
-                    doctor.numDiag = [[obj valueForKey:@"numDiag"] integerValue];
+                    clinic.ID = [(NSNumber *)[obj valueForKey:@"dataID"] integerValue];
+                    clinic.icon = [obj valueForKey:@"icon"];
+                    clinic.name = [obj valueForKey:@"name"];
+                    clinic.skillTreat = [obj valueForKey:@"skillTreat"];
+                    clinic.address = [NSString stringWithFormat:@"%@(%@)",[obj valueForKey:@"clinicName"],[obj valueForKey:@"clinicAddress"]];
                     
-                    [listSubjectDoctor addObject:doctor];
+                    [listSubjectDoctor addObject:clinic];
                 }];
+                
+                
                 listModel.items = listSubjectDoctor;
                 result.parsedModelObject = listModel;
             }

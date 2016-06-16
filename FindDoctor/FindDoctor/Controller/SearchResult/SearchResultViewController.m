@@ -20,6 +20,8 @@
 #import "CommonManager.h"
 #import "OptionList.h"
 #import "SearchHistoryHelper.h"
+#import "ClinicMainViewController.h"
+#import "MyClinicCell.h"
 
 @interface SearchResultViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate,UITextFieldDelegate>
 
@@ -137,14 +139,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"DoctorCell";
-    DoctorCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[DoctorCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    id item = [self.listModel.items objectAtIndexSafely:indexPath.row];
+    if ([item isKindOfClass:[Doctor class]]){
+        static NSString *cellIdentifier = @"DoctorCell";
+        
+        DoctorCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil) {
+            cell = [[DoctorCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        
+        cell.cellContentView.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
+        return cell;
     }
-    
-    cell.cellContentView.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
-    
+    if ([item isKindOfClass:[Clinic class]]) {
+        static NSString *cellIdentifier = @"MyClinicCell";
+        
+        MyClinicCell *cell = (MyClinicCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        
+        if (cell == nil) {
+            cell =  [[MyClinicCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        cell.cellContentView.data = self.listModel.items[indexPath.row];
+        
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        return cell;
+    }
+    UITableViewCell *cell = [[UITableViewCell alloc]init];
     return cell;
 }
 
@@ -152,21 +172,24 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    DoctorDetailController *detailVC = [[DoctorDetailController alloc] initWithPageName:self.pageName];
-    detailVC.doctor = [self.listModel.items objectAtIndexSafely:indexPath.row];
-#if !LOCAL
-    [[CUDoctorManager sharedInstance] updateDoctorInfo:detailVC.doctor date:[[[NSDate date] dateAtStartOfDay] timeIntervalSince1970] resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
-        
-        if (!result.hasError) {
-            [self.slideNavigationController pushViewController:detailVC animated:YES];
-        }
-//        else {
-//            [TipHandler showTipOnlyTextWithNsstring:[result.error.userInfo objectForKey:NSLocalizedDescriptionKey]];
-//        }
-    }];
-#else
-    [self.slideNavigationController pushViewController:detailVC animated:YES];
-#endif
+    id item = [self.listModel.items objectAtIndexSafely:indexPath.row];
+    if ([item isKindOfClass:[Doctor class]]){
+        DoctorDetailController *detailVC = [[DoctorDetailController alloc] initWithPageName:@"DoctorDetailController"];
+        detailVC.doctor = item;
+        [[CUDoctorManager sharedInstance] updateDoctorInfo:detailVC.doctor date:[[[NSDate date] dateAtStartOfDay] timeIntervalSince1970] resultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result){
+            if (!result.hasError) {
+                [self.slideNavigationController pushViewController:detailVC animated:YES];
+            }
+            else {
+//                [TipHandler showTipOnlyTextWithNsstring:[result.error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+            }
+        }];
+    }
+    if ([item isKindOfClass:[Clinic class]]){
+        ClinicMainViewController *detailVC = [[ClinicMainViewController alloc] initWithPageName:@"DoctorDetailController"];
+        detailVC.clinic = [self.listModel.items objectAtIndexSafely:indexPath.row];
+        [self.slideNavigationController pushViewController:detailVC animated:YES];
+    }
 }
 
 #pragma mark ------------------ dropdown menu -------------------------
