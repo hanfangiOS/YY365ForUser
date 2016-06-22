@@ -78,7 +78,7 @@
                     [blockImageArray addObject:image];
                 } failure:^(NSError *error) {
                     UIImage *image;
-                    switch (i) {
+                    switch (blockImageView.tag) {
                         case 0:
                             image = [UIImage imageNamed:@"good"];
                             break;
@@ -95,6 +95,13 @@
                     }
                     blockImageView.image = image;
                     blockImageView.frameHeight = image.size.height/image.size.width*freamWidth;
+                    if (blockSelf.editable) {
+                        UITapGestureRecognizer *tap = [[UITapGestureRecognizer  alloc]initWithTarget:blockSelf action:@selector(tapAction:)];
+                        tap.view.tag = blockImageView.tag;
+                        tap.numberOfTapsRequired = 1;
+                        tap.numberOfTouchesRequired = 1;
+                        [blockImageView addGestureRecognizer:tap];
+                    }
                     [blockImageArray addObject:image];
                 }];
                 [imageViewArray addObject:imageView];
