@@ -508,7 +508,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
 }
 
-- (void)getMyDoctorWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+- (void)getMyDoctorWithResultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageID:(NSInteger)pageID pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
@@ -518,6 +518,8 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
+    [dataParam setObjectSafely:@(pageID) forKey:@"pageID"];
+    [dataParam setObjectSafely:@(pageSize) forKey:@"pageNum"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -529,7 +531,12 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
                 
-                NSArray *recvListDoctor = [result.responseObject arrayForKeySafely:@"data"];
+                NSDictionary * dataDict = [result.responseObject objectForKeySafely:@"data"];
+                
+                listModel.pageInfo.totalCount = [[dataDict objectForKeySafely:@"totalNum"] integerValue];
+                
+                NSArray *recvListDoctor = [dataDict arrayForKeySafely:@"dataList"];
+                
                 NSMutableArray *listSubjectDoctor = [[NSMutableArray alloc] init];
                 
                 if ([recvListDoctor isKindOfClass:[NSArray class]]) {

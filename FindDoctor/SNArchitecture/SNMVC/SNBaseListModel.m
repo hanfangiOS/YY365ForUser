@@ -56,29 +56,35 @@
 - (BOOL)hasNext
 {
     BOOL next = NO;
-    if ( self.pageInfo.currentPage == startPageNum )
-    {
-        if ([self.items count] < pageSize/*self.pageInfo.pageSize*/)
-        {
-            next = NO;
-        }
-        else
-        {
-            next = YES;
-        }
+    //    if ( self.pageInfo.currentPage == startPageNum )
+    //    {
+    //        if ([self.items count] < pageSize/*self.pageInfo.pageSize*/)
+    //        {
+    //            next = NO;
+    //        }
+    //        else
+    //        {
+    //            next = YES;
+    //        }
+    //    }
+    //    else if ( self.pageInfo.currentPage > startPageNum )
+    //    {
+    //        if ([self.items count] < self.pageInfo.totalPage * pageSize)
+    //        {
+    //            next = YES;`
+    //        }
+    //        else
+    //        {
+    //            next = NO;
+    //        }
+    //
+    //    }
+    if ( self.pageInfo.currentPage == startPageNum){
+        next = [self.items count] < pageSize?NO:YES;
+    }else{
+        next = [self.items count] < self.pageInfo.totalCount?YES:NO;
     }
-    else if ( self.pageInfo.currentPage > startPageNum )
-    {
-        if ([self.items count] < self.pageInfo.totalPage * pageSize)
-        {
-            next = YES;
-        }
-        else
-        {
-            next = NO;
-        }
-
-    }
+    
     return next;
 }
 - (BOOL)hasPrev

@@ -37,5 +37,5 @@ CGFloat vPadding_Bottom_TabbarItemTitle = 2.0;
 CGFloat vSpace_TabbarItemImg_Title = 4.0;
 CGFloat vPadding_Top_TabbarItemImg = 0.0;
 
-int startPageNum = 0;
-int pageSize = 20;
+int startPageNum = 1;
+int pageSize = 10;
