@@ -11,6 +11,7 @@
 @implementation MyAccount
 
 - (instancetype)init{
+    self = [super init];
     if (self) {
         self.costDetailList = [NSMutableArray new];
         self.incomeDetailList = [NSMutableArray new];
