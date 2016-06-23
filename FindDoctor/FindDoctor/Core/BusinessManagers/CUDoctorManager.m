@@ -508,7 +508,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
 }
 
-- (void)getMyDoctorWithResultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageID:(NSInteger)pageID pageName:(NSString *)pageName{
+- (void)getMyDoctorWithResultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageNum:(NSInteger)pageNum pageName:(NSString *)pageName{
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
     [param setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? [CUUserManager sharedInstance].user.token : @"0" ) forKey:@"token"];
@@ -518,7 +518,7 @@ SINGLETON_IMPLENTATION(CUDoctorManager);
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(pageID) forKey:@"pageID"];
+    [dataParam setObjectSafely:@(pageNum) forKey:@"pageID"];
     [dataParam setObjectSafely:@(pageSize) forKey:@"pageNum"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];

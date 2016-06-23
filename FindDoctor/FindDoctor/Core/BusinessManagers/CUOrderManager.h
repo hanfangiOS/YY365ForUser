@@ -48,10 +48,10 @@ SINGLETON_DECLARE(CUOrderManager);
 - (void)getHomeTipListWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 // 用户端——13103接口-用户空间-我的记录
-- (void)getMyDiagnosisRecordsWithUser:(MyDiagnosisRecordsFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+- (void)getMyDiagnosisRecordsWithUser:(MyDiagnosisRecordsFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageNum:(NSInteger)pageNum pageName:(NSString *)pageName;
 
 // 用户端 - 用户空间 - 我的账户
-- (void)getMyAccountWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+- (void)getMyAccountWithResultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageNum:(NSInteger)pageNum pageName:(NSString *)pageName;
 
 
 // 取消订单

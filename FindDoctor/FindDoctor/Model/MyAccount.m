@@ -10,6 +10,14 @@
 
 @implementation MyAccount
 
+- (instancetype)init{
+    if (self) {
+        self.costDetailList = [NSMutableArray new];
+        self.incomeDetailList = [NSMutableArray new];
+    }
+    return self;
+}
+
 @end
 
 @implementation CostDetail

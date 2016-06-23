@@ -10,6 +10,8 @@
 #import "TotalMoneyView.h"
 #import "ListMoneyView.h"
 #import "CUOrderManager.h"
+#import "SNBaseListModel.h"
+#import "MJRefresh.h"
 
 @interface MyAccountMainViewController ()
 {
@@ -18,6 +20,8 @@
     TotalMoneyView *costView;
     
     ListMoneyView *listMoneyView;
+    
+    SNPageInfo * pageInfo;
 }
 
 @end
@@ -26,34 +30,79 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    [self goToFirstPage];
+}
+
+- (void)goToFirstPage{
     [self showProgressView];
     __weak __block MyAccountMainViewController *blockSelf = self;
     [[CUOrderManager sharedInstance]getMyAccountWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
         [blockSelf hideProgressView];
         if (!result.hasError) {
-            blockSelf.data = result.parsedModelObject;
-            costView.fee = [NSString stringWithFormat:@"%.2lf",blockSelf.data.totalCost];
-            incomeView.fee = [NSString stringWithFormat:@"%.2lf",blockSelf.data.totalIncome];
-            listMoneyView.data = blockSelf.data;
-            [listMoneyView.incomeTableView reloadData];
-            [listMoneyView.costTableView reloadData];
-            [incomeView show];
-            [costView show];
+            
+            NSInteger err_code = [[result.responseObject valueForKeySafely:@"errorCode"] integerValue];
+            if (err_code == 0) {
+                
+                blockSelf.data = [result.parsedModelObject objectForKeySafely:@"myAccount"];
+                
+                NSMutableArray * orderArray = [result.parsedModelObject objectForKeySafely:@"costDetailList"];
+                [blockSelf.data.costDetailList removeAllObjects];
+                [blockSelf.data.costDetailList addObjectsFromArray:orderArray];
+                
+                NSDictionary  * dic = [result.responseObject dictionaryForKeySafely:@"data"];
+                pageInfo.totalCount  = [[dic objectForKeySafely:@"totalNum"] integerValue];
+                pageInfo.currentPage = startPageNum;
+                
+                costView.fee = [NSString stringWithFormat:@"%.2lf",blockSelf.data.totalCost];
+                incomeView.fee = [NSString stringWithFormat:@"%.2lf",blockSelf.data.totalIncome];
+                listMoneyView.data = blockSelf.data;
+                [listMoneyView.incomeTableView reloadData];
+                [listMoneyView.costTableView reloadData];
+                [incomeView show];
+                [costView show];
+            }
+            
         }
-    } pageName:@"MyAccountMainViewController"];
+    }pageSize:pageSize pageNum:startPageNum pageName:@"MyAccountMainViewController"];
+}
+
+- (void)goToNextPage{
+    __weak __block MyAccountMainViewController *blockSelf = self;
+    [[CUOrderManager sharedInstance]getMyAccountWithResultBlock:^(SNHTTPRequestOperation *request, SNServerAPIResultData *result) {
+        if (!result.hasError) {
+            
+            NSInteger err_code = [[result.responseObject valueForKeySafely:@"errorCode"] integerValue];
+            if (err_code == 0) {
+                
+                NSMutableArray * orderArray = [result.parsedModelObject objectForKeySafely:@"costDetailList"];
+                [blockSelf.data.costDetailList addObjectsFromArray:orderArray];
+                
+                NSDictionary  * dic = [result.responseObject dictionaryForKeySafely:@"data"];
+                pageInfo.totalCount  = [[dic objectForKeySafely:@"totalNum"] integerValue];
+                pageInfo.currentPage ++;
+                
+                [listMoneyView.incomeTableView reloadData];
+                [listMoneyView.costTableView reloadData];
+                [listMoneyView.incomeTableView.mj_footer endRefreshing];
+                [listMoneyView.costTableView.mj_footer endRefreshing];
+            }
+        }
+    }pageSize:pageSize pageNum:(pageInfo.currentPage + 1) pageName:@"MyAccountMainViewController"];
 }
 
 - (void)viewDidLoad {
     self.title = @"我的账户";
     [self loadContentView];
     [super viewDidLoad];
+    pageInfo = [[SNPageInfo alloc] init];
 }
 
 - (void)loadContentView{
     [self initTotalIncomeCostView];
     [self initListMoneyView];
     
-//    [self loadContentTableView];
+    //    [self loadContentTableView];
 }
 
 - (void)initTotalIncomeCostView{
@@ -70,12 +119,18 @@
     incomeViewTap.numberOfTapsRequired = 1;
     [incomeView addGestureRecognizer:incomeViewTap];
     [self.contentView addSubview:incomeView];
-
+    
 }
 
 - (void)initListMoneyView{
     listMoneyView = [[ListMoneyView alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(incomeView.frame) + 15, kScreenWidth - 30, self.contentView.frameHeight - CGRectGetMaxY(incomeView.frame) - 15)];
     listMoneyView.data = self.data;
+    
+    MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(goToNextPage)];
+    [footer setTitle:@"" forState:MJRefreshStateNoMoreData];
+    listMoneyView.incomeTableView.mj_footer = footer;
+    listMoneyView.costTableView.mj_footer = footer;
+    
     [self.contentView addSubview:listMoneyView];
 }
 

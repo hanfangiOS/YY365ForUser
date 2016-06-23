@@ -52,7 +52,7 @@
             self.pageInfo.currentPage = startPageNum;
         }
         resultBlock(request,result);
-    } pageSize:pageSize pageID:startPageNum pageName:@"getCurrentTreatmentList"];
+    } pageSize:pageSize pageNum:startPageNum pageName:@"getCurrentTreatmentList"];
 }
 
 - (void)gotoNextPage:(SNServerAPIResultBlock)resultBlock
@@ -64,13 +64,15 @@
             [self.items addObjectsFromArray:list.items];
             
             SNPageInfo * info = list.pageInfo;
-            self.pageInfo.totalCount = info.totalCount;
-            self.pageInfo.pageSize = info.pageSize;
-            self.pageInfo.totalPage = info.totalPage;
-            self.pageInfo.currentPage++;
+            if ([list.items count] > 0) {
+                self.pageInfo.totalCount = info.totalCount;
+                self.pageInfo.pageSize = info.pageSize;
+                self.pageInfo.totalPage = info.totalPage;
+                self.pageInfo.currentPage++;
+            }
         }
         resultBlock(request,result);
-    }pageSize:pageSize pageID:(self.pageInfo.currentPage + 1) pageName:@"getCurrentTreatmentList"];
+    }pageSize:pageSize pageNum:(self.pageInfo.currentPage + 1) pageName:@"getCurrentTreatmentList"];
 }
 
 

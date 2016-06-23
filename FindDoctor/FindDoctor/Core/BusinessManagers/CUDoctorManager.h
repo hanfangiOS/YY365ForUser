@@ -29,7 +29,7 @@ SINGLETON_DECLARE(CUDoctorManager);
 
 - (void)getOrderTimeSegmentWithReleaseID:(long long)releaseID resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
-- (void)getMyDoctorWithResultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageID:(NSInteger)pageID pageName:(NSString *)pageName;
+- (void)getMyDoctorWithResultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageNum:(NSInteger)pageNum pageName:(NSString *)pageName;
 
 //关注医生
 - (void)doctorConcernWithDoctorID:(NSInteger)doctorID isConcern:(NSInteger)isConcern resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;

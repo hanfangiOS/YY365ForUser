@@ -133,7 +133,7 @@ SINGLETON_IMPLENTATION(CUCommentManager);
 }
 
 //11903用户空间-我的点评
-- (void)getMyCommentList:(CommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+- (void)getMyCommentList:(CommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageNum:(NSInteger)pageNum pageName:(NSString *)pageName{
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
@@ -144,8 +144,8 @@ SINGLETON_IMPLENTATION(CUCommentManager);
     
     NSMutableDictionary *dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:( [[CUUserManager sharedInstance] isLogin] ? @([CUUserManager sharedInstance].user.userId) : @(0) ) forKey:@"accID"];
-    [dataParam setObjectSafely:@(pageSize) forKey:@"num"];
-    [dataParam setObjectSafely:@(filter.lastID) forKey:@"lastID"];
+    [dataParam setObjectSafely:@(pageNum) forKey:@"pageID"];
+    [dataParam setObjectSafely:@(pageSize) forKey:@"pageNum"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -156,7 +156,13 @@ SINGLETON_IMPLENTATION(CUCommentManager);
         if (!result.hasError) {
             if (![(NSNumber *)[result.responseObject valueForKey:@"errorCode"] integerValue]) {
                 SNBaseListModel *listModel = [[SNBaseListModel alloc] init];
-                NSArray * dataArr = [result.responseObject arrayForKeySafely:@"data"];
+                
+                NSDictionary * dataDict = [result.responseObject objectForKeySafely:@"data"];
+                
+                listModel.pageInfo.totalCount = [[dataDict objectForKeySafely:@"totalNum"] integerValue];
+                
+                NSArray *dataArr = [dataDict arrayForKeySafely:@"dataList"];
+                
                 NSMutableArray * listItemArr = [NSMutableArray new];
                
                 [dataArr enumerateObjectsUsingBlockSafety:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {

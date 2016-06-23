@@ -20,7 +20,7 @@ SINGLETON_DECLARE(CUCommentManager);
 - (void)getCommitComment:(CommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 //11903用户空间-我的点评
-- (void)getMyCommentList:(CommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+- (void)getMyCommentList:(CommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageNum:(NSInteger)pageNum pageName:(NSString *)pageName;
 
 //11905医生口碑接口
 - (void)getDoctorFameList:(CommentFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;

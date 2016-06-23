@@ -253,7 +253,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
 }
 
 
-- (void)getMyDiagnosisRecordsWithUser:(MyDiagnosisRecordsFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName{
+- (void)getMyDiagnosisRecordsWithUser:(MyDiagnosisRecordsFilter *)filter resultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageNum:(NSInteger)pageNum pageName:(NSString *)pageName{
     // param
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
@@ -264,6 +264,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:@(filter.accID) forKey:@"accID"];
+    [dataParam setObjectSafely:@(pageNum) forKey:@"pageID"];
+    [dataParam setObjectSafely:@(pageSize) forKey:@"pageNum"];
     
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
@@ -274,9 +276,16 @@ SINGLETON_IMPLENTATION(CUOrderManager);
         {
             // 赋值user数据
             NSInteger err_code = [[result.responseObject valueForKey:@"errorCode"]integerValue];
+            SNBaseListModel * listModel = [[SNBaseListModel alloc]init];
             switch (err_code) {
                 case 0:{
-                    NSArray *reciveList = [result.responseObject arrayForKeySafely:@"data"];
+                    
+                    NSDictionary * dataDict = [result.responseObject objectForKeySafely:@"data"];
+                    
+                    listModel.pageInfo.totalCount = [[dataDict objectForKeySafely:@"totalNum"] integerValue];
+                    
+                    NSArray *reciveList = [dataDict arrayForKeySafely:@"dataList"];
+                    
                     NSMutableArray *listSubject = [NSMutableArray new];
                     if ([reciveList isKindOfClass:[NSMutableArray class]]) {
                         [reciveList enumerateObjectsUsingBlockSafety:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -336,7 +345,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                         }];
                     }
                     
-                    SNBaseListModel * listModel = [[SNBaseListModel alloc]init];
+                    
                     listModel.items = listSubject;
                     result.parsedModelObject = listModel;
                     
@@ -509,7 +518,7 @@ SINGLETON_IMPLENTATION(CUOrderManager);
   
 }
 
-- (void)getMyAccountWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName
+- (void)getMyAccountWithResultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageNum:(NSInteger)pageNum pageName:(NSString *)pageName
 {
     NSMutableDictionary * param = [NSMutableDictionary dictionary];
     [param setObjectSafely:kPlatForm forKey:@"from"];
@@ -520,6 +529,8 @@ SINGLETON_IMPLENTATION(CUOrderManager);
     
     NSMutableDictionary * dataParam = [NSMutableDictionary dictionary];
     [dataParam setObjectSafely:@([CUUserManager sharedInstance].user.userId) forKey:@"accID"];
+    [dataParam setObjectSafely:@(pageNum) forKey:@"pageID"];
+    [dataParam setObjectSafely:@(pageSize) forKey:@"pageNum"];
     [param setObjectSafely:[dataParam JSONString] forKey:@"data"];
     
     NSLog(@"%@",param);
@@ -533,23 +544,25 @@ SINGLETON_IMPLENTATION(CUOrderManager);
                 NSDictionary  *dic = [result.responseObject dictionaryForKeySafely:@"data"];
                 if([dic isKindOfClass:[NSDictionary class]]){
                     NSMutableArray *dataArray1 = [NSMutableArray new];
-                    id obj = [dic objectForKey:@"moneyRecords"];
-                    if (obj){
-                        dataArray1 = [dic objectForKey:@"moneyRecords"];
-                    }
+
+                        dataArray1 = [dic objectForKeySafely:@"moneyRecords"];
+
                     MyAccount *myAccount = [[MyAccount alloc]init];
                     myAccount.totalCost = [[[result.responseObject dictionaryForKeySafely:@"data"] valueForKeySafely:@"moneyTotal"] doubleValue]/100.f;
                     myAccount.totalIncome = [[[result.responseObject dictionaryForKeySafely:@"data"] valueForKeySafely:@"couponTotal"] doubleValue]/100.f;
-                    myAccount.costDetailList = [NSMutableArray new];
-                    myAccount.incomeDetailList = [NSMutableArray new];
+                    
+                    NSMutableArray * costDetailList = [NSMutableArray new];
+
                     for (int i = 0; i < dataArray1.count; i ++) {
                         CostDetail *item = [[CostDetail alloc]init];
                         item.timeStamp = [[[dataArray1 objectAtIndex:i] valueForKeySafely:@"time"] longLongValue];
                         item.massage = [[dataArray1 objectAtIndex:i] valueForKeySafely:@"information"];
                         item.fee = [[[dataArray1 objectAtIndex:i] valueForKeySafely:@"fee"] integerValue]/100.f;
-                        [myAccount.costDetailList addObject:item];
+                        [costDetailList addObject:item];
                     }
-                    result.parsedModelObject = myAccount;
+                    
+                    NSDictionary * dict = @{@"myAccount":myAccount,@"costDetailList":costDetailList};
+                    result.parsedModelObject = dict;
                 }
             }
         }

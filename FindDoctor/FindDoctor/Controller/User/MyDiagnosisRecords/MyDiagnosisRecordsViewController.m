@@ -95,7 +95,7 @@
     if (cell == nil) {
         cell =  [[MyDiagnosisRecordsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.data = self.listModel.items[indexPath.row];
+    cell.data = [self.listModel.items objectAtIndexSafely:indexPath.row];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone]; 
     

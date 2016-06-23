@@ -27,6 +27,6 @@ SINGLETON_DECLARE(CUClinicManager);
 - (void)clinicConcernWithClinic:(Clinic *)clinic resultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
 
 //获取我的诊所
-- (void)getMyClinicWithResultBlock:(SNServerAPIResultBlock)resultBlock pageName:(NSString *)pageName;
+- (void)getMyClinicWithResultBlock:(SNServerAPIResultBlock)resultBlock pageSize:(NSInteger)pageSize pageNum:(NSInteger)pageNum  pageName:(NSString *)pageName;
 
 @end
